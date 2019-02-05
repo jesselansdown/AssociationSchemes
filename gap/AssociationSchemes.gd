@@ -36,9 +36,11 @@ BindGlobal("TheTypeAssociationScheme", NewType( AssociationSchemeFamily, IsAssoc
 
 
 DeclareOperation( "AssociationSchemeNC", [ IsMatrix ] );
-
 DeclareOperation( "AssociationScheme", [ IsMatrix ] );
 
+DeclareOperation( "ClassOfAssociationScheme", [ IsMatrix ] );
+DeclareOperation( "AdjacencyMatrices", [ IsMatrix ] );
+DeclareOperation( "IsAssociationSchemeMatrix", [ IsMatrix ]);
 
 #DeclareProperty( "IsSchurian", IsAssociationScheme );
 #DeclareAttribute( "Group", IsAssociationScheme );

@@ -22,17 +22,105 @@ InstallMethod(AssociationSchemeNC,
 #	Here we put a check that the association scheme is valid
 #######################################################
 
-# InstallMethod(AssociationScheme,
-# 			[IsMatrix],
-# 	function(mat)
-# 		local m;
-# 		if not IsAssociationSchemeMatrix(mat) then
-# 			Print("Must give a valid matrix\n");
-# 			return fail;
-# 		fi;
-# 		m := StructuralCopy(mat);;
-# 		return Objectify(TheTypeAssociationScheme, m);
-# 	end );
+InstallMethod(AssociationScheme,
+			[IsMatrix],
+	function(mat)
+		local m;
+		if not IsAssociationSchemeMatrix(mat) then
+			Print("Must give a valid matrix\n");
+			return fail;
+		fi;
+		m := StructuralCopy(mat);;
+		return Objectify(TheTypeAssociationScheme, m);
+	end );
+
+# Returns the class for the matrix of a d-class association scheme
+
+InstallMethod(ClassOfAssociationScheme,
+			[IsMatrix],
+	function(mat)
+		local d, row, m;
+		d := 0;
+		for row in mat do
+			m := Maximum(row);
+			if d < m then
+				d := m;
+			fi;
+		od;
+		return d;
+	end );
+# Need to check if integers
+# Neet to check if square matrix
+
+InstallMethod(AdjacencyMatrices,
+			[IsMatrix],
+	function(mat)
+		local d, n, adjMats, i, j;
+		d := ClassOfAssociationScheme(mat);;
+		n := Size(mat);
+		adjMats := List([0 .. d], t ->	NullMat(n,n));;
+		for i in [1 .. n] do
+			for j in [1 .. n] do
+				adjMats[mat[i][j]+1][i][j]:=1;
+			od;
+		od;
+		return adjMats;
+	end);
+
+InstallMethod(IsAssociationSchemeMatrix,
+			[IsMatrix],
+	function(M)
+		local sz, numberOfRelations, relations, markers, mat, i, j, k, mult, ps, temp, identitypos;
+		sz := Size(M);
+		numberOfRelations := ClassOfAssociationScheme(M);
+#		Print("There are ", numberOfRelations -1, " (non-identity) relations\n");
+		relations := AdjacencyMatrices(M);
+		markers := List([1 .. numberOfRelations], t -> First([1 .. sz], x -> relations[t][1][x] <>0));
+		identitypos := Position(relations, IdentityMat(sz));
+		if identitypos = fail then
+			return false;
+		fi;
+#		Print("     Contains the identity\n");
+		for mat in relations do
+			if not TransposedMat(mat)=mat then
+				return false;
+			fi;
+		od;
+#		Print("     Relations are symmetric\n");
+		if not Set(Set(Sum(relations)))= [ListWithIdenticalEntries(sz,1)] then
+			return false;
+		fi;
+#		Print("     Relations sum to one\n");
+		for i in [1 .. numberOfRelations] do
+			if i <> identitypos then
+				for j in [i .. numberOfRelations] do
+					if j <> identitypos then
+						# Clearly the product with the identity is a linear combination, so no need to check...
+						mult := relations[i] * relations[j];
+						ps :=[1 .. numberOfRelations];
+						for k in [1 .. numberOfRelations] do
+							ps[k] := mult[1][markers[k]];;
+						od;
+						temp := NullMat(sz, sz);;
+						for k in [1 .. numberOfRelations] do
+							temp := temp + ps[k]*relations[k];
+						od;
+						if mult <> temp then
+							return false;
+						fi;
+#						Print("        A", i-1, ".A", j-1, " is a linear combination of the others\n");
+						# sufficient, since transpose of sum is sum of transposes, and each Ai is symmetric,
+						# so it follows that A_j A_i is also the same sum.
+						# A_j A_i = A_j^T A_i^T = (A_i B_i)^T = (Sum \pi_i,j^k A_k) )^T
+						# = Sum \pi_i,j^k A_k)^T = Sum \pi_i,j^k A_k) = A_i A_j
+					fi;
+				od;
+			fi;
+		od;
+		return true;
+	end);
+
+
 
 InstallGlobalFunction( AssociationSchemes_Example,
 function()
