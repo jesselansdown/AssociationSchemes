@@ -24,15 +24,20 @@
 #!
 #! This section will describe the example
 #! methods of AssociationSchemes
-
-
-
 DeclareCategory( "IsAssociationScheme", IsObject );
 
+DeclareRepresentation( "IsAssociationSchemeRep",
+                       IsAssociationScheme and IsAttributeStoringRep,
+                       [ ] );
 
-AssociationSchemeFamily := NewFamily( "AssociationSchemeFamily" );
+BindGlobal( "AssociationSchemeFamily",
+        NewFamily( "AssociationSchemeFamily" ) );
 
-BindGlobal("TheTypeAssociationScheme", NewType( AssociationSchemeFamily, IsAssociationScheme ));
+BindGlobal( "TheTypeAssociationScheme",
+        NewType( AssociationSchemeFamily,
+                IsAssociationSchemeRep ) );
+
+#BindGlobal("TheTypeAssociationScheme", NewType( AssociationSchemeFamily, IsAssociationScheme ));
 
 DeclareOperation( "AssociationSchemeNC", [ IsMatrix ] );
 DeclareOperation( "AssociationScheme", [ IsMatrix ] );
@@ -46,7 +51,8 @@ DeclareOperation( "SchurianScheme", [IsPermGroup]);
 DeclareProperty( "IsSchurian", IsAssociationScheme );
 DeclareAttribute( "SchurianSchemeGroup", IsAssociationScheme );
 
-
 #! @Description
 #!   Insert documentation for your function here
 DeclareGlobalFunction( "AssociationSchemes_Example" );
+DeclareOperation( "AdjacencyMatrices", [ IsAssociationScheme ] );
+DeclareAttribute( "AdjMats", IsAssociationScheme );

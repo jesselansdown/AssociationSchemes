@@ -13,9 +13,10 @@
 InstallMethod(AssociationSchemeNC,
 			[IsMatrix],
 	function(mat)
-		local m;
+		local m, assoc_rec;
 		m := StructuralCopy(mat);;
-		return Objectify(TheTypeAssociationScheme, m);
+		assoc_rec := rec( matrix := m);
+		return Objectify(TheTypeAssociationScheme, assoc_rec);
 	end );
 
 #######################################################
@@ -25,13 +26,14 @@ InstallMethod(AssociationSchemeNC,
 InstallMethod(AssociationScheme,
 			[IsMatrix],
 	function(mat)
-		local m;
+		local m, assoc_rec;
 		if not IsAssociationSchemeMatrix(mat) then
 			Print("Must give a valid matrix\n");
 			return fail;
 		fi;
 		m := StructuralCopy(mat);;
-		return Objectify(TheTypeAssociationScheme, m);
+		assoc_rec := rec( matrix := m);
+		return ObjectifyWithAttributes(assoc_rec, TheTypeAssociationScheme, IsSchurian, false, SchurianSchemeGroup, Group(()));
 	end );
 
 # Returns the class for the matrix of a d-class association scheme
@@ -66,6 +68,13 @@ InstallMethod(AdjacencyMatrices,
 		od;
 		return adjMats;
 	end);
+
+InstallMethod(AdjacencyMatrices,
+			[IsAssociationScheme],
+	function(a)
+		return AdjacencyMatrices(a!.matrix);
+	end);
+
 
 InstallMethod(IsAssociationSchemeMatrix,
 			[IsMatrix],
@@ -123,8 +132,10 @@ InstallMethod(IsAssociationSchemeMatrix,
 InstallMethod(SchurianScheme,
 			[IsPermGroup],
 	function( g_perm )
-		# PUT A CHECK THAT g_perm IS GENEROUSLY TRANSITIVE
-		local stab, sz, points, orbs, row1, i, charvec, rts, pos, mat;
+		local stab, sz, points, orbs, row1, i, charvec, rts, pos, mat, assoc_rec;
+		if Transitivity(g_perm)<2 then # NOTE: This should actually be generously transitive
+			return fail;
+		fi;
 		stab := Stabiliser(g_perm, 1);
 		sz := DegreeAction(g_perm);
 		points := [2 .. sz];
@@ -141,8 +152,37 @@ InstallMethod(SchurianScheme,
 			pos := 1^i;
 			mat[pos]:=Permuted(row1, i);
 		od;
-		return ObjectifyWithAttributes(mat, TheTypeAssociationScheme, IsSchurian, true, SchurianSchemeGroup, g_perm);;
+		assoc_rec := rec( matrix := mat);
+		return ObjectifyWithAttributes(assoc_rec, TheTypeAssociationScheme, IsSchurian, true, SchurianSchemeGroup, g_perm);;
 	end);
+
+InstallMethod(AdjMats, " ", [IsAssociationScheme], AdjacencyMatrices);
+
+
+ InstallMethod( ViewObj, 
+ 	"for IsAssociationScheme",
+ 	[ IsAssociationScheme],
+ 	function( a )
+ 		Print( ClassOfAssociationScheme(a!.matrix), "-class association scheme.");
+# 		Print( a!.class, "-class association scheme on ", a!.n, " vertices.");
+ 	end );
+
+InstallMethod( PrintObj, 
+	"for IsAssociationScheme",
+	[ IsAssociationScheme],
+	function( a )
+ 		Print( ClassOfAssociationScheme(a!.matrix), "-class association scheme.");
+#		Print( a!.class, "-class association scheme on ", a!.n, " vertices.");
+	end );
+
+InstallMethod( Display, 
+	"for IsAssociationScheme",
+	[ IsAssociationScheme ],
+	function( a )
+ 		Print( ClassOfAssociationScheme(a!.matrix), "-class association scheme.");
+#		Print( a!.class, "-class association scheme on ", a!.n, " vertices.");
+	end );
+
 
 InstallGlobalFunction( AssociationSchemes_Example,
 function()
