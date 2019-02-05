@@ -25,6 +25,25 @@
 #! This section will describe the example
 #! methods of AssociationSchemes
 
+
+
+DeclareCategory( "IsAssociationScheme", IsObject );
+
+
+AssociationSchemeFamily := NewFamily( "AssociationSchemeFamily" );
+
+BindGlobal("TheTypeAssociationScheme", NewType( AssociationSchemeFamily, IsAssociationScheme ));
+
+
+DeclareOperation( "AssociationSchemeNC", [ IsMatrix ] );
+
+DeclareOperation( "AssociationScheme", [ IsMatrix ] );
+
+
+#DeclareProperty( "IsSchurian", IsAssociationScheme );
+#DeclareAttribute( "Group", IsAssociationScheme );
+
+
 #! @Description
 #!   Insert documentation for your function here
 DeclareGlobalFunction( "AssociationSchemes_Example" );

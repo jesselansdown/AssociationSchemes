@@ -3,9 +3,13 @@ Association scheme object
 	- Pmatrix
 	- Qmatrix
 	- number of classes
+	- Degrees
+	- intersection numbers
 	- IsPPolynomial etc...
 	- IsJohnsonScheme etc...
 	- AdjacencyMatrices and Idempotents?? (Too large??)
+	- IsSchurian
+	- group (if schurian)
 
 Constructors
 	- basic constructor from matrix
@@ -18,12 +22,14 @@ Constructors
 Display method
 	- Number of classes
 	- P and Q matrices if known
+	- Other attributes and properties if known and displayable
 
 Basic functions
 	- IsAssociationScheme
 	- AdjacencyMatrices
 	- IsGenerouslyTransitive
 	- MinimalIdempotents
+		- Fast method if IsSchurian and Q matrix known
 	- CharacteristicVector
 
 Other functions
