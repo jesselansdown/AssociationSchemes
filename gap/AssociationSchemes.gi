@@ -224,7 +224,7 @@ InstallMethod( MinimalIdempotents,
 				mat[pos]:=Permuted(id[i], j);
 			od;
 			Add(mats, mat);
-			Print(i, ".\c");
+#			Print(i, ".\c");
 		od;
 		return mats;
 	end );
