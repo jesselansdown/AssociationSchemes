@@ -145,9 +145,7 @@ InstallMethod(SchurianScheme,
 			[IsPermGroup],
 	function( g_perm )
 		local stab, sz, points, orbs, row1, i, charvec, rts, pos, mat, assoc_rec;
-		if Transitivity(g_perm)<2 then # NOTE: This should actually be generously transitive
-			return fail;
-		fi;
+		 # NOTE: This should actually be generously transitive
 		stab := Stabiliser(g_perm, 1);
 		sz := DegreeAction(g_perm);
 		points := [2 .. sz];
