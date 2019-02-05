@@ -60,3 +60,4 @@ DeclareOperation( "AdjacencyMatrices", [ IsAssociationScheme ] );
 DeclareAttribute( "AdjMats", IsAssociationScheme );
 DeclareAttribute( "Pmatrix", IsAssociationScheme );
 DeclareAttribute( "Qmatrix", IsAssociationScheme );
+DeclareAttribute( "MinimalIdempotents", IsAssociationScheme );
