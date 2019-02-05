@@ -120,7 +120,29 @@ InstallMethod(IsAssociationSchemeMatrix,
 		return true;
 	end);
 
-
+InstallMethod(SchurianScheme,
+			[IsPermGroup],
+	function( g_perm )
+		# PUT A CHECK THAT g_perm IS GENEROUSLY TRANSITIVE
+		local stab, sz, points, orbs, row1, i, charvec, rts, pos, mat;
+		stab := Stabiliser(g_perm, 1);
+		sz := DegreeAction(g_perm);
+		points := [2 .. sz];
+		orbs := Orbits(stab, points);
+		row1 := ListWithIdenticalEntries(sz, 0);
+		for i in [1 .. Size(orbs)] do
+			charvec := ListWithIdenticalEntries(sz, 0);
+			charvec{orbs[i]}:=ListWithIdenticalEntries(Size(orbs[i]), i);
+			row1 := row1 + charvec;
+		od;
+		rts := RightTransversal(g_perm, stab);;
+		mat :=ListWithIdenticalEntries(sz, []);
+		for i in rts do
+			pos := 1^i;
+			mat[pos]:=Permuted(row1, i);
+		od;
+		return ObjectifyWithAttributes(mat, TheTypeAssociationScheme, IsSchurian, true, SchurianSchemeGroup, g_perm);;
+	end);
 
 InstallGlobalFunction( AssociationSchemes_Example,
 function()

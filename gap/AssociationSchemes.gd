@@ -34,7 +34,6 @@ AssociationSchemeFamily := NewFamily( "AssociationSchemeFamily" );
 
 BindGlobal("TheTypeAssociationScheme", NewType( AssociationSchemeFamily, IsAssociationScheme ));
 
-
 DeclareOperation( "AssociationSchemeNC", [ IsMatrix ] );
 DeclareOperation( "AssociationScheme", [ IsMatrix ] );
 
@@ -42,8 +41,10 @@ DeclareOperation( "ClassOfAssociationScheme", [ IsMatrix ] );
 DeclareOperation( "AdjacencyMatrices", [ IsMatrix ] );
 DeclareOperation( "IsAssociationSchemeMatrix", [ IsMatrix ]);
 
-#DeclareProperty( "IsSchurian", IsAssociationScheme );
-#DeclareAttribute( "Group", IsAssociationScheme );
+DeclareOperation( "SchurianScheme", [IsPermGroup]);
+
+DeclareProperty( "IsSchurian", IsAssociationScheme );
+DeclareAttribute( "SchurianSchemeGroup", IsAssociationScheme );
 
 
 #! @Description
