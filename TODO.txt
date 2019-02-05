@@ -1,0 +1,31 @@
+Association scheme object
+	- matrix
+	- Pmatrix
+	- Qmatrix
+	- number of classes
+	- IsPPolynomial etc...
+	- IsJohnsonScheme etc...
+	- AdjacencyMatrices and Idempotents?? (Too large??)
+
+Constructors
+	- basic constructor from matrix
+	- Schurian Scheme
+	- Johnson Scheme
+	- Grassmann Scheme
+	- Dual classical polar spaces
+	- Fusion Scheme
+
+Display method
+	- Number of classes
+	- P and Q matrices if known
+
+Basic functions
+	- IsAssociationScheme
+	- AdjacencyMatrices
+	- IsGenerouslyTransitive
+	- MinimalIdempotents
+	- CharacteristicVector
+
+Other functions
+	- GaussianCoefficients
+	
