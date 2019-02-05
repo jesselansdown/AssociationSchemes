@@ -239,7 +239,7 @@ InstallMethod( MinimalIdempotents,
 
 InstallMethod( PrintObj, 
 	"for IsAssociationScheme",
-	[ IsAssociationScheme],
+	[ IsAssociationScheme ],
 	function( a )
  		Print( ClassOfAssociationScheme(a!.matrix), "-class association scheme on ", NrVertices(a), " vertices.");
 #		Print( a!.class, "-class association scheme on ", a!.n, " vertices.");
@@ -247,9 +247,17 @@ InstallMethod( PrintObj,
 
 InstallMethod( Display, 
 	"for IsAssociationScheme",
-	[ IsAssociationScheme ],
+	[ IsAssociationScheme],
 	function( a )
  		Print( ClassOfAssociationScheme(a!.matrix), "-class association scheme on ", NrVertices(a), " vertices.");
+ 		if HasPmatrix(a) then
+ 			Print("\nPmatrix:\n");
+ 			Display(Pmatrix(a));
+ 		fi;
+ 		if HasPmatrix(a) then
+ 			Print("\nQmatrix:\n");
+ 			Display(Qmatrix(a));
+ 		fi;
 #		Print( a!.class, "-class association scheme on ", a!.n, " vertices.");
 	end );
 
