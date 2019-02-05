@@ -38,6 +38,18 @@ InstallMethod(AssociationScheme,
 
 # Returns the class for the matrix of a d-class association scheme
 
+InstallMethod( NrVertices, 
+	"for IsAssociationScheme",
+	[ IsAssociationScheme ],
+	function( a )
+		local n;
+		n := Size(a!.matrix);
+		if n <> Size(a!.matrix[1]) then
+			return fail;
+		fi;
+		return n;
+	end );
+
 InstallMethod(ClassOfAssociationScheme,
 			[IsMatrix],
 	function(mat)
@@ -159,6 +171,23 @@ InstallMethod(SchurianScheme,
 InstallMethod(AdjMats, " ", [IsAssociationScheme], AdjacencyMatrices);
 
 
+
+# InstallMethod( Pmatrix, 
+# 	"for IsAssociationScheme",
+# 	[ IsAssociationScheme ],
+# 	function( a )
+# 		# Calculate the pmatrix
+# 	end );
+
+InstallMethod( Qmatrix, 
+	"for IsAssociationScheme",
+	[ IsAssociationScheme ],
+	function( a )
+		return Inverse(Pmatrix(a))*NrVertices(a);
+	end );
+
+
+
  InstallMethod( ViewObj, 
  	"for IsAssociationScheme",
  	[ IsAssociationScheme],
@@ -182,10 +211,4 @@ InstallMethod( Display,
  		Print( ClassOfAssociationScheme(a!.matrix), "-class association scheme.");
 #		Print( a!.class, "-class association scheme on ", a!.n, " vertices.");
 	end );
-
-
-InstallGlobalFunction( AssociationSchemes_Example,
-function()
-	Print( "This is a placeholder function, replace it with your own code.\n" );
-end );
 

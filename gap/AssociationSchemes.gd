@@ -46,6 +46,8 @@ DeclareOperation( "ClassOfAssociationScheme", [ IsMatrix ] );
 DeclareOperation( "AdjacencyMatrices", [ IsMatrix ] );
 DeclareOperation( "IsAssociationSchemeMatrix", [ IsMatrix ]);
 
+DeclareAttribute( "NrVertices", IsAssociationScheme );
+
 DeclareOperation( "SchurianScheme", [IsPermGroup]);
 
 DeclareProperty( "IsSchurian", IsAssociationScheme );
@@ -56,3 +58,5 @@ DeclareAttribute( "SchurianSchemeGroup", IsAssociationScheme );
 DeclareGlobalFunction( "AssociationSchemes_Example" );
 DeclareOperation( "AdjacencyMatrices", [ IsAssociationScheme ] );
 DeclareAttribute( "AdjMats", IsAssociationScheme );
+DeclareAttribute( "Pmatrix", IsAssociationScheme );
+DeclareAttribute( "Qmatrix", IsAssociationScheme );
