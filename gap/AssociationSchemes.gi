@@ -51,9 +51,10 @@ InstallMethod( NrVertices,
 	end );
 
 InstallMethod(ClassOfAssociationScheme,
-			[IsMatrix],
-	function(mat)
-		local d, row, m;
+			[IsAssociationScheme],
+	function(a)
+		local d, row, mat, m;
+		mat:=a!.matrix;
 		d := 0;
 		for row in mat do
 			m := Maximum(row);
@@ -67,10 +68,11 @@ InstallMethod(ClassOfAssociationScheme,
 # Neet to check if square matrix
 
 InstallMethod(AdjacencyMatrices,
-			[IsMatrix],
-	function(mat)
-		local d, n, adjMats, i, j;
-		d := ClassOfAssociationScheme(mat);;
+			[IsAssociationScheme],
+	function(a)
+		local d, n, adjMats, i, j, mat;
+		d := ClassOfAssociationScheme(a);;
+		mat := a!.matrix;
 		n := Size(mat);
 		adjMats := List([0 .. d], t ->	NullMat(n,n));;
 		for i in [1 .. n] do
@@ -81,21 +83,49 @@ InstallMethod(AdjacencyMatrices,
 		return adjMats;
 	end);
 
-InstallMethod(AdjacencyMatrices,
-			[IsAssociationScheme],
-	function(a)
-		return AdjacencyMatrices(a!.matrix);
+InstallMethod(AdjacencyMatricesOfMatrix,
+			[IsMatrix],
+	function(mat)
+		local d, n, adjMats, i, j, row, m;
+		d := 0;
+		for row in mat do
+			m := Maximum(row);
+			if d < m then
+				d := m;
+			fi;
+		od;
+		n := Size(mat);
+		adjMats := List([0 .. d], t ->	NullMat(n,n));;
+		for i in [1 .. n] do
+			for j in [1 .. n] do
+				adjMats[mat[i][j]+1][i][j]:=1;
+			od;
+		od;
+		return adjMats;
 	end);
+
+
+# InstallMethod(AdjacencyMatrices,
+# 			[IsAssociationScheme],
+# 	function(a)
+# 		return AdjacencyMatrices(a!.matrix);
+# 	end);
 
 
 InstallMethod(IsAssociationSchemeMatrix,
 			[IsMatrix],
 	function(M)
-		local sz, numberOfRelations, relations, markers, mat, i, j, k, mult, ps, temp, identitypos;
+		local sz, numberOfRelations, relations, markers, mat, i, j, k, mult, ps, temp, identitypos, m, row;
 		sz := Size(M);
-		numberOfRelations := ClassOfAssociationScheme(M);
+		numberOfRelations := 0;
+		for row in M do
+			m := Maximum(row);
+			if numberOfRelations < m then
+				numberOfRelations := m;
+			fi;
+		od;
 #		Print("There are ", numberOfRelations -1, " (non-identity) relations\n");
-		relations := AdjacencyMatrices(M);
+		relations := AdjacencyMatricesOfMatrix(M);
 		markers := List([1 .. numberOfRelations], t -> First([1 .. sz], x -> relations[t][1][x] <>0));
 		identitypos := Position(relations, IdentityMat(sz));
 		if identitypos = fail then
@@ -171,7 +201,7 @@ InstallMethod(AdjMats, " ", [IsAssociationScheme], AdjacencyMatrices);
 InstallMethod(Valencies, " ", [IsAssociationScheme], 
 	function(a)
 		local d, valencies, i;
-		d := ClassOfAssociationScheme(a!.matrix);
+		d := ClassOfAssociationScheme(a);
 		valencies:=ListWithIdenticalEntries(d+1, 0);;
 		for i in [1 .. d+1] do
 			valencies[i]:=Number(a!.matrix[1], t -> t=i-1);
@@ -184,8 +214,8 @@ InstallMethod(IntersectionMatrices, " ", [IsAssociationScheme],
 		local sz, d, relations, markers, intersectionMatrices, i, j, k, mult, ps, M;
 	 	M:=m!.matrix;
 		sz := Size(M);
-		d := ClassOfAssociationScheme(M);
-		relations := AdjacencyMatrices(M);;
+		d := ClassOfAssociationScheme(m);
+		relations := AdjacencyMatrices(m);;
 		intersectionMatrices:=List([1..d+1], t-> NullMat(d+1, d+1));
 		markers := List([0 .. d], t -> First([1 .. sz], x -> relations[t+1][1][x] <>0));
 		for i in [0 .. d] do
@@ -220,7 +250,7 @@ end;
 	function(m)
 		local inter, eigs, d, feasiblerows, posvals, stopvals, i, row, valencies, wow, stack, options, P, P2, current;;
 
-		d:=ClassOfAssociationScheme(m!.matrix);
+		d:=ClassOfAssociationScheme(m);
 		valencies:=ShallowCopy(Valencies(m));
 		Remove(valencies, 1);;
 
@@ -333,7 +363,7 @@ InstallMethod( MinimalIdempotents,
  	"for IsAssociationScheme",
  	[ IsAssociationScheme],
  	function( a )
- 		Print( ClassOfAssociationScheme(a!.matrix), "-class association scheme on ", NrVertices(a), " vertices.");
+ 		Print( ClassOfAssociationScheme(a), "-class association scheme on ", NrVertices(a), " vertices.");
 # 		Print( a!.class, "-class association scheme on ", a!.n, " vertices.");
  	end );
 
@@ -341,7 +371,7 @@ InstallMethod( PrintObj,
 	"for IsAssociationScheme",
 	[ IsAssociationScheme ],
 	function( a )
- 		Print( ClassOfAssociationScheme(a!.matrix), "-class association scheme on ", NrVertices(a), " vertices.");
+ 		Print( ClassOfAssociationScheme(a), "-class association scheme on ", NrVertices(a), " vertices.");
 #		Print( a!.class, "-class association scheme on ", a!.n, " vertices.");
 	end );
 
@@ -349,7 +379,7 @@ InstallMethod( Display,
 	"for IsAssociationScheme",
 	[ IsAssociationScheme],
 	function( a )
- 		Print( ClassOfAssociationScheme(a!.matrix), "-class association scheme on ", NrVertices(a), " vertices.");
+ 		Print( ClassOfAssociationScheme(a), "-class association scheme on ", NrVertices(a), " vertices.");
  		if HasMatrixOfEigenvalues(a) then
  			Print("\nMatrixOfEigenvalues:\n");
  			Display(MatrixOfEigenvalues(a));

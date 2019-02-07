@@ -41,9 +41,10 @@ BindGlobal( "TheTypeAssociationScheme",
 
 DeclareOperation( "AssociationSchemeNC", [ IsMatrix ] );
 DeclareOperation( "AssociationScheme", [ IsMatrix ] );
+DeclareOperation( "AdjacencyMatricesOfMatrix", [IsMatrix] );
 
-DeclareOperation( "ClassOfAssociationScheme", [ IsMatrix ] );
-DeclareOperation( "AdjacencyMatrices", [ IsMatrix ] );
+DeclareAttribute( "ClassOfAssociationScheme", IsAssociationScheme );
+DeclareAttribute( "AdjacencyMatrices", IsAssociationScheme );
 DeclareOperation( "IsAssociationSchemeMatrix", [ IsMatrix ]);
 
 DeclareAttribute( "NrVertices", IsAssociationScheme );
@@ -56,7 +57,7 @@ DeclareAttribute( "SchurianSchemeGroup", IsAssociationScheme );
 #! @Description
 #!   Insert documentation for your function here
 DeclareGlobalFunction( "AssociationSchemes_Example" );
-DeclareOperation( "AdjacencyMatrices", [ IsAssociationScheme ] );
+#DeclareOperation( "AdjacencyMatrices", [ IsAssociationScheme ] );
 DeclareAttribute( "AdjMats", IsAssociationScheme );
 DeclareAttribute( "Valencies", IsAssociationScheme );
 DeclareAttribute("IntersectionMatrices", IsAssociationScheme);
