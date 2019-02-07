@@ -16,7 +16,7 @@ InstallMethod(AssociationSchemeNC,
 		local m, assoc_rec;
 		m := StructuralCopy(mat);;
 		assoc_rec := rec( matrix := m);
-		return Objectify(TheTypeAssociationScheme, assoc_rec);
+		return ObjectifyWithAttributes(assoc_rec, TheTypeAssociationScheme, IsSchurian, false, SchurianSchemeGroup, Group(()));
 	end );
 
 #######################################################
@@ -83,6 +83,41 @@ InstallMethod(AdjacencyMatrices,
 		return adjMats;
 	end);
 
+InstallMethod( AdjacencyMatrices, 
+	"for IsAssociationScheme",
+	[ IsAssociationScheme and IsSchurian],
+	function( a )
+		local g_perm, Q, row1, stab, sz, points, d, i, charvec, rts, pos, mat, mats, j, row, rows, id;
+		g_perm := SchurianSchemeGroup(a);
+		row1 := a!.matrix[1];
+		stab := Stabiliser(g_perm, 1);
+		rts := RightTransversal(g_perm, stab);;
+		sz := DegreeAction(g_perm);
+		points := [1 .. sz];
+		d := Maximum(row1);
+		rows := [];
+		for i in [0 .. d] do
+			charvec := ListWithIdenticalEntries(sz, 0);
+			for j in [1 .. Size(row1)] do
+				if row1[j] = i then
+					charvec[j]:=1;
+				fi;
+			od;
+			Add(rows, charvec);
+		od;
+		mats := [];
+		for i in [1 .. d+1] do
+			mat := ListWithIdenticalEntries(sz, 0);
+			for j in rts do
+				pos := 1^j;
+				mat[pos]:=Permuted(rows[i], j);
+			od;
+			Add(mats, mat);
+#			Print(i, ".\c");
+		od;
+		return mats;
+	end );
+
 InstallMethod(AdjacencyMatricesOfMatrix,
 			[IsMatrix],
 	function(mat)
@@ -124,6 +159,7 @@ InstallMethod(IsAssociationSchemeMatrix,
 				numberOfRelations := m;
 			fi;
 		od;
+		numberOfRelations:=numberOfRelations+1;
 #		Print("There are ", numberOfRelations -1, " (non-identity) relations\n");
 		relations := AdjacencyMatricesOfMatrix(M);
 		markers := List([1 .. numberOfRelations], t -> First([1 .. sz], x -> relations[t][1][x] <>0));
@@ -196,7 +232,6 @@ InstallMethod(SchurianScheme,
 		return ObjectifyWithAttributes(assoc_rec, TheTypeAssociationScheme, IsSchurian, true, SchurianSchemeGroup, g_perm);;
 	end);
 
-InstallMethod(AdjMats, " ", [IsAssociationScheme], AdjacencyMatrices);
 
 InstallMethod(Valencies, " ", [IsAssociationScheme], 
 	function(a)
@@ -321,7 +356,7 @@ InstallMethod( MinimalIdempotents,
 	function( a )
 		local g_perm, Q, row1, stab, sz, points, d, i, charvec, rts, pos, mat, mats, j, row, rows, id;
 		g_perm := SchurianSchemeGroup(a);
-		Q := DualMatrixOfEigenvalues(a)/NrVertices(a);
+		Q := DualMatrixOfEigenvalues(a);
 		row1 := a!.matrix[1];
 		stab := Stabiliser(g_perm, 1);
 		rts := RightTransversal(g_perm, stab);;
@@ -358,6 +393,26 @@ InstallMethod( MinimalIdempotents,
 		od;
 		return mats;
 	end );
+
+InstallMethod( MinimalIdempotents, 
+	"for IsAssociationScheme",
+	[ IsAssociationScheme],
+	function(a)
+		local j, i, mat, idems, d, Q, adjacencymatrices;
+		idems:=[];
+		d := ClassOfAssociationScheme(a);
+		Q := DualMatrixOfEigenvalues(a);
+		adjacencymatrices := AdjacencyMatrices(a);;
+		for j in [1 .. d+1] do
+			mat:=Q[1][j]*adjacencymatrices[1];;
+			for i in [2 .. d+1] do
+				mat := mat + Q[i][j]*adjacencymatrices[i];;
+			od;
+			Add(idems, mat);
+		od;
+		return idems;
+	end);
+
 
  InstallMethod( ViewObj, 
  	"for IsAssociationScheme",
