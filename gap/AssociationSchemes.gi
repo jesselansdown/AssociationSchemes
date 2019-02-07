@@ -168,6 +168,17 @@ InstallMethod(SchurianScheme,
 
 InstallMethod(AdjMats, " ", [IsAssociationScheme], AdjacencyMatrices);
 
+InstallMethod(Valencies, " ", [IsAssociationScheme], 
+	function(a)
+		local d, valencies, i;
+		d := ClassOfAssociationScheme(a!.matrix);
+		valencies:=ListWithIdenticalEntries(d+1, 0);;
+		for i in [1 .. d+1] do
+			valencies[i]:=Number(a!.matrix[1], t -> t=i-1);
+		od;
+		return valencies;
+	end);
+
 InstallMethod(IntersectionMatrices, " ", [IsAssociationScheme],
  	function(m)
 		local sz, d, relations, markers, intersectionMatrices, i, j, k, mult, ps, M;
@@ -191,27 +202,31 @@ InstallMethod(IntersectionMatrices, " ", [IsAssociationScheme],
 end);
 
 
-check := function(thing, valencies)
+__orthogonality_check := function(thing, valencies)
 	local i;
 	for i in [1 .. Size(thing)-1] do
 		if not Sum(List([1..Size(thing[1])], t -> thing[i][t]*thing[Size(thing)][t]/valencies[t] ))=-1 then
 			return false;
 		fi;
 	od;
-	# also put the orthogonal relation with itself
+	# also put the orthogonal relation with itself? This requires m_i
 	return true;
 end;
 
 
- InstallMethod( Pmatrix, 
+ InstallMethod( MatrixOfEigenvalues, 
  	"for IsAssociationScheme",
  	[ IsAssociationScheme ],
 	function(m)
-		local inter, eigs, d, feasiblerows, posvals, stopvals, i, row, valencies, wow, stack, options, P, current;;
+		local inter, eigs, d, feasiblerows, posvals, stopvals, i, row, valencies, wow, stack, options, P, P2, current;;
+
+		d:=ClassOfAssociationScheme(m!.matrix);
+		valencies:=ShallowCopy(Valencies(m));
+		Remove(valencies, 1);;
+
 		inter:=IntersectionMatrices(m);
 		eigs:=List(inter, t ->  Eigenvalues(Rationals,t));
 		Remove(eigs,1);
-		d:=ClassOfAssociationScheme(m!.matrix);
 
 		feasiblerows:=[];
 
@@ -235,45 +250,38 @@ end;
 			od;
 		od;
 
-		valencies:=List(eigs, Maximum);
-
-
-		wow:=[];
 		stack := List(feasiblerows, t -> [t]);;
 		while stack <> [] do
 			current:=Remove(stack);;
-	#		Print(Size(current), ".\c");
 			if Size(current) < d then
-			# check the size of "current"
 			# 	if correct size, then check that for all i, eigs[i] in current{[1..d]}[i] - just take transpose
 			#	if ok, then check the column orthogonality
 			#	Any other checks? Gives a valid Q matrix?
 			options:=List(feasiblerows, t -> Concatenation(current, [t]) );;
-			options:=Filtered(options, t -> check(t, valencies));
-			# Filter the options - perform the row orthogonality checks with previous rows
-			# Add to stack
+			options:=Filtered(options, t -> __orthogonality_check(t, valencies));
 			Append(stack, options);
 			else
-				break;
-	#			Add(wow, current);
-	#			Print("\n!!!!!!!!!\n");
+				P:=NullMat(d+1, d+1);
+				P:=P+1;;
+				P[1]{[2..d+1]}:=valencies;
+				P{[2..d+1]}{[2..d+1]}:=current;
+				P2 := TransposedMat(P);;
+				if ForAll([1 .. d], t -> ForAll(eigs[t], x -> x in P2[t+1])) then
+					return P;
+				fi;
 			fi;
 		od;
-			P:=NullMat(d+1, d+1);
-			P:=P+1;;
-			P[1]{[2..d+1]}:=valencies;
-			P{[2..d+1]}{[2..d+1]}:=current;
-		return P;
+		return fail	;
 	end);
 
 
 
 
-InstallMethod( Qmatrix, 
+InstallMethod( DualMatrixOfEigenvalues, 
 	"for IsAssociationScheme",
 	[ IsAssociationScheme ],
 	function( a )
-		return Inverse(Pmatrix(a))*NrVertices(a);
+		return Inverse(MatrixOfEigenvalues(a))*NrVertices(a);
 	end );
 
 
@@ -283,7 +291,7 @@ InstallMethod( MinimalIdempotents,
 	function( a )
 		local g_perm, Q, row1, stab, sz, points, d, i, charvec, rts, pos, mat, mats, j, row, rows, id;
 		g_perm := SchurianSchemeGroup(a);
-		Q := Qmatrix(a)/NrVertices(a);
+		Q := DualMatrixOfEigenvalues(a)/NrVertices(a);
 		row1 := a!.matrix[1];
 		stab := Stabiliser(g_perm, 1);
 		rts := RightTransversal(g_perm, stab);;
@@ -342,13 +350,13 @@ InstallMethod( Display,
 	[ IsAssociationScheme],
 	function( a )
  		Print( ClassOfAssociationScheme(a!.matrix), "-class association scheme on ", NrVertices(a), " vertices.");
- 		if HasPmatrix(a) then
- 			Print("\nPmatrix:\n");
- 			Display(Pmatrix(a));
+ 		if HasMatrixOfEigenvalues(a) then
+ 			Print("\nMatrixOfEigenvalues:\n");
+ 			Display(MatrixOfEigenvalues(a));
  		fi;
- 		if HasPmatrix(a) then
- 			Print("\nQmatrix:\n");
- 			Display(Qmatrix(a));
+ 		if HasMatrixOfEigenvalues(a) then
+ 			Print("\nDualMatrixOfEigenvalues:\n");
+ 			Display(DualMatrixOfEigenvalues(a));
  		fi;
 #		Print( a!.class, "-class association scheme on ", a!.n, " vertices.");
 	end );

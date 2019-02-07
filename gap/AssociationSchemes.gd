@@ -58,8 +58,9 @@ DeclareAttribute( "SchurianSchemeGroup", IsAssociationScheme );
 DeclareGlobalFunction( "AssociationSchemes_Example" );
 DeclareOperation( "AdjacencyMatrices", [ IsAssociationScheme ] );
 DeclareAttribute( "AdjMats", IsAssociationScheme );
+DeclareAttribute( "Valencies", IsAssociationScheme );
 DeclareAttribute("IntersectionMatrices", IsAssociationScheme);
-DeclareAttribute( "Pmatrix", IsAssociationScheme );
-DeclareAttribute( "Qmatrix", IsAssociationScheme );
+DeclareAttribute( "MatrixOfEigenvalues", IsAssociationScheme );
+DeclareAttribute( "DualMatrixOfEigenvalues", IsAssociationScheme );
 DeclareAttribute( "MinimalIdempotents", IsAssociationScheme );
 
