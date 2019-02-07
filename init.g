@@ -5,4 +5,3 @@
 #
 
 ReadPackage( "AssociationSchemes", "gap/AssociationSchemes.gd");
-ReadPackage( "AssociationSchemes", "gap/other.g");
