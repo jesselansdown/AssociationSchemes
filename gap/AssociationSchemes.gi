@@ -168,14 +168,106 @@ InstallMethod(SchurianScheme,
 
 InstallMethod(AdjMats, " ", [IsAssociationScheme], AdjacencyMatrices);
 
+InstallMethod(IntersectionMatrices, " ", [IsAssociationScheme],
+ 	function(m)
+		local sz, d, relations, markers, intersectionMatrices, i, j, k, mult, ps, M;
+	 	M:=m!.matrix;
+		sz := Size(M);
+		d := ClassOfAssociationScheme(M);
+		relations := AdjacencyMatrices(M);;
+		intersectionMatrices:=List([1..d+1], t-> NullMat(d+1, d+1));
+		markers := List([0 .. d], t -> First([1 .. sz], x -> relations[t+1][1][x] <>0));
+		for i in [0 .. d] do
+			for j in [0 .. d] do
+					# Clearly the product with the identity is a linear combination, so no need to check...
+				mult := relations[i+1][1] * relations[j+1];
+				for k in [0 .. d] do
+					intersectionMatrices[j+1][i+1][k+1] :=  mult[markers[k+1]];;
+					intersectionMatrices[i+1][j+1][k+1] :=  mult[markers[k+1]];;
+				od;
+			od;
+		od;
+		return intersectionMatrices;
+end);
 
 
-# InstallMethod( Pmatrix, 
-# 	"for IsAssociationScheme",
-# 	[ IsAssociationScheme ],
-# 	function( a )
-# 		# Calculate the pmatrix
-# 	end );
+check := function(thing, valencies)
+	local i;
+	for i in [1 .. Size(thing)-1] do
+		if not Sum(List([1..Size(thing[1])], t -> thing[i][t]*thing[Size(thing)][t]/valencies[t] ))=-1 then
+			return false;
+		fi;
+	od;
+	# also put the orthogonal relation with itself
+	return true;
+end;
+
+
+ InstallMethod( Pmatrix, 
+ 	"for IsAssociationScheme",
+ 	[ IsAssociationScheme ],
+	function(m)
+		local inter, eigs, d, feasiblerows, posvals, stopvals, i, row, valencies, wow, stack, options, P, current;;
+		inter:=IntersectionMatrices(m);
+		eigs:=List(inter, t ->  Eigenvalues(Rationals,t));
+		Remove(eigs,1);
+		d:=ClassOfAssociationScheme(m!.matrix);
+
+		feasiblerows:=[];
+
+		posvals := ListWithIdenticalEntries(d, 1);;
+		stopvals := List(eigs, Size);;
+		stopvals[d]:=stopvals[d];
+		while posvals <> stopvals do
+			posvals[1]:=posvals[1]+1;
+			for i in [1.. d] do
+				if posvals[i] > Size(eigs[i]) then
+					posvals[i]:=1;
+					posvals[i+1]:=posvals[i+1]+1;
+				fi;
+			od;
+			row:=ListWithIdenticalEntries(d,1);
+			for i in [1 .. d] do
+				row[i]:=eigs[i][posvals[i]];
+				if Sum(row)=-1 then
+					Add(feasiblerows, row);;
+				fi;
+			od;
+		od;
+
+		valencies:=List(eigs, Maximum);
+
+
+		wow:=[];
+		stack := List(feasiblerows, t -> [t]);;
+		while stack <> [] do
+			current:=Remove(stack);;
+	#		Print(Size(current), ".\c");
+			if Size(current) < d then
+			# check the size of "current"
+			# 	if correct size, then check that for all i, eigs[i] in current{[1..d]}[i] - just take transpose
+			#	if ok, then check the column orthogonality
+			#	Any other checks? Gives a valid Q matrix?
+			options:=List(feasiblerows, t -> Concatenation(current, [t]) );;
+			options:=Filtered(options, t -> check(t, valencies));
+			# Filter the options - perform the row orthogonality checks with previous rows
+			# Add to stack
+			Append(stack, options);
+			else
+				break;
+	#			Add(wow, current);
+	#			Print("\n!!!!!!!!!\n");
+			fi;
+		od;
+			P:=NullMat(d+1, d+1);
+			P:=P+1;;
+			P[1]{[2..d+1]}:=valencies;
+			P{[2..d+1]}{[2..d+1]}:=current;
+		return P;
+	end);
+
+
+
 
 InstallMethod( Qmatrix, 
 	"for IsAssociationScheme",
