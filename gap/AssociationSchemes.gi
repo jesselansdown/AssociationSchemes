@@ -16,7 +16,7 @@ InstallMethod(AssociationSchemeNC,
 		local m, assoc_rec;
 		m := StructuralCopy(mat);;
 		assoc_rec := rec( matrix := m);
-		return ObjectifyWithAttributes(assoc_rec, TheTypeAssociationScheme, IsSchurian, false, SchurianSchemeGroup, Group(()));
+		return ObjectifyWithAttributes(assoc_rec, TheTypeAssociationScheme, IsSchurian, false, AutomorphismGroup, Group(()));
 	end );
 
 #######################################################
@@ -33,7 +33,7 @@ InstallMethod(AssociationScheme,
 		fi;
 		m := StructuralCopy(mat);;
 		assoc_rec := rec( matrix := m);
-		return ObjectifyWithAttributes(assoc_rec, TheTypeAssociationScheme, IsSchurian, false, SchurianSchemeGroup, Group(()));
+		return ObjectifyWithAttributes(assoc_rec, TheTypeAssociationScheme, IsSchurian, false, AutomorphismGroup, Group(()));
 	end );
 
 # Returns the class for the matrix of a d-class association scheme
@@ -88,7 +88,7 @@ InstallMethod( AdjacencyMatrices,
 	[ IsAssociationScheme and IsSchurian],
 	function( a )
 		local g_perm, Q, row1, stab, sz, points, d, i, charvec, rts, pos, mat, mats, j, row, rows, id;
-		g_perm := SchurianSchemeGroup(a);
+		g_perm := AutomorphismGroup(a);
 		row1 := a!.matrix[1];
 		stab := Stabiliser(g_perm, 1);
 		rts := RightTransversal(g_perm, stab);;
@@ -229,7 +229,33 @@ InstallMethod(SchurianScheme,
 			mat[pos]:=Permuted(row1, i);
 		od;
 		assoc_rec := rec( matrix := mat);
-		return ObjectifyWithAttributes(assoc_rec, TheTypeAssociationScheme, IsSchurian, true, SchurianSchemeGroup, g_perm);;
+		return ObjectifyWithAttributes(assoc_rec, TheTypeAssociationScheme, IsSchurian, true, AutomorphismGroup, g_perm);;
+	end);
+
+InstallMethod(FusionScheme,
+			[IsAssociationScheme, IsList],
+	function( a, fuse )
+		local mat, m, i, j, m2, d, inds;
+		if not [0] in fuse then
+			return fail;
+		fi;
+		mat :=  NullMat(NrVertices(a), NrVertices(a));
+		m:=a!.matrix;;
+		d:=ClassOfAssociationScheme(a);;
+		inds := ListWithIdenticalEntries(d+1,0);;
+		for i in [1.. Size(fuse)] do
+			for j in fuse[i] do
+				inds[j+1]:=i-1;
+			od;
+		od;
+		for i in [1 .. NrVertices(a)] do
+			for j in [1 .. NrVertices(a)] do
+				mat[i][j]:=inds[m[i][j]+1];
+			od;
+		od;
+		m2 := AssociationScheme(mat);
+		# set IsFusionScheme := true;
+		return m2;
 	end);
 
 
@@ -355,7 +381,7 @@ InstallMethod( MinimalIdempotents,
 	[ IsAssociationScheme and IsSchurian],
 	function( a )
 		local g_perm, Q, row1, stab, sz, points, d, i, charvec, rts, pos, mat, mats, j, row, rows, id;
-		g_perm := SchurianSchemeGroup(a);
+		g_perm := AutomorphismGroup(a);
 		Q := DualMatrixOfEigenvalues(a);
 		row1 := a!.matrix[1];
 		stab := Stabiliser(g_perm, 1);

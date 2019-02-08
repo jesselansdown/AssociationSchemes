@@ -1,19 +1,14 @@
+Remove the Schurian AdjacencyMatrices code? It seems to be slower than the standard code...
+Consider using CMat?
+
 Association scheme object
-	- matrix
-	- Pmatrix
-	- Qmatrix
-	- number of classes
-	- Degrees
-	- intersection numbers
 	- IsPPolynomial etc...
 	- IsJohnsonScheme etc...
-	- AdjacencyMatrices and Idempotents?? (Too large??)
 	- IsSchurian
 	- group (if schurian)
 
 Constructors
 	- basic constructor from matrix
-	- Schurian Scheme
 	- Johnson Scheme
 	- Grassmann Scheme
 	- Dual classical polar spaces
