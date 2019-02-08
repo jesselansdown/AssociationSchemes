@@ -50,6 +50,12 @@ InstallMethod( NrVertices,
 		return n;
 	end );
 
+InstallMethod(MatrixOfAssociationScheme,
+			[IsAssociationScheme],
+	function(a)
+		return a!.matrix;
+	end );
+
 InstallMethod(ClassOfAssociationScheme,
 			[IsAssociationScheme],
 	function(a)
