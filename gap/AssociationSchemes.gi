@@ -17,6 +17,7 @@ InstallMethod(AssociationSchemeNC,
 		m := StructuralCopy(mat);;
 		assoc_rec := rec( matrix := m);
 		return ObjectifyWithAttributes(assoc_rec, TheTypeAssociationScheme, IsSchurian, false, AutomorphismGroup, Group(()));
+		# Remove IsSchurian = false once have schurian check. Same for Automorphism group.
 	end );
 
 #######################################################
@@ -27,15 +28,29 @@ InstallMethod(AssociationScheme,
 			[IsMatrix],
 	function(mat)
 		local m, assoc_rec;
-		if not IsAssociationSchemeMatrix(mat) then
+		if IsSymmetricAssociationSchemeMatrix(mat) then
+			m := StructuralCopy(mat);;
+			assoc_rec := rec( matrix := m);
+			return ObjectifyWithAttributes(assoc_rec, TheTypeAssociationScheme, IsSymmetric, true, IsSchurian, false, AutomorphismGroup, Group(()));
+		elif IsAssociationSchemeMatrix(mat) then
+			m := StructuralCopy(mat);;
+			assoc_rec := rec( matrix := m);
+			return ObjectifyWithAttributes(assoc_rec, TheTypeAssociationScheme, IsSymmetric, false, IsSchurian, false, AutomorphismGroup, Group(()));
+		else
 			Print("Must give a valid matrix\n");
 			return fail;
 		fi;
-		m := StructuralCopy(mat);;
-		assoc_rec := rec( matrix := m);
-		return ObjectifyWithAttributes(assoc_rec, TheTypeAssociationScheme, IsSchurian, false, AutomorphismGroup, Group(()));
 	end );
 
+InstallMethod(IsSymmetric,
+			[IsAssociationScheme],
+	function(a)
+		if TransposedMat(a!.matrix)=a!.matrix then
+			return true;
+		else
+			return false;
+		fi;
+	end );
 
 InstallMethod(AssociationScheme,
 			[IsPosInt, IsPosInt],
@@ -57,7 +72,7 @@ InstallMethod(AssociationScheme,
 		fi;
 		mat:=EvalString(ReadAll(strm));;
 		CloseStream(strm);;
-		return AssociationSchemeNC(mat);
+		return AssociationScheme(mat);
 	end );
 
 
@@ -178,12 +193,15 @@ InstallMethod(AdjacencyMatricesOfMatrix,
 # 	end);
 
 
-InstallMethod(IsAssociationSchemeMatrix,
+InstallMethod(IsSymmetricAssociationSchemeMatrix,
 			[IsMatrix],
 	function(M)
 		local sz, numberOfRelations, relations, markers, mat, i, j, k, mult, ps, temp, identitypos, m, row;
 		sz := Size(M);
 		numberOfRelations := 0;
+		if TransposedMat(M) <> M then
+			return false;
+		fi;
 		for row in M do
 			m := Maximum(row);
 			if numberOfRelations < m then
@@ -199,11 +217,11 @@ InstallMethod(IsAssociationSchemeMatrix,
 			return false;
 		fi;
 #		Print("     Contains the identity\n");
-		for mat in relations do
-			if not TransposedMat(mat)=mat then
-				return false;
-			fi;
-		od;
+		# for mat in relations do
+		# 	if not TransposedMat(mat)=mat then
+		# 		return false;
+		# 	fi;
+		# od;
 #		Print("     Relations are symmetric\n");
 		if not Set(Set(Sum(relations)))= [ListWithIdenticalEntries(sz,1)] then
 			return false;
@@ -231,6 +249,61 @@ InstallMethod(IsAssociationSchemeMatrix,
 						# so it follows that A_j A_i is also the same sum.
 						# A_j A_i = A_j^T A_i^T = (A_i B_i)^T = (Sum \pi_i,j^k A_k) )^T
 						# = Sum \pi_i,j^k A_k)^T = Sum \pi_i,j^k A_k) = A_i A_j
+					fi;
+				od;
+			fi;
+		od;
+		return true;
+	end);
+
+InstallMethod(IsAssociationSchemeMatrix,
+			[IsMatrix],
+	function(M)
+		local sz, numberOfRelations, relations, markers, mat, i, j, k, mult, ps, temp, identitypos, m, row;
+		sz := Size(M);
+		numberOfRelations := 0;
+		for row in M do
+			m := Maximum(row);
+			if numberOfRelations < m then
+				numberOfRelations := m;
+			fi;
+		od;
+		numberOfRelations:=numberOfRelations+1;
+#		Print("There are ", numberOfRelations -1, " (non-identity) relations\n");
+		relations := AdjacencyMatricesOfMatrix(M);
+		markers := List([1 .. numberOfRelations], t -> First([1 .. sz], x -> relations[t][1][x] <>0));
+		identitypos := Position(relations, IdentityMat(sz));
+		if identitypos = fail then
+			return false;
+		fi;
+#		Print("     Contains the identity\n");
+		for mat in relations do
+			if not TransposedMat(mat) in relations then
+				return false;
+			fi;
+		od;
+#		Print("     Relations are symmetric\n");
+		if not Set(Set(Sum(relations)))= [ListWithIdenticalEntries(sz,1)] then
+			return false;
+		fi;
+#		Print("     Relations sum to one\n");
+		for i in [1 .. numberOfRelations] do
+			if i <> identitypos then
+				for j in [1 .. numberOfRelations] do
+					if j <> identitypos then
+						# Clearly the product with the identity is a linear combination, so no need to check...
+						mult := relations[i] * relations[j];
+						ps :=[1 .. numberOfRelations];
+						for k in [1 .. numberOfRelations] do
+							ps[k] := mult[1][markers[k]];;
+						od;
+						temp := NullMat(sz, sz);;
+						for k in [1 .. numberOfRelations] do
+							temp := temp + ps[k]*relations[k];
+						od;
+						if mult <> temp then
+							return false;
+						fi;
 					fi;
 				od;
 			fi;

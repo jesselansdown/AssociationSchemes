@@ -45,8 +45,11 @@ DeclareOperation( "AssociationScheme", [ IsPosInt, IsPosInt ] );
 DeclareOperation( "AdjacencyMatricesOfMatrix", [IsMatrix] );
 DeclareOperation( "MatrixOfAssociationScheme", [ IsAssociationScheme ] );
 
+DeclareAttribute( "IsSymmetric", IsAssociationScheme );
+
 DeclareAttribute( "ClassOfAssociationScheme", IsAssociationScheme );
 DeclareAttribute( "AdjacencyMatrices", IsAssociationScheme );
+DeclareOperation( "IsSymmetricAssociationSchemeMatrix", [ IsMatrix ]);
 DeclareOperation( "IsAssociationSchemeMatrix", [ IsMatrix ]);
 
 DeclareAttribute( "NrVertices", IsAssociationScheme );
