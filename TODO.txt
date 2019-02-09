@@ -1,5 +1,7 @@
 Remove the Schurian AdjacencyMatrices code? It seems to be slower than the standard code...
-Consider using CMat?
+Consider using CMat? BList ?
+
+Break functions in to seperate files
 
 Association scheme object
 	- IsPPolynomial etc...

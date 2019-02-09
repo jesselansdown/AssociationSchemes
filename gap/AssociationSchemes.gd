@@ -41,6 +41,7 @@ BindGlobal( "TheTypeAssociationScheme",
 
 DeclareOperation( "AssociationSchemeNC", [ IsMatrix ] );
 DeclareOperation( "AssociationScheme", [ IsMatrix ] );
+DeclareOperation( "AssociationScheme", [ IsPosInt, IsPosInt ] );
 DeclareOperation( "AdjacencyMatricesOfMatrix", [IsMatrix] );
 DeclareOperation( "MatrixOfAssociationScheme", [ IsAssociationScheme ] );
 
