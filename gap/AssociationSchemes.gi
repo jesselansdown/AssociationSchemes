@@ -385,10 +385,8 @@ InstallMethod(IntersectionMatrices, " ", [IsAssociationScheme],
 		markers := List([0 .. d], t -> First([1 .. sz], x -> relations[t+1][1][x] <>0));
 		for i in [0 .. d] do
 			for j in [0 .. d] do
-					# Clearly the product with the identity is a linear combination, so no need to check...
-				mult := relations[i+1][1] * relations[j+1];
+				mult := relations[j+1][1] * relations[i+1];
 				for k in [0 .. d] do
-					intersectionMatrices[j+1][i+1][k+1] :=  mult[markers[k+1]];;
 					intersectionMatrices[i+1][j+1][k+1] :=  mult[markers[k+1]];;
 				od;
 			od;

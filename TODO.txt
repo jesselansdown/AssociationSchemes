@@ -1,3 +1,15 @@
+Decide on object types
+	- Association Schemes
+	- Coherent configurations
+		- Homogeneous
+		- Commutative
+		- Symmetric (Association Scheme)
+
+Add approximation of character table when it fails over the rationals.
+
+Define = for association scheme objects
+How to save association schemes and their properties to a file? Or to print?
+
 Remove the Schurian AdjacencyMatrices code? It seems to be slower than the standard code...
 Consider using CMat? BList ?
 
