@@ -63,3 +63,4 @@ DeclareAttribute( "MatrixOfEigenvalues", IsAssociationScheme );
 DeclareAttribute( "DualMatrixOfEigenvalues", IsAssociationScheme );
 DeclareAttribute( "MinimalIdempotents", IsAssociationScheme );
 
+DeclareOperation("IsGenerouslyTransitive", [IsPermGroup]);
