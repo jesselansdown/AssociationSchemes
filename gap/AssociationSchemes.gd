@@ -45,11 +45,8 @@ DeclareOperation( "AssociationScheme", [ IsPosInt, IsPosInt ] );
 DeclareOperation( "AdjacencyMatricesOfMatrix", [IsMatrix] );
 DeclareOperation( "MatrixOfAssociationScheme", [ IsAssociationScheme ] );
 
-DeclareAttribute( "IsSymmetric", IsAssociationScheme );
-
 DeclareAttribute( "ClassOfAssociationScheme", IsAssociationScheme );
 DeclareAttribute( "AdjacencyMatrices", IsAssociationScheme );
-DeclareOperation( "IsSymmetricAssociationSchemeMatrix", [ IsMatrix ]);
 DeclareOperation( "IsAssociationSchemeMatrix", [ IsMatrix ]);
 
 DeclareAttribute( "NrVertices", IsAssociationScheme );
@@ -60,7 +57,6 @@ DeclareAttribute( "AutomorphismGroup", IsAssociationScheme );
 
 #! @Description
 #!   Insert documentation for your function here
-DeclareGlobalFunction( "AssociationSchemes_Example" );
 DeclareAttribute( "Valencies", IsAssociationScheme );
 DeclareAttribute("IntersectionMatrices", IsAssociationScheme);
 DeclareAttribute( "MatrixOfEigenvalues", IsAssociationScheme );
