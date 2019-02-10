@@ -54,10 +54,8 @@ DeclareOperation( "IsAssociationSchemeMatrix", [ IsMatrix ]);
 
 DeclareAttribute( "NrVertices", IsAssociationScheme );
 
-DeclareOperation( "SchurianScheme", [IsPermGroup]);
 DeclareOperation( "FusionScheme", [IsAssociationScheme, IsList]);
 
-DeclareProperty( "IsSchurian", IsAssociationScheme );
 DeclareAttribute( "AutomorphismGroup", IsAssociationScheme );
 
 #! @Description
