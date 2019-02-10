@@ -526,7 +526,8 @@ InstallMethod( PrintObj,
 	"for IsAssociationScheme",
 	[ IsAssociationScheme ],
 	function( a )
- 		Print( ClassOfAssociationScheme(a), "-class association scheme on ", NrVertices(a), " vertices.");
+		Print(RelationMatrix(a));;
+# 		Print( ClassOfAssociationScheme(a), "-class association scheme on ", NrVertices(a), " vertices.");
 #		Print( a!.class, "-class association scheme on ", a!.n, " vertices.");
 	end );
 
