@@ -34,6 +34,14 @@ InstallMethod(SchurianScheme,
 		return ObjectifyWithAttributes(assoc_rec, TheTypeAssociationScheme, IsSchurian, true, AutomorphismGroup, g_perm);;
 	end);
 
+InstallMethod( IsSchurian, [ IsAssociationScheme ], 
+	function( sch )
+    local n, aut;
+ 	aut := AutomorphismGroup( sch );
+ 	n := NrVertices(sch);;
+ 	return IsGenerouslyTransitive(aut, [1..n]);
+end;
+
 
 InstallMethod( AdjacencyMatrices, 
 	"for IsAssociationScheme",
