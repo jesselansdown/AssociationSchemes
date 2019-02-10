@@ -53,7 +53,6 @@ DeclareAttribute( "NrVertices", IsAssociationScheme );
 
 DeclareOperation( "FusionScheme", [IsAssociationScheme, IsList]);
 
-DeclareAttribute( "AutomorphismGroup", IsAssociationScheme );
 
 #! @Description
 #!   Insert documentation for your function here
@@ -64,3 +63,5 @@ DeclareAttribute( "DualMatrixOfEigenvalues", IsAssociationScheme );
 DeclareAttribute( "MinimalIdempotents", IsAssociationScheme );
 
 DeclareOperation("IsGenerouslyTransitive", [IsPermGroup]);
+DeclareOperation("BinaryExpansion", [IsPosInt]);
+DeclareAttribute( "AutomorphismGroup", IsAssociationScheme );
