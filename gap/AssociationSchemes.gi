@@ -56,6 +56,14 @@ InstallMethod(AssociationScheme,
 		fi;
 	end );
 
+
+InstallMethod(RelationMatrix,
+			[IsAssociationScheme],
+	function(a)
+		return a!.matrix;
+	end );
+
+
 InstallMethod(AssociationScheme,
 			[IsPosInt, IsPosInt],
 	function(n, k)
@@ -88,23 +96,17 @@ InstallMethod( NrVertices,
 	function( a )
 		local n;
 		n := Size(a!.matrix);
-		if n <> Size(a!.matrix[1]) then
+		if n <> Size(RelationMatrix(a)[1]) then
 			return fail;
 		fi;
 		return n;
-	end );
-
-InstallMethod(MatrixOfAssociationScheme,
-			[IsAssociationScheme],
-	function(a)
-		return a!.matrix;
 	end );
 
 InstallMethod(ClassOfAssociationScheme,
 			[IsAssociationScheme],
 	function(a)
 		local d, row, mat, m;
-		mat:=a!.matrix;
+		mat:=RelationMatrix(a);
 		d := 0;
 		for row in mat do
 			m := Maximum(row);
@@ -122,7 +124,7 @@ InstallMethod(AdjacencyMatrices,
 	function(a)
 		local d, n, adjMats, i, j, mat;
 		d := ClassOfAssociationScheme(a);;
-		mat := a!.matrix;
+		mat := RelationMatrix(a);
 		n := Size(mat);
 		adjMats := List([0 .. d], t ->	NullMat(n,n));;
 		for i in [1 .. n] do
@@ -290,7 +292,7 @@ InstallMethod(FusionScheme,
 			return fail;
 		fi;
 		mat :=  NullMat(NrVertices(a), NrVertices(a));
-		m:=a!.matrix;;
+		m:=RelationMatrix(a);;
 		d:=ClassOfAssociationScheme(a);;
 		inds := ListWithIdenticalEntries(d+1,0);;
 		for i in [1.. Size(fuse)] do
@@ -315,7 +317,7 @@ InstallMethod(Valencies, " ", [IsAssociationScheme],
 		d := ClassOfAssociationScheme(a);
 		valencies:=ListWithIdenticalEntries(d+1, 0);;
 		for i in [1 .. d+1] do
-			valencies[i]:=Number(a!.matrix[1], t -> t=i-1);
+			valencies[i]:=Number(RelationMatrix(a)[1], t -> t=i-1);
 		od;
 		return valencies;
 	end);
@@ -323,7 +325,7 @@ InstallMethod(Valencies, " ", [IsAssociationScheme],
 InstallMethod(IntersectionMatrices, " ", [IsAssociationScheme],
  	function(m)
 		local sz, d, relations, markers, intersectionMatrices, i, j, k, mult, ps, M;
-	 	M:=m!.matrix;
+	 	M:=RelationMatrix(m);
 		sz := Size(M);
 		d := ClassOfAssociationScheme(m);
 		relations := AdjacencyMatrices(m);;
@@ -484,7 +486,7 @@ function( sch )
     		i, e, ce, onesare, j, graph, aut;
     n := NrVertices(sch);
 	edges := Combinations([1..n], 2);;
-	colours := List(edges, t -> sch!.matrix[t[1]][t[2]]);;
+	colours := List(edges, t -> RelationMatrix(sch)[t[1]][t[2]]);;
 	c := Length(Set(colours));
 	# c <= 2^d-1
 	d := Log2Int(c)+1;
