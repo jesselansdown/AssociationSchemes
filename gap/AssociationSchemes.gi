@@ -613,7 +613,7 @@ end);
 InstallMethod( AutomorphismGroup, [IsCoherentConfiguration],
 function( sch )
     local n, edges, colours, c, d, newedges, newvertices, 
-    		i, e, ce, onesare, j, graph, aut;
+    		i, e, ce, onesare, j, graph, graphrecord, aut;
     n := NrVertices(sch);
 	edges := Combinations([1..n], 2);;
 	colours := List(edges, t -> RelationMatrix(sch)[t[1]][t[2]]);;
@@ -634,9 +634,12 @@ function( sch )
 	od;
 	graph := Graph(Group(()), newvertices, OnTuples,
 		function(x,y) return Set([x,y]) in newedges; end);;	
-    aut := AutomorphismGroup(graph); 
+	graphrecord := rec( graph:=graph, colourClasses := List([1..d], 
+		t ->[1..n]+(t-1)*n));;
+    aut := AutomorphismGroup(graphrecord); 
     return Action(aut,[1..n]);
 end);
+
 ###################
 #
 # Display methods
