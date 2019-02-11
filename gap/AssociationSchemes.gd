@@ -24,44 +24,50 @@
 #!
 #! This section will describe the example
 #! methods of AssociationSchemes
-DeclareCategory( "IsAssociationScheme", IsObject );
+DeclareCategory( "IsCoherentConfiguration", IsObject );
 
-DeclareRepresentation( "IsAssociationSchemeRep",
-                       IsAssociationScheme and IsAttributeStoringRep,
+DeclareRepresentation( "IsCoherentConfigurationRep",
+                       IsCoherentConfiguration and IsAttributeStoringRep,
                        [ ] );
 
-BindGlobal( "AssociationSchemeFamily",
-        NewFamily( "AssociationSchemeFamily" ) );
+BindGlobal( "CoherentConfigurationFamily",
+        NewFamily( "CoherentConfigurationFamily" ) );
 
-BindGlobal( "TheTypeAssociationScheme",
-        NewType( AssociationSchemeFamily,
-                IsAssociationSchemeRep ) );
+BindGlobal( "TheTypeCoherentConfiguration",
+        NewType( CoherentConfigurationFamily,
+                IsCoherentConfigurationRep ) );
 
 #BindGlobal("TheTypeAssociationScheme", NewType( AssociationSchemeFamily, IsAssociationScheme ));
 
 DeclareOperation( "AssociationSchemeNC", [ IsMatrix ] );
 DeclareOperation( "AssociationScheme", [ IsMatrix ] );
-DeclareOperation( "RelationMatrix", [ IsAssociationScheme ] );
+DeclareOperation( "RelationMatrix", [ IsCoherentConfiguration ] );
+DeclareProperty( "IsHomogeneous", IsCoherentConfiguration );
+DeclareProperty( "IsCommutative", IsCoherentConfiguration );
+DeclareProperty( "IsSymmetricCoherentConfiguration", IsCoherentConfiguration );
+
+
 DeclareOperation( "AssociationScheme", [ IsPosInt, IsPosInt ] );
 DeclareOperation( "AdjacencyMatricesOfMatrix", [IsMatrix] );
 
-DeclareAttribute( "ClassOfAssociationScheme", IsAssociationScheme );
-DeclareAttribute( "AdjacencyMatrices", IsAssociationScheme );
+DeclareAttribute( "ClassOfAssociationScheme", IsCoherentConfiguration );
+DeclareAttribute( "AdjacencyMatrices", IsCoherentConfiguration );
 DeclareOperation( "IsAssociationSchemeMatrix", [ IsMatrix ]);
 
-DeclareAttribute( "NrVertices", IsAssociationScheme );
+DeclareAttribute( "NrVertices", IsCoherentConfiguration );
 
-DeclareOperation( "FusionScheme", [IsAssociationScheme, IsList]);
+DeclareOperation( "FusionScheme", [IsCoherentConfiguration, IsList]);
 
 
 #! @Description
 #!   Insert documentation for your function here
-DeclareAttribute( "Valencies", IsAssociationScheme );
-DeclareAttribute("IntersectionMatrices", IsAssociationScheme);
-DeclareAttribute( "MatrixOfEigenvalues", IsAssociationScheme );
-DeclareAttribute( "DualMatrixOfEigenvalues", IsAssociationScheme );
-DeclareAttribute( "MinimalIdempotents", IsAssociationScheme );
+DeclareAttribute( "Valencies", IsCoherentConfiguration );
+DeclareAttribute("IntersectionMatrices", IsCoherentConfiguration);
+
+DeclareAttribute( "MatrixOfEigenvalues", IsCoherentConfiguration );
+DeclareAttribute( "DualMatrixOfEigenvalues", IsCoherentConfiguration );
+DeclareAttribute( "MinimalIdempotents", IsCoherentConfiguration );
 
 DeclareOperation("IsGenerouslyTransitive", [IsPermGroup]);
 DeclareOperation("BinaryExpansion", [IsPosInt]);
-DeclareAttribute( "AutomorphismGroup", IsAssociationScheme );
+DeclareAttribute( "AutomorphismGroup", IsCoherentConfiguration );

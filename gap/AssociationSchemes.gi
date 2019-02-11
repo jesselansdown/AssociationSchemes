@@ -16,7 +16,7 @@ InstallMethod(AssociationSchemeNC,
 		local m, assoc_rec;
 		m := StructuralCopy(mat);;
 		assoc_rec := rec( matrix := m);
-		return ObjectifyWithAttributes(assoc_rec, TheTypeAssociationScheme);
+		return ObjectifyWithAttributes(assoc_rec, TheTypeCoherentConfiguration);
 	end );
 
 #######################################################
@@ -49,7 +49,7 @@ InstallMethod(AssociationScheme,
 		if IsAssociationSchemeMatrix(mat) then
 			m := StructuralCopy(mat);;
 			assoc_rec := rec( matrix := m);
-			return ObjectifyWithAttributes(assoc_rec, TheTypeAssociationScheme);
+			return ObjectifyWithAttributes(assoc_rec, TheTypeCoherentConfiguration);
 		else
 			Print("Must give a valid matrix\n");
 			return fail;
@@ -58,11 +58,36 @@ InstallMethod(AssociationScheme,
 
 
 InstallMethod(RelationMatrix,
-			[IsAssociationScheme],
+			[IsCoherentConfiguration],
 	function(a)
 		return a!.matrix;
 	end );
 
+
+InstallMethod(IsHomogeneous,
+			[IsCoherentConfiguration],
+	function(a)
+		local mat, i;
+		mat:=RelationMatrix(a);;
+		for i in [1 .. Size(mat)] do
+			if mat[i, i] <> mat[1,1] then
+				return false;
+			fi;
+		od;
+		return true;
+	end );
+
+
+InstallMethod(IsSymmetricCoherentConfiguration,
+			[IsCoherentConfiguration],
+	function(a)
+		local mat;
+		mat:=RelationMatrix(a);;
+		if TransposedMat(mat)=mat then
+			return true;
+		fi;
+		return false;
+	end );
 
 InstallMethod(AssociationScheme,
 			[IsPosInt, IsPosInt],
@@ -92,7 +117,7 @@ InstallMethod(AssociationScheme,
 
 InstallMethod( NrVertices, 
 	"for IsAssociationScheme",
-	[ IsAssociationScheme ],
+	[ IsCoherentConfiguration ],
 	function( a )
 		local n;
 		n := Size(a!.matrix);
@@ -103,7 +128,7 @@ InstallMethod( NrVertices,
 	end );
 
 InstallMethod(ClassOfAssociationScheme,
-			[IsAssociationScheme],
+			[IsCoherentConfiguration],
 	function(a)
 		local d, row, mat, m;
 		mat:=RelationMatrix(a);
@@ -120,7 +145,7 @@ InstallMethod(ClassOfAssociationScheme,
 # Neet to check if square matrix
 
 InstallMethod(AdjacencyMatrices,
-			[IsAssociationScheme],
+			[IsCoherentConfiguration],
 	function(a)
 		local d, n, adjMats, i, j, mat;
 		d := ClassOfAssociationScheme(a);;
@@ -285,7 +310,7 @@ InstallMethod(IsAssociationSchemeMatrix,
 
 
 InstallMethod(FusionScheme,
-			[IsAssociationScheme, IsList],
+			[IsCoherentConfiguration, IsList],
 	function( a, fuse )
 		local mat, m, i, j, m2, d, inds;
 		if not [0] in fuse then
@@ -311,7 +336,7 @@ InstallMethod(FusionScheme,
 	end);
 
 
-InstallMethod(Valencies, " ", [IsAssociationScheme], 
+InstallMethod(Valencies, " ", [IsCoherentConfiguration], 
 	function(a)
 		local d, valencies, i;
 		d := ClassOfAssociationScheme(a);
@@ -322,7 +347,7 @@ InstallMethod(Valencies, " ", [IsAssociationScheme],
 		return valencies;
 	end);
 
-InstallMethod(IntersectionMatrices, " ", [IsAssociationScheme],
+InstallMethod(IntersectionMatrices, " ", [IsCoherentConfiguration],
  	function(m)
 		local sz, d, relations, markers, intersectionMatrices, i, j, k, mult, ps, M;
 	 	M:=RelationMatrix(m);
@@ -335,13 +360,30 @@ InstallMethod(IntersectionMatrices, " ", [IsAssociationScheme],
 			for j in [0 .. d] do
 				mult := relations[j+1][1] * relations[i+1];
 				for k in [0 .. d] do
-					intersectionMatrices[i+1][j+1][k+1] :=  mult[markers[k+1]];;
+					intersectionMatrices[i+1][j+1, k+1] :=  mult[markers[k+1]];;
 				od;
 			od;
 		od;
 		return intersectionMatrices;
 end);
 
+
+InstallMethod(IsCommutative,
+			[IsCoherentConfiguration],
+	function(a)
+		local d, i, j, k;
+		d:=ClassOfAssociationScheme(a);;
+		for i in [0 .. d] do
+			for j in [0 .. d] do
+				for k in [0 .. d] do
+					if IntersectionMatrices(a)[j+1][i+1,k+1] <> IntersectionMatrices(a)[i+1][j+1,k+1] then
+						return false;
+					fi;
+				od;
+			od;
+		od;
+		return true;
+	end );
 
 __orthogonality_check := function(thing, valencies)
 	local i;
@@ -357,7 +399,7 @@ end;
 
  InstallMethod( MatrixOfEigenvalues, 
  	"for IsAssociationScheme",
- 	[ IsAssociationScheme ],
+ 	[ IsCoherentConfiguration ],
 	function(m)
 		local inter, eigs, d, feasiblerows, posvals, stopvals, i, row, valencies, wow, stack, options, P, P2, current;;
 
@@ -420,16 +462,17 @@ end;
 
 InstallMethod( DualMatrixOfEigenvalues, 
 	"for IsAssociationScheme",
-	[ IsAssociationScheme ],
+	[ IsCoherentConfiguration ],
 	function( a )
 		return Inverse(MatrixOfEigenvalues(a))*NrVertices(a);
 	end );
 
 InstallMethod( MinimalIdempotents, 
 	"for IsAssociationScheme",
-	[ IsAssociationScheme],
+	[ IsCoherentConfiguration],
 	function(a)
 		local j, i, mat, idems, d, Q, adjacencymatrices;
+		Print("using the standard method\n");
 		idems:=[];
 		d := ClassOfAssociationScheme(a);
 		Q := DualMatrixOfEigenvalues(a);
@@ -480,7 +523,7 @@ function(n)
 	return Reversed(vec);
 end);
 
-InstallMethod( AutomorphismGroup, [IsAssociationScheme],
+InstallMethod( AutomorphismGroup, [IsCoherentConfiguration],
 function( sch )
     local n, edges, colours, c, d, newedges, newvertices, 
     		i, e, ce, onesare, j, graph, aut;
@@ -516,7 +559,7 @@ end);
 
  InstallMethod( ViewObj, 
  	"for IsAssociationScheme",
- 	[ IsAssociationScheme],
+ 	[ IsCoherentConfiguration],
  	function( a )
  		Print( ClassOfAssociationScheme(a), "-class association scheme on ", NrVertices(a), " vertices.");
 # 		Print( a!.class, "-class association scheme on ", a!.n, " vertices.");
@@ -524,7 +567,7 @@ end);
 
 InstallMethod( PrintObj, 
 	"for IsAssociationScheme",
-	[ IsAssociationScheme ],
+	[ IsCoherentConfiguration ],
 	function( a )
 		Print(RelationMatrix(a));;
 # 		Print( ClassOfAssociationScheme(a), "-class association scheme on ", NrVertices(a), " vertices.");
@@ -533,7 +576,7 @@ InstallMethod( PrintObj,
 
 InstallMethod( Display, 
 	"for IsAssociationScheme",
-	[ IsAssociationScheme],
+	[ IsCoherentConfiguration],
 	function( a )
  		Print( ClassOfAssociationScheme(a), "-class association scheme on ", NrVertices(a), " vertices.");
  		if HasMatrixOfEigenvalues(a) then
