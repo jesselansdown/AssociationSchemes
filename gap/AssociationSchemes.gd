@@ -53,6 +53,8 @@ DeclareOperation( "AdjacencyMatricesOfMatrix", [IsMatrix] );
 DeclareAttribute( "ClassOfAssociationScheme", IsCoherentConfiguration );
 DeclareAttribute( "AdjacencyMatrices", IsCoherentConfiguration );
 DeclareOperation( "IsAssociationSchemeMatrix", [ IsMatrix ]);
+DeclareOperation( "IsHomogeneousCoherentConfigurationMatrix", [ IsMatrix ]);
+DeclareOperation( "IsCoherentConfigurationMatrix", [ IsMatrix ]);
 
 DeclareAttribute( "NrVertices", IsCoherentConfiguration );
 

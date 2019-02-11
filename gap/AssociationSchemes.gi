@@ -45,14 +45,39 @@ InstallMethod(CoherentConfigurationNC,
 InstallMethod(CoherentConfiguration,
 			[IsMatrix],
 	function(mat)
-		local m, assoc_rec;
-		if IsAssociationSchemeMatrix(mat) then
-			m := StructuralCopy(mat);;
-			assoc_rec := rec( matrix := m);
-			return ObjectifyWithAttributes(assoc_rec, TheTypeCoherentConfiguration);
+		local homogeneous, i, symmetric, assoc_rec;
+		homogeneous := true;
+		for i in [1 .. Size(mat)] do
+			if mat[i, i] <> mat[1,1] then
+				homogeneous := false;
+				break;
+			fi;
+		od;
+		if homogeneous then
+			symmetric := TransposedMat(mat) = mat;
+			if symmetric then
+				if IsAssociationSchemeMatrix(mat) then
+					assoc_rec := rec( matrix := mat);
+					return ObjectifyWithAttributes(assoc_rec, TheTypeCoherentConfiguration, IsHomogeneous, true, IsCommutative, true, IsSymmetricCoherentConfiguration, true);
+				else
+					Print("Must give a valid matrix\n");
+					return fail;
+				fi;
+			else
+				if IsHomogeneousCoherentConfigurationMatrix(mat) then
+					return ObjectifyWithAttributes(assoc_rec, TheTypeCoherentConfiguration, IsHomogeneous, true, IsSymmetricCoherentConfiguration, false);					
+				else
+					Print("Must give a valid matrix\n");
+					return fail;
+				fi;
+			fi;
 		else
-			Print("Must give a valid matrix\n");
-			return fail;
+			if IsCoherentConfigurationMatrix(mat) then
+				return ObjectifyWithAttributes(assoc_rec, TheTypeCoherentConfiguration, IsHomogeneous, false, IsCommutative, false, IsSymmetricCoherentConfiguration, false);					
+			else
+				Print("Must give a valid matrix\n");
+				return fail;
+			fi;
 		fi;
 	end );
 
@@ -252,11 +277,72 @@ InstallMethod(IsAssociationSchemeMatrix,
 		return true;
 	end);
 
-# this method is for homogeneous coherent configurations
-# InstallMethod(IsAssociationSchemeMatrix,
+InstallMethod(IsHomogeneousCoherentConfigurationMatrix,
+			[IsMatrix],
+	function(M)
+		local sz, numberOfRelations, relations, markers, mat, i, j, k, mult, ps, temp, identitypos, m, row;
+		sz := Size(M);
+		numberOfRelations := 0;
+		for row in M do
+			m := Maximum(row);
+			if numberOfRelations < m then
+				numberOfRelations := m;
+			fi;
+		od;
+		numberOfRelations:=numberOfRelations+1;
+#		Print("There are ", numberOfRelations -1, " (non-identity) relations\n");
+		relations := AdjacencyMatricesOfMatrix(M);
+		markers := List([1 .. numberOfRelations], t -> First([1 .. sz], x -> relations[t][1][x] <>0));
+		identitypos := Position(relations, IdentityMat(sz));
+		if identitypos = fail then
+			return false;
+		fi;
+#		Print("     Contains the identity\n");
+		for mat in relations do
+			if not TransposedMat(mat) in relations then
+				return false;
+			fi;
+		od;
+#		Print("     Relations are symmetric\n");
+		if not Set(Set(Sum(relations)))= [ListWithIdenticalEntries(sz,1)] then
+			return false;
+		fi;
+#		Print("     Relations sum to one\n");
+		for i in [1 .. numberOfRelations] do
+			if i <> identitypos then
+				for j in [1 .. numberOfRelations] do
+					if j <> identitypos then
+						# Clearly the product with the identity is a linear combination, so no need to check...
+						mult := relations[i] * relations[j];
+						ps :=[1 .. numberOfRelations];
+						for k in [1 .. numberOfRelations] do
+							ps[k] := mult[1][markers[k]];;
+						od;
+						temp := NullMat(sz, sz);;
+						for k in [1 .. numberOfRelations] do
+							temp := temp + ps[k]*relations[k];
+						od;
+						if mult <> temp then
+							return false;
+						fi;
+					fi;
+				od;
+			fi;
+		od;
+		return true;
+	end);
+
+
+InstallMethod(IsCoherentConfigurationMatrix,
+			[IsMatrix],
+	function(M)
+		Print("This method needs to be implemented - The p_ij^k values must first be properly computed\n");
+		return fail;
+	end);
+# InstallMethod(IsCoherentConfigurationMatrix,
 # 			[IsMatrix],
 # 	function(M)
-# 		local sz, numberOfRelations, relations, markers, mat, i, j, k, mult, ps, temp, identitypos, m, row;
+# 		local sz, numberOfRelations, relations, markers, mat, i, j, k, mult, ps, temp, identitypos, m, idvals, row;
 # 		sz := Size(M);
 # 		numberOfRelations := 0;
 # 		for row in M do
@@ -268,11 +354,16 @@ InstallMethod(IsAssociationSchemeMatrix,
 # 		numberOfRelations:=numberOfRelations+1;
 # #		Print("There are ", numberOfRelations -1, " (non-identity) relations\n");
 # 		relations := AdjacencyMatricesOfMatrix(M);
+# 		idvals := Set(List([1..sz], t -> M[t][t])) +1;;
+# 		for i in idvals do
+# 			for row in relations[i] do
+# 				if Number(row, t -> t=1)>1 then
+# 					return false;
+# 				fi;
+# 			od;
+# 		od;
+
 # 		markers := List([1 .. numberOfRelations], t -> First([1 .. sz], x -> relations[t][1][x] <>0));
-# 		identitypos := Position(relations, IdentityMat(sz));
-# 		if identitypos = fail then
-# 			return false;
-# 		fi;
 # #		Print("     Contains the identity\n");
 # 		for mat in relations do
 # 			if not TransposedMat(mat) in relations then
@@ -285,9 +376,7 @@ InstallMethod(IsAssociationSchemeMatrix,
 # 		fi;
 # #		Print("     Relations sum to one\n");
 # 		for i in [1 .. numberOfRelations] do
-# 			if i <> identitypos then
 # 				for j in [1 .. numberOfRelations] do
-# 					if j <> identitypos then
 # 						# Clearly the product with the identity is a linear combination, so no need to check...
 # 						mult := relations[i] * relations[j];
 # 						ps :=[1 .. numberOfRelations];
@@ -301,9 +390,7 @@ InstallMethod(IsAssociationSchemeMatrix,
 # 						if mult <> temp then
 # 							return false;
 # 						fi;
-# 					fi;
 # 				od;
-# 			fi;
 # 		od;
 # 		return true;
 # 	end);
