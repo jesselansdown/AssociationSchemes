@@ -10,7 +10,7 @@
 # Take a matrix and return a TheTypeAssociationScheme object.
 # Does not perform any checks, other than that a matrix is given as input.
 
-InstallMethod(AssociationSchemeNC,
+InstallMethod(CoherentConfigurationNC,
 			[IsMatrix],
 	function(mat)
 		local m, assoc_rec;
@@ -42,7 +42,7 @@ InstallMethod(AssociationSchemeNC,
 # 		fi;
 # 	end );
 
-InstallMethod(AssociationScheme,
+InstallMethod(CoherentConfiguration,
 			[IsMatrix],
 	function(mat)
 		local m, assoc_rec;
@@ -89,7 +89,7 @@ InstallMethod(IsSymmetricCoherentConfiguration,
 		return false;
 	end );
 
-InstallMethod(AssociationScheme,
+InstallMethod(HomogeneousCoherentConfiguration,
 			[IsPosInt, IsPosInt],
 	function(n, k)
 		local filename, path, allpaths, strm, mat;
@@ -109,7 +109,7 @@ InstallMethod(AssociationScheme,
 		fi;
 		mat:=EvalString(ReadAll(strm));;
 		CloseStream(strm);;
-		return AssociationScheme(mat);
+		return CoherentConfiguration(mat);
 	end );
 
 
@@ -330,7 +330,7 @@ InstallMethod(FusionScheme,
 				mat[i][j]:=inds[m[i][j]+1];
 			od;
 		od;
-		m2 := AssociationScheme(mat);
+		m2 := CoherentConfiguration(mat);
 		# set IsFusionScheme := true;
 		return m2;
 	end);

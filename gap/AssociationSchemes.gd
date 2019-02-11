@@ -39,15 +39,15 @@ BindGlobal( "TheTypeCoherentConfiguration",
 
 #BindGlobal("TheTypeAssociationScheme", NewType( AssociationSchemeFamily, IsAssociationScheme ));
 
-DeclareOperation( "AssociationSchemeNC", [ IsMatrix ] );
-DeclareOperation( "AssociationScheme", [ IsMatrix ] );
+DeclareOperation( "CoherentConfigurationNC", [ IsMatrix ] );
+DeclareOperation( "CoherentConfiguration", [ IsMatrix ] );
 DeclareOperation( "RelationMatrix", [ IsCoherentConfiguration ] );
 DeclareProperty( "IsHomogeneous", IsCoherentConfiguration );
 DeclareProperty( "IsCommutative", IsCoherentConfiguration );
 DeclareProperty( "IsSymmetricCoherentConfiguration", IsCoherentConfiguration );
 
 
-DeclareOperation( "AssociationScheme", [ IsPosInt, IsPosInt ] );
+DeclareOperation( "HomogeneousCoherentConfiguration", [ IsPosInt, IsPosInt ] );
 DeclareOperation( "AdjacencyMatricesOfMatrix", [IsMatrix] );
 
 DeclareAttribute( "ClassOfAssociationScheme", IsCoherentConfiguration );
