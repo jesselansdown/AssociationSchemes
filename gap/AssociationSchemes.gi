@@ -23,25 +23,6 @@ InstallMethod(CoherentConfigurationNC,
 #	Here we put a check that the association scheme is valid
 #######################################################
 
-# if we make the homogeneous CC distinction, this is necessary
-# InstallMethod(AssociationScheme,
-# 			[IsMatrix],
-# 	function(mat)
-# 		local m, assoc_rec;
-# 		if IsSymmetricAssociationSchemeMatrix(mat) then
-# 			m := StructuralCopy(mat);;
-# 			assoc_rec := rec( matrix := m);
-# 			return ObjectifyWithAttributes(assoc_rec, TheTypeAssociationScheme);
-# 		elif IsAssociationSchemeMatrix(mat) then
-# 			m := StructuralCopy(mat);;
-# 			assoc_rec := rec( matrix := m);
-# 			return ObjectifyWithAttributes(assoc_rec, TheTypeAssociationScheme);
-# 		else
-# 			Print("Must give a valid matrix\n");
-# 			return fail;
-# 		fi;
-# 	end );
-
 InstallMethod(CoherentConfiguration,
 			[IsMatrix],
 	function(mat)
@@ -88,6 +69,11 @@ InstallMethod(RelationMatrix,
 		return a!.matrix;
 	end );
 
+InstallMethod( \=,
+			 [IsCoherentConfiguration, IsCoherentConfiguration],
+	function(a,b)
+		return RelationMatrix(a)=RelationMatrix(b);
+	end);
 
 InstallMethod(IsHomogeneous,
 			[IsCoherentConfiguration],
@@ -650,6 +636,5 @@ InstallMethod( Display,
  			Print("\nDualMatrixOfEigenvalues:\n");
  			Display(DualMatrixOfEigenvalues(a));
  		fi;
-#		Print( a!.class, "-class association scheme on ", a!.n, " vertices.");
 	end );
 
