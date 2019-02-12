@@ -53,11 +53,11 @@ InstallMethod(CoherentConfiguration,
 				break;
 			fi;
 		od;
+		assoc_rec := rec( matrix := mat);
 		if homogeneous then
 			symmetric := TransposedMat(mat) = mat;
 			if symmetric then
 				if IsAssociationSchemeMatrix(mat) then
-					assoc_rec := rec( matrix := mat);
 					return ObjectifyWithAttributes(assoc_rec, TheTypeCoherentConfiguration, IsHomogeneous, true, IsCommutative, true, IsSymmetricCoherentConfiguration, true);
 				else
 					Print("Must give a valid matrix\n");
