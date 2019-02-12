@@ -559,25 +559,29 @@ InstallMethod( MinimalIdempotents,
 		return idems;
 	end);
 
-InstallMethod(BinaryExpansion, [IsPosInt],
-function(n)
-	local vec, number, pos;
-	vec := ListWithIdenticalEntries(Log2Int(n)+1, 0);
-	number := n;
-	while number > 0 do
-		pos := Log2Int(number);
-		vec[pos+1] := 1;
-		number := number - 2^pos;
-	od;
-	return Reversed(vec);
-end);
+# not needed
+#InstallMethod(BinaryExpansion, [IsPosInt],
+#function(n)
+#	local vec, number, pos;
+#	vec := ListWithIdenticalEntries(Log2Int(n)+1, 0);
+#	number := n;
+#	while number > 0 do
+#		pos := Log2Int(number);
+#		vec[pos+1] := 1;
+#		number := number - 2^pos;
+#	od;
+#	return Reversed(vec);
+#end);
 
 InstallMethod( AutomorphismGroup, [IsCoherentConfiguration],
 function( sch )
     local n, edges, colours, c, d, newedges, newvertices, 
-    		i, e, ce, onesare, j, graph, graphrecord, aut;
+    		i, e, ce, onesare, j, graph, aut, layers;
+    if not "digraphs" in RecNames(GAPInfo.PackagesLoaded) then
+       Error("You must load the Digraphs package\n");
+    fi;
     n := Order(sch);
-	edges := Combinations([1..n], 2);;
+	edges := Filtered(Tuples([1..n], 2),t->t[1]<>t[2]);;
 	colours := List(edges, t -> RelationMatrix(sch)[t[1]][t[2]]);;
 	c := Length(Set(colours));
 	# c <= 2^d-1
@@ -587,18 +591,19 @@ function( sch )
 	newvertices := Cartesian([1..d],[1..n]);
 	for i in [1..Size(edges)] do
 		e := edges[i];
-		ce := Reversed(BinaryExpansion(colours[i]));
+		ce := CoefficientsQadic(colours[i], 2);
 		onesare := Filtered([1..Length(ce)],i->IsOne(ce[i]));
 		# put edge in layer according to where 1's are
 		for j in onesare do
 			Add(newedges, [[j,e[1]],[j,e[2]]]);
 		od;
 	od;
-	graph := Graph(Group(()), newvertices, OnTuples,
-		function(x,y) return Set([x,y]) in newedges; end);;	
-	graphrecord := rec( graph:=graph, colourClasses := List([1..d], 
-		t ->[1..n]+(t-1)*n));;
-    aut := AutomorphismGroup(graphrecord); 
+	# at a later date, we could ask the user to include
+	# a `helper' group here
+	graph := Digraph(Group(()), newvertices, OnTuples,
+		function(x,y) return [x,y] in newedges; end);;	
+	layers := List([1..d], t ->[1..n]+(t-1)*n);;
+    aut := AutomorphismGroup(graph, layers); 
     return Action(aut,[1..n]);
 end);
 
