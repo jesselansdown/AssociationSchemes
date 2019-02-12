@@ -627,8 +627,7 @@ end);
  	"for IsAssociationScheme",
  	[ IsCoherentConfiguration],
  	function( a )
- 		Print( ClassOfAssociationScheme(a), "-class association scheme on ", Order(a), " vertices.");
-# 		Print( a!.class, "-class association scheme on ", a!.n, " vertices.");
+ 		Print( ClassOfAssociationScheme(a), "-class association scheme of order ", Order(a), ".");
  	end );
 
 InstallMethod( PrintObj, 
@@ -636,15 +635,13 @@ InstallMethod( PrintObj,
 	[ IsCoherentConfiguration ],
 	function( a )
 		Print(RelationMatrix(a));;
-# 		Print( ClassOfAssociationScheme(a), "-class association scheme on ", Order(a), " vertices.");
-#		Print( a!.class, "-class association scheme on ", a!.n, " vertices.");
 	end );
 
 InstallMethod( Display, 
 	"for IsAssociationScheme",
 	[ IsCoherentConfiguration],
 	function( a )
- 		Print( ClassOfAssociationScheme(a), "-class association scheme on ", Order(a), " vertices.");
+ 		Print( ClassOfAssociationScheme(a), "-class association scheme of order ", Order(a), ".");
  		if HasMatrixOfEigenvalues(a) then
  			Print("\nMatrixOfEigenvalues:\n");
  			Display(MatrixOfEigenvalues(a));
