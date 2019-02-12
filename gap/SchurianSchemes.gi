@@ -36,7 +36,6 @@ InstallMethod( MinimalIdempotents,
 	[ IsCoherentConfiguration and IsSchurian],
 	function( a )
 		local g_perm, Q, row1, stab, sz, points, d, i, charvec, rts, pos, mat, mats, j, row, rows, id;
-		Print("using schurian method");
 		g_perm := AutomorphismGroup(a);
 		Q := DualMatrixOfEigenvalues(a);
 		row1 := a!.matrix[1];

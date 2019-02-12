@@ -559,7 +559,6 @@ InstallMethod( MinimalIdempotents,
 	[ IsCoherentConfiguration],
 	function(a)
 		local j, i, mat, idems, d, Q, adjacencymatrices;
-		Print("using the standard method\n");
 		idems:=[];
 		d := ClassOfAssociationScheme(a);
 		Q := DualMatrixOfEigenvalues(a);
