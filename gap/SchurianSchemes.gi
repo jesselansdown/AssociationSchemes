@@ -47,50 +47,10 @@ InstallMethod( IsSchurian, [ IsCoherentConfiguration ],
     local n, aut;
  	aut := AutomorphismGroup( sch );
  	n := NrVertices(sch);;
- 	return IsGenerouslyTransitive(aut);
- #	return IsGenerouslyTransitive(aut, [1..n]);
+ 	if IsCoherentConfigurationByOrbitals(sch) then
+		#	return IsGenerouslyTransitive(aut, [1..n]);
+	 	return IsGenerouslyTransitive(aut);
+	else
+		return false;
+	fi;
  end);
-
-InstallMethod( MinimalIdempotents, 
-	"for IsAssociationScheme",
-	[ IsCoherentConfiguration and IsSchurian],
-	function( a )
-		local g_perm, Q, row1, stab, sz, points, d, i, charvec, rts, pos, mat, mats, j, row, rows, id;
-		g_perm := AutomorphismGroup(a);
-		Q := DualMatrixOfEigenvalues(a);
-		row1 := RelationMatrix(a)[1];
-		stab := Stabiliser(g_perm, 1);
-		rts := RightTransversal(g_perm, stab);;
-		sz := DegreeAction(g_perm);
-		points := [1 .. sz];
-		d := Maximum(row1);
-		rows := [];
-		for i in [0 .. d] do
-			charvec := ListWithIdenticalEntries(sz, 0);
-			for j in [1 .. Size(row1)] do
-				if row1[j] = i then
-					charvec[j]:=1;
-				fi;
-			od;
-			Add(rows, charvec);
-		od;
-		id:=[];
-		for j in [1 .. d+1] do
-			row:=Q[1][j]*rows[1];;
-			for i in [2 .. d+1] do
-				row := row + Q[i][j]*rows[i];;
-			od;
-			Add(id, row);
-		od;
-		mats := [];
-		for i in [1 .. d+1] do
-			mat := ListWithIdenticalEntries(sz, 0);
-			for j in rts do
-				pos := 1^j;
-				mat[pos]:=Permuted(id[i], j);
-			od;
-			Add(mats, mat);
-#			Print(i, ".\c");
-		od;
-		return mats;
-	end );
