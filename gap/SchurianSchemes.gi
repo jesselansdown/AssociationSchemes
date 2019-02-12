@@ -37,7 +37,7 @@ InstallMethod(SchurianScheme,
 			Print("G must be generously transitive\n");
 			return fail;
 		fi;
-		sch := IsCoherentConfigurationByOrbitals(g_perm);
+		sch := CoherentConfigurationByOrbitals(g_perm);
 		SetIsSchurian(sch, true);
 		return sch;
 	end);
