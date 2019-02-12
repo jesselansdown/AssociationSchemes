@@ -51,7 +51,6 @@ InstallMethod( IsSchurian, [ IsCoherentConfiguration ],
  #	return IsGenerouslyTransitive(aut, [1..n]);
  end);
 
-
 InstallMethod( MinimalIdempotents, 
 	"for IsAssociationScheme",
 	[ IsCoherentConfiguration and IsSchurian],
@@ -59,7 +58,7 @@ InstallMethod( MinimalIdempotents,
 		local g_perm, Q, row1, stab, sz, points, d, i, charvec, rts, pos, mat, mats, j, row, rows, id;
 		g_perm := AutomorphismGroup(a);
 		Q := DualMatrixOfEigenvalues(a);
-		row1 := a!.matrix[1];
+		row1 := RelationMatrix(a)[1];
 		stab := Stabiliser(g_perm, 1);
 		rts := RightTransversal(g_perm, stab);;
 		sz := DegreeAction(g_perm);
