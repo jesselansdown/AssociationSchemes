@@ -45,12 +45,15 @@ InstallMethod(SchurianScheme,
 InstallMethod( IsSchurian, [ IsCoherentConfiguration ], 
 	function( sch )
     local n, aut;
- 	aut := AutomorphismGroup( sch );
- 	n := Order(sch);;
- 	if IsCoherentConfigurationByOrbitals(sch) then
+    if not IsSymmetric(sch) then
+      return false;
+    fi;
+   	aut := AutomorphismGroup( sch );
+  	n := Order(sch);;
+  	if IsCoherentConfigurationByOrbitals(sch) then
 		#	return IsGenerouslyTransitive(aut, [1..n]);
-	 	return IsGenerouslyTransitive(aut);
-	else
-		return false;
-	fi;
+	 	return DegreeAction(aut) = Order(sch) and IsGenerouslyTransitive(aut);
+  	else
+  		return false;
+  	fi;
  end);
