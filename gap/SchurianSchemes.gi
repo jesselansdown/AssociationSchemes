@@ -11,6 +11,7 @@
 InstallMethod(SchurianScheme,
 			[IsPermGroup],
 	function( g_perm )
+		local sch;
 		if not IsGenerouslyTransitive(g_perm) then
 			Print("G must be generously transitive\n");
 			return fail;
