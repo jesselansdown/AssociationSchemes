@@ -25,5 +25,6 @@
 #! This section will describe the example
 #! methods of AssociationSchemes
 
+DeclareOperation("IsGenerouslyTransitive", [IsPermGroup]);
 DeclareProperty( "IsSchurian", IsCoherentConfiguration );
 DeclareOperation( "SchurianScheme", [IsPermGroup]);

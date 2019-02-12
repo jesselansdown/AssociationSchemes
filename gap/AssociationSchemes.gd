@@ -70,6 +70,5 @@ DeclareAttribute( "MatrixOfEigenvalues", IsCoherentConfiguration );
 DeclareAttribute( "DualMatrixOfEigenvalues", IsCoherentConfiguration );
 DeclareAttribute( "MinimalIdempotents", IsCoherentConfiguration );
 
-DeclareOperation("IsGenerouslyTransitive", [IsPermGroup]);
 DeclareOperation("BinaryExpansion", [IsPosInt]);
 DeclareAttribute( "AutomorphismGroup", IsCoherentConfiguration );

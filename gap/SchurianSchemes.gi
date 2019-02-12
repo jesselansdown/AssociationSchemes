@@ -7,6 +7,27 @@
 ##
 #############################################################################
 
+InstallMethod( IsGenerouslyTransitive, [ IsPermGroup ],
+  function(G) 
+  	# For each suborbit O, we check to see if
+  	# it is equal to its "paired" suborbit
+  	local n, G1, IsPairedSuborbit, suborbits;
+  	if not IsTransitive(G) then
+  		return false;
+  	fi;
+  	if IsTrivial(G) then 
+  		return true; 
+  	fi;
+  	n := DegreeAction(G);
+  	G1 := Stabilizer(G,1);
+  	suborbits := Orbits(G1, [2..n]);
+  	IsPairedSuborbit := function( o )
+  		local x;
+  		x := o[1];
+  		return RepresentativeAction(G, [1,x], [x,1], OnTuples) <> fail;
+  	end;
+  	return ForAll(suborbits, IsPairedSuborbit);
+  end);
 
 InstallMethod(SchurianScheme,
 			[IsPermGroup],
