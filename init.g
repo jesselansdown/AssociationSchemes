@@ -7,3 +7,4 @@
 ReadPackage( "AssociationSchemes", "gap/AssociationSchemes.gd");
 ReadPackage( "AssociationSchemes", "gap/CoherentConfigurationByOrbitals.gd");
 ReadPackage( "AssociationSchemes", "gap/SchurianSchemes.gd");
+ReadPackage( "AssociationSchemes", "gap/JohnsonSchemes.gd");
