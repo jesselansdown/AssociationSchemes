@@ -46,7 +46,7 @@ InstallMethod( IsSchurian, [ IsCoherentConfiguration ],
 	function( sch )
     local n, aut;
  	aut := AutomorphismGroup( sch );
- 	n := NrVertices(sch);;
+ 	n := Order(sch);;
  	if IsCoherentConfigurationByOrbitals(sch) then
 		#	return IsGenerouslyTransitive(aut, [1..n]);
 	 	return IsGenerouslyTransitive(aut);

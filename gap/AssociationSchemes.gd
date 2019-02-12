@@ -56,7 +56,7 @@ DeclareOperation( "IsAssociationSchemeMatrix", [ IsMatrix ]);
 DeclareOperation( "IsHomogeneousCoherentConfigurationMatrix", [ IsMatrix ]);
 DeclareOperation( "IsCoherentConfigurationMatrix", [ IsMatrix ]);
 
-DeclareAttribute( "NrVertices", IsCoherentConfiguration );
+DeclareAttribute( "Order", IsCoherentConfiguration );
 
 DeclareOperation( "FusionScheme", [IsCoherentConfiguration, IsList]);
 

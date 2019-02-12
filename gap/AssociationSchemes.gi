@@ -140,12 +140,12 @@ InstallMethod(HomogeneousCoherentConfiguration,
 
 # Returns the class for the matrix of a d-class association scheme
 
-InstallMethod( NrVertices, 
+InstallMethod( Order, 
 	"for IsAssociationScheme",
 	[ IsCoherentConfiguration ],
 	function( a )
 		local n;
-		n := Size(a!.matrix);
+		n := Size(RelationMatrix(a));
 		if n <> Size(RelationMatrix(a)[1]) then
 			return fail;
 		fi;
@@ -403,7 +403,7 @@ InstallMethod(FusionScheme,
 		if not [0] in fuse then
 			return fail;
 		fi;
-		mat :=  NullMat(NrVertices(a), NrVertices(a));
+		mat :=  NullMat(Order(a), Order(a));
 		m:=RelationMatrix(a);;
 		d:=ClassOfAssociationScheme(a);;
 		inds := ListWithIdenticalEntries(d+1,0);;
@@ -412,8 +412,8 @@ InstallMethod(FusionScheme,
 				inds[j+1]:=i-1;
 			od;
 		od;
-		for i in [1 .. NrVertices(a)] do
-			for j in [1 .. NrVertices(a)] do
+		for i in [1 .. Order(a)] do
+			for j in [1 .. Order(a)] do
 				mat[i][j]:=inds[m[i][j]+1];
 			od;
 		od;
@@ -551,7 +551,7 @@ InstallMethod( DualMatrixOfEigenvalues,
 	"for IsAssociationScheme",
 	[ IsCoherentConfiguration ],
 	function( a )
-		return Inverse(MatrixOfEigenvalues(a))*NrVertices(a);
+		return Inverse(MatrixOfEigenvalues(a))*Order(a);
 	end );
 
 InstallMethod( MinimalIdempotents, 
@@ -590,7 +590,7 @@ InstallMethod( AutomorphismGroup, [IsCoherentConfiguration],
 function( sch )
     local n, edges, colours, c, d, newedges, newvertices, 
     		i, e, ce, onesare, j, graph, graphrecord, aut;
-    n := NrVertices(sch);
+    n := Order(sch);
 	edges := Combinations([1..n], 2);;
 	colours := List(edges, t -> RelationMatrix(sch)[t[1]][t[2]]);;
 	c := Length(Set(colours));
@@ -627,7 +627,7 @@ end);
  	"for IsAssociationScheme",
  	[ IsCoherentConfiguration],
  	function( a )
- 		Print( ClassOfAssociationScheme(a), "-class association scheme on ", NrVertices(a), " vertices.");
+ 		Print( ClassOfAssociationScheme(a), "-class association scheme on ", Order(a), " vertices.");
 # 		Print( a!.class, "-class association scheme on ", a!.n, " vertices.");
  	end );
 
@@ -636,7 +636,7 @@ InstallMethod( PrintObj,
 	[ IsCoherentConfiguration ],
 	function( a )
 		Print(RelationMatrix(a));;
-# 		Print( ClassOfAssociationScheme(a), "-class association scheme on ", NrVertices(a), " vertices.");
+# 		Print( ClassOfAssociationScheme(a), "-class association scheme on ", Order(a), " vertices.");
 #		Print( a!.class, "-class association scheme on ", a!.n, " vertices.");
 	end );
 
@@ -644,7 +644,7 @@ InstallMethod( Display,
 	"for IsAssociationScheme",
 	[ IsCoherentConfiguration],
 	function( a )
- 		Print( ClassOfAssociationScheme(a), "-class association scheme on ", NrVertices(a), " vertices.");
+ 		Print( ClassOfAssociationScheme(a), "-class association scheme on ", Order(a), " vertices.");
  		if HasMatrixOfEigenvalues(a) then
  			Print("\nMatrixOfEigenvalues:\n");
  			Display(MatrixOfEigenvalues(a));

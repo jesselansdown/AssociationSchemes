@@ -12,7 +12,7 @@ InstallMethod( IsCoherentConfigurationByOrbitals, [ IsCoherentConfiguration ],
 	function( sch )
     local n, aut;
  	aut := AutomorphismGroup( sch );
-# 	n := NrVertices(sch);;
+# 	n := Order(sch);;
  	return IsTransitive(aut);
  end);
 
