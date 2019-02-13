@@ -49,7 +49,7 @@ InstallMethod(SchurianScheme,
 InstallMethod( IsSchurian, [ IsCoherentConfiguration ], 
 	function( sch )
     local n, aut;
-    if not IsSymmetric(sch) then
+    if not IsSymmetricCoherentConfiguration(sch) then
       return false;
     fi;
    	aut := AutomorphismGroup( sch );
