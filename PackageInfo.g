@@ -9,12 +9,45 @@
 SetPackageInfo( rec(
 
 PackageName := "AssociationSchemes",
-Subtitle := "A GAP package for working with association schemes",
+Subtitle := "A GAP package for working with association schemes and coherent configurations",
 Version := "0.1",
 Date := "05/02/2019", # dd/mm/yyyy format
 
 Persons := [
+
   rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "John",
+    LastName := "Bamberg",
+    WWWHome := "http://school.maths.uwa.edu.au/~bamberg/",
+    Email := "john.bamberg@uwa.edu.au",
+    PostalAddress := Concatenation(
+               "John Bamberg\n",
+               "School of Mathematics and Statistics\n",
+               "The University of Western Australia\n",
+               "35 Stirling Highway\n",
+               "Crawley WA 6009, Perth\n",
+               "Australia" ),
+    Place := "Perth",
+    Institution := "The University of Western Australia",
+  ),
+    rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Akihide",
+    LastName := "Hanaki",
+    WWWHome := "http://math.shinshu-u.ac.jp/~hanaki/",
+    Email := "hanaki@shinshu-u.ac.jp",
+    PostalAddress := Concatenation(
+                  "Akihide Hanaki\n",
+                  "Department of Mathematics\n",
+                  "Faculty of Science, Shinshu University\n",
+                  "Matsumoto 390-8621, Japan"),
+    Place := "Matsumoto",
+    Institution := "Shinshu University",
+  ),
+    rec(
     IsAuthor := true,
     IsMaintainer := true,
     FirstNames := "Jesse",
@@ -23,30 +56,13 @@ Persons := [
     Email := "jesse.lansdown@research.uwa.edu.au",
     PostalAddress := Concatenation(
                "Jesse Lansdown\n",
-               "Lehrstuhl B für Mathematik\n",
-               "RWTH Aachen University\n",
-               "Pontdriesch 10 - 16\n",
-               "52062 Aachen\n",
-               "Germany" ),
-    Place := "Aachen",
-    Institution := "The University of Western Australia/RWTH Aachen University",
-  ),
-  rec(
-    IsAuthor := true,
-    IsMaintainer := true,
-    FirstNames := "John",
-    LastName := "Bamberg",
-    WWWHome := "http://school.maths.uwa.edu.au/~bamberg/",
-    Email := "bamberg@maths.uwa.edu.au",
-    PostalAddress := Concatenation(
-               "John Bamberg\n",
                "School of Mathematics and Statistics\n",
                "The University of Western Australia\n",
                "35 Stirling Highway\n",
-               "CrawleyY WA 6009, Perth\n",
+               "Crawley WA 6009, Perth\n",
                "Australia" ),
     Place := "Perth",
-    Institution := "The University of Western Australia",
+    Institution := "The University of Western Australia/RWTH Aachen University",
   ),
 ],
 
@@ -78,7 +94,7 @@ PackageDoc := rec(
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "A GAP package for working with association schemes",
+  LongTitle := "A GAP package for working with association schemes and coherent configurations",
 ),
 
 Dependencies := rec(
