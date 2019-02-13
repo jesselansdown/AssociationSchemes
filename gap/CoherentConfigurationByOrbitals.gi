@@ -69,7 +69,7 @@ InstallMethod( MinimalIdempotents,
 	function( a )
 		local g_perm, Q, row1, stab, sz, points, d, i, charvec, rts, pos, mat, mats, j, row, rows, id;
 		g_perm := AutomorphismGroup(a);
-		Q := DualMatrixOfEigenvalues(a);
+		Q := DualMatrixOfEigenvalues(a)/Order(a);
 		row1 := RelationMatrix(a)[1];
 		stab := Stabiliser(g_perm, 1);
 		rts := RightTransversal(g_perm, stab);;

@@ -548,7 +548,7 @@ InstallMethod( MinimalIdempotents,
 		local j, i, mat, idems, d, Q, adjacencymatrices;
 		idems:=[];
 		d := ClassOfAssociationScheme(a);
-		Q := DualMatrixOfEigenvalues(a);
+		Q := DualMatrixOfEigenvalues(a)/Order(a);
 		adjacencymatrices := AdjacencyMatrices(a);;
 		for j in [1 .. d+1] do
 			mat:=Q[1][j]*adjacencymatrices[1];;
