@@ -1,0 +1,34 @@
+\contentsline {chapter}{\numberline {1}\leavevmode {\color {Chapter }Introduction}}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}\leavevmode {\color {Chapter }Installation}}{3}{section.1.1}
+\contentsline {section}{\numberline {1.2}\leavevmode {\color {Chapter }Prerequisite packages}}{3}{section.1.2}
+\contentsline {chapter}{\numberline {2}\leavevmode {\color {Chapter }Functionality}}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}\leavevmode {\color {Chapter }Constructor Methods}}{4}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}\leavevmode {\color {Chapter }CoherentConfiguration (for IsMatrix)}}{4}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}\leavevmode {\color {Chapter }CoherentConfigurationNC (for IsMatrix)}}{4}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}\leavevmode {\color {Chapter }HomogeneousCoherentConfiguration (for IsPosInt, IsPosInt)}}{4}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}\leavevmode {\color {Chapter }FusionScheme (for IsCoherentConfiguration, IsList)}}{4}{subsection.2.1.4}
+\contentsline {subsection}{\numberline {2.1.5}\leavevmode {\color {Chapter }CoherentConfigurationByOrbitals (for IsPermGroup)}}{4}{subsection.2.1.5}
+\contentsline {subsection}{\numberline {2.1.6}\leavevmode {\color {Chapter }CoherentConfigurationByOrbitals (for IsGroup, IsGroup)}}{5}{subsection.2.1.6}
+\contentsline {subsection}{\numberline {2.1.7}\leavevmode {\color {Chapter }JohnsonScheme (for IsPosInt, IsPosInt)}}{5}{subsection.2.1.7}
+\contentsline {subsection}{\numberline {2.1.8}\leavevmode {\color {Chapter }SchurianScheme (for IsPermGroup)}}{5}{subsection.2.1.8}
+\contentsline {section}{\numberline {2.2}\leavevmode {\color {Chapter }Matrices describing coherent configurations}}{5}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}\leavevmode {\color {Chapter }RelationMatrix (for IsCoherentConfiguration)}}{5}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}\leavevmode {\color {Chapter }AdjacencyMatrices (for IsCoherentConfiguration)}}{5}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}\leavevmode {\color {Chapter }IntersectionMatrices (for IsCoherentConfiguration)}}{5}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}\leavevmode {\color {Chapter }MatrixOfEigenvalues (for IsCoherentConfiguration)}}{6}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}\leavevmode {\color {Chapter }DualMatrixOfEigenvalues (for IsCoherentConfiguration)}}{6}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}\leavevmode {\color {Chapter }MinimalIdempotents (for IsCoherentConfiguration)}}{6}{subsection.2.2.6}
+\contentsline {section}{\numberline {2.3}\leavevmode {\color {Chapter }Properties of coherent configurations}}{6}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}\leavevmode {\color {Chapter }IsHomogeneous (for IsCoherentConfiguration)}}{6}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}\leavevmode {\color {Chapter }IsCommutative (for IsCoherentConfiguration)}}{6}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}\leavevmode {\color {Chapter }IsSymmetricCoherentConfiguration (for IsCoherentConfiguration)}}{6}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}\leavevmode {\color {Chapter }IsCoherentConfigurationByOrbitals (for IsCoherentConfiguration)}}{6}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.5}\leavevmode {\color {Chapter }IsGenerouslyTransitive (for IsPermGroup)}}{7}{subsection.2.3.5}
+\contentsline {subsection}{\numberline {2.3.6}\leavevmode {\color {Chapter }IsGenerouslyTransitive (for IsPermGroup, IsList)}}{7}{subsection.2.3.6}
+\contentsline {subsection}{\numberline {2.3.7}\leavevmode {\color {Chapter }IsSchurian (for IsCoherentConfiguration)}}{7}{subsection.2.3.7}
+\contentsline {section}{\numberline {2.4}\leavevmode {\color {Chapter }Attributes of coherent configurations}}{7}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}\leavevmode {\color {Chapter }ClassOfAssociationScheme (for IsCoherentConfiguration)}}{7}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}\leavevmode {\color {Chapter }Order (for IsCoherentConfiguration)}}{7}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}\leavevmode {\color {Chapter }Valencies (for IsCoherentConfiguration)}}{7}{subsection.2.4.3}
+\contentsline {subsection}{\numberline {2.4.4}\leavevmode {\color {Chapter }AutomorphismGroup (for IsCoherentConfiguration)}}{7}{subsection.2.4.4}
+\contentsline {chapter}{Index}{8}{section*.2}

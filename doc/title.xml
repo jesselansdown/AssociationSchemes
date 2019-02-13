@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is an automatically generated file. -->
+<TitlePage>
+  <Title>
+    AssociationSchemes
+  </Title>
+  <Subtitle>
+    A &GAP; package for working with association schemes and coherent configurations
+  </Subtitle>
+  <Version>
+    0.1
+  </Version>
+  <Author>
+    John Bamberg<Alt Only="LaTeX"><Br/></Alt>
+<Address>
+John Bamberg<Br/>
+School of Mathematics and Statistics<Br/>
+The University of Western Australia<Br/>
+35 Stirling Highway<Br/>
+Crawley WA 6009, Perth<Br/>
+Australia<Br/>
+</Address>
+<Email>john.bamberg@uwa.edu.au</Email>
+<Homepage>http://school.maths.uwa.edu.au/~bamberg/</Homepage>
+
+  </Author>
+  <Author>
+    Akihide Hanaki<Alt Only="LaTeX"><Br/></Alt>
+<Address>
+Akihide Hanaki<Br/>
+Department of Mathematics<Br/>
+Faculty of Science, Shinshu University<Br/>
+Matsumoto 390-8621, Japan<Br/>
+</Address>
+<Email>hanaki@shinshu-u.ac.jp</Email>
+<Homepage>http://math.shinshu-u.ac.jp/~hanaki/</Homepage>
+
+  </Author>
+  <Author>
+    Jesse Lansdown<Alt Only="LaTeX"><Br/></Alt>
+<Address>
+Jesse Lansdown<Br/>
+School of Mathematics and Statistics<Br/>
+The University of Western Australia<Br/>
+35 Stirling Highway<Br/>
+Crawley WA 6009, Perth<Br/>
+Australia<Br/>
+</Address>
+<Email>jesse.lansdown@research.uwa.edu.au</Email>
+<Homepage>http://www.jesselansdown.com</Homepage>
+
+  </Author>
+  <Date>
+    5 February 2019
+  </Date>
+  </TitlePage>

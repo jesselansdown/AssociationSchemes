@@ -1,0 +1,18 @@
+  
+  [1X1 [33X[0;0YIntroduction[133X[101X
+  
+  [33X[0;0YAssociationSchemes is a GAP package for working with association schemes and
+  coherent  configurations.  Currently  only  methods for homogeneous coherent
+  configurations are implemented.[133X
+  
+  
+  [1X1.1 [33X[0;0YInstallation[133X[101X
+  
+  [33X[0;0YTo  install  AssociationSchemes,  simply copy to the "pkg" directory of your
+  GAP installation.[133X
+  
+  
+  [1X1.2 [33X[0;0YPrerequisite packages[133X[101X
+  
+  [33X[0;0Y"Digraphs" is needed if automorphism groups are to be computed.[133X
+  

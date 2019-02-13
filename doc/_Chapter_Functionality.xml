@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is an automatically generated file. -->
+<Chapter Label="Chapter_Functionality">
+<Heading>Functionality</Heading>
+
+<Section Label="Chapter_Functionality_Section_Constructor_Methods">
+<Heading>Constructor Methods</Heading>
+
+<ManSection>
+  <Oper Arg="M" Name="CoherentConfiguration" Label="for IsMatrix"/>
+ <Returns>coherent configuration
+</Returns>
+ <Description>
+Takes the relationship matrix, <Math>M</Math>, describing a coherent configuration and returns a CoherentConfiguration object.
+The matrix <Math>M = \sum_{i=0}^d i A_i</Math>, where <Math>A_i</Math> are the adjacency matrices describing a coherent configuration.
+Checks that the matrix satisfies the coherent configuration axioms.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="M" Name="CoherentConfigurationNC" Label="for IsMatrix"/>
+ <Returns>coherent configuration
+</Returns>
+ <Description>
+Same as CoherentConfiguration but without performing any checks. Use this method only if you know with certainty
+that <Math>M</Math> describes a coherent configuration.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="n, k" Name="HomogeneousCoherentConfiguration" Label="for IsPosInt, IsPosInt"/>
+ <Returns>coherent configuration
+</Returns>
+ <Description>
+Returns the <Math>k</Math>-th homogeneous coherent configuration of order <Math>n</Math>. Library is complete for <Math>5 \le n \le 38</Math> excluding
+<Math>n \in \{31, 35, 36, 37\}</Math>. (Put reference).
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC, L" Name="FusionScheme" Label="for IsCoherentConfiguration, IsList"/>
+ <Returns>coherent configuration
+</Returns>
+ <Description>
+Takes a <Math>d</Math>-class coherent configuration CC and returns a fusion scheme corresponding to L,
+where L is a partion of <Math>\{0, \ldots, d\}</Math>. Returns fail if <Math>L</Math> is not a valid partition.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="G" Name="CoherentConfigurationByOrbitals" Label="for IsPermGroup"/>
+ <Returns>coherent configuration
+</Returns>
+ <Description>
+Constructs a "group-case" coherent configuration, where the relations are defined by the orbitals
+of <Math>G</Math> on <Math>\{1, \ldots, n\} \times \{1, \ldots, n\}</Math>.
+<Math>G</Math> must be a permutation group which is transitive on <Math>\{1, \ldots, n\}</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="G, H" Name="CoherentConfigurationByOrbitals" Label="for IsGroup, IsGroup"/>
+ <Returns>coherent configuration
+</Returns>
+ <Description>
+Constructs a "group-case" coherent configuration, where the relations are defined by the orbitals
+of <Math>G</Math> on <Math>G/H</Math>. <Math>G</Math> is a group, <Math>H</Math> is a subgroup of <Math>G</Math>, <Math>G/H</Math> is the set of right cosets of <Math>G</Math> on <Math>H</Math>,
+and <Math>G</Math> must be transitive on <Math>G/H</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="n, k" Name="JohnsonScheme" Label="for IsPosInt, IsPosInt"/>
+ <Returns>Johnson scheme
+</Returns>
+ <Description>
+Returns the Johnson scheme, <Math>J(n, k)</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="G" Name="SchurianScheme" Label="for IsPermGroup"/>
+ <Returns>Schurian scheme
+</Returns>
+ <Description>
+Returns the Schurian scheme defined by <Math>G</Math>, where <Math>G</Math> is a generously transitive permutation group.
+A Schurian scheme is a special case of CoherentConfigurationByOrbitals and is symmetric.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+<Section Label="Chapter_Functionality_Section_Matrices_describing_coherent_configurations">
+<Heading>Matrices describing coherent configurations</Heading>
+
+<ManSection>
+  <Oper Arg="CC" Name="RelationMatrix" Label="for IsCoherentConfiguration"/>
+ <Returns>relation matrix <Math>M</Math>
+</Returns>
+ <Description>
+Takes a coherent configuration and returns the underlying relation matrix <Math>M = \sum_{i=0}^d i A_i</Math>, where <Math>A_i</Math> are
+the adjacency matrices of the coherent configuration
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="AdjacencyMatrices" Label="for IsCoherentConfiguration"/>
+ <Returns>L
+</Returns>
+ <Description>
+Returns a list <Math>L</Math>, where the <Math>i</Math>-th entry of <Math>L</Math> is the adjacency matrix <Math>A_{i-1}</Math>,
+where <Math>(A_i)_{xy} =1</Math> if <Math>(x,y) \in R_i</Math> and <Math>(A_i)_{xy} =0</Math> otherwise.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="IntersectionMatrices" Label="for IsCoherentConfiguration"/>
+ <Returns>L
+</Returns>
+ <Description>
+Returns a list L of the intersection matrices of a coherent configuration <Math>CC</Math>, where the <Math>i</Math>-th entry of <Math>L</Math>
+is <Math>B_{i-1}</Math> and <Math>B_{i}_{jk} = p_{ji}^k</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="MatrixOfEigenvalues" Label="for IsCoherentConfiguration"/>
+ <Returns>P
+</Returns>
+ <Description>
+Returns a the matrix of eigenvalues (or character table), <Math>P</Math>, for a coherent configuration CC.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="DualMatrixOfEigenvalues" Label="for IsCoherentConfiguration"/>
+ <Returns>Q
+</Returns>
+ <Description>
+Returns a the dual matrix of eigenvalues, <Math>Q</Math>, for a coherent configuration CC.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="MinimalIdempotents" Label="for IsCoherentConfiguration"/>
+ <Returns>L
+</Returns>
+ <Description>
+Returns a list <Math>L</Math> which is a basis of minimal idempotents for the adjacency algebra of a coherent configuration CC.
+The <Math>i</Math>-th entry of <Math>L</Math> is <Math>E_{i-1}</Math>.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+<Section Label="Chapter_Functionality_Section_Properties_of_coherent_configurations">
+<Heading>Properties of coherent configurations</Heading>
+
+<ManSection>
+  <Prop Arg="CC" Name="IsHomogeneous" Label="for IsCoherentConfiguration"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+Checks if the input is a homogeneous coherent configuration.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Prop Arg="CC" Name="IsCommutative" Label="for IsCoherentConfiguration"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+Checks if the input is a commutative coherent configuration.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Prop Arg="CC" Name="IsSymmetricCoherentConfiguration" Label="for IsCoherentConfiguration"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+Checks if the input is a symmetric coherent configuration.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Prop Arg="CC" Name="IsCoherentConfigurationByOrbitals" Label="for IsCoherentConfiguration"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+Checks if the coherent configuration <Math>CC</Math> can be constructed from relations defined the orbitals of a transitive
+group <Math>G</Math> acting a set <Math>X</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Prop Arg="G" Name="IsGenerouslyTransitive" Label="for IsPermGroup"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+Checks if <Math>G</Math> is generously transitive.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="G, L" Name="IsGenerouslyTransitive" Label="for IsPermGroup, IsList"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+Checks that the group <Math>G</Math> acts generously transitive on the set <Math>L</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Prop Arg="CC" Name="IsSchurian" Label="for IsCoherentConfiguration"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+Checks if the input is a Schurian coherent configuration, that is, if the automorphism group is generously transitive.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+<Section Label="Chapter_Functionality_Section_Attributes_of_coherent_configurations">
+<Heading>Attributes of coherent configurations</Heading>
+
+<ManSection>
+  <Attr Arg="CC" Name="ClassOfAssociationScheme" Label="for IsCoherentConfiguration"/>
+ <Returns>d
+</Returns>
+ <Description>
+Returns <Math>d</Math> for a <Math>d</Math>-class association scheme.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="Order" Label="for IsCoherentConfiguration"/>
+ <Returns>n
+</Returns>
+ <Description>
+Returns the order <Math>n</Math> (number of vertices) of the coherent configuration.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="Valencies" Label="for IsCoherentConfiguration"/>
+ <Returns>L
+</Returns>
+ <Description>
+Returns a list L of valencies of a coherent configuration CC. The <Math>i</Math>-th entry of <Math>L</Math> is <Math>k_{i-1}</Math>. (Check this for nonsymmetric CCs)
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="AutomorphismGroup" Label="for IsCoherentConfiguration"/>
+ <Returns>G
+</Returns>
+ <Description>
+Returns the automorphism group <Math>G</Math> of the coherent configuration CC.
+<Math>G</Math> is a permutation group acting on the index set of the veritices.
+If <Math>G</Math> is not already known and must be computed, then the package "Digraphs" is required.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+</Chapter>
+

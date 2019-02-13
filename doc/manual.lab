@@ -1,0 +1,37 @@
+\GAPDocLabFile{associationschemes}
+\makelabel{associationschemes:Title page}{}{X7D2C85EC87DD46E5}
+\makelabel{associationschemes:Table of Contents}{}{X8537FEB07AF2BEC8}
+\makelabel{associationschemes:Introduction}{1}{X7DFB63A97E67C0A1}
+\makelabel{associationschemes:Installation}{1.1}{X8360C04082558A12}
+\makelabel{associationschemes:Prerequisite packages}{1.2}{X8490395B79917BA1}
+\makelabel{associationschemes:Functionality}{2}{X87F1120883F5B4D0}
+\makelabel{associationschemes:Constructor Methods}{2.1}{X820CD05F85142F0A}
+\makelabel{associationschemes:Matrices describing coherent configurations}{2.2}{X7EEC9A0F84879711}
+\makelabel{associationschemes:Properties of coherent configurations}{2.3}{X86E712CB7B567E54}
+\makelabel{associationschemes:Attributes of coherent configurations}{2.4}{X823FDE0D7B41826F}
+\makelabel{associationschemes:Index}{Ind}{X83A0356F839C696F}
+\makelabel{associationschemes:CoherentConfiguration for ismatrix}{2.1.1}{X847E43E07EC6FD4A}
+\makelabel{associationschemes:CoherentConfigurationNC for ismatrix}{2.1.2}{X85B5EA717BDC514A}
+\makelabel{associationschemes:HomogeneousCoherentConfiguration for isposint, isposint}{2.1.3}{X8610716786531117}
+\makelabel{associationschemes:FusionScheme for iscoherentconfiguration, islist}{2.1.4}{X87EC62747CACA134}
+\makelabel{associationschemes:CoherentConfigurationByOrbitals for ispermgroup}{2.1.5}{X7D6309BE79A40B00}
+\makelabel{associationschemes:CoherentConfigurationByOrbitals for isgroup, isgroup}{2.1.6}{X85D8E4AC79E68860}
+\makelabel{associationschemes:JohnsonScheme for isposint, isposint}{2.1.7}{X87F73F177F55A0A6}
+\makelabel{associationschemes:SchurianScheme for ispermgroup}{2.1.8}{X7873613B7C723A02}
+\makelabel{associationschemes:RelationMatrix for iscoherentconfiguration}{2.2.1}{X7D32B7ED7A84A314}
+\makelabel{associationschemes:AdjacencyMatrices for iscoherentconfiguration}{2.2.2}{X85C23F3D7A3291EB}
+\makelabel{associationschemes:IntersectionMatrices for iscoherentconfiguration}{2.2.3}{X82D252C185061232}
+\makelabel{associationschemes:MatrixOfEigenvalues for iscoherentconfiguration}{2.2.4}{X8508511D8747A7D5}
+\makelabel{associationschemes:DualMatrixOfEigenvalues for iscoherentconfiguration}{2.2.5}{X85484A2278D5276C}
+\makelabel{associationschemes:MinimalIdempotents for iscoherentconfiguration}{2.2.6}{X78DE09E686836C4C}
+\makelabel{associationschemes:IsHomogeneous for iscoherentconfiguration}{2.3.1}{X7A7AB8E784E5AF9C}
+\makelabel{associationschemes:IsCommutative for iscoherentconfiguration}{2.3.2}{X7E31B5D47D38B4FC}
+\makelabel{associationschemes:IsSymmetricCoherentConfiguration for iscoherentconfiguration}{2.3.3}{X7F01D8A587A3CABF}
+\makelabel{associationschemes:IsCoherentConfigurationByOrbitals for iscoherentconfiguration}{2.3.4}{X7E1FCA0580ABB86F}
+\makelabel{associationschemes:IsGenerouslyTransitive for ispermgroup}{2.3.5}{X7E9D8FA485C36A2B}
+\makelabel{associationschemes:IsGenerouslyTransitive for ispermgroup, islist}{2.3.6}{X7DB4FFBC7C0A2173}
+\makelabel{associationschemes:IsSchurian for iscoherentconfiguration}{2.3.7}{X8664FCA57C5D6B5A}
+\makelabel{associationschemes:ClassOfAssociationScheme for iscoherentconfiguration}{2.4.1}{X7E7B3AE7810B2930}
+\makelabel{associationschemes:Order for iscoherentconfiguration}{2.4.2}{X821670F48367E341}
+\makelabel{associationschemes:Valencies for iscoherentconfiguration}{2.4.3}{X787AEF2279B59D51}
+\makelabel{associationschemes:AutomorphismGroup for iscoherentconfiguration}{2.4.4}{X83F116ED7EFE71B0}
