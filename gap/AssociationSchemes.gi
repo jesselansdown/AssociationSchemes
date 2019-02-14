@@ -680,7 +680,7 @@ InstallMethod( MinimalIdempotents,
 InstallMethod( AutomorphismGroup, [IsCoherentConfiguration],
 function( sch )
     local n, edges, colours, c, d, newedges, newedges2, newvertices, 
-    		i, e, ce, onesare, j, graph, aut, layers;
+    		i, e, f, map, graph, aut, layers;
     if not "digraphs" in RecNames(GAPInfo.PackagesLoaded) then
        Error("You must load the Digraphs package\n");
     fi;
@@ -693,17 +693,22 @@ function( sch )
 	# make d layers
 	newedges := [];;
 	newvertices := Cartesian([1..d],[1..n]);
+	# map colour to layer
+	f := function( colour )
+		local ce, onesare;
+		ce := CoefficientsQadic(colour, 2);
+		onesare := Filtered([1..Length(ce)],i->IsOne(ce[i]));
+		return onesare;
+	end;
+	map := List([1..c], f);
+
 	Print("making edges\n");
 	for i in [1..Size(edges)] do
 		e := edges[i];
-		ce := CoefficientsQadic(colours[i], 2);
-		onesare := Filtered([1..Length(ce)],i->IsOne(ce[i]));
-		# put edge in layer according to where 1's are
-		for j in onesare do
-			Add(newedges, [[j,e[1]],[j,e[2]]]);
-		od;
+		Append(newedges, List(map[colours[i]], j -> [[j,e[1]],[j,e[2]]]));
 	od;
 	# we should be able to bypass something to get to here
+	Print("converting edges to nice format\n");
 	newedges2:=Set(newedges,t->[Position(newvertices,t[1]),Position(newvertices,t[2])]);;
 	# at a later date, we could ask the user to include
 	# a `helper' group here
