@@ -744,7 +744,7 @@ end);
 
 InstallOtherMethod( AutomorphismGroup, [IsCoherentConfiguration, IsPosInt],
 function( R , h)
-    local G, adj, gp, gr, n, x, y, i, mat;    
+    local G, gp, gr, n, x, y, i, mat, s, edges;    
     if not h = 1 then
     	return fail;
     fi;
@@ -753,14 +753,23 @@ function( R , h)
    	Print(".\n");
    	edges:=[];
    	for x in [1 .. n] do
-   		for y in [1 .. n] do
-   			if mat[x][y] = 2 then
+		if IsSymmetricCoherentConfiguration(R) then
+	   		s := x+1;
+	   	else
+	   		s := 1;
+	   	fi;
+   		for y in [s .. n] do
+   			if mat[x][y] = 1 then
    				Add(edges, [x,y]);
    			fi;
    		od;
    	od;
     Print("..\n");
-    gr := NautyGraph(edges);;
+	if IsSymmetricCoherentConfiguration(R) then
+	    gr := NautyGraph(edges);;
+	else
+	    gr := NautyDiGraph(edges);;
+	fi;
     Print("...\n");
     G := AutomorphismGroup(gr);
     Print("....\n");
@@ -768,14 +777,23 @@ function( R , h)
     	Print(".\n");
 	   	edges:=[];
 	   	for x in [1 .. n] do
-	   		for y in [1 .. n] do
-	   			if mat[x][y] = 2 then
+	   		if IsSymmetricCoherentConfiguration(R) then
+	   			s := x+1;
+	   		else
+	   			s := 1;
+	   		fi;
+	   		for y in [s .. n] do
+	   			if mat[x][y] = i-1 then
 	   				Add(edges, [x,y]);
 	   			fi;
 	   		od;
 	   	od;
 	    Print("..\n");
-	    gr := NautyGraph(edges);;
+		if IsSymmetricCoherentConfiguration(R) then
+		    gr := NautyGraph(edges);;
+		else
+		    gr := NautyDiGraph(edges);;
+		fi;
     	Print("...\n");
         gp := AutomorphismGroup(gr);
     	Print("....\n");
