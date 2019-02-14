@@ -678,7 +678,6 @@ InstallMethod( MinimalIdempotents,
 # end);
 
 InstallMethod( AutomorphismGroup, [IsCoherentConfiguration],
-<<<<<<< HEAD
 function( sch )
     local n, edges, colours, c, d, newedges, newedges2, newvertices, 
     		i, e, ce, onesare, j, graph, aut, layers;
@@ -717,19 +716,6 @@ function( sch )
 	Print("calling nauty\n");
     aut := NautyAutomorphismGroup(graph, layers); 
     return Action(aut,[1..n]);
-=======
-function( R )
-    local G, adj, gp, gr, n, x, y, i;    
-    adj := AdjacencyMatrices(R);
-    n := Order(R);
-    G := SymmetricGroup(n);
-    for i in [2..(Length(adj) - 1)] do
-        gr := Graph(Group(()), [1..n], OnPoints, function(x,y) return adj[i][x][y]=1; end);
-        gp := AutomorphismGroup(gr);
-        G := Intersection(G, gp);
-    od;
-    return G;
->>>>>>> 7f7f6f04ecf5cdc5dde8a54a2da6e6a353cbc5a1
 end);
 
 ###################
