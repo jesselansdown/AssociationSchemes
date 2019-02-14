@@ -643,38 +643,52 @@ InstallMethod( MinimalIdempotents,
 #	return Reversed(vec);
 #end);
 
+# InstallMethod( AutomorphismGroup, [IsCoherentConfiguration],
+# function( sch )
+#     local n, edges, colours, c, d, newedges, newvertices, 
+#     		i, e, ce, onesare, j, graph, aut, layers;
+#     if not "digraphs" in RecNames(GAPInfo.PackagesLoaded) then
+#        Error("You must load the Digraphs package\n");
+#     fi;
+#     n := Order(sch);
+# 	edges := Filtered(Tuples([1..n], 2),t->t[1]<>t[2]);;
+# 	colours := List(edges, t -> RelationMatrix(sch)[t[1]][t[2]]);;
+# 	c := Length(Set(colours));
+# 	# c <= 2^d-1
+# 	d := Log2Int(c)+1;
+# 	# make d layers
+# 	newedges := [];;
+# 	newvertices := Cartesian([1..d],[1..n]);
+# 	for i in [1..Size(edges)] do
+# 		e := edges[i];
+# 		ce := CoefficientsQadic(colours[i], 2);
+# 		onesare := Filtered([1..Length(ce)],i->IsOne(ce[i]));
+# 		# put edge in layer according to where 1's are
+# 		for j in onesare do
+# 			Add(newedges, [[j,e[1]],[j,e[2]]]);
+# 		od;
+# 	od;
+# 	# at a later date, we could ask the user to include
+# 	# a `helper' group here
+# 	graph := Digraph(Group(()), newvertices, OnTuples,
+# 		function(x,y) return [x,y] in newedges; end);;	
+# 	layers := List([1..d], t ->[1..n]+(t-1)*n);;
+#     aut := AutomorphismGroup(graph, layers); 
+#     return Action(aut,[1..n]);
+# end);
+
 InstallMethod( AutomorphismGroup, [IsCoherentConfiguration],
-function( sch )
-    local n, edges, colours, c, d, newedges, newvertices, 
-    		i, e, ce, onesare, j, graph, aut, layers;
-    if not "digraphs" in RecNames(GAPInfo.PackagesLoaded) then
-       Error("You must load the Digraphs package\n");
-    fi;
-    n := Order(sch);
-	edges := Filtered(Tuples([1..n], 2),t->t[1]<>t[2]);;
-	colours := List(edges, t -> RelationMatrix(sch)[t[1]][t[2]]);;
-	c := Length(Set(colours));
-	# c <= 2^d-1
-	d := Log2Int(c)+1;
-	# make d layers
-	newedges := [];;
-	newvertices := Cartesian([1..d],[1..n]);
-	for i in [1..Size(edges)] do
-		e := edges[i];
-		ce := CoefficientsQadic(colours[i], 2);
-		onesare := Filtered([1..Length(ce)],i->IsOne(ce[i]));
-		# put edge in layer according to where 1's are
-		for j in onesare do
-			Add(newedges, [[j,e[1]],[j,e[2]]]);
-		od;
-	od;
-	# at a later date, we could ask the user to include
-	# a `helper' group here
-	graph := Digraph(Group(()), newvertices, OnTuples,
-		function(x,y) return [x,y] in newedges; end);;	
-	layers := List([1..d], t ->[1..n]+(t-1)*n);;
-    aut := AutomorphismGroup(graph, layers); 
-    return Action(aut,[1..n]);
+function( R )
+    local G, adj, gp, gr, n, x, y, i;    
+    adj := AdjacencyMatrices(R);
+    n := Order(R);
+    G := SymmetricGroup(n);
+    for i in [2..(Length(adj) - 1)] do
+        gr := Graph(Group(()), [1..n], OnPoints, function(x,y) return adj[i][x][y]=1; end);
+        gp := AutomorphismGroup(gr);
+        G := Intersection(G, gp);
+    od;
+    return G;
 end);
 
 ###################
