@@ -139,6 +139,14 @@ DeclareAttribute( "Order", IsCoherentConfiguration );
 #!	where L is a partion of $\{0, \ldots, d\}$. Returns fail if $L$ is not a valid partition.
 DeclareOperation( "FusionScheme", [IsCoherentConfiguration, IsList]);
 
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments CC, i, j, k
+#! @Returns $p_{ij}^k$
+#! @Description
+#!	Returns the intersection number $p_{ij}^k$ for a coherent configuration CC.
+DeclareOperation( "IntersectionNumber", [IsCoherentConfiguration, IsInt, IsInt, IsInt]);
+
 
 #! @Chapter Functionality
 #! @Section Attributes of coherent configurations
