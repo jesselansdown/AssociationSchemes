@@ -742,6 +742,49 @@ function( R , h)
     return G;
 end);
 
+InstallOtherMethod( AutomorphismGroup, [IsCoherentConfiguration, IsChar],
+function( R , h)
+    local G, adj, gp, gr, n, x, y, i, mat;    
+    if not h = 'J' then
+    	return fail;
+    fi;
+    mat:=RelationMatrix(R);;
+    n := Order(R);
+   	Print(".\n");
+   	edges:=[];
+   	for x in [1 .. n] do
+   		for y in [1 .. n] do
+   			if mat[x][y] = 2 then
+   				Add(edges, [x,y]);
+   			fi;
+   		od;
+   	od;
+    Print("..\n");
+    gr := NautyGraph(edges);;
+    Print("...\n");
+    G := AutomorphismGroup(gr);
+    Print("....\n");
+    for i in [4..ClassOfAssociationScheme(R)+1] do
+    	Print(".\n");
+	   	edges:=[];
+	   	for x in [1 .. n] do
+	   		for y in [1 .. n] do
+	   			if mat[x][y] = 2 then
+	   				Add(edges, [x,y]);
+	   			fi;
+	   		od;
+	   	od;
+	    Print("..\n");
+	    gr := NautyGraph(edges);;
+    	Print("...\n");
+        gp := AutomorphismGroup(gr);
+    	Print("....\n");
+        G := Intersection(G, gp);
+    	Print(".....\n");
+    od;
+    return G;
+end);
+
 ###################
 #
 # Display methods
