@@ -679,20 +679,17 @@ InstallMethod( MinimalIdempotents,
 
 InstallMethod( AutomorphismGroup, [IsCoherentConfiguration],
 function( sch )
-    local n, edges, colours, c, d, newedges, newedges2,  
-    		i, e, f, map, graph, aut, layers;
+    local n, edges, colours, c, d, matrix, newedges, newedges2,  
+    		i, e, f, map, graph, aut, layers, enum, col;
     if not "digraphs" in RecNames(GAPInfo.PackagesLoaded) then
        Error("You must load the Digraphs package\n");
     fi;
     n := Order(sch);
-	edges := Filtered(Tuples([1..n], 2),t->t[1]<>t[2]);;
-	colours := List(edges, t -> RelationMatrix(sch)[t[1]][t[2]]);;
-	c := Length(Set(colours));
+	matrix := RelationMatrix(sch);;
+	c := ClassOfAssociationScheme(sch);
 	# c <= 2^d-1
 	d := Log2Int(c)+1;
 	# make d layers
-	newedges := [];;
-#	newvertices := Cartesian([1..d],[1..n]);
 	# map colour to layer
 	f := function( colour )
 		local ce, onesare;
@@ -700,28 +697,30 @@ function( sch )
 		onesare := Filtered([1..Length(ce)],i->IsOne(ce[i]));
 		return onesare;
 	end;
-	map := List([1..c], f);
+	map := Concatenation([[]],List([1..c], f));
+	edges := EnumeratorOfTuples([1..n], 2);
+	enum := EnumeratorOfCartesianProduct2([[1..d],[1..n]]);
+	newedges := [];;
 
-	Print("making edges\n");
+	Print("making edges (slowest part?)\n");
 	for i in [1..Size(edges)] do
 		e := edges[i];
-		Append(newedges, List(map[colours[i]], j -> [[j,e[1]],[j,e[2]]]));
+		col := matrix[e[1]][e[2]];		
+		Append(newedges, List(map[col+1], j -> 
+			[Position(enum,[j,e[1]]),Position(enum,[j,e[2]])]));	
 	od;
-	# we should be able to bypass something to get to here
-	Print("converting edges to nice format\n");
-	# use EnumeratorOfCartesianProduct2 to do things quicker
-	enum:=EnumeratorOfCartesianProduct2([[1..d],[1..n]]);
-	newedges2:=List(newedges,t->[Position(enum,t[1]),Position(enum,t[2])]);;  
+  
 	# at a later date, we could ask the user to include
 	# a `helper' group here
+	
+	# it would be faster if we gave outneighbourhoods ...
+	
 	Print("making digraph\n");
-	graph := DigraphByEdges( newedges2, d*n );
-	# old inefficient code
-	#graph := Digraph(Group(()), newvertices, OnTuples,
-	#	function(x,y) return [x,y] in newedges; end);;	
+	graph := DigraphByEdges( newedges, d*n );
 	layers := List([1..d], t ->[1..n]+(t-1)*n);;
 	Print("calling nauty\n");
     aut := NautyAutomorphismGroup(graph, layers); 
+    	Print("computing perm group\n");
     return Action(aut,[1..n]);
 end);
 
