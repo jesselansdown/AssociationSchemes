@@ -679,7 +679,7 @@ InstallMethod( MinimalIdempotents,
 
 InstallMethod( AutomorphismGroup, [IsCoherentConfiguration],
 function( sch )
-    local n, edges, colours, c, d, newedges, newedges2, newvertices, 
+    local n, edges, colours, c, d, newedges, newedges2,  
     		i, e, f, map, graph, aut, layers;
     if not "digraphs" in RecNames(GAPInfo.PackagesLoaded) then
        Error("You must load the Digraphs package\n");
@@ -692,7 +692,7 @@ function( sch )
 	d := Log2Int(c)+1;
 	# make d layers
 	newedges := [];;
-	newvertices := Cartesian([1..d],[1..n]);
+#	newvertices := Cartesian([1..d],[1..n]);
 	# map colour to layer
 	f := function( colour )
 		local ce, onesare;
@@ -709,11 +709,13 @@ function( sch )
 	od;
 	# we should be able to bypass something to get to here
 	Print("converting edges to nice format\n");
-	newedges2:=Set(newedges,t->[Position(newvertices,t[1]),Position(newvertices,t[2])]);;
+	# use EnumeratorOfCartesianProduct2 to do things quicker
+	enum:=EnumeratorOfCartesianProduct2([[1..d],[1..n]]);
+	newedges2:=List(newedges,t->[Position(enum,t[1]),Position(enum,t[2])]);;  
 	# at a later date, we could ask the user to include
 	# a `helper' group here
 	Print("making digraph\n");
-	graph := DigraphByEdges( newedges2, Size(newvertices) );
+	graph := DigraphByEdges( newedges2, d*n );
 	# old inefficient code
 	#graph := Digraph(Group(()), newvertices, OnTuples,
 	#	function(x,y) return [x,y] in newedges; end);;	
