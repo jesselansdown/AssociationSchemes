@@ -725,6 +725,24 @@ function( sch )
     return Action(aut,[1..n]);
 end);
 
+
+InstallOtherMethod( AutomorphismGroup, [IsCoherentConfiguration, IsChar],
+function( R , h)
+    local G, adj, gp, gr, n, x, y, i;    
+    if not h = 'H' then
+    	return fail;
+    fi;
+    adj := AdjacencyMatrices(R);
+    n := Order(R);
+    G := SymmetricGroup(n);
+    for i in [2..(Length(adj) - 1)] do
+        gr := Graph(Group(()), [1..n], OnPoints, function(x,y) return adj[i][x][y]=1; end);
+        gp := AutomorphismGroup(gr);
+        G := Intersection(G, gp);
+    od;
+    return G;
+end);
+
 ###################
 #
 # Display methods
