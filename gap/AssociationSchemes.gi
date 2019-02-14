@@ -576,7 +576,7 @@ InstallMethod( MinimalIdempotents,
 
 InstallMethod( AutomorphismGroup, [IsCoherentConfiguration],
 function( sch )
-    local n, edges, colours, c, d, newedges, newvertices, 
+    local n, edges, colours, c, d, newedges, newedges2, newvertices, 
     		i, e, ce, onesare, j, graph, aut, layers;
     if not "digraphs" in RecNames(GAPInfo.PackagesLoaded) then
        Error("You must load the Digraphs package\n");
@@ -590,6 +590,7 @@ function( sch )
 	# make d layers
 	newedges := [];;
 	newvertices := Cartesian([1..d],[1..n]);
+	Print("making edges\n");
 	for i in [1..Size(edges)] do
 		e := edges[i];
 		ce := CoefficientsQadic(colours[i], 2);
@@ -599,12 +600,18 @@ function( sch )
 			Add(newedges, [[j,e[1]],[j,e[2]]]);
 		od;
 	od;
+	# we should be able to bypass something to get to here
+	newedges2:=Set(newedges,t->[Position(newvertices,t[1]),Position(newvertices,t[2])]);;
 	# at a later date, we could ask the user to include
 	# a `helper' group here
-	graph := Digraph(Group(()), newvertices, OnTuples,
-		function(x,y) return [x,y] in newedges; end);;	
+	Print("making digraph\n");
+	graph := DigraphByEdges( newedges2, Size(newvertices) );
+	# old inefficient code
+	#graph := Digraph(Group(()), newvertices, OnTuples,
+	#	function(x,y) return [x,y] in newedges; end);;	
 	layers := List([1..d], t ->[1..n]+(t-1)*n);;
-    aut := AutomorphismGroup(graph, layers); 
+	Print("calling nauty\n");
+    aut := NautyAutomorphismGroup(graph, layers); 
     return Action(aut,[1..n]);
 end);
 
