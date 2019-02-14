@@ -9,6 +9,14 @@
 #############################################################################
 
 #! @Chapter Functionality
+#! @Section Attributes of coherent configurations
+#! @Arguments n, k
+#! @Returns  matrix of eigenvalues
+#! @Description
+#!	Returns the matrix of eigenvalues of the Johnson scheme $J(n, k)$.
+DeclareOperation("MatrixOfEigenvaluesOfJohnsonScheme", [IsPosInt, IsPosInt]);
+
+#! @Chapter Functionality
 #! @Section Constructor Methods
 #! @Arguments n, k
 #! @Returns Johnson scheme
