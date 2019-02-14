@@ -742,10 +742,10 @@ function( R , h)
     return G;
 end);
 
-InstallOtherMethod( AutomorphismGroup, [IsCoherentConfiguration, IsChar],
+InstallOtherMethod( AutomorphismGroup, [IsCoherentConfiguration, IsPosInt],
 function( R , h)
     local G, adj, gp, gr, n, x, y, i, mat;    
-    if not h = 'J' then
+    if not h = 1 then
     	return fail;
     fi;
     mat:=RelationMatrix(R);;
