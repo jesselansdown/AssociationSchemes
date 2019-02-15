@@ -818,12 +818,13 @@ function( R )
     if Valencies(R)[2]<Valencies(R)[1] then
     	i:=2;
     fi;
-    if ConstructorGroup(R) <> false then
-    	gp := ConstructorGroup(R);
-    else
-    	gp := Group(());;
-    fi;
-    gr := Graph(gp, [1..n], OnPoints, function(x,y) return mat[x][y]=i; end);
+#    if ConstructorGroup(R) <> false then
+#    	gp := ConstructorGroup(R);
+#    else
+#    	gp := Group(());;
+#    fi;
+#    gr := Graph(gp, [1..n], OnPoints, function(x,y) return mat[x][y]=i; end);
+    gr := Graph(Group(()), [1..n], OnPoints, function(x,y) return mat[x][y]=i; end);
     G := AutomorphismGroup(gr);
     return G;
 end);
