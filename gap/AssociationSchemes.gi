@@ -156,6 +156,12 @@ InstallMethod(ClassOfAssociationScheme,
 # Need to check if integers
 # Neet to check if square matrix
 
+InstallMethod(IsStronglyRegularGraph,
+			[IsCoherentConfiguration],
+	function(a)
+		return ClassOfAssociationScheme(a)=2;
+	end );
+
 InstallMethod(AdjacencyMatrices,
 			[IsCoherentConfiguration],
 	function(a)
@@ -800,6 +806,25 @@ function( R , h)
         G := Intersection(G, gp);
     	Print(".....\n");
     od;
+    return G;
+end);
+
+InstallMethod( AutomorphismGroup, [IsCoherentConfiguration and IsStronglyRegularGraph],
+function( R )
+    local G, mat, gr, n, i, gp;    
+    n := Order(R);
+    mat:=RelationMatrix(R);
+    i :=1;
+    if Valencies(R)[2]<Valencies(R)[1] then
+    	i:=2;
+    fi;
+    if ConstructorGroup(R) <> false then
+    	gp := ConstructorGroup(R);
+    else
+    	gp := Group(());;
+    fi;
+    gr := Graph(gp, [1..n], OnPoints, function(x,y) return mat[x][y]=i; end);
+    G := AutomorphismGroup(gr);
     return G;
 end);
 
