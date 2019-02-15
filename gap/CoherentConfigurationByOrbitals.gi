@@ -8,6 +8,14 @@
 ##
 #############################################################################
 
+InstallMethod( ConstructorGroup, [ IsCoherentConfiguration ], 
+	function( sch )
+	if HasConstructorGroup(sch) then
+		return ConstructorGroup(sch);
+	else
+		return false;
+	fi;
+ end);
 
 InstallMethod( IsCoherentConfigurationByOrbitals, [ IsCoherentConfiguration ], 
 	function( sch )
@@ -43,7 +51,7 @@ InstallMethod(CoherentConfigurationByOrbitals,
 			mat[pos]:=Permuted(row1, i);
 		od;
 		assoc_rec := rec( matrix := mat);
-		return ObjectifyWithAttributes(assoc_rec, TheTypeCoherentConfiguration, IsCoherentConfigurationByOrbitals, true, AutomorphismGroup, g_perm);;
+		return ObjectifyWithAttributes(assoc_rec, TheTypeCoherentConfiguration, IsCoherentConfigurationByOrbitals, true, ConstructorGroup, g_perm);;
 	end);
 
 InstallMethod(CoherentConfigurationByOrbitals,
@@ -68,7 +76,11 @@ InstallMethod( MinimalIdempotents,
 	[ IsCoherentConfiguration and IsCoherentConfigurationByOrbitals],
 	function( a )
 		local g_perm, Q, row1, stab, sz, points, d, i, charvec, rts, pos, mat, mats, j, row, rows, id;
-		g_perm := AutomorphismGroup(a);
+		if ConstructorGroup(a) <> false then
+			g_perm := ConstructorGroup(a);
+		else
+			g_perm := AutomorphismGroup(a);
+		fi;
 		Q := DualMatrixOfEigenvalues(a)/Order(a);
 		row1 := RelationMatrix(a)[1];
 		stab := Stabiliser(g_perm, 1);

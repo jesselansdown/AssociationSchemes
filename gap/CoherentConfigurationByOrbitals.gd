@@ -8,6 +8,13 @@
 ##
 #############################################################################
 
+#! @Chapter Functionality
+#! @Section Attributes of coherent configurations
+#! @Arguments CC
+#! @Returns group or false
+#! @Description
+#!	Checks if the coherent configuration was constructed by a group and returns it if it was, or returns false otherwise.
+DeclareAttribute( "ConstructorGroup", IsCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Properties of coherent configurations
