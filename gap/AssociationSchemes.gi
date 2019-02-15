@@ -809,22 +809,56 @@ function( R , h)
     return G;
 end);
 
+# InstallMethod( AutomorphismGroup, [IsCoherentConfiguration and IsStronglyRegularGraph],
+# function( R )
+#     local G, mat, gr, n, i, gp;    
+#     n := Order(R);
+#     mat:=RelationMatrix(R);
+#     i :=1;
+#     if Valencies(R)[2]<Valencies(R)[1] then
+#     	i:=2;
+#     fi;
+# #    if ConstructorGroup(R) <> false then
+# #    	gp := ConstructorGroup(R);
+# #    else
+# #    	gp := Group(());;
+# #    fi;
+# #    gr := Graph(gp, [1..n], OnPoints, function(x,y) return mat[x][y]=i; end);
+#     gr := Graph(Group(()), [1..n], OnPoints, function(x,y) return mat[x][y]=i; end);
+#     G := AutomorphismGroup(gr);
+#     return G;
+# end);
+
 InstallMethod( AutomorphismGroup, [IsCoherentConfiguration and IsStronglyRegularGraph],
 function( R )
-    local G, mat, gr, n, i, gp;    
+    local G, mat, gr, n, i, gp, x, y, s, edges;
+    if not "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
+       Error("You must load the NautyTracesInterface package\n");
+    fi;    
     n := Order(R);
     mat:=RelationMatrix(R);
     i :=1;
     if Valencies(R)[2]<Valencies(R)[1] then
     	i:=2;
     fi;
-#    if ConstructorGroup(R) <> false then
-#    	gp := ConstructorGroup(R);
-#    else
-#    	gp := Group(());;
-#    fi;
-#    gr := Graph(gp, [1..n], OnPoints, function(x,y) return mat[x][y]=i; end);
-    gr := Graph(Group(()), [1..n], OnPoints, function(x,y) return mat[x][y]=i; end);
+   	edges:=[];
+   	for x in [1 .. n] do
+		if IsSymmetricCoherentConfiguration(R) then
+	   		s := x+1;
+	   	else
+	   		s := 1;
+	   	fi;
+   		for y in [s .. n] do
+   			if mat[x][y] = 1 then
+   				Add(edges, [x,y]);
+   			fi;
+   		od;
+   	od;
+	if IsSymmetricCoherentConfiguration(R) then
+	    gr := NautyGraph(edges);;
+	else
+	    gr := NautyDiGraph(edges);;
+	fi;
     G := AutomorphismGroup(gr);
     return G;
 end);
