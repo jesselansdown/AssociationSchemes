@@ -744,7 +744,7 @@ end);
 
 InstallOtherMethod( AutomorphismGroup, [IsCoherentConfiguration, IsPosInt],
 function( R , h)
-    local G, adj, gp, gr, n, x, y, i, mat;    
+    local G, adj, gp, gr, n, x, y, i, mat, edges;    
     if not h = 1 then
     	return fail;
     fi;
