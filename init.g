@@ -9,3 +9,5 @@ ReadPackage( "AssociationSchemes", "gap/CoherentConfigurationByOrbitals.gd");
 ReadPackage( "AssociationSchemes", "gap/SchurianSchemes.gd");
 ReadPackage( "AssociationSchemes", "gap/JohnsonSchemes.gd");
 ReadPackage( "AssociationSchemes", "gap/GrassmannSchemes.gd");
+ReadPackage( "AssociationSchemes", "gap/Subsets.gd");
+ReadPackage( "AssociationSchemes", "gap/Codes.gd");

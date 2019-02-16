@@ -109,6 +109,14 @@ DeclareProperty( "IsSymmetricCoherentConfiguration", IsCoherentConfiguration );
 DeclareAttribute( "ClassOfAssociationScheme", IsCoherentConfiguration );
 
 #! @Chapter Functionality
+#! @Section Properties of coherent configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Check if a coherent configuration is a strongly regular graph.
+DeclareProperty( "IsStronglyRegularGraph", IsCoherentConfiguration );
+
+#! @Chapter Functionality
 #! @Section Matrices describing coherent configurations
 #! @Arguments CC
 #! @Returns L

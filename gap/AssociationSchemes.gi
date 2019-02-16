@@ -156,6 +156,12 @@ InstallMethod(ClassOfAssociationScheme,
 # Need to check if integers
 # Neet to check if square matrix
 
+InstallMethod(IsStronglyRegularGraph,
+			[IsCoherentConfiguration],
+	function(a)
+		return ClassOfAssociationScheme(a)=2;
+	end );
+
 InstallMethod(AdjacencyMatrices,
 			[IsCoherentConfiguration],
 	function(a)
@@ -744,7 +750,7 @@ end);
 
 InstallOtherMethod( AutomorphismGroup, [IsCoherentConfiguration, IsPosInt],
 function( R , h)
-    local G, adj, gp, gr, n, x, y, i, mat, edges;    
+    local G, gp, gr, n, x, y, i, mat, s, edges;    
     if not h = 1 then
     	return fail;
     fi;
@@ -753,14 +759,23 @@ function( R , h)
    	Print(".\n");
    	edges:=[];
    	for x in [1 .. n] do
-   		for y in [1 .. n] do
-   			if mat[x][y] = 2 then
+		if IsSymmetricCoherentConfiguration(R) then
+	   		s := x+1;
+	   	else
+	   		s := 1;
+	   	fi;
+   		for y in [s .. n] do
+   			if mat[x][y] = 1 then
    				Add(edges, [x,y]);
    			fi;
    		od;
    	od;
     Print("..\n");
-    gr := NautyGraph(edges);;
+	if IsSymmetricCoherentConfiguration(R) then
+	    gr := NautyGraph(edges);;
+	else
+	    gr := NautyDiGraph(edges);;
+	fi;
     Print("...\n");
     G := AutomorphismGroup(gr);
     Print("....\n");
@@ -768,20 +783,83 @@ function( R , h)
     	Print(".\n");
 	   	edges:=[];
 	   	for x in [1 .. n] do
-	   		for y in [1 .. n] do
-	   			if mat[x][y] = 2 then
+	   		if IsSymmetricCoherentConfiguration(R) then
+	   			s := x+1;
+	   		else
+	   			s := 1;
+	   		fi;
+	   		for y in [s .. n] do
+	   			if mat[x][y] = i-1 then
 	   				Add(edges, [x,y]);
 	   			fi;
 	   		od;
 	   	od;
 	    Print("..\n");
-	    gr := NautyGraph(edges);;
+		if IsSymmetricCoherentConfiguration(R) then
+		    gr := NautyGraph(edges);;
+		else
+		    gr := NautyDiGraph(edges);;
+		fi;
     	Print("...\n");
         gp := AutomorphismGroup(gr);
     	Print("....\n");
         G := Intersection(G, gp);
     	Print(".....\n");
     od;
+    return G;
+end);
+
+# InstallMethod( AutomorphismGroup, [IsCoherentConfiguration and IsStronglyRegularGraph],
+# function( R )
+#     local G, mat, gr, n, i, gp;    
+#     n := Order(R);
+#     mat:=RelationMatrix(R);
+#     i :=1;
+#     if Valencies(R)[2]<Valencies(R)[1] then
+#     	i:=2;
+#     fi;
+# #    if ConstructorGroup(R) <> false then
+# #    	gp := ConstructorGroup(R);
+# #    else
+# #    	gp := Group(());;
+# #    fi;
+# #    gr := Graph(gp, [1..n], OnPoints, function(x,y) return mat[x][y]=i; end);
+#     gr := Graph(Group(()), [1..n], OnPoints, function(x,y) return mat[x][y]=i; end);
+#     G := AutomorphismGroup(gr);
+#     return G;
+# end);
+
+InstallMethod( AutomorphismGroup, [IsCoherentConfiguration and IsStronglyRegularGraph],
+function( R )
+    local G, mat, gr, n, i, gp, x, y, s, edges;
+    if not "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
+       Error("You must load the NautyTracesInterface package\n");
+    fi;    
+    n := Order(R);
+    mat:=RelationMatrix(R);
+    i :=1;
+    if Valencies(R)[2]<Valencies(R)[1] then
+    	i:=2;
+    fi;
+   	edges:=[];
+   	for x in [1 .. n] do
+		if IsSymmetricCoherentConfiguration(R) then
+	   		s := x+1;
+	   	else
+	   		s := 1;
+	   	fi;
+   		for y in [s .. n] do
+   			if mat[x][y] = 1 then
+   				Add(edges, [x,y]);
+   			fi;
+   		od;
+   	od;
+	if IsSymmetricCoherentConfiguration(R) then
+	    gr := NautyGraph(edges);;
+	else
+	    gr := NautyDiGraph(edges);;
+	fi;
+    G := AutomorphismGroup(gr);
     return G;
 end);
 
