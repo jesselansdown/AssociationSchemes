@@ -59,15 +59,6 @@ DeclareOperation( "CoherentConfiguration", [ IsMatrix ] );
 DeclareOperation( "CoherentConfigurationNC", [ IsMatrix ] );
 
 #! @Chapter Functionality
-#! @Section Constructor Methods
-#! @Arguments n, k
-#! @Returns coherent configuration
-#! @Description
-#!	Returns the $k$-th homogeneous coherent configuration of order $n$. Library is complete for $5 \le n \le 38$ excluding
-#!	$n \in \{31, 35, 36, 37\}$. (Put reference).
-DeclareOperation( "HomogeneousCoherentConfiguration", [ IsPosInt, IsPosInt ] );
-
-#! @Chapter Functionality
 #! @Section Matrices describing coherent configurations
 #! @Arguments CC
 #! @Returns relation matrix $M$
