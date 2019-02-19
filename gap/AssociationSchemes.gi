@@ -659,7 +659,8 @@ InstallMethod( MinimalIdempotents,
 #    return Action(aut,[1..n]);
 #end);
 
-InstallMethod( AutomorphismGroup, [IsCoherentConfiguration],
+
+InstallMethod( SchemeToGraph, [IsCoherentConfiguration],
 function( sch )
     local n, colours_for_layer, c, d, matrix, in_nhd, in_nhds,  
     		i, f, map, graph, aut, layers, enum, v;
@@ -692,7 +693,7 @@ function( sch )
 	 	PositionsProperty(map, u -> t in u) - 1);
 	enum := EnumeratorOfCartesianProduct2([[1..d],[1..n]]);	
 	
-	Print("finding in-neighbours\n");
+#	Print("finding in-neighbours\n");
 	# is there a quicker way?	
 	in_nhds := List(enum, v -> Concatenation(List(colours_for_layer[v[1]], t ->
 		 Positions(matrix[v[2]],t))));;
@@ -702,12 +703,32 @@ function( sch )
 	
 	graph := DigraphNC( in_nhds );
 	layers := List([1..d], t ->[1..n]+(t-1)*n);;
-	Print("calling nauty\n");
-    aut := NautyAutomorphismGroup(graph, layers); 
-    	Print("computing perm group\n");
+	return[graph, layers];
+end);
+
+InstallMethod( AutomorphismGroup, [IsCoherentConfiguration],
+function( sch )
+	local n, gr, aut;
+	    n := Order(sch);
+		gr := SchemeToGraph(sch);;
+	    aut := NautyAutomorphismGroup(gr[1], gr[2]); 
+#    	Print("computing perm group\n");
     return Action(aut,[1..n]);
 end);
 
+InstallMethod(IsIsomorphicScheme, [IsCoherentConfiguration, IsCoherentConfiguration],
+	function(A1, A2)
+		local gr1, gr2;;
+		if Order(A1) <> Order(A2) then
+			return false;
+		fi;
+		if ClassOfAssociationScheme(A1) <> ClassOfAssociationScheme(A2) then
+			return false;
+		fi;
+		gr1 := SchemeToGraph(A1);;
+		gr2 := SchemeToGraph(A2);;
+		return IsIsomorphicDigraph(gr1[1], gr2[1], gr1[2], gr2[2]);;
+	end);
 
 InstallOtherMethod( AutomorphismGroup, [IsCoherentConfiguration, IsChar],
 function( R , h)

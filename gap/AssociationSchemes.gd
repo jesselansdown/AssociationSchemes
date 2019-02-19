@@ -38,7 +38,6 @@ BindGlobal( "TheTypeCoherentConfiguration",
 
 #BindGlobal("TheTypeAssociationScheme", NewType( AssociationSchemeFamily, IsAssociationScheme ));
 
-
 #! @Chapter Functionality
 #! @Section Constructor Methods
 #! @Arguments M
@@ -200,3 +199,7 @@ DeclareOperation("BinaryExpansion", [IsPosInt]);
 #!	$G$ is a permutation group acting on the index set of the veritices.
 #!	If $G$ is not already known and must be computed, then the package "Digraphs" is required.
 DeclareAttribute( "AutomorphismGroup", IsCoherentConfiguration );
+
+
+DeclareOperation("SchemeToGraph", [IsCoherentConfiguration]);
+DeclareOperation("IsIsomorphicScheme", [IsCoherentConfiguration, IsCoherentConfiguration]);
