@@ -13,15 +13,6 @@
 #
 # AssociationSchemes: A GAP package for working with association schemes
 #
-#! @Chapter Introduction
-#!
-#! AssociationSchemes is a GAP package for working with association schemes and coherent configurations. Currently only
-#! methods for homogeneous coherent configurations are implemented.
-#! @Section Installation
-#!	To install AssociationSchemes, simply copy to the "pkg" directory of your GAP installation.
-#! @Section Prerequisite packages
-#!	"Digraphs" is needed if automorphism groups are to be computed.
-
 
 DeclareCategory( "IsCoherentConfiguration", IsObject );
 
