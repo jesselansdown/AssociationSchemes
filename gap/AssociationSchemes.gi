@@ -864,13 +864,17 @@ end);
 
 InstallMethod( IsPPolynomial, [IsCoherentConfiguration],
 	function(R)
-	    local i, adj, d, gr, n, x, y;
+	    local i, m, d, gr, n, x, y, g;
 
 	    n := Order(R);
-	    adj := AdjacencyMatrices(R);
+	    m := RelationMatrix(R);
 	    d := ClassOfAssociationScheme(R);
-	    for i in [2..d+1] do
-	        gr := Graph(Group(()), [1..n], OnPoints, function(x,y) return adj[i][x][y]=1; end);
+	    g := Group(());
+	    if HasConstructorGroup(R) then
+	    	g := ConstructorGroup(R);
+	    fi;
+	    for i in [1..d] do
+	        gr := Graph(g, [1..n], OnPoints, function(x,y) return m[x][y] = i; end);
 	        if IsDistanceRegular(gr) then
 	            if Diameter(gr) = d then
 	                return true;
