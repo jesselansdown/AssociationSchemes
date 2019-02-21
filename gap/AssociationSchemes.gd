@@ -200,6 +200,13 @@ DeclareAttribute( "AutomorphismGroup", IsHomogeneousCoherentConfiguration );
 #!	Returns the coherent configuration CC is P-polynomial.
 DeclareProperty( "IsPPolynomial", IsHomogeneousCoherentConfiguration );
 
+#! @Chapter Functionality
+#! @Section Attributes of coherent configurations
+#! @Arguments CC
+#! @Returns G
+#! @Description
+#!	Calculate all P-polynomial orderings of a homogeneous coherent configuration.
+DeclareAttribute( "AllPPolynomialOrderings", IsHomogeneousCoherentConfiguration );
 
 DeclareOperation("SchemeToGraph", [IsHomogeneousCoherentConfiguration]);
 DeclareOperation("IsIsomorphicScheme", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);

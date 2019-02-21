@@ -813,6 +813,46 @@ InstallMethod( IsPPolynomial, [IsHomogeneousCoherentConfiguration],
 	    return false;
 	end);
 
+InstallMethod(AllPPolynomialOrderings,
+            [IsHomogeneousCoherentConfiguration],
+    function(R)
+    local i, mat, d, gr, n, x, y, ans, PPolynomialOrdering;
+
+        PPolynomialOrdering := function(R, a)
+            local ord, i, j, d;
+            
+            d := ClassOfAssociationScheme(R);
+            ord := [0,a];
+            for j in [1..d-1] do
+                for i in [1..d] do
+                    if not (i in ord) then
+                        if IntersectionNumber(R, a, ord[Length(ord)], i) <> 0 then
+                            Add(ord, i);
+                        fi;
+                    fi;
+                od;
+            od;
+            
+            return ord;
+        end;
+
+        ans := [];
+        n := Order(R);
+        mat := RelationMatrix(R);
+        d := ClassOfAssociationScheme(R);
+        for i in [1..d] do
+            gr := Graph(Group(()), [1..n], OnPoints, function(x,y) return mat[x][y]=i; end);
+            if IsDistanceRegular(gr) then
+                if Diameter(gr) = d then
+                    Add(ans, PPolynomialOrdering(R, i));
+                fi;
+            fi;
+        od;
+
+        return ans;
+    end);
+
+
 ###################
 #
 # Display methods
