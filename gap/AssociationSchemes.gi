@@ -929,9 +929,9 @@ InstallMethod( Display,
  		fi;
  		if HasMatrixOfEigenvalues(a) then
  			if MatrixOfEigenvalues(a) <> fail then
-	 			Print("  MatrixOfEigenvalues:\n");
+	 			Print("  Matrix of eigenvalues:\n");
 	 			Display(MatrixOfEigenvalues(a));
-	 			Print("  DualMatrixOfEigenvalues:\n");
+	 			Print("  Dual matrix of eigenvalues:\n");
 	 			Display(DualMatrixOfEigenvalues(a));
 	 		fi;
  		fi;
