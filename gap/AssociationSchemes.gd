@@ -192,5 +192,14 @@ DeclareOperation("BinaryExpansion", [IsPosInt]);
 DeclareAttribute( "AutomorphismGroup", IsCoherentConfiguration );
 
 
+#! @Chapter Functionality
+#! @Section Properties of coherent configurations
+#! @Arguments CC
+#! @Returns G
+#! @Description
+#!	Returns the coherent configuration CC is P-polynomial.
+DeclareProperty( "IsPPolynomial", IsCoherentConfiguration );
+
+
 DeclareOperation("SchemeToGraph", [IsCoherentConfiguration]);
 DeclareOperation("IsIsomorphicScheme", [IsCoherentConfiguration, IsCoherentConfiguration]);

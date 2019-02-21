@@ -862,6 +862,25 @@ function( R )
     return G;
 end);
 
+InstallMethod( IsPPolynomial, [IsCoherentConfiguration],
+	function(R)
+	    local i, adj, d, gr, n, x, y;
+
+	    n := Order(R);
+	    adj := AdjacencyMatrices(R);
+	    d := ClassOfAssociationScheme(R);
+	    for i in [2..d+1] do
+	        gr := Graph(Group(()), [1..n], OnPoints, function(x,y) return adj[i][x][y]=1; end);
+	        if IsDistanceRegular(gr) then
+	            if Diameter(gr) = d then
+	                return true;
+	            fi;
+	        fi;
+	    od;
+	    
+	    return false;
+	end);
+
 ###################
 #
 # Display methods
@@ -887,14 +906,33 @@ InstallMethod( Display,
 	"for IsAssociationScheme",
 	[ IsCoherentConfiguration],
 	function( a )
- 		Print( ClassOfAssociationScheme(a), "-class association scheme of order ", Order(a), ".");
- 		if HasMatrixOfEigenvalues(a) then
- 			Print("\nMatrixOfEigenvalues:\n");
- 			Display(MatrixOfEigenvalues(a));
+ 		Print( ClassOfAssociationScheme(a), "-class ");
+ 		if IsSymmetricCoherentConfiguration(a) then
+	 		Print("association scheme ");
+	 	else
+	 		Print("homogeneous coherent configuration ");
+	 	fi;
+	 	Print("of order ", Order(a), ".\n");
+ 		if HasIsSymmetricCoherentConfiguration(a) then
+ 			Print("  Symmetric: ", IsSymmetricCoherentConfiguration(a), "\n");
+ 		fi;
+ 		if HasIsCommutative(a) then
+ 			Print("  Commutative: ", IsCommutative(a), "\n");
+ 		fi;
+ 		if HasIsPPolynomial(a) then
+ 			Print("  P-polynomial: ", IsPPolynomial(a), "\n");
+ 		fi;
+ 		if HasIsSchurian(a) then
+ 			Print("  Shurian: ", IsSchurian(a), "\n");
  		fi;
  		if HasMatrixOfEigenvalues(a) then
- 			Print("\nDualMatrixOfEigenvalues:\n");
- 			Display(DualMatrixOfEigenvalues(a));
+ 			if MatrixOfEigenvalues(a) <> fail then
+	 			Print("  MatrixOfEigenvalues:\n");
+	 			Display(MatrixOfEigenvalues(a));
+	 			Print("  DualMatrixOfEigenvalues:\n");
+	 			Display(DualMatrixOfEigenvalues(a));
+	 		fi;
  		fi;
+
 	end );
 
