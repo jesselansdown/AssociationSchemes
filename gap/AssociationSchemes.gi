@@ -797,8 +797,7 @@ InstallMethod( IsPPolynomial, [IsHomogeneousCoherentConfiguration],
 	    g := Group(());
 	    if HasConstructorGroup(R) then
 	    	g := ConstructorGroup(R);
-	    fi;
-	    if HasAutomorphismGroup(R) then
+	    elif HasAutomorphismGroup(R) then
 	    	g := AutomorphismGroup(R);
 	    fi;
 	    for i in [1..d] do
@@ -816,7 +815,7 @@ InstallMethod( IsPPolynomial, [IsHomogeneousCoherentConfiguration],
 InstallMethod(AllPPolynomialOrderings,
             [IsHomogeneousCoherentConfiguration],
     function(R)
-    local i, mat, d, gr, n, x, y, ans, PPolynomialOrdering;
+    local i, mat, d, gr, n, x, y, ans, PPolynomialOrdering, g;
 
         PPolynomialOrdering := function(R, a)
             local ord, i, j, d;
@@ -836,12 +835,20 @@ InstallMethod(AllPPolynomialOrderings,
             return ord;
         end;
 
+
+	    g := Group(());
+	    if HasConstructorGroup(R) then
+	    	g := ConstructorGroup(R);
+		elif HasAutomorphismGroup(R) then
+	    	g := AutomorphismGroup(R);
+	    fi;
+
         ans := [];
         n := Order(R);
         mat := RelationMatrix(R);
         d := ClassOfAssociationScheme(R);
         for i in [1..d] do
-            gr := Graph(Group(()), [1..n], OnPoints, function(x,y) return mat[x][y]=i; end);
+            gr := Graph(g, [1..n], OnPoints, function(x,y) return mat[x][y]=i; end);
             if IsDistanceRegular(gr) then
                 if Diameter(gr) = d then
                     Add(ans, PPolynomialOrdering(R, i));
