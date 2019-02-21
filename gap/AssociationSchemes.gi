@@ -892,13 +892,11 @@ InstallMethod( IsPPolynomial, [IsCoherentConfiguration],
  	"for IsAssociationScheme",
  	[ IsCoherentConfiguration],
  	function( a )
- 		Print( ClassOfAssociationScheme(a), "-class ");
- 		if IsSymmetricCoherentConfiguration(a) then
-	 		Print("association scheme ");
-	 	else
-	 		Print("homogeneous coherent configuration ");
-	 	fi;
-	 	Print("of order ", Order(a), ".");
+ 		if HasIsSymmetricCoherentConfiguration(a) and IsSymmetricCoherentConfiguration(a) then
+ 			Print( ClassOfAssociationScheme(a), "-class association scheme of order ", Order(a), ".");
+ 		else
+ 			Print( ClassOfAssociationScheme(a), "-class homogeneous coherent configuration of order ", Order(a), ".");
+ 		fi;
  	end );
 
 InstallMethod( PrintObj, 
@@ -912,13 +910,11 @@ InstallMethod( Display,
 	"for IsAssociationScheme",
 	[ IsCoherentConfiguration],
 	function( a )
- 		Print( ClassOfAssociationScheme(a), "-class ");
- 		if IsSymmetricCoherentConfiguration(a) then
-	 		Print("association scheme ");
-	 	else
-	 		Print("homogeneous coherent configuration ");
-	 	fi;
-	 	Print("of order ", Order(a), ".\n");
+ 		if HasIsSymmetricCoherentConfiguration(a) and IsSymmetricCoherentConfiguration(a) then
+ 			Print( ClassOfAssociationScheme(a), "-class association scheme of order ", Order(a), ".\n");
+ 		else
+ 			Print( ClassOfAssociationScheme(a), "-class homogeneous coherent configuration of order ", Order(a), ".\n");
+ 		fi;
  		if HasIsSymmetricCoherentConfiguration(a) then
  			Print("  Symmetric: ", IsSymmetricCoherentConfiguration(a), "\n");
  		fi;
