@@ -31,7 +31,7 @@ DeclareOperation("IsGenerouslyTransitive", [IsPermGroup, IsList]);
 #! @Returns true or false
 #! @Description
 #!	Checks if the input is a Schurian coherent configuration, that is, if the automorphism group is generously transitive.
-DeclareProperty( "IsSchurian", IsCoherentConfiguration );
+DeclareProperty( "IsSchurian", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Constructor Methods
