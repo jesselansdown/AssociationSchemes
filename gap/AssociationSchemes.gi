@@ -663,7 +663,7 @@ InstallMethod( MinimalIdempotents,
 InstallMethod( SchemeToGraph, [IsCoherentConfiguration],
 function( sch )
     local n, colours_for_layer, c, d, matrix, in_nhd, in_nhds,  
-    		i, f, map, graph, aut, layers, enum, v;
+    		i, f, map, graph, aut, layers, enum, v, cycle, i, e;
     if not "digraphs" in RecNames(GAPInfo.PackagesLoaded) then
        Error("You must load the Digraphs package\n");
     fi;
@@ -693,10 +693,17 @@ function( sch )
 	 	PositionsProperty(map, u -> t in u) - 1);
 	enum := EnumeratorOfCartesianProduct2([[1..d],[1..n]]);	
 	
-#	Print("finding in-neighbours\n");
-	# is there a quicker way?	
-	in_nhds := List(enum, v -> Concatenation(List(colours_for_layer[v[1]], t ->
-		 Positions(matrix[v[2]],t))));;
+	in_nhds := List(enum, v -> Concatenation(List(colours_for_layer[v[1]], 
+		t -> Positions(matrix[v[2]],t))));;
+	# also need vertical edges (paths or cliques)
+	for i in [1..n] do
+		cycle := List([1..d-1], j -> [[j,i],[j+1,i]]);
+		Add(cycle, [[d,i],[1,i]]);
+		cycle := List(cycle, t -> [Position(enum,t[1]),Position(enum,t[2])]);
+		for e in cycle do
+			Add(in_nhds[e[1]], e[2]);
+		od;
+	od;
 	
 	# at a later date, we could ask the user to include
 	# a `helper' group here
