@@ -42,12 +42,12 @@ InstallMethod(SchurianScheme,
 			Print("G must be generously transitive\n");
 			return fail;
 		fi;
-		sch := CoherentConfigurationByOrbitals(g_perm);
+		sch := HomogeneousCoherentConfigurationByOrbitals(g_perm);
 		SetIsSchurian(sch, true);
 		return sch;
 	end);
 
-InstallMethod( IsSchurian, [ IsCoherentConfiguration ], 
+InstallMethod( IsSchurian, [ IsHomogeneousCoherentConfiguration ], 
 	function( sch )
     local n, aut;
     if not IsSymmetricCoherentConfiguration(sch) then
@@ -55,7 +55,7 @@ InstallMethod( IsSchurian, [ IsCoherentConfiguration ],
     fi;
    	aut := AutomorphismGroup( sch );
   	n := Order(sch);;
-  	if IsCoherentConfigurationByOrbitals(sch) then
+  	if IsHomogeneousCoherentConfigurationByOrbitals(sch) then
 		#	return IsGenerouslyTransitive(aut, [1..n]);
 	 	return DegreeAction(aut) = Order(sch) and IsGenerouslyTransitive(aut);
   	else

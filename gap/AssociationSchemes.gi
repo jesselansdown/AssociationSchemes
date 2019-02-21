@@ -11,51 +11,41 @@
 # Take a matrix and return a TheTypeAssociationScheme object.
 # Does not perform any checks, other than that a matrix is given as input.
 
-InstallMethod(CoherentConfigurationNC,
+InstallMethod(HomogeneousCoherentConfigurationNC,
 			[IsMatrix],
 	function(mat)
 		local m, assoc_rec;
 		m := StructuralCopy(mat);;
 		assoc_rec := rec( matrix := m);
-		return ObjectifyWithAttributes(assoc_rec, TheTypeCoherentConfiguration);
+		return ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration);
 	end );
 
 #######################################################
 #	Here we put a check that the association scheme is valid
 #######################################################
 
-InstallMethod(CoherentConfiguration,
+InstallMethod(HomogeneousCoherentConfiguration,
 			[IsMatrix],
 	function(mat)
-		local homogeneous, i, symmetric, assoc_rec;
-		homogeneous := true;
+		local i, symmetric, assoc_rec;
 		for i in [1 .. Size(mat)] do
 			if mat[i, i] <> mat[1,1] then
-				homogeneous := false;
-				break;
+				Print("Relation matrix does not define a homogeneous coherent configuration\n");
+				return fail;
 			fi;
 		od;
 		assoc_rec := rec( matrix := mat);
-		if homogeneous then
-			symmetric := TransposedMat(mat) = mat;
-			if symmetric then
-				if IsAssociationSchemeMatrix(mat) then
-					return ObjectifyWithAttributes(assoc_rec, TheTypeCoherentConfiguration, IsHomogeneous, true, IsCommutative, true, IsSymmetricCoherentConfiguration, true);
-				else
-					Print("Must give a valid matrix\n");
-					return fail;
-				fi;
+		symmetric := TransposedMat(mat) = mat;
+		if symmetric then
+			if IsAssociationSchemeMatrix(mat) then
+				return ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, IsCommutative, true, IsSymmetricCoherentConfiguration, true);
 			else
-				if IsHomogeneousCoherentConfigurationMatrix(mat) then
-					return ObjectifyWithAttributes(assoc_rec, TheTypeCoherentConfiguration, IsHomogeneous, true, IsSymmetricCoherentConfiguration, false);					
-				else
-					Print("Must give a valid matrix\n");
-					return fail;
-				fi;
+				Print("Must give a valid matrix\n");
+				return fail;
 			fi;
 		else
-			if IsCoherentConfigurationMatrix(mat) then
-				return ObjectifyWithAttributes(assoc_rec, TheTypeCoherentConfiguration, IsHomogeneous, false, IsCommutative, false, IsSymmetricCoherentConfiguration, false);					
+			if IsHomogeneousCoherentConfigurationMatrix(mat) then
+				return ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, IsSymmetricCoherentConfiguration, false);					
 			else
 				Print("Must give a valid matrix\n");
 				return fail;
@@ -65,33 +55,20 @@ InstallMethod(CoherentConfiguration,
 
 
 InstallMethod(RelationMatrix,
-			[IsCoherentConfiguration],
+			[IsHomogeneousCoherentConfiguration],
 	function(a)
 		return a!.matrix;
 	end );
 
 InstallMethod( \=,
-			 [IsCoherentConfiguration, IsCoherentConfiguration],
+			 [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
 	function(a,b)
 		return RelationMatrix(a)=RelationMatrix(b);
 	end);
 
-InstallMethod(IsHomogeneous,
-			[IsCoherentConfiguration],
-	function(a)
-		local mat, i;
-		mat:=RelationMatrix(a);;
-		for i in [1 .. Size(mat)] do
-			if mat[i, i] <> mat[1,1] then
-				return false;
-			fi;
-		od;
-		return true;
-	end );
-
 
 InstallMethod(IsSymmetricCoherentConfiguration,
-			[IsCoherentConfiguration],
+			[IsHomogeneousCoherentConfiguration],
 	function(a)
 		local mat;
 		mat:=RelationMatrix(a);;
@@ -101,11 +78,13 @@ InstallMethod(IsSymmetricCoherentConfiguration,
 		return false;
 	end );
 
-# Returns the class for the matrix of a d-class association scheme
+InstallMethod(IsAssociationScheme,
+			[IsHomogeneousCoherentConfiguration],
+			IsSymmetricCoherentConfiguration );
 
 InstallMethod( Order, 
 	"for IsAssociationScheme",
-	[ IsCoherentConfiguration ],
+	[ IsHomogeneousCoherentConfiguration ],
 	function( a )
 		local n;
 		n := Size(RelationMatrix(a));
@@ -116,7 +95,7 @@ InstallMethod( Order,
 	end );
 
 InstallMethod(ClassOfAssociationScheme,
-			[IsCoherentConfiguration],
+			[IsHomogeneousCoherentConfiguration],
 	function(a)
 		local d, row, mat, m;
 		mat:=RelationMatrix(a);
@@ -133,13 +112,13 @@ InstallMethod(ClassOfAssociationScheme,
 # Neet to check if square matrix
 
 InstallMethod(IsStronglyRegularGraph,
-			[IsCoherentConfiguration],
+			[IsHomogeneousCoherentConfiguration],
 	function(a)
 		return ClassOfAssociationScheme(a)=2;
 	end );
 
 InstallMethod(AdjacencyMatrices,
-			[IsCoherentConfiguration],
+			[IsHomogeneousCoherentConfiguration],
 	function(a)
 		local d, n, adjMats, i, j, mat;
 		d := ClassOfAssociationScheme(a);;
@@ -302,71 +281,10 @@ InstallMethod(IsHomogeneousCoherentConfigurationMatrix,
 	end);
 
 
-InstallMethod(IsCoherentConfigurationMatrix,
-			[IsMatrix],
-	function(M)
-		Print("This method needs to be implemented - The p_ij^k values must first be properly computed\n");
-		return fail;
-	end);
-# InstallMethod(IsCoherentConfigurationMatrix,
-# 			[IsMatrix],
-# 	function(M)
-# 		local sz, numberOfRelations, relations, markers, mat, i, j, k, mult, ps, temp, identitypos, m, idvals, row;
-# 		sz := Size(M);
-# 		numberOfRelations := 0;
-# 		for row in M do
-# 			m := Maximum(row);
-# 			if numberOfRelations < m then
-# 				numberOfRelations := m;
-# 			fi;
-# 		od;
-# 		numberOfRelations:=numberOfRelations+1;
-# #		Print("There are ", numberOfRelations -1, " (non-identity) relations\n");
-# 		relations := AdjacencyMatricesOfMatrix(M);
-# 		idvals := Set(List([1..sz], t -> M[t][t])) +1;;
-# 		for i in idvals do
-# 			for row in relations[i] do
-# 				if Number(row, t -> t=1)>1 then
-# 					return false;
-# 				fi;
-# 			od;
-# 		od;
-
-# 		markers := List([1 .. numberOfRelations], t -> First([1 .. sz], x -> relations[t][1][x] <>0));
-# #		Print("     Contains the identity\n");
-# 		for mat in relations do
-# 			if not TransposedMat(mat) in relations then
-# 				return false;
-# 			fi;
-# 		od;
-# #		Print("     Relations are symmetric\n");
-# 		if not Set(Set(Sum(relations)))= [ListWithIdenticalEntries(sz,1)] then
-# 			return false;
-# 		fi;
-# #		Print("     Relations sum to one\n");
-# 		for i in [1 .. numberOfRelations] do
-# 				for j in [1 .. numberOfRelations] do
-# 						# Clearly the product with the identity is a linear combination, so no need to check...
-# 						mult := relations[i] * relations[j];
-# 						ps :=[1 .. numberOfRelations];
-# 						for k in [1 .. numberOfRelations] do
-# 							ps[k] := mult[1][markers[k]];;
-# 						od;
-# 						temp := NullMat(sz, sz);;
-# 						for k in [1 .. numberOfRelations] do
-# 							temp := temp + ps[k]*relations[k];
-# 						od;
-# 						if mult <> temp then
-# 							return false;
-# 						fi;
-# 				od;
-# 		od;
-# 		return true;
-# 	end);
 
 
 InstallMethod(FusionScheme,
-			[IsCoherentConfiguration, IsList],
+			[IsHomogeneousCoherentConfiguration, IsList],
 	function( a, fuse )
 		local mat, m, i, j, m2, d, inds;
 		if not [0] in fuse then
@@ -386,19 +304,19 @@ InstallMethod(FusionScheme,
 				mat[i][j]:=inds[m[i][j]+1];
 			od;
 		od;
-		m2 := CoherentConfiguration(mat);
+		m2 := HomogeneousCoherentConfiguration(mat);
 		# set IsFusionScheme := true;
 		return m2;
 	end);
 
 InstallMethod(IntersectionNumber,
-			[IsCoherentConfiguration, IsInt,  IsInt,  IsInt],
+			[IsHomogeneousCoherentConfiguration, IsInt,  IsInt,  IsInt],
 	function( a, i, j, k )
 		return IntersectionMatrices(a)[j+1][i+1, k+1];;
 	end);
 
 InstallMethod(FusionScheme,
-			[IsCoherentConfiguration and IsCommutative, IsList],
+			[IsHomogeneousCoherentConfiguration and IsCommutative, IsList],
 	function( a, fuse )
 		local mat, m, i, j, m2, d, inds, s, NewIntersectionMatrices,
 		u, v, w, h, check, inter, adjMats, rel, assoc_rec;
@@ -453,7 +371,7 @@ InstallMethod(FusionScheme,
 			fi;
 		od;
 		assoc_rec := rec( matrix := mat);
-		m2 := ObjectifyWithAttributes(assoc_rec, TheTypeCoherentConfiguration, AdjacencyMatrices, adjMats,
+		m2 := ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, AdjacencyMatrices, adjMats,
 			IntersectionMatrices, NewIntersectionMatrices);
 		# set IsFusionScheme := true;
 		return m2;
@@ -461,7 +379,7 @@ InstallMethod(FusionScheme,
 
 
 
-InstallMethod(Valencies, " ", [IsCoherentConfiguration], 
+InstallMethod(Valencies, " ", [IsHomogeneousCoherentConfiguration], 
 	function(a)
 		local d, valencies, i;
 		d := ClassOfAssociationScheme(a);
@@ -472,7 +390,7 @@ InstallMethod(Valencies, " ", [IsCoherentConfiguration],
 		return valencies;
 	end);
 
-InstallMethod(IntersectionMatrices, " ", [IsCoherentConfiguration],
+InstallMethod(IntersectionMatrices, " ", [IsHomogeneousCoherentConfiguration],
  	function(m)
 		local sz, d, relations, markers, intersectionMatrices, i, j, k, mult, ps, M;
 	 	M:=RelationMatrix(m);
@@ -494,7 +412,7 @@ end);
 
 
 InstallMethod(IsCommutative,
-			[IsCoherentConfiguration],
+			[IsHomogeneousCoherentConfiguration],
 	function(a)
 		local d, i, j, k;
 		d:=ClassOfAssociationScheme(a);;
@@ -524,7 +442,7 @@ end;
 
  InstallMethod( MatrixOfEigenvalues, 
  	"for IsAssociationScheme",
- 	[ IsCoherentConfiguration ],
+ 	[ IsHomogeneousCoherentConfiguration ],
 	function(m)
 		local inter, eigs, d, feasiblerows, posvals, stopvals, i, row, valencies, wow, stack, options, P, P2, current;;
 
@@ -587,14 +505,14 @@ end;
 
 InstallMethod( DualMatrixOfEigenvalues, 
 	"for IsAssociationScheme",
-	[ IsCoherentConfiguration ],
+	[ IsHomogeneousCoherentConfiguration ],
 	function( a )
 		return Inverse(MatrixOfEigenvalues(a))*Order(a);
 	end );
 
 InstallMethod( MinimalIdempotents, 
 	"for IsAssociationScheme",
-	[ IsCoherentConfiguration],
+	[ IsHomogeneousCoherentConfiguration],
 	function(a)
 		local j, i, mat, idems, d, Q, adjacencymatrices;
 		idems:=[];
@@ -612,7 +530,7 @@ InstallMethod( MinimalIdempotents,
 	end);
 
 
-# InstallMethod( AutomorphismGroup, [IsCoherentConfiguration],
+# InstallMethod( AutomorphismGroup, [IsHomogeneousCoherentConfiguration],
 # function( sch )
 #     local n, edges, colours, c, d, matrix, newedges, newedges2,  
 #     		i, e, f, map, graph, aut, layers, enum, col;
@@ -660,7 +578,7 @@ InstallMethod( MinimalIdempotents,
 #end);
 
 
-InstallMethod( SchemeToGraph, [IsCoherentConfiguration],
+InstallMethod( SchemeToGraph, [IsHomogeneousCoherentConfiguration],
 function( sch )
     local n, colours_for_layer, c, d, matrix, in_nhd, in_nhds,  
     		i, f, map, graph, aut, layers, enum, v;
@@ -706,7 +624,7 @@ function( sch )
 	return[graph, layers];
 end);
 
-InstallMethod( AutomorphismGroup, [IsCoherentConfiguration],
+InstallMethod( AutomorphismGroup, [IsHomogeneousCoherentConfiguration],
 function( sch )
 	local n, gr, aut;
 	    n := Order(sch);
@@ -716,7 +634,7 @@ function( sch )
     return Action(aut,[1..n]);
 end);
 
-InstallMethod(IsIsomorphicScheme, [IsCoherentConfiguration, IsCoherentConfiguration],
+InstallMethod(IsIsomorphicScheme, [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
 	function(A1, A2)
 		local gr1, gr2;;
 		if Order(A1) <> Order(A2) then
@@ -730,7 +648,7 @@ InstallMethod(IsIsomorphicScheme, [IsCoherentConfiguration, IsCoherentConfigurat
 		return IsIsomorphicDigraph(gr1[1], gr2[1], gr1[2], gr2[2]);;
 	end);
 
-InstallOtherMethod( AutomorphismGroup, [IsCoherentConfiguration, IsChar],
+InstallOtherMethod( AutomorphismGroup, [IsHomogeneousCoherentConfiguration, IsChar],
 function( R , h)
     local G, adj, gp, gr, n, x, y, i;    
     if not h = 'H' then
@@ -747,7 +665,7 @@ function( R , h)
     return G;
 end);
 
-InstallOtherMethod( AutomorphismGroup, [IsCoherentConfiguration, IsPosInt],
+InstallOtherMethod( AutomorphismGroup, [IsHomogeneousCoherentConfiguration, IsPosInt],
 function( R , h)
     local G, gp, gr, n, x, y, i, mat, s, edges;    
     if not h = 1 then
@@ -808,7 +726,7 @@ function( R , h)
     return G;
 end);
 
-# InstallMethod( AutomorphismGroup, [IsCoherentConfiguration and IsStronglyRegularGraph],
+# InstallMethod( AutomorphismGroup, [IsHomogeneousCoherentConfiguration and IsStronglyRegularGraph],
 # function( R )
 #     local G, mat, gr, n, i, gp;    
 #     n := Order(R);
@@ -828,7 +746,7 @@ end);
 #     return G;
 # end);
 
-InstallMethod( AutomorphismGroup, [IsCoherentConfiguration and IsStronglyRegularGraph],
+InstallMethod( AutomorphismGroup, [IsHomogeneousCoherentConfiguration and IsStronglyRegularGraph],
 function( R )
     local G, mat, gr, n, i, gp, x, y, s, edges;
     if not "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
@@ -862,7 +780,7 @@ function( R )
     return G;
 end);
 
-InstallMethod( IsPPolynomial, [IsCoherentConfiguration],
+InstallMethod( IsPPolynomial, [IsHomogeneousCoherentConfiguration],
 	function(R)
 	    local i, m, d, gr, n, x, y, g;
 
@@ -872,6 +790,9 @@ InstallMethod( IsPPolynomial, [IsCoherentConfiguration],
 	    g := Group(());
 	    if HasConstructorGroup(R) then
 	    	g := ConstructorGroup(R);
+	    fi;
+	    if HasAutomorphismGroup(R) then
+	    	g := AutomorphismGroup(R);
 	    fi;
 	    for i in [1..d] do
 	        gr := Graph(g, [1..n], OnPoints, function(x,y) return m[x][y] = i; end);
@@ -894,7 +815,7 @@ InstallMethod( IsPPolynomial, [IsCoherentConfiguration],
 
  InstallMethod( ViewObj, 
  	"for IsAssociationScheme",
- 	[ IsCoherentConfiguration],
+ 	[ IsHomogeneousCoherentConfiguration],
  	function( a )
  		if HasIsSymmetricCoherentConfiguration(a) and IsSymmetricCoherentConfiguration(a) then
  			Print( ClassOfAssociationScheme(a), "-class association scheme of order ", Order(a), ".");
@@ -905,14 +826,14 @@ InstallMethod( IsPPolynomial, [IsCoherentConfiguration],
 
 InstallMethod( PrintObj, 
 	"for IsAssociationScheme",
-	[ IsCoherentConfiguration ],
+	[ IsHomogeneousCoherentConfiguration ],
 	function( a )
 		Print(RelationMatrix(a));;
 	end );
 
 InstallMethod( Display, 
 	"for IsAssociationScheme",
-	[ IsCoherentConfiguration],
+	[ IsHomogeneousCoherentConfiguration],
 	function( a )
  		if HasIsSymmetricCoherentConfiguration(a) and IsSymmetricCoherentConfiguration(a) then
  			Print( ClassOfAssociationScheme(a), "-class association scheme of order ", Order(a), ".\n");

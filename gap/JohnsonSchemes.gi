@@ -36,7 +36,7 @@ InstallMethod(JohnsonScheme,
 		local G, H, A;
 	    G := SymmetricGroup(n);
 	    H := Stabiliser(G, [1..k], OnSets);;
-        A := CoherentConfigurationByOrbitals(G, H);
+        A := HomogeneousCoherentConfigurationByOrbitals(G, H);
         SetMatrixOfEigenvalues(A, MatrixOfEigenvaluesOfJohnsonScheme(n, k));
         return A;
 	end);

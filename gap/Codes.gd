@@ -16,7 +16,7 @@
 #!	Returns the inner distribution of a vector v with respect to the adjacency matrices of
 #!	the coherent configuration CC. Note that v must be a vector over R^n where n is
 #!	the order of CC. CC must be commutative.
-DeclareOperation( "InnerDistribution", [IsList, IsCoherentConfiguration]);
+DeclareOperation( "InnerDistribution", [IsList, IsHomogeneousCoherentConfiguration]);
 
 #! @Chapter Functionality
 #! @Section Codes
@@ -26,4 +26,4 @@ DeclareOperation( "InnerDistribution", [IsList, IsCoherentConfiguration]);
 #!	Returns the MacWilliams transform of a vector v with respect to a
 #!	coherent confiiguration CC. Takes either a vector v in R^n and converts it to its
 #!	inner distribution vector first, or takes the inner distribution directly.
-DeclareOperation( "MacWilliamsTransform", [IsList, IsCoherentConfiguration]);
+DeclareOperation( "MacWilliamsTransform", [IsList, IsHomogeneousCoherentConfiguration]);

@@ -10,7 +10,7 @@
 
 
 InstallMethod(InnerDistribution,
-  [IsList, IsCoherentConfiguration],
+  [IsList, IsHomogeneousCoherentConfiguration],
   function(v, sch)
       if not IsCommutative(sch) then
         Error("Must give a commutative coherent configuration.\n");
@@ -22,7 +22,7 @@ InstallMethod(InnerDistribution,
     end);
 
 InstallMethod(MacWilliamsTransform,
-  [IsList, IsCoherentConfiguration],
+  [IsList, IsHomogeneousCoherentConfiguration],
   function(v, sch)
       if not IsCommutative(sch) then
         Error("Must give a commutative coherent configuration.\n");

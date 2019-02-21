@@ -8,7 +8,7 @@
 ##
 #############################################################################
 
-InstallMethod( ConstructorGroup, [ IsCoherentConfiguration ], 
+InstallMethod( ConstructorGroup, [ IsHomogeneousCoherentConfiguration ], 
 	function( sch )
 	if HasConstructorGroup(sch) then
 		return ConstructorGroup(sch);
@@ -17,7 +17,7 @@ InstallMethod( ConstructorGroup, [ IsCoherentConfiguration ],
 	fi;
  end);
 
-InstallMethod( IsCoherentConfigurationByOrbitals, [ IsCoherentConfiguration ], 
+InstallMethod( IsHomogeneousCoherentConfigurationByOrbitals, [ IsHomogeneousCoherentConfiguration ], 
 	function( sch )
     local n, aut;
  	aut := AutomorphismGroup( sch );
@@ -26,7 +26,7 @@ InstallMethod( IsCoherentConfigurationByOrbitals, [ IsCoherentConfiguration ],
  end);
 
 
-InstallMethod(CoherentConfigurationByOrbitals,
+InstallMethod(HomogeneousCoherentConfigurationByOrbitals,
 			[IsPermGroup],
 	function( g_perm )
 		local stab, sz, points, orbs, row1, i, charvec, rts, pos, mat, assoc_rec;
@@ -51,10 +51,10 @@ InstallMethod(CoherentConfigurationByOrbitals,
 			mat[pos]:=Permuted(row1, i);
 		od;
 		assoc_rec := rec( matrix := mat);
-		return ObjectifyWithAttributes(assoc_rec, TheTypeCoherentConfiguration, IsCoherentConfigurationByOrbitals, true, ConstructorGroup, g_perm);;
+		return ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfigurationByOrbitals, true, ConstructorGroup, g_perm);;
 	end);
 
-InstallMethod(CoherentConfigurationByOrbitals,
+InstallMethod(HomogeneousCoherentConfigurationByOrbitals,
 			[IsGroup, IsGroup],
 	function(G, H)
 		local omega, g_perm;
@@ -68,12 +68,12 @@ InstallMethod(CoherentConfigurationByOrbitals,
 			Print("G must act transitively on G/H\n");
 			return fail;
 		fi;
-		return CoherentConfigurationByOrbitals(g_perm);
+		return HomogeneousCoherentConfigurationByOrbitals(g_perm);
 	end );
 
 InstallMethod( MinimalIdempotents, 
 	"for IsAssociationScheme",
-	[ IsCoherentConfiguration and IsCoherentConfigurationByOrbitals],
+	[ IsHomogeneousCoherentConfiguration and IsHomogeneousCoherentConfigurationByOrbitals],
 	function( a )
 		local g_perm, Q, row1, stab, sz, points, d, i, charvec, rts, pos, mat, mats, j, row, rows, id;
 		if ConstructorGroup(a) <> false then

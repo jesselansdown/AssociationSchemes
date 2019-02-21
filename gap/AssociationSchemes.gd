@@ -14,18 +14,18 @@
 # AssociationSchemes: A GAP package for working with association schemes
 #
 
-DeclareCategory( "IsCoherentConfiguration", IsObject );
+DeclareCategory( "IsHomogeneousCoherentConfiguration", IsObject );
 
-DeclareRepresentation( "IsCoherentConfigurationRep",
-                       IsCoherentConfiguration and IsAttributeStoringRep,
+DeclareRepresentation( "IsHomogeneousCoherentConfigurationRep",
+                       IsHomogeneousCoherentConfiguration and IsAttributeStoringRep,
                        [ ] );
 
-BindGlobal( "CoherentConfigurationFamily",
-        NewFamily( "CoherentConfigurationFamily" ) );
+BindGlobal( "HomogeneousCoherentConfigurationFamily",
+        NewFamily( "HomogeneousCoherentConfigurationFamily" ) );
 
-BindGlobal( "TheTypeCoherentConfiguration",
-        NewType( CoherentConfigurationFamily,
-                IsCoherentConfigurationRep ) );
+BindGlobal( "TheTypeHomogeneousCoherentConfiguration",
+        NewType( HomogeneousCoherentConfigurationFamily,
+                IsHomogeneousCoherentConfigurationRep ) );
 
 #BindGlobal("TheTypeAssociationScheme", NewType( AssociationSchemeFamily, IsAssociationScheme ));
 
@@ -37,7 +37,7 @@ BindGlobal( "TheTypeCoherentConfiguration",
 #!	Takes the relationship matrix, $M$, describing a coherent configuration and returns a CoherentConfiguration object.
 #!	The matrix $M = \sum_{i=0}^d i A_i$, where $A_i$ are the adjacency matrices describing a coherent configuration.
 #!	Checks that the matrix satisfies the coherent configuration axioms.
-DeclareOperation( "CoherentConfiguration", [ IsMatrix ] );
+DeclareOperation( "HomogeneousCoherentConfiguration", [ IsMatrix ] );
 
 #! @Chapter Functionality
 #! @Section Constructor Methods
@@ -46,7 +46,7 @@ DeclareOperation( "CoherentConfiguration", [ IsMatrix ] );
 #! @Description
 #!	Same as CoherentConfiguration but without performing any checks. Use this method only if you know with certainty
 #!	that $M$ describes a coherent configuration.
-DeclareOperation( "CoherentConfigurationNC", [ IsMatrix ] );
+DeclareOperation( "HomogeneousCoherentConfigurationNC", [ IsMatrix ] );
 
 #! @Chapter Functionality
 #! @Section Matrices describing coherent configurations
@@ -55,15 +55,7 @@ DeclareOperation( "CoherentConfigurationNC", [ IsMatrix ] );
 #! @Description
 #!	Takes a coherent configuration and returns the underlying relation matrix $M = \sum_{i=0}^d i A_i$, where $A_i$ are
 #!	the adjacency matrices of the coherent configuration
-DeclareOperation( "RelationMatrix", [ IsCoherentConfiguration ] );
-
-#! @Chapter Functionality
-#! @Section Properties of coherent configurations
-#! @Arguments CC
-#! @Returns true or false
-#! @Description
-#!	Checks if the input is a homogeneous coherent configuration.
-DeclareProperty( "IsHomogeneous", IsCoherentConfiguration );
+DeclareOperation( "RelationMatrix", [ IsHomogeneousCoherentConfiguration ] );
 
 #! @Chapter Functionality
 #! @Section Properties of coherent configurations
@@ -71,7 +63,7 @@ DeclareProperty( "IsHomogeneous", IsCoherentConfiguration );
 #! @Returns true or false
 #! @Description
 #!	Checks if the input is a commutative coherent configuration.
-DeclareProperty( "IsCommutative", IsCoherentConfiguration );
+DeclareProperty( "IsCommutative", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Properties of coherent configurations
@@ -79,7 +71,15 @@ DeclareProperty( "IsCommutative", IsCoherentConfiguration );
 #! @Returns true or false
 #! @Description
 #!	Checks if the input is a symmetric coherent configuration.
-DeclareProperty( "IsSymmetricCoherentConfiguration", IsCoherentConfiguration );
+DeclareProperty( "IsSymmetricCoherentConfiguration", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Properties of coherent configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Alias for IsSymmetricCoherentConfiguration
+DeclareOperation( "IsAssociationScheme", [IsHomogeneousCoherentConfiguration] );
 
 #! @Chapter Functionality
 #! @Section Attributes of coherent configurations
@@ -87,7 +87,7 @@ DeclareProperty( "IsSymmetricCoherentConfiguration", IsCoherentConfiguration );
 #! @Returns d
 #! @Description
 #!	Returns $d$ for a $d$-class association scheme.
-DeclareAttribute( "ClassOfAssociationScheme", IsCoherentConfiguration );
+DeclareAttribute( "ClassOfAssociationScheme", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Properties of coherent configurations
@@ -95,7 +95,7 @@ DeclareAttribute( "ClassOfAssociationScheme", IsCoherentConfiguration );
 #! @Returns true or false
 #! @Description
 #!	Check if a coherent configuration is a strongly regular graph.
-DeclareProperty( "IsStronglyRegularGraph", IsCoherentConfiguration );
+DeclareProperty( "IsStronglyRegularGraph", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Matrices describing coherent configurations
@@ -104,12 +104,12 @@ DeclareProperty( "IsStronglyRegularGraph", IsCoherentConfiguration );
 #! @Description
 #!	Returns a list $L$, where the $i$-th entry of $L$ is the adjacency matrix $A_{i-1}$,
 #!	where $(A_i)_{xy} =1$ if $(x,y) \in R_i$ and $(A_i)_{xy} =0$ otherwise.
-DeclareAttribute( "AdjacencyMatrices", IsCoherentConfiguration );
+DeclareAttribute( "AdjacencyMatrices", IsHomogeneousCoherentConfiguration );
 
 DeclareOperation( "AdjacencyMatricesOfMatrix", [IsMatrix] );
 DeclareOperation( "IsAssociationSchemeMatrix", [ IsMatrix ]);
 DeclareOperation( "IsHomogeneousCoherentConfigurationMatrix", [ IsMatrix ]);
-DeclareOperation( "IsCoherentConfigurationMatrix", [ IsMatrix ]);
+
 
 #! @Chapter Functionality
 #! @Section Attributes of coherent configurations
@@ -117,7 +117,7 @@ DeclareOperation( "IsCoherentConfigurationMatrix", [ IsMatrix ]);
 #! @Returns n
 #! @Description
 #!	Returns the order $n$ (number of vertices) of the coherent configuration.
-DeclareAttribute( "Order", IsCoherentConfiguration );
+DeclareAttribute( "Order", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Constructor Methods
@@ -126,7 +126,7 @@ DeclareAttribute( "Order", IsCoherentConfiguration );
 #! @Description
 #!	Takes a $d$-class coherent configuration CC and returns a fusion scheme corresponding to L,
 #!	where L is a partion of $\{0, \ldots, d\}$. Returns fail if $L$ is not a valid partition.
-DeclareOperation( "FusionScheme", [IsCoherentConfiguration, IsList]);
+DeclareOperation( "FusionScheme", [IsHomogeneousCoherentConfiguration, IsList]);
 
 #! @Chapter Functionality
 #! @Section Constructor Methods
@@ -134,7 +134,7 @@ DeclareOperation( "FusionScheme", [IsCoherentConfiguration, IsList]);
 #! @Returns $p_{ij}^k$
 #! @Description
 #!	Returns the intersection number $p_{ij}^k$ for a coherent configuration CC.
-DeclareOperation( "IntersectionNumber", [IsCoherentConfiguration, IsInt, IsInt, IsInt]);
+DeclareOperation( "IntersectionNumber", [IsHomogeneousCoherentConfiguration, IsInt, IsInt, IsInt]);
 
 
 #! @Chapter Functionality
@@ -143,7 +143,7 @@ DeclareOperation( "IntersectionNumber", [IsCoherentConfiguration, IsInt, IsInt, 
 #! @Returns L
 #! @Description
 #!	Returns a list L of valencies of a coherent configuration CC. The $i$-th entry of $L$ is $k_{i-1}$. (Check this for nonsymmetric CCs)
-DeclareAttribute( "Valencies", IsCoherentConfiguration );
+DeclareAttribute( "Valencies", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Matrices describing coherent configurations
@@ -152,7 +152,7 @@ DeclareAttribute( "Valencies", IsCoherentConfiguration );
 #! @Description
 #!	Returns a list L of the intersection matrices of a coherent configuration $CC$, where the $i$-th entry of $L$
 #!	is $B_{i-1}$ and $B_{i}_{jk} = p_{ji}^k$.
-DeclareAttribute("IntersectionMatrices", IsCoherentConfiguration);
+DeclareAttribute("IntersectionMatrices", IsHomogeneousCoherentConfiguration);
 
 #! @Chapter Functionality
 #! @Section Matrices describing coherent configurations
@@ -160,7 +160,7 @@ DeclareAttribute("IntersectionMatrices", IsCoherentConfiguration);
 #! @Returns P
 #! @Description
 #!	Returns a the matrix of eigenvalues (or character table), $P$, for a coherent configuration CC.
-DeclareAttribute( "MatrixOfEigenvalues", IsCoherentConfiguration );
+DeclareAttribute( "MatrixOfEigenvalues", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Matrices describing coherent configurations
@@ -168,7 +168,7 @@ DeclareAttribute( "MatrixOfEigenvalues", IsCoherentConfiguration );
 #! @Returns Q
 #! @Description
 #!	Returns a the dual matrix of eigenvalues, $Q$, for a coherent configuration CC.
-DeclareAttribute( "DualMatrixOfEigenvalues", IsCoherentConfiguration );
+DeclareAttribute( "DualMatrixOfEigenvalues", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Matrices describing coherent configurations
@@ -177,7 +177,7 @@ DeclareAttribute( "DualMatrixOfEigenvalues", IsCoherentConfiguration );
 #! @Description
 #!	Returns a list $L$ which is a basis of minimal idempotents for the adjacency algebra of a coherent configuration CC.
 #!	The $i$-th entry of $L$ is $E_{i-1}$.
-DeclareAttribute( "MinimalIdempotents", IsCoherentConfiguration );
+DeclareAttribute( "MinimalIdempotents", IsHomogeneousCoherentConfiguration );
 
 DeclareOperation("BinaryExpansion", [IsPosInt]);
 
@@ -189,7 +189,7 @@ DeclareOperation("BinaryExpansion", [IsPosInt]);
 #!	Returns the automorphism group $G$ of the coherent configuration CC.
 #!	$G$ is a permutation group acting on the index set of the veritices.
 #!	If $G$ is not already known and must be computed, then the package "Digraphs" is required.
-DeclareAttribute( "AutomorphismGroup", IsCoherentConfiguration );
+DeclareAttribute( "AutomorphismGroup", IsHomogeneousCoherentConfiguration );
 
 
 #! @Chapter Functionality
@@ -198,8 +198,8 @@ DeclareAttribute( "AutomorphismGroup", IsCoherentConfiguration );
 #! @Returns G
 #! @Description
 #!	Returns the coherent configuration CC is P-polynomial.
-DeclareProperty( "IsPPolynomial", IsCoherentConfiguration );
+DeclareProperty( "IsPPolynomial", IsHomogeneousCoherentConfiguration );
 
 
-DeclareOperation("SchemeToGraph", [IsCoherentConfiguration]);
-DeclareOperation("IsIsomorphicScheme", [IsCoherentConfiguration, IsCoherentConfiguration]);
+DeclareOperation("SchemeToGraph", [IsHomogeneousCoherentConfiguration]);
+DeclareOperation("IsIsomorphicScheme", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);

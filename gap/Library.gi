@@ -28,7 +28,7 @@ InstallMethod(HomogeneousCoherentConfiguration,
 		fi;
 		mat:=EvalString(ReadAll(strm));;
 		CloseStream(strm);;
-		return CoherentConfiguration(mat);
+		return HomogeneousCoherentConfiguration(mat);
 	end );
 
 InstallMethod(NumberOfHomogeneousCoherentConfigurations,
