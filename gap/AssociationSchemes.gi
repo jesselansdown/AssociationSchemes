@@ -581,7 +581,7 @@ InstallMethod( MinimalIdempotents,
 InstallMethod( SchemeToGraph, [IsHomogeneousCoherentConfiguration],
 function( sch )
     local n, colours_for_layer, c, d, matrix, in_nhd, in_nhds,  
-    		i, f, map, graph, aut, layers, enum, v, cycle, i, e;
+    		i, f, map, graph, aut, layers, enum, v, cycle, e;
     if not "digraphs" in RecNames(GAPInfo.PackagesLoaded) then
        Error("You must load the Digraphs package\n");
     fi;
