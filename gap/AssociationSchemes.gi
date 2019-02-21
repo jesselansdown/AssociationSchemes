@@ -892,7 +892,13 @@ InstallMethod( IsPPolynomial, [IsCoherentConfiguration],
  	"for IsAssociationScheme",
  	[ IsCoherentConfiguration],
  	function( a )
- 		Print( ClassOfAssociationScheme(a), "-class association scheme of order ", Order(a), ".");
+ 		Print( ClassOfAssociationScheme(a), "-class ");
+ 		if IsSymmetricCoherentConfiguration(a) then
+	 		Print("association scheme ");
+	 	else
+	 		Print("homogeneous coherent configuration ");
+	 	fi;
+	 	Print("of order ", Order(a), ".");
  	end );
 
 InstallMethod( PrintObj, 
@@ -923,7 +929,7 @@ InstallMethod( Display,
  			Print("  P-polynomial: ", IsPPolynomial(a), "\n");
  		fi;
  		if HasIsSchurian(a) then
- 			Print("  Shurian: ", IsSchurian(a), "\n");
+ 			Print("  Schurian: ", IsSchurian(a), "\n");
  		fi;
  		if HasMatrixOfEigenvalues(a) then
  			if MatrixOfEigenvalues(a) <> fail then
