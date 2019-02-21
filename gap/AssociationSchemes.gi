@@ -665,66 +665,66 @@ function( R , h)
     return G;
 end);
 
-InstallOtherMethod( AutomorphismGroup, [IsHomogeneousCoherentConfiguration, IsPosInt],
-function( R , h)
-    local G, gp, gr, n, x, y, i, mat, s, edges;    
-    if not h = 1 then
-    	return fail;
-    fi;
-    mat:=RelationMatrix(R);;
-    n := Order(R);
-   	Print(".\n");
-   	edges:=[];
-   	for x in [1 .. n] do
-		if IsSymmetricCoherentConfiguration(R) then
-	   		s := x+1;
-	   	else
-	   		s := 1;
-	   	fi;
-   		for y in [s .. n] do
-   			if mat[x][y] = 1 then
-   				Add(edges, [x,y]);
-   			fi;
-   		od;
-   	od;
-    Print("..\n");
-	if IsSymmetricCoherentConfiguration(R) then
-	    gr := NautyGraph(edges);;
-	else
-	    gr := NautyDiGraph(edges);;
-	fi;
-    Print("...\n");
-    G := AutomorphismGroup(gr);
-    Print("....\n");
-    for i in [4..ClassOfAssociationScheme(R)+1] do
-    	Print(".\n");
-	   	edges:=[];
-	   	for x in [1 .. n] do
-	   		if IsSymmetricCoherentConfiguration(R) then
-	   			s := x+1;
-	   		else
-	   			s := 1;
-	   		fi;
-	   		for y in [s .. n] do
-	   			if mat[x][y] = i-1 then
-	   				Add(edges, [x,y]);
-	   			fi;
-	   		od;
-	   	od;
-	    Print("..\n");
-		if IsSymmetricCoherentConfiguration(R) then
-		    gr := NautyGraph(edges);;
-		else
-		    gr := NautyDiGraph(edges);;
-		fi;
-    	Print("...\n");
-        gp := AutomorphismGroup(gr);
-    	Print("....\n");
-        G := Intersection(G, gp);
-    	Print(".....\n");
-    od;
-    return G;
-end);
+# InstallOtherMethod( AutomorphismGroup, [IsHomogeneousCoherentConfiguration, IsPosInt],
+# function( R , h)
+#     local G, gp, gr, n, x, y, i, mat, s, edges;    
+#     if not h = 1 then
+#     	return fail;
+#     fi;
+#     mat:=RelationMatrix(R);;
+#     n := Order(R);
+#    	Print(".\n");
+#    	edges:=[];
+#    	for x in [1 .. n] do
+# 		if IsSymmetricCoherentConfiguration(R) then
+# 	   		s := x+1;
+# 	   	else
+# 	   		s := 1;
+# 	   	fi;
+#    		for y in [s .. n] do
+#    			if mat[x][y] = 1 then
+#    				Add(edges, [x,y]);
+#    			fi;
+#    		od;
+#    	od;
+#     Print("..\n");
+# 	if IsSymmetricCoherentConfiguration(R) then
+# 	    gr := NautyGraph(edges);;
+# 	else
+# 	    gr := NautyDiGraph(edges);;
+# 	fi;
+#     Print("...\n");
+#     G := AutomorphismGroup(gr);
+#     Print("....\n");
+#     for i in [4..ClassOfAssociationScheme(R)+1] do
+#     	Print(".\n");
+# 	   	edges:=[];
+# 	   	for x in [1 .. n] do
+# 	   		if IsSymmetricCoherentConfiguration(R) then
+# 	   			s := x+1;
+# 	   		else
+# 	   			s := 1;
+# 	   		fi;
+# 	   		for y in [s .. n] do
+# 	   			if mat[x][y] = i-1 then
+# 	   				Add(edges, [x,y]);
+# 	   			fi;
+# 	   		od;
+# 	   	od;
+# 	    Print("..\n");
+# 		if IsSymmetricCoherentConfiguration(R) then
+# 		    gr := NautyGraph(edges);;
+# 		else
+# 		    gr := NautyDiGraph(edges);;
+# 		fi;
+#     	Print("...\n");
+#         gp := AutomorphismGroup(gr);
+#     	Print("....\n");
+#         G := Intersection(G, gp);
+#     	Print(".....\n");
+#     od;
+#     return G;
+# end);
 
 # InstallMethod( AutomorphismGroup, [IsHomogeneousCoherentConfiguration and IsStronglyRegularGraph],
 # function( R )
