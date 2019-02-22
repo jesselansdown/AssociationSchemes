@@ -9,6 +9,8 @@
 #############################################################################
 
 
+DeclareOperation( "AllHomogeneousCoherentConfigurations", [ IsPosInt ] );
+
 #! @Chapter Functionality
 #! @Section Constructor Methods
 #! @Arguments n, k
