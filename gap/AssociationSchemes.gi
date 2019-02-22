@@ -872,9 +872,9 @@ InstallMethod(AllPPolynomialOrderings,
  	[ IsHomogeneousCoherentConfiguration],
  	function( a )
  		if HasIsSymmetricCoherentConfiguration(a) and IsSymmetricCoherentConfiguration(a) then
- 			Print( ClassOfAssociationScheme(a), "-class association scheme of order ", Order(a), ".");
+ 			Print( ClassOfAssociationScheme(a), "-class association scheme of order ", Order(a));
  		else
- 			Print( ClassOfAssociationScheme(a), "-class homogeneous coherent configuration of order ", Order(a), ".");
+ 			Print( ClassOfAssociationScheme(a), "-class homogeneous coherent configuration of order ", Order(a));
  		fi;
  	end );
 
