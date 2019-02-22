@@ -11,8 +11,8 @@
 InstallMethod(HomogeneousCoherentConfiguration,
 			[IsPosInt, IsPosInt],
 	function(n, k)
-		local filename, path, allpaths, strm, mat;
-		filename := Concatenation("AssociationSchemeWithSmallVertices_", String(n), "_", String(k), ".g");
+		local filename, path, allpaths, strm, mat, A, P, ct, info;
+		filename := Concatenation("HomogeneousCoherentConfigurationWithSmallVertices_", String(n), "_", String(k), ".g");
 		path := "pkg/AssociationSchemes/library/";
         allpaths := List( GAPInfo.RootPaths, p -> Concatenation(p, path) );
         allpaths := Filtered( allpaths, IsDirectoryPath );
@@ -26,9 +26,14 @@ InstallMethod(HomogeneousCoherentConfiguration,
 			Print("No such association scheme at position ", String(k), " in the library for oder ", String(n), "\n");
 			return fail;
 		fi;
-		mat:=EvalString(ReadAll(strm));;
+		info:=EvalString(ReadAll(strm));;
 		CloseStream(strm);;
-		return HomogeneousCoherentConfiguration(mat);
+		mat := info.matrix;;
+		ct := info.ct;;
+		P:=ct{[1..Size(ct)]}{[1..Size(ct)]};;
+		A := HomogeneousCoherentConfiguration(mat);;
+		SetMatrixOfEigenvalues(A, P);;
+		return A;
 	end );
 
 InstallMethod(NumberOfHomogeneousCoherentConfigurations,
@@ -78,5 +83,5 @@ InstallMethod(AvailableHomogeneousCoherentConfigurations,
 		fi;
 		tab:=EvalString(ReadAll(strm));;
 		CloseStream(strm);;
-		return List(RecNames(tab), t -> Int(t));
+		return Set(RecNames(tab), t -> Int(t));
 	end );
