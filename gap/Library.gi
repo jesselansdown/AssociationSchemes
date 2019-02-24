@@ -53,7 +53,7 @@ InstallMethod(HomogeneousCoherentConfiguration,
 		fi;
 
 		A := HomogeneousCoherentConfigurationNC(as[k]);;
-		SetMatrixOfEigenvalues(A, ct[k]);;
+		SetMatrixOfEigenvalues(A, ct[k]{[1..Size(ct[k])]}{[1..Size(ct[k][1])-1]});;
 
 		return A;
 	end );
@@ -95,7 +95,7 @@ InstallMethod(AllHomogeneousCoherentConfigurations,
 
 		out := List(as, t -> HomogeneousCoherentConfigurationNC(t));;
 		for i in [1 .. Size(as)] do
-			SetMatrixOfEigenvalues(out[i], ct[i]);;
+			SetMatrixOfEigenvalues(out[i], ct[i]{[1..Size(ct[i])]}{[1..Size(ct[i][1])-1]});;
 		od;
 
 		return out;
