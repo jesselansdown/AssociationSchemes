@@ -860,6 +860,47 @@ InstallMethod(AllPPolynomialOrderings,
     end);
 
 
+
+InstallMethod(IsCharacterTableOfHomogeneousCoherentConfiguration,
+			[IsHomogeneousCoherentConfiguration, IsMatrix],
+	function(a, Q2)
+        # Find minimal idempotents of the intersection matrix
+        # Check that they are actually minimal idempotents
+        # The intersection algebra is isomorphic to the Bose-Mesner algebra
+        # The adjacency matrices are in bijection with the intersection matrices.
+        # Note: This assumes that we can construct the Bose-Mesner algebra, i.e commutative
+        local j, i, mat, idems, d, Q, adjacencymatrices;
+        if not Size(Q2) = Size(Q2[1]) then
+            Print("This method is only for square matrices (corresponding to commutative schemes)\n");
+            return fail;
+        fi;
+        idems:=[];
+        d := ClassOfAssociationScheme(a);
+        Q := Q2/Order(a);
+        adjacencymatrices := IntersectionMatrices(a);;
+        for j in [1 .. d+1] do
+            mat:=Q[1][j]*adjacencymatrices[1];;
+            for i in [2 .. d+1] do
+                mat := mat + Q[i][j]*adjacencymatrices[i];;
+            od;
+            Add(idems, mat);
+        od;
+        for i in [1 .. d+1] do
+            for j in [1 .. d+1] do
+                if i <> j then
+                    if not IsZero(idems[i]*idems[j]) then
+                        return false;
+                    fi;
+                else
+                    if not (idems[i]*idems[j]=idems[i]) then
+                        return false;
+                    fi;
+                fi;
+            od;
+        od;
+        return true;
+   	end );
+
 ###################
 #
 # Display methods

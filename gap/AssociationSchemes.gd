@@ -210,3 +210,5 @@ DeclareAttribute( "AllPPolynomialOrderings", IsHomogeneousCoherentConfiguration 
 
 DeclareOperation("SchemeToGraph", [IsHomogeneousCoherentConfiguration]);
 DeclareOperation("IsIsomorphicScheme", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
+
+DeclareOperation( "IsCharacterTableOfHomogeneousCoherentConfiguration", [ IsHomogeneousCoherentConfiguration, IsMatrix ] );
