@@ -78,7 +78,6 @@ InstallMethod(ConvertToRootOfUnity,
     Remove(valencies, 1);;
 
     inter:=IntersectionMatrices(m);
-    inter := IntersectionMatrices(A);
     eigs := List(inter, SpectrumOfRealMatrix);
     eigs := List(eigs, t -> List(t, x -> ConvertToRootOfUnity(x)));
     Remove(eigs,1);
