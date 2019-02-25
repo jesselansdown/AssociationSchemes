@@ -458,7 +458,7 @@ end;
 
 		posvals := ListWithIdenticalEntries(d, 1);;
 		stopvals := List(eigs, Size);;
-		stopvals[d]:=stopvals[d];
+	    posvals[1]:=0;
 		while posvals <> stopvals do
 			posvals[1]:=posvals[1]+1;
 			for i in [1.. d] do
@@ -493,7 +493,9 @@ end;
 				P{[2..d+1]}{[2..d+1]}:=current;
 				P2 := TransposedMat(P);;
 				if ForAll([1 .. d], t -> ForAll(eigs[t], x -> x in P2[t+1])) then
-					return P;
+		         	if IsCharacterTableOfHomogeneousCoherentConfiguration(m, P) then
+						return P;
+				 	fi;
 				fi;
 			fi;
 		od;
