@@ -428,24 +428,25 @@ InstallMethod(IsCommutative,
 		return true;
 	end );
 
-__orthogonality_check := function(thing, valencies)
-	local i;
-	for i in [1 .. Size(thing)-1] do
-		if not Sum(List([1..Size(thing[1])], t -> thing[i][t]*thing[Size(thing)][t]/valencies[t] ))=-1 then
-			return false;
-		fi;
-	od;
-	# also put the orthogonal relation with itself? This requires m_i
-	return true;
-end;
+
 
 
  InstallMethod( MatrixOfEigenvalues, 
  	"for IsAssociationScheme",
  	[ IsHomogeneousCoherentConfiguration ],
 	function(m)
-		local inter, eigs, d, feasiblerows, posvals, stopvals, i, row, valencies, wow, stack, options, P, P2, current;;
+		local orthogonality_check, inter, eigs, d, feasiblerows, posvals, stopvals, i, row, valencies, wow, stack, options, P, P2, current;;
 
+		orthogonality_check := function(thing, valencies)
+			local i;
+			for i in [1 .. Size(thing)-1] do
+				if not Sum(List([1..Size(thing[1])], t -> thing[i][t]*thing[Size(thing)][t]/valencies[t] ))=-1 then
+					return false;
+				fi;
+			od;
+			# also put the orthogonal relation with itself? This requires m_i
+			return true;
+		end;
 		d:=ClassOfAssociationScheme(m);
 		valencies:=ShallowCopy(Valencies(m));
 		Remove(valencies, 1);;
@@ -484,7 +485,7 @@ end;
 			#	if ok, then check the column orthogonality
 			#	Any other checks? Gives a valid Q matrix?
 			options:=List(feasiblerows, t -> Concatenation(current, [t]) );;
-			options:=Filtered(options, t -> __orthogonality_check(t, valencies));
+			options:=Filtered(options, t -> orthogonality_check(t, valencies));
 			Append(stack, options);
 			else
 				P:=NullMat(d+1, d+1);
