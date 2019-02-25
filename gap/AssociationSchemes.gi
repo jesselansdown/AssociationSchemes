@@ -447,11 +447,19 @@ InstallMethod(IsCommutative,
 			# also put the orthogonal relation with itself? This requires m_i
 			return true;
 		end;
+
 		d:=ClassOfAssociationScheme(m);
+		inter:=IntersectionMatrices(m);
+		if Size(CentralIdempotentsOfAlgebra(Algebra(Rationals, inter))) <> d then
+			# This method only works for rational eigenvalues, with d characters.
+			# I.e some non-commutative schemes, or schemes with non-rational eigenvalues
+			# must be tackled with a different method
+			return fail;
+		fi;
+
 		valencies:=ShallowCopy(Valencies(m));
 		Remove(valencies, 1);;
 
-		inter:=IntersectionMatrices(m);
 		eigs:=List(inter, t ->  Eigenvalues(Rationals,t));
 		Remove(eigs,1);
 
