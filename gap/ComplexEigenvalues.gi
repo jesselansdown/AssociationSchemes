@@ -24,10 +24,14 @@ InstallMethod(ConvertToRootOfUnity,
         return 0;
       fi;
 
+      if close(x[1], Float(Int(Round(x[1])))) and close(x[2], Float(Int(Round(x[2])))) then
+        return Int(Round(x[1])) + Int(Round(x[2]))*E(4);
+      fi;
+
       pi:=3.141592;
 
       r1:=Sqrt(x[1]^2 + x[2]^2);
-      r2:=Sqrt(Rat(x[1]^2 + x[2]^2));
+      r2:=Sqrt(Int(Round(x[1]^2 + x[2]^2)));
       x2:=x/r1;
       val := Asin(x2[2])/pi;
       if x2[1] < 0. then
