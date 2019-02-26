@@ -434,18 +434,26 @@ InstallMethod(IsCommutative,
  	[ IsHomogeneousCoherentConfiguration ],
 	function(A)
 		# This method assumes that the number of characters is d+1. This is true for commutative CCs.
-		local inter, alg, idems, reps, P1, k, i, valencies, d, P2;
+		local inter, alg, idems, reps, P1, k, i, valencies, d, P2, CyclotomicLimit;
 		inter:=IntersectionMatrices(A);
 		alg:=Algebra(Rationals, inter);;
 		idems:=CentralIdempotentsOfAlgebra(alg);;
 		d:=ClassOfAssociationScheme(A);;
+		CyclotomicLimit := 15;
 		if Size(idems) <> d+1 then
-			for i in [3 .. 100] do
+			i:=3;
+			while i <= CyclotomicLimit do
 				alg:=Algebra(CF(i), inter);;
 				idems:=CentralIdempotentsOfAlgebra(alg);;
 				if Size(idems) = d+1 then
 					break;
 				fi;
+				if i = CyclotomicLimit then
+					Error("Reached cyclotomic field limit.\n\n
+						You can increase this limit and continue by typing 'return;'\n\n");
+					CyclotomicLimit := CyclotomicLimit + 10;
+				fi;
+				i:=i+1;
 			od;
 		fi;
 		if Size(idems) <> d+1 then
