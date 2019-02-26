@@ -453,7 +453,9 @@ InstallMethod(IsCommutative,
 			n:=n+1;
 		od;
 		if trigger then
-			Print("Correct field found. Attempting to construct character table. This may be slow.\n");
+			# This is printed only if the error message is displaayed and the field is large
+			# warns the user that it will be slow, but also indicates that it is doing something productive.
+			Print("Correct field found: CT(", n,"). Attempting to construct character table. This may be slow.\n");
 		fi;
 		# If polys is empty, then all are reducible polynomials, and this returns 1.
 		alg:=Algebra(CF(n), inter);;
