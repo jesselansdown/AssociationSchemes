@@ -434,30 +434,26 @@ InstallMethod(IsCommutative,
  	[ IsHomogeneousCoherentConfiguration ],
 	function(A)
 		# This method assumes that the number of characters is d+1. This is true for commutative CCs.
-		local inter, alg, idems, reps, P1, k, i, valencies, d, P2, CyclotomicLimit;
+		local inter, alg, idems, reps, P1, k, i, valencies, d, P2, polys, n, CyclotomicLimit;
 		inter:=IntersectionMatrices(A);
-		alg:=Algebra(Rationals, inter);;
-		idems:=CentralIdempotentsOfAlgebra(alg);;
 		d:=ClassOfAssociationScheme(A);;
+		polys := Filtered(Set(Union(List(inter, t -> Factors(MinimalPolynomial(t))))), t -> Degree(t)=2);
+		n:=1;
 		CyclotomicLimit := 15;
+		while n <= CyclotomicLimit do
+			if ForAll(polys, t -> RootsOfPolynomial(CF(n),t) <> []) then
+				break;
+			fi;
+			if n = CyclotomicLimit then
+				Error("Reached cyclotomic field limit.\n\n You can increase this limit and continue by typing 'return;'\n\n");
+				CyclotomicLimit := CyclotomicLimit*2;
+			fi;
+			n:=n+1;
+		od;
+		# If polys is empty, then all are reducible polynomials, and this returns 1.
+		alg:=Algebra(CF(n), inter);;
+		idems:=CentralIdempotentsOfAlgebra(alg);;
 		if Size(idems) <> d+1 then
-			i:=3;
-			while i <= CyclotomicLimit do
-				alg:=Algebra(CF(i), inter);;
-				idems:=CentralIdempotentsOfAlgebra(alg);;
-				if Size(idems) = d+1 then
-					break;
-				fi;
-				if i = CyclotomicLimit then
-					Error("Reached cyclotomic field limit.\n\nYou can increase this limit and continue by typing 'return;'\n\n");
-					CyclotomicLimit := CyclotomicLimit + 10;
-				fi;
-				i:=i+1;
-			od;
-		fi;
-		if Size(idems) <> d+1 then
-			Print("Reached cyclotomic field limit. Either eigenvalues are not cyclotomic, or the limit needs to be increased.\n");
-			# Perhaps put an error statement, where the user can "return" to increase the limit, or "quit" to exit
 			return fail;
 		fi;
 		reps:=List(inter, t -> t[1]);;
