@@ -429,87 +429,114 @@ InstallMethod(IsCommutative,
 	end );
 
 
-
-
  InstallMethod( MatrixOfEigenvalues, 
  	"for IsAssociationScheme",
  	[ IsHomogeneousCoherentConfiguration ],
-	function(m)
-		local orthogonality_check, inter, eigs, d, feasiblerows, posvals, stopvals, i, row, valencies, wow, stack, options, P, P2, current;;
-
-		orthogonality_check := function(thing, valencies)
-			local i;
-			for i in [1 .. Size(thing)-1] do
-				if not Sum(List([1..Size(thing[1])], t -> thing[i][t]*thing[Size(thing)][t]/valencies[t] ))=-1 then
-					return false;
-				fi;
-			od;
-			# also put the orthogonal relation with itself? This requires m_i
-			return true;
-		end;
-
-		d:=ClassOfAssociationScheme(m);
-		inter:=IntersectionMatrices(m);
-		if Size(CentralIdempotentsOfAlgebra(Algebra(Rationals, inter))) <> d then
-			# This method only works for rational eigenvalues, with d characters.
-			# I.e some non-commutative schemes, or schemes with non-rational eigenvalues
-			# must be tackled with a different method
+	function(A)
+		local inter, alg, idems, reps, P1, k, i, valencies, d, P2;
+		inter:=IntersectionMatrices(A);
+		alg:=Algebra(Rationals, inter);;
+		idems:=CentralIdempotentsOfAlgebra(alg);;
+		d:=ClassOfAssociationScheme(A);;
+		if Size(idems) <> d+1 then
 			return fail;
 		fi;
-
-		valencies:=ShallowCopy(Valencies(m));
-		Remove(valencies, 1);;
-
-		eigs:=List(inter, t ->  Eigenvalues(Rationals,t));
-		Remove(eigs,1);
-
-		feasiblerows:=[];
-
-		posvals := ListWithIdenticalEntries(d, 1);;
-		stopvals := List(eigs, Size);;
-	    posvals[1]:=0;
-		while posvals <> stopvals do
-			posvals[1]:=posvals[1]+1;
-			for i in [1.. d] do
-				if posvals[i] > Size(eigs[i]) then
-					posvals[i]:=1;
-					posvals[i+1]:=posvals[i+1]+1;
-				fi;
-			od;
-			row:=ListWithIdenticalEntries(d,1);
-			for i in [1 .. d] do
-				row[i]:=eigs[i][posvals[i]];
-				if Sum(row)=-1 then
-					Add(feasiblerows, row);;
-				fi;
-			od;
+		reps:=List(inter, t -> t[1]);;
+		P1:=Inverse(TransposedMat(List(idems, t -> SolutionMat(reps, t[1]))));
+		# The central idempotents are linear combinations of intersection matrices, defined by
+		# the Q matrix.
+		valencies:=Valencies(A);
+		P2:=[valencies];; # By convention the valencies form the first row, so we reorder
+		k:=First([1 .. d+1], t -> P1[t]=valencies);
+		for i in Difference([1 .. d+1], [k]) do
+			Add(P2, P1[i]);
 		od;
-
-		stack := List(feasiblerows, t -> [t]);;
-		while stack <> [] do
-			current:=Remove(stack);;
-			if Size(current) < d then
-			# 	if correct size, then check that for all i, eigs[i] in current{[1..d]}[i] - just take transpose
-			#	if ok, then check the column orthogonality
-			#	Any other checks? Gives a valid Q matrix?
-			options:=List(feasiblerows, t -> Concatenation(current, [t]) );;
-			options:=Filtered(options, t -> orthogonality_check(t, valencies));
-			Append(stack, options);
-			else
-				P:=NullMat(d+1, d+1);
-				P:=P+1;;
-				P[1]{[2..d+1]}:=valencies;
-				P{[2..d+1]}{[2..d+1]}:=current;
-				P2 := TransposedMat(P);;
-				if ForAll([1 .. d], t -> ForAll(eigs[t], x -> x in P2[t+1])) then
-		         	if IsCharacterTableOfHomogeneousCoherentConfiguration(m, P) then
-						return P;
-				 	fi;
-				fi;
-			fi;
-		od;
-		return fail	;
+		if IsCharacterTableOfHomogeneousCoherentConfiguration(A, P2) then
+			return P2;
+		else
+			return fail;
+		fi;
 	end);
+
+ # InstallMethod( MatrixOfEigenvalues, 
+ # 	"for IsAssociationScheme",
+ # 	[ IsHomogeneousCoherentConfiguration ],
+	# function(m)
+	# 	local orthogonality_check, inter, eigs, d, feasiblerows, posvals, stopvals, i, row, valencies, wow, stack, options, P, P2, current;;
+
+	# 	orthogonality_check := function(thing, valencies)
+	# 		local i;
+	# 		for i in [1 .. Size(thing)-1] do
+	# 			if not Sum(List([1..Size(thing[1])], t -> thing[i][t]*thing[Size(thing)][t]/valencies[t] ))=-1 then
+	# 				return false;
+	# 			fi;
+	# 		od;
+	# 		# also put the orthogonal relation with itself? This requires m_i
+	# 		return true;
+	# 	end;
+
+	# 	d:=ClassOfAssociationScheme(m);
+	# 	inter:=IntersectionMatrices(m);
+	# 	if Size(CentralIdempotentsOfAlgebra(Algebra(Rationals, inter))) <> d then
+	# 		# This method only works for rational eigenvalues, with d characters.
+	# 		# I.e some non-commutative schemes, or schemes with non-rational eigenvalues
+	# 		# must be tackled with a different method
+	# 		return fail;
+	# 	fi;
+
+	# 	valencies:=ShallowCopy(Valencies(m));
+	# 	Remove(valencies, 1);;
+
+	# 	eigs:=List(inter, t ->  Eigenvalues(Rationals,t));
+	# 	Remove(eigs,1);
+
+	# 	feasiblerows:=[];
+
+	# 	posvals := ListWithIdenticalEntries(d, 1);;
+	# 	stopvals := List(eigs, Size);;
+	#     posvals[1]:=0;
+	# 	while posvals <> stopvals do
+	# 		posvals[1]:=posvals[1]+1;
+	# 		for i in [1.. d] do
+	# 			if posvals[i] > Size(eigs[i]) then
+	# 				posvals[i]:=1;
+	# 				posvals[i+1]:=posvals[i+1]+1;
+	# 			fi;
+	# 		od;
+	# 		row:=ListWithIdenticalEntries(d,1);
+	# 		for i in [1 .. d] do
+	# 			row[i]:=eigs[i][posvals[i]];
+	# 			if Sum(row)=-1 then
+	# 				Add(feasiblerows, row);;
+	# 			fi;
+	# 		od;
+	# 	od;
+
+	# 	stack := List(feasiblerows, t -> [t]);;
+	# 	while stack <> [] do
+	# 		current:=Remove(stack);;
+	# 		if Size(current) < d then
+	# 		# 	if correct size, then check that for all i, eigs[i] in current{[1..d]}[i] - just take transpose
+	# 		#	if ok, then check the column orthogonality
+	# 		#	Any other checks? Gives a valid Q matrix?
+	# 		options:=List(feasiblerows, t -> Concatenation(current, [t]) );;
+	# 		options:=Filtered(options, t -> orthogonality_check(t, valencies));
+	# 		Append(stack, options);
+	# 		else
+	# 			P:=NullMat(d+1, d+1);
+	# 			P:=P+1;;
+	# 			P[1]{[2..d+1]}:=valencies;
+	# 			P{[2..d+1]}{[2..d+1]}:=current;
+	# 			P2 := TransposedMat(P);;
+	# 			if ForAll([1 .. d], t -> ForAll(eigs[t], x -> x in P2[t+1])) then
+	# 	         	if IsCharacterTableOfHomogeneousCoherentConfiguration(m, P) then
+	# 					return P;
+	# 			 	fi;
+	# 			fi;
+	# 		fi;
+	# 	od;
+	# 	return fail	;
+	# end);
 
 
 
