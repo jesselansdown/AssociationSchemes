@@ -434,12 +434,13 @@ InstallMethod(IsCommutative,
  	[ IsHomogeneousCoherentConfiguration ],
 	function(A)
 		# This method assumes that the number of characters is d+1. This is true for commutative CCs.
-		local inter, alg, idems, reps, P1, k, i, valencies, d, P2, polys, n, CyclotomicLimit;
+		local inter, alg, idems, reps, P1, k, i, valencies, d, P2, polys, n, CyclotomicLimit, trigger;
 		inter:=IntersectionMatrices(A);
 		d:=ClassOfAssociationScheme(A);;
 		polys := Filtered(Set(Union(List(inter, t -> Factors(MinimalPolynomial(t))))), t -> Degree(t)=2);
 		n:=1;
 		CyclotomicLimit := 15;
+		trigger := false;
 		while n <= CyclotomicLimit do
 			if ForAll(polys, t -> RootsOfPolynomial(CF(n),t) <> []) then
 				break;
@@ -447,9 +448,13 @@ InstallMethod(IsCommutative,
 			if n = CyclotomicLimit then
 				Error("Reached cyclotomic field limit.\n\n You can increase this limit and continue by typing 'return;'\n\n");
 				CyclotomicLimit := CyclotomicLimit*2;
+				trigger := true;
 			fi;
 			n:=n+1;
 		od;
+		if trigger then
+			Print("Correct field found. Attempting to construct character table. This may be slow.\n");
+		fi;
 		# If polys is empty, then all are reducible polynomials, and this returns 1.
 		alg:=Algebra(CF(n), inter);;
 		idems:=CentralIdempotentsOfAlgebra(alg);;
