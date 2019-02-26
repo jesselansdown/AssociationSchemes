@@ -449,8 +449,7 @@ InstallMethod(IsCommutative,
 					break;
 				fi;
 				if i = CyclotomicLimit then
-					Error("Reached cyclotomic field limit.\n\n
-						You can increase this limit and continue by typing 'return;'\n\n");
+					Error("Reached cyclotomic field limit.\n\nYou can increase this limit and continue by typing 'return;'\n\n");
 					CyclotomicLimit := CyclotomicLimit + 10;
 				fi;
 				i:=i+1;
