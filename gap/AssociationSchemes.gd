@@ -212,3 +212,21 @@ DeclareOperation("SchemeToGraph", [IsHomogeneousCoherentConfiguration]);
 DeclareOperation("IsIsomorphicScheme", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
 
 DeclareOperation( "IsCharacterTableOfHomogeneousCoherentConfiguration", [ IsHomogeneousCoherentConfiguration, IsMatrix ] );
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments file, A, L
+#! @Returns true
+#! @Description
+#!	Saves A to file with the attributes listed in L. Note that L must be a list of strings, where
+#!  each entry is an attribute known for A.
+DeclareOperation( "SaveHomogeneousCoherentConfigurationWithCertainAttributes", [ IsString, IsHomogeneousCoherentConfiguration, IsList ] );
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments file, A, L
+#! @Returns homogeneous coherent configuration
+#! @Description
+#!	Reads in a homogenous coherent configuration from file and sets it to have the attributes
+#!	stored in the file.
+DeclareOperation( "ReadHomogeneousCoherentConfigurationWithCertainAttributes", [ IsString ] );

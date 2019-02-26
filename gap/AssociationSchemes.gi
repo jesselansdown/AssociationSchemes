@@ -916,11 +916,53 @@ InstallMethod(IsCharacterTableOfHomogeneousCoherentConfiguration,
         return true;
    	end );
 
-###################
+
+############################
+#
+# Reading and writing CCs
+#
+############################
+
+InstallMethod(SaveHomogeneousCoherentConfigurationWithCertainAttributes,
+			[IsString, IsHomogeneousCoherentConfiguration, IsList],
+ 	function(file, A, L)
+		local out, p;
+		out:=[RelationMatrix(A)];
+		for p in L do
+			if p in KnownAttributesOfObject(A) then
+				Add(out, [p, EvalString(p)(A)]);
+			else
+				Error(p, " is not an attribute associated with A\n");
+			fi;
+		od;
+		PrintTo(file, out);
+		return true;
+	end);
+
+InstallMethod(ReadHomogeneousCoherentConfigurationWithCertainAttributes,
+			[IsString],
+	function(file)
+		local strm, out, M, A, x;
+		strm := InputTextFile(file);
+		if strm = fail then
+			Error("Must give a valid file");
+		fi;
+		out := EvalString(ReadAll(strm));
+		CloseStream(strm);;
+		M:=out[1];
+		Remove(out, 1);
+		A:=HomogeneousCoherentConfigurationNC(M);
+		for x in out do
+			Setter(EvalString(x[1]))(A, x[2]);;
+		od;
+		return A;
+	end);
+
+############################
 #
 # Display methods
 #
-###################
+############################
 
 
  InstallMethod( ViewObj, 
