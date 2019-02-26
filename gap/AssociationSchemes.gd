@@ -219,7 +219,14 @@ DeclareOperation( "IsCharacterTableOfHomogeneousCoherentConfiguration", [ IsHomo
 #! @Returns true
 #! @Description
 #!	Saves A to file with the attributes listed in L. Note that L must be a list of strings, where
-#!  each entry is an attribute known for A.
+#!	each entry is an attribute known for A. Note that Print or PrintTo will only return the relation
+#!	matrix of a homogeneous coherent configuration, which contains all necessary information about
+#!	the homogeneous coherent configuration, but may require a lot of computation to reobtain. Hence this
+#!	method is intended to alow saving of computationally difficult or time consuming attributes directly.
+#!	It also alows the user to choose which attributes to save, since some attributes are very large, but easily
+#!	recomputed. For example, it is often desirable to save the matrix of eigenvalues, and perhaps the 
+#!	automorphism group and intersection matrices, while it is not generally desirable to also save the
+#!	adjacency matrices or minimal idempotents.
 DeclareOperation( "SaveHomogeneousCoherentConfigurationWithCertainAttributes", [ IsString, IsHomogeneousCoherentConfiguration, IsList ] );
 
 #! @Chapter Functionality
@@ -228,5 +235,5 @@ DeclareOperation( "SaveHomogeneousCoherentConfigurationWithCertainAttributes", [
 #! @Returns homogeneous coherent configuration
 #! @Description
 #!	Reads in a homogenous coherent configuration from file and sets it to have the attributes
-#!	stored in the file.
+#!	stored in the file. This reads files of the type formed by SaveHomogeneousCoherentConfigurationWithCertainAttributes.
 DeclareOperation( "ReadHomogeneousCoherentConfigurationWithCertainAttributes", [ IsString ] );
