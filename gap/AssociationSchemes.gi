@@ -962,6 +962,11 @@ InstallMethod( Display,
  		if HasIsSchurian(a) then
  			Print("  Schurian: ", IsSchurian(a), "\n");
  		fi;
+ 		if HasAutomorphismGroup(a) then
+ 			Print("  Automorphism group: ");
+ 			View(AutomorphismGroup(a));
+ 			Print("\n");
+ 		fi;
  		if HasMatrixOfEigenvalues(a) then
  			if MatrixOfEigenvalues(a) <> fail then
 	 			Print("  Matrix of eigenvalues:\n");
