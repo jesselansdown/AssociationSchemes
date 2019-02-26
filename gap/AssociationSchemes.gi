@@ -433,12 +433,24 @@ InstallMethod(IsCommutative,
  	"for IsAssociationScheme",
  	[ IsHomogeneousCoherentConfiguration ],
 	function(A)
+		# This method assumes that the number of characters is d+1. This is true for commutative CCs.
 		local inter, alg, idems, reps, P1, k, i, valencies, d, P2;
 		inter:=IntersectionMatrices(A);
 		alg:=Algebra(Rationals, inter);;
 		idems:=CentralIdempotentsOfAlgebra(alg);;
 		d:=ClassOfAssociationScheme(A);;
 		if Size(idems) <> d+1 then
+			for i in [3 .. 100] do
+				alg:=Algebra(CF(i), inter);;
+				idems:=CentralIdempotentsOfAlgebra(alg);;
+				if Size(idems) = d+1 then
+					break;
+				fi;
+			od;
+		fi;
+		if Size(idems) <> d+1 then
+			Print("Reached cyclotomic field limit. Either eigenvalues are not cyclotomic, or the limit needs to be increased.\n");
+			# Perhaps put an error statement, where the user can "return" to increase the limit, or "quit" to exit
 			return fail;
 		fi;
 		reps:=List(inter, t -> t[1]);;
