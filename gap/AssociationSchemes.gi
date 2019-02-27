@@ -509,7 +509,7 @@ InstallMethod(IsCommutative,
 		while Size(idems) <> d+1 do
 			Error("Incorrect field.\n\n You can try the next field by typing 'return;'\n\n");
 			mult:=mult+1;;
-			n2:=n^mult;
+			n2:=n*mult;
 			Print("Field found: CT(", n2,"). Attempting to construct character table. This may be slow.\n");
 			alg:=Algebra(CF(n2), inter);;
 			idems:=CentralIdempotentsOfAlgebra(alg);;
