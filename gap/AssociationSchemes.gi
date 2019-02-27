@@ -460,6 +460,17 @@ InstallMethod(IsCommutative,
  	"for IsAssociationScheme",
  	[ IsHomogeneousCoherentConfiguration ],
 	function(A)
+		if NumberOfCharacters(A) = ClassOfAssociationScheme(A) +1 then
+			return MatrixOfEigenvaluesSquare(A);
+		else
+			return MatrixOfEigenvaluesNonSquare(A);
+		fi;
+	end);
+
+ InstallMethod( MatrixOfEigenvaluesSquare, 
+ 	"for IsAssociationScheme",
+ 	[ IsHomogeneousCoherentConfiguration ],
+	function(A)
 		# This method assumes that the number of characters is d+1. This is true for commutative CCs.
 		local inter, alg, idems, reps, P1, k, i, valencies, d, P2, polys, n, CyclotomicLimit, trigger, n2, mult;
 		inter:=IntersectionMatrices(A);
@@ -520,6 +531,17 @@ InstallMethod(IsCommutative,
 			return fail;
 		fi;
 	end);
+
+
+ InstallMethod( MatrixOfEigenvaluesNonSquare, 
+ 	"for IsAssociationScheme",
+ 	[ IsHomogeneousCoherentConfiguration ],
+	function(A)
+		Print("This method is not currently installed. Current methods are implemented only when the number of characters is one greater than the class of the scheme.\n");
+		return fail;
+	end);
+
+
 
  # InstallMethod( MatrixOfEigenvalues, 
  # 	"for IsAssociationScheme",

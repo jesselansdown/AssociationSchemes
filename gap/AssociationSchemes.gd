@@ -163,7 +163,6 @@ DeclareAttribute("IntersectionMatrices", IsHomogeneousCoherentConfiguration);
 #!	Returns the number of characters of CC.
 DeclareAttribute("NumberOfCharacters", IsHomogeneousCoherentConfiguration);
 
-
 #! @Chapter Functionality
 #! @Section Matrices describing coherent configurations
 #! @Arguments CC
@@ -171,6 +170,9 @@ DeclareAttribute("NumberOfCharacters", IsHomogeneousCoherentConfiguration);
 #! @Description
 #!	Returns a the matrix of eigenvalues (or character table), $P$, for a coherent configuration CC.
 DeclareAttribute( "MatrixOfEigenvalues", IsHomogeneousCoherentConfiguration );
+
+DeclareAttribute( "MatrixOfEigenvaluesSquare", IsHomogeneousCoherentConfiguration );
+DeclareAttribute( "MatrixOfEigenvaluesNonSquare", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Matrices describing coherent configurations
