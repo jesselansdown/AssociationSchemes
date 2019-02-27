@@ -434,12 +434,18 @@ InstallMethod(IsCommutative,
  	[ IsHomogeneousCoherentConfiguration ],
 	function(A)
 		# This method assumes that the number of characters is d+1. This is true for commutative CCs.
-		local inter, alg, idems, reps, P1, k, i, valencies, d, P2, polys, n, CyclotomicLimit, trigger;
+		local inter, alg, idems, reps, P1, k, i, valencies, d, P2, polys, n, CyclotomicLimit, trigger, n2, mult;
 		inter:=IntersectionMatrices(A);
 		d:=ClassOfAssociationScheme(A);;
 		polys := Filtered(Set(Union(List(inter, t -> Factors(MinimalPolynomial(t))))), t -> Degree(t)=2);
 		n:=1;
 		CyclotomicLimit := 15;
+		# Perhaps make a global variable to initiate CyclotomicLimit?
+		# It may be that people want to work with schemes with larger limits and are happy to wait
+		# Such as in the classification of schemes of order 32 for example.
+		# Give the option to also have no limit? Like CosetTableDefaultMaxLimit
+		# If this is done, then put a comment in the error statement that this is done
+		# locally, but can be set globally by ... Must first quit the break loop.
 		trigger := false;
 		while n <= CyclotomicLimit do
 			if ForAll(polys, t -> RootsOfPolynomial(CF(n),t) <> []) then
@@ -455,14 +461,22 @@ InstallMethod(IsCommutative,
 		if trigger then
 			# This is printed only if the error message is displaayed and the field is large
 			# warns the user that it will be slow, but also indicates that it is doing something productive.
-			Print("Correct field found: CT(", n,"). Attempting to construct character table. This may be slow.\n");
+			Print("Field found: CT(", n,"). Attempting to construct character table. This may be slow.\n");
 		fi;
 		# If polys is empty, then all are reducible polynomials, and this returns 1.
-		alg:=Algebra(CF(n), inter);;
+		mult:=1;
+		n2:=n*mult;
+		alg:=Algebra(CF(n2), inter);;
 		idems:=CentralIdempotentsOfAlgebra(alg);;
-		if Size(idems) <> d+1 then
-			return fail;
-		fi;
+		while Size(idems) <> d+1 do
+			Error("Incorrect field.\n\n You can try the next field by typing 'return;'\n\n");
+			mult:=mult+1;;
+			n2:=n^mult;
+			Print("Field found: CT(", n2,"). Attempting to construct character table. This may be slow.\n");
+			alg:=Algebra(CF(n2), inter);;
+			idems:=CentralIdempotentsOfAlgebra(alg);;
+			# Sometimes n fails, and we need a multiple. Is this just n^(#irreducibles) ?
+		od;
 		reps:=List(inter, t -> t[1]);;
 		P1:=Inverse(TransposedMat(List(idems, t -> SolutionMat(reps, t[1]))));
 		# The central idempotents are linear combinations of intersection matrices, defined by
