@@ -154,6 +154,16 @@ DeclareAttribute( "Valencies", IsHomogeneousCoherentConfiguration );
 #!	is $B_{i-1}$ and $B_{i}_{jk} = p_{ji}^k$.
 DeclareAttribute("IntersectionMatrices", IsHomogeneousCoherentConfiguration);
 
+
+#! @Chapter Functionality
+#! @Section Matrices describing coherent configurations
+#! @Arguments CC
+#! @Returns n
+#! @Description
+#!	Returns the number of characters of CC.
+DeclareAttribute("NumberOfCharacters", IsHomogeneousCoherentConfiguration);
+
+
 #! @Chapter Functionality
 #! @Section Matrices describing coherent configurations
 #! @Arguments CC
