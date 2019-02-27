@@ -537,8 +537,96 @@ InstallMethod(IsCommutative,
  	"for IsAssociationScheme",
  	[ IsHomogeneousCoherentConfiguration ],
 	function(A)
-		Print("This method is not currently installed. Current methods are implemented only when the number of characters is one greater than the class of the scheme.\n");
-		return fail;
+	    local nc, ct, d, i, j, k, am, n, Val, ct2, im, alg, idems, inter, valencies, polys, CyclotomicLimit, trigger, n2, mult, f, B;
+
+	        inter:=IntersectionMatrices(A);
+	        d:=ClassOfAssociationScheme(A)+1;;
+	        polys := Filtered(Set(Union(List(inter, t -> Factors(MinimalPolynomial(t))))), t -> Degree(t)=2);
+	        f:=1;
+	        CyclotomicLimit := 15;
+	        # Perhaps make a global variable to initiate CyclotomicLimit?
+	        # It may be that people want to work with schemes with larger limits and are happy to wait
+	        # Such as in the classification of schemes of order 32 for example.
+	        # Give the option to also have no limit? Like CosetTableDefaultMaxLimit
+	        # If this is done, then put a comment in the error statement that this is done
+	        # locally, but can be set globally by ... Must first quit the break loop.
+	        trigger := false;
+	        while f <= CyclotomicLimit do
+	            if ForAll(polys, t -> RootsOfPolynomial(CF(f),t) <> []) then
+	                break;
+	            fi;
+	            if f = CyclotomicLimit then
+	                Error("Reached cyclotomic field limit.\n\n You can increase this limit and continue by typing 'return;'\n\n");
+	                CyclotomicLimit := CyclotomicLimit*2;
+	                trigger := true;
+	            fi;
+	            f:=f+1;
+	        od;
+	        if trigger then
+	            # This is printed only if the error message is displaayed and the field is large
+	            # warns the user that it will be slow, but also indicates that it is doing something productive.
+	            Print("Field found: CT(", f,"). Attempting to construct character table. This may be slow.\n");
+	        fi;
+	        # If polys is empty, then all are reducible polynomials, and this returns 1.
+	        mult:=1;
+	        n2:=f*mult;
+	        alg:=Algebra(CF(n2), inter);;
+	        idems:=CentralIdempotentsOfAlgebra(alg);;
+	        nc := NumberOfCharacters(A);
+	        while Size(idems) <> nc do
+	            Error("Incorrect field.\n\n You can try the next field by typing 'return;'\n\n");
+	            mult:=mult+1;;
+	            n2:=f*mult;
+	            Print("Field found: CT(", n2,"). Attempting to construct character table. This may be slow.\n");
+	            alg:=Algebra(CF(n2), inter);;
+	            idems:=CentralIdempotentsOfAlgebra(alg);;
+	            # Sometimes n fails, and we need a multiple. Is this just n^(#irreducibles) ?
+	        od;
+	  
+	        ct := NullMat(nc, d + 1);
+	        am := AdjacencyMatrices(A);
+	        n := Order(A);
+	        Val := Valencies(A);
+	        for i in [1..nc] do
+	            ct[i][1] := Sqrt(Trace(idems[i])); # degree
+	            B := NullMat(n, n);
+	            for j in [1..d] do
+	                B := B + am[j] * idems[i][1][j];
+	            od;
+	            ct[i][d + 1] := Trace(B) / ct[i][1]; # multiplicity
+	            for j in [2..d] do
+	                ct[i][j] := idems[i][1][j] * n * Val[j] / ct[i][d + 1];
+	            od;
+	        od;
+
+	        ct2 := NullMat(nc, d + 1);
+	        for j in [1..d] do
+	            ct2[1][j] := Val[j];
+	        od;
+	        ct2[1][d + 1] := 1;
+	        k := 2;
+	        for i in [1..nc] do
+	            if ct[i] <> ct2[1] then
+	                for j in [1..d+1] do
+	                    ct2[k][j] := ct[i][j];
+	                od;
+	                k := k + 1;
+	            fi;
+	        od;
+
+	        for i in [2..nc] do
+	            for j in [nc, nc-1..i+1] do
+	                if ct2[j][d+1] / ct2[j][1] < ct2[j-1][d+1] / ct2[j-1][1] then
+	                    k := ct2[j]; ct2[j] := ct2[j-1]; ct2[j-1] := k;
+	                fi;
+	            od;
+	        od;
+	    
+	        for i in [1..nc] do
+	            Unbind(ct2[i][d + 1]);
+	        od;
+	    
+	    return ct2;
 	end);
 
 
