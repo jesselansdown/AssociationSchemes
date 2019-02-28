@@ -102,7 +102,7 @@ Dependencies := rec(
   NeededOtherPackages := [
   ["GRAPE", ">=4.8.1"],
   ["Digraphs", ">=0.13.0"],
-  ["FinInG", ">=1.4.1"]
+  ["cvec", ">=2.6.1"],
 #  ["NautyTracesInterface", ">=0.2"]
   ],
   SuggestedOtherPackages := [
