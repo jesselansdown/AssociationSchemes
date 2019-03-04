@@ -472,12 +472,12 @@ InstallMethod(IsCommutative,
  	[ IsHomogeneousCoherentConfiguration ],
 	function(A)
 		# This method assumes that the number of characters is d+1. This is true for commutative CCs.
-		local inter, alg, idems, reps, P1, k, i, valencies, d, P2, polys, n, CyclotomicLimit, trigger, n2, mult;
+		local inter, alg, idems, reps, P1, k, i, valencies, d, P2, polys, n, CyclotomicLimit, trigger, n2, f, mult, FieldLimit;
 		inter:=IntersectionMatrices(A);
 		d:=ClassOfAssociationScheme(A);;
 		polys := Filtered(Set(Union(List(inter, t -> Factors(MinimalPolynomial(t))))), t -> Degree(t)=2);
 		n:=1;
-		CyclotomicLimit := 15;
+		CyclotomicLimit := 100;
 		# Perhaps make a global variable to initiate CyclotomicLimit?
 		# It may be that people want to work with schemes with larger limits and are happy to wait
 		# Such as in the classification of schemes of order 32 for example.
@@ -506,14 +506,16 @@ InstallMethod(IsCommutative,
 		n2:=n*mult;
 		alg:=Algebra(CF(n2), inter);;
 		idems:=CentralIdempotentsOfAlgebra(alg);;
-		while Size(idems) <> d+1 do
-			Error("Incorrect field.\n\n You can try the next field by typing 'return;'\n\n");
-			mult:=mult+1;;
-			n2:=n*mult;
-			Print("Field found: CT(", n2,"). Attempting to construct character table. This may be slow.\n");
-			alg:=Algebra(CF(n2), inter);;
-			idems:=CentralIdempotentsOfAlgebra(alg);;
-			# Sometimes n fails, and we need a multiple. Is this just n^(#irreducibles) ?
+	    FieldLimit := 10;
+	    while Size(idems) <> d+1 and mult <= FieldLimit do
+	        mult:=mult+1;;
+	        n2:=n*mult;
+	        alg:=Algebra(CF(n2), inter);;
+	        idems:=CentralIdempotentsOfAlgebra(alg);;
+	        if mult = FieldLimit then
+	            Error("Reached cyclotomic field limit.\n\n You can increase this limit and continue by typing 'return;'\n\n");
+	            FieldLimit := FieldLimit + 5;
+	        fi;
 		od;
 		reps:=List(inter, t -> t[1]);;
 		P1:=Inverse(TransposedMat(List(idems, t -> SolutionMat(reps, t[1]))));
@@ -537,13 +539,13 @@ InstallMethod(IsCommutative,
  	"for IsAssociationScheme",
  	[ IsHomogeneousCoherentConfiguration ],
 	function(A)
-	    local nc, ct, d, i, j, k, am, n, Val, ct2, im, alg, idems, inter, valencies, polys, CyclotomicLimit, trigger, n2, mult, f, B;
+	    local nc, ct, d, i, j, k, am, n, Val, ct2, im, alg, idems, inter, valencies, polys, CyclotomicLimit, trigger, n2, mult, f, B, FieldLimit;
 
 	        inter:=IntersectionMatrices(A);
 	        d:=ClassOfAssociationScheme(A)+1;;
 	        polys := Filtered(Set(Union(List(inter, t -> Factors(MinimalPolynomial(t))))), t -> Degree(t)=2);
 	        f:=1;
-	        CyclotomicLimit := 15;
+	        CyclotomicLimit := 100;
 	        # Perhaps make a global variable to initiate CyclotomicLimit?
 	        # It may be that people want to work with schemes with larger limits and are happy to wait
 	        # Such as in the classification of schemes of order 32 for example.
@@ -573,13 +575,16 @@ InstallMethod(IsCommutative,
 	        alg:=Algebra(CF(n2), inter);;
 	        idems:=CentralIdempotentsOfAlgebra(alg);;
 	        nc := NumberOfCharacters(A);
-	        while Size(idems) <> nc do
-	            Error("Incorrect field.\n\n You can try the next field by typing 'return;'\n\n");
+	        FieldLimit := 10;
+	        while Size(idems) <> nc and mult <= FieldLimit do
 	            mult:=mult+1;;
 	            n2:=f*mult;
-	            Print("Field found: CT(", n2,"). Attempting to construct character table. This may be slow.\n");
 	            alg:=Algebra(CF(n2), inter);;
 	            idems:=CentralIdempotentsOfAlgebra(alg);;
+	            if mult = FieldLimit then
+	                Error("Reached cyclotomic field limit.\n\n You can increase this limit and continue by typing 'return;'\n\n");
+	                FieldLimit := FieldLimit + 5;
+	            fi;
 	            # Sometimes n fails, and we need a multiple. Is this just n^(#irreducibles) ?
 	        od;
 	  
