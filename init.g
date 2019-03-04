@@ -13,3 +13,5 @@ ReadPackage( "AssociationSchemes", "gap/GrassmannSchemes.gd");
 ReadPackage( "AssociationSchemes", "gap/HammingSchemes.gd");
 ReadPackage( "AssociationSchemes", "gap/Subsets.gd");
 ReadPackage( "AssociationSchemes", "gap/Codes.gd");
+ReadPackage( "AssociationSchemes", "gap/GroupCC.gd");
+ReadPackage( "AssociationSchemes", "gap/BilinearFormsSchemes.gd");
