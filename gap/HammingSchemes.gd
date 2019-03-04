@@ -15,3 +15,11 @@
 #! @Description
 #!	Returns the Hamming scheme, $H(n, q)$.
 DeclareOperation("HammingScheme", [IsPosInt, IsPosInt]);
+
+#! @Chapter Functionality
+#! @Section Attributes of coherent configurations
+#! @Arguments n, q
+#! @Returns matrix of eigenvalues
+#! @Description
+#!	Returns matrix of eigenvalue for the Hamming scheme, $H(n, q)$.
+DeclareOperation("MatrixOfEigenvaluesOfHammingScheme", [IsPosInt, IsPosInt]);
