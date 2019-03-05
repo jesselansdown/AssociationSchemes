@@ -252,3 +252,12 @@ DeclareOperation( "ReadHomogeneousCoherentConfigurationWithCertainAttributes", [
 
 
 DeclareOperation( "Neighbours", [IsHomogeneousCoherentConfiguration, IsInt, IsList] );
+
+
+#! @Chapter Functionality
+#! @Section Attributes of coherent configurations
+#! @Arguments CC
+#! @Returns Valencies
+#! @Description
+#!	Returns the valencies of each relation.
+DeclareAttribute( "Valencies", IsHomogeneousCoherentConfiguration );

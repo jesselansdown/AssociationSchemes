@@ -1138,6 +1138,21 @@ InstallMethod(Neighbours,
 	end);
 
 
+
+InstallMethod(Valencies,
+			[IsHomogeneousCoherentConfiguration],
+	function(A)
+	    local R, L, i, x, d, n;    
+	    R := RelationMatrix(A);
+	    d := ClassOfAssociationScheme(A) + 1;
+	    n := Order(A);
+	    L := ListWithIdenticalEntries(d, 0);
+	    for i in [1..n] do
+	        L[R[1][i] + 1] := L[R[1][i] + 1] + 1;
+	    od;
+	    return L;
+	end);
+
 ################################################################################################################
 #
 # Reading and writing CCs
