@@ -249,3 +249,6 @@ DeclareOperation( "SaveHomogeneousCoherentConfigurationWithCertainAttributes", [
 #!	Reads in a homogenous coherent configuration from file and sets it to have the attributes
 #!	stored in the file. This reads files of the type formed by SaveHomogeneousCoherentConfigurationWithCertainAttributes.
 DeclareOperation( "ReadHomogeneousCoherentConfigurationWithCertainAttributes", [ IsString ] );
+
+
+DeclareOperation( "Neighbours", [IsHomogeneousCoherentConfiguration, IsInt, IsList] );

@@ -15,3 +15,4 @@ ReadPackage( "AssociationSchemes", "gap/Subsets.gd");
 ReadPackage( "AssociationSchemes", "gap/Codes.gd");
 ReadPackage( "AssociationSchemes", "gap/GroupCC.gd");
 ReadPackage( "AssociationSchemes", "gap/BilinearFormsSchemes.gd");
+ReadPackage( "AssociationSchemes", "gap/Algebras.gd");

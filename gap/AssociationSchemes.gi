@@ -1122,11 +1122,27 @@ InstallMethod(IsCharacterTableOfHomogeneousCoherentConfiguration,
    	end );
 
 
-############################
+InstallMethod(Neighbours,
+			[IsHomogeneousCoherentConfiguration, IsInt, IsList],
+	function(A, p, L)
+	    local R, i, ans, n;
+	    ans := [];
+	    n := Order(A);
+	    R := RelationMatrix(A);
+	    for i in [1..n] do
+	        if R[p][i] in L then
+	            AddSet(ans, i);
+	        fi;
+	    od;
+	    return ans;
+	end);
+
+
+################################################################################################################
 #
 # Reading and writing CCs
 #
-############################
+################################################################################################################
 
 InstallMethod(SaveHomogeneousCoherentConfigurationWithCertainAttributes,
 			[IsString, IsHomogeneousCoherentConfiguration, IsList],
@@ -1163,11 +1179,11 @@ InstallMethod(ReadHomogeneousCoherentConfigurationWithCertainAttributes,
 		return A;
 	end);
 
-############################
+################################################################################################################
 #
 # Display methods
 #
-############################
+################################################################################################################
 
 
  InstallMethod( ViewObj, 
