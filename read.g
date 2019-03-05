@@ -13,5 +13,5 @@ ReadPackage( "AssociationSchemes", "gap/HammingSchemes.gi");
 ReadPackage( "AssociationSchemes", "gap/Subsets.gi");
 ReadPackage( "AssociationSchemes", "gap/Codes.gi");
 ReadPackage( "AssociationSchemes", "gap/GroupCC.gi");
-ReadPackage( "AssociationSchemes", "gap/BilinearFormsSchemes.gi");
+ReadPackage( "AssociationSchemes", "gap/BilinearFormsScheme.gi");
 ReadPackage( "AssociationSchemes", "gap/Algebras.gi");
