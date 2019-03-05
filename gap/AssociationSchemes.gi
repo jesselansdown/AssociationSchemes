@@ -1150,7 +1150,60 @@ InstallMethod(IsQuasiThin,
 		return Set(Valencies(A)) = [1, 2];
 	end);
 
+InstallMethod(IsPrimitive,
+			[IsHomogeneousCoherentConfiguration],
+	function(A)
+	    local i, d, _ToOne, _Mat2List, e, m;
 
+		_ToOne := function(M)
+		    local i, j, n, M2;
+		    
+		    M2 := M * 0;
+		    n := Length(M);
+		    for i in [1..n] do
+		        for j in [1..n] do
+		            if M[i][j] <> 0 then
+		                M2[i][j] := 1;
+		            else
+		                M2[i][j] := 0;
+		            fi;
+		        od;
+		    od;
+		    
+		    return M2;
+		end;
+
+		_Mat2List := function(R, M)
+		    local e, ans, n, i;
+		    
+		    ans := [];
+		    n := Length(M);
+		    e := _ToOne(M);
+		    for i in [1..n] do
+		        if e[1][i] <> 0 then
+		            AddSet(ans, R[1][i]);
+		        fi;
+		    od;
+		    
+		    return ans;
+		end;
+
+	    d := ClassOfAssociationScheme(A);
+
+		for i in [1 .. d] do
+		    e := AdjacencyMatrices(A)[1] + AdjacencyMatrices(A)[i+1];
+		    m := Sum(e[1]);
+		    while (e^2 <> m * e) do
+		        e := _ToOne(MutableCopyMat(e^2));    
+		        m := Sum(e[1]);
+		    od;
+	    
+		    if _Mat2List(RelationMatrix(A), MutableCopyMat(e)) <> [0..d] then
+		    	return false;
+		    fi;
+		od;
+		return true;
+	end);
 
 ################################################################################################################
 #
@@ -1238,6 +1291,9 @@ InstallMethod( Display,
  		fi;
  		if HasIsQuasiThin(a) then
  			Print("  Quasi-thin: ", IsQuasiThin(a), "\n");
+ 		fi;
+ 		if HasIsPrimitive(a) then
+ 			Print("  Primitive: ", IsPrimitive(a), "\n");
  		fi;
  		if HasIsPPolynomial(a) then
  			Print("  P-polynomial: ", IsPPolynomial(a), "\n");

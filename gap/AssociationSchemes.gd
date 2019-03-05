@@ -268,3 +268,12 @@ DeclareProperty( "IsThin", IsHomogeneousCoherentConfiguration );
 #! @Description
 #!	Check if the homogeneous coherent configuration is quasi thin.
 DeclareProperty( "IsQuasiThin", IsHomogeneousCoherentConfiguration );
+
+
+#! @Chapter Functionality
+#! @Section Properties of coherent configurations
+#! @Arguments CC
+#! @Returns True/False
+#! @Description
+#!	Check if the homogeneous coherent configuration is primitve.
+DeclareProperty( "IsPrimitive", IsHomogeneousCoherentConfiguration );
