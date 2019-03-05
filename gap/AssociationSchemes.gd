@@ -253,11 +253,18 @@ DeclareOperation( "ReadHomogeneousCoherentConfigurationWithCertainAttributes", [
 
 DeclareOperation( "Neighbours", [IsHomogeneousCoherentConfiguration, IsInt, IsList] );
 
+#! @Chapter Functionality
+#! @Section Properties of coherent configurations
+#! @Arguments CC
+#! @Returns True/False
+#! @Description
+#!	Check if the homogeneous coherent configuration is thin.
+DeclareProperty( "IsThin", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
-#! @Section Attributes of coherent configurations
+#! @Section Properties of coherent configurations
 #! @Arguments CC
-#! @Returns Valencies
+#! @Returns True/False
 #! @Description
-#!	Returns the valencies of each relation.
-DeclareAttribute( "Valencies", IsHomogeneousCoherentConfiguration );
+#!	Check if the homogeneous coherent configuration is quasi thin.
+DeclareProperty( "IsQuasiThin", IsHomogeneousCoherentConfiguration );

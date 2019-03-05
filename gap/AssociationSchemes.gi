@@ -1138,20 +1138,19 @@ InstallMethod(Neighbours,
 	end);
 
 
-
-InstallMethod(Valencies,
+InstallMethod(IsThin,
 			[IsHomogeneousCoherentConfiguration],
 	function(A)
-	    local R, L, i, x, d, n;    
-	    R := RelationMatrix(A);
-	    d := ClassOfAssociationScheme(A) + 1;
-	    n := Order(A);
-	    L := ListWithIdenticalEntries(d, 0);
-	    for i in [1..n] do
-	        L[R[1][i] + 1] := L[R[1][i] + 1] + 1;
-	    od;
-	    return L;
+		return Length(Set(Valencies(A))) = 1;
 	end);
+
+InstallMethod(IsQuasiThin,
+			[IsHomogeneousCoherentConfiguration],
+	function(A)
+		return Set(Valencies(A)) = [1, 2];
+	end);
+
+
 
 ################################################################################################################
 #
@@ -1233,6 +1232,12 @@ InstallMethod( Display,
  		fi;
  		if HasIsCommutative(a) then
  			Print("  Commutative: ", IsCommutative(a), "\n");
+ 		fi;
+ 		if HasIsThin(a) then
+ 			Print("  Thin: ", IsThin(a), "\n");
+ 		fi;
+ 		if HasIsQuasiThin(a) then
+ 			Print("  Quasi-thin: ", IsQuasiThin(a), "\n");
  		fi;
  		if HasIsPPolynomial(a) then
  			Print("  P-polynomial: ", IsPPolynomial(a), "\n");
