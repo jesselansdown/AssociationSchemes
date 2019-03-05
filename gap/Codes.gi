@@ -39,3 +39,28 @@ InstallMethod(MacWilliamsTransform,
       fi;
     end);
 
+InstallMethod(CanonicalDualBasis,
+  [IsHomogeneousCoherentConfiguration],
+    function(A)
+      local AM, DAM, d, i, TR, val, M;
+      
+      d := ClassOfAssociationScheme(A) + 1;
+
+      M:=RelationMatrix(A);
+      TR := [];
+      for i in [1..ClassOfAssociationScheme(A)] do
+          TR[i] := M[Position(M[1], i)][1];
+      od;
+
+
+      val := Valencies(A);
+      AM := AdjacencyMatrices(A);
+      DAM := [];
+      DAM[1] := AM[1];
+      for i in [2..d] do
+          DAM[i] := AM[TR[i-1]+1] / val[i];
+      od;
+      
+      return [AM, DAM];
+  end);
+

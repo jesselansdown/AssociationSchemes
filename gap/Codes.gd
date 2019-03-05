@@ -27,3 +27,12 @@ DeclareOperation( "InnerDistribution", [IsList, IsHomogeneousCoherentConfigurati
 #!	coherent confiiguration CC. Takes either a vector v in R^n and converts it to its
 #!	inner distribution vector first, or takes the inner distribution directly.
 DeclareOperation( "MacWilliamsTransform", [IsList, IsHomogeneousCoherentConfiguration]);
+
+
+#! @Chapter Functionality
+#! @Section Attributes of coherent configurations
+#! @Arguments CC
+#! @Returns canonical dual basis
+#! @Description
+#!	Returns the canonical dual basis of a homogeneous coherent configuration
+DeclareAttribute( "CanonicalDualBasis", IsHomogeneousCoherentConfiguration);
