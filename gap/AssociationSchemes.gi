@@ -181,6 +181,9 @@ InstallMethod(IsAssociationSchemeMatrix,
 #		Print("There are ", numberOfRelations -1, " (non-identity) relations\n");
 		relations := AdjacencyMatricesOfMatrix(M);
 		markers := List([1 .. numberOfRelations], t -> First([1 .. sz], x -> relations[t][1][x] <>0));
+		if fail in markers then
+			return false;
+		fi;
 		identitypos := Position(relations, IdentityMat(sz));
 		if identitypos = fail then
 			return false;
