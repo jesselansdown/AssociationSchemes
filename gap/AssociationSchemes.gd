@@ -58,6 +58,14 @@ DeclareOperation( "HomogeneousCoherentConfigurationNC", [ IsMatrix ] );
 DeclareOperation( "RelationMatrix", [ IsHomogeneousCoherentConfiguration ] );
 
 #! @Chapter Functionality
+#! @Section Matrices describing coherent configurations
+#! @Arguments CC
+#! @Returns relation
+#! @Description
+#!	Takes a CC and two points, x and y, and returns i such that $(x, y) \in R_i$.
+DeclareOperation( "Relation", [ IsHomogeneousCoherentConfiguration, IsPosInt, IsPosInt] );
+
+#! @Chapter Functionality
 #! @Section Properties of coherent configurations
 #! @Arguments CC
 #! @Returns true or false

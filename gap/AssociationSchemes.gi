@@ -66,6 +66,11 @@ InstallMethod( \=,
 		return RelationMatrix(a)=RelationMatrix(b);
 	end);
 
+InstallMethod( Relation,
+			 [IsHomogeneousCoherentConfiguration, IsPosInt, IsPosInt],
+	function(A,x,y)
+		return RelationMatrix(A)[x][y];
+	end);
 
 InstallMethod(IsSymmetricCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration],
