@@ -15,3 +15,4 @@ ReadPackage( "AssociationSchemes", "gap/Codes.gi");
 ReadPackage( "AssociationSchemes", "gap/GroupCC.gi");
 ReadPackage( "AssociationSchemes", "gap/BilinearFormsScheme.gi");
 ReadPackage( "AssociationSchemes", "gap/Algebras.gi");
+ReadPackage( "AssociationSchemes", "gap/OtherConstructors.gi");
