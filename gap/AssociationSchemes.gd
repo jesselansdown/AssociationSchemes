@@ -283,9 +283,6 @@ DeclareOperation( "SaveHomogeneousCoherentConfigurationWithCertainAttributes", [
 #!	stored in the file. This reads files of the type formed by SaveHomogeneousCoherentConfigurationWithCertainAttributes.
 DeclareOperation( "ReadHomogeneousCoherentConfigurationWithCertainAttributes", [ IsString ] );
 
-
-DeclareOperation( "Neighbours", [IsHomogeneousCoherentConfiguration, IsInt, IsList] );
-
 #! @Chapter Functionality
 #! @Section Properties of coherent configurations
 #! @Arguments CC
