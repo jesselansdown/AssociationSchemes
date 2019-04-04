@@ -73,6 +73,14 @@ DeclareOperation( "Relation", [ IsHomogeneousCoherentConfiguration, IsPosInt, Is
 #!	Returns all the points $y$ of CC such that $(p,y) \in R_k$.
 DeclareOperation( "Neighbours", [ IsHomogeneousCoherentConfiguration, IsPosInt, IsInt] );
 
+#! @Chapter Functionality
+#! @Section Matrices describing coherent configurations
+#! @Arguments CC, p, L
+#! @Returns neighbours
+#! @Description
+#!	Returns all the points $y$ of CC such that $(p,y) \in R_k$ for some $k \in L$.
+DeclareOperation( "Neighbours", [IsHomogeneousCoherentConfiguration, IsInt, IsList] );
+
 
 #! @Chapter Functionality
 #! @Section Properties of coherent configurations
