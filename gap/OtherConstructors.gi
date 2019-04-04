@@ -34,6 +34,68 @@ InstallMethod(FusionScheme,
 		return m2;
 	end);
 
+InstallMethod(FusionScheme,
+			[IsHomogeneousCoherentConfiguration and IsCommutative, IsList],
+	function( a, fuse )
+		local mat, m, i, j, m2, d, inds, s, NewIntersectionMatrices,
+		u, v, w, h, check, inter, adjMats, rel, assoc_rec;
+		if not [0] in fuse then
+			return fail;
+		fi;
+
+		s := Size(fuse) - 1;;
+
+		NewIntersectionMatrices := List([0 .. s], t -> NullMat(s+1, s+1));;
+		for u in [0 .. s] do
+			for v in [0 .. s] do
+				for w in [0 .. s] do
+					check := [];
+					for h in fuse[w+1] do
+						inter := 0;
+						for i in fuse[u+1] do
+							for j in fuse[v+1] do
+								inter := inter + IntersectionNumber(a, i, j, h);
+							od;
+						od;
+						Add(check, inter);;
+						check:=Set(check);;
+						if Size(check) <> 1 then
+							return fail;
+						fi;
+					od;
+					NewIntersectionMatrices[v+1][u+1, w+1] := check[1];
+				od;
+			od;
+		od;
+
+		mat :=  NullMat(Order(a), Order(a));
+		m:=RelationMatrix(a);;
+		d:=ClassOfAssociationScheme(a);;
+		inds := ListWithIdenticalEntries(d+1,0);;
+		for i in [1.. Size(fuse)] do
+			for j in fuse[i] do
+				inds[j+1]:=i-1;
+			od;
+		od;
+		for i in [1 .. Order(a)] do
+			for j in [1 .. Order(a)] do
+				mat[i][j]:=inds[m[i][j]+1];
+			od;
+		od;
+
+		adjMats := AdjacencyMatricesOfMatrix(mat);;
+		for rel in adjMats do
+			if not TransposedMat(rel) in adjMats then
+				return fail;
+			fi;
+		od;
+		assoc_rec := rec( matrix := mat);
+		m2 := ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, AdjacencyMatrices, adjMats,
+			IntersectionMatrices, NewIntersectionMatrices);
+		# set IsFusionScheme := true;
+		return m2;
+	end);
+
 InstallMethod(DirectProductScheme,
 			[IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
 	function(M, N)
@@ -87,3 +149,4 @@ InstallMethod(WreathProductScheme,
 	  
 	    return HomogeneousCoherentConfigurationNC(L);
 	end);
+
