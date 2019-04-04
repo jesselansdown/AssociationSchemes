@@ -155,6 +155,14 @@ DeclareOperation( "DirectProductScheme", [IsHomogeneousCoherentConfiguration, Is
 
 #! @Chapter Functionality
 #! @Section Constructor Methods
+#! @Arguments CC1, CC2
+#! @Returns coherent configuration
+#! @Description
+#!	Takes two coherent configurations CC1 and CC2 and returns their wreath product.
+DeclareOperation( "WreathProductScheme", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
 #! @Arguments CC, i, j, k
 #! @Returns $p_{ij}^k$
 #! @Description

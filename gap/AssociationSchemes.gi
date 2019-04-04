@@ -355,6 +355,38 @@ InstallMethod(DirectProductScheme,
 	    return HomogeneousCoherentConfigurationNC(L);
 	end);
 
+
+InstallMethod(WreathProductScheme,
+			[IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
+	function(M, N)
+	    local L, i, j, MM, NM, A, J;
+
+	    MM := AdjacencyMatrices(M);
+	    NM := AdjacencyMatrices(N);
+	    A := [];
+	    for i in MM do
+	        Add(A, KroneckerProduct(NM[1], i));
+	    od;
+
+	    J := NullMat(Order(M), Order(M));
+	    for i in [1..Length(J)] do
+	        for j in [1..Length(J)] do
+	            J[i][j] := 1;
+	        od;
+	    od;
+
+	    for i in [2..Length(NM)] do
+	        Add(A, KroneckerProduct(NM[i], J));
+	    od;
+
+	    L := A[1] * 0;
+	    for i in [1..Length(A)] do
+	        L := L + A[i] * (i-1);
+	    od;
+	  
+	    return HomogeneousCoherentConfigurationNC(L);
+	end);
+
 InstallMethod(IntersectionNumber,
 			[IsHomogeneousCoherentConfiguration, IsInt,  IsInt,  IsInt],
 	function( a, i, j, k )
