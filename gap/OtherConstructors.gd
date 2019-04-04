@@ -32,3 +32,11 @@ DeclareOperation( "DirectProductScheme", [IsHomogeneousCoherentConfiguration, Is
 #! @Description
 #!	Takes two coherent configurations CC1 and CC2 and returns their wreath product.
 DeclareOperation( "WreathProductScheme", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments q, d
+#! @Returns coherent configuration
+#! @Description
+#!	Let $q$ be a prime power, and $d$ a divisor of $q-1$. Returns the cyclotomic scheme $Cyc(q,d)$.
+DeclareOperation( "CyclotomicScheme", [IsPosInt, IsPosInt]);
