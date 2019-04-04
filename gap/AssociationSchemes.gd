@@ -66,6 +66,15 @@ DeclareOperation( "RelationMatrix", [ IsHomogeneousCoherentConfiguration ] );
 DeclareOperation( "Relation", [ IsHomogeneousCoherentConfiguration, IsPosInt, IsPosInt] );
 
 #! @Chapter Functionality
+#! @Section Matrices describing coherent configurations
+#! @Arguments CC, p, k
+#! @Returns neighbours
+#! @Description
+#!	Returns all the points $y$ of CC such that $(p,y) \in R_k$.
+DeclareOperation( "Neighbours", [ IsHomogeneousCoherentConfiguration, IsPosInt, IsInt] );
+
+
+#! @Chapter Functionality
 #! @Section Properties of coherent configurations
 #! @Arguments CC
 #! @Returns true or false

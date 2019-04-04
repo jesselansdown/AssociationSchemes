@@ -72,6 +72,22 @@ InstallMethod( Relation,
 		return RelationMatrix(A)[x][y];
 	end);
 
+InstallMethod( Neighbours,
+			 [IsHomogeneousCoherentConfiguration, IsPosInt, IsInt],
+	 function(A, p, k)
+	    local R, i, ans, n;
+	    
+	    R := RelationMatrix(A);;
+	    ans := [];
+	    n := Order(A);
+	    for i in [1..n] do
+	        if R[p][i] = k then
+	            AddSet(ans, i);
+	        fi;
+	    od;
+	    return ans;
+	end);
+
 InstallMethod(IsSymmetricCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration],
 	function(a)
