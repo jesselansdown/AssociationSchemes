@@ -333,6 +333,28 @@ InstallMethod(FusionScheme,
 		return m2;
 	end);
 
+InstallMethod(DirectProductScheme,
+			[IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
+	function(M, N)
+	    local L, i, j, MM, NM, A;
+	    
+	    MM := AdjacencyMatrices(M);
+	    NM := AdjacencyMatrices(N);
+	    A := [];
+	    for i in MM do
+	        for j in NM do
+	            Add(A, KroneckerProduct(i, j));
+	        od;
+	    od;
+
+	    L := A[1] * 0;
+	    for i in [1..Length(A)] do
+	        L := L + A[i] * (i-1);
+	    od;
+	  
+	    return HomogeneousCoherentConfiguration(L);
+	end);
+
 InstallMethod(IntersectionNumber,
 			[IsHomogeneousCoherentConfiguration, IsInt,  IsInt,  IsInt],
 	function( a, i, j, k )
