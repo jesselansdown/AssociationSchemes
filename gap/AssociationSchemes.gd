@@ -159,7 +159,7 @@ DeclareAttribute( "Valencies", IsHomogeneousCoherentConfiguration );
 #! @Returns L
 #! @Description
 #!	Returns a list L of the intersection matrices of a coherent configuration $CC$, where the $i$-th entry of $L$
-#!	is $B_{i-1}$ and $B_{i}_{jk} = p_{ji}^k$.
+#!	is $B_{i-1}$ and $(B_{i})_{jk} = p_{ji}^k$.
 DeclareAttribute("IntersectionMatrices", IsHomogeneousCoherentConfiguration);
 
 
