@@ -352,7 +352,7 @@ InstallMethod(DirectProductScheme,
 	        L := L + A[i] * (i-1);
 	    od;
 	  
-	    return HomogeneousCoherentConfiguration(L);
+	    return HomogeneousCoherentConfigurationNC(L);
 	end);
 
 InstallMethod(IntersectionNumber,
