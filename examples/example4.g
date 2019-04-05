@@ -1,5 +1,5 @@
 #! @Chapter Examples
-#! @Section Example 3 -- Using the library
+#! @Section Example 4 -- Using the library
 
 #! In this package, we also have a library of all small homogeneous 
 #! coherent configurations, of order at most 38 (except 31, ,35, 36, 37).
