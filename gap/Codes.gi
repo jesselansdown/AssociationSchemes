@@ -72,3 +72,22 @@ InstallMethod(DualBoseMesnerBasis,
     od;
     return basis;
   end);
+
+InstallMethod(OuterDistribution,
+  [IsList, IsHomogeneousCoherentConfiguration],
+  function(v, sch)
+      local d, B, adj, i;
+      if not IsCommutative(sch) then
+        Error("Must give a commutative coherent configuration.\n");
+      fi;
+      if Size(v)<> Order(sch) or ForAny(v, t -> not t in Rationals) then
+        Error("Must give a vector in R^n\n");
+      fi;
+      d:=ClassOfAssociationScheme(sch);
+      B:=[];;
+      adj :=AdjacencyMatrices(sch);
+      for i in [1 .. d+1] do
+        Add(B, adj[i]*v);
+      od;
+      return TransposedMat(B);
+    end);
