@@ -15,7 +15,7 @@ InstallMethod(HomogeneousCoherentConfigurationNC,
 			[IsMatrix],
 	function(mat)
 		local m, assoc_rec;
-		m := StructuralCopy(mat);;
+		m := MakeImmutable(StructuralCopy(mat));;
 		assoc_rec := rec( matrix := m);
 		return ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration);
 	end );
@@ -47,7 +47,7 @@ InstallMethod(HomogeneousCoherentConfiguration,
 			return mat2;
 		end;
 
-		mat := CanonicallyLabelRelationMatrix(M);
+		mat := MakeImmutable(CanonicallyLabelRelationMatrix(M));
 		for i in [1 .. Size(mat)] do
 			if mat[i, i] <> mat[1,1] then
 				Print("Relation matrix does not define a homogeneous coherent configuration\n");
@@ -77,7 +77,7 @@ InstallMethod(AssociationSchemeNC,
 			[IsMatrix],
 	function(mat)
 		local m, assoc_rec;
-		m := StructuralCopy(mat);;
+		m := MakeImmutable(StructuralCopy(mat));;
 		assoc_rec := rec( matrix := m);
 		return ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, IsCommutative, true, IsSymmetricCoherentConfiguration, true);
 	end );
@@ -105,7 +105,7 @@ InstallMethod(AssociationScheme,
 			return mat2;
 		end;
 
-		mat := CanonicallyLabelRelationMatrix(M);
+		mat := MakeImmutable(CanonicallyLabelRelationMatrix(M));
 		for i in [1 .. Size(mat)] do
 			if mat[i, i] <> mat[1,1] then
 				Print("Relation matrix does not define a homogeneous coherent configuration\n");
@@ -125,6 +125,30 @@ InstallMethod(AssociationScheme,
 			Error("Must give a symmetric relation matrix for an association scheme.\n");
 		fi;
 	end );
+
+
+InstallMethod(ReorderRelations,
+            [IsHomogeneousCoherentConfiguration, IsList],
+    function( a, L )
+        local mat, m, i, j, m2, d, n;
+        d:=ClassOfAssociationScheme(a);;
+        n:=Order(a);
+        if not Set(L) =[0..d] then
+            return fail;
+        fi;
+        if not L[1]=0 then
+            return fail;
+        fi;
+        mat :=  NullMat(n, n);
+        m:=RelationMatrix(a);;
+        for i in [1 .. n] do
+            for j in [1 .. n] do
+                mat[i][j]:=L[m[i][j]+1];
+            od;
+        od;
+        m2 := HomogeneousCoherentConfigurationNC(mat);
+        return m2;
+    end);
 
 InstallMethod(RelationMatrix,
 			[IsHomogeneousCoherentConfiguration],

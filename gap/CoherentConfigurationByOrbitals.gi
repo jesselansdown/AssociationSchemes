@@ -50,7 +50,7 @@ InstallMethod(HomogeneousCoherentConfigurationByOrbitals,
 			pos := 1^i;
 			mat[pos]:=Permuted(row1, i);
 		od;
-		assoc_rec := rec( matrix := mat);
+		assoc_rec := rec( matrix := MakeImmutable(mat));
 		return ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfigurationByOrbitals, true, ConstructorGroup, g_perm);;
 	end);
 
