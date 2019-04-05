@@ -9,8 +9,8 @@
 SetPackageInfo( rec(
 
 PackageName := "AssociationSchemes",
-Subtitle := "A GAP package for working with association schemes and coherent configurations",
-Version := "0.1",
+Subtitle := "A GAP package for working with association schemes and homogeneous coherent configurations",
+Version := "1.0.0",
 Date := "05/02/2019", # dd/mm/yyyy format
 
 Persons := [
@@ -103,10 +103,10 @@ Dependencies := rec(
   ["GRAPE", ">=4.8.1"],
   ["Digraphs", ">=0.13.0"],
   ["cvec", ">=2.6.1"],
-#  ["NautyTracesInterface", ">=0.2"]
+  ["NautyTracesInterface", ">=0.2"]
   ],
   SuggestedOtherPackages := [
-  ["NautyTracesInterface", ">=0.2"]
+#  ["NautyTracesInterface", ">=0.2"]
   ],
   ExternalConditions := [ ],
 ),
