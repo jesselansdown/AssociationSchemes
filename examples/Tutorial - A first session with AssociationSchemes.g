@@ -37,7 +37,7 @@ CC := CoherentConfiguration(M);;
 #! then you can skip the checks by using CoherentConfigurationNC.
 #! Do not do this unless you are sure!
 
-#! We can display the scheme and see that &Gap; already knows the class and order of CC.
+#! We can display the scheme and see that &GAP; already knows the class and order of CC.
 
 #! @BeginExample
 Display(CC);
@@ -121,7 +121,7 @@ MinimalIdempotents(CC);;
 
 #! @BeginExample
 IsSchurian(CC);
-# true
+#! true
 #! @EndExample
 
 #! In doing this, a graph is constructed and the automorphism group for CC is found.
@@ -130,7 +130,7 @@ IsSchurian(CC);
 #! @BeginExample
 AutomorphismGroup(CC);
 #! <permutation group with 17 generators>
-#! @BeginExample
+#! @EndExample
 
 #! We can define homogeneous coherent figurations from transitive groups.
 #! This is typically fast.
@@ -148,6 +148,8 @@ CoherentConfigurationByOrbitals(G);;
 #! If G is generously transitive, then we can constuct a Schurian scheme
 
 #! @BeginExample
+IsGenerouslyTransitive(G);
+#! true
 SchurianScheme(G);;
 #! @EndExample
 
@@ -164,7 +166,7 @@ CoherentConfigurationByOrbitals(G, H);;
 
 #! @BeginExample
 JohnsonScheme(10,3);
-# 3-class association scheme of order 120.
+#! 3-class association scheme of order 120.
 #! @EndExample
 
 #! AssociationSchemes also comes with a library of association schemes on small numbers of

@@ -41,9 +41,7 @@ as well as the following &GAP; packages:
 
 * Digraphs 0.13.0 (or later) - For computing automorphism groups
 * NautyTracesInterface 0.2 (or later) - For computing automorphism groups
-* FinInG 1.4.1 (or later) - For constructing Grassmann schemes and dual polar schemes
 * IO 4.5.4 (or later) - For reading and writing HomogeneousCoherentConfiguration objects
-* EigenGAP - For approximating character tables with complex or rational values.
 
 You may of course use AssociationSchemes without the above packages, however the corresponding functionality will be unavailable. 
 
@@ -61,7 +59,7 @@ Alternatively, you may load the package from a location other than the &GAP; "pk
 
 
 @Chapter Getting Started
-	@Section Tutorial: A first session with AssociationSchemes
+	@Section Tutorial - A first session with AssociationSchemes
 
 @Chapter Functionality
 
