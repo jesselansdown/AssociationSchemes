@@ -26,8 +26,28 @@ InstallMethod(HomogeneousCoherentConfigurationNC,
 
 InstallMethod(HomogeneousCoherentConfiguration,
 			[IsMatrix],
-	function(mat)
-		local i, symmetric, assoc_rec;
+	function(M)
+		local mat, i, symmetric, assoc_rec, CanonicallyLabelRelationMatrix;
+
+		CanonicallyLabelRelationMatrix := function(mat)
+			local rels, mat2, i, j;
+			rels := Set(Flat(mat));
+			if rels = [0 .. Size(rels)-1] then
+				Print("!\n");
+				return mat;
+			fi;
+			Remove(rels, Position(rels, mat[1][1]));
+			rels:=Concatenation([mat[1][1]], rels);;
+			mat2:=NullMat(Size(mat), Size(mat[1]));
+			for i in [1 .. Size(mat)] do
+				for j in [1 .. Size(mat[1])] do
+					mat2[i][j]:=Position(rels, mat[i][j]) -1;
+				od;
+			od;
+			return mat2;
+		end;
+
+		mat := CanonicallyLabelRelationMatrix(M);
 		for i in [1 .. Size(mat)] do
 			if mat[i, i] <> mat[1,1] then
 				Print("Relation matrix does not define a homogeneous coherent configuration\n");
