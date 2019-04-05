@@ -49,6 +49,26 @@ DeclareOperation( "HomogeneousCoherentConfiguration", [ IsMatrix ] );
 DeclareOperation( "HomogeneousCoherentConfigurationNC", [ IsMatrix ] );
 
 #! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments M
+#! @Returns coherent configuration
+#! @Description
+#!	Takes the relationship matrix, $M$, describing an associatioin scheme and returns a association scheme (symmetric coherent configuration).
+#!	The matrix $M = \sum_{i=0}^d i A_i$, where $A_i$ are the adjacency matrices describing an association scheme.
+#!	Checks that the matrix satisfies the association scheme axioms.
+DeclareOperation( "AssociationScheme", [ IsMatrix ] );
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments M
+#! @Returns coherent configuration
+#! @Description
+#!	Same as AssociationScheme but without performing any checks. Use this method only if you know with certainty
+#!	that $M$ describes an association scheme (symmetric coherent configuration).
+DeclareOperation( "AssociationSchemeNC", [ IsMatrix ] );
+
+
+#! @Chapter Functionality
 #! @Section Matrices describing coherent configurations
 #! @Arguments CC
 #! @Returns relation matrix $M$
