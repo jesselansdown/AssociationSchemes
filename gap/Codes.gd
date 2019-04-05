@@ -28,11 +28,18 @@ DeclareOperation( "InnerDistribution", [IsList, IsHomogeneousCoherentConfigurati
 #!	inner distribution vector first, or takes the inner distribution directly.
 DeclareOperation( "MacWilliamsTransform", [IsList, IsHomogeneousCoherentConfiguration]);
 
+#! @Chapter Functionality
+#! @Section Attributes of coherent configurations
+#! @Arguments CC, p
+#! @Returns dual Bose-Mesner basis
+#! @Description
+#!	Returns the dual Bose-Mesner basis of a homogeneous coherent configuration with respect to the point p.
+DeclareOperation( "DualBoseMesnerBasis", IsHomogeneousCoherentConfiguration, IsPosInt);
 
 #! @Chapter Functionality
 #! @Section Attributes of coherent configurations
 #! @Arguments CC
-#! @Returns canonical dual basis
+#! @Returns dual Bose-Mesner basis
 #! @Description
-#!	Returns the canonical dual basis of a homogeneous coherent configuration
-DeclareAttribute( "CanonicalDualBasis", IsHomogeneousCoherentConfiguration);
+#!	Returns the dual Bose-Mesner basis of a homogeneous coherent configuration with respect to the point 1.
+DeclareOperation( "DualBoseMesnerBasis", IsHomogeneousCoherentConfiguration);

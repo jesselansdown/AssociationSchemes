@@ -39,28 +39,36 @@ InstallMethod(MacWilliamsTransform,
       fi;
     end);
 
-InstallMethod(CanonicalDualBasis,
-  [IsHomogeneousCoherentConfiguration],
-    function(A)
-      local AM, DAM, d, i, TR, val, M;
-      
-      d := ClassOfAssociationScheme(A) + 1;
-
-      M:=RelationMatrix(A);
-      TR := [];
-      for i in [1..ClassOfAssociationScheme(A)] do
-          TR[i] := M[Position(M[1], i)][1];
+InstallMethod(DualBoseMesnerBasis,
+  [IsHomogeneousCoherentConfiguration, IsPosInt],
+  function(A, p)
+    local d, n, basis, i, y;
+    d:=ClassOfAssociationScheme(A);
+    n:=Order(A);;
+    basis := List([0..d], t -> NullMat(n, n));;
+    for i in [0 .. d] do
+      for y in [1 .. n] do
+        if Relation(A, p, y)=i then
+          basis[i+1][y, y]:=1;
+        fi;
       od;
-
-
-      val := Valencies(A);
-      AM := AdjacencyMatrices(A);
-      DAM := [];
-      DAM[1] := AM[1];
-      for i in [2..d] do
-          DAM[i] := AM[TR[i-1]+1] / val[i];
-      od;
-      
-      return [AM, DAM];
+    od;
+    return basis;
   end);
 
+InstallMethod(DualBoseMesnerBasis,
+  [IsHomogeneousCoherentConfiguration],
+  function(A)
+    local d, n, basis, i, y;
+    d:=ClassOfAssociationScheme(A);
+    n:=Order(A);;
+    basis := List([0..d], t -> NullMat(n, n));;
+    for i in [0 .. d] do
+      for y in [1 .. n] do
+        if Relation(A, 1, y)=i then
+          basis[i+1][y, y]:=1;
+        fi;
+      od;
+    od;
+    return basis;
+  end);
