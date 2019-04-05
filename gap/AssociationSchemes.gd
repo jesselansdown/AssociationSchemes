@@ -36,7 +36,8 @@ BindGlobal( "TheTypeHomogeneousCoherentConfiguration",
 #! @Description
 #!	Takes the relationship matrix, $M$, describing a coherent configuration and returns a CoherentConfiguration object.
 #!	The matrix $M = \sum_{i=0}^d i A_i$, where $A_i$ are the adjacency matrices describing a coherent configuration.
-#!	Checks that the matrix satisfies the coherent configuration axioms.
+#!	Checks that the matrix satisfies the coherent configuration axioms. (Note that this accepts a matrix of the form
+#!	$M = \sum_{i=0}^d a_i A_i$ where $a_i$ is not equal to $i$, however, it will first convert to the form $M = \sum_{i=0}^d i A_i$).
 DeclareOperation( "HomogeneousCoherentConfiguration", [ IsMatrix ] );
 
 #! @Chapter Functionality
@@ -47,6 +48,27 @@ DeclareOperation( "HomogeneousCoherentConfiguration", [ IsMatrix ] );
 #!	Same as CoherentConfiguration but without performing any checks. Use this method only if you know with certainty
 #!	that $M$ describes a coherent configuration.
 DeclareOperation( "HomogeneousCoherentConfigurationNC", [ IsMatrix ] );
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments M
+#! @Returns coherent configuration
+#! @Description
+#!	Takes the relationship matrix, $M$, describing an associatioin scheme and returns a association scheme (symmetric coherent configuration).
+#!	The matrix $M = \sum_{i=0}^d i A_i$, where $A_i$ are the adjacency matrices describing an association scheme.
+#!	Checks that the matrix satisfies the association scheme axioms.(Note that this accepts a matrix of the form
+#!	$M = \sum_{i=0}^d a_i A_i$ where $a_i$ is not equal to $i$, however, it will first convert to the form $M = \sum_{i=0}^d i A_i$).
+DeclareOperation( "AssociationScheme", [ IsMatrix ] );
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments M
+#! @Returns coherent configuration
+#! @Description
+#!	Same as AssociationScheme but without performing any checks. Use this method only if you know with certainty
+#!	that $M$ describes an association scheme (symmetric coherent configuration).
+DeclareOperation( "AssociationSchemeNC", [ IsMatrix ] );
+
 
 #! @Chapter Functionality
 #! @Section Matrices describing coherent configurations
