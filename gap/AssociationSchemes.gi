@@ -1117,7 +1117,128 @@ InstallMethod(AllPPolynomialOrderings,
         return ans;
     end);
 
+InstallMethod(KreinParameter,
+            [IsHomogeneousCoherentConfiguration, IsInt, IsInt, IsInt],
+	function(A, i, j, k)
+		local P, Q, n, d, s, l;
+		if not IsCommutative(A) then
+			return fail;
+		fi;
+		P:=MatrixOfEigenvalues(A);
+		Q:=DualMatrixOfEigenvalues(A);;
 
+		n := Order(A);
+		d:=ClassOfAssociationScheme(A);;
+		s:=0;
+		for l in [0 .. d] do
+			s := s + ((ComplexConjugate( P[i+1,l+1] ) * ComplexConjugate( P[j+1,l+1] ) *  P[k+1,l+1])/P[1,l+1]^2);
+		od;
+		s := s*Q[1, i+1]*Q[1, j+1]/n;
+		return s;
+	end);
+
+InstallMethod(KreinParameters,
+            [IsHomogeneousCoherentConfiguration],
+	function(A)
+		local K, i, j, k, d;
+		if not IsCommutative(A) then
+			return fail;
+		fi;
+		d:=ClassOfAssociationScheme(A);;
+		K:=List([1 .. d+1], t -> NullMat(d+1, d+1));;
+		for i in [0 .. d] do
+			for j in [0 .. d] do
+				for k in [0 .. d] do
+					K[i+1][j+1,k+1] := KreinParameter(A, i, j, k);
+				od;
+			od;
+		od;
+		return K;
+	end);
+
+InstallMethod( IsQPolynomial, [IsHomogeneousCoherentConfiguration],
+	function(T)
+    	local L, i, d, K, ord, TridiagonalOrdering;
+    
+	    TridiagonalOrdering := function(M)
+	        local rest, pres, x, L, LT, d;
+	    
+	        d := Length(M);
+	        rest := [2..d];
+	        LT := [1];
+	        pres := 1;
+	        while rest <> [] do
+	            L := Filtered(rest, x-> M[pres][x] <> 0);
+	            if Length(L) <> 1 then
+	                return false;
+	            fi;
+	            pres := L[1];
+	            Add(LT, pres);
+	            rest := Difference(rest, [pres]);
+	        od;
+	      
+	        return LT;
+	    end;
+
+	    K := KreinParameters(T);
+	    if K = false then
+	        return [];
+	    fi;
+	    
+	    d := ClassOfAssociationScheme(T)+1;
+	    L := [];
+	    for i in [2..d] do
+	        ord := TridiagonalOrdering(K[i]);
+	        if ord <> false then
+	            return true;
+	        fi;
+	    od;
+	    
+	    return false;
+	end);
+
+
+
+InstallMethod( AllQPolynomialOrderings, [IsHomogeneousCoherentConfiguration],
+	function(T)
+	    local L, i, d, K, ord, TridiagonalOrdering;
+	    
+	    TridiagonalOrdering := function(M)
+	        local rest, pres, x, L, LT, d;
+	    
+	        d := Length(M);
+	        rest := [2..d];
+	        LT := [1];
+	        pres := 1;
+	        while rest <> [] do
+	            L := Filtered(rest, x-> M[pres][x] <> 0);
+	            if Length(L) <> 1 then
+	                return false;
+	            fi;
+	            pres := L[1];
+	            Add(LT, pres);
+	            rest := Difference(rest, [pres]);
+	        od;
+	      
+	        return LT;
+	    end;
+
+	    K := KreinParameters(T);
+	    if K = false then
+	        return [];
+	    fi;
+	    
+	    d := ClassOfAssociationScheme(T)+1;
+	    L := [];
+	    for i in [2..d] do
+	        ord := TridiagonalOrdering(K[i]);
+	        if ord <> false then
+	            Add(L, ord-1);
+	        fi;
+	    od;
+	    
+	    return Set(L);
+	end);
 
 InstallMethod(IsCharacterTableOfHomogeneousCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration, IsMatrix],

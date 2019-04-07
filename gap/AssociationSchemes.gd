@@ -257,7 +257,7 @@ DeclareAttribute( "AutomorphismGroup", IsHomogeneousCoherentConfiguration );
 #! @Arguments CC
 #! @Returns G
 #! @Description
-#!	Returns the coherent configuration CC is P-polynomial.
+#!	Returns if the coherent configuration CC is P-polynomial.
 DeclareProperty( "IsPPolynomial", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
@@ -267,6 +267,41 @@ DeclareProperty( "IsPPolynomial", IsHomogeneousCoherentConfiguration );
 #! @Description
 #!	Calculate all P-polynomial orderings of a homogeneous coherent configuration.
 DeclareAttribute( "AllPPolynomialOrderings", IsHomogeneousCoherentConfiguration );
+
+
+#! @Chapter Functionality
+#! @Section Attributes of coherent configurations
+#! @Arguments CC, i, j, k
+#! @Returns $q_{i,j}^k$
+#! @Description
+#!	Compute the krein parameter $q_{i,j}^k$ of a commutative homogeneous coherent configuration.
+DeclareOperation( "KreinParameter", [ IsHomogeneousCoherentConfiguration, IsInt, IsInt, IsInt ] );
+
+#! @Chapter Functionality
+#! @Section Attributes of coherent configurations
+#! @Arguments CC
+#! @Returns L
+#! @Description
+#!	Return a list $L$ of all Krein parameters of a commutative homogeneous coherent configuration,
+#!	where $L[i][j,k] = q_{i,j}^k$.
+DeclareAttribute( "KreinParameters", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Properties of coherent configurations
+#! @Arguments CC
+#! @Returns G
+#! @Description
+#!	Returns if the commutative coherent configuration CC is Q-polynomial.
+DeclareProperty( "IsQPolynomial", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Attributes of coherent configurations
+#! @Arguments CC
+#! @Returns G
+#! @Description
+#!	Calculate all Q-polynomial orderings of a homogeneous coherent configuration.
+DeclareAttribute( "AllQPolynomialOrderings", IsHomogeneousCoherentConfiguration );
+
 
 DeclareOperation("SchemeToGraph", [IsHomogeneousCoherentConfiguration]);
 DeclareOperation("IsIsomorphicScheme", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
