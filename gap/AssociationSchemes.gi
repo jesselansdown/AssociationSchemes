@@ -1444,6 +1444,9 @@ InstallMethod( Display,
  		if HasIsPPolynomial(a) then
  			Print("  P-polynomial: ", IsPPolynomial(a), "\n");
  		fi;
+ 		if HasIsQPolynomial(a) then
+ 			Print("  Q-polynomial: ", IsQPolynomial(a), "\n");
+ 		fi;
  		if HasIsSchurian(a) then
  			Print("  Schurian: ", IsSchurian(a), "\n");
  		fi;
