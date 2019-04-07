@@ -219,6 +219,14 @@ DeclareAttribute("NumberOfCharacters", IsHomogeneousCoherentConfiguration);
 #!	Returns a the matrix of eigenvalues (or character table), $P$, for a coherent configuration CC.
 DeclareAttribute( "MatrixOfEigenvalues", IsHomogeneousCoherentConfiguration );
 
+#! @Chapter Functionality
+#! @Section Matrices describing coherent configurations
+#! @Arguments CC
+#! @Returns P
+#! @Description
+#!	Alias for MatrixOfEigenvalues.
+DeclareOperation( "CharacterTable", [IsHomogeneousCoherentConfiguration] );
+
 DeclareAttribute( "MatrixOfEigenvaluesSquare", IsHomogeneousCoherentConfiguration );
 DeclareAttribute( "MatrixOfEigenvaluesNonSquare", IsHomogeneousCoherentConfiguration );
 
@@ -255,10 +263,18 @@ DeclareAttribute( "AutomorphismGroup", IsHomogeneousCoherentConfiguration );
 #! @Chapter Functionality
 #! @Section Properties of coherent configurations
 #! @Arguments CC
-#! @Returns G
+#! @Returns true/false
 #! @Description
 #!	Returns if the coherent configuration CC is P-polynomial.
 DeclareProperty( "IsPPolynomial", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Properties of coherent configurations
+#! @Arguments CC
+#! @Returns G
+#! @Description
+#!	Alias for is P-polynomial.
+DeclareOperation( "IsMetric", [IsHomogeneousCoherentConfiguration] );
 
 #! @Chapter Functionality
 #! @Section Attributes of coherent configurations
@@ -289,10 +305,18 @@ DeclareAttribute( "KreinParameters", IsHomogeneousCoherentConfiguration );
 #! @Chapter Functionality
 #! @Section Properties of coherent configurations
 #! @Arguments CC
-#! @Returns G
+#! @Returns true/false
 #! @Description
 #!	Returns if the commutative coherent configuration CC is Q-polynomial.
 DeclareProperty( "IsQPolynomial", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Properties of coherent configurations
+#! @Arguments CC
+#! @Returns true/false
+#! @Description
+#!	Alias for is Q-polynomial.
+DeclareOperation( "IsCometric", [IsHomogeneousCoherentConfiguration] );
 
 #! @Chapter Functionality
 #! @Section Attributes of coherent configurations

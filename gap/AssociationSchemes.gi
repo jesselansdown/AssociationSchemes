@@ -676,6 +676,11 @@ InstallMethod(IsCommutative,
 	    return ct2;
 	end);
 
+InstallMethod( CharacterTable, [IsHomogeneousCoherentConfiguration],
+	function(R)
+	    return MatrixOfEigenvalues(R);
+	end);
+
 
 
  # InstallMethod( MatrixOfEigenvalues, 
@@ -1070,6 +1075,11 @@ InstallMethod( IsPPolynomial, [IsHomogeneousCoherentConfiguration],
 	    return false;
 	end);
 
+InstallMethod( IsMetric, [IsHomogeneousCoherentConfiguration],
+	function(R)
+	    return IsPPolynomial(R);
+	end);
+
 InstallMethod(AllPPolynomialOrderings,
             [IsHomogeneousCoherentConfiguration],
     function(R)
@@ -1195,6 +1205,11 @@ InstallMethod( IsQPolynomial, [IsHomogeneousCoherentConfiguration],
 	    od;
 	    
 	    return false;
+	end);
+
+InstallMethod( IsCometric, [IsHomogeneousCoherentConfiguration],
+	function(R)
+	    return IsQPolynomial(R);
 	end);
 
 
