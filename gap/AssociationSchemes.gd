@@ -106,7 +106,7 @@ DeclareOperation( "RelationMatrix", [ IsHomogeneousCoherentConfiguration ] );
 
 #! @Chapter Functionality
 #! @Section Methods
-#! @Arguments CC
+#! @Arguments CC, x, y
 #! @Returns i
 #! @Description
 #!	Takes a CC and two points, x and y, and returns i such that $(x, y) \in R_i$.
