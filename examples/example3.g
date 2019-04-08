@@ -1,7 +1,7 @@
 #! @Chapter Examples
 #! @Section Example 3 -- Codes
 
-#! For this example, we use the package Guava for its
+#! For this example, we use the package Guava<Cite Key="GUAVA"/> for its
 #! facility with block codes.
 
 #! We will see that the inner distribution vector of a subset coincides with the weight enumerator
@@ -10,7 +10,7 @@
 #! @BeginExample
 hammingscheme := HammingScheme(7,2);
 #! 7-class homogeneous coherent configuration of order 128
-LoadPackage("Guava");;
+LoadPackage("Guava", false);;
 hammingcode := HammingCode(3, GF(2));
 #! a linear [7,4,3]1 Hamming (3,2) code over GF(2)
 #! @EndExample

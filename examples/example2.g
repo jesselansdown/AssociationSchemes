@@ -1,12 +1,12 @@
 #! @Chapter Examples
 #! @Section Example 2 -- Dual polar spaces and their graphs
 
-#! For this example, we also use the package FinInG.
+#! For this example, we also use the package FinInG <Cite Key="FinInG"/>.
 #! We will construct a metric association scheme
 #! coming from a dual polar space.
 
 #! @BeginExample
-LoadPackage("FinInG");
+LoadPackage("FinInG", false);;
 quadric := EllipticQuadric(7, 2);
 #! Q-(7, 2)
 points := AsList( Planes(quadric) );;
@@ -16,7 +16,6 @@ for i in [1..Length(points)] do
 		intersection := Meet( points{[i,j]} );
 		mat[i][j] := 2 - ProjectiveDimension( intersection );
 		mat[j][i] := mat[i][j];
-		Print("progress: ", Int(i/Length(points) * 100), "\%\r");
 	od;
 od;
 #! @EndExample

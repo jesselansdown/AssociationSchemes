@@ -2,11 +2,13 @@
 #! @Section Example 5 -- Constructing HS (advanced example)
 
 #! We redo an example that appears in Section 3.6 of Peter Cameron's "Permutation Groups" book.
+#!<Br/><Br/>
 #! First we construct the Hoffman-Singleton graph from the alternating group of degree 7.
 
 #! @BeginExample
 A7 := AlternatingGroup(7);;
-Pi := [ [ 1, 2, 4 ], [ 1, 3, 7 ], [ 1, 5, 6 ], [ 2, 3, 5 ], [ 2, 6, 7 ], [ 3, 4, 6 ], [ 4, 5, 7 ] ];;
+Pi := [ [ 1, 2, 4 ], [ 1, 3, 7 ], [ 1, 5, 6 ], 
+ [ 2, 3, 5 ], [ 2, 6, 7 ], [ 3, 4, 6 ], [ 4, 5, 7 ] ];;
 OnSetsRecursive := function(x,g) 
 	if not IsSet(x) then
 		return x^g; 
@@ -67,7 +69,7 @@ StructureDescription( autHoffSing );
 vals := Valencies(cc);
 #! [ 1, 7, 42 ]
 adjmat := AdjacencyMatrices(cc)[ Position(vals, 42) ];;
-graph := Graph(aut, [1..50], OnPoints, {x,y} -> adjmat[x][y]=1);;
+graph := Graph(autHoffSing, [1..50], OnPoints, {x,y} -> adjmat[x][y]=1);;
 one_coclique := CompleteSubgraphsOfGivenSize(graph, 15)[1];;
 all_cocliques := Orbit(autHoffSing, Set(VertexNames(graph){one_coclique}), OnSets);;
 Size(all_cocliques);
