@@ -17,7 +17,7 @@ DeclareOperation( "AllHomogeneousCoherentConfigurations", [ IsPosInt ] );
 #! @Returns coherent configuration
 #! @Description
 #!	Returns the $k$-th homogeneous coherent configuration of order $n$. Library is complete for $5 \le n \le 38$ excluding
-#!	$n \in \{31, 35, 36, 37\}$. (Put reference).
+#!	$n \in \{31, 35, 36, 37\}$, corresponding to <Cite Key="Hanaki"/>.
 DeclareOperation( "HomogeneousCoherentConfiguration", [ IsPosInt, IsPosInt ] );
 
 DeclareOperation( "NumberOfHomogeneousCoherentConfigurations", [ IsPosInt ] );

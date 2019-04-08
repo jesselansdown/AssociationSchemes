@@ -170,7 +170,7 @@ JohnsonScheme(10,3);
 #! @EndExample
 
 #! AssociationSchemes also comes with a library of association schemes on small numbers of
-#! vertices, according to CITE.
+#! vertices, according to <Cite Key="Hanaki"/>.
 
 #! @BeginExample
 m:=HomogeneousCoherentConfiguration(12, 7);;
