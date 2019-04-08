@@ -28,7 +28,7 @@ M:=
 #! To construct a scheme from this matrix, we use the CoherentConfiguration command.
 
 #! @BeginExample
-CC := CoherentConfiguration(M);;
+CC := HomogeneousCoherentConfiguration(M);;
 #! @EndExample
 
 #! CoherentConfiguration performs a number of checks as it constructs the scheme
@@ -37,14 +37,17 @@ CC := CoherentConfiguration(M);;
 #! then you can skip the checks by using CoherentConfigurationNC.
 #! Do not do this unless you are sure!
 
-#! We can display the scheme and see that &GAP; already knows the class and order of CC.
+#! We can display the scheme and see that &GAP; already knows the class and order of CC, as well
+#! that CC is symmetric and commutative.
 
 #! @BeginExample
 Display(CC);
 #! 3-class association scheme of order 12.
+#!   Symmetric: true
+#!   Commutative: true
 #! @EndExample
 
-#! We can ask for more information, such as if CC is commutative or symmetric.
+#! We can directly ask if CC is commutative or symmetric.
 
 #! @BeginExample
 IsCommutative(CC);
@@ -78,13 +81,14 @@ Display(P);
 #! @BeginExample
 Display(CC);
 #! 3-class association scheme of order 12.
-#! MatrixOfEigenvalues:
+#!   Symmetric: true
+#!   Commutative: true
+#!   MatrixOfEigenvalues:
 #! [ [   1,   1,   2,   8 ],
 #!   [   1,   1,   2,  -4 ],
 #!   [   1,   1,  -2,   0 ],
 #!   [   1,  -1,   0,   0 ] ]
-#! 
-#! DualMatrixOfEigenvalues:
+#!   DualMatrixOfEigenvalues:
 #! [ [   1,   2,   3,   6 ],
 #!   [   1,   2,   3,  -6 ],
 #!   [   1,   2,  -3,   0 ],
@@ -129,7 +133,7 @@ IsSchurian(CC);
 
 #! @BeginExample
 AutomorphismGroup(CC);
-#! <permutation group with 17 generators>
+#! <permutation group with 11 generators>
 #! @EndExample
 
 #! We can define homogeneous coherent figurations from transitive groups.
@@ -142,7 +146,7 @@ G := Group( [ ( 6,10)( 7,11)( 8,12)( 9,13)(15,28)(16,29)(17,30)(18,31)
     ( 7,10,14)( 8,33,35,39,38,12,32,13,19)( 9,37,34)(23,36,30),
     ( 3, 4)( 7,11)( 8, 9)(12,13)(15,28)(17,31)(18,30)(19,32)(20,33)
     (21,25)(22,36)(23,35)(24,37)(26,40)(27,39)(34,38), () ] );;
-CoherentConfigurationByOrbitals(G);;
+HomogeneousCoherentConfigurationByOrbitals(G);;
 #! @EndExample
 
 #! If G is generously transitive, then we can constuct a Schurian scheme
@@ -159,7 +163,7 @@ SchurianScheme(G);;
 #! @BeginExample
 G:=SymmetricGroup(5);;
 H:=Stabiliser(G, 1);;
-CoherentConfigurationByOrbitals(G, H);;
+HomogeneousCoherentConfigurationByOrbitals(G, H);;
 #! @EndExample
 
 #! There are a number of special constructors, such as for Johnson schemes

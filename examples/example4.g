@@ -2,7 +2,7 @@
 #! @Section Example 4 -- Using the library
 
 #! In this package, we also have a library of all small homogeneous 
-#! coherent configurations, of order at most 38 (except 31, ,35, 36, 37).
+#! coherent configurations, of order at most 38 (except 31, ,35, 36, 37), corresponding to <Cite Key="Hanaki"/>.
 
 #! @BeginExample
 for i in [5..20] do
