@@ -49,7 +49,8 @@ to_fuse := Filtered([1..Length(l)], t -> l[t][2] in [3,4])-1;
 #! [ 3, 5 ]
 to_fuse2 := Difference([1..6],to_fuse);
 #! [ 1, 2, 4, 6 ]
-poly := InterpolatedPolynomial(Rationals, Concatenation([0], to_fuse, to_fuse2), [0,1,1,2,2,2,2] );;
+poly := InterpolatedPolynomial(Rationals, Concatenation([0], to_fuse, 
+	to_fuse2), [0,1,1,2,2,2,2] );;
 newmat := List(mat, row -> List(row, x -> Value(poly,x)));;
 Collected(newmat[1]);
 #! [ [ 0, 1 ], [ 1, 7 ], [ 2, 42 ] ]
@@ -72,7 +73,8 @@ vals := Valencies(cc);
 adjmat := AdjacencyMatrices(cc)[ Position(vals, 42) ];;
 graph := Graph(autHoffSing, [1..50], OnPoints, {x,y} -> adjmat[x][y]=1);;
 one_coclique := CompleteSubgraphsOfGivenSize(graph, 15)[1];;
-all_cocliques := Orbit(autHoffSing, Set(VertexNames(graph){one_coclique}), OnSets);;
+all_cocliques := Orbit(autHoffSing, 
+	Set(VertexNames(graph){one_coclique}), OnSets);;
 Size(all_cocliques);
 #! 100
 G := Action(autHoffSing, all_cocliques, OnSets);;
@@ -87,7 +89,8 @@ vals := Valencies(a);
 #! [ 1, 35, 42, 15, 7 ]
 to_fuse := Filtered([1..Length(vals)], t -> vals[t] in [7,15])-1;;
 to_fuse2 := Difference([1..4], to_fuse);;
-fusion := FusionOfHomogeneousCoherentConfigurations(a, [[0], to_fuse, to_fuse2]);
+fusion := FusionOfHomogeneousCoherentConfigurations(a, [[0], to_fuse,
+	to_fuse2]);
 #! 2-class association scheme of order 100
 autgroup2 := AutomorphismGroup(fusion);
 #! <permutation group with 10 generators>
