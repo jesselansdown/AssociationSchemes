@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "AssociationSchemes",
 Subtitle := "A GAP package for working with association schemes and homogeneous coherent configurations",
 Version := "1.0.0",
-Date := "05/02/2019", # dd/mm/yyyy format
+Date := "08/04/2019", # dd/mm/yyyy format
 
 Persons := [
 
@@ -94,7 +94,7 @@ PackageDoc := rec(
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "A GAP package for working with association schemes and coherent configurations",
+  LongTitle := "A GAP package for working with association schemes and homogeneous coherent configurations",
 ),
 
 Dependencies := rec(
@@ -116,7 +116,30 @@ AvailabilityTest := ReturnTrue,
 TestFile := "tst/testall.g",
 
 #Keywords := [ "TODO" ],
+AutoDoc := rec(
+    TitlePage := rec(
+        Copyright := Concatenation("&copyright; 2019 John Bamberg, Akihide Hanaki, Jesse Lansdown<P/>\n\n",
+                    "This program is free software; you can redistribute it and/or ",
+                    "modify it under the terms of the GNU General Public License ",
+                    "as published by the Free Software Foundation; either version 2 ",
+                    "of the License, or (at your option) any later version.<P/><P/>",
+                    "This program is distributed in the hope that it will be useful, ",
+                    "but WITHOUT ANY WARRANTY; without even the implied warranty of ",
+                    "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the ",
+                    "GNU General Public License for more details.<P/><P/>",
+                    "You should have received a copy of the GNU General Public License ",
+                    "along with this program; if not, write to the Free Software ",
+                    "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.\n"),
+        Abstract := "AssociationSchemes is a GAP package for working with association schemes and homogeneous coherent configurations.",
+        Acknowledgements := Concatenation("The third author would like to acknowledge the support of an ",
+          "Australian Government Research Training Program (RTP) Scholarship while writing this software. ",
+           "The first and third authors are also grateful for the 2019 CMSC Retreat for providing an opportunity and ",
+           "environment for some of the founding work on the package.")
+    )
+),
+
 
 ));
+
 
 
