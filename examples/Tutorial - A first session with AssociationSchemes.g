@@ -196,7 +196,7 @@ CC = m;
 #! return fail;
 
 #! @BeginExample
-FusionScheme(m, [[0], [1,2],[3]]);
+FusionOfHomogeneousCoherentConfigurations(m, [[0], [1,2],[3]]);
 #! 2-class association scheme of order 12.
 #! @EndExample
 

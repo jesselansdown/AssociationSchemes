@@ -87,7 +87,7 @@ vals := Valencies(a);
 #! [ 1, 35, 42, 15, 7 ]
 to_fuse := Filtered([1..Length(vals)], t -> vals[t] in [7,15])-1;;
 to_fuse2 := Difference([1..4], to_fuse);;
-fusion := FusionScheme(a, [[0], to_fuse, to_fuse2]);
+fusion := FusionOfHomogeneousCoherentConfigurations(a, [[0], to_fuse, to_fuse2]);
 #! 2-class association scheme of order 100
 autgroup2 := AutomorphismGroup(fusion);
 #! <permutation group with 10 generators>

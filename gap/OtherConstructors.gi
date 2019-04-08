@@ -22,7 +22,7 @@
 ##
 #############################################################################
 
-InstallMethod(FusionScheme,
+InstallMethod(FusionOfHomogeneousCoherentConfigurations,
 			[IsHomogeneousCoherentConfiguration, IsList],
 	function( a, fuse )
 		local mat, m, i, j, m2, d, inds;
@@ -44,11 +44,11 @@ InstallMethod(FusionScheme,
 			od;
 		od;
 		m2 := HomogeneousCoherentConfiguration(mat);
-		# set IsFusionScheme := true;
+		# set IsFusionOfHomogeneousCoherentConfigurations := true;
 		return m2;
 	end);
 
-InstallMethod(FusionScheme,
+InstallMethod(FusionOfHomogeneousCoherentConfigurations,
 			[IsHomogeneousCoherentConfiguration and IsCommutative, IsList],
 	function( a, fuse )
 		local mat, m, i, j, m2, d, inds, s, NewIntersectionMatrices,
@@ -106,7 +106,7 @@ InstallMethod(FusionScheme,
 		assoc_rec := rec( matrix := mat);
 		m2 := ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, AdjacencyMatrices, adjMats,
 			IntersectionMatrices, NewIntersectionMatrices);
-		# set IsFusionScheme := true;
+		# set IsFusionOfHomogeneousCoherentConfigurations := true;
 		return m2;
 	end);
 

@@ -29,7 +29,7 @@
 #! @Description
 #!	Takes a $d$-class homogeneous coherent configuration CC and returns a fusion scheme corresponding to L,
 #!	where L is a partion of $\{0, \ldots, d\}$. Returns fail if $L$ is not a valid partition.
-DeclareOperation( "FusionScheme", [IsHomogeneousCoherentConfiguration, IsList]);
+DeclareOperation( "FusionOfHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsList]);
 
 #! @Chapter Functionality
 #! @Section Constructor Methods
