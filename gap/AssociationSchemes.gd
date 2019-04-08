@@ -159,7 +159,7 @@ DeclareOperation( "IsAssociationScheme", [IsHomogeneousCoherentConfiguration] );
 #! @Returns d
 #! @Description
 #!	Returns $d$ for a $d$-class association scheme.
-DeclareAttribute( "ClassOfAssociationScheme", IsHomogeneousCoherentConfiguration );
+DeclareAttribute( "NumberOfClasses", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Properties Of Homogeneous Coherent Configurations

@@ -57,7 +57,7 @@ InstallMethod(TerwilligerAlgebra,
 #    F := CF(Maximum(List(Union(MatrixOfEigenvalues(A)), Conductor)));
     F := DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
     am := MutableCopyMat(AdjacencyMatrices(A));
-    d := ClassOfAssociationScheme(A);
+    d := NumberOfClasses(A);
     n := Order(A);
     for i in [0.. d] do
         nei := Neighbours(A, p, [i]);

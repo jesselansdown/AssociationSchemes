@@ -144,7 +144,7 @@ InstallMethod(ReorderRelations,
             [IsHomogeneousCoherentConfiguration, IsList],
     function( a, L )
         local mat, m, i, j, m2, d, n;
-        d:=ClassOfAssociationScheme(a);;
+        d:=NumberOfClasses(a);;
         n:=Order(a);
         if not Set(L) =[0..d] then
             return fail;
@@ -239,7 +239,7 @@ InstallMethod( Order,
 		return n;
 	end );
 
-InstallMethod(ClassOfAssociationScheme,
+InstallMethod(NumberOfClasses,
 			[IsHomogeneousCoherentConfiguration],
 	function(a)
 		local d, row, mat, m;
@@ -259,14 +259,14 @@ InstallMethod(ClassOfAssociationScheme,
 InstallMethod(IsStronglyRegularGraph,
 			[IsHomogeneousCoherentConfiguration],
 	function(a)
-		return ClassOfAssociationScheme(a)=2;
+		return NumberOfClasses(a)=2;
 	end );
 
 InstallMethod(AdjacencyMatrices,
 			[IsHomogeneousCoherentConfiguration],
 	function(a)
 		local d, n, adjMats, i, j, mat;
-		d := ClassOfAssociationScheme(a);;
+		d := NumberOfClasses(a);;
 		mat := RelationMatrix(a);
 		n := Size(mat);
 		adjMats := List([0 .. d], t ->	NullMat(n,n));;
@@ -437,7 +437,7 @@ InstallMethod(IntersectionNumber,
 InstallMethod(Valencies, " ", [IsHomogeneousCoherentConfiguration], 
 	function(a)
 		local d, valencies, i;
-		d := ClassOfAssociationScheme(a);
+		d := NumberOfClasses(a);
 		valencies:=ListWithIdenticalEntries(d+1, 0);;
 		for i in [1 .. d+1] do
 			valencies[i]:=Number(RelationMatrix(a)[1], t -> t=i-1);
@@ -450,7 +450,7 @@ InstallMethod(IntersectionMatrices, " ", [IsHomogeneousCoherentConfiguration],
 		local sz, d, relations, markers, intersectionMatrices, i, j, k, mult, ps, M;
 	 	M:=RelationMatrix(m);
 		sz := Size(M);
-		d := ClassOfAssociationScheme(m);
+		d := NumberOfClasses(m);
 		relations := AdjacencyMatrices(m);;
 		intersectionMatrices:=List([1..d+1], t-> NullMat(d+1, d+1));
 		markers := List([0 .. d], t -> First([1 .. sz], x -> relations[t+1][1][x] <>0));
@@ -470,7 +470,7 @@ InstallMethod(IsCommutative,
 			[IsHomogeneousCoherentConfiguration],
 	function(a)
 		local d, i, j, k;
-		d:=ClassOfAssociationScheme(a);;
+		d:=NumberOfClasses(a);;
 		for i in [0 .. d] do
 			for j in [0 .. d] do
 				for k in [0 .. d] do
@@ -488,7 +488,7 @@ InstallMethod(IsCommutative,
  	[ IsHomogeneousCoherentConfiguration ],
 	function(A)
 		local i, j, k, l, m, n, AM, v, d, AM1, V, VB, U, P, C;
-		d := ClassOfAssociationScheme(A) + 1;
+		d := NumberOfClasses(A) + 1;
 		if IsCommutative(A) then
 		    return d;
 		fi;
@@ -515,7 +515,7 @@ InstallMethod(IsCommutative,
  	"for IsAssociationScheme",
  	[ IsHomogeneousCoherentConfiguration ],
 	function(A)
-		if NumberOfCharacters(A) = ClassOfAssociationScheme(A) +1 then
+		if NumberOfCharacters(A) = NumberOfClasses(A) +1 then
 			return MatrixOfEigenvaluesSquare(A);
 		else
 			return MatrixOfEigenvaluesNonSquare(A);
@@ -529,7 +529,7 @@ InstallMethod(IsCommutative,
 		# This method assumes that the number of characters is d+1. This is true for commutative CCs.
 		local inter, alg, idems, reps, P1, k, i, valencies, d, P2, polys, n, CyclotomicLimit, trigger, n2, f, mult, FieldLimit;
 		inter:=IntersectionMatrices(A);
-		d:=ClassOfAssociationScheme(A);;
+		d:=NumberOfClasses(A);;
 		polys := Filtered(Set(Union(List(inter, t -> Factors(MinimalPolynomial(t))))), t -> Degree(t)=2);
 		n:=1;
 		CyclotomicLimit := 100;
@@ -597,7 +597,7 @@ InstallMethod(IsCommutative,
 	    local nc, ct, d, i, j, k, am, n, Val, ct2, im, alg, idems, inter, valencies, polys, CyclotomicLimit, trigger, n2, mult, f, B, FieldLimit;
 
 	        inter:=IntersectionMatrices(A);
-	        d:=ClassOfAssociationScheme(A)+1;;
+	        d:=NumberOfClasses(A)+1;;
 	        polys := Filtered(Set(Union(List(inter, t -> Factors(MinimalPolynomial(t))))), t -> Degree(t)=2);
 	        f:=1;
 	        CyclotomicLimit := 100;
@@ -713,7 +713,7 @@ InstallMethod( CharacterTable, [IsHomogeneousCoherentConfiguration],
 	# 		return true;
 	# 	end;
 
-	# 	d:=ClassOfAssociationScheme(m);
+	# 	d:=NumberOfClasses(m);
 	# 	inter:=IntersectionMatrices(m);
 	# 	if Size(CentralIdempotentsOfAlgebra(Algebra(Rationals, inter))) <> d then
 	# 		# This method only works for rational eigenvalues, with d characters.
@@ -792,7 +792,7 @@ InstallMethod( MinimalIdempotents,
 	function(a)
 		local j, i, mat, idems, d, Q, adjacencymatrices;
 		idems:=[];
-		d := ClassOfAssociationScheme(a);
+		d := NumberOfClasses(a);
 		Q := DualMatrixOfEigenvalues(a)/Order(a);
 		adjacencymatrices := AdjacencyMatrices(a);;
 		for j in [1 .. d+1] do
@@ -815,7 +815,7 @@ InstallMethod( MinimalIdempotents,
 #     fi;
 #     n := Order(sch);
 # 	matrix := RelationMatrix(sch);;
-# 	c := ClassOfAssociationScheme(sch);
+# 	c := NumberOfClasses(sch);
 # 	# c <= 2^d-1
 # 	d := Log2Int(c)+1;
 # 	# make d layers
@@ -872,7 +872,7 @@ function( sch )
 	
     n := Order(sch);
 	matrix := RelationMatrix(sch);;
-	c := ClassOfAssociationScheme(sch); 	# c <= 2^d-1
+	c := NumberOfClasses(sch); 	# c <= 2^d-1
 	d := Log2Int(c)+1;
 	# make d layers
 	# map colour to layer
@@ -957,7 +957,7 @@ InstallMethod( IsPPolynomial, [IsHomogeneousCoherentConfiguration],
 
 	    n := Order(R);
 	    m := RelationMatrix(R);
-	    d := ClassOfAssociationScheme(R);
+	    d := NumberOfClasses(R);
 	    g := Group(());
 	    if HasConstructorGroup(R) then
 	    	g := ConstructorGroup(R);
@@ -989,7 +989,7 @@ InstallMethod(AllPPolynomialOrderings,
         PPolynomialOrdering := function(R, a)
             local ord, i, j, d;
             
-            d := ClassOfAssociationScheme(R);
+            d := NumberOfClasses(R);
             ord := [0,a];
             for j in [1..d-1] do
                 for i in [1..d] do
@@ -1015,7 +1015,7 @@ InstallMethod(AllPPolynomialOrderings,
         ans := [];
         n := Order(R);
         mat := RelationMatrix(R);
-        d := ClassOfAssociationScheme(R);
+        d := NumberOfClasses(R);
         for i in [1..d] do
             gr := Graph(g, [1..n], OnPoints, function(x,y) return mat[x][y]=i; end);
             if IsDistanceRegular(gr) then
@@ -1039,7 +1039,7 @@ InstallMethod(KreinParameter,
 		Q:=DualMatrixOfEigenvalues(A);;
 
 		n := Order(A);
-		d:=ClassOfAssociationScheme(A);;
+		d:=NumberOfClasses(A);;
 		s:=0;
 		for l in [0 .. d] do
 			s := s + ((ComplexConjugate( P[i+1,l+1] ) * ComplexConjugate( P[j+1,l+1] ) *  P[k+1,l+1])/P[1,l+1]^2);
@@ -1055,7 +1055,7 @@ InstallMethod(KreinParameters,
 		if not IsCommutative(A) then
 			return fail;
 		fi;
-		d:=ClassOfAssociationScheme(A);;
+		d:=NumberOfClasses(A);;
 		K:=List([1 .. d+1], t -> NullMat(d+1, d+1));;
 		for i in [0 .. d] do
 			for j in [0 .. d] do
@@ -1096,7 +1096,7 @@ InstallMethod( IsQPolynomial, [IsHomogeneousCoherentConfiguration],
 	        return [];
 	    fi;
 	    
-	    d := ClassOfAssociationScheme(T)+1;
+	    d := NumberOfClasses(T)+1;
 	    L := [];
 	    for i in [2..d] do
 	        ord := TridiagonalOrdering(K[i]);
@@ -1144,7 +1144,7 @@ InstallMethod( AllQPolynomialOrderings, [IsHomogeneousCoherentConfiguration],
 	        return [];
 	    fi;
 	    
-	    d := ClassOfAssociationScheme(T)+1;
+	    d := NumberOfClasses(T)+1;
 	    L := [];
 	    for i in [2..d] do
 	        ord := TridiagonalOrdering(K[i]);
@@ -1175,7 +1175,7 @@ InstallMethod(IsCharacterTableOfHomogeneousCoherentConfiguration,
         	return fail;
         fi;
         idems:=[];
-        d := ClassOfAssociationScheme(a);
+        d := NumberOfClasses(a);
         adjacencymatrices := IntersectionMatrices(a);;
         for j in [1 .. d+1] do
             mat:=Q[1][j]*adjacencymatrices[1];;
@@ -1250,7 +1250,7 @@ InstallMethod(IsPrimitive,
 		    return ans;
 		end;
 
-	    d := ClassOfAssociationScheme(A);
+	    d := NumberOfClasses(A);
 
 		for i in [1 .. d] do
 		    e := AdjacencyMatrices(A)[1] + AdjacencyMatrices(A)[i+1];
@@ -1320,9 +1320,9 @@ InstallMethod(ReadHomogeneousCoherentConfigurationWithCertainAttributes,
  	[ IsHomogeneousCoherentConfiguration],
  	function( a )
  		if HasIsSymmetricCoherentConfiguration(a) and IsSymmetricCoherentConfiguration(a) then
- 			Print( ClassOfAssociationScheme(a), "-class association scheme of order ", Order(a));
+ 			Print( NumberOfClasses(a), "-class association scheme of order ", Order(a));
  		else
- 			Print( ClassOfAssociationScheme(a), "-class homogeneous coherent configuration of order ", Order(a));
+ 			Print( NumberOfClasses(a), "-class homogeneous coherent configuration of order ", Order(a));
  		fi;
  	end );
 
@@ -1338,9 +1338,9 @@ InstallMethod( Display,
 	[ IsHomogeneousCoherentConfiguration],
 	function( a )
  		if HasIsSymmetricCoherentConfiguration(a) and IsSymmetricCoherentConfiguration(a) then
- 			Print( ClassOfAssociationScheme(a), "-class association scheme of order ", Order(a), ".\n");
+ 			Print( NumberOfClasses(a), "-class association scheme of order ", Order(a), ".\n");
  		else
- 			Print( ClassOfAssociationScheme(a), "-class homogeneous coherent configuration of order ", Order(a), ".\n");
+ 			Print( NumberOfClasses(a), "-class homogeneous coherent configuration of order ", Order(a), ".\n");
  		fi;
  		if HasIsSymmetricCoherentConfiguration(a) then
  			Print("  Symmetric: ", IsSymmetricCoherentConfiguration(a), "\n");

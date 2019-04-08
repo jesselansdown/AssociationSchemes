@@ -44,7 +44,7 @@ InstallMethod(MacWilliamsTransform,
       if ForAny(v, t -> not t in Rationals) then
         Error("Must give a vector with rational entries.\n");
       fi;
-      if Size(v) = ClassOfAssociationScheme(sch)+1 then
+      if Size(v) = NumberOfClasses(sch)+1 then
         return v*DualMatrixOfEigenvalues(sch);
       elif Size(v) = Order(sch) then
         return InnerDistribution(v, sch)*DualMatrixOfEigenvalues(sch);
@@ -57,7 +57,7 @@ InstallMethod(DualBoseMesnerBasis,
   [IsHomogeneousCoherentConfiguration, IsPosInt],
   function(A, p)
     local d, n, basis, i, y;
-    d:=ClassOfAssociationScheme(A);
+    d:=NumberOfClasses(A);
     n:=Order(A);;
     basis := List([0..d], t -> NullMat(n, n));;
     for i in [0 .. d] do
@@ -74,7 +74,7 @@ InstallMethod(DualBoseMesnerBasis,
   [IsHomogeneousCoherentConfiguration],
   function(A)
     local d, n, basis, i, y;
-    d:=ClassOfAssociationScheme(A);
+    d:=NumberOfClasses(A);
     n:=Order(A);;
     basis := List([0..d], t -> NullMat(n, n));;
     for i in [0 .. d] do
@@ -97,7 +97,7 @@ InstallMethod(OuterDistribution,
       if Size(v)<> Order(sch) or ForAny(v, t -> not t in Rationals) then
         Error("Must give a vector in R^n\n");
       fi;
-      d:=ClassOfAssociationScheme(sch);
+      d:=NumberOfClasses(sch);
       B:=[];;
       adj :=AdjacencyMatrices(sch);
       for i in [1 .. d+1] do

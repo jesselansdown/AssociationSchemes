@@ -31,7 +31,7 @@ InstallMethod(FusionScheme,
 		fi;
 		mat :=  NullMat(Order(a), Order(a));
 		m:=RelationMatrix(a);;
-		d:=ClassOfAssociationScheme(a);;
+		d:=NumberOfClasses(a);;
 		inds := ListWithIdenticalEntries(d+1,0);;
 		for i in [1.. Size(fuse)] do
 			for j in fuse[i] do
@@ -84,7 +84,7 @@ InstallMethod(FusionScheme,
 
 		mat :=  NullMat(Order(a), Order(a));
 		m:=RelationMatrix(a);;
-		d:=ClassOfAssociationScheme(a);;
+		d:=NumberOfClasses(a);;
 		inds := ListWithIdenticalEntries(d+1,0);;
 		for i in [1.. Size(fuse)] do
 			for j in fuse[i] do

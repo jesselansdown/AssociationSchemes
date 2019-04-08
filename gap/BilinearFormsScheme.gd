@@ -27,5 +27,6 @@
 #! @Arguments F, n, k
 #! @Returns homogeneous coherent configuration
 #! @Description
-#!	Returns the bilinear forms scheme over the field $F$ with 
+#!	Returns the bilinear forms scheme for the finite field $F$ with a bilinear form from $F^n \times F^n$
+#!	to $F^k$.
 DeclareOperation("BilinearFormsScheme", [IsField, IsPosInt, IsPosInt]);
