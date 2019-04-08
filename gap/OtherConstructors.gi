@@ -110,7 +110,7 @@ InstallMethod(FusionOfHomogeneousCoherentConfigurations,
 		return m2;
 	end);
 
-InstallMethod(DirectProductScheme,
+InstallMethod(DirectProductOfHomogeneousCoherentConfigurations,
 			[IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
 	function(M, N)
 	    local L, i, j, MM, NM, A;
@@ -133,7 +133,7 @@ InstallMethod(DirectProductScheme,
 	end);
 
 
-InstallMethod(WreathProductScheme,
+InstallMethod(WreathProductOfHomogeneousCoherentConfigurations,
 			[IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
 	function(M, N)
 	    local L, i, j, MM, NM, A, J;

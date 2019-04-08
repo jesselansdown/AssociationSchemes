@@ -37,7 +37,7 @@ DeclareOperation( "FusionOfHomogeneousCoherentConfigurations", [IsHomogeneousCoh
 #! @Returns homogeneous coherent configuration
 #! @Description
 #!	Takes two homogeneous coherent configurations CC1 and CC2 and returns their direct product.
-DeclareOperation( "DirectProductScheme", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
+DeclareOperation( "DirectProductOfHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
 
 #! @Chapter Functionality
 #! @Section Constructor Methods
@@ -45,7 +45,7 @@ DeclareOperation( "DirectProductScheme", [IsHomogeneousCoherentConfiguration, Is
 #! @Returns homogeneous coherent configuration
 #! @Description
 #!	Takes two homogeneous coherent configurations CC1 and CC2 and returns their wreath product.
-DeclareOperation( "WreathProductScheme", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
+DeclareOperation( "WreathProductOfHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
 
 #! @Chapter Functionality
 #! @Section Constructor Methods
