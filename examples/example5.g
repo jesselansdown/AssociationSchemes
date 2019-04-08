@@ -1,7 +1,8 @@
 #! @Chapter Examples
 #! @Section Example 5 -- Constructing HS (advanced example)
 
-#! We redo an example that appears in Section 3.6 of Peter Cameron's "Permutation Groups" book.
+#! We redo an example that appears in Section 3.6 of Peter Cameron's "Permutation Groups" book <Cite Key="cameron"/>
+#! and construct the Higman-Sims group.
 #!<Br/><Br/>
 #! First we construct the Hoffman-Singleton graph from the alternating group of degree 7.
 
