@@ -33,7 +33,6 @@ InstallMethod(HomogeneousCoherentConfiguration,
 			local rels, mat2, i, j;
 			rels := Set(Flat(mat));
 			if rels = [0 .. Size(rels)-1] then
-				Print("!\n");
 				return mat;
 			fi;
 			Remove(rels, Position(rels, mat[1][1]));
