@@ -328,7 +328,6 @@ DeclareAttribute( "AllQPolynomialOrderings", IsHomogeneousCoherentConfiguration 
 
 
 DeclareOperation("SchemeToGraph", [IsHomogeneousCoherentConfiguration]);
-DeclareOperation("IsIsomorphicScheme", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
 
 DeclareOperation( "IsCharacterTableOfHomogeneousCoherentConfiguration", [ IsHomogeneousCoherentConfiguration, IsMatrix ] );
 
