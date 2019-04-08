@@ -41,7 +41,7 @@ DeclareOperation( "NumberOfHomogeneousCoherentConfigurations", [ IsPosInt ] );
 
 #! @Chapter Functionality
 #! @Section Constructor Methods
-#! @Arguments n
+#! @Arguments 
 #! @Returns L
 #! @Description
 #!	Returns a list $L$ of the orders for which the library contains homogeneous coherent configurations.
