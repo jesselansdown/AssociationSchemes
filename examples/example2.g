@@ -41,6 +41,8 @@ Display(Q);
 #!   [       1,   -21/4,  -51/16,  119/16 ] ]
 IsPPolynomial(a);
 #! true
+IsQPolynomial(a);
+#! true 
 #! @EndExample
 
 #! A simpler way (perhaps) uses the automorphism group of the ambient polar space:
