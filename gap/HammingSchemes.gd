@@ -11,15 +11,15 @@
 #! @Chapter Functionality
 #! @Section Constructor Methods
 #! @Arguments n, q
-#! @Returns Hamming scheme
+#! @Returns homogeneous coherent configuration
 #! @Description
 #!	Returns the Hamming scheme, $H(n, q)$.
 DeclareOperation("HammingScheme", [IsPosInt, IsPosInt]);
 
 #! @Chapter Functionality
-#! @Section Attributes of coherent configurations
+#! @Section Methods
 #! @Arguments n, q
-#! @Returns matrix of eigenvalues
+#! @Returns P
 #! @Description
-#!	Returns matrix of eigenvalue for the Hamming scheme, $H(n, q)$.
+#!	Returns matrix of eigenvalue $P$ for the Hamming scheme, $H(n, q)$.
 DeclareOperation("MatrixOfEigenvaluesOfHammingScheme", [IsPosInt, IsPosInt]);

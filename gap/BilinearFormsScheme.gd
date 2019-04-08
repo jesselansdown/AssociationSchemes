@@ -10,8 +10,8 @@
 
 #! @Chapter Functionality
 #! @Section Constructor Methods
-#! @Arguments a field and two positive integers
-#! @Returns the bilinear forms association scheme
+#! @Arguments F, n, k
+#! @Returns homogeneous coherent configuration
 #! @Description
-#!	Returns the bilinear forms scheme.
+#!	Returns the bilinear forms scheme over the field $F$ with 
 DeclareOperation("BilinearFormsScheme", [IsField, IsPosInt, IsPosInt]);

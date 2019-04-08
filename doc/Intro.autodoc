@@ -32,12 +32,10 @@ AssociationSchemes requires
 
 * &GAP; 4.8 (or later)
 
-
 as well as the following &GAP; packages:
 
-* Digraphs 0.13.0 (or later) - For computing automorphism groups
-* NautyTracesInterface 0.2 (or later) - For computing automorphism groups
-* IO 4.5.4 (or later) - For reading and writing HomogeneousCoherentConfiguration objects
+* Digraphs 0.13.0 (or later)
+* NautyTracesInterface 0.2 (or later)
 
 You may of course use AssociationSchemes without the above packages, however the corresponding functionality will be unavailable. 
 
@@ -55,6 +53,13 @@ Alternatively, you may load the package from a location other than the &GAP; "pk
 	@Section Tutorial - A first session with AssociationSchemes
 
 @Chapter Functionality
+	@Section Constructor Methods
+	@Section Matrices Describing Homogeneous Coherent Configurations
+	@Section Properties Of Homogeneous Coherent Configurations
+	@Section Attributes Of Homogeneous Coherent Configurations
+	@Section Methods
+	@Section Algebras
+	@Section Subsets And Codes
 
 @Chapter Examples
 

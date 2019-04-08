@@ -9,7 +9,7 @@
 #############################################################################
 
 #! @Chapter Functionality
-#! @Section Attributes of coherent configurations
+#! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns group or false
 #! @Description
@@ -17,18 +17,18 @@
 DeclareAttribute( "ConstructorGroup", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
-#! @Section Properties of coherent configurations
+#! @Section Properties Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
-#!	Checks if the coherent configuration $CC$ can be constructed from relations defined the orbitals of a transitive
-#!	group $G$ acting a set $X$.
+#!	Checks if the coherent configuration $CC$ can be constructed from relations defined by the orbitals of a
+#!	group $G$ acting transitively on a set $X$.
 DeclareProperty( "IsHomogeneousCoherentConfigurationByOrbitals", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Constructor Methods
 #! @Arguments G
-#! @Returns coherent configuration
+#! @Returns homogeneous coherent configuration
 #! @Description
 #!	Constructs a "group-case" coherent configuration, where the relations are defined by the orbitals
 #!	of $G$ on $\{1, \ldots, n\} \times \{1, \ldots, n\}$.
@@ -38,7 +38,7 @@ DeclareOperation( "HomogeneousCoherentConfigurationByOrbitals", [IsPermGroup]);
 #! @Chapter Functionality
 #! @Section Constructor Methods
 #! @Arguments G, H
-#! @Returns coherent configuration
+#! @Returns homogeneous coherent configuration
 #! @Description
 #!	Constructs a "group-case" coherent configuration, where the relations are defined by the orbitals
 #!	of $G$ on $G/H$. $G$ is a group, $H$ is a subgroup of $G$, $G/H$ is the set of right cosets of $G$ on $H$,

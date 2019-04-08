@@ -9,47 +9,49 @@
 #############################################################################
 
 #! @Chapter Functionality
-#! @Section Codes
+#! @Section Subsets And Codes
 #! @Arguments v, CC
-#! @Returns inner distribution
+#! @Returns a
 #! @Description
-#!	Returns the inner distribution of a vector v with respect to the adjacency matrices of
+#!	Returns the inner distribution $a$ of a vector v with respect to the adjacency matrices of
 #!	the coherent configuration CC. Note that v must be a vector over R^n where n is
 #!	the order of CC. CC must be commutative.
 DeclareOperation( "InnerDistribution", [IsList, IsHomogeneousCoherentConfiguration]);
 
 #! @Chapter Functionality
-#! @Section Codes
+#! @Section Subsets And Codes
 #! @Arguments v, CC
-#! @Returns inner distribution
+#! @Returns aQ
 #! @Description
-#!	Returns the MacWilliams transform of a vector v with respect to a
-#!	coherent confiiguration CC. Takes either a vector v in R^n and converts it to its
+#!	Returns the MacWilliams transform $aQ$ of a vector $v$ with respect to a
+#!	coherent confiiguration CC. Takes either a vector $v$ in $R^n$ and converts it to its
 #!	inner distribution vector first, or takes the inner distribution directly.
 DeclareOperation( "MacWilliamsTransform", [IsList, IsHomogeneousCoherentConfiguration]);
 
 #! @Chapter Functionality
-#! @Section Attributes of coherent configurations
+#! @Section Subsets And Codes
 #! @Arguments CC, p
-#! @Returns dual Bose-Mesner basis
+#! @Returns L
 #! @Description
-#!	Returns the dual Bose-Mesner basis of a homogeneous coherent configuration with respect to the point p.
+#!	Returns a list $L$ with the dual Bose-Mesner basis of a homogeneous coherent configuration with respect to the point p,
+#!  such that $L_i = \tilde E_{i-1}$.
 DeclareOperation( "DualBoseMesnerBasis", [IsHomogeneousCoherentConfiguration, IsPosInt]);
 
 #! @Chapter Functionality
-#! @Section Attributes of coherent configurations
+#! @Section Subsets And Codes
 #! @Arguments CC
-#! @Returns dual Bose-Mesner basis
+#! @Returns L
 #! @Description
-#!	Returns the dual Bose-Mesner basis of a homogeneous coherent configuration with respect to the point 1.
+#!	Returns a list $L$ with the dual Bose-Mesner basis of a homogeneous coherent configuration with respect to the first point,
+#!  such that $L_i = \tilde E_{i-1}$.
 DeclareOperation( "DualBoseMesnerBasis", [IsHomogeneousCoherentConfiguration]);
 
 #! @Chapter Functionality
-#! @Section Codes
+#! @Section Subsets And Codes
 #! @Arguments v, CC
-#! @Returns inner distribution
+#! @Returns B
 #! @Description
-#!	Returns the outer distribution of a vector v with respect to the adjacency matrices of
-#!	the coherent configuration CC. Note that v must be a vector over R^n where n is
+#!	Returns the outer distribution $B$ of a vector $v$ with respect to the adjacency matrices of
+#!	the coherent configuration CC. Note that $v$ must be a vector over $R^n$ where n is
 #!	the order of CC. CC must be commutative.
 DeclareOperation( "OuterDistribution", [IsList, IsHomogeneousCoherentConfiguration]);

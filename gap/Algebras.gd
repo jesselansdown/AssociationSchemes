@@ -11,42 +11,42 @@
 #! @Chapter Functionality
 #! @Section Algebras
 #! @Arguments CC
-#! @Returns intersection algebra
+#! @Returns A
 #! @Description
-#!	Returns the intersection algebra of a homogeneous coherent configuration.
+#!	Returns the intersection algebra $A$ of a homogeneous coherent configuration.
 DeclareOperation( "IntersectionAlgebra", [IsHomogeneousCoherentConfiguration]);
 
 #! @Chapter Functionality
 #! @Section Algebras
 #! @Arguments CC
-#! @Returns Bose-Mesner algebra
+#! @Returns A
 #! @Description
-#!	Returns the Bose-Mesner algebra of a homogeneous coherent configuration.
+#!	Returns the Bose-Mesner algebra $A$ of a homogeneous coherent configuration.
 DeclareOperation( "BoseMesnerAlgebra", [IsHomogeneousCoherentConfiguration]);
 
 #! @Chapter Functionality
 #! @Section Algebras
 #! @Arguments CC
-#! @Returns adjacency algebra
+#! @Returns A
 #! @Description
-#!	Returns the adjacency algebra of a homogeneous coherent configuration.
+#!	Returns the adjacency algebra $A$ of a homogeneous coherent configuration.
 #!	This is an alias for BoseMesnerAlgebra.
 DeclareOperation( "AdjacencyAlgebra", [IsHomogeneousCoherentConfiguration]);
 
 #! @Chapter Functionality
 #! @Section Algebras
 #! @Arguments CC, p
-#! @Returns Terwilliger algebra
+#! @Returns T
 #! @Description
-#!	Returns the Terwilliger algebra of a homogeneous coherent configuration with respect to the point p.
+#!	Returns the Terwilliger algebra $T$ of a homogeneous coherent configuration with respect to the point p.
 DeclareOperation( "TerwilligerAlgebra", [IsHomogeneousCoherentConfiguration, IsInt]);
 
 #! @Chapter Functionality
 #! @Section Algebras
-#! @Arguments CC, p
-#! @Returns Terwilliger algebra
+#! @Arguments CC
+#! @Returns T
 #! @Description
-#!	Returns the Terwilliger algebra of a homogeneous coherent configuration with respect to the first point.
+#!	Returns the Terwilliger algebra $T$ of a homogeneous coherent configuration with respect to the first point.
 DeclareOperation( "TerwilligerAlgebra", [IsHomogeneousCoherentConfiguration]);
 
 

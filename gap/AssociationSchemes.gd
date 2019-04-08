@@ -32,38 +32,39 @@ BindGlobal( "TheTypeHomogeneousCoherentConfiguration",
 #! @Chapter Functionality
 #! @Section Constructor Methods
 #! @Arguments M
-#! @Returns coherent configuration
+#! @Returns homogeneous coherent configuration
 #! @Description
-#!	Takes the relationship matrix, $M$, describing a coherent configuration and returns a CoherentConfiguration object.
+#!	Takes the relationship matrix, $M$, describing a homogensous coherent configuration and returns a HomogeneousCoherentConfiguration object.
 #!	The matrix $M = \sum_{i=0}^d i A_i$, where $A_i$ are the adjacency matrices describing a coherent configuration.
-#!	Checks that the matrix satisfies the coherent configuration axioms. (Note that this accepts a matrix of the form
+#!	Checks that the matrix satisfies the axioms of a homogeneous coherent configuration. (Note that this accepts a matrix of the form
 #!	$M = \sum_{i=0}^d a_i A_i$ where $a_i$ is not equal to $i$, however, it will first convert to the form $M = \sum_{i=0}^d i A_i$).
 DeclareOperation( "HomogeneousCoherentConfiguration", [ IsMatrix ] );
 
 #! @Chapter Functionality
 #! @Section Constructor Methods
 #! @Arguments M
-#! @Returns coherent configuration
+#! @Returns homogeneous coherent configuration
 #! @Description
-#!	Same as CoherentConfiguration but without performing any checks. Use this method only if you know with certainty
+#!	Same as HomogeneousCoherentConfiguration but without performing any checks. Use this method only if you know with certainty
 #!	that $M$ describes a coherent configuration.
 DeclareOperation( "HomogeneousCoherentConfigurationNC", [ IsMatrix ] );
 
 #! @Chapter Functionality
 #! @Section Constructor Methods
 #! @Arguments M
-#! @Returns coherent configuration
+#! @Returns homogeneous coherent configuration
 #! @Description
 #!	Takes the relationship matrix, $M$, describing an associatioin scheme and returns a association scheme (symmetric coherent configuration).
+#!  This is simply a HomogeneousCoherentConfiguration object, but with the known property of being symmetric.
 #!	The matrix $M = \sum_{i=0}^d i A_i$, where $A_i$ are the adjacency matrices describing an association scheme.
-#!	Checks that the matrix satisfies the association scheme axioms.(Note that this accepts a matrix of the form
+#!	Checks that the matrix satisfies the association scheme axioms. (Note that this accepts a matrix of the form
 #!	$M = \sum_{i=0}^d a_i A_i$ where $a_i$ is not equal to $i$, however, it will first convert to the form $M = \sum_{i=0}^d i A_i$).
 DeclareOperation( "AssociationScheme", [ IsMatrix ] );
 
 #! @Chapter Functionality
 #! @Section Constructor Methods
 #! @Arguments M
-#! @Returns coherent configuration
+#! @Returns homogeneous coherent configuration
 #! @Description
 #!	Same as AssociationScheme but without performing any checks. Use this method only if you know with certainty
 #!	that $M$ describes an association scheme (symmetric coherent configuration).
@@ -81,41 +82,41 @@ DeclareOperation( "AssociationSchemeNC", [ IsMatrix ] );
 DeclareOperation( "ReorderRelations", [ IsHomogeneousCoherentConfiguration, IsList ] );
 
 #! @Chapter Functionality
-#! @Section Matrices describing coherent configurations
+#! @Section Matrices Describing Homogeneous Coherent Configurations
 #! @Arguments CC
-#! @Returns relation matrix $M$
+#! @Returns $M$
 #! @Description
-#!	Takes a coherent configuration and returns the underlying relation matrix $M = \sum_{i=0}^d i A_i$, where $A_i$ are
+#!	Takes a homogeneous coherent configuration and returns the underlying relation matrix $M = \sum_{i=0}^d i A_i$, where $A_i$ are
 #!	the adjacency matrices of the coherent configuration
 DeclareOperation( "RelationMatrix", [ IsHomogeneousCoherentConfiguration ] );
 
 #! @Chapter Functionality
-#! @Section Matrices describing coherent configurations
+#! @Section Methods
 #! @Arguments CC
-#! @Returns relation
+#! @Returns i
 #! @Description
 #!	Takes a CC and two points, x and y, and returns i such that $(x, y) \in R_i$.
 DeclareOperation( "Relation", [ IsHomogeneousCoherentConfiguration, IsPosInt, IsPosInt] );
 
 #! @Chapter Functionality
-#! @Section Matrices describing coherent configurations
+#! @Section Methods
 #! @Arguments CC, p, k
-#! @Returns neighbours
+#! @Returns L
 #! @Description
-#!	Returns all the points $y$ of CC such that $(p,y) \in R_k$.
+#!	Returns a list $L$ of all the points $y$ of CC such that $(p,y) \in R_k$.
 DeclareOperation( "Neighbours", [ IsHomogeneousCoherentConfiguration, IsPosInt, IsInt] );
 
 #! @Chapter Functionality
-#! @Section Matrices describing coherent configurations
+#! @Section Methods
 #! @Arguments CC, p, L
-#! @Returns neighbours
+#! @Returns L
 #! @Description
-#!	Returns all the points $y$ of CC such that $(p,y) \in R_k$ for some $k \in L$.
+#!	Returns a list $L$ of all the points $y$ of CC such that $(p,y) \in R_k$ for some $k \in L$.
 DeclareOperation( "Neighbours", [IsHomogeneousCoherentConfiguration, IsInt, IsList] );
 
 
 #! @Chapter Functionality
-#! @Section Properties of coherent configurations
+#! @Section Properties Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
@@ -123,7 +124,7 @@ DeclareOperation( "Neighbours", [IsHomogeneousCoherentConfiguration, IsInt, IsLi
 DeclareProperty( "IsCommutative", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
-#! @Section Properties of coherent configurations
+#! @Section Properties Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
@@ -131,7 +132,7 @@ DeclareProperty( "IsCommutative", IsHomogeneousCoherentConfiguration );
 DeclareProperty( "IsSymmetricCoherentConfiguration", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
-#! @Section Properties of coherent configurations
+#! @Section Properties Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
@@ -139,7 +140,7 @@ DeclareProperty( "IsSymmetricCoherentConfiguration", IsHomogeneousCoherentConfig
 DeclareOperation( "IsAssociationScheme", [IsHomogeneousCoherentConfiguration] );
 
 #! @Chapter Functionality
-#! @Section Attributes of coherent configurations
+#! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns d
 #! @Description
@@ -147,15 +148,15 @@ DeclareOperation( "IsAssociationScheme", [IsHomogeneousCoherentConfiguration] );
 DeclareAttribute( "ClassOfAssociationScheme", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
-#! @Section Properties of coherent configurations
+#! @Section Properties Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
-#!	Check if a coherent configuration is a strongly regular graph.
+#!	Check if a coherent configuration is a strongly regular graph (a $2$-class homogeneous coherent configuration).
 DeclareProperty( "IsStronglyRegularGraph", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
-#! @Section Matrices describing coherent configurations
+#! @Section Matrices Describing Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns L
 #! @Description
@@ -169,7 +170,7 @@ DeclareOperation( "IsHomogeneousCoherentConfigurationMatrix", [ IsMatrix ]);
 
 
 #! @Chapter Functionality
-#! @Section Attributes of coherent configurations
+#! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns n
 #! @Description
@@ -177,7 +178,7 @@ DeclareOperation( "IsHomogeneousCoherentConfigurationMatrix", [ IsMatrix ]);
 DeclareAttribute( "Order", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Section Methods
 #! @Arguments CC, i, j, k
 #! @Returns $p_{ij}^k$
 #! @Description
@@ -186,41 +187,41 @@ DeclareOperation( "IntersectionNumber", [IsHomogeneousCoherentConfiguration, IsI
 
 
 #! @Chapter Functionality
-#! @Section Attributes of coherent configurations
+#! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns L
 #! @Description
-#!	Returns a list L of valencies of a coherent configuration CC. The $i$-th entry of $L$ is $k_{i-1}$. (Check this for nonsymmetric CCs)
+#!	Returns a list L of valencies of a coherent configuration CC. The $i$-th entry of $L$ is $k_{i-1}$.
 DeclareAttribute( "Valencies", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
-#! @Section Matrices describing coherent configurations
+#! @Section Matrices Describing Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns L
 #! @Description
-#!	Returns a list L of the intersection matrices of a coherent configuration $CC$, where the $i$-th entry of $L$
+#!	Returns a list L of the intersection matrices of a homogeneous coherent configuration $CC$, where the $i$-th entry of $L$
 #!	is $B_{i-1}$ and $(B_{i})_{jk} = p_{ji}^k$.
 DeclareAttribute("IntersectionMatrices", IsHomogeneousCoherentConfiguration);
 
 
 #! @Chapter Functionality
-#! @Section Matrices describing coherent configurations
+#! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns n
 #! @Description
-#!	Returns the number of characters of CC.
+#!	Returns the number $n$ of characters of CC.
 DeclareAttribute("NumberOfCharacters", IsHomogeneousCoherentConfiguration);
 
 #! @Chapter Functionality
-#! @Section Matrices describing coherent configurations
+#! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns P
 #! @Description
-#!	Returns a the matrix of eigenvalues (or character table), $P$, for a coherent configuration CC.
+#!	Returns a the matrix of eigenvalues (or character table), $P$, for a homogeneous coherent configuration CC.
 DeclareAttribute( "MatrixOfEigenvalues", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
-#! @Section Matrices describing coherent configurations
+#! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns P
 #! @Description
@@ -231,62 +232,61 @@ DeclareAttribute( "MatrixOfEigenvaluesSquare", IsHomogeneousCoherentConfiguratio
 DeclareAttribute( "MatrixOfEigenvaluesNonSquare", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
-#! @Section Matrices describing coherent configurations
+#! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns Q
 #! @Description
-#!	Returns a the dual matrix of eigenvalues, $Q$, for a coherent configuration CC.
+#!	Returns a the dual matrix of eigenvalues, $Q$, for a homogeneous coherent configuration CC.
 DeclareAttribute( "DualMatrixOfEigenvalues", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
-#! @Section Matrices describing coherent configurations
+#! @Section Matrices Describing Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns L
 #! @Description
-#!	Returns a list $L$ which is a basis of minimal idempotents for the adjacency algebra of a coherent configuration CC.
+#!	Returns a list $L$ which is a basis of minimal idempotents for the adjacency algebra of a homogeneous coherent configuration CC.
 #!	The $i$-th entry of $L$ is $E_{i-1}$.
 DeclareAttribute( "MinimalIdempotents", IsHomogeneousCoherentConfiguration );
 
 DeclareOperation("BinaryExpansion", [IsPosInt]);
 
 #! @Chapter Functionality
-#! @Section Attributes of coherent configurations
+#! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns G
 #! @Description
 #!	Returns the automorphism group $G$ of the coherent configuration CC.
-#!	$G$ is a permutation group acting on the index set of the veritices.
-#!	If $G$ is not already known and must be computed, then the package "Digraphs" is required.
+#!	$G$ is a permutation group acting on the index set of the vertices.
 DeclareAttribute( "AutomorphismGroup", IsHomogeneousCoherentConfiguration );
 
 
 #! @Chapter Functionality
-#! @Section Properties of coherent configurations
+#! @Section Properties Of Homogeneous Coherent Configurations
 #! @Arguments CC
-#! @Returns true/false
+#! @Returns true or false
 #! @Description
-#!	Returns if the coherent configuration CC is P-polynomial.
+#!	Returns if the homogeneous coherent configuration CC is P-polynomial.
 DeclareProperty( "IsPPolynomial", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
-#! @Section Properties of coherent configurations
+#! @Section Properties Of Homogeneous Coherent Configurations
 #! @Arguments CC
-#! @Returns G
+#! @Returns true or false
 #! @Description
 #!	Alias for is P-polynomial.
 DeclareOperation( "IsMetric", [IsHomogeneousCoherentConfiguration] );
 
 #! @Chapter Functionality
-#! @Section Attributes of coherent configurations
+#! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
-#! @Returns G
+#! @Returns L
 #! @Description
-#!	Calculate all P-polynomial orderings of a homogeneous coherent configuration.
+#!	Calculate the list $L$ of all P-polynomial orderings of a homogeneous coherent configuration.
 DeclareAttribute( "AllPPolynomialOrderings", IsHomogeneousCoherentConfiguration );
 
 
 #! @Chapter Functionality
-#! @Section Attributes of coherent configurations
+#! @Section Methods
 #! @Arguments CC, i, j, k
 #! @Returns $q_{i,j}^k$
 #! @Description
@@ -294,7 +294,7 @@ DeclareAttribute( "AllPPolynomialOrderings", IsHomogeneousCoherentConfiguration 
 DeclareOperation( "KreinParameter", [ IsHomogeneousCoherentConfiguration, IsInt, IsInt, IsInt ] );
 
 #! @Chapter Functionality
-#! @Section Attributes of coherent configurations
+#! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns L
 #! @Description
@@ -303,27 +303,27 @@ DeclareOperation( "KreinParameter", [ IsHomogeneousCoherentConfiguration, IsInt,
 DeclareAttribute( "KreinParameters", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
-#! @Section Properties of coherent configurations
+#! @Section Properties Of Homogeneous Coherent Configurations
 #! @Arguments CC
-#! @Returns true/false
+#! @Returns true or false
 #! @Description
 #!	Returns if the commutative coherent configuration CC is Q-polynomial.
 DeclareProperty( "IsQPolynomial", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
-#! @Section Properties of coherent configurations
+#! @Section Properties Of Homogeneous Coherent Configurations
 #! @Arguments CC
-#! @Returns true/false
+#! @Returns true or false
 #! @Description
 #!	Alias for is Q-polynomial.
 DeclareOperation( "IsCometric", [IsHomogeneousCoherentConfiguration] );
 
 #! @Chapter Functionality
-#! @Section Attributes of coherent configurations
+#! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
-#! @Returns G
+#! @Returns L
 #! @Description
-#!	Calculate all Q-polynomial orderings of a homogeneous coherent configuration.
+#!	Calculate a list $L$ of all Q-polynomial orderings of a homogeneous coherent configuration.
 DeclareAttribute( "AllQPolynomialOrderings", IsHomogeneousCoherentConfiguration );
 
 
@@ -336,10 +336,10 @@ DeclareOperation( "IsCharacterTableOfHomogeneousCoherentConfiguration", [ IsHomo
 #! @Arguments file, A, L
 #! @Returns true
 #! @Description
-#!	Saves A to file with the attributes listed in L. Note that L must be a list of strings, where
+#!	Saves homogeneous coherent configuration A to file F with the attributes listed in L. Note that L must be a list of strings, where
 #!	each entry is an attribute known for A. Note that Print or PrintTo will only return the relation
 #!	matrix of a homogeneous coherent configuration, which contains all necessary information about
-#!	the homogeneous coherent configuration, but may require a lot of computation to reobtain. Hence this
+#!	the homogeneous coherent configuration, but may require a lot of computation to reobtain its attributes. Hence this
 #!	method is intended to alow saving of computationally difficult or time consuming attributes directly.
 #!	It also alows the user to choose which attributes to save, since some attributes are very large, but easily
 #!	recomputed. For example, it is often desirable to save the matrix of eigenvalues, and perhaps the 
@@ -357,26 +357,26 @@ DeclareOperation( "SaveHomogeneousCoherentConfigurationWithCertainAttributes", [
 DeclareOperation( "ReadHomogeneousCoherentConfigurationWithCertainAttributes", [ IsString ] );
 
 #! @Chapter Functionality
-#! @Section Properties of coherent configurations
+#! @Section Properties Of Homogeneous Coherent Configurations
 #! @Arguments CC
-#! @Returns True/False
+#! @Returns true or false
 #! @Description
 #!	Check if the homogeneous coherent configuration is thin.
 DeclareProperty( "IsThin", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
-#! @Section Properties of coherent configurations
+#! @Section Properties Of Homogeneous Coherent Configurations
 #! @Arguments CC
-#! @Returns True/False
+#! @Returns true or false
 #! @Description
 #!	Check if the homogeneous coherent configuration is quasi thin.
 DeclareProperty( "IsQuasiThin", IsHomogeneousCoherentConfiguration );
 
 
 #! @Chapter Functionality
-#! @Section Properties of coherent configurations
+#! @Section Properties Of Homogeneous Coherent Configurations
 #! @Arguments CC
-#! @Returns True/False
+#! @Returns true or false
 #! @Description
 #!	Check if the homogeneous coherent configuration is primitve.
 DeclareProperty( "IsPrimitive", IsHomogeneousCoherentConfiguration );

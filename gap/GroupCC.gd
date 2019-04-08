@@ -10,8 +10,8 @@
 
 #! @Chapter Functionality
 #! @Section Constructor Methods
-#! @Arguments a group
-#! @Returns Coherent configuration on the conjugacy classes of a group
+#! @Arguments G
+#! @Returns homogeneous coherent configuration
 #! @Description
-#!	Returns the Group CC.
+#!	Returns the coherent configuration on the conjugacy classes of a group $G$.
 DeclareOperation("GroupCoherentConfiguration", [IsGroup]);

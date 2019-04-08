@@ -11,7 +11,7 @@
 #! @Chapter Functionality
 #! @Section Constructor Methods
 #! @Arguments n, k, q
-#! @Returns Grassmann scheme
+#! @Returns homogeneous coherent configuration
 #! @Description
 #!	Returns the Grassman scheme, $J_q(n, k)$.
 DeclareOperation("GrassmannScheme", [IsPosInt, IsPosInt, IsPosInt]);

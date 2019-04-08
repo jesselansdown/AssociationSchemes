@@ -23,14 +23,14 @@ InstallMethod(HomogeneousCoherentConfiguration,
 			fi;
 		od;
 		if strm = fail then
-			Print("No such homogeneous coherent configurations in the library for oder ", String(n), "\n");
+			Print("No such homogeneous coherent configurations in the library for order ", String(n), "\n");
 			return fail;
 		fi;
 		as:=EvalString(ReadAll(strm));;
 		CloseStream(strm);;
 
 		if k > Size(as) then
-			Print("No such homogeneous coherent configurations in the library for oder ", String(n), "\n");
+			Print("No such homogeneous coherent configurations in the library for order ", String(n), "\n");
 			return fail;
 		fi;
 
@@ -48,7 +48,7 @@ InstallMethod(HomogeneousCoherentConfiguration,
 		ct:=EvalString(ReadAll(strm));;
 		CloseStream(strm);;
 		if k > Size(ct) then
-			Print("No such homogeneous coherent configurations in the library for oder ", String(n), "\n");
+			Print("No such homogeneous coherent configurations in the library for order ", String(n), "\n");
 			return fail;
 		fi;
 
@@ -73,7 +73,7 @@ InstallMethod(AllHomogeneousCoherentConfigurations,
 			fi;
 		od;
 		if strm = fail then
-			Print("No such homogeneous coherent configurations in the library for oder ", String(n), "\n");
+			Print("No such homogeneous coherent configurations in the library for order ", String(n), "\n");
 			return fail;
 		fi;
 		as:=EvalString(ReadAll(strm));;
