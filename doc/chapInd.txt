@@ -1,0 +1,80 @@
+  
+  
+  [1XIndex[101X
+  
+  [2XAdjacencyAlgebra[102X, for IsHomogeneousCoherentConfiguration 3.6-3 
+  [2XAdjacencyMatrices[102X, for IsHomogeneousCoherentConfiguration 3.2-2 
+  [2XAllHomogeneousCoherentConfigurations[102X, for IsPosInt 3.1-18 
+  [2XAllPPolynomialOrderings[102X, for IsHomogeneousCoherentConfiguration 3.4-9 
+  [2XAllQPolynomialOrderings[102X, for IsHomogeneousCoherentConfiguration 3.4-11 
+  [2XAssociationScheme[102X, for IsMatrix 3.1-3 
+  [2XAssociationSchemeNC[102X, for IsMatrix 3.1-4 
+  [2XAutomorphismGroup[102X, for IsHomogeneousCoherentConfiguration 3.4-8 
+  [2XAvailableHomogeneousCoherentConfigurations[102X 3.1-17 
+  [2XBilinearFormsScheme[102X, for IsField, IsPosInt, IsPosInt 3.1-8 
+  [2XBoseMesnerAlgebra[102X, for IsHomogeneousCoherentConfiguration 3.6-2 
+  [2XCharacteristicVector[102X, for IsList, IsList 3.7-6 
+      for IsList, IsPosInt 3.7-7 
+  [2XCharacterTable[102X, for IsHomogeneousCoherentConfiguration 3.4-6 
+  [2XConstructorGroup[102X, for IsHomogeneousCoherentConfiguration 3.4-12 
+  [2XCyclotomicScheme[102X, for IsPosInt, IsPosInt 3.1-22 
+  [2XDirectProductOfHomogeneousCoherentConfigurations[102X, for IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration 3.1-20 
+  [2XDualBoseMesnerBasis[102X, for IsHomogeneousCoherentConfiguration 3.7-4 
+      for IsHomogeneousCoherentConfiguration, IsPosInt 3.7-3 
+  [2XDualMatrixOfEigenvalues[102X, for IsHomogeneousCoherentConfiguration 3.4-7 
+  [2XFusionOfHomogeneousCoherentConfigurations[102X, for IsHomogeneousCoherentConfiguration, IsList 3.1-19 
+  [2XGrassmannScheme[102X, for IsPosInt, IsPosInt, IsPosInt 3.1-11 
+  [2XGroupCoherentConfiguration[102X, for IsGroup 3.1-12 
+  [2XHammingScheme[102X, for IsPosInt, IsPosInt 3.1-13 
+  [2XHomogeneousCoherentConfiguration[102X, for IsMatrix 3.1-1 
+      for IsPosInt, IsPosInt 3.1-15 
+  [2XHomogeneousCoherentConfigurationByOrbitals[102X, for IsGroup, IsGroup 3.1-10 
+      for IsPermGroup 3.1-9 
+  [2XHomogeneousCoherentConfigurationNC[102X, for IsMatrix 3.1-2 
+  [2XInnerDistribution[102X, for IsList, IsHomogeneousCoherentConfiguration 3.7-1 
+  [2XIntersectionAlgebra[102X, for IsHomogeneousCoherentConfiguration 3.6-1 
+  [2XIntersectionMatrices[102X, for IsHomogeneousCoherentConfiguration 3.2-3 
+  [2XIntersectionNumber[102X, for IsHomogeneousCoherentConfiguration, IsInt, IsInt, IsInt 3.5-4 
+  [2XIsAssociationScheme[102X, for IsHomogeneousCoherentConfiguration 3.3-3 
+  [2XIsCometric[102X, for IsHomogeneousCoherentConfiguration 3.3-8 
+  [2XIsCommutative[102X, for IsHomogeneousCoherentConfiguration 3.3-1 
+  [2XIsGenerouslyTransitive[102X, for IsPermGroup 3.3-13 
+      for IsPermGroup, IsList 3.3-14 
+  [2XIsHomogeneousCoherentConfigurationByOrbitals[102X, for IsHomogeneousCoherentConfiguration 3.3-12 
+  [2XIsMetric[102X, for IsHomogeneousCoherentConfiguration 3.3-6 
+  [2XIsPPolynomial[102X, for IsHomogeneousCoherentConfiguration 3.3-5 
+  [2XIsPrimitive[102X, for IsHomogeneousCoherentConfiguration 3.3-11 
+  [2XIsQPolynomial[102X, for IsHomogeneousCoherentConfiguration 3.3-7 
+  [2XIsQuasiThin[102X, for IsHomogeneousCoherentConfiguration 3.3-10 
+  [2XIsSchurian[102X, for IsHomogeneousCoherentConfiguration 3.3-15 
+  [2XIsStronglyRegularGraph[102X, for IsHomogeneousCoherentConfiguration 3.3-4 
+  [2XIsSymmetricCoherentConfiguration[102X, for IsHomogeneousCoherentConfiguration 3.3-2 
+  [2XIsThin[102X, for IsHomogeneousCoherentConfiguration 3.3-9 
+  [2XJohnsonScheme[102X, for IsPosInt, IsPosInt 3.1-14 
+  [2XKreinParameter[102X, for IsHomogeneousCoherentConfiguration, IsInt, IsInt, IsInt 3.5-5 
+  [2XKreinParameters[102X, for IsHomogeneousCoherentConfiguration 3.4-10 
+  [2XMacWilliamsTransform[102X, for IsList, IsHomogeneousCoherentConfiguration 3.7-2 
+  [2XMatrixOfEigenvalues[102X, for IsHomogeneousCoherentConfiguration 3.4-5 
+  [2XMatrixOfEigenvaluesOfHammingScheme[102X, for IsPosInt, IsPosInt 3.5-6 
+  [2XMatrixOfEigenvaluesOfJohnsonScheme[102X, for IsPosInt, IsPosInt 3.5-7 
+  [2XMinimalIdempotents[102X, for IsHomogeneousCoherentConfiguration 3.2-4 
+  [2XNeighbours[102X, for IsHomogeneousCoherentConfiguration, IsInt, IsList 3.5-3 
+      for IsHomogeneousCoherentConfiguration, IsPosInt, IsInt 3.5-2 
+  [2XNumberOfCharacters[102X, for IsHomogeneousCoherentConfiguration 3.4-4 
+  [2XNumberOfClasses[102X, for IsHomogeneousCoherentConfiguration 3.4-1 
+  [2XNumberOfHomogeneousCoherentConfigurations[102X, for IsPosInt 3.1-16 
+  [2XOrder[102X, for IsHomogeneousCoherentConfiguration 3.4-2 
+  [2XOuterDistribution[102X, for IsList, IsHomogeneousCoherentConfiguration 3.7-5 
+  [2XReadHomogeneousCoherentConfigurationWithCertainAttributes[102X, for IsString 3.1-7 
+  [2XRelation[102X, for IsHomogeneousCoherentConfiguration, IsPosInt, IsPosInt 3.5-1 
+  [2XRelationMatrix[102X, for IsHomogeneousCoherentConfiguration 3.2-1 
+  [2XReorderRelations[102X, for IsHomogeneousCoherentConfiguration, IsList 3.1-5 
+  [2XSaveHomogeneousCoherentConfigurationWithCertainAttributes[102X, for IsString, IsHomogeneousCoherentConfiguration, IsList 3.1-6 
+  [2XSchurianScheme[102X, for IsPermGroup 3.1-23 
+  [2XTerwilligerAlgebra[102X, for IsHomogeneousCoherentConfiguration 3.6-5 
+      for IsHomogeneousCoherentConfiguration, IsInt 3.6-4 
+  [2XValencies[102X, for IsHomogeneousCoherentConfiguration 3.4-3 
+  [2XWreathProductOfHomogeneousCoherentConfigurations[102X, for IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration 3.1-21 
+  
+  
+  -------------------------------------------------------

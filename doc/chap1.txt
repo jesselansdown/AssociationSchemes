@@ -1,0 +1,72 @@
+  
+  [1X1 [33X[0;0YIntroduction[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YWelcome to AssociationSchemes[133X[101X
+  
+  [33X[0;0YAssociationSchemes  is  a  [5XGAP[105X[GAP16]  package  for working with association
+  schemes and homogeneous coherent configurations.[133X
+  
+  [33X[0;0YFor  definitions  and  more information on the theory of association schemes
+  and homogeneous coherent configurations, we refer you to [BI84] and [God93].[133X
+  
+  [33X[0;0YIt  is  important  to  note  that  the  term  "association  scheme"  is used
+  differently  by  different authors. We reserve the term "association scheme"
+  to  mean  a  symmetric coherent configuration, and use "homogeneous coherent
+  configuration" to refer to the more general objects.[133X
+  
+  
+  [1X1.2 [33X[0;0YCiting AssociationSchemes[133X[101X
+  
+  [33X[0;0YIf you use AssociationSchemes in research leading to publication please cite
+  it  as  you  would  a  paper. Example citations and a BibTeX entry are given
+  below.  Please  check  that  the  version  and  DOI  match  the  version  of
+  AssociationSchemes used in your research.[133X
+  
+  [33X[0;0YPlease  also  inform  us by email of the paper, as we are very interested to
+  hear how AssociationSchemes is being used![133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X@article{AssociationSchemes,[128X[104X
+    [4X[28XAuthor = {Bamberg,  J.  and  Hanaki,  A.  and  Lansdown, J.},[128X[104X
+    [4X[28XDoi = {10.5281/zenodo.2634955},[128X[104X
+    [4X[28XKey = {AssociationSchemes},[128X[104X
+    [4X[28XTitle = {{AssociationSchemes -- AssociationSchemes: A GAP package for working[128X[104X
+    [4X[28Xwith association schemes and homogeneous coherent configurations, Version 1.0.0}},[128X[104X
+    [4X[28XUrl = {http://doi.org/10.5281/zenodo.2634955},[128X[104X
+    [4X[28XYear = 2019	,[128X[104X
+    [4X[28X}[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.3 [33X[0;0YDependencies[133X[101X
+  
+  [33X[0;0YAssociationSchemes requires[133X
+  
+  [30X    [33X[0;6Y[5XGAP[105X 4.8 (or later)[133X
+  
+  [33X[0;0Yas well as the following [5XGAP[105X packages:[133X
+  
+  [30X    [33X[0;6YDigraphs 0.13.0 (or later)[133X
+  
+  [30X    [33X[0;6YNautyTracesInterface 0.2 (or later)[133X
+  
+  [33X[0;0YYou may of course use AssociationSchemes without the above packages, however
+  the corresponding functionality will be unavailable.[133X
+  
+  [33X[0;0YNote  that  NautyTracesInterface  is  not yet a deposited package. It can be
+  obtained from the link in the appendix.[133X
+  
+  
+  [1X1.4 [33X[0;0YInstallation[133X[101X
+  
+  [33X[0;0YTo  install  AssociationSchemes,  simply copy to the "pkg" directory of your
+  GAP installation and unzip.[133X
+  
+  [33X[0;0YAlternatively,  you  may load the package from a location other than the [5XGAP[105X
+  "pkg"  directory  by  using  the  -L  flag  when opening [5XGAP[105X. Note that this
+  requires  the parent directory of AssociationSchemes to be called "pkg". See
+  the  [5XGAP[105X  documentation  for more details on how to do this. This is useful,
+  for  example, when administrative priveledges are required to access the [5XGAP[105X
+  root directory.[133X
+  

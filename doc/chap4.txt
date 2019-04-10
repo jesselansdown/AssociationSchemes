@@ -1,0 +1,393 @@
+  
+  [1X4 [33X[0;0YExamples[133X[101X
+  
+  
+  [1X4.1 [33X[0;0YExample 1 -- Constructing groups[133X[101X
+  
+  [33X[0;0YIn this example, we show how we can use coherent configurations to construct
+  an  entriely  different almost simple permutation group from another one. We
+  first show how [23XPSU(4,3)[123X can be made out of its subgroup [23XPSL(3,4)[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xpsl34 := PSL(3,4);;[127X[104X
+    [4X[25Xgap>[125X [27Xsylow3 := SylowSubgroup(psl34, 3);;[127X[104X
+    [4X[25Xgap>[125X [27Xnormaliser := Normaliser(psl34, sylow3);;[127X[104X
+    [4X[25Xgap>[125X [27XG := Image( FactorCosetAction(psl34, normaliser) );;[127X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YAt  this stage, we have constructed the unique permutation representation of
+  degree 280, for [23XPSL(3,4)[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XA := HomogeneousCoherentConfigurationByOrbitals(G);[127X[104X
+    [4X[28X7-class homogeneous coherent configuration of order 280[128X[104X
+    [4X[25Xgap>[125X [27Xmat := RelationMatrix(A);;[127X[104X
+    [4X[25Xgap>[125X [27XP := MatrixOfEigenvalues(A);;[127X[104X
+    [4X[25Xgap>[125X [27XPrint(P);[127X[104X
+    [4X[28X[ [ 1, 18, 18, 18, 72, 72, 72, 9 ], [ 1, 4, 4, 4, 16, -12, -12, -5 ],[128X[104X
+    [4X[28X [ 1, -2, -2, 10, -8, 0, 0, 1 ], [ 1, -2, 10, -2, -8, 0, 0, 1 ], [128X[104X
+    [4X[28X [ 1, 10, -2, -2, -8, 0, 0, 1 ],[128X[104X
+    [4X[28X [ 1, -2, -2, -2, 0, -8*E(7)^3-8*E(7)^5-8*E(7)^6, -8*E(7)-8*E(7)^2-8*E(7)^4, -3 ], [128X[104X
+    [4X[28X [ 1, -2, -2, -2, 0, -8*E(7)-8*E(7)^2-8*E(7)^4, -8*E(7)^3-8*E(7)^5-8*E(7)^6, -3 ],[128X[104X
+    [4X[28X [ 1, -2, -2, -2, 7, -3, -3, 4 ] ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe  now  take a particular fusion of this coherent configuration to obtain a
+  2-class association scheme.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xvalency18 := Filtered([1..7], j -> Number(mat[1], i -> i = j) = 18);[127X[104X
+    [4X[28X[1,2,3][128X[104X
+    [4X[25Xgap>[125X [27Xfusions := List(Combinations(valency18,2), t -> [127X[104X
+    [4X[25X>[125X [27X		FusionOfHomogeneousCoherentConfigurations(A, [[0], t, [127X[104X
+    [4X[25X>[125X [27X			Difference([1..7],t)]) );;[127X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YAny of these three fusions will do:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xautgroup := AutomorphismGroup( fusions[1] );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplayCompositionSeries( autgroup );[127X[104X
+    [4X[28XG (11 gens, size 26127360)[128X[104X
+    [4X[28X | Z(2)[128X[104X
+    [4X[28XS (4 gens, size 13063680)[128X[104X
+    [4X[28X | Z(2)[128X[104X
+    [4X[28XS (3 gens, size 6531840)[128X[104X
+    [4X[28X | Z(2)[128X[104X
+    [4X[28XS (2 gens, size 3265920)[128X[104X
+    [4X[28X | 2A(3,3) = U(4,3) ~ 2D(3,3) = O-(6,3)[128X[104X
+    [4X[28X1 (0 gens, size 1)[128X[104X
+    [4X[25Xgap>[125X [27Xsocle := Socle(autgroup);;[127X[104X
+    [4X[25Xgap>[125X [27XStructureDescription(socle);[127X[104X
+    [4X[28X"PSU(4,3)"[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X4.2 [33X[0;0YExample 2 -- Dual polar spaces and their graphs[133X[101X
+  
+  [33X[0;0YFor  this  example,  we  also  use  the  package  FinInG  [BBDB+18]. We will
+  construct a metric association scheme coming from a dual polar space.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage("FinInG", false);;[127X[104X
+    [4X[25Xgap>[125X [27Xquadric := EllipticQuadric(7, 2);[127X[104X
+    [4X[28XQ-(7, 2)[128X[104X
+    [4X[25Xgap>[125X [27Xpoints := AsList( Planes(quadric) );;[127X[104X
+    [4X[25Xgap>[125X [27Xmat := NullMat(Length(points), Length(points));;[127X[104X
+    [4X[25Xgap>[125X [27Xfor i in [1..Length(points)] do[127X[104X
+    [4X[25X>[125X [27X	for j in [i+1..Length(points)] do[127X[104X
+    [4X[25X>[125X [27X		intersection := Meet( points{[i,j]} );[127X[104X
+    [4X[25Xgap>[125X [27X		mat[i][j] := 2 - ProjectiveDimension( intersection );[127X[104X
+    [4X[25Xgap>[125X [27X		mat[j][i] := mat[i][j];[127X[104X
+    [4X[25Xgap>[125X [27X	od;[127X[104X
+    [4X[25Xgap>[125X [27Xod;[127X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YSo  far  we have constructed the relation matrix arising from the dual polar
+  space.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xa := HomogeneousCoherentConfiguration( mat );[127X[104X
+    [4X[28X3-class association scheme of order 765[128X[104X
+    [4X[25Xgap>[125X [27XP := MatrixOfEigenvalues(a);;[127X[104X
+    [4X[25Xgap>[125X [27XQ := DualMatrixOfEigenvalues(a);;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay(P);[127X[104X
+    [4X[28X[ [    1,   28,  224,  512 ],[128X[104X
+    [4X[28X  [    1,   11,   20,  -32 ],[128X[104X
+    [4X[28X  [    1,   -7,   14,   -8 ],[128X[104X
+    [4X[28X  [    1,    1,  -10,    8 ] ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay(Q);[127X[104X
+    [4X[28X[ [       1,      84,     204,     476 ],[128X[104X
+    [4X[28X  [       1,      33,     -51,      17 ],[128X[104X
+    [4X[28X  [       1,    15/2,    51/4,   -85/4 ],[128X[104X
+    [4X[28X  [       1,   -21/4,  -51/16,  119/16 ] ][128X[104X
+    [4X[25Xgap>[125X [27XIsPPolynomial(a);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsQPolynomial(a);[127X[104X
+    [4X[28Xtrue [128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YA  simpler  way  (perhaps)  uses the automorphism group of the ambient polar
+  space:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xcgroup := CollineationGroup(quadric);[127X[104X
+    [4X[28XPGO(-1,8,2)[128X[104X
+    [4X[25Xgap>[125X [27XG := Action(cgroup, points);[127X[104X
+    [4X[28X<permutation group with 3 generators>[128X[104X
+    [4X[25Xgap>[125X [27Xa := SchurianScheme(G);[127X[104X
+    [4X[28X3-class homogeneous coherent configuration of order 765[128X[104X
+    [4X[25Xgap>[125X [27XIsPPolynomial(a);[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe automorphism group of the association scheme should be the same:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xautgroup := AutomorphismGroup(a);;[127X[104X
+    [4X[25Xgap>[125X [27Xautgroup = G;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YNow  (for  the  purist!)  we  see  if  there are interesting subsets. Take a
+  nondegenerate hyperplane section defining a parabolic quadric.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xhyperplane := First(Hyperplanes(PG(7,2)), h -> [127X[104X
+    [4X[25X>[125X [27X		TypeOfSubspace(quadric, h) = "parabolic");[127X[104X
+    [4X[28X<a proj. 6-space in ProjectiveSpace(7, 2)>[128X[104X
+    [4X[25Xgap>[125X [27Xinsidehyp := Filtered(points, t -> t * hyperplane);;[127X[104X
+    [4X[25Xgap>[125X [27Xvector := CharacteristicVector(insidehyp,points);;[127X[104X
+    [4X[25Xgap>[125X [27Xdist := InnerDistribution(vector, a);[127X[104X
+    [4X[28X[ 1, 56, 64, 14 ][128X[104X
+    [4X[25Xgap>[125X [27Xmacw := MacWilliamsTransform(dist, a);[127X[104X
+    [4X[28X[ 135, 630, 0, 0 ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YTherefore,  a  hyperplane section gives rise to a design that is not a code,
+  in this association scheme. Now we produce the dual polar graph.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XP := MatrixOfEigenvalues(a);;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay(P);[127X[104X
+    [4X[28X[ [    1,  224,  512,   28 ],[128X[104X
+    [4X[28X  [    1,   20,  -32,   11 ],[128X[104X
+    [4X[28X  [    1,   14,   -8,   -7 ],[128X[104X
+    [4X[28X  [    1,  -10,    8,    1 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xposition := Position(P[1], 28);[127X[104X
+    [4X[28X4[128X[104X
+    [4X[25Xgap>[125X [27XM := AdjacencyMatrices(a)[ position ];;[127X[104X
+    [4X[25Xgap>[125X [27Xgraph := Graph(G, [1..Order(a)], OnPoints, {x,y} -> M[x][y] = 1);;[127X[104X
+    [4X[25Xgap>[125X [27XIsDistanceRegular(graph);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XGlobalParameters(graph);[127X[104X
+    [4X[28X[ [ 0, 0, 28 ], [ 1, 3, 24 ], [ 3, 9, 16 ], [ 7, 21, 0 ] ][128X[104X
+  [4X[32X[104X
+  
+  
+  [1X4.3 [33X[0;0YExample 3 -- Codes[133X[101X
+  
+  [33X[0;0YFor  this  example,  we  use the package Guava[BBC+18] for its facility with
+  block  codes.  We  will  see  that the inner distribution vector of a subset
+  coincides  with  the weight enumerator of a code when the association scheme
+  is a Hamming scheme.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xhammingscheme := HammingScheme(7,2);[127X[104X
+    [4X[28X7-class homogeneous coherent configuration of order 128[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage("Guava", false);;[127X[104X
+    [4X[25Xgap>[125X [27Xhammingcode := HammingCode(3, GF(2));[127X[104X
+    [4X[28Xa linear [7,4,3]1 Hamming (3,2) code over GF(2)[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe now use an operation from Guava:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XInnerDistribution(hammingcode);[127X[104X
+    [4X[28X[ 1, 0, 0, 7, 7, 0, 0, 1 ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YFrom the association scheme perspective ...[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xcodewords := List( hammingcode, VectorCodeword );;[127X[104X
+    [4X[25Xgap>[125X [27Xvector := CharacteristicVector( codewords,  AsList(GF(2)^7) );;[127X[104X
+    [4X[25Xgap>[125X [27XCollected(vector);[127X[104X
+    [4X[28X[ [ 0, 112 ], [ 1, 16 ] ][128X[104X
+    [4X[25Xgap>[125X [27XInnerDistribution(vector, hammingscheme);[127X[104X
+    [4X[28X[ 1, 0, 0, 7, 7, 0, 0, 1 ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe MacWilliams transform coincides with the distribution vector of the dual
+  code:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27X1/16 * MacWilliamsTransform(vector, hammingscheme);[127X[104X
+    [4X[28X[ 1, 0, 0, 0, 7, 0, 0, 0 ][128X[104X
+    [4X[25Xgap>[125X [27Xdualcode := DualCode( hammingcode );[127X[104X
+    [4X[28Xa linear [7,3,4]2..3 dual code[128X[104X
+    [4X[25Xgap>[125X [27XInnerDistribution( dualcode );[127X[104X
+    [4X[28X[ 1, 0, 0, 0, 7, 0, 0, 0 ][128X[104X
+  [4X[32X[104X
+  
+  
+  [1X4.4 [33X[0;0YExample 4 -- Using the library[133X[101X
+  
+  [33X[0;0YIn  this  package,  we also have a library of all small homogeneous coherent
+  configurations,  of order at most 38 (except 31, ,35, 36, 37), corresponding
+  to [HM].[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xfor i in [5..20] do[127X[104X
+    [4X[25X>[125X [27X	Print(i,"    ",NumberOfHomogeneousCoherentConfigurations(i),"\n");[127X[104X
+    [4X[25Xgap>[125X [27Xod;[127X[104X
+    [4X[28X5    2[128X[104X
+    [4X[28X6    6[128X[104X
+    [4X[28X7    3[128X[104X
+    [4X[28X8    16[128X[104X
+    [4X[28X9    10[128X[104X
+    [4X[28X10    11[128X[104X
+    [4X[28X11    3[128X[104X
+    [4X[28X12    54[128X[104X
+    [4X[28X13    5[128X[104X
+    [4X[28X14    14[128X[104X
+    [4X[28X15    24[128X[104X
+    [4X[28X16    208[128X[104X
+    [4X[28X17    4[128X[104X
+    [4X[28X18    90[128X[104X
+    [4X[28X19    6[128X[104X
+    [4X[28X20    90[128X[104X
+    [4X[25Xgap>[125X [27Xorder7 := List([1..3], i -> HomogeneousCoherentConfiguration(7, i));[127X[104X
+    [4X[28X 1-class homogeneous coherent configuration of order 7, [128X[104X
+    [4X[28X 2-class homogeneous coherent configuration of order 7, [128X[104X
+    [4X[28X 3-class homogeneous coherent configuration of order 7 ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe first of these is trivial, so we look at the other two. The first arises
+  from the Paley graph of order 7.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xa1 := order7[2];[127X[104X
+    [4X[28X2-class homogeneous coherent configuration of order 7[128X[104X
+    [4X[25Xgap>[125X [27XIsStronglyRegularGraph( a1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xautgroup := AutomorphismGroup(a1);[127X[104X
+    [4X[28XGroup([ (2,3,4)(5,7,6), (1,2,3,5,4,6,7) ])[128X[104X
+    [4X[25Xgap>[125X [27XStructureDescription(autgroup);[127X[104X
+    [4X[28X"C7 : C3"[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe last one is a 3-class association scheme:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xa2 := order7[3];[127X[104X
+    [4X[28X3-class homogeneous coherent configuration of order 7[128X[104X
+    [4X[25Xgap>[125X [27XIsAssociationScheme(a2);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsPPolynomial( a2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsPrimitive(a2);[127X[104X
+    [4X[28Xrue[128X[104X
+    [4X[25Xgap>[125X [27XValencies(a2);[127X[104X
+    [4X[28X[ 1, 2, 2, 2 ][128X[104X
+    [4X[25Xgap>[125X [27Xautgroup := AutomorphismGroup(a2);[127X[104X
+    [4X[28XGroup([ (2,3)(4,5)(6,7), (1,2)(3,4)(5,6) ])[128X[104X
+    [4X[25Xgap>[125X [27XStructureDescription(autgroup);[127X[104X
+    [4X[28X"D14"[128X[104X
+    [4X[25Xgap>[125X [27XP := MatrixOfEigenvalues(a2);;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay(P);[127X[104X
+    [4X[28X[ [              1,              2,              2,              2 ],[128X[104X
+    [4X[28X  [              1,  E(7)^3+E(7)^4,    E(7)+E(7)^6,  E(7)^2+E(7)^5 ],[128X[104X
+    [4X[28X  [              1,  E(7)^2+E(7)^5,  E(7)^3+E(7)^4,    E(7)+E(7)^6 ],[128X[104X
+    [4X[28X  [              1,    E(7)+E(7)^6,  E(7)^2+E(7)^5,  E(7)^3+E(7)^4 ] ][128X[104X
+    [4X[25Xgap>[125X [27XAllPPolynomialOrderings(a2);[127X[104X
+    [4X[28X[ [ 0, 1, 2, 3 ], [ 0, 2, 3, 1 ], [ 0, 3, 1, 2 ] ][128X[104X
+    [4X[25Xgap>[125X [27XIsQPolynomial(a2);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XAllQPolynomialOrderings(a2);[127X[104X
+    [4X[28X[ [ 0, 1, 3, 2 ], [ 0, 2, 1, 3 ], [ 0, 3, 2, 1 ] ][128X[104X
+  [4X[32X[104X
+  
+  
+  [1X4.5 [33X[0;0YExample 5 -- Constructing HS (advanced example)[133X[101X
+  
+  [33X[0;0YWe  redo  an  example  that  appears  in  Section  3.6  of  Peter  Cameron's
+  "Permutation Groups" book [Cam99] and construct the Higman-Sims group.[133X
+  [33X[0;0YFirst we construct the Hoffman-Singleton graph from the alternating group of
+  degree 7.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XA7 := AlternatingGroup(7);;[127X[104X
+    [4X[25Xgap>[125X [27XPi := [ [ 1, 2, 4 ], [ 1, 3, 7 ], [ 1, 5, 6 ], [127X[104X
+    [4X[25X>[125X [27X [ 2, 3, 5 ], [ 2, 6, 7 ], [ 3, 4, 6 ], [ 4, 5, 7 ] ];;[127X[104X
+    [4X[25Xgap>[125X [27XOnSetsRecursive := function(x,g) [127X[104X
+    [4X[25X>[125X [27X	if not IsSet(x) then[127X[104X
+    [4X[25X>[125X [27X		return x^g; [127X[104X
+    [4X[25Xgap>[125X [27X	else [127X[104X
+    [4X[25X>[125X [27X		return Set(x,y->OnSetsRecursive(y,g));[127X[104X
+    [4X[25Xgap>[125X [27X	fi;[127X[104X
+    [4X[25Xgap>[125X [27Xend;;[127X[104X
+    [4X[25Xgap>[125X [27Xtriples := Combinations([1..7], 3);;[127X[104X
+    [4X[25Xgap>[125X [27XallFanos := Orbit(A7, Pi, OnSetsSets);;[127X[104X
+    [4X[25Xgap>[125X [27Xfifty := Concatenation(triples, allFanos);;[127X[104X
+    [4X[25Xgap>[125X [27XA7action := Action(A7, fifty, OnSetsRecursive);[127X[104X
+    [4X[28X<permutation group with 2 generators>[128X[104X
+    [4X[25Xgap>[125X [27Xorbitals := Orbits(A7action, Combinations([1..50],2), OnSets);;[127X[104X
+    [4X[25Xgap>[125X [27XList(orbitals, Size);[127X[104X
+    [4X[28X[ 210, 315, 70, 420, 105, 105 ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe  will  now  make  a homogeneous coherent configuration from scratch, from
+  these orbitals.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xmat := NullMat(50,50);;[127X[104X
+    [4X[25Xgap>[125X [27Xfor i in [1..50] do[127X[104X
+    [4X[25X>[125X [27X	for j in [i+1..50] do[127X[104X
+    [4X[25X>[125X [27X		pos := First([1..Length(orbitals)], k -> [i,j] in orbitals[k]);[127X[104X
+    [4X[25Xgap>[125X [27X		mat[i][j] := pos;[127X[104X
+    [4X[25Xgap>[125X [27X		mat[j][i] := pos;[127X[104X
+    [4X[25Xgap>[125X [27X	od;[127X[104X
+    [4X[25Xgap>[125X [27Xod;[127X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThis is not a CC yet. We will fuse the relations of valency 3 and 4:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xl := Collected(mat[1]);[127X[104X
+    [4X[28X[ [ 0, 1 ], [ 1, 12 ], [ 2, 18 ], [ 3, 4 ], [ 4, 12 ], [ 5, 3 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xto_fuse := Filtered([1..Length(l)], t -> l[t][2] in [3,4])-1;[127X[104X
+    [4X[28X[ 3, 5 ][128X[104X
+    [4X[25Xgap>[125X [27Xto_fuse2 := Difference([1..6],to_fuse);[127X[104X
+    [4X[28X[ 1, 2, 4, 6 ][128X[104X
+    [4X[25Xgap>[125X [27Xpoly := InterpolatedPolynomial(Rationals, Concatenation([0], to_fuse, [127X[104X
+    [4X[25X>[125X [27X	to_fuse2), [0,1,1,2,2,2,2] );;[127X[104X
+    [4X[25Xgap>[125X [27Xnewmat := List(mat, row -> List(row, x -> Value(poly,x)));;[127X[104X
+    [4X[25Xgap>[125X [27XCollected(newmat[1]);[127X[104X
+    [4X[28X[ [ 0, 1 ], [ 1, 7 ], [ 2, 42 ] ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThis now leads us directly to the Hoffman-Singleton graph:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xcc := HomogeneousCoherentConfiguration( newmat ); [127X[104X
+    [4X[28X2-class association scheme of order 50[128X[104X
+    [4X[25Xgap>[125X [27XautHoffSing := AutomorphismGroup( cc );[127X[104X
+    [4X[28X<permutation group with 7 generators>[128X[104X
+    [4X[25Xgap>[125X [27XStructureDescription( autHoffSing );[127X[104X
+    [4X[28X"PSU(3,5) : C2"[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe will now construct the Mesner-Higman-Sims graph[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xvals := Valencies(cc);[127X[104X
+    [4X[28X[ 1, 7, 42 ][128X[104X
+    [4X[25Xgap>[125X [27Xadjmat := AdjacencyMatrices(cc)[ Position(vals, 42) ];;[127X[104X
+    [4X[25Xgap>[125X [27Xgraph := Graph(autHoffSing, [1..50], OnPoints, {x,y} -> adjmat[x][y]=1);;[127X[104X
+    [4X[25Xgap>[125X [27Xone_coclique := CompleteSubgraphsOfGivenSize(graph, 15)[1];;[127X[104X
+    [4X[25Xgap>[125X [27Xall_cocliques := Orbit(autHoffSing, [127X[104X
+    [4X[25X>[125X [27X	Set(VertexNames(graph){one_coclique}), OnSets);;[127X[104X
+    [4X[25Xgap>[125X [27XSize(all_cocliques);[127X[104X
+    [4X[28X100[128X[104X
+    [4X[25Xgap>[125X [27XG := Action(autHoffSing, all_cocliques, OnSets);;[127X[104X
+    [4X[25Xgap>[125X [27Xa := SchurianScheme(G);[127X[104X
+    [4X[28X4-class homogeneous coherent configuration of order 100[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YNow fuse the relations with valencies 7 and 15 (and the complement)[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xvals := Valencies(a);[127X[104X
+    [4X[28X[ 1, 35, 42, 15, 7 ][128X[104X
+    [4X[25Xgap>[125X [27Xto_fuse := Filtered([1..Length(vals)], t -> vals[t] in [7,15])-1;;[127X[104X
+    [4X[25Xgap>[125X [27Xto_fuse2 := Difference([1..4], to_fuse);;[127X[104X
+    [4X[25Xgap>[125X [27Xfusion := FusionOfHomogeneousCoherentConfigurations(a, [[0], to_fuse,[127X[104X
+    [4X[25X>[125X [27X	to_fuse2]);[127X[104X
+    [4X[28X2-class association scheme of order 100[128X[104X
+    [4X[25Xgap>[125X [27Xautgroup2 := AutomorphismGroup(fusion);[127X[104X
+    [4X[28X<permutation group with 10 generators>[128X[104X
+    [4X[25Xgap>[125X [27XStructureDescription(autgroup2);[127X[104X
+    [4X[28X"HS : C2"[128X[104X
+  [4X[32X[104X
+  

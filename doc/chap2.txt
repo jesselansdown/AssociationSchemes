@@ -1,0 +1,203 @@
+  
+  [1X2 [33X[0;0YGetting Started[133X[101X
+  
+  
+  [1X2.1 [33X[0;0YTutorial - A first session with AssociationSchemes[133X[101X
+  
+  [33X[0;0YIn   this   section  we  provide  a  "first  session"  introduction  to  the
+  AssociationSchemes   package.  It  is  intended  to  demonstrate  the  basic
+  functions  of  the package through a series of small examples. More detailed
+  descriptions   of   each   of   the   methods   are  given  in  the  chapter
+  "Functionality".  The  fundamental  method  of  describing  a  scheme in the
+  AssociationSchemes  package is via its relation matrix. Take for example the
+  following relation matrix:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XM:=[127X[104X
+    [4X[25X>[125X [27X[ [  0,  1,  2,  2,  3,  3,  3,  3,  3,  3,  3,  3 ],[127X[104X
+    [4X[25X>[125X [27X  [  1,  0,  2,  2,  3,  3,  3,  3,  3,  3,  3,  3 ],[127X[104X
+    [4X[25X>[125X [27X  [  2,  2,  0,  1,  3,  3,  3,  3,  3,  3,  3,  3 ],[127X[104X
+    [4X[25X>[125X [27X  [  2,  2,  1,  0,  3,  3,  3,  3,  3,  3,  3,  3 ],[127X[104X
+    [4X[25X>[125X [27X  [  3,  3,  3,  3,  0,  1,  2,  2,  3,  3,  3,  3 ],[127X[104X
+    [4X[25X>[125X [27X  [  3,  3,  3,  3,  1,  0,  2,  2,  3,  3,  3,  3 ],[127X[104X
+    [4X[25X>[125X [27X  [  3,  3,  3,  3,  2,  2,  0,  1,  3,  3,  3,  3 ],[127X[104X
+    [4X[25X>[125X [27X  [  3,  3,  3,  3,  2,  2,  1,  0,  3,  3,  3,  3 ],[127X[104X
+    [4X[25X>[125X [27X  [  3,  3,  3,  3,  3,  3,  3,  3,  0,  1,  2,  2 ],[127X[104X
+    [4X[25X>[125X [27X  [  3,  3,  3,  3,  3,  3,  3,  3,  1,  0,  2,  2 ],[127X[104X
+    [4X[25X>[125X [27X  [  3,  3,  3,  3,  3,  3,  3,  3,  2,  2,  0,  1 ],[127X[104X
+    [4X[25X>[125X [27X  [  3,  3,  3,  3,  3,  3,  3,  3,  2,  2,  1,  0 ] ];;[127X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YTo  construct  a  scheme  from this matrix, we use the CoherentConfiguration
+  command.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XCC := HomogeneousCoherentConfiguration(M);;[127X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YCoherentConfiguration  performs  a  number  of  checks  as it constructs the
+  scheme to make sure that it is in fact a homogeneous coherent configuration.
+  However  if  you are confident that M does in fact define a scheme, then you
+  can  skip the checks by using CoherentConfigurationNC. Do not do this unless
+  you  are  sure! We can display the scheme and see that [5XGAP[105X already knows the
+  class and order of CC, as well that CC is symmetric and commutative.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay(CC);[127X[104X
+    [4X[28X3-class association scheme of order 12.[128X[104X
+    [4X[28X  Symmetric: true[128X[104X
+    [4X[28X  Commutative: true[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe can directly ask if CC is commutative or symmetric.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XIsCommutative(CC);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsSymmetricCoherentConfiguration(CC);[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe can retrieve the relation matrix of a scheme[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xrelmat := RelationMatrix(CC);;[127X[104X
+    [4X[25Xgap>[125X [27Xrelmat = M;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XP := MatrixOfEigenvalues(CC);;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay(P);[127X[104X
+    [4X[28X[ [   1,   1,   2,   8 ],[128X[104X
+    [4X[28X  [   1,   1,   2,  -4 ],[128X[104X
+    [4X[28X  [   1,   1,  -2,   0 ],[128X[104X
+    [4X[28X  [   1,  -1,   0,   0 ] ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YIf  we  try  displaying again, we will also obtain the matrix of eigenvalues
+  and the dual matrix of eigenvalues.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XDisplay(CC);[127X[104X
+    [4X[28X3-class association scheme of order 12.[128X[104X
+    [4X[28X  Symmetric: true[128X[104X
+    [4X[28X  Commutative: true[128X[104X
+    [4X[28X  MatrixOfEigenvalues:[128X[104X
+    [4X[28X[ [   1,   1,   2,   8 ],[128X[104X
+    [4X[28X  [   1,   1,   2,  -4 ],[128X[104X
+    [4X[28X  [   1,   1,  -2,   0 ],[128X[104X
+    [4X[28X  [   1,  -1,   0,   0 ] ][128X[104X
+    [4X[28X  DualMatrixOfEigenvalues:[128X[104X
+    [4X[28X[ [   1,   2,   3,   6 ],[128X[104X
+    [4X[28X  [   1,   2,   3,  -6 ],[128X[104X
+    [4X[28X  [   1,   2,  -3,   0 ],[128X[104X
+    [4X[28X  [   1,  -1,   0,   0 ] ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YIf  you want to print CC, it will return the relation matrix. This is useful
+  if you want to print to a file for exmaple.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XPrint(CC);[127X[104X
+    [4X[28X[ [ 0, 1, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3 ], [ 1, 0, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3 ], [128X[104X
+    [4X[28X  [ 2, 2, 0, 1, 3, 3, 3, 3, 3, 3, 3, 3 ], [ 2, 2, 1, 0, 3, 3, 3, 3, 3, 3, 3, 3 ], [128X[104X
+    [4X[28X  [ 3, 3, 3, 3, 0, 1, 2, 2, 3, 3, 3, 3 ], [ 3, 3, 3, 3, 1, 0, 2, 2, 3, 3, 3, 3 ], [128X[104X
+    [4X[28X  [ 3, 3, 3, 3, 2, 2, 0, 1, 3, 3, 3, 3 ], [ 3, 3, 3, 3, 2, 2, 1, 0, 3, 3, 3, 3 ], [128X[104X
+    [4X[28X  [ 3, 3, 3, 3, 3, 3, 3, 3, 0, 1, 2, 2 ], [ 3, 3, 3, 3, 3, 3, 3, 3, 1, 0, 2, 2 ], [128X[104X
+    [4X[28X  [ 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 0, 1 ], [ 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 1, 0 ] ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YYou can obtain the adjacency matrices by doing:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XAdjacencyMatrices(CC);;[127X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YIf  you  were able to calculate the matrix of eigenvalues, then you can also
+  construct the minimal idempotents [23XE_i[123X[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XMinimalIdempotents(CC);;[127X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YNote  that  if CC is Schurian (or has a transitive group associated with it)
+  then  MinimalIdempotents  will  be much faster! You can check if a scheme is
+  schurian by doing[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XIsSchurian(CC);[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YIn  doing  this, a graph is constructed and the automorphism group for CC is
+  found. We can also find the automorphism group directly.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XAutomorphismGroup(CC);[127X[104X
+    [4X[28X<permutation group with 11 generators>[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe  can define homogeneous coherent figurations from transitive groups. This
+  is typically fast.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XG := Group( [ ( 6,10)( 7,11)( 8,12)( 9,13)(15,28)(16,29)(17,30)(18,31)[127X[104X
+    [4X[25X>[125X [27X	(20,37)(21,38)(22,39)(23,40)(24,33)(25,34)(26,35)(27,36),[127X[104X
+    [4X[25X>[125X [27X    ( 1,15,22,31,18,26,16, 2, 5)( 3,24,21)( 4,20,40,29,11, 6,28,27,25)[127X[104X
+    [4X[25X>[125X [27X    ( 7,10,14)( 8,33,35,39,38,12,32,13,19)( 9,37,34)(23,36,30),[127X[104X
+    [4X[25X>[125X [27X    ( 3, 4)( 7,11)( 8, 9)(12,13)(15,28)(17,31)(18,30)(19,32)(20,33)[127X[104X
+    [4X[25X>[125X [27X    (21,25)(22,36)(23,35)(24,37)(26,40)(27,39)(34,38), () ] );;[127X[104X
+    [4X[25Xgap>[125X [27XHomogeneousCoherentConfigurationByOrbitals(G);;[127X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YIf G is generously transitive, then we can constuct a Schurian scheme[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XIsGenerouslyTransitive(G);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XSchurianScheme(G);;[127X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YIf  we  have  a group G and subgroup H such that G acts transitively on G/H,
+  then we can also use the following construction.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XG:=SymmetricGroup(5);;[127X[104X
+    [4X[25Xgap>[125X [27XH:=Stabiliser(G, 1);;[127X[104X
+    [4X[25Xgap>[125X [27XHomogeneousCoherentConfigurationByOrbitals(G, H);;[127X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThere are a number of special constructors, such as for Johnson schemes[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XJohnsonScheme(10,3);[127X[104X
+    [4X[28X3-class association scheme of order 120.[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YAssociationSchemes also comes with a library of association schemes on small
+  numbers of vertices, according to [HM].[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xm:=HomogeneousCoherentConfiguration(12, 7);;[127X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe  can test if two schemes are equal with "=". This will return true if the
+  schemes have the same relation matrix. The previous example from the library
+  is  in  fact  the  same  as the example constructed from the matrix M at the
+  start.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XCC = m;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThere  is  also the option to create a fusion scheme. This takes a partition
+  of the relations, (where [0] must be cell of the partition. If the resulting
+  fusion is not a valid scheme this will return fail;[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XFusionOfHomogeneousCoherentConfigurations(m, [[0], [1,2],[3]]);[127X[104X
+    [4X[28X2-class association scheme of order 12.[128X[104X
+  [4X[32X[104X
+  

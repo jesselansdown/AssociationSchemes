@@ -1,11 +1,254 @@
-<!DOCTYPE html>
-<html lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-	<meta charset="UTF-8" />
-	<title>Placeholder</title>
+<title>GAP (AssociationSchemes) - Contents</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
 </head>
-<body>
-<h1>Placeholder!</h1>
-<a href="..">Back</a>
+<body class="chap0"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap0_mj.html">[MathJax on]</a></p>
+<p><a id="X7D2C85EC87DD46E5" name="X7D2C85EC87DD46E5"></a></p>
+<div class="pcenter">
+
+<h1>AssociationSchemes</h1>
+
+
+<h2>A <strong class="pkg">GAP</strong> package for working with association schemes and homogeneous coherent configurations</h2>
+
+<p>
+    1.0.0</p>
+
+<p>
+    10 April 2019
+  </p>
+
+</div>
+<p><b>
+    John Bamberg
+
+
+
+
+  </b>
+<br />Email: <span class="URL"><a href="mailto:john.bamberg@uwa.edu.au">john.bamberg@uwa.edu.au</a></span>
+<br />Homepage: <span class="URL"><a href="http://school.maths.uwa.edu.au/~bamberg/">http://school.maths.uwa.edu.au/~bamberg/</a></span>
+<br />Address: <br />John Bamberg<br /> School of Mathematics and Statistics<br /> The University of Western Australia<br /> 35 Stirling Highway<br /> Crawley WA 6009, Perth<br /> Australia<br />
+</p><p><b>
+    Akihide Hanaki
+
+
+
+
+  </b>
+<br />Email: <span class="URL"><a href="mailto:hanaki@shinshu-u.ac.jp">hanaki@shinshu-u.ac.jp</a></span>
+<br />Homepage: <span class="URL"><a href="http://math.shinshu-u.ac.jp/~hanaki/">http://math.shinshu-u.ac.jp/~hanaki/</a></span>
+<br />Address: <br />Akihide Hanaki<br /> Department of Mathematics<br /> Faculty of Science, Shinshu University<br /> Matsumoto 390-8621, Japan<br />
+</p><p><b>
+    Jesse Lansdown
+
+
+
+
+  </b>
+<br />Email: <span class="URL"><a href="mailto:jesse.lansdown@research.uwa.edu.au">jesse.lansdown@research.uwa.edu.au</a></span>
+<br />Homepage: <span class="URL"><a href="http://www.jesselansdown.com">http://www.jesselansdown.com</a></span>
+<br />Address: <br />Jesse Lansdown<br /> School of Mathematics and Statistics<br /> The University of Western Australia<br /> 35 Stirling Highway<br /> Crawley WA 6009, Perth<br /> Australia<br />
+</p>
+
+<p><a id="X7AA6C5737B711C89" name="X7AA6C5737B711C89"></a></p>
+<h3>Abstract</h3>
+<p>AssociationSchemes is a GAP package for working with association schemes and homogeneous coherent configurations.</p>
+
+<p><a id="X81488B807F2A1CF1" name="X81488B807F2A1CF1"></a></p>
+<h3>Copyright</h3>
+<p>© 2019 John Bamberg, Akihide Hanaki, Jesse Lansdown</p>
+
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</p>
+
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+
+<p>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.</p>
+
+<p><a id="X82A988D47DFAFCFA" name="X82A988D47DFAFCFA"></a></p>
+<h3>Acknowledgements</h3>
+<p>The third author would like to acknowledge the support of an Australian Government Research Training Program (RTP) Scholarship while writing this software. The first and third authors are also grateful for the 2019 CMSC Retreat for providing an opportunity and environment for some of the founding work on the package.</p>
+
+<p><a id="X8537FEB07AF2BEC8" name="X8537FEB07AF2BEC8"></a></p>
+
+<div class="contents">
+<h3>Contents<a id="contents" name="contents"></a></h3>
+
+<div class="ContChap"><a href="chap1.html#X7DFB63A97E67C0A1">1 <span class="Heading">Introduction</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X84CBAD1987E00213">1.1 <span class="Heading">Welcome to AssociationSchemes</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X8424F0C17AAE4D39">1.2 <span class="Heading">Citing AssociationSchemes</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7C0B91E37C8FC531">1.3 <span class="Heading">Dependencies</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X8360C04082558A12">1.4 <span class="Heading">Installation</span></a>
+</span>
+</div>
+</div>
+<div class="ContChap"><a href="chap2.html#X7B1863E17896BCE1">2 <span class="Heading">Getting Started</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7E1DAE3779F9F9E0">2.1 <span class="Heading">Tutorial - A first session with AssociationSchemes</span></a>
+</span>
+</div>
+</div>
+<div class="ContChap"><a href="chap3.html#X87F1120883F5B4D0">3 <span class="Heading">Functionality</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X820CD05F85142F0A">3.1 <span class="Heading">Constructor Methods</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X862EA9667BCADC04">3.1-1 HomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E6AEC267E78078C">3.1-2 HomogeneousCoherentConfigurationNC</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C92838B87816988">3.1-3 AssociationScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E3565C17884BF57">3.1-4 AssociationSchemeNC</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C7210787E5A87D0">3.1-5 ReorderRelations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X79D2FE8C7AC7C2A6">3.1-6 SaveHomogeneousCoherentConfigurationWithCertainAttributes</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7F1CC5F2874495B4">3.1-7 ReadHomogeneousCoherentConfigurationWithCertainAttributes</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83DA0DF97CE4EEBB">3.1-8 BilinearFormsScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X85D3B60C8693F466">3.1-9 HomogeneousCoherentConfigurationByOrbitals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7B20E1AC7CAFCA4D">3.1-10 HomogeneousCoherentConfigurationByOrbitals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C6A577980AFC545">3.1-11 GrassmannScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X86AE1E9C7B3A87A3">3.1-12 GroupCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84E428FD7E53D329">3.1-13 HammingScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X87F73F177F55A0A6">3.1-14 JohnsonScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8610716786531117">3.1-15 HomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83905BC079F11C47">3.1-16 NumberOfHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7B72D0D081591C5E">3.1-17 AvailableHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X78064175875695D6">3.1-18 AllHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X80FE63407BCB0EF6">3.1-19 FusionOfHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X82C27C987D42E738">3.1-20 DirectProductOfHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X78E3E09A7C979521">3.1-21 WreathProductOfHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BFC0DE884896A25">3.1-22 CyclotomicScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7873613B7C723A02">3.1-23 SchurianScheme</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7FB263297897C6C9">3.2 <span class="Heading">Matrices Describing Homogeneous Coherent Configurations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E5F3FFA862C3FF1">3.2-1 RelationMatrix</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X795BD63780A058D3">3.2-2 AdjacencyMatrices</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81A168787D0FA745">3.2-3 IntersectionMatrices</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X86E4696378C91275">3.2-4 MinimalIdempotents</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X84DCAE9B8320046B">3.3 <span class="Heading">Properties Of Homogeneous Coherent Configurations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7A08AD147E087933">3.3-1 IsCommutative</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X811BE49B82475787">3.3-2 IsSymmetricCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X801063A083CF6BA0">3.3-3 IsAssociationScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7816543D7994BC51">3.3-4 IsStronglyRegularGraph</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X789D746E781B671A">3.3-5 IsPPolynomial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X85DD4C3A86B5AC83">3.3-6 IsMetric</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X80DE65F1780741B9">3.3-7 IsQPolynomial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7B1853C97D873F75">3.3-8 IsCometric</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7B3A1FAB86F88033">3.3-9 IsThin</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7EE5E0897CD88C21">3.3-10 IsQuasiThin</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X87769E5C7BACEF1D">3.3-11 IsPrimitive</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X85FE64307CA22AD9">3.3-12 IsHomogeneousCoherentConfigurationByOrbitals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E9D8FA485C36A2B">3.3-13 IsGenerouslyTransitive</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7DB4FFBC7C0A2173">3.3-14 IsGenerouslyTransitive</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8305508584992579">3.3-15 IsSchurian</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X86A51E428337F850">3.4 <span class="Heading">Attributes Of Homogeneous Coherent Configurations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X87DFF5E98044D47C">3.4-1 NumberOfClasses</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7F8EBBAB79CF3102">3.4-2 Order</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X86DA7C9780CC7184">3.4-3 Valencies</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8137DD257F503890">3.4-4 NumberOfCharacters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D66223978A4AC1C">3.4-5 MatrixOfEigenvalues</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81BB73C186BA1982">3.4-6 CharacterTable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X78A70E9384ECB89C">3.4-7 DualMatrixOfEigenvalues</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7DC6AA86846CB888">3.4-8 AutomorphismGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7F80E2E3851FEEF8">3.4-9 AllPPolynomialOrderings</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7F90E9B58624A11B">3.4-10 KreinParameters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X791422BC7E94288E">3.4-11 AllQPolynomialOrderings</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X792D264C80BA1A3B">3.4-12 ConstructorGroup</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X8606FDCE878850EF">3.5 <span class="Heading">Methods</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81B6F58485D31123">3.5-1 Relation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81A33D6D7B581567">3.5-2 Neighbours</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X86B7FB54839FB92A">3.5-3 Neighbours</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81D573D978ED7818">3.5-4 IntersectionNumber</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X783D72627DC6C094">3.5-5 KreinParameter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X861E3C8080FE3A0D">3.5-6 MatrixOfEigenvaluesOfHammingScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X850D2B6A799A9263">3.5-7 MatrixOfEigenvaluesOfJohnsonScheme</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7DDBF6F47A2E021C">3.6 <span class="Heading">Algebras</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7DF593207D530056">3.6-1 IntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81D2BD717BA813C0">3.6-2 BoseMesnerAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X811233BD7EC4ED5F">3.6-3 AdjacencyAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X820C1A5A7FF8F6B0">3.6-4 TerwilligerAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8164E1657B7ED844">3.6-5 TerwilligerAlgebra</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7FF621D183D6F49D">3.7 <span class="Heading">Subsets And Codes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X831BFF8B81B679D8">3.7-1 InnerDistribution</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7AA8B45482AC9CAC">3.7-2 MacWilliamsTransform</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X867926D07A427660">3.7-3 DualBoseMesnerBasis</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7ADD9C5E7A3279A2">3.7-4 DualBoseMesnerBasis</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X810D3A5984A83D58">3.7-5 OuterDistribution</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X807E4FBF7B15CB1D">3.7-6 CharacteristicVector</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7FAF72567E7AFEA0">3.7-7 CharacteristicVector</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap4.html#X7A489A5D79DA9E5C">4 <span class="Heading">Examples</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7A0C31A67CF49C08">4.1 <span class="Heading">Example 1 -- Constructing groups</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X83AE03A179F223FD">4.2 <span class="Heading">Example 2 -- Dual polar spaces and their graphs</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7F31FB6D7897A23B">4.3 <span class="Heading">Example 3 -- Codes</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X869C42647960C7AC">4.4 <span class="Heading">Example 4 -- Using the library</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7F8954C27C3CCAAC">4.5 <span class="Heading">Example 5 -- Constructing HS (advanced example)</span></a>
+</span>
+</div>
+</div>
+<div class="ContChap"><a href="chap5.html#X86E649828230497D">5 <span class="Heading">Appendix</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X8780F3D87DD387DA">5.1 <span class="Heading">AssociationSchemes Links</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X8122776087DEC60B">5.2 <span class="Heading"><strong class="pkg">GAP</strong> Links</span></a>
+</span>
+</div>
+</div>
+<div class="ContChap"><a href="chapBib.html"><span class="Heading">References</span></a></div>
+<div class="ContChap"><a href="chapInd.html"><span class="Heading">Index</span></a></div>
+<br />
+</div>
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
 </body>
 </html>

@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (AssociationSchemes) - Chapter 4: Examples</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap4"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap4.html">[MathJax off]</a></p>
+<p><a id="X7A489A5D79DA9E5C" name="X7A489A5D79DA9E5C"></a></p>
+<div class="ChapSects"><a href="chap4_mj.html#X7A489A5D79DA9E5C">4 <span class="Heading">Examples</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7A0C31A67CF49C08">4.1 <span class="Heading">Example 1 -- Constructing groups</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X83AE03A179F223FD">4.2 <span class="Heading">Example 2 -- Dual polar spaces and their graphs</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7F31FB6D7897A23B">4.3 <span class="Heading">Example 3 -- Codes</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X869C42647960C7AC">4.4 <span class="Heading">Example 4 -- Using the library</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7F8954C27C3CCAAC">4.5 <span class="Heading">Example 5 -- Constructing HS (advanced example)</span></a>
+</span>
+</div>
+</div>
+
+<h3>4 <span class="Heading">Examples</span></h3>
+
+<p><a id="X7A0C31A67CF49C08" name="X7A0C31A67CF49C08"></a></p>
+
+<h4>4.1 <span class="Heading">Example 1 -- Constructing groups</span></h4>
+
+<p>In this example, we show how we can use coherent configurations to construct an entriely different almost simple permutation group from another one. We first show how <span class="SimpleMath">\(PSU(4,3)\)</span> can be made out of its subgroup <span class="SimpleMath">\(PSL(3,4)\)</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psl34 := PSL(3,4);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sylow3 := SylowSubgroup(psl34, 3);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">normaliser := Normaliser(psl34, sylow3);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := Image( FactorCosetAction(psl34, normaliser) );;</span>
+</pre></div>
+
+<p>At this stage, we have constructed the unique permutation representation of degree 280, for <span class="SimpleMath">\(PSL(3,4)\)</span>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := HomogeneousCoherentConfigurationByOrbitals(G);</span>
+7-class homogeneous coherent configuration of order 280
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mat := RelationMatrix(A);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := MatrixOfEigenvalues(A);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Print(P);</span>
+[ [ 1, 18, 18, 18, 72, 72, 72, 9 ], [ 1, 4, 4, 4, 16, -12, -12, -5 ],
+ [ 1, -2, -2, 10, -8, 0, 0, 1 ], [ 1, -2, 10, -2, -8, 0, 0, 1 ], 
+ [ 1, 10, -2, -2, -8, 0, 0, 1 ],
+ [ 1, -2, -2, -2, 0, -8*E(7)^3-8*E(7)^5-8*E(7)^6, -8*E(7)-8*E(7)^2-8*E(7)^4, -3 ], 
+ [ 1, -2, -2, -2, 0, -8*E(7)-8*E(7)^2-8*E(7)^4, -8*E(7)^3-8*E(7)^5-8*E(7)^6, -3 ],
+ [ 1, -2, -2, -2, 7, -3, -3, 4 ] ]
+</pre></div>
+
+<p>We now take a particular fusion of this coherent configuration to obtain a 2-class association scheme.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">valency18 := Filtered([1..7], j -&gt; Number(mat[1], i -&gt; i = j) = 18);</span>
+[1,2,3]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fusions := List(Combinations(valency18,2), t -&gt; </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">		FusionOfHomogeneousCoherentConfigurations(A, [[0], t, </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">			Difference([1..7],t)]) );;</span>
+</pre></div>
+
+<p>Any of these three fusions will do:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">autgroup := AutomorphismGroup( fusions[1] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DisplayCompositionSeries( autgroup );</span>
+G (11 gens, size 26127360)
+ | Z(2)
+S (4 gens, size 13063680)
+ | Z(2)
+S (3 gens, size 6531840)
+ | Z(2)
+S (2 gens, size 3265920)
+ | 2A(3,3) = U(4,3) ~ 2D(3,3) = O-(6,3)
+1 (0 gens, size 1)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">socle := Socle(autgroup);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StructureDescription(socle);</span>
+"PSU(4,3)"
+</pre></div>
+
+<p><a id="X83AE03A179F223FD" name="X83AE03A179F223FD"></a></p>
+
+<h4>4.2 <span class="Heading">Example 2 -- Dual polar spaces and their graphs</span></h4>
+
+<p>For this example, we also use the package FinInG <a href="chapBib_mj.html#biBFinInG">[BBDB+18]</a>. We will construct a metric association scheme coming from a dual polar space.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage("FinInG", false);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quadric := EllipticQuadric(7, 2);</span>
+Q-(7, 2)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">points := AsList( Planes(quadric) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mat := NullMat(Length(points), Length(points));;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">for i in [1..Length(points)] do</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">	for j in [i+1..Length(points)] do</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">		intersection := Meet( points{[i,j]} );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">		mat[i][j] := 2 - ProjectiveDimension( intersection );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">		mat[j][i] := mat[i][j];</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	od;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">od;</span>
+</pre></div>
+
+<p>So far we have constructed the relation matrix arising from the dual polar space.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := HomogeneousCoherentConfiguration( mat );</span>
+3-class association scheme of order 765
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := MatrixOfEigenvalues(a);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := DualMatrixOfEigenvalues(a);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(P);</span>
+[ [    1,   28,  224,  512 ],
+  [    1,   11,   20,  -32 ],
+  [    1,   -7,   14,   -8 ],
+  [    1,    1,  -10,    8 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(Q);</span>
+[ [       1,      84,     204,     476 ],
+  [       1,      33,     -51,      17 ],
+  [       1,    15/2,    51/4,   -85/4 ],
+  [       1,   -21/4,  -51/16,  119/16 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsPPolynomial(a);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsQPolynomial(a);</span>
+true 
+</pre></div>
+
+<p>A simpler way (perhaps) uses the automorphism group of the ambient polar space:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cgroup := CollineationGroup(quadric);</span>
+PGO(-1,8,2)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := Action(cgroup, points);</span>
+&lt;permutation group with 3 generators&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := SchurianScheme(G);</span>
+3-class homogeneous coherent configuration of order 765
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsPPolynomial(a);</span>
+true
+</pre></div>
+
+<p>The automorphism group of the association scheme should be the same:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">autgroup := AutomorphismGroup(a);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">autgroup = G;</span>
+true
+</pre></div>
+
+<p>Now (for the purist!) we see if there are interesting subsets. Take a nondegenerate hyperplane section defining a parabolic quadric.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hyperplane := First(Hyperplanes(PG(7,2)), h -&gt; </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">		TypeOfSubspace(quadric, h) = "parabolic");</span>
+&lt;a proj. 6-space in ProjectiveSpace(7, 2)&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">insidehyp := Filtered(points, t -&gt; t * hyperplane);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vector := CharacteristicVector(insidehyp,points);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dist := InnerDistribution(vector, a);</span>
+[ 1, 56, 64, 14 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">macw := MacWilliamsTransform(dist, a);</span>
+[ 135, 630, 0, 0 ]
+</pre></div>
+
+<p>Therefore, a hyperplane section gives rise to a design that is not a code, in this association scheme. Now we produce the dual polar graph.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := MatrixOfEigenvalues(a);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(P);</span>
+[ [    1,  224,  512,   28 ],
+  [    1,   20,  -32,   11 ],
+  [    1,   14,   -8,   -7 ],
+  [    1,  -10,    8,    1 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">position := Position(P[1], 28);</span>
+4
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := AdjacencyMatrices(a)[ position ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">graph := Graph(G, [1..Order(a)], OnPoints, {x,y} -&gt; M[x][y] = 1);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsDistanceRegular(graph);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">GlobalParameters(graph);</span>
+[ [ 0, 0, 28 ], [ 1, 3, 24 ], [ 3, 9, 16 ], [ 7, 21, 0 ] ]
+</pre></div>
+
+<p><a id="X7F31FB6D7897A23B" name="X7F31FB6D7897A23B"></a></p>
+
+<h4>4.3 <span class="Heading">Example 3 -- Codes</span></h4>
+
+<p>For this example, we use the package Guava<a href="chapBib_mj.html#biBGUAVA">[BBC+18]</a> for its facility with block codes. We will see that the inner distribution vector of a subset coincides with the weight enumerator of a code when the association scheme is a Hamming scheme.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hammingscheme := HammingScheme(7,2);</span>
+7-class homogeneous coherent configuration of order 128
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage("Guava", false);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hammingcode := HammingCode(3, GF(2));</span>
+a linear [7,4,3]1 Hamming (3,2) code over GF(2)
+</pre></div>
+
+<p>We now use an operation from Guava:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InnerDistribution(hammingcode);</span>
+[ 1, 0, 0, 7, 7, 0, 0, 1 ]
+</pre></div>
+
+<p>From the association scheme perspective ...</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">codewords := List( hammingcode, VectorCodeword );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vector := CharacteristicVector( codewords,  AsList(GF(2)^7) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Collected(vector);</span>
+[ [ 0, 112 ], [ 1, 16 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InnerDistribution(vector, hammingscheme);</span>
+[ 1, 0, 0, 7, 7, 0, 0, 1 ]
+</pre></div>
+
+<p>The MacWilliams transform coincides with the distribution vector of the dual code:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">1/16 * MacWilliamsTransform(vector, hammingscheme);</span>
+[ 1, 0, 0, 0, 7, 0, 0, 0 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dualcode := DualCode( hammingcode );</span>
+a linear [7,3,4]2..3 dual code
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InnerDistribution( dualcode );</span>
+[ 1, 0, 0, 0, 7, 0, 0, 0 ]
+</pre></div>
+
+<p><a id="X869C42647960C7AC" name="X869C42647960C7AC"></a></p>
+
+<h4>4.4 <span class="Heading">Example 4 -- Using the library</span></h4>
+
+<p>In this package, we also have a library of all small homogeneous coherent configurations, of order at most 38 (except 31, ,35, 36, 37), corresponding to <a href="chapBib_mj.html#biBHanaki">[HM]</a>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">for i in [5..20] do</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">	Print(i,"    ",NumberOfHomogeneousCoherentConfigurations(i),"\n");</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">od;</span>
+5    2
+6    6
+7    3
+8    16
+9    10
+10    11
+11    3
+12    54
+13    5
+14    14
+15    24
+16    208
+17    4
+18    90
+19    6
+20    90
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">order7 := List([1..3], i -&gt; HomogeneousCoherentConfiguration(7, i));</span>
+ 1-class homogeneous coherent configuration of order 7, 
+ 2-class homogeneous coherent configuration of order 7, 
+ 3-class homogeneous coherent configuration of order 7 ]
+</pre></div>
+
+<p>The first of these is trivial, so we look at the other two. The first arises from the Paley graph of order 7.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a1 := order7[2];</span>
+2-class homogeneous coherent configuration of order 7
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsStronglyRegularGraph( a1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">autgroup := AutomorphismGroup(a1);</span>
+Group([ (2,3,4)(5,7,6), (1,2,3,5,4,6,7) ])
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StructureDescription(autgroup);</span>
+"C7 : C3"
+</pre></div>
+
+<p>The last one is a 3-class association scheme:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a2 := order7[3];</span>
+3-class homogeneous coherent configuration of order 7
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAssociationScheme(a2);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsPPolynomial( a2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsPrimitive(a2);</span>
+rue
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Valencies(a2);</span>
+[ 1, 2, 2, 2 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">autgroup := AutomorphismGroup(a2);</span>
+Group([ (2,3)(4,5)(6,7), (1,2)(3,4)(5,6) ])
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StructureDescription(autgroup);</span>
+"D14"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := MatrixOfEigenvalues(a2);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(P);</span>
+[ [              1,              2,              2,              2 ],
+  [              1,  E(7)^3+E(7)^4,    E(7)+E(7)^6,  E(7)^2+E(7)^5 ],
+  [              1,  E(7)^2+E(7)^5,  E(7)^3+E(7)^4,    E(7)+E(7)^6 ],
+  [              1,    E(7)+E(7)^6,  E(7)^2+E(7)^5,  E(7)^3+E(7)^4 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AllPPolynomialOrderings(a2);</span>
+[ [ 0, 1, 2, 3 ], [ 0, 2, 3, 1 ], [ 0, 3, 1, 2 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsQPolynomial(a2);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AllQPolynomialOrderings(a2);</span>
+[ [ 0, 1, 3, 2 ], [ 0, 2, 1, 3 ], [ 0, 3, 2, 1 ] ]
+</pre></div>
+
+<p><a id="X7F8954C27C3CCAAC" name="X7F8954C27C3CCAAC"></a></p>
+
+<h4>4.5 <span class="Heading">Example 5 -- Constructing HS (advanced example)</span></h4>
+
+<p>We redo an example that appears in Section 3.6 of Peter Cameron's "Permutation Groups" book <a href="chapBib_mj.html#biBcameron">[Cam99]</a> and construct the Higman-Sims group. <br /> <br /> First we construct the Hoffman-Singleton graph from the alternating group of degree 7.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A7 := AlternatingGroup(7);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Pi := [ [ 1, 2, 4 ], [ 1, 3, 7 ], [ 1, 5, 6 ], </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"> [ 2, 3, 5 ], [ 2, 6, 7 ], [ 3, 4, 6 ], [ 4, 5, 7 ] ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">OnSetsRecursive := function(x,g) </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">	if not IsSet(x) then</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">		return x^g; </span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	else </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">		return Set(x,y-&gt;OnSetsRecursive(y,g));</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	fi;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">triples := Combinations([1..7], 3);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">allFanos := Orbit(A7, Pi, OnSetsSets);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fifty := Concatenation(triples, allFanos);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A7action := Action(A7, fifty, OnSetsRecursive);</span>
+&lt;permutation group with 2 generators&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">orbitals := Orbits(A7action, Combinations([1..50],2), OnSets);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(orbitals, Size);</span>
+[ 210, 315, 70, 420, 105, 105 ]
+</pre></div>
+
+<p>We will now make a homogeneous coherent configuration from scratch, from these orbitals.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mat := NullMat(50,50);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">for i in [1..50] do</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">	for j in [i+1..50] do</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">		pos := First([1..Length(orbitals)], k -&gt; [i,j] in orbitals[k]);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">		mat[i][j] := pos;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">		mat[j][i] := pos;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	od;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">od;</span>
+</pre></div>
+
+<p>This is not a CC yet. We will fuse the relations of valency 3 and 4:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">l := Collected(mat[1]);</span>
+[ [ 0, 1 ], [ 1, 12 ], [ 2, 18 ], [ 3, 4 ], [ 4, 12 ], [ 5, 3 ] ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">to_fuse := Filtered([1..Length(l)], t -&gt; l[t][2] in [3,4])-1;</span>
+[ 3, 5 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">to_fuse2 := Difference([1..6],to_fuse);</span>
+[ 1, 2, 4, 6 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">poly := InterpolatedPolynomial(Rationals, Concatenation([0], to_fuse, </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">	to_fuse2), [0,1,1,2,2,2,2] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">newmat := List(mat, row -&gt; List(row, x -&gt; Value(poly,x)));;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Collected(newmat[1]);</span>
+[ [ 0, 1 ], [ 1, 7 ], [ 2, 42 ] ]
+</pre></div>
+
+<p>This now leads us directly to the Hoffman-Singleton graph:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cc := HomogeneousCoherentConfiguration( newmat ); </span>
+2-class association scheme of order 50
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">autHoffSing := AutomorphismGroup( cc );</span>
+&lt;permutation group with 7 generators&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StructureDescription( autHoffSing );</span>
+"PSU(3,5) : C2"
+</pre></div>
+
+<p>We will now construct the Mesner-Higman-Sims graph</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vals := Valencies(cc);</span>
+[ 1, 7, 42 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">adjmat := AdjacencyMatrices(cc)[ Position(vals, 42) ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">graph := Graph(autHoffSing, [1..50], OnPoints, {x,y} -&gt; adjmat[x][y]=1);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">one_coclique := CompleteSubgraphsOfGivenSize(graph, 15)[1];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">all_cocliques := Orbit(autHoffSing, </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">	Set(VertexNames(graph){one_coclique}), OnSets);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size(all_cocliques);</span>
+100
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := Action(autHoffSing, all_cocliques, OnSets);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := SchurianScheme(G);</span>
+4-class homogeneous coherent configuration of order 100
+</pre></div>
+
+<p>Now fuse the relations with valencies 7 and 15 (and the complement)</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vals := Valencies(a);</span>
+[ 1, 35, 42, 15, 7 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">to_fuse := Filtered([1..Length(vals)], t -&gt; vals[t] in [7,15])-1;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">to_fuse2 := Difference([1..4], to_fuse);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fusion := FusionOfHomogeneousCoherentConfigurations(a, [[0], to_fuse,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">	to_fuse2]);</span>
+2-class association scheme of order 100
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">autgroup2 := AutomorphismGroup(fusion);</span>
+&lt;permutation group with 10 generators&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StructureDescription(autgroup2);</span>
+"HS : C2"
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>
