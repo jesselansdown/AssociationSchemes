@@ -1,6 +1,6 @@
 name: AssociationSchemes
 version: 1.0.0
-date: 2019-04-10
+date: 10/04/2019
 description: A GAP package for working with association schemes and homogeneous
 coherent configurations.
 
@@ -11,12 +11,6 @@ authors:
       url: http://school.maths.uwa.edu.au/~bamberg/
     - name: Akihide Hanaki
       url: http://math.shinshu-u.ac.jp/~hanaki/
-
-maintainers:
-    - name: Jesse Lansdown
-      url: http://www.jesselansdown.com
-    - name: John Bamberg
-      url: http://school.maths.uwa.edu.au/~bamberg/
 
 GAP: ">=4.8.1"
   
