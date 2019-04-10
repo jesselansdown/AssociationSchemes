@@ -1,14 +1,13 @@
 # AssociationSchemes
 
-Jesse Lansdown (jesse.lansdown@research.uwa.edu.au)
-John Bamberg (john.bamberg@uwa.edu.au)
-Akihide Hanaki (hanaki@shinshu-u.ac.jp)
-[View the manual for AssociationSchemes here.](http://www.jesselansdown.com/AssociationSchemes/doc/manual.pdf)
+* Jesse Lansdown (jesse.lansdown@research.uwa.edu.au)
+* John Bamberg (john.bamberg@uwa.edu.au)
+* Akihide Hanaki (hanaki@shinshu-u.ac.jp)
+[View the manual for AssociationSchemes here](http://www.jesselansdown.com/AssociationSchemes/doc/manual.pdf)
+and the [issue tracker here](https://github.com/jesselansdown/AssociationSchemes/issues)
 
 AssociationSchemes is a [GAP](https://www.gap-system.org) package for working with association schemes and homogeneous
 coherent configurations.
-
-[Issue tracker](https://github.com/jesselansdown/AssociationSchemes/issues)
 
 AssociationSchemes has the following dependencies:
 * GAP 4.8 (or later)
