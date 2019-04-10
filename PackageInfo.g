@@ -66,13 +66,20 @@ Persons := [
   ),
 ],
 
-#SourceRepository := rec( Type := "TODO", URL := "URL" ),
-#IssueTrackerURL := "TODO",
-PackageWWWHome := "https://github.com/jesselansdown",
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),
-ArchiveURL     := Concatenation( ~.PackageWWWHome,
+
+SourceRepository := rec(
+    Type := "git",
+    URL := Concatenation( "https://github.com/jesselansdown/", ~.PackageName ),
+),
+
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := Concatenation( "http://www.jesselansdown.com/", ~.PackageName ),
+README_URL      := Concatenation( ~.PackageWWWHome, "/README.md" ),
+PackageInfoURL  := Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
+ArchiveURL      := Concatenation( ~.SourceRepository.URL,
+                                 "/releases/download/v", ~.Version,
                                  "/", ~.PackageName, "-", ~.Version ),
+
 
 ArchiveFormats := ".tar.gz",
 
