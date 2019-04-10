@@ -2,7 +2,7 @@ name: AssociationSchemes
 version: 1.0.0
 date: 2019-04-10
 description: |
-  A GAP package for working with association schemes and homogeneous coherent configurations
+    A GAP package for working with association schemes and homogeneous coherent configurations
 
 authors:
     - name: John Bamberg
@@ -29,9 +29,6 @@ needed-pkgs:
     - name: "Digraphs"
       version: ">=0.13.0"
       url: "https://gap-packages.github.io/Digraphs"
-    - name: "cvec"
-      version: ">=2.6.1"
-      url: "https://gap-packages.github.io/cvec"
     - name: "NautyTracesInterface"
       version: ">=0.2"
       url: "http://TODO/"
@@ -42,7 +39,7 @@ packageinfo: https://github.com/jesselansdown/AssociationSchemes/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/jesselansdown/AssociationSchemes-1.0.0.tar.gz
+      url: https://github.com/jesselansdown/AssociationSchemes//AssociationSchemes-1.0.0.tar.gz
 
 abstract: |
 
