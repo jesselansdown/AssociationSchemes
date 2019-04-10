@@ -1,45 +1,76 @@
 name: AssociationSchemes
 version: 1.0.0
-date: 10/04/2017
-description: A GAP package for working with association schemes and homogeneous
-coherent configurations.
+date: 2019-04-10
+description: |
+    A GAP package for working with association schemes and homogeneous coherent configurations
 
 authors:
-    - name: Jesse Lansdown
-      url: http://www.jesselansdown.com
     - name: John Bamberg
       url: http://school.maths.uwa.edu.au/~bamberg/
     - name: Akihide Hanaki
       url: http://math.shinshu-u.ac.jp/~hanaki/
+    - name: Jesse Lansdown
+      url: http://www.jesselansdown.com
 
 maintainers:
-    - name: Jesse Lansdown
-      url: http://www.jesselansdown.com
     - name: John Bamberg
       url: http://school.maths.uwa.edu.au/~bamberg/
     - name: Akihide Hanaki
       url: http://math.shinshu-u.ac.jp/~hanaki/
+    - name: Jesse Lansdown
+      url: http://www.jesselansdown.com
 
-GAP: ">= 4.8"
+GAP: ">= 4.9"
 
 needed-pkgs:
-    - name: "GAPDoc"
-      version: ">= 1.5"
-      url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+    - name: "GRAPE"
+      version: ">=4.8.1"
+      url: "https://gap-packages.github.io/grape"
+    - name: "Digraphs"
+      version: ">=0.13.0"
+      url: "https://gap-packages.github.io/Digraphs"
+    - name: "cvec"
+      version: ">=2.6.1"
+      url: "https://gap-packages.github.io/cvec"
     - name: "NautyTracesInterface"
-      version: ">= 0.2"
-      url: "https://github.com/sebasguts/NautyTracesInterface"
+      version: ">=0.2"
+      url: "http://TODO/"
 
-www: http://www.jesselansdown.com/AssociationSchemes
+www: https://github.com/jesselansdown/AssociationSchemes/
 readme: README.md
-packageinfo: http://www.jesselansdown.com/AssociationSchemes/PackageInfo.g
+packageinfo: https://github.com/jesselansdown/AssociationSchemes/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/jesselansdown/AssociationSchemes/archive/v1.0.0.tar.gz
+      url: https://github.com/jesselansdown/AssociationSchemes//AssociationSchemes-1.0.0.tar.gz
 
-abstract: 
+abstract: |
 
 status: dev
 doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
+citeas: |
+    <p class='BibEntry'>
+    [<span class='BibKey'>BHL19</span>]   <b class='BibAuthor'>Bamberg, J., Hanaki, A. and Lansdown, J.</b>,
+     <i class='BibTitle'>AssociationSchemes, A GAP package for working with association schemes and homogeneous coherent configurations,
+             Version 1.0.0</i>
+     (<span class='BibYear'>2019</span>)<br />
+    (<span class='BibNote'>GAP package</span>),
+    <span class='BibHowpublished'><a href="https://github.com/jesselansdown/AssociationSchemes/">https://github.com/jesselansdown/AssociationSchemes/</a></span>.
+    </p>
+    
+
+bibtex: |
+    @misc{ AssociationSchemes1.0.0,
+      author =           {Bamberg, J. and Hanaki, A. and Lansdown, J.},
+      title =            {{AssociationSchemes},  A  GAP  package for working with association schemes and homogeneous
+                          coherent configurations, {V}ersion 1.0.0},
+      month =            {Apr},
+      year =             {2019},
+      note =             {GAP package},
+      howpublished =     {\href                                {https://github.com/jesselansdown/AssociationSchemes/}
+                          {\texttt{https://github.com/}\discretionary     {}{}{}\texttt{jesselansdown/}\discretionary
+                          {}{}{}\texttt{AssociationSchemes/}}},
+      printedkey =       {BHL19}
+    }
+
