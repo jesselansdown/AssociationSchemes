@@ -31,7 +31,7 @@ needed-pkgs:
       url: "https://gap-packages.github.io/Digraphs"
     - name: "NautyTracesInterface"
       version: ">=0.2"
-      url: "http://TODO/"
+      url: "https://github.com/sebasguts/NautyTracesInterface"
 
 www: https://github.com/jesselansdown/AssociationSchemes/
 readme: README.md
