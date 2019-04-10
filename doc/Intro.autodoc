@@ -17,11 +17,11 @@ Please also inform us by email of the paper, as we are very interested to hear h
 @BeginLog
 #!	@article{AssociationSchemes,
 #!	Author = {Bamberg,  J.  and  Hanaki,  A.  and  Lansdown, J.},
-#!	Doi = {PUT THE DOI TO ZENODO},
+#!	Doi = {10.5281/zenodo.2634955},
 #!	Key = {AssociationSchemes},
 #!	Title = {{AssociationSchemes -- AssociationSchemes: A GAP package for working
 #!	with association schemes and homogeneous coherent configurations, Version 1.0.0}},
-#!	Url = {PUT THE ZENODO URL},
+#!	Url = {http://doi.org/10.5281/zenodo.2634955},
 #!	Year = 2019	,
 #!	}
 @EndLog
@@ -69,7 +69,7 @@ Alternatively, you may load the package from a location other than the &GAP; "pk
 
 * Homepage: http://www.jesselansdown.com/AssociationSchemes
 * Issue tracker: https://github.com/jesselansdown/AssociationSchemes/issues
-* DOI: 
+* DOI: 10.5281/zenodo.2634955
 
 	@Section &GAP; Links
 
