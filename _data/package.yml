@@ -1,6 +1,6 @@
 name: AssociationSchemes
 version: 1.0.0
-date: 10/04/2019
+date: 10/04/2017
 description: A GAP package for working with association schemes and homogeneous
 coherent configurations.
 
@@ -12,11 +12,19 @@ authors:
     - name: Akihide Hanaki
       url: http://math.shinshu-u.ac.jp/~hanaki/
 
-GAP: ">=4.8.1"
-  
+maintainers:
+    - name: Jesse Lansdown
+      url: http://www.jesselansdown.com
+    - name: John Bamberg
+      url: http://school.maths.uwa.edu.au/~bamberg/
+    - name: Akihide Hanaki
+      url: http://math.shinshu-u.ac.jp/~hanaki/
+
+GAP: ">= 4.8"
+
 needed-pkgs:
     - name: "GAPDoc"
-      version: ">= 1.2"
+      version: ">= 1.5"
       url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "NautyTracesInterface"
       version: ">= 0.2"
@@ -25,16 +33,13 @@ needed-pkgs:
 www: http://www.jesselansdown.com/AssociationSchemes
 readme: README.md
 packageinfo: http://www.jesselansdown.com/AssociationSchemes/PackageInfo.g
-github: https://github.com/jesselansdown/AssociationSchemes/
 
 downloads:
     - name: .tar.gz
       url: https://github.com/jesselansdown/AssociationSchemes/archive/v1.0.0.tar.gz
 
-
-abstract: AssociationSchemes is a <span class="pkgname">GAP</span> package for working with association schemes and homogeneous coherent configurations.
+abstract: 
 
 status: dev
 doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
-
