@@ -22,10 +22,28 @@
 ##
 #############################################################################
 
+InstallMethod(MatrixOfEigenvaluesOfGrassmannScheme,
+            [IsPosInt, IsPosInt, IsPosInt],
+    function( n, k, q)
+    	local P, j, i, d, p, s;
+    	P:=NullMat(k+1, k+1);;
+    	d := Minimum(k, n-k);
+    	for j in [0 .. k] do
+    		for i in [0 .. k] do
+				p := 0;
+				for s in [0 .. i] do
+					p := p + (-1)^(i+s) * GaussianCoefficient(d-s, i-s, q) * GaussianCoefficient(d-j, s, q) * GaussianCoefficient(n-d+s-j,s, q) * q^(s*j+(i-s)*(i-s-1)/2);
+				od;
+				P[j+1,i+1]:=p;
+			od;
+		od;
+		return P;
+	end);
+
 InstallMethod(GrassmannScheme,
 			[IsPosInt, IsPosInt, IsPosInt],
 	function( n, k, q)
-		local pg, g, maximals, g_perm;;
+		local pg, g, maximals, g_perm, A;;
 		g:=GL(n,q);
 		maximals := AsList(Subspaces(GF(q)^n, k));;
 		maximals := List(maximals, GeneratorsOfLeftOperatorAdditiveGroup);;
@@ -34,7 +52,7 @@ InstallMethod(GrassmannScheme,
 		maximals := Set(maximals, t -> NewMatrix(IsCMatRep,GF(q),n,t) );;
 		maximals := List(maximals, Unpack);;
 		g_perm:=Action(g, maximals,OnSubspacesByCanonicalBasis);;
-		return SchurianScheme(g_perm);;
+		A := SchurianScheme(g_perm);;
+		SetMatrixOfEigenvalues(A, MatrixOfEigenvaluesOfGrassmannScheme(n, k, q));
+		return A;
 	end);
-	
-

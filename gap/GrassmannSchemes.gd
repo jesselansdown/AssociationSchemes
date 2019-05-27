@@ -22,6 +22,15 @@
 ##
 #############################################################################
 
+
+#! @Chapter Functionality
+#! @Section Methods
+#! @Arguments n, k, q
+#! @Returns P
+#! @Description
+#!	Returns the matrix of eigenvalues $P$ of the Grassmann scheme $J_q(n, k)$.
+DeclareOperation("MatrixOfEigenvaluesOfGrassmannScheme", [IsPosInt, IsPosInt, IsPosInt]);
+
 #! @Chapter Functionality
 #! @Section Constructor Methods
 #! @Arguments n, k, q
