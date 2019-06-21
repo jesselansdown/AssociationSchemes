@@ -26,16 +26,9 @@ InstallMethod(HomogeneousCoherentConfiguration,
 			[IsPosInt, IsPosInt],
 	function(n, k)
 		local filename, path, allpaths, strm, mat, ct, as, A;
-		filename := Concatenation("as", String(n),".g");
-		path := "pkg/AssociationSchemes/library/";
-        allpaths := List( GAPInfo.RootPaths, p -> Concatenation(p, path) );
-        allpaths := Filtered( allpaths, IsDirectoryPath );
-		for path in allpaths do
-			strm :=InputTextFile(Concatenation(path, filename));;
-			if not strm <> fail then
-				break;
-			fi;
-		od;
+		filename := Concatenation(GAPInfo.PackagesInfo.associationschemes[1].InstallationPath,
+		 "/library/as",String(n),".g");
+		strm :=InputTextFile(filename);;
 		if strm = fail then
 			Print("No such homogeneous coherent configurations in the library for order ", String(n), "\n");
 			return fail;
@@ -48,13 +41,9 @@ InstallMethod(HomogeneousCoherentConfiguration,
 			return fail;
 		fi;
 
-		filename := Concatenation("ct", String(n),".g");
-		for path in allpaths do
-			strm :=InputTextFile(Concatenation(path, filename));;
-			if not strm <> fail then
-				break;
-			fi;
-		od;
+		filename := Concatenation(GAPInfo.PackagesInfo.associationschemes[1].InstallationPath,
+		 "/library/ct",String(n),".g");
+		strm :=InputTextFile(filename);;
 		if strm = fail then
 			Print("No character tables for homogeneous coherent configurations of order ", String(n), "\n");
 			return fail;
@@ -76,16 +65,9 @@ InstallMethod(AllHomogeneousCoherentConfigurations,
 			[IsPosInt],
 	function(n)
 		local filename, path, allpaths, strm, mat, ct, as, i, out;
-		filename := Concatenation("as", String(n),".g");
-		path := "pkg/AssociationSchemes/library/";
-        allpaths := List( GAPInfo.RootPaths, p -> Concatenation(p, path) );
-        allpaths := Filtered( allpaths, IsDirectoryPath );
-		for path in allpaths do
-			strm :=InputTextFile(Concatenation(path, filename));;
-			if not strm <> fail then
-				break;
-			fi;
-		od;
+		filename := Concatenation(GAPInfo.PackagesInfo.associationschemes[1].InstallationPath,
+		 "/library/as",String(n),".g");
+		strm :=InputTextFile(filename);;
 		if strm = fail then
 			Print("No such homogeneous coherent configurations in the library for order ", String(n), "\n");
 			return fail;
@@ -93,13 +75,9 @@ InstallMethod(AllHomogeneousCoherentConfigurations,
 		as:=EvalString(ReadAll(strm));;
 		CloseStream(strm);;
 
-		filename := Concatenation("ct", String(n),".g");
-		for path in allpaths do
-			strm :=InputTextFile(Concatenation(path, filename));;
-			if not strm <> fail then
-				break;
-			fi;
-		od;
+		filename := Concatenation(GAPInfo.PackagesInfo.associationschemes[1].InstallationPath,
+		 "/library/ct",String(n),".g");
+		strm :=InputTextFile(filename);;
 		if strm = fail then
 			Print("No character tables for homogeneous coherent configurations of order ", String(n), "\n");
 			return fail;
@@ -147,16 +125,9 @@ InstallMethod(NumberOfHomogeneousCoherentConfigurations,
 			[IsPosInt],
 	function(n)
 		local filename, path, allpaths, strm, tab;
-		filename := "AssociationSchemeWithSmallVerticesTable.g";
-		path := "pkg/AssociationSchemes/library/";
-        allpaths := List( GAPInfo.RootPaths, p -> Concatenation(p, path) );
-        allpaths := Filtered( allpaths, IsDirectoryPath );
-		for path in allpaths do
-			strm :=InputTextFile(Concatenation(path, filename));;
-			if not strm <> fail then
-				break;
-			fi;
-		od;
+		filename := Concatenation(GAPInfo.PackagesInfo.associationschemes[1].InstallationPath,
+		 "/library/AssociationSchemeWithSmallVerticesTable.g");
+		strm :=InputTextFile(filename);;
 		if strm = fail then
 			Print("Can't find the table of association schemes!\n");
 			return fail;
@@ -174,16 +145,9 @@ InstallMethod(AvailableHomogeneousCoherentConfigurations,
 			[],
 	function()
 		local filename, path, allpaths, strm, tab;
-		filename := "AssociationSchemeWithSmallVerticesTable.g";
-		path := "pkg/AssociationSchemes/library/";
-        allpaths := List( GAPInfo.RootPaths, p -> Concatenation(p, path) );
-        allpaths := Filtered( allpaths, IsDirectoryPath );
-		for path in allpaths do
-			strm :=InputTextFile(Concatenation(path, filename));;
-			if not strm <> fail then
-				break;
-			fi;
-		od;
+		filename := Concatenation(GAPInfo.PackagesInfo.associationschemes[1].InstallationPath,
+		 "/library/AssociationSchemeWithSmallVerticesTable.g");
+		strm :=InputTextFile(filename);;
 		if strm = fail then
 			Print("Can't find the table of association schemes!\n");
 			return fail;
