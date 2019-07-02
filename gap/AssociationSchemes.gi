@@ -445,25 +445,67 @@ InstallMethod(Valencies, " ", [IsHomogeneousCoherentConfiguration],
 		return valencies;
 	end);
 
+# InstallMethod(IntersectionMatrices, " ", [IsHomogeneousCoherentConfiguration],
+#  	function(m)
+# 		local sz, d, relations, markers, intersectionMatrices, i, j, k, mult, ps, M;
+# 	 	M:=RelationMatrix(m);
+# 		sz := Size(M);
+# 		d := NumberOfClasses(m);
+# 		relations := AdjacencyMatrices(m);;
+# 		intersectionMatrices:=List([1..d+1], t-> NullMat(d+1, d+1));
+# 		markers := List([0 .. d], t -> First([1 .. sz], x -> relations[t+1][1][x] <>0));
+# 		for i in [0 .. d] do
+# 			for j in [0 .. d] do
+# 				mult := relations[j+1][1] * relations[i+1];
+# 				for k in [0 .. d] do
+# 					intersectionMatrices[i+1][j+1, k+1] :=  mult[markers[k+1]];;
+# 				od;
+# 			od;
+# 		od;
+# 		return intersectionMatrices;
+# end);
+
+
+
 InstallMethod(IntersectionMatrices, " ", [IsHomogeneousCoherentConfiguration],
  	function(m)
-		local sz, d, relations, markers, intersectionMatrices, i, j, k, mult, ps, M;
+ 		local ComputeEntryOfAiAjAtXY, InterNum, M, d, intersectionMatrices, i, j, k;
+
+ 		ComputeEntryOfAiAjAtXY := function(M, i, j, x, y)
+			local z, val, n;
+			val := 0;
+			n := Size(M);
+			for z in [1 .. n] do
+				if M[x, z] = i and M[z, y] = j then
+					val := val+1;
+				fi;
+			od;
+			return val;
+		end;
+
+		InterNum := function(M, i, j, k)
+			local n, x, y;
+			n:=Size(M);
+			x:=1;
+			y := First([1 .. n], t -> M[x,t]=k);
+			return ComputeEntryOfAiAjAtXY(M, i, j, x, y);
+		end;
+
 	 	M:=RelationMatrix(m);
-		sz := Size(M);
 		d := NumberOfClasses(m);
-		relations := AdjacencyMatrices(m);;
 		intersectionMatrices:=List([1..d+1], t-> NullMat(d+1, d+1));
-		markers := List([0 .. d], t -> First([1 .. sz], x -> relations[t+1][1][x] <>0));
 		for i in [0 .. d] do
 			for j in [0 .. d] do
-				mult := relations[j+1][1] * relations[i+1];
 				for k in [0 .. d] do
-					intersectionMatrices[i+1][j+1, k+1] :=  mult[markers[k+1]];;
+					intersectionMatrices[i+1][j+1, k+1] :=  InterNum(M, i, j, k);;
 				od;
 			od;
 		od;
 		return intersectionMatrices;
 end);
+
+
+
 
 
 InstallMethod(IsCommutative,
