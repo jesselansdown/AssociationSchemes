@@ -181,6 +181,7 @@ DeclareAttribute( "AdjacencyMatrices", IsHomogeneousCoherentConfiguration );
 DeclareOperation( "AdjacencyMatricesOfMatrix", [IsMatrix] );
 DeclareOperation( "IsAssociationSchemeMatrix", [ IsMatrix ]);
 DeclareOperation( "IsHomogeneousCoherentConfigurationMatrix", [ IsMatrix ]);
+DeclareOperation( "IsHomogeneousCoherentConfigurationMatrix2", [ IsMatrix ]);
 
 
 #! @Chapter Functionality

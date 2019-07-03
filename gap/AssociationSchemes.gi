@@ -44,8 +44,11 @@ InstallMethod(HomogeneousCoherentConfiguration,
 		local mat, i, symmetric, assoc_rec, CanonicallyLabelRelationMatrix;
 
 		CanonicallyLabelRelationMatrix := function(mat)
-			local rels, mat2, i, j;
-			rels := Set(Flat(mat));
+			local rels, mat2, i, j, row;
+			rels := [];;
+			for row in mat do
+				rels := Union(rels, Set(row));;
+			od;
 			if rels = [0 .. Size(rels)-1] then
 				return mat;
 			fi;
@@ -68,17 +71,27 @@ InstallMethod(HomogeneousCoherentConfiguration,
 			fi;
 		od;
 		assoc_rec := rec( matrix := mat);
-		symmetric := TransposedMat(mat) = mat;
-		if symmetric then
-			if IsAssociationSchemeMatrix(mat) then
-				return ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, IsCommutative, true, IsSymmetricCoherentConfiguration, true);
+		if Size(mat) < 10000 then
+			symmetric := TransposedMat(mat) = mat;
+			if symmetric then
+				if IsAssociationSchemeMatrix(mat) then
+					return ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, IsCommutative, true, IsSymmetricCoherentConfiguration, true);
+				else
+					Print("Must give a valid matrix\n");
+					return fail;
+				fi;
 			else
-				Print("Must give a valid matrix\n");
-				return fail;
+				if IsHomogeneousCoherentConfigurationMatrix(mat) then
+					return ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, IsSymmetricCoherentConfiguration, false);					
+				else
+					Print("Must give a valid matrix\n");
+					return fail;
+				fi;
 			fi;
 		else
-			if IsHomogeneousCoherentConfigurationMatrix(mat) then
-				return ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, IsSymmetricCoherentConfiguration, false);					
+			# This version doesn't create any adjacency matrices and so uses less memory for big schemes
+			if IsHomogeneousCoherentConfigurationMatrix2(mat) then
+				return ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration);					
 			else
 				Print("Must give a valid matrix\n");
 				return fail;
@@ -427,6 +440,98 @@ InstallMethod(IsHomogeneousCoherentConfigurationMatrix,
 		od;
 		return true;
 	end);
+
+InstallMethod(IsHomogeneousCoherentConfigurationMatrix2,
+			[IsMatrix],
+	function(M)
+		local ComputeEntryOfAiAjAtXY, InterNum, ComputeAllEntriesOfAiAjAtXY, n, map, i, pos,
+		inters, d, row, m, j, k, sym, x, y, vals;
+
+ 		ComputeEntryOfAiAjAtXY := function(M, i, j, x, y)
+			local z, val, n;
+			val := 0;
+			n := Size(M);
+			for z in [1 .. n] do
+				if M[x, z] = i and M[z, y] = j then
+					val := val+1;
+				fi;
+			od;
+			return val;
+		end;
+
+		InterNum := function(M, i, j, k)
+			local n, x, y;
+			n:=Size(M);
+			x:=1;
+			y := First([1 .. n], t -> M[x,t]=k);
+			return ComputeEntryOfAiAjAtXY(M, i, j, x, y);
+		end;
+
+		ComputeAllEntriesOfAiAjAtXY := function(M, d, i, j, x, y)
+			local z, vals, n;
+			vals := NullMat(d+1, d+1);
+			n := Size(M);
+			for z in [1 .. n] do
+				vals[M[x, z]+1, M[z, y]+1] := vals[M[x, z]+1, M[z, y]+1] +1;
+			od;
+			return vals;
+		end;
+
+		d := Maximum(M[1]);
+		for row in M do
+			if d <> Maximum(row) then
+				return false;
+			fi;
+		od;
+
+		n:=Size(M);
+		map:=ListWithIdenticalEntries(d+1, 0);
+		for i in [0 .. d] do
+			pos := First([1 .. n], t -> M[1,t]= i);
+			map[i+1] := M[pos, 1];
+		od;
+
+		inters := List([0 .. d], t -> NullMat(d+1, d+1));;
+		for i in [0 .. d] do
+			for j in [0 .. d] do
+				for k in [0 .. d] do
+					inters[i+1,j+1][k+1] := InterNum(M, i, j, k);;
+				od;
+			od;
+		od;
+
+		sym := true;
+		for x in [1 .. n] do
+		      for y in [1 .. n] do
+		              k := M[x,y]; # since we have a partition - there can be only one k value in any entry
+		              # The identity should be a relation.
+		              if k = 0 and x <> y then
+		                      return false; #
+		              fi;
+		              if x = y and k <> 0 then
+		                      return false;
+		              fi;
+		              # Transposition must be a relation
+		              if M[y, x] <> map[M[x,y]+1] then
+		                      return false;
+		              fi;
+		              if M[x,y] <> M[y,x] then
+		                      sym:=false;
+		              fi;
+		              vals := ComputeAllEntriesOfAiAjAtXY(M, d, i, j, x, y);;
+		              for i in [0 .. d] do
+		                      for j in [0 .. d] do
+		                              if vals[i+1][j+1] <> inters[i+1, j+1][k+1] then
+		                                      return false;
+		                              fi;
+		                      od;
+		              od;
+		      od;
+		od;
+		return true;
+	end);
+
+
 
 InstallMethod(IntersectionNumber,
 			[IsHomogeneousCoherentConfiguration, IsInt,  IsInt,  IsInt],
