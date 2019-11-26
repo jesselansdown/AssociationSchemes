@@ -1144,7 +1144,7 @@ InstallMethod( IsPPolynomial, [IsHomogeneousCoherentConfiguration],
 			return true;
 		end;
 
-		if not IsAssociationScheme(A) then
+		if not IsCommutative(A) then
 			return false;
 		fi;
 		stack := [[0]];
@@ -1236,7 +1236,7 @@ InstallMethod(AllPPolynomialOrderings,
 			return true;
 		end;
 
-		if not IsAssociationScheme(A) then
+		if not IsCommutative(A) then
 			return [];
 		fi;
 		stack := [[0]];
@@ -1356,7 +1356,7 @@ InstallMethod( IsQPolynomial, [IsHomogeneousCoherentConfiguration],
 			return true;
 		end;
 
-		if not IsAssociationScheme(A) then
+		if not IsCommutative(A) then
 			return false;
 		fi;
 		stack := [[0]];
@@ -1445,7 +1445,7 @@ InstallMethod(AllQPolynomialOrderings,
 			return true;
 		end;
 
-		if not IsAssociationScheme(A) then
+		if not IsCommutative(A) then
 			return [];
 		fi;
 		stack := [[0]];
