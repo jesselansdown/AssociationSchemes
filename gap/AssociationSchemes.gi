@@ -1294,45 +1294,84 @@ InstallMethod(KreinParameters,
 		return K;
 	end);
 
-InstallMethod( IsQPolynomial, [IsHomogeneousCoherentConfiguration],
-	function(T)
-    	local L, i, d, K, ord, TridiagonalOrdering;
+# InstallMethod( IsQPolynomial, [IsHomogeneousCoherentConfiguration],
+# 	function(T)
+#     	local L, i, d, K, ord, TridiagonalOrdering;
     
-	    TridiagonalOrdering := function(M)
-	        local rest, pres, x, L, LT, d;
+# 	    TridiagonalOrdering := function(M)
+# 	        local rest, pres, x, L, LT, d;
 	    
-	        d := Length(M);
-	        rest := [2..d];
-	        LT := [1];
-	        pres := 1;
-	        while rest <> [] do
-	            L := Filtered(rest, x-> M[pres][x] <> 0);
-	            if Length(L) <> 1 then
-	                return false;
-	            fi;
-	            pres := L[1];
-	            Add(LT, pres);
-	            rest := Difference(rest, [pres]);
-	        od;
+# 	        d := Length(M);
+# 	        rest := [2..d];
+# 	        LT := [1];
+# 	        pres := 1;
+# 	        while rest <> [] do
+# 	            L := Filtered(rest, x-> M[pres][x] <> 0);
+# 	            if Length(L) <> 1 then
+# 	                return false;
+# 	            fi;
+# 	            pres := L[1];
+# 	            Add(LT, pres);
+# 	            rest := Difference(rest, [pres]);
+# 	        od;
 	      
-	        return LT;
-	    end;
+# 	        return LT;
+# 	    end;
 
-	    K := KreinParameters(T);
-	    if K = false then
-	        return [];
-	    fi;
+# 	    K := KreinParameters(T);
+# 	    if K = false then
+# 	        return [];
+# 	    fi;
 	    
-	    d := NumberOfClasses(T)+1;
-	    L := [];
-	    for i in [2..d] do
-	        ord := TridiagonalOrdering(K[i]);
-	        if ord <> false then
-	            return true;
-	        fi;
-	    od;
+# 	    d := NumberOfClasses(T)+1;
+# 	    L := [];
+# 	    for i in [2..d] do
+# 	        ord := TridiagonalOrdering(K[i]);
+# 	        if ord <> false then
+# 	            return true;
+# 	        fi;
+# 	    od;
 	    
-	    return false;
+# 	    return false;
+# 	end);
+
+InstallMethod( IsQPolynomial, [IsHomogeneousCoherentConfiguration],
+	function(A)
+		local stack, current, children, checknext;
+
+		checknext := function(A, ord)
+
+			local m;
+			if Size(ord)=1 and ord[1]=0 then
+				return true;
+			fi;
+			if KreinParameter(A, ord[2], ord[Size(ord)-1], ord[Size(ord)]) = 0 then
+				return false;
+			fi;
+			for m in [1 .. Size(ord)-2] do
+				if KreinParameter(A, ord[2], ord[m], ord[Size(ord)]) <> 0 then
+					return false;
+				fi;
+			od;
+			return true;
+		end;
+
+		if not IsAssociationScheme(A) then
+			return false;
+		fi;
+		stack := [[0]];
+		while stack <> [] do
+			current := Remove(stack, Size(stack));
+			if checknext(A, current) then
+				if Size(current)=NumberOfClasses(A)+1 then
+					return current;
+				else
+					children:=Difference([1..NumberOfClasses(A)], current);
+					Append(stack, List(children, t -> Concatenation(current, [t])));;
+				fi;
+			fi;
+		od;
+		return false;
 	end);
 
 InstallMethod( IsCometric, [IsHomogeneousCoherentConfiguration],
@@ -1342,46 +1381,89 @@ InstallMethod( IsCometric, [IsHomogeneousCoherentConfiguration],
 
 
 
-InstallMethod( AllQPolynomialOrderings, [IsHomogeneousCoherentConfiguration],
-	function(T)
-	    local L, i, d, K, ord, TridiagonalOrdering;
+# InstallMethod( AllQPolynomialOrderings, [IsHomogeneousCoherentConfiguration],
+# 	function(T)
+# 	    local L, i, d, K, ord, TridiagonalOrdering;
 	    
-	    TridiagonalOrdering := function(M)
-	        local rest, pres, x, L, LT, d;
+# 	    TridiagonalOrdering := function(M)
+# 	        local rest, pres, x, L, LT, d;
 	    
-	        d := Length(M);
-	        rest := [2..d];
-	        LT := [1];
-	        pres := 1;
-	        while rest <> [] do
-	            L := Filtered(rest, x-> M[pres][x] <> 0);
-	            if Length(L) <> 1 then
-	                return false;
-	            fi;
-	            pres := L[1];
-	            Add(LT, pres);
-	            rest := Difference(rest, [pres]);
-	        od;
+# 	        d := Length(M);
+# 	        rest := [2..d];
+# 	        LT := [1];
+# 	        pres := 1;
+# 	        while rest <> [] do
+# 	            L := Filtered(rest, x-> M[pres][x] <> 0);
+# 	            if Length(L) <> 1 then
+# 	                return false;
+# 	            fi;
+# 	            pres := L[1];
+# 	            Add(LT, pres);
+# 	            rest := Difference(rest, [pres]);
+# 	        od;
 	      
-	        return LT;
-	    end;
+# 	        return LT;
+# 	    end;
 
-	    K := KreinParameters(T);
-	    if K = false then
-	        return [];
-	    fi;
+# 	    K := KreinParameters(T);
+# 	    if K = false then
+# 	        return [];
+# 	    fi;
 	    
-	    d := NumberOfClasses(T)+1;
-	    L := [];
-	    for i in [2..d] do
-	        ord := TridiagonalOrdering(K[i]);
-	        if ord <> false then
-	            Add(L, ord-1);
-	        fi;
-	    od;
+# 	    d := NumberOfClasses(T)+1;
+# 	    L := [];
+# 	    for i in [2..d] do
+# 	        ord := TridiagonalOrdering(K[i]);
+# 	        if ord <> false then
+# 	            Add(L, ord-1);
+# 	        fi;
+# 	    od;
 	    
-	    return Set(L);
+# 	    return Set(L);
+# 	end);
+
+
+InstallMethod(AllQPolynomialOrderings,
+            [IsHomogeneousCoherentConfiguration],
+	function(A)
+		local stack, current, children, checknext, keep;
+
+		checknext := function(A, ord)
+
+			local m;
+			if Size(ord)=1 and ord[1]=0 then
+				return true;
+			fi;
+			if KreinParameter(A, ord[2], ord[Size(ord)-1], ord[Size(ord)]) = 0 then
+				return false;
+			fi;
+			for m in [1 .. Size(ord)-2] do
+				if KreinParameter(A, ord[2], ord[m], ord[Size(ord)]) <> 0 then
+					return false;
+				fi;
+			od;
+			return true;
+		end;
+
+		if not IsAssociationScheme(A) then
+			return [];
+		fi;
+		stack := [[0]];
+		keep := [];
+		while stack <> [] do
+			current := Remove(stack, Size(stack));
+			if checknext(A, current) then
+				if Size(current)=NumberOfClasses(A)+1 then
+					Add(keep, current);
+				else
+					children:=Difference([1..NumberOfClasses(A)], current);
+					Append(stack, List(children, t -> Concatenation(current, [t])));;
+				fi;
+			fi;
+		od;
+		return keep;
 	end);
+
 
 InstallMethod(IsCharacterTableOfHomogeneousCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration, IsMatrix],
