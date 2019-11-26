@@ -156,7 +156,7 @@ InstallMethod(AssociationScheme,
 InstallMethod(ReorderRelations,
             [IsHomogeneousCoherentConfiguration, IsList],
     function( a, L )
-        local mat, m, i, j, m2, d, n;
+        local mat, m, i, j, m2, d, n, L2;
         d:=NumberOfClasses(a);;
         n:=Order(a);
         if not Set(L) =[0..d] then
@@ -165,11 +165,15 @@ InstallMethod(ReorderRelations,
         if not L[1]=0 then
             return fail;
         fi;
+        L2 := [0 .. d];;
+        for i in [0 .. d] do
+        	L2[i+1] := Position(L, i)-1;
+        od;
         mat :=  NullMat(n, n);
         m:=RelationMatrix(a);;
         for i in [1 .. n] do
             for j in [1 .. n] do
-                mat[i][j]:=L[m[i][j]+1];
+                mat[i][j]:=L2[m[i][j]+1];
             od;
         od;
         m2 := HomogeneousCoherentConfigurationNC(mat);
@@ -1144,7 +1148,7 @@ InstallMethod( IsPPolynomial, [IsHomogeneousCoherentConfiguration],
 			return true;
 		end;
 
-		if not IsCommutative(A) then
+		if not IsAssociationScheme(A) then
 			return false;
 		fi;
 		stack := [[0]];
@@ -1152,7 +1156,7 @@ InstallMethod( IsPPolynomial, [IsHomogeneousCoherentConfiguration],
 			current := Remove(stack, Size(stack));
 			if checknext(A, current) then
 				if Size(current)=NumberOfClasses(A)+1 then
-					return current;
+					return true;
 				else
 					children:=Difference([1..NumberOfClasses(A)], current);
 					Append(stack, List(children, t -> Concatenation(current, [t])));;
@@ -1236,7 +1240,7 @@ InstallMethod(AllPPolynomialOrderings,
 			return true;
 		end;
 
-		if not IsCommutative(A) then
+		if not IsAssociationScheme(A) then
 			return [];
 		fi;
 		stack := [[0]];
@@ -1252,7 +1256,7 @@ InstallMethod(AllPPolynomialOrderings,
 				fi;
 			fi;
 		od;
-		return keep;
+		return Set(keep);
 	end);
 
 InstallMethod(KreinParameter,
@@ -1356,7 +1360,7 @@ InstallMethod( IsQPolynomial, [IsHomogeneousCoherentConfiguration],
 			return true;
 		end;
 
-		if not IsCommutative(A) then
+		if not IsAssociationScheme(A) then
 			return false;
 		fi;
 		stack := [[0]];
@@ -1364,7 +1368,7 @@ InstallMethod( IsQPolynomial, [IsHomogeneousCoherentConfiguration],
 			current := Remove(stack, Size(stack));
 			if checknext(A, current) then
 				if Size(current)=NumberOfClasses(A)+1 then
-					return current;
+					return true;
 				else
 					children:=Difference([1..NumberOfClasses(A)], current);
 					Append(stack, List(children, t -> Concatenation(current, [t])));;
@@ -1445,7 +1449,7 @@ InstallMethod(AllQPolynomialOrderings,
 			return true;
 		end;
 
-		if not IsCommutative(A) then
+		if not IsAssociationScheme(A) then
 			return [];
 		fi;
 		stack := [[0]];
@@ -1461,7 +1465,7 @@ InstallMethod(AllQPolynomialOrderings,
 				fi;
 			fi;
 		od;
-		return keep;
+		return Set(keep);
 	end);
 
 
