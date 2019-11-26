@@ -1098,29 +1098,68 @@ function( R )
     return G;
 end);
 
-InstallMethod( IsPPolynomial, [IsHomogeneousCoherentConfiguration],
-	function(R)
-	    local i, m, d, gr, n, x, y, g;
+# InstallMethod( IsPPolynomial, [IsHomogeneousCoherentConfiguration],
+# 	function(R)
+# 	    local i, m, d, gr, n, x, y, g;
 
-	    n := Order(R);
-	    m := RelationMatrix(R);
-	    d := NumberOfClasses(R);
-	    g := Group(());
-	    if HasConstructorGroup(R) then
-	    	g := ConstructorGroup(R);
-	    elif HasAutomorphismGroup(R) then
-	    	g := AutomorphismGroup(R);
-	    fi;
-	    for i in [1..d] do
-	        gr := Graph(g, [1..n], OnPoints, function(x,y) return m[x][y] = i; end);
-	        if IsDistanceRegular(gr) then
-	            if Diameter(gr) = d then
-	                return true;
-	            fi;
-	        fi;
-	    od;
+# 	    n := Order(R);
+# 	    m := RelationMatrix(R);
+# 	    d := NumberOfClasses(R);
+# 	    g := Group(());
+# 	    if HasConstructorGroup(R) then
+# 	    	g := ConstructorGroup(R);
+# 	    elif HasAutomorphismGroup(R) then
+# 	    	g := AutomorphismGroup(R);
+# 	    fi;
+# 	    for i in [1..d] do
+# 	        gr := Graph(g, [1..n], OnPoints, function(x,y) return m[x][y] = i; end);
+# 	        if IsDistanceRegular(gr) then
+# 	            if Diameter(gr) = d then
+# 	                return true;
+# 	            fi;
+# 	        fi;
+# 	    od;
 	    
-	    return false;
+# 	    return false;
+# 	end);
+
+InstallMethod( IsPPolynomial, [IsHomogeneousCoherentConfiguration],
+	function(A)
+		local stack, current, children, checknext;
+
+		checknext := function(A, ord)
+
+			local m;
+			if Size(ord)=1 and ord[1]=0 then
+				return true;
+			fi;
+			if IntersectionNumber(A, ord[2], ord[Size(ord)-1], ord[Size(ord)]) = 0 then
+				return false;
+			fi;
+			for m in [1 .. Size(ord)-2] do
+				if IntersectionNumber(A, ord[2], ord[m], ord[Size(ord)]) <> 0 then
+					return false;
+				fi;
+			od;
+			return true;
+		end;
+
+		if not IsAssociationScheme(A) then
+			return false;
+		fi;
+		stack := [[0]];
+		while stack <> [] do
+			current := Remove(stack, Size(stack));
+			if checknext(A, current) then
+				if Size(current)=NumberOfClasses(A)+1 then
+					return current;
+				else
+					children:=Difference([1..NumberOfClasses(A)], current);
+					Append(stack, List(children, t -> Concatenation(current, [t])));;
+				fi;
+			fi;
+		od;
+		return false;
 	end);
 
 InstallMethod( IsMetric, [IsHomogeneousCoherentConfiguration],
@@ -1128,52 +1167,93 @@ InstallMethod( IsMetric, [IsHomogeneousCoherentConfiguration],
 	    return IsPPolynomial(R);
 	end);
 
+# InstallMethod(AllPPolynomialOrderings,
+#             [IsHomogeneousCoherentConfiguration],
+#     function(R)
+#     local i, mat, d, gr, n, x, y, ans, PPolynomialOrdering, g;
+
+#         PPolynomialOrdering := function(R, a)
+#             local ord, i, j, d;
+            
+#             d := NumberOfClasses(R);
+#             ord := [0,a];
+#             for j in [1..d-1] do
+#                 for i in [1..d] do
+#                     if not (i in ord) then
+#                         if IntersectionNumber(R, a, ord[Length(ord)], i) <> 0 then
+#                             Add(ord, i);
+#                         fi;
+#                     fi;
+#                 od;
+#             od;
+            
+#             return ord;
+#         end;
+
+
+# 	    g := Group(());
+# 	    if HasConstructorGroup(R) then
+# 	    	g := ConstructorGroup(R);
+# 		elif HasAutomorphismGroup(R) then
+# 	    	g := AutomorphismGroup(R);
+# 	    fi;
+
+#         ans := [];
+#         n := Order(R);
+#         mat := RelationMatrix(R);
+#         d := NumberOfClasses(R);
+#         for i in [1..d] do
+#             gr := Graph(g, [1..n], OnPoints, function(x,y) return mat[x][y]=i; end);
+#             if IsDistanceRegular(gr) then
+#                 if Diameter(gr) = d then
+#                     Add(ans, PPolynomialOrdering(R, i));
+#                 fi;
+#             fi;
+#         od;
+
+#         return ans;
+#     end);
+
 InstallMethod(AllPPolynomialOrderings,
             [IsHomogeneousCoherentConfiguration],
-    function(R)
-    local i, mat, d, gr, n, x, y, ans, PPolynomialOrdering, g;
+	function(A)
+		local stack, current, children, checknext, keep;
 
-        PPolynomialOrdering := function(R, a)
-            local ord, i, j, d;
-            
-            d := NumberOfClasses(R);
-            ord := [0,a];
-            for j in [1..d-1] do
-                for i in [1..d] do
-                    if not (i in ord) then
-                        if IntersectionNumber(R, a, ord[Length(ord)], i) <> 0 then
-                            Add(ord, i);
-                        fi;
-                    fi;
-                od;
-            od;
-            
-            return ord;
-        end;
+		checknext := function(A, ord)
 
+			local m;
+			if Size(ord)=1 and ord[1]=0 then
+				return true;
+			fi;
+			if IntersectionNumber(A, ord[2], ord[Size(ord)-1], ord[Size(ord)]) = 0 then
+				return false;
+			fi;
+			for m in [1 .. Size(ord)-2] do
+				if IntersectionNumber(A, ord[2], ord[m], ord[Size(ord)]) <> 0 then
+					return false;
+				fi;
+			od;
+			return true;
+		end;
 
-	    g := Group(());
-	    if HasConstructorGroup(R) then
-	    	g := ConstructorGroup(R);
-		elif HasAutomorphismGroup(R) then
-	    	g := AutomorphismGroup(R);
-	    fi;
-
-        ans := [];
-        n := Order(R);
-        mat := RelationMatrix(R);
-        d := NumberOfClasses(R);
-        for i in [1..d] do
-            gr := Graph(g, [1..n], OnPoints, function(x,y) return mat[x][y]=i; end);
-            if IsDistanceRegular(gr) then
-                if Diameter(gr) = d then
-                    Add(ans, PPolynomialOrdering(R, i));
-                fi;
-            fi;
-        od;
-
-        return ans;
-    end);
+		if not IsAssociationScheme(A) then
+			return [];
+		fi;
+		stack := [[0]];
+		keep := [];
+		while stack <> [] do
+			current := Remove(stack, Size(stack));
+			if checknext(A, current) then
+				if Size(current)=NumberOfClasses(A)+1 then
+					Add(keep, current);
+				else
+					children:=Difference([1..NumberOfClasses(A)], current);
+					Append(stack, List(children, t -> Concatenation(current, [t])));;
+				fi;
+			fi;
+		od;
+		return keep;
+	end);
 
 InstallMethod(KreinParameter,
             [IsHomogeneousCoherentConfiguration, IsInt, IsInt, IsInt],
