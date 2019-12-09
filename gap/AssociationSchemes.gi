@@ -1626,6 +1626,22 @@ InstallMethod(ReadHomogeneousCoherentConfigurationWithCertainAttributes,
 		return A;
 	end);
 
+InstallMethod(ReorderMinimalIdempotents,
+            [IsHomogeneousCoherentConfiguration, IsList],
+    function( a, L )
+        local d, m2, Q, Q2, P;
+        d:=NumberOfClasses(a);;
+        if not L[1]=0 then
+            return fail;
+        fi;
+        m2 := HomogeneousCoherentConfigurationNC(RelationMatrix(a));
+        Q:=TransposedMat(DualMatrixOfEigenvalues(a));
+        Q2:=TransposedMat(List([0 .. d], t -> Q[L[t+1]+1] ));;
+        P:=Inverse(Q2)*Order(a);;
+        SetMatrixOfEigenvalues(m2, P);;
+        return m2;
+    end);
+
 ################################################################################################################
 #
 # Display methods
