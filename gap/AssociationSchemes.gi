@@ -156,7 +156,7 @@ InstallMethod(AssociationScheme,
 InstallMethod(ReorderRelations,
             [IsHomogeneousCoherentConfiguration, IsList],
     function( a, L )
-        local mat, m, i, j, m2, d, n, L2;
+        local mat, m, i, j, m2, d, n, L2, P, P2;
         d:=NumberOfClasses(a);;
         n:=Order(a);
         if not Set(L) =[0..d] then
@@ -177,6 +177,11 @@ InstallMethod(ReorderRelations,
             od;
         od;
         m2 := HomogeneousCoherentConfigurationNC(mat);
+        if HasMatrixOfEigenvalues(a) then
+        	P:=TransposedMat(MatrixOfEigenvalues(a));
+        	P2:=TransposedMat(List([0 .. d], t -> P[L[t+1]+1] ));;
+        	SetMatrixOfEigenvalues(m2, P2);;
+        fi;
         return m2;
     end);
 
