@@ -1642,6 +1642,25 @@ InstallMethod(ReorderMinimalIdempotents,
         return m2;
     end);
 
+
+InstallMethod(IntersectionArray,
+            [IsHomogeneousCoherentConfiguration],
+    function( A )
+        local intersection_array, d, i;
+        intersection_array:=[[],[]];
+        d:=NumberOfClasses(A);
+        if not IsAssociationScheme(A) or not IsMetric(A) then
+        	return fail;
+        fi;
+        for i in [0 .. d-1] do
+            Add(intersection_array[1], IntersectionNumber(A, 1, i+1, i));
+        od;
+        for i in [1 .. d] do
+            Add(intersection_array[2], IntersectionNumber(A, 1, i-1, i));
+        od;
+        return intersection_array;
+    end);
+
 ################################################################################################################
 #
 # Display methods
@@ -1692,10 +1711,15 @@ InstallMethod( Display,
  			Print("  Primitive: ", IsPrimitive(a), "\n");
  		fi;
  		if HasIsPPolynomial(a) then
- 			Print("  P-polynomial: ", IsPPolynomial(a), "\n");
+ 			Print("  Metric: ", IsPPolynomial(a), "\n");
  		fi;
+ 		if HasIntersectionArray(a) and IntersectionArray(a) <> fail then
+ 			Print("  Intersection array:\n");
+ 			Print(IntersectionArray(a), "\n");
+ 		fi;
+
  		if HasIsQPolynomial(a) then
- 			Print("  Q-polynomial: ", IsQPolynomial(a), "\n");
+ 			Print("  Cometric: ", IsQPolynomial(a), "\n");
  		fi;
  		if HasIsSchurian(a) then
  			Print("  Schurian: ", IsSchurian(a), "\n");

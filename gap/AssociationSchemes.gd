@@ -406,3 +406,12 @@ DeclareProperty( "IsPrimitive", IsHomogeneousCoherentConfiguration );
 #!	the new homogeneous coherent configuration, where $j = L_i$. Note that $L_i$ must be equal to $\{0, \ldots, d \}$
 #!	as a set, and additionally requires that $L_1 = 0$.
 DeclareOperation( "ReorderMinimalIdempotents", [ IsHomogeneousCoherentConfiguration, IsList ] );
+
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns d
+#! @Description
+#!	Returns the intersection array if CC is P-polynomial and symmetric.
+DeclareAttribute( "IntersectionArray", IsHomogeneousCoherentConfiguration );
