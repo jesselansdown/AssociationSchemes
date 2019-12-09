@@ -1649,7 +1649,7 @@ InstallMethod(IntersectionArray,
         local intersection_array, d, i;
         intersection_array:=[[],[]];
         d:=NumberOfClasses(A);
-        if not IsAssociationScheme(A) or not IsMetric(A) then
+        if not IsMetric(A) then
         	return fail;
         fi;
         for i in [0 .. d-1] do
@@ -1661,6 +1661,29 @@ InstallMethod(IntersectionArray,
         return intersection_array;
     end);
 
+InstallMethod(KreinArray,
+            [IsHomogeneousCoherentConfiguration],
+    function( A )
+        local krein_array, d, i;
+        krein_array:=[[],[]];
+        d:=NumberOfClasses(A);
+        if not IsCometric(A) then
+        	return fail;
+        fi;
+        for i in [0 .. d-1] do
+            Add(krein_array[1], KreinParameter(A, 1, i+1, i));
+        od;
+        for i in [1 .. d] do
+            Add(krein_array[2], KreinParameter(A, 1, i-1, i));
+        od;
+        return krein_array;
+    end);
+
+InstallMethod(DualIntersectionArray,
+			[IsHomogeneousCoherentConfiguration],
+	function(a)
+		return KreinArray(a);
+	end );
 ################################################################################################################
 #
 # Display methods
@@ -1717,9 +1740,12 @@ InstallMethod( Display,
  			Print("  Intersection array:\n");
  			Print(IntersectionArray(a), "\n");
  		fi;
-
  		if HasIsQPolynomial(a) then
  			Print("  Cometric: ", IsQPolynomial(a), "\n");
+ 		fi;
+ 		if HasKreinArray(a) and KreinArray(a) <> fail then
+ 			Print("  Krein array:\n");
+ 			Print(KreinArray(a), "\n");
  		fi;
  		if HasIsSchurian(a) then
  			Print("  Schurian: ", IsSchurian(a), "\n");

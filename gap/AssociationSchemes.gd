@@ -411,7 +411,23 @@ DeclareOperation( "ReorderMinimalIdempotents", [ IsHomogeneousCoherentConfigurat
 #! @Chapter Functionality
 #! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
-#! @Returns d
+#! @Returns List
 #! @Description
-#!	Returns the intersection array if CC is P-polynomial and symmetric.
+#!	Returns the intersection array if CC is P-polynomial.
 DeclareAttribute( "IntersectionArray", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns List
+#! @Description
+#!	Returns the Krein (or dual intersection) array if CC is Q-polynomial.
+DeclareAttribute( "KreinArray", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns List
+#! @Description
+#!	Alias for KreinArray.
+DeclareOperation( "DualIntersectionArray", [IsHomogeneousCoherentConfiguration] );
