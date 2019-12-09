@@ -288,8 +288,24 @@ DeclareProperty( "IsPPolynomial", IsHomogeneousCoherentConfiguration );
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
-#!	Alias for is P-polynomial.
+#!	Returns if the homogeneous coherent configuration CC admits a P-polynomial ordering.
+DeclareProperty( "AdmitsPPolynomialOrdering", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Alias for IsPPolynomial.
 DeclareOperation( "IsMetric", [IsHomogeneousCoherentConfiguration] );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Alias for AdmitsPPolynomialOrdering.
+DeclareOperation( "AdmitsMetricOrdering", [IsHomogeneousCoherentConfiguration] );
 
 #! @Chapter Functionality
 #! @Section Attributes Of Homogeneous Coherent Configurations
@@ -298,6 +314,15 @@ DeclareOperation( "IsMetric", [IsHomogeneousCoherentConfiguration] );
 #! @Description
 #!	Calculate the list $L$ of all P-polynomial orderings of a homogeneous coherent configuration.
 DeclareAttribute( "AllPPolynomialOrderings", IsHomogeneousCoherentConfiguration );
+
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns L
+#! @Description
+#!	Alias for AllPPolynomialOrderings.
+DeclareOperation( "AllMetricOrderings", [IsHomogeneousCoherentConfiguration] );
 
 
 #! @Chapter Functionality

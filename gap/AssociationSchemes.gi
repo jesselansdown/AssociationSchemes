@@ -1131,10 +1131,9 @@ end);
 	    
 # 	    return false;
 # 	end);
-
 InstallMethod( IsPPolynomial, [IsHomogeneousCoherentConfiguration],
 	function(A)
-		local stack, current, children, checknext;
+		local d, checknext, i;
 
 		checknext := function(A, ord)
 
@@ -1156,6 +1155,43 @@ InstallMethod( IsPPolynomial, [IsHomogeneousCoherentConfiguration],
 		if not IsAssociationScheme(A) then
 			return false;
 		fi;
+		d:=NumberOfClasses(A);
+		for i in [0 .. d] do
+			if not checknext(A, [0 .. i]) then
+				return false;
+			fi;
+		od;
+		return true;
+	end);
+
+
+InstallMethod( AdmitsPPolynomialOrdering, [IsHomogeneousCoherentConfiguration],
+	function(A)
+		local stack, current, children, checknext;
+
+		checknext := function(A, ord)
+
+			local m;
+			if Size(ord)=1 and ord[1]=0 then
+				return true;
+			fi;
+			if IntersectionNumber(A, ord[2], ord[Size(ord)-1], ord[Size(ord)]) = 0 then
+				return false;
+			fi;
+			for m in [1 .. Size(ord)-2] do
+				if IntersectionNumber(A, ord[2], ord[m], ord[Size(ord)]) <> 0 then
+					return false;
+				fi;
+			od;
+			return true;
+		end;
+
+		if IsPPolynomial(A) then
+			return true;
+		fi;
+		if not IsAssociationScheme(A) then
+			return false;
+		fi;
 		stack := [[0]];
 		while stack <> [] do
 			current := Remove(stack, Size(stack));
@@ -1174,6 +1210,11 @@ InstallMethod( IsPPolynomial, [IsHomogeneousCoherentConfiguration],
 InstallMethod( IsMetric, [IsHomogeneousCoherentConfiguration],
 	function(R)
 	    return IsPPolynomial(R);
+	end);
+
+InstallMethod( AdmitsMetricOrdering, [IsHomogeneousCoherentConfiguration],
+	function(R)
+	    return AdmitsPPolynomialOrdering(R);
 	end);
 
 # InstallMethod(AllPPolynomialOrderings,
@@ -1263,6 +1304,12 @@ InstallMethod(AllPPolynomialOrderings,
 		od;
 		return Set(keep);
 	end);
+
+InstallMethod( AllMetricOrderings, [IsHomogeneousCoherentConfiguration],
+	function(R)
+	    return AllPPolynomialOrderings(R);
+	end);
+
 
 InstallMethod(KreinParameter,
             [IsHomogeneousCoherentConfiguration, IsInt, IsInt, IsInt],
@@ -1734,7 +1781,10 @@ InstallMethod( Display,
  			Print("  Primitive: ", IsPrimitive(a), "\n");
  		fi;
  		if HasIsPPolynomial(a) then
- 			Print("  Metric: ", IsPPolynomial(a), "\n");
+ 			Print("  Metric: ", IsMetric(a), "\n");
+ 			if IsMetric(a) = false and HasAdmitsPPolynomialOrdering(a) then
+	 			Print("    Admits metric ordering: ", AdmitsPPolynomialOrdering(a), "\n");
+	 		fi;
  		fi;
  		if HasIntersectionArray(a) and IntersectionArray(a) <> fail then
  			Print("  Intersection array:\n");
