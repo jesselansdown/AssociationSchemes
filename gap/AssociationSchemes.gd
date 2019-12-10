@@ -398,6 +398,21 @@ DeclareOperation( "IsCometric", [IsHomogeneousCoherentConfiguration] );
 #!	Calculate a list $L$ of all Q-polynomial orderings of a homogeneous coherent configuration.
 DeclareAttribute( "AllQPolynomialOrderings", IsHomogeneousCoherentConfiguration );
 
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Returns if the homogeneous coherent configuration CC is Q-bipartite.
+DeclareProperty( "IsQBipartite", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Returns if the homogeneous coherent configuration CC is bipartite.
+DeclareProperty( "IsPBipartite", IsHomogeneousCoherentConfiguration );
 
 DeclareOperation("SchemeToGraph", [IsHomogeneousCoherentConfiguration]);
 

@@ -1778,6 +1778,39 @@ InstallMethod(DualIntersectionArray,
 	function(a)
 		return KreinArray(a);
 	end );
+
+InstallMethod( IsQBipartite, [IsHomogeneousCoherentConfiguration],
+	function(A)
+	local i, j, k, d;
+	d:=NumberOfClasses(A);
+	for i in [0 .. d] do
+		for j in [0 .. d] do
+			for k in [0 .. d] do
+				if IsOddInt(i+j+k) and KreinParameter(A, i, j, k)<>0 then
+					return false;
+				fi;
+			od;
+		od;
+	od;
+	return true;
+	end);
+
+InstallMethod( IsPBipartite, [IsHomogeneousCoherentConfiguration],
+	function(A)
+	local i, j, k, d;
+	d:=NumberOfClasses(A);
+	for i in [0 .. d] do
+		for j in [0 .. d] do
+			for k in [0 .. d] do
+				if IsOddInt(i+j+k) and IntersectionNumber(A, i, j, k)<>0 then
+					return false;
+				fi;
+			od;
+		od;
+	od;
+	return true;
+	end);
+
 ################################################################################################################
 #
 # Display methods
