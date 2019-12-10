@@ -519,3 +519,12 @@ DeclareAttribute( "KreinArray", IsHomogeneousCoherentConfiguration );
 #! @Description
 #!	Alias for KreinArray.
 DeclareOperation( "DualIntersectionArray", [IsHomogeneousCoherentConfiguration] );
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns [d, b, $\alpha$, $\beta$]
+#! @Description
+#!	Returns the classical parameters if the CC is metric with classical
+#!  parameters.
+DeclareAttribute( "ClassicalParameters", IsHomogeneousCoherentConfiguration );

@@ -1835,6 +1835,70 @@ InstallMethod( IsPAntipodal, [IsHomogeneousCoherentConfiguration],
 		return true;
 	end);
 
+InstallMethod( ClassicalParameters, [IsHomogeneousCoherentConfiguration],
+	function(A)
+		local gauss, construct_array, d, P, b1, b0, possible_Bs, keep, b,
+		alpha, beta, classicalparams;
+
+		if not IsMetric(A) then
+			return fail;
+		fi;
+
+		gauss := function(i, b)
+			local o, j;
+			o:=0;
+			for j in [0 .. i-1] do
+				o:=o+b^j;
+			od;
+			return o;
+		end;
+
+		construct_array := function(L)
+			local out, i, bi, ci, d, b, alpha, beta;
+			d:=L[1];
+			b:=L[2];
+			alpha:=L[3];
+			beta:=L[4];;
+			out :=[[], []];
+			for i in [0 .. d-1] do
+				bi:= (gauss(d, b)-gauss(i,b))*(beta - alpha*gauss(i,b));;
+				Add(out[1], bi);;
+			od;
+			for i in [1 .. d] do
+				ci:= gauss(i, b)*(1+alpha*gauss(i-1, b));;
+				Add(out[2], ci);
+			od;
+			return out;
+		end;
+
+		d:=NumberOfClasses(A);;
+		if d<2 then
+			return fail;
+		fi;
+		P:=MatrixOfEigenvalues(A);;
+		b1:=IntersectionNumber(A, 1,2,1);
+		possible_Bs := Set([2 .. d+1], t -> (P[t][2]+1));
+		possible_Bs := Filtered(possible_Bs, t -> t <> 0);
+		possible_Bs := List(possible_Bs, t -> b1/t);
+
+		keep:=[];
+
+		for b in possible_Bs do
+			b0:=IntersectionNumber(A, 1,1,0);
+			beta := b0/gauss(d, b);
+			alpha := (beta - (b1/(gauss(d,b) - gauss(1,b)))/gauss(1,b));
+			Add(keep, [d, b, alpha, beta]);
+		od;
+		
+		classicalparams := Filtered(keep, t -> construct_array(t)=IntersectionArray(A));
+		Sort(classicalparams, function(u, v) return u[2]>v[2];end);
+		if classicalparams <> [] then
+			return classicalparams[1];
+		else
+			return fail;
+		fi;
+	end);
+
 ################################################################################################################
 #
 # Display methods
