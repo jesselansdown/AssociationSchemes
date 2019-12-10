@@ -308,6 +308,22 @@ DeclareOperation( "IsMetric", [IsHomogeneousCoherentConfiguration] );
 DeclareOperation( "AdmitsMetricOrdering", [IsHomogeneousCoherentConfiguration] );
 
 #! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Alias for IsQPolynomial.
+DeclareOperation( "IsCoetric", [IsHomogeneousCoherentConfiguration] );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Alias for AdmitsQPolynomialOrdering.
+DeclareOperation( "AdmitsCometricOrdering", [IsHomogeneousCoherentConfiguration] );
+
+#! @Chapter Functionality
 #! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns L
@@ -341,6 +357,14 @@ DeclareOperation( "KreinParameter", [ IsHomogeneousCoherentConfiguration, IsInt,
 #!	Return a list $L$ of all Krein parameters of a commutative homogeneous coherent configuration,
 #!	where $L[i][j,k] = q_{i,j}^k$.
 DeclareAttribute( "KreinParameters", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Returns if the homogeneous coherent configuration CC admits a Q-polynomial ordering.
+DeclareProperty( "AdmitsQPolynomialOrdering", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Properties Of Homogeneous Coherent Configurations

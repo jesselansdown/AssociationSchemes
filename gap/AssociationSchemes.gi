@@ -1217,6 +1217,16 @@ InstallMethod( AdmitsMetricOrdering, [IsHomogeneousCoherentConfiguration],
 	    return AdmitsPPolynomialOrdering(R);
 	end);
 
+InstallMethod( IsCometric, [IsHomogeneousCoherentConfiguration],
+	function(R)
+	    return IsQPolynomial(R);
+	end);
+
+InstallMethod( AdmitsCometricOrdering, [IsHomogeneousCoherentConfiguration],
+	function(R)
+	    return AdmitsQPolynomialOrdering(R);
+	end);
+
 # InstallMethod(AllPPolynomialOrderings,
 #             [IsHomogeneousCoherentConfiguration],
 #     function(R)
@@ -1391,7 +1401,7 @@ InstallMethod(KreinParameters,
 # 	    return false;
 # 	end);
 
-InstallMethod( IsQPolynomial, [IsHomogeneousCoherentConfiguration],
+InstallMethod( AdmitsQPolynomialOrdering, [IsHomogeneousCoherentConfiguration],
 	function(A)
 		local stack, current, children, checknext;
 
@@ -1412,6 +1422,9 @@ InstallMethod( IsQPolynomial, [IsHomogeneousCoherentConfiguration],
 			return true;
 		end;
 
+		if IsQPolynomial(A) then
+			return true;
+		fi;
 		if not IsAssociationScheme(A) then
 			return false;
 		fi;
@@ -1428,6 +1441,36 @@ InstallMethod( IsQPolynomial, [IsHomogeneousCoherentConfiguration],
 			fi;
 		od;
 		return false;
+	end);
+
+InstallMethod( IsQPolynomial, [IsHomogeneousCoherentConfiguration],
+	function(A)
+		local d, i, checknext;
+
+		checknext := function(A, ord)
+
+			local m;
+			if Size(ord)=1 and ord[1]=0 then
+				return true;
+			fi;
+			if KreinParameter(A, ord[2], ord[Size(ord)-1], ord[Size(ord)]) = 0 then
+				return false;
+			fi;
+			for m in [1 .. Size(ord)-2] do
+				if KreinParameter(A, ord[2], ord[m], ord[Size(ord)]) <> 0 then
+					return false;
+				fi;
+			od;
+			return true;
+		end;
+
+		d := NumberOfClasses(A);
+		for i in [0 .. d] do
+			if not checknext(A, [0 .. i]) then
+				return false;
+			fi;
+		od;
+		return true;
 	end);
 
 InstallMethod( IsCometric, [IsHomogeneousCoherentConfiguration],
@@ -1791,7 +1834,10 @@ InstallMethod( Display,
  			Print(IntersectionArray(a), "\n");
  		fi;
  		if HasIsQPolynomial(a) then
- 			Print("  Cometric: ", IsQPolynomial(a), "\n");
+ 			Print("  Cometric: ", IsCometric(a), "\n");
+ 			if IsCometric(a) = false and HasAdmitsQPolynomialOrdering(a) then
+	 			Print("    Admits cometric ordering: ", AdmitsQPolynomialOrdering(a), "\n");
+	 		fi;
  		fi;
  		if HasKreinArray(a) and KreinArray(a) <> fail then
  			Print("  Krein array:\n");
