@@ -1811,6 +1811,30 @@ InstallMethod( IsPBipartite, [IsHomogeneousCoherentConfiguration],
 	return true;
 	end);
 
+InstallMethod( IsQAntipodal, [IsHomogeneousCoherentConfiguration],
+	function(A)
+		local j, d;
+		d:=NumberOfClasses(A);;
+		for j in [1 .. d] do
+			if j <> Int(Floor(Float(d/2))) and KreinArray(A)[1][j] <> Reversed(KreinArray(A)[2])[j] then
+				return false;
+			fi;
+		od;
+		return true;
+	end);
+
+InstallMethod( IsPAntipodal, [IsHomogeneousCoherentConfiguration],
+	function(A)
+		local j, d;
+		d:=NumberOfClasses(A);;
+		for j in [1 .. d] do
+			if j <> Int(Floor(Float(d/2))) and IntersectionArray(A)[1][j] <> Reversed(IntersectionArray(A)[2])[j] then
+				return false;
+			fi;
+		od;
+		return true;
+	end);
+
 ################################################################################################################
 #
 # Display methods
@@ -1865,6 +1889,12 @@ InstallMethod( Display,
  			if IsMetric(a) = false and HasAdmitsPPolynomialOrdering(a) then
 	 			Print("    Admits metric ordering: ", AdmitsPPolynomialOrdering(a), "\n");
 	 		fi;
+		 	if HasIsPBipartite(a) then
+		 		Print("    Bipartite:", IsPBipartite(a), "\n");
+		 	fi;
+		 	if HasIsQAntipodal(a) then
+		 		Print("    Antipodal:", IsPAntipodal(a), "\n");
+		 	fi;
  		fi;
  		if HasIntersectionArray(a) and IntersectionArray(a) <> fail then
  			Print("  Intersection array:\n");
@@ -1875,6 +1905,12 @@ InstallMethod( Display,
  			if IsCometric(a) = false and HasAdmitsQPolynomialOrdering(a) then
 	 			Print("    Admits cometric ordering: ", AdmitsQPolynomialOrdering(a), "\n");
 	 		fi;
+		 	if HasIsQBipartite(a) then
+		 		Print("    Q-bipartite:", IsQBipartite(a), "\n");
+		 	fi;
+		 	if HasIsQAntipodal(a) then
+		 		Print("    Q-antipodal:", IsQAntipodal(a), "\n");
+		 	fi;
  		fi;
  		if HasKreinArray(a) and KreinArray(a) <> fail then
  			Print("  Krein array:\n");

@@ -414,6 +414,22 @@ DeclareProperty( "IsQBipartite", IsHomogeneousCoherentConfiguration );
 #!	Returns if the homogeneous coherent configuration CC is bipartite.
 DeclareProperty( "IsPBipartite", IsHomogeneousCoherentConfiguration );
 
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Returns if the homogeneous coherent configuration CC is Q-antipodal.
+DeclareProperty( "IsQAntipodal", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Returns if the homogeneous coherent configuration CC is antipodal.
+DeclareProperty( "IsPAntipodal", IsHomogeneousCoherentConfiguration );
+
 DeclareOperation("SchemeToGraph", [IsHomogeneousCoherentConfiguration]);
 
 DeclareOperation( "IsCharacterTableOfHomogeneousCoherentConfiguration", [ IsHomogeneousCoherentConfiguration, IsMatrix ] );
