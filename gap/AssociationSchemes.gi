@@ -1563,6 +1563,10 @@ InstallMethod(AllQPolynomialOrderings,
 		return Set(keep);
 	end);
 
+InstallMethod( AllCometricOrderings, [IsHomogeneousCoherentConfiguration],
+	function(R)
+	    return AllQPolynomialOrderings(R);
+	end);
 
 InstallMethod(IsCharacterTableOfHomogeneousCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration, IsMatrix],

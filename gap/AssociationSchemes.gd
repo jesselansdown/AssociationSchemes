@@ -340,6 +340,14 @@ DeclareAttribute( "AllPPolynomialOrderings", IsHomogeneousCoherentConfiguration 
 #!	Alias for AllPPolynomialOrderings.
 DeclareOperation( "AllMetricOrderings", [IsHomogeneousCoherentConfiguration] );
 
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns L
+#! @Description
+#!	Alias for AllQPolynomialOrderings.
+DeclareOperation( "AllCometricOrderings", [IsHomogeneousCoherentConfiguration] );
+
 
 #! @Chapter Functionality
 #! @Section Methods
