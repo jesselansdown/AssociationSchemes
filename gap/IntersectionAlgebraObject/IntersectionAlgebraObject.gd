@@ -124,3 +124,36 @@ DeclareOperation( "KreinParameter", [ IsIntersectionAlgebraObject, IsInt, IsInt,
 #!	Return a list $L$ of all Krein parameters of a commutative homogeneous coherent configuration,
 #!	where $L[i][j,k] = q_{i,j}^k$.
 DeclareAttribute( "KreinParameters", IsIntersectionAlgebraObject );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Returns if the homogeneous coherent configuration CC is Q-bipartite.
+DeclareProperty( "IsQBipartite", IsIntersectionAlgebraObject );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Returns if the homogeneous coherent configuration CC is bipartite.
+DeclareProperty( "IsPBipartite", IsIntersectionAlgebraObject );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Returns if the homogeneous coherent configuration CC is Q-antipodal.
+DeclareProperty( "IsQAntipodal", IsIntersectionAlgebraObject );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Returns if the homogeneous coherent configuration CC is antipodal.
+DeclareProperty( "IsPAntipodal", IsIntersectionAlgebraObject );
+
