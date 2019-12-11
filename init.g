@@ -5,6 +5,8 @@
 #
 
 ReadPackage( "AssociationSchemes", "gap/AssociationSchemes.gd");
+ReadPackage( "AssociationSchemes", "gap/MetricSchemes.gd");
+ReadPackage( "AssociationSchemes", "gap/CometricSchemes.gd");
 ReadPackage( "AssociationSchemes", "gap/Library.gd");
 ReadPackage( "AssociationSchemes", "gap/CoherentConfigurationByOrbitals.gd");
 ReadPackage( "AssociationSchemes", "gap/SchurianSchemes.gd");

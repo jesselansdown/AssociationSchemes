@@ -274,81 +274,6 @@ DeclareOperation("BinaryExpansion", [IsPosInt]);
 #!	$G$ is a permutation group acting on the index set of the vertices.
 DeclareAttribute( "AutomorphismGroup", IsHomogeneousCoherentConfiguration );
 
-
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns true or false
-#! @Description
-#!	Returns if the homogeneous coherent configuration CC is P-polynomial.
-DeclareProperty( "IsPPolynomial", IsHomogeneousCoherentConfiguration );
-
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns true or false
-#! @Description
-#!	Returns if the homogeneous coherent configuration CC admits a P-polynomial ordering.
-DeclareProperty( "AdmitsPPolynomialOrdering", IsHomogeneousCoherentConfiguration );
-
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns true or false
-#! @Description
-#!	Alias for IsPPolynomial.
-DeclareOperation( "IsMetric", [IsHomogeneousCoherentConfiguration] );
-
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns true or false
-#! @Description
-#!	Alias for AdmitsPPolynomialOrdering.
-DeclareOperation( "AdmitsMetricOrdering", [IsHomogeneousCoherentConfiguration] );
-
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns true or false
-#! @Description
-#!	Alias for IsQPolynomial.
-DeclareOperation( "IsCoetric", [IsHomogeneousCoherentConfiguration] );
-
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns true or false
-#! @Description
-#!	Alias for AdmitsQPolynomialOrdering.
-DeclareOperation( "AdmitsCometricOrdering", [IsHomogeneousCoherentConfiguration] );
-
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns L
-#! @Description
-#!	Calculate the list $L$ of all P-polynomial orderings of a homogeneous coherent configuration.
-DeclareAttribute( "AllPPolynomialOrderings", IsHomogeneousCoherentConfiguration );
-
-
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns L
-#! @Description
-#!	Alias for AllPPolynomialOrderings.
-DeclareOperation( "AllMetricOrderings", [IsHomogeneousCoherentConfiguration] );
-
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns L
-#! @Description
-#!	Alias for AllQPolynomialOrderings.
-DeclareOperation( "AllCometricOrderings", [IsHomogeneousCoherentConfiguration] );
-
-
 #! @Chapter Functionality
 #! @Section Methods
 #! @Arguments CC, i, j, k
@@ -365,38 +290,6 @@ DeclareOperation( "KreinParameter", [ IsHomogeneousCoherentConfiguration, IsInt,
 #!	Return a list $L$ of all Krein parameters of a commutative homogeneous coherent configuration,
 #!	where $L[i][j,k] = q_{i,j}^k$.
 DeclareAttribute( "KreinParameters", IsHomogeneousCoherentConfiguration );
-
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns true or false
-#! @Description
-#!	Returns if the homogeneous coherent configuration CC admits a Q-polynomial ordering.
-DeclareProperty( "AdmitsQPolynomialOrdering", IsHomogeneousCoherentConfiguration );
-
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns true or false
-#! @Description
-#!	Returns if the commutative coherent configuration CC is Q-polynomial.
-DeclareProperty( "IsQPolynomial", IsHomogeneousCoherentConfiguration );
-
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns true or false
-#! @Description
-#!	Alias for is Q-polynomial.
-DeclareOperation( "IsCometric", [IsHomogeneousCoherentConfiguration] );
-
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns L
-#! @Description
-#!	Calculate a list $L$ of all Q-polynomial orderings of a homogeneous coherent configuration.
-DeclareAttribute( "AllQPolynomialOrderings", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Properties Of Homogeneous Coherent Configurations
@@ -494,37 +387,3 @@ DeclareProperty( "IsPrimitive", IsHomogeneousCoherentConfiguration );
 #!	the new homogeneous coherent configuration, where $j = L_i$. Note that $L_i$ must be equal to $\{0, \ldots, d \}$
 #!	as a set, and additionally requires that $L_1 = 0$.
 DeclareOperation( "ReorderMinimalIdempotents", [ IsHomogeneousCoherentConfiguration, IsList ] );
-
-
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns List
-#! @Description
-#!	Returns the intersection array if CC is P-polynomial.
-DeclareAttribute( "IntersectionArray", IsHomogeneousCoherentConfiguration );
-
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns List
-#! @Description
-#!	Returns the Krein (or dual intersection) array if CC is Q-polynomial.
-DeclareAttribute( "KreinArray", IsHomogeneousCoherentConfiguration );
-
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns List
-#! @Description
-#!	Alias for KreinArray.
-DeclareOperation( "DualIntersectionArray", [IsHomogeneousCoherentConfiguration] );
-
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns [d, b, $\alpha$, $\beta$]
-#! @Description
-#!	Returns the classical parameters if the CC is metric with classical
-#!  parameters.
-DeclareAttribute( "ClassicalParameters", IsHomogeneousCoherentConfiguration );
