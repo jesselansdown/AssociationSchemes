@@ -67,3 +67,52 @@ DeclareAttribute("IntersectionMatrices", IsIntersectionAlgebraObject);
 #! @Description
 #!	Returns $d$ for a $d$-class association scheme.
 DeclareAttribute( "NumberOfClasses", IsIntersectionAlgebraObject );
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns L
+#! @Description
+#!	Returns a list L of valencies of a coherent configuration CC. The $i$-th entry of $L$ is $k_{i-1}$.
+DeclareAttribute( "Valencies", IsIntersectionAlgebraObject );
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns n
+#! @Description
+#!	Returns the order $n$ (number of vertices) of the coherent configuration.
+DeclareAttribute( "Order", IsIntersectionAlgebraObject );
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns P
+#! @Description
+#!	Returns a the matrix of eigenvalues (or character table), $P$, for a homogeneous coherent configuration CC.
+DeclareAttribute( "MatrixOfEigenvalues", IsIntersectionAlgebraObject );
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns Q
+#! @Description
+#!	Returns a the dual matrix of eigenvalues, $Q$, for a homogeneous coherent configuration CC.
+DeclareAttribute( "DualMatrixOfEigenvalues", IsIntersectionAlgebraObject );
+
+#! @Chapter Functionality
+#! @Section Methods
+#! @Arguments CC, i, j, k
+#! @Returns $q_{i,j}^k$
+#! @Description
+#!	Compute the krein parameter $q_{i,j}^k$ of a commutative homogeneous coherent configuration.
+DeclareOperation( "KreinParameter", [ IsIntersectionAlgebraObject, IsInt, IsInt, IsInt ] );
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns L
+#! @Description
+#!	Return a list $L$ of all Krein parameters of a commutative homogeneous coherent configuration,
+#!	where $L[i][j,k] = q_{i,j}^k$.
+DeclareAttribute( "KreinParameters", IsIntersectionAlgebraObject );
