@@ -22,3 +22,4 @@ ReadPackage( "AssociationSchemes", "gap/OtherConstructors.gi");
 ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/IntersectionAlgebraObject.gi");
 ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/ConstructorMethods.gi");
 ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/MetricSchemes.gi");
+ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/CometricSchemes.gi");
