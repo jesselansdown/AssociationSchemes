@@ -306,3 +306,99 @@ InstallMethod( ClassicalParameters, [IsHomogeneousCoherentConfiguration],
       return fail;
     fi;
   end);
+
+InstallMethod( DistanceRegularGraphScheme, [IsMatrix],
+  function(M)
+
+    local RelationMatrixFromDRG;
+    RelationMatrixFromDRG := function(A)
+
+      local indep, bas, k, M, rel, i, j;
+      indep := function(M, bas)
+        local M2, i, pos, val, scale;
+        M2:=StructuralCopy(M);;
+        for i in [1 .. Size(bas)] do
+          pos := First([1 .. Size(bas[i][1])], t -> bas[i][1][t] = 1);
+          val := M2[1][pos];
+          M2 := M2 - val*bas[i];
+        od;
+        scale:=First(M2[1], t -> t <> 0);
+        if scale = fail then
+          return fail;
+        fi;
+        M2:=M2/scale;;
+        return M2;
+      end;
+
+      bas := [IdentityMat(Size(A)), A];
+      k:=2;
+      while true do
+        M:=indep(A^k, bas);
+        if M = fail then
+          break;
+        fi;
+        Add(bas, M);
+        k:=k+1;
+      od;
+
+      rel := NullMat(Size(A), Size(A[1]));;
+      for i in [1 .. Size(A)] do
+        for j in [1 .. Size(A[1])] do
+          for k in [1 .. Size(bas)] do
+            rel[i][j] := rel[i][j]+bas[k][i][j]*(k-1);
+          od;
+        od;
+      od;
+      return rel;
+    end;
+
+    return AssociationScheme(RelationMatrixFromDRG(M));;
+  end);
+
+InstallMethod( DistanceRegularGraphSchemeNC, [IsMatrix],
+  function(M)
+
+    local RelationMatrixFromDRG;
+    RelationMatrixFromDRG := function(A)
+
+      local indep, bas, k, M, rel, i, j;
+      indep := function(M, bas)
+        local M2, i, pos, val, scale;
+        M2:=StructuralCopy(M);;
+        for i in [1 .. Size(bas)] do
+          pos := First([1 .. Size(bas[i][1])], t -> bas[i][1][t] = 1);
+          val := M2[1][pos];
+          M2 := M2 - val*bas[i];
+        od;
+        scale:=First(M2[1], t -> t <> 0);
+        if scale = fail then
+          return fail;
+        fi;
+        M2:=M2/scale;;
+        return M2;
+      end;
+
+      bas := [IdentityMat(Size(A)), A];
+      k:=2;
+      while true do
+        M:=indep(A^k, bas);
+        if M = fail then
+          break;
+        fi;
+        Add(bas, M);
+        k:=k+1;
+      od;
+
+      rel := NullMat(Size(A), Size(A[1]));;
+      for i in [1 .. Size(A)] do
+        for j in [1 .. Size(A[1])] do
+          for k in [1 .. Size(bas)] do
+            rel[i][j] := rel[i][j]+bas[k][i][j]*(k-1);
+          od;
+        od;
+      od;
+      return rel;
+    end;
+
+    return AssociationSchemeNC(RelationMatrixFromDRG(M));;
+  end);

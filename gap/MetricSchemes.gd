@@ -87,3 +87,19 @@ DeclareAttribute( "IntersectionArray", IsHomogeneousCoherentConfiguration );
 #!	Returns the classical parameters if the CC is metric with classical
 #!  parameters.
 DeclareAttribute( "ClassicalParameters", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments A
+#! @Returns homogeneous coherent configuration
+#! @Description
+#!	Constructs an association scheme from the adjacency matrix A of a distance regular graph.
+DeclareOperation( "DistanceRegularGraphScheme", [IsMatrix]);
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments A
+#! @Returns homogeneous coherent configuration
+#! @Description
+#!	Same as DistanceRegularGraphScheme but without checking that a valid association scheme arises.
+DeclareOperation( "DistanceRegularGraphSchemeNC", [IsMatrix]);
