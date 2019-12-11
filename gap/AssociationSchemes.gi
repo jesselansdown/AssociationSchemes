@@ -1880,6 +1880,7 @@ InstallMethod( ClassicalParameters, [IsHomogeneousCoherentConfiguration],
 		possible_Bs := Set([2 .. d+1], t -> (P[t][2]+1));
 		possible_Bs := Filtered(possible_Bs, t -> t <> 0);
 		possible_Bs := List(possible_Bs, t -> b1/t);
+		possible_Bs := Filtered(possible_Bs, t -> not t in [-1,0]);
 
 		keep:=[];
 
