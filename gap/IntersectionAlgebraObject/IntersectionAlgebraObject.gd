@@ -61,6 +61,14 @@ DeclareOperation( "IntersectionAlgebra", [ IsList ] );
 DeclareAttribute("IntersectionMatrices", IsIntersectionAlgebraObject);
 
 #! @Chapter Functionality
+#! @Section Methods
+#! @Arguments CC, i, j, k
+#! @Returns $p_{ij}^k$
+#! @Description
+#!	Returns the intersection number $p_{ij}^k$ for a intersection algebra.
+DeclareOperation( "IntersectionNumber", [IsIntersectionAlgebraObject, IsInt, IsInt, IsInt]);
+
+#! @Chapter Functionality
 #! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns d

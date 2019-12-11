@@ -58,6 +58,13 @@ InstallMethod(IntersectionMatrices,
 		return a!.intersection_matrices;;
 	end );
 
+InstallMethod(IntersectionNumber,
+			[IsIntersectionAlgebraObject, IsInt,  IsInt,  IsInt],
+	function( a, i, j, k )
+		return IntersectionMatrices(a)[j+1][i+1, k+1];;
+	end);
+
+
 InstallMethod(NumberOfClasses,
 			[IsIntersectionAlgebraObject],
 	function(a)
@@ -220,5 +227,14 @@ InstallMethod( Display,
 	[ IsIntersectionAlgebraObject],
 	function( a )
  		Print( NumberOfClasses(a), "-class intersection algebra of order ", Order(a));
+ 		if HasMatrixOfEigenvalues(a) then
+ 			if MatrixOfEigenvalues(a) <> fail then
+	 			Print("  Matrix of eigenvalues:\n");
+	 			Display(MatrixOfEigenvalues(a));
+	 			Print("  Dual matrix of eigenvalues:\n");
+	 			Display(DualMatrixOfEigenvalues(a));
+	 		fi;
+ 		fi;
+
 	end );
 
