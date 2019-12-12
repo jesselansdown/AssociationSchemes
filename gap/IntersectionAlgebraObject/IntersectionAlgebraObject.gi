@@ -329,10 +329,10 @@ InstallMethod( Display,
 	 			Print("    Admits metric ordering: ", AdmitsPPolynomialOrdering(a), "\n");
 	 		fi;
 		 	if HasIsPBipartite(a) then
-		 		Print("    Bipartite:", IsPBipartite(a), "\n");
+		 		Print("    Bipartite: ", IsPBipartite(a), "\n");
 		 	fi;
 		 	if HasIsQAntipodal(a) then
-		 		Print("    Antipodal:", IsPAntipodal(a), "\n");
+		 		Print("    Antipodal: ", IsPAntipodal(a), "\n");
 		 	fi;
  		fi;
  		if HasIntersectionArray(a) and IntersectionArray(a) <> fail then
@@ -349,10 +349,10 @@ InstallMethod( Display,
 	 			Print("    Admits cometric ordering: ", AdmitsQPolynomialOrdering(a), "\n");
 	 		fi;
 		 	if HasIsQBipartite(a) then
-		 		Print("    Q-bipartite:", IsQBipartite(a), "\n");
+		 		Print("    Q-bipartite: ", IsQBipartite(a), "\n");
 		 	fi;
 		 	if HasIsQAntipodal(a) then
-		 		Print("    Q-antipodal:", IsQAntipodal(a), "\n");
+		 		Print("    Q-antipodal: ", IsQAntipodal(a), "\n");
 		 	fi;
  		fi;
  		if HasKreinArray(a) and KreinArray(a) <> fail then
