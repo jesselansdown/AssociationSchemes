@@ -387,3 +387,11 @@ DeclareProperty( "IsPrimitive", IsHomogeneousCoherentConfiguration );
 #!	the new homogeneous coherent configuration, where $j = L_i$. Note that $L_i$ must be equal to $\{0, \ldots, d \}$
 #!	as a set, and additionally requires that $L_1 = 0$.
 DeclareOperation( "ReorderMinimalIdempotents", [ IsHomogeneousCoherentConfiguration, IsList ] );
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments CC
+#! @Returns true (Displays relation diistribution diagram)
+#! @Description
+#!	Take a CC and display the relation-distribution diagram with respect to $R_1$.
+DeclareOperation( "ViewRelationDistributionDiagram", [ IsHomogeneousCoherentConfiguration ] );

@@ -1563,3 +1563,44 @@ InstallMethod( Display,
 
 	end );
 
+
+InstallMethod( ViewRelationDistributionDiagram, 
+	"for IsAssociationScheme",
+	[ IsHomogeneousCoherentConfiguration],
+	function( A )
+			
+			local d, i, j, k, graph;
+
+			d:=NumberOfClasses(A);
+			graph := "//dot\ndigraph { rankdir=LR\n";;
+			for i in [0 .. d] do
+				graph := Concatenation(graph, "node", String(i), " [label=\"",String(IntersectionNumber(A, i,i, 0)), "\"]\n");
+			od;
+			if IsCommutative(A) then
+				for i in [0 .. d] do
+					for j in [i+1 .. d] do
+						if IntersectionNumber(A, i, 1, j) > 0 then
+							graph:=Concatenation(graph, Concatenation(" node", String(i), " -> ", "node", String(j), "[color=black arrowhead=none, headlabel=\"", String(IntersectionNumber(A, i, 1, j)), "\", taillabel=\"", String(IntersectionNumber(A, j, 1, i)), "\"];\n"));
+						fi;
+					od;
+				od;
+			else 
+				for i in [0 .. d] do
+					for j in [i+1 .. d] do
+						if IntersectionNumber(A, i, 1, j) > 0 or IntersectionNumber(A, j, 1, i) > 0 then
+							graph:=Concatenation(graph, Concatenation(" node", String(i), " -> ", "node", String(j), "[color=black arrowhead=none, headlabel=\"", String(IntersectionNumber(A, i, 1, j)), "\", taillabel=\"", String(IntersectionNumber(A, j, 1, i)), "\"];\n"));
+						fi;
+					od;
+				od;
+				for i in [0 .. d] do
+					for j in [i+1 .. d] do
+						if IntersectionNumber(A, 1, i, j) > 0 or IntersectionNumber(A, 1, j, i) > 0 then
+							graph:=Concatenation(graph, Concatenation(" node", String(i), " -> ", "node", String(j), "[color=blue arrowhead=none, headlabel=\"", String(IntersectionNumber(A, 1, i, j)), "\", taillabel=\"", String(IntersectionNumber(A, 1, j, i)), "\"];\n"));
+						fi;
+					od;
+				od;
+			fi;
+			graph:=Concatenation(graph, "}");
+			Splash(graph);
+			return true;
+		end);
