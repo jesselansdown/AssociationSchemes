@@ -179,3 +179,12 @@ DeclareOperation( "ReorderRelations", [ IsIntersectionAlgebraObject, IsList ] );
 #!	as a set, and additionally requires that $L_1 = 0$.
 DeclareOperation( "ReorderMinimalIdempotents", [ IsIntersectionAlgebraObject, IsList ] );
 
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments CC
+#! @Returns true (Displays relation diistribution diagram)
+#! @Description
+#!	Take a CC and display the relation-distribution diagram with respect to $R_1$.
+DeclareOperation( "ViewRelationDistributionDiagram", [ IsIntersectionAlgebraObject ] );
+
