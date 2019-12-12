@@ -1521,8 +1521,12 @@ InstallMethod( Display,
 		 	fi;
  		fi;
  		if HasIntersectionArray(a) and IntersectionArray(a) <> fail then
- 			Print("  Intersection array:\n");
+ 			Print("  Intersection array: ");
  			Print(IntersectionArray(a), "\n");
+ 			if HasClassicalParameters(a) then
+ 				Print("    ClassicalParameters: ");
+ 				Print(ClassicalParameters(a), "\n");
+ 			fi;
  		fi;
  		if HasIsQPolynomial(a) then
  			Print("  Cometric: ", IsCometric(a), "\n");
@@ -1537,7 +1541,7 @@ InstallMethod( Display,
 		 	fi;
  		fi;
  		if HasKreinArray(a) and KreinArray(a) <> fail then
- 			Print("  Krein array:\n");
+ 			Print("  Krein array: ");
  			Print(KreinArray(a), "\n");
  		fi;
  		if HasIsSchurian(a) then

@@ -322,7 +322,43 @@ InstallMethod( Display,
 	"for IsAssociationScheme",
 	[ IsIntersectionAlgebraObject],
 	function( a )
- 		Print( NumberOfClasses(a), "-class intersection algebra of order ", Order(a));
+ 		Print( NumberOfClasses(a), "-class intersection algebra of order ", Order(a), "\n");
+ 		if HasIsPPolynomial(a) then
+ 			Print("  Metric: ", IsMetric(a), "\n");
+ 			if IsMetric(a) = false and HasAdmitsPPolynomialOrdering(a) then
+	 			Print("    Admits metric ordering: ", AdmitsPPolynomialOrdering(a), "\n");
+	 		fi;
+		 	if HasIsPBipartite(a) then
+		 		Print("    Bipartite:", IsPBipartite(a), "\n");
+		 	fi;
+		 	if HasIsQAntipodal(a) then
+		 		Print("    Antipodal:", IsPAntipodal(a), "\n");
+		 	fi;
+ 		fi;
+ 		if HasIntersectionArray(a) and IntersectionArray(a) <> fail then
+ 			Print("  Intersection array: ");
+ 			Print(IntersectionArray(a), "\n");
+	 		if HasClassicalParameters(a) then
+	 			Print("    Classical parameters: ");
+	 			Print(ClassicalParameters(a), "\n");
+	 		fi;
+ 		fi;
+ 		if HasIsQPolynomial(a) then
+ 			Print("  Cometric: ", IsCometric(a), "\n");
+ 			if IsCometric(a) = false and HasAdmitsQPolynomialOrdering(a) then
+	 			Print("    Admits cometric ordering: ", AdmitsQPolynomialOrdering(a), "\n");
+	 		fi;
+		 	if HasIsQBipartite(a) then
+		 		Print("    Q-bipartite:", IsQBipartite(a), "\n");
+		 	fi;
+		 	if HasIsQAntipodal(a) then
+		 		Print("    Q-antipodal:", IsQAntipodal(a), "\n");
+		 	fi;
+ 		fi;
+ 		if HasKreinArray(a) and KreinArray(a) <> fail then
+ 			Print("  Krein array: ");
+ 			Print(KreinArray(a), "\n");
+ 		fi;
  		if HasMatrixOfEigenvalues(a) then
  			if MatrixOfEigenvalues(a) <> fail then
 	 			Print("  Matrix of eigenvalues:\n");
