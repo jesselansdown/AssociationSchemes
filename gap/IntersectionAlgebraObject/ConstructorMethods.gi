@@ -136,7 +136,7 @@ InstallMethod(IntersectionAlgebraFromIntersectionArray,
 	end);
 
 
-InstallMethod( IntersectionAlgebraFromIntersectionClassicalParameters, [IsList],
+InstallMethod( IntersectionAlgebraFromClassicalParameters, [IsList],
   function(classical)
     local gauss, construct_array, inter;
 
