@@ -68,3 +68,105 @@ InstallMethod(GrassmannSchemeIntersectionAlgebra,
 		return IntersectionAlgebraFromMatrixOfEigenvalues(MatrixOfEigenvaluesOfGrassmannScheme(n, k, q));
 	end);
 
+InstallMethod(IntersectionAlgebraFromIntersectionArray,
+			[IsList],
+	function( inter )
+		local intersection_number, a, b, c, i, j, k, d, k0, inter_mats;
+		intersection_number := function(a, b, c, i, j, k)
+
+			if i = 1 then
+				if j = k then
+					return a[k +1];
+				elif j = k + 1 then
+					return b[k +1];
+				elif j = k -1 then
+					return c[k +1];
+				else
+					return 0;
+				fi;
+			fi;
+			if i = 0 then
+				if j = k then
+					return 1;
+				else
+					return 0;
+				fi;
+			fi;
+			if k = 0 then
+				if i = j then
+					return intersection_number(a, b, c, i-1, i-1, k)*b[i]/c[i +1];
+				else return
+					0;
+				fi;
+			fi;
+			if i > Size(a)-1 or j > Size(a)-1 or k>Size(a)-1 then
+				return 0;
+			fi;
+			return 
+			(
+			intersection_number(a, b, c, i-1, j, k-1) * c[k +1] +
+			intersection_number(a, b, c, i-1, j, k) * a[k +1] +
+			intersection_number(a, b, c, i-1, j, k+1) * b[k +1] -
+			intersection_number(a, b, c, i-2, j, k) * b[i-2 +1] -
+			intersection_number(a, b, c, i-1, j, k) *  a[i-1 +1]
+			)/c[i +1];
+
+		end;
+
+		d:=Size(inter[1]);
+		b:= MutableCopyMat(inter[1]);;
+		k0:=b[1];
+		Add(b, 0);;
+		c:= MutableCopyMat(inter[2]);;
+		c:=Concatenation([0], c);;
+		a := List([0 .. d], t -> k0 - b[t+1] - c[t+1]);;
+		Add(a, 0);;
+		Add(b, 0);;
+		Add(c, 0);;
+
+		inter_mats := List([0 .. d], t -> NullMat(d+1, d+1));
+		for i in [0 .. d] do
+			for j in [0 .. d] do
+				for k in [0 .. d] do
+					inter_mats[j+1][i+1, k+1] := intersection_number(a,b,c, i, j, k);
+				od;
+			od;
+		od;
+		return IntersectionAlgebra(inter_mats);
+	end);
+
+
+InstallMethod( IntersectionAlgebraFromIntersectionClassicalParameters, [IsList],
+  function(classical)
+    local gauss, construct_array, inter;
+
+    gauss := function(i, b)
+      local o, j;
+      o:=0;
+      for j in [0 .. i-1] do
+        o:=o+b^j;
+      od;
+      return o;
+    end;
+
+    construct_array := function(L)
+      local out, i, bi, ci, d, b, alpha, beta;
+      d:=L[1];
+      b:=L[2];
+      alpha:=L[3];
+      beta:=L[4];;
+      out :=[[], []];
+      for i in [0 .. d-1] do
+        bi:= (gauss(d, b)-gauss(i,b))*(beta - alpha*gauss(i,b));;
+        Add(out[1], bi);;
+      od;
+      for i in [1 .. d] do
+        ci:= gauss(i, b)*(1+alpha*gauss(i-1, b));;
+        Add(out[2], ci);
+      od;
+      return out;
+    end;
+
+	inter := construct_array(classical);;
+	return IntersectionAlgebraFromIntersectionArray(inter);;
+  end);
