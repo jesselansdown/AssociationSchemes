@@ -157,3 +157,25 @@ DeclareProperty( "IsQAntipodal", IsIntersectionAlgebraObject );
 #!	Returns if the homogeneous coherent configuration CC is antipodal.
 DeclareProperty( "IsPAntipodal", IsIntersectionAlgebraObject );
 
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments CC, L
+#! @Returns coherent configuration
+#! @Description
+#!	Takes a homogeneous coherent configuration CC and a list L, where L is a reordering of the relations.
+#!	Returns a homogeneous coherent configuration where the $i$-th relation of the CC becomes the $j$-th relation in 
+#!	the new homogeneous coherent configuration, where $j = L_i$. Note that $L_i$ must be equal to $\{0, \ldots, d \}$
+#!	as a set, and additionally requires that $L_1 = 0$.
+DeclareOperation( "ReorderRelations", [ IsIntersectionAlgebraObject, IsList ] );
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments CC, L
+#! @Returns coherent configuration
+#! @Description
+#!	Takes a homogeneous coherent configuration CC and a list L, where L is a reordering of the minimal idempotents.
+#!	Returns a homogeneous coherent configuration where the $i$-th idempotent of the CC becomes the $j$-th idempotent in 
+#!	the new homogeneous coherent configuration, where $j = L_i$. Note that $L_i$ must be equal to $\{0, \ldots, d \}$
+#!	as a set, and additionally requires that $L_1 = 0$.
+DeclareOperation( "ReorderMinimalIdempotents", [ IsIntersectionAlgebraObject, IsList ] );
+

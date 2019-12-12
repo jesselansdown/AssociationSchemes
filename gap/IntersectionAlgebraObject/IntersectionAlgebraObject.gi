@@ -201,42 +201,6 @@ InstallMethod(KreinParameters,
 		return K;
 	end);
 
-################################################################################################################
-#
-# Display methods
-#
-################################################################################################################
-
-
-InstallMethod( ViewObj, 
- 	"for IsAssociationScheme",
- 	[ IsIntersectionAlgebraObject],
- 	function( a )
- 		Print( NumberOfClasses(a), "-class intersection algebra of order ", Order(a));
- 	end );
-
-#InstallMethod( PrintObj, 
-#	"for IsAssociationScheme",
-#	[ IsIntersectionAlgebraObject ],
-#	function( a )
-#		Print(RelationMatrix(a));;
-#	end );
-
-InstallMethod( Display, 
-	"for IsAssociationScheme",
-	[ IsIntersectionAlgebraObject],
-	function( a )
- 		Print( NumberOfClasses(a), "-class intersection algebra of order ", Order(a));
- 		if HasMatrixOfEigenvalues(a) then
- 			if MatrixOfEigenvalues(a) <> fail then
-	 			Print("  Matrix of eigenvalues:\n");
-	 			Display(MatrixOfEigenvalues(a));
-	 			Print("  Dual matrix of eigenvalues:\n");
-	 			Display(DualMatrixOfEigenvalues(a));
-	 		fi;
- 		fi;
-
-	end );
 
 InstallMethod( IsQBipartite, [IsIntersectionAlgebraObject],
 	function(A)
@@ -293,3 +257,80 @@ InstallMethod( IsPAntipodal, [IsIntersectionAlgebraObject],
 		od;
 		return true;
 	end);
+
+InstallMethod(ReorderRelations,
+            [IsIntersectionAlgebraObject, IsList],
+    function( a, L )
+        local d, P, P2, a2 ;
+        d:=NumberOfClasses(a);;
+        if not Set(L) =[0..d] then
+            return fail;
+        fi;
+        if not L[1]=0 then
+            return fail;
+        fi;
+       	P:=TransposedMat(MatrixOfEigenvalues(a));
+       	P2:=TransposedMat(List([0 .. d], t -> P[L[t+1]+1] ));;
+       	a2 := IntersectionAlgebraFromMatrixOfEigenvalues(P2);;
+        SetMatrixOfEigenvalues(a2, P2);;
+        return a2;
+    end);
+
+InstallMethod(ReorderMinimalIdempotents,
+            [IsIntersectionAlgebraObject, IsList],
+    function( a, L )
+        local d, a2, Q, Q2, P;
+        d:=NumberOfClasses(a);;
+        if not L[1]=0 then
+            return fail;
+        fi;
+        Q:=TransposedMat(DualMatrixOfEigenvalues(a));
+        Q2:=TransposedMat(List([0 .. d], t -> Q[L[t+1]+1] ));;
+        P:=Inverse(Q2)*Order(a);;
+    	a2:=IntersectionAlgebraFromMatrixOfEigenvalues(P);;
+        return a2;
+    end);
+
+InstallMethod( \=,
+			 [IsIntersectionAlgebraObject, IsIntersectionAlgebraObject],
+	function(a,b)
+		return IntersectionMatrices(a)=IntersectionMatrices(b);
+	end);
+
+################################################################################################################
+#
+# Display methods
+#
+################################################################################################################
+
+
+InstallMethod( ViewObj, 
+ 	"for IsAssociationScheme",
+ 	[ IsIntersectionAlgebraObject],
+ 	function( a )
+ 		Print( NumberOfClasses(a), "-class intersection algebra of order ", Order(a));
+ 	end );
+
+#InstallMethod( PrintObj, 
+#	"for IsAssociationScheme",
+#	[ IsIntersectionAlgebraObject ],
+#	function( a )
+#		Print(RelationMatrix(a));;
+#	end );
+
+InstallMethod( Display, 
+	"for IsAssociationScheme",
+	[ IsIntersectionAlgebraObject],
+	function( a )
+ 		Print( NumberOfClasses(a), "-class intersection algebra of order ", Order(a));
+ 		if HasMatrixOfEigenvalues(a) then
+ 			if MatrixOfEigenvalues(a) <> fail then
+	 			Print("  Matrix of eigenvalues:\n");
+	 			Display(MatrixOfEigenvalues(a));
+	 			Print("  Dual matrix of eigenvalues:\n");
+	 			Display(DualMatrixOfEigenvalues(a));
+	 		fi;
+ 		fi;
+
+	end );
+
