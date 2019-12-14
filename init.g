@@ -24,3 +24,4 @@ ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/IntersectionAl
 ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/ConstructorMethods.gd");
 ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/MetricSchemes.gd");
 ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/CometricSchemes.gd");
+ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/SchurianSchemes.gd");
