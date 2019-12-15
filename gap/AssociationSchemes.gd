@@ -230,6 +230,15 @@ DeclareAttribute("NumberOfCharacters", IsHomogeneousCoherentConfiguration);
 #! @Chapter Functionality
 #! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
+#! @Returns F
+#! @Description
+#!	Returns the splitting field of the CC
+DeclareAttribute( "SplittingField", IsHomogeneousCoherentConfiguration );
+
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
 #! @Returns P
 #! @Description
 #!	Returns a the matrix of eigenvalues (or character table), $P$, for a homogeneous coherent configuration CC.

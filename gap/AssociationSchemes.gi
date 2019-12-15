@@ -667,6 +667,59 @@ InstallMethod(IsCommutative,
 	    return Rank(P);
 	end);
 
+  InstallMethod( SplittingField, 
+ 	"for IsAssociationScheme",
+ 	[ IsHomogeneousCoherentConfiguration ],
+	function(A)
+
+		local inter, d, polys, vals, p, n, f, lcm, i, m, split;
+
+		if HasMatrixOfEigenvalues(A) then
+			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
+		fi;
+		if HasDualMatrixOfEigenvalues(A) then
+			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
+		fi;
+
+		inter:=IntersectionMatrices(A);
+		d:=NumberOfClasses(A);;
+		polys := Set(Union(List(inter, t -> Factors(MinimalPolynomial(t)))));
+
+		if Size(polys) > 0 then
+			vals:=[];
+			for p in polys do
+				n:=1;
+				f := RootsOfPolynomial(CF(n), p);;
+				while f = [] do
+					n:=n+1;
+					f := RootsOfPolynomial(CF(n), p);
+				od;
+				Add(vals, n);
+			od;
+			if Size(vals) > 1 then
+				lcm := LCM_INT(vals[1], vals[2]);
+				for i in [3 .. Size(vals)] do
+					lcm := LCM_INT(lcm, vals[i]);
+				od;
+
+				n:=1;
+				while true do
+					m :=n*lcm;
+					if ForAll(polys, t -> RootsOfPolynomial(CF(m),t) <> []) then
+						break;
+					fi;
+				od;
+				split := CF(m);
+				return split;
+			else
+				return CF(vals[1]);
+			fi;
+		else
+			return Rationals;
+		fi;
+	end);
+
+
  InstallMethod( MatrixOfEigenvalues, 
  	"for IsAssociationScheme",
  	[ IsHomogeneousCoherentConfiguration ],
@@ -688,7 +741,7 @@ InstallMethod(IsCommutative,
 		d:=NumberOfClasses(A);;
 		polys := Filtered(Set(Union(List(inter, t -> Factors(MinimalPolynomial(t))))), t -> Degree(t)=2);
 		n:=1;
-		CyclotomicLimit := 100;
+		CyclotomicLimit := 200;
 		# Perhaps make a global variable to initiate CyclotomicLimit?
 		# It may be that people want to work with schemes with larger limits and are happy to wait
 		# Such as in the classification of schemes of order 32 for example.
@@ -756,7 +809,7 @@ InstallMethod(IsCommutative,
 	        d:=NumberOfClasses(A)+1;;
 	        polys := Filtered(Set(Union(List(inter, t -> Factors(MinimalPolynomial(t))))), t -> Degree(t)=2);
 	        f:=1;
-	        CyclotomicLimit := 100;
+	        CyclotomicLimit := 200;
 	        # Perhaps make a global variable to initiate CyclotomicLimit?
 	        # It may be that people want to work with schemes with larger limits and are happy to wait
 	        # Such as in the classification of schemes of order 32 for example.
