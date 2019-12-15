@@ -29,4 +29,4 @@
 #! @Description
 #!	Returns the Schurian scheme defined by $G$, where $G$ is a generously transitive permutation group.
 #!	A Schurian scheme is a special case of CoherentConfigurationByOrbitals and is symmetric.
-DeclareOperation( "SchurianScheme", [IsPermGroup]);
+DeclareOperation( "SchurianSchemeIntersectionAlgebra", [IsPermGroup]);

@@ -24,7 +24,7 @@
 InstallMethod(SchurianSchemeIntersectionAlgebra,
       [IsPermGroup],
   function( g_perm )
-    local n, stab, d, rts, rows, orbs, i, j, inds, rts1, rows2, mats, j, Aj, y, sol, k;
+    local n, stab, d, rts, rows, orbs, i, j, inds, rts1, rows2, mats, Aj, y, sol, k, m;
     if not IsGenerouslyTransitive(g_perm) then
       Print("G must be generously transitive\n");
       return fail;
