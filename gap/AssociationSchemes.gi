@@ -674,6 +674,9 @@ InstallMethod(IsCommutative,
 
 		local inter, d, polys, vals, p, n, f, lcm, i, m, split;
 
+		if not IsCommutative(A) then
+			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
+		fi;
 		if HasMatrixOfEigenvalues(A) then
 			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
 		fi;
@@ -736,51 +739,15 @@ InstallMethod(IsCommutative,
  	[ IsHomogeneousCoherentConfiguration ],
 	function(A)
 		# This method assumes that the number of characters is d+1. This is true for commutative CCs.
-		local inter, alg, idems, reps, P1, k, i, valencies, d, P2, polys, n, CyclotomicLimit, trigger, n2, f, mult, FieldLimit;
+		local inter, idems, alg, reps, P1, k, i, valencies, d, P2;
 		inter:=IntersectionMatrices(A);
 		d:=NumberOfClasses(A);;
-		polys := Filtered(Set(Union(List(inter, t -> Factors(MinimalPolynomial(t))))), t -> Degree(t)=2);
-		n:=1;
-		CyclotomicLimit := 200;
-		# Perhaps make a global variable to initiate CyclotomicLimit?
-		# It may be that people want to work with schemes with larger limits and are happy to wait
-		# Such as in the classification of schemes of order 32 for example.
-		# Give the option to also have no limit? Like CosetTableDefaultMaxLimit
-		# If this is done, then put a comment in the error statement that this is done
-		# locally, but can be set globally by ... Must first quit the break loop.
-		trigger := false;
-		while n <= CyclotomicLimit do
-			if ForAll(polys, t -> RootsOfPolynomial(CF(n),t) <> []) then
-				break;
-			fi;
-			if n = CyclotomicLimit then
-				Error("Reached cyclotomic field limit.\n\n You can increase this limit and continue by typing 'return;'\n\n");
-				CyclotomicLimit := CyclotomicLimit*2;
-				trigger := true;
-			fi;
-			n:=n+1;
-		od;
-		if trigger then
-			# This is printed only if the error message is displaayed and the field is large
-			# warns the user that it will be slow, but also indicates that it is doing something productive.
-			Print("Field found: CT(", n,"). Attempting to construct character table. This may be slow.\n");
-		fi;
-		# If polys is empty, then all are reducible polynomials, and this returns 1.
-		mult:=1;
-		n2:=n*mult;
-		alg:=Algebra(CF(n2), inter);;
+
+		alg:=Algebra(SplittingField(A), inter);;
 		idems:=CentralIdempotentsOfAlgebra(alg);;
-	    FieldLimit := 10;
-	    while Size(idems) <> d+1 and mult <= FieldLimit do
-	        mult:=mult+1;;
-	        n2:=n*mult;
-	        alg:=Algebra(CF(n2), inter);;
-	        idems:=CentralIdempotentsOfAlgebra(alg);;
-	        if mult = FieldLimit then
-	            Error("Reached cyclotomic field limit.\n\n You can increase this limit and continue by typing 'return;'\n\n");
-	            FieldLimit := FieldLimit + 5;
-	        fi;
-		od;
+	    if Size(idems) <> d+1 then
+	    	Error("Wrong number of idempotents!\n");
+	    fi;
 		reps:=List(inter, t -> t[1]);;
 		P1:=Inverse(TransposedMat(List(idems, t -> SolutionMat(reps, t[1]))));
 		# The central idempotents are linear combinations of intersection matrices, defined by
@@ -791,13 +758,75 @@ InstallMethod(IsCommutative,
 		for i in Difference([1 .. d+1], [k]) do
 			Add(P2, P1[i]);
 		od;
-		if IsCharacterTableOfHomogeneousCoherentConfiguration(A, P2) then
-			return P2;
-		else
-			return fail;
-		fi;
+		return P2;
 	end);
 
+ # InstallMethod( MatrixOfEigenvaluesSquare, 
+ # 	"for IsAssociationScheme",
+ # 	[ IsHomogeneousCoherentConfiguration ],
+	# function(A)
+	# 	# This method assumes that the number of characters is d+1. This is true for commutative CCs.
+	# 	local inter, alg, idems, reps, P1, k, i, valencies, d, P2, polys, n, CyclotomicLimit, trigger, n2, f, mult, FieldLimit;
+	# 	inter:=IntersectionMatrices(A);
+	# 	d:=NumberOfClasses(A);;
+	# 	polys := Filtered(Set(Union(List(inter, t -> Factors(MinimalPolynomial(t))))), t -> Degree(t)=2);
+	# 	n:=1;
+	# 	CyclotomicLimit := 200;
+	# 	# Perhaps make a global variable to initiate CyclotomicLimit?
+	# 	# It may be that people want to work with schemes with larger limits and are happy to wait
+	# 	# Such as in the classification of schemes of order 32 for example.
+	# 	# Give the option to also have no limit? Like CosetTableDefaultMaxLimit
+	# 	# If this is done, then put a comment in the error statement that this is done
+	# 	# locally, but can be set globally by ... Must first quit the break loop.
+	# 	trigger := false;
+	# 	while n <= CyclotomicLimit do
+	# 		if ForAll(polys, t -> RootsOfPolynomial(CF(n),t) <> []) then
+	# 			break;
+	# 		fi;
+	# 		if n = CyclotomicLimit then
+	# 			Error("Reached cyclotomic field limit.\n\n You can increase this limit and continue by typing 'return;'\n\n");
+	# 			CyclotomicLimit := CyclotomicLimit*2;
+	# 			trigger := true;
+	# 		fi;
+	# 		n:=n+1;
+	# 	od;
+	# 	if trigger then
+	# 		# This is printed only if the error message is displaayed and the field is large
+	# 		# warns the user that it will be slow, but also indicates that it is doing something productive.
+	# 		Print("Field found: CT(", n,"). Attempting to construct character table. This may be slow.\n");
+	# 	fi;
+	# 	# If polys is empty, then all are reducible polynomials, and this returns 1.
+	# 	mult:=1;
+	# 	n2:=n*mult;
+	# 	alg:=Algebra(CF(n2), inter);;
+	# 	idems:=CentralIdempotentsOfAlgebra(alg);;
+	#     FieldLimit := 10;
+	#     while Size(idems) <> d+1 and mult <= FieldLimit do
+	#         mult:=mult+1;;
+	#         n2:=n*mult;
+	#         alg:=Algebra(CF(n2), inter);;
+	#         idems:=CentralIdempotentsOfAlgebra(alg);;
+	#         if mult = FieldLimit then
+	#             Error("Reached cyclotomic field limit.\n\n You can increase this limit and continue by typing 'return;'\n\n");
+	#             FieldLimit := FieldLimit + 5;
+	#         fi;
+	# 	od;
+	# 	reps:=List(inter, t -> t[1]);;
+	# 	P1:=Inverse(TransposedMat(List(idems, t -> SolutionMat(reps, t[1]))));
+	# 	# The central idempotents are linear combinations of intersection matrices, defined by
+	# 	# the Q matrix.
+	# 	valencies:=Valencies(A);
+	# 	P2:=[valencies];; # By convention the valencies form the first row, so we reorder
+	# 	k:=First([1 .. d+1], t -> P1[t]=valencies);
+	# 	for i in Difference([1 .. d+1], [k]) do
+	# 		Add(P2, P1[i]);
+	# 	od;
+	# 	if IsCharacterTableOfHomogeneousCoherentConfiguration(A, P2) then
+	# 		return P2;
+	# 	else
+	# 		return fail;
+	# 	fi;
+	# end);
 
  InstallMethod( MatrixOfEigenvaluesNonSquare, 
  	"for IsAssociationScheme",
@@ -807,47 +836,19 @@ InstallMethod(IsCommutative,
 
 	        inter:=IntersectionMatrices(A);
 	        d:=NumberOfClasses(A)+1;;
-	        polys := Filtered(Set(Union(List(inter, t -> Factors(MinimalPolynomial(t))))), t -> Degree(t)=2);
-	        f:=1;
-	        CyclotomicLimit := 200;
-	        # Perhaps make a global variable to initiate CyclotomicLimit?
-	        # It may be that people want to work with schemes with larger limits and are happy to wait
-	        # Such as in the classification of schemes of order 32 for example.
-	        # Give the option to also have no limit? Like CosetTableDefaultMaxLimit
-	        # If this is done, then put a comment in the error statement that this is done
-	        # locally, but can be set globally by ... Must first quit the break loop.
-	        trigger := false;
-	        while f <= CyclotomicLimit do
-	            if ForAll(polys, t -> RootsOfPolynomial(CF(f),t) <> []) then
-	                break;
-	            fi;
-	            if f = CyclotomicLimit then
-	                Error("Reached cyclotomic field limit.\n\n You can increase this limit and continue by typing 'return;'\n\n");
-	                CyclotomicLimit := CyclotomicLimit*2;
-	                trigger := true;
-	            fi;
-	            f:=f+1;
-	        od;
-	        if trigger then
-	            # This is printed only if the error message is displaayed and the field is large
-	            # warns the user that it will be slow, but also indicates that it is doing something productive.
-	            Print("Field found: CT(", f,"). Attempting to construct character table. This may be slow.\n");
-	        fi;
 	        # If polys is empty, then all are reducible polynomials, and this returns 1.
-	        mult:=1;
-	        n2:=f*mult;
+	        n2:=2;
 	        alg:=Algebra(CF(n2), inter);;
 	        idems:=CentralIdempotentsOfAlgebra(alg);;
 	        nc := NumberOfCharacters(A);
 	        FieldLimit := 10;
-	        while Size(idems) <> nc and mult <= FieldLimit do
-	            mult:=mult+1;;
-	            n2:=f*mult;
+	        while Size(idems) <> nc and n2 <= FieldLimit do
+	            n2:=n2+1;;
 	            alg:=Algebra(CF(n2), inter);;
 	            idems:=CentralIdempotentsOfAlgebra(alg);;
-	            if mult = FieldLimit then
+	            if n2 = FieldLimit then
 	                Error("Reached cyclotomic field limit.\n\n You can increase this limit and continue by typing 'return;'\n\n");
-	                FieldLimit := FieldLimit + 5;
+	                FieldLimit := FieldLimit + 10;
 	            fi;
 	            # Sometimes n fails, and we need a multiple. Is this just n^(#irreducibles) ?
 	        od;
@@ -897,6 +898,106 @@ InstallMethod(IsCommutative,
 	    
 	    return ct2;
 	end);
+
+
+ # InstallMethod( MatrixOfEigenvaluesNonSquare, 
+ # 	"for IsAssociationScheme",
+ # 	[ IsHomogeneousCoherentConfiguration ],
+	# function(A)
+	#     local nc, ct, d, i, j, k, am, n, Val, ct2, im, alg, idems, inter, valencies, polys, CyclotomicLimit, trigger, n2, mult, f, B, FieldLimit;
+
+	#         inter:=IntersectionMatrices(A);
+	#         d:=NumberOfClasses(A)+1;;
+	#         polys := Filtered(Set(Union(List(inter, t -> Factors(MinimalPolynomial(t))))), t -> Degree(t)=2);
+	#         f:=1;
+	#         CyclotomicLimit := 200;
+	#         # Perhaps make a global variable to initiate CyclotomicLimit?
+	#         # It may be that people want to work with schemes with larger limits and are happy to wait
+	#         # Such as in the classification of schemes of order 32 for example.
+	#         # Give the option to also have no limit? Like CosetTableDefaultMaxLimit
+	#         # If this is done, then put a comment in the error statement that this is done
+	#         # locally, but can be set globally by ... Must first quit the break loop.
+	#         trigger := false;
+	#         while f <= CyclotomicLimit do
+	#             if ForAll(polys, t -> RootsOfPolynomial(CF(f),t) <> []) then
+	#                 break;
+	#             fi;
+	#             if f = CyclotomicLimit then
+	#                 Error("Reached cyclotomic field limit.\n\n You can increase this limit and continue by typing 'return;'\n\n");
+	#                 CyclotomicLimit := CyclotomicLimit*2;
+	#                 trigger := true;
+	#             fi;
+	#             f:=f+1;
+	#         od;
+	#         if trigger then
+	#             # This is printed only if the error message is displaayed and the field is large
+	#             # warns the user that it will be slow, but also indicates that it is doing something productive.
+	#             Print("Field found: CT(", f,"). Attempting to construct character table. This may be slow.\n");
+	#         fi;
+	#         # If polys is empty, then all are reducible polynomials, and this returns 1.
+	#         mult:=1;
+	#         n2:=f*mult;
+	#         alg:=Algebra(CF(n2), inter);;
+	#         idems:=CentralIdempotentsOfAlgebra(alg);;
+	#         nc := NumberOfCharacters(A);
+	#         FieldLimit := 10;
+	#         while Size(idems) <> nc and mult <= FieldLimit do
+	#             mult:=mult+1;;
+	#             n2:=f*mult;
+	#             alg:=Algebra(CF(n2), inter);;
+	#             idems:=CentralIdempotentsOfAlgebra(alg);;
+	#             if mult = FieldLimit then
+	#                 Error("Reached cyclotomic field limit.\n\n You can increase this limit and continue by typing 'return;'\n\n");
+	#                 FieldLimit := FieldLimit + 5;
+	#             fi;
+	#             # Sometimes n fails, and we need a multiple. Is this just n^(#irreducibles) ?
+	#         od;
+	  
+	#         ct := NullMat(nc, d + 1);
+	#         am := AdjacencyMatrices(A);
+	#         n := Order(A);
+	#         Val := Valencies(A);
+	#         for i in [1..nc] do
+	#             ct[i][1] := Sqrt(Trace(idems[i])); # degree
+	#             B := NullMat(n, n);
+	#             for j in [1..d] do
+	#                 B := B + am[j] * idems[i][1][j];
+	#             od;
+	#             ct[i][d + 1] := Trace(B) / ct[i][1]; # multiplicity
+	#             for j in [2..d] do
+	#                 ct[i][j] := idems[i][1][j] * n * Val[j] / ct[i][d + 1];
+	#             od;
+	#         od;
+
+	#         ct2 := NullMat(nc, d + 1);
+	#         for j in [1..d] do
+	#             ct2[1][j] := Val[j];
+	#         od;
+	#         ct2[1][d + 1] := 1;
+	#         k := 2;
+	#         for i in [1..nc] do
+	#             if ct[i] <> ct2[1] then
+	#                 for j in [1..d+1] do
+	#                     ct2[k][j] := ct[i][j];
+	#                 od;
+	#                 k := k + 1;
+	#             fi;
+	#         od;
+
+	#         for i in [2..nc] do
+	#             for j in [nc, nc-1..i+1] do
+	#                 if ct2[j][d+1] / ct2[j][1] < ct2[j-1][d+1] / ct2[j-1][1] then
+	#                     k := ct2[j]; ct2[j] := ct2[j-1]; ct2[j-1] := k;
+	#                 fi;
+	#             od;
+	#         od;
+	    
+	#         for i in [1..nc] do
+	#             Unbind(ct2[i][d + 1]);
+	#         od;
+	    
+	#     return ct2;
+	# end);
 
 InstallMethod( CharacterTable, [IsHomogeneousCoherentConfiguration],
 	function(R)
