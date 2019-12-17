@@ -86,57 +86,72 @@ InstallMethod( Order,
 		return Sum(Valencies(a));
 	end );
 
+  InstallMethod( SplittingField, 
+ 	"for IsAssociationScheme",
+ 	[ IsIntersectionAlgebraObject ],
+	function(A)
 
-InstallMethod( MatrixOfEigenvalues, 
+		local inter, d, polys, vals, p, n, f, lcm, i, m, split;
+
+		if HasMatrixOfEigenvalues(A) then
+			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
+		fi;
+		if HasDualMatrixOfEigenvalues(A) then
+			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
+		fi;
+
+		inter:=IntersectionMatrices(A);
+		d:=NumberOfClasses(A);;
+		polys := Set(Union(List(inter, t -> Factors(MinimalPolynomial(t)))));
+
+		if Size(polys) > 0 then
+			vals:=[];
+			for p in polys do
+				n:=1;
+				f := RootsOfPolynomial(CF(n), p);;
+				while f = [] do
+					n:=n+1;
+					f := RootsOfPolynomial(CF(n), p);
+				od;
+				Add(vals, n);
+			od;
+			if Size(vals) > 1 then
+				lcm := LCM_INT(vals[1], vals[2]);
+				for i in [3 .. Size(vals)] do
+					lcm := LCM_INT(lcm, vals[i]);
+				od;
+
+				n:=1;
+				while true do
+					m :=n*lcm;
+					if ForAll(polys, t -> RootsOfPolynomial(CF(m),t) <> []) then
+						break;
+					fi;
+				od;
+				split := CF(m);
+				return split;
+			else
+				return CF(vals[1]);
+			fi;
+		else
+			return Rationals;
+		fi;
+	end);
+
+ InstallMethod( MatrixOfEigenvalues, 
  	"for IsAssociationScheme",
  	[ IsIntersectionAlgebraObject ],
 	function(A)
 		# This method assumes that the number of characters is d+1. This is true for commutative CCs.
-		local inter, alg, idems, reps, P1, k, i, valencies, d, P2, polys, n, CyclotomicLimit, trigger, n2, f, mult, FieldLimit;
+		local inter, idems, alg, reps, P1, k, i, valencies, d, P2;
 		inter:=IntersectionMatrices(A);
 		d:=NumberOfClasses(A);;
-		polys := Filtered(Set(Union(List(inter, t -> Factors(MinimalPolynomial(t))))), t -> Degree(t)=2);
-		n:=1;
-		CyclotomicLimit := 100;
-		# Perhaps make a global variable to initiate CyclotomicLimit?
-		# It may be that people want to work with schemes with larger limits and are happy to wait
-		# Such as in the classification of schemes of order 32 for example.
-		# Give the option to also have no limit? Like CosetTableDefaultMaxLimit
-		# If this is done, then put a comment in the error statement that this is done
-		# locally, but can be set globally by ... Must first quit the break loop.
-		trigger := false;
-		while n <= CyclotomicLimit do
-			if ForAll(polys, t -> RootsOfPolynomial(CF(n),t) <> []) then
-				break;
-			fi;
-			if n = CyclotomicLimit then
-				Error("Reached cyclotomic field limit.\n\n You can increase this limit and continue by typing 'return;'\n\n");
-				CyclotomicLimit := CyclotomicLimit*2;
-				trigger := true;
-			fi;
-			n:=n+1;
-		od;
-		if trigger then
-			# This is printed only if the error message is displaayed and the field is large
-			# warns the user that it will be slow, but also indicates that it is doing something productive.
-			Print("Field found: CT(", n,"). Attempting to construct character table. This may be slow.\n");
-		fi;
-		# If polys is empty, then all are reducible polynomials, and this returns 1.
-		mult:=1;
-		n2:=n*mult;
-		alg:=Algebra(CF(n2), inter);;
+
+		alg:=Algebra(SplittingField(A), inter);;
 		idems:=CentralIdempotentsOfAlgebra(alg);;
-	    FieldLimit := 10;
-	    while Size(idems) <> d+1 and mult <= FieldLimit do
-	        mult:=mult+1;;
-	        n2:=n*mult;
-	        alg:=Algebra(CF(n2), inter);;
-	        idems:=CentralIdempotentsOfAlgebra(alg);;
-	        if mult = FieldLimit then
-	            Error("Reached cyclotomic field limit.\n\n You can increase this limit and continue by typing 'return;'\n\n");
-	            FieldLimit := FieldLimit + 5;
-	        fi;
-		od;
+	    if Size(idems) <> d+1 then
+	    	Error("Wrong number of idempotents!\n");
+	    fi;
 		reps:=List(inter, t -> t[1]);;
 		P1:=Inverse(TransposedMat(List(idems, t -> SolutionMat(reps, t[1]))));
 		# The central idempotents are linear combinations of intersection matrices, defined by
@@ -147,11 +162,7 @@ InstallMethod( MatrixOfEigenvalues,
 		for i in Difference([1 .. d+1], [k]) do
 			Add(P2, P1[i]);
 		od;
-#		if IsCharacterTableOfHomogeneousCoherentConfiguration(A, P2) then
-			return P2;
-#		else
-#			return fail;
-#		fi;
+		return P2;
 	end);
 
 InstallMethod( DualMatrixOfEigenvalues, 
