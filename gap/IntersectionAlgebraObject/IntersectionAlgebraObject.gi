@@ -250,7 +250,7 @@ InstallMethod( IsQAntipodal, [IsIntersectionAlgebraObject],
 		local j, d;
 		d:=NumberOfClasses(A);;
 		for j in [1 .. d] do
-			if j <> Int(Floor(Float(d/2))) and KreinArray(A)[1][j] <> Reversed(KreinArray(A)[2])[j] then
+			if j <> Int(Floor(Float(d/2))) + 1 and KreinArray(A)[1][j] <> Reversed(KreinArray(A)[2])[j] then
 				return false;
 			fi;
 		od;
@@ -262,7 +262,7 @@ InstallMethod( IsPAntipodal, [IsIntersectionAlgebraObject],
 		local j, d;
 		d:=NumberOfClasses(A);;
 		for j in [1 .. d] do
-			if j <> Int(Floor(Float(d/2))) and IntersectionArray(A)[1][j] <> Reversed(IntersectionArray(A)[2])[j] then
+			if j <> Int(Floor(Float(d/2))) + 1 and IntersectionArray(A)[1][j] <> Reversed(IntersectionArray(A)[2])[j] then
 				return false;
 			fi;
 		od;
