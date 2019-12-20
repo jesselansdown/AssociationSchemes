@@ -112,7 +112,7 @@ InstallMethod(SchurianSchemeIntersectionAlgebra,
               od;
             od;
           od;
-          return mats;
+          return IntersectionAlgebra(mats);
       end);
 
 
