@@ -45,7 +45,7 @@ DeclareOperation("HammingSchemeIntersectionAlgebra", [IsPosInt, IsPosInt]);
 #! @Returns intersection algebra object
 #! @Description
 #!	Returns the intersection algebra of the Grassmann scheme, $J_q(n, k)$.
-DeclareOperation("GrassmannSchemeIntersectionAlgebra", [IsPosInt, IsPosInt, IsPosInt]);
+DeclareOperation("GrassmanSchemeIntersectionAlgebra", [IsPosInt, IsPosInt, IsPosInt]);
 
 #! @Chapter Functionality
 #! @Section Constructor Methods

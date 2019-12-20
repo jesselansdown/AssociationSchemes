@@ -61,10 +61,9 @@ InstallMethod(HammingSchemeIntersectionAlgebra,
 		return IntersectionAlgebraFromMatrixOfEigenvalues(MatrixOfEigenvaluesOfHammingScheme(n, q));
 	end);
 
-InstallMethod(GrassmannSchemeIntersectionAlgebra,
+InstallMethod(GrassmanSchemeIntersectionAlgebra,
 			[IsPosInt, IsPosInt, IsPosInt],
 	function( n, k, q)
-		local A;
 		return IntersectionAlgebraFromMatrixOfEigenvalues(MatrixOfEigenvaluesOfGrassmannScheme(n, k, q));
 	end);
 
