@@ -611,7 +611,7 @@ InstallMethod(IntersectionMatrices, " ", [IsHomogeneousCoherentConfiguration],
 		for i in [0 .. d] do
 			for j in [0 .. d] do
 				for k in [0 .. d] do
-					intersectionMatrices[i+1][j+1, k+1] :=  InterNum(M, i, j, k);;
+					intersectionMatrices[j+1][i+1, k+1] :=  InterNum(M, i, j, k);;
 				od;
 			od;
 		od;
