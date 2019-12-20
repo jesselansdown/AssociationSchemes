@@ -38,15 +38,15 @@ InstallMethod(IntersectionAlgebra,
 		if not ForAll(Set(Concatenation(Concatenation(L))), t -> IsInt(t) and t>=0) then
 			return fail;
 		fi;
-		for i in [1 .. d+1] do
-			for j in [1 .. d+1] do
-				for k in [1 .. d+1] do
-					if L[i][j,k] <> L[j][i,k] then
-						return fail; # Only accept commutative CCs
-					fi;
-				od;
-			od;
-		od;
+#		for i in [1 .. d+1] do
+#			for j in [1 .. d+1] do
+#				for k in [1 .. d+1] do
+#					if L[i][j,k] <> L[j][i,k] then
+#						return fail; # Only accept commutative CCs
+#					fi;
+#				od;
+#			od;
+#		od;
 		m := MakeImmutable(StructuralCopy(L));;
 		assoc_rec := rec( intersection_matrices := m);
 		return ObjectifyWithAttributes(assoc_rec, TheTypeIntersectionAlgebraObject);
