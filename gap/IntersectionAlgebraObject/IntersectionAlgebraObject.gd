@@ -191,8 +191,16 @@ DeclareOperation( "ReorderMinimalIdempotents", [ IsIntersectionAlgebraObject, Is
 #! @Chapter Functionality
 #! @Section Constructor Methods
 #! @Arguments CC
-#! @Returns true (Displays relation diistribution diagram)
+#! @Returns true (Displays relation distribution diagram)
 #! @Description
 #!	Take a CC and display the relation-distribution diagram with respect to $R_1$.
 DeclareOperation( "ViewRelationDistributionDiagram", [ IsIntersectionAlgebraObject ] );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Checks if the input is a commutative coherent configuration.
+DeclareProperty( "IsCommutative", IsIntersectionAlgebraObject );
 

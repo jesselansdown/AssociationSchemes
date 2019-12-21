@@ -28,7 +28,7 @@
 InstallMethod(IntersectionAlgebra,
 			[IsList],
 	function(L)
-		local m, assoc_rec, d, i, j, k;
+		local m, assoc_rec, d, i, j, k, A;
 		d:=Size(L)-1;
 		for i in [1 .. d+1] do
 			if Size(L[i]) <> d+1 or Size(L[i][1]) <> d+1 then
@@ -38,18 +38,11 @@ InstallMethod(IntersectionAlgebra,
 		if not ForAll(Set(Concatenation(Concatenation(L))), t -> IsInt(t) and t>=0) then
 			return fail;
 		fi;
-#		for i in [1 .. d+1] do
-#			for j in [1 .. d+1] do
-#				for k in [1 .. d+1] do
-#					if L[i][j,k] <> L[j][i,k] then
-#						return fail; # Only accept commutative CCs
-#					fi;
-#				od;
-#			od;
-#		od;
 		m := MakeImmutable(StructuralCopy(L));;
 		assoc_rec := rec( intersection_matrices := m);
-		return ObjectifyWithAttributes(assoc_rec, TheTypeIntersectionAlgebraObject);
+		A := ObjectifyWithAttributes(assoc_rec, TheTypeIntersectionAlgebraObject);;
+		IsCommutative(A);
+		return A;
 	end );
 
 InstallMethod(IntersectionMatrices,
@@ -140,7 +133,7 @@ InstallMethod( Order,
 
  InstallMethod( MatrixOfEigenvalues, 
  	"for IsAssociationScheme",
- 	[ IsIntersectionAlgebraObject ],
+ 	[ IsIntersectionAlgebraObject and IsCommutative],
 	function(A)
 		# This method assumes that the number of characters is d+1. This is true for commutative CCs.
 		local inter, idems, alg, reps, P1, k, i, valencies, d, P2;
@@ -167,14 +160,14 @@ InstallMethod( Order,
 
 InstallMethod( DualMatrixOfEigenvalues, 
 	"for IsAssociationScheme",
-	[ IsIntersectionAlgebraObject ],
+	[ IsIntersectionAlgebraObject and IsCommutative],
 	function( a )
 		return Inverse(MatrixOfEigenvalues(a))*Order(a);
 	end );
 
 
 InstallMethod(KreinParameter,
-            [IsIntersectionAlgebraObject, IsInt, IsInt, IsInt],
+            [IsIntersectionAlgebraObject and IsCommutative, IsInt, IsInt, IsInt],
 	function(A, i, j, k)
 		local P, Q, n, d, s, l;
 #		if not IsCommutative(A) then
@@ -194,7 +187,7 @@ InstallMethod(KreinParameter,
 	end);
 
 InstallMethod(KreinParameters,
-            [IsIntersectionAlgebraObject],
+            [IsIntersectionAlgebraObject and IsCommutative],
 	function(A)
 		local K, i, j, k, d;
 #		if not IsCommutative(A) then
@@ -288,7 +281,7 @@ InstallMethod(ReorderRelations,
     end);
 
 InstallMethod(ReorderMinimalIdempotents,
-            [IsIntersectionAlgebraObject, IsList],
+            [IsIntersectionAlgebraObject and IsCommutative, IsList],
     function( a, L )
         local d, a2, Q, Q2, P;
         d:=NumberOfClasses(a);;
@@ -334,6 +327,9 @@ InstallMethod( Display,
 	[ IsIntersectionAlgebraObject],
 	function( a )
  		Print( NumberOfClasses(a), "-class intersection algebra of order ", Order(a), "\n");
+ 		if HasIsCommutative(a) then
+ 			Print("  Commutative: ", IsCommutative(a), "\n");;
+ 		fi;
  		if HasIsPPolynomial(a) then
  			Print("  Metric: ", IsMetric(a), "\n");
  			if IsMetric(a) = false and HasAdmitsPPolynomialOrdering(a) then
@@ -406,3 +402,19 @@ InstallMethod( ViewRelationDistributionDiagram,
 			return true;
 		end);
 
+InstallMethod(IsCommutative,
+			[IsIntersectionAlgebraObject],
+	function(a)
+		local d, i, j, k;
+		d:=NumberOfClasses(a);;
+		for i in [0 .. d] do
+			for j in [0 .. d] do
+				for k in [0 .. d] do
+					if IntersectionMatrices(a)[j+1][i+1,k+1] <> IntersectionMatrices(a)[i+1][j+1,k+1] then
+						return false;
+					fi;
+				od;
+			od;
+		od;
+		return true;
+	end );
