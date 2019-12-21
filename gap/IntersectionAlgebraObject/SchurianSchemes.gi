@@ -25,7 +25,7 @@ InstallMethod(SchurianSchemeIntersectionAlgebra,
       [IsPermGroup],
       function(g_perm)
         local n, stab, orbs, d, rts, rows, i, j, inds, cols, rows2, mats, Aj, y, sol, k, m,
-        transversals, retrieve_transversal, column;
+        transversals, retrieve_transversal, column, A;
 
         if not IsPermGroup(g_perm) or not IsTransitive(g_perm) or IsTrivial(g_perm) then
           Error("Must give a nontrivial transitive permutation group\n");
@@ -112,7 +112,9 @@ InstallMethod(SchurianSchemeIntersectionAlgebra,
               od;
             od;
           od;
-          return IntersectionAlgebra(mats);
+          A:=IntersectionAlgebra(mats);;
+          IsCommutative(A);
+          return A;
       end);
 
 
