@@ -88,7 +88,13 @@ InstallMethod(SchurianSchemeIntersectionAlgebra,
           od;
 
           inds := List([1 .. d+1], t -> First([1 .. n], x -> rows[t][x]=1));
-          cols := List(rows, t -> column(t, rts[1], rts[2]));;
+#          cols := List(rows, t -> column(t, rts[1], rts[2]));;
+          row_weighted := Sum(List([1 .. d+1], t -> t*rows[t]));
+          col_weighted := column(row_weighted, rts[1], rts[2]);;
+          cols := List([1 .. d+1], t -> ListWithIdenticalEntries(n, 0));;
+          for i in [1 .. n] do
+            cols[col_weighted[i]][i]:=1;
+          od;
 
       #    As_rows := List(rows, t -> List([1 .. n], x -> Permuted(t, retrieve_transversal(rts[1], rts[2], x))));
 
