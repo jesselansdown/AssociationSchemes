@@ -68,7 +68,8 @@ InstallMethod(Valencies, " ", [IsIntersectionAlgebraObject],
 	function(a)
 		local d, valencies, i;
 		d := NumberOfClasses(a);
-		valencies:=List([1 .. d+1], k -> IntersectionMatrices(a)[k][k,1]);
+		return List(IntersectionMatrices(a), t -> Maximum(Eigenvalues(Rationals, t)));
+#		valencies:=List([1 .. d+1], k -> IntersectionMatrices(a)[k][k,1]); # Only for symmetric
 		return valencies;
 	end);
 

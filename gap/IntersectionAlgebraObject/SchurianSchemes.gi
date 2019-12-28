@@ -25,7 +25,7 @@ InstallMethod(SchurianSchemeIntersectionAlgebra,
       [IsPermGroup],
       function(g_perm)
         local n, stab, orbs, d, rts, rows, i, j, inds, cols, rows2, mats, Aj, y, sol, k, m,
-        transversals, retrieve_transversal, column, A, col_weighted, row_weighted;
+        transversals, retrieve_transversal, column, A, col_weighted, row_weighted, valencies;
 
         if not IsPermGroup(g_perm) or not IsTransitive(g_perm) or IsTrivial(g_perm) then
           Error("Must give a nontrivial transitive permutation group\n");
@@ -89,8 +89,8 @@ InstallMethod(SchurianSchemeIntersectionAlgebra,
 
           inds := List([1 .. d+1], t -> First([1 .. n], x -> rows[t][x]=1));
 #          cols := List(rows, t -> column(t, rts[1], rts[2]));;
-          row_weighted := Sum(List([1 .. d+1], t -> t*rows[t]));
-          col_weighted := column(row_weighted, rts[1], rts[2]);;
+            row_weighted := Sum(List([1 .. d+1], t -> t*rows[t]));
+            col_weighted := column(row_weighted, rts[1], rts[2]);;
           cols := List([1 .. d+1], t -> ListWithIdenticalEntries(n, 0));;
           for i in [1 .. n] do
             cols[col_weighted[i]][i]:=1;
@@ -120,6 +120,8 @@ InstallMethod(SchurianSchemeIntersectionAlgebra,
           od;
           A:=IntersectionAlgebra(mats);;
           IsCommutative(A);
+          valencies := List([1 .. d+1], t -> Number(row_weighted, x -> x=t));;
+          SetValencies(A, valencies);;
           return A;
       end);
 
