@@ -16,6 +16,22 @@ rec(
   #     primitive := [1,2],
   #     is_complete := true
   #      ) 
+  3 := rec(
+      # finite_groups := [1],
+      # noncommutative := [],
+      # nonschurian := [],
+       number := 1,
+      # primitive := [ 1, ]
+      # is_complete := true
+       ) ,
+  4 := rec(
+      # finite_groups := [1],
+      # noncommutative := [],
+      # nonschurian := [],
+       number := 2,
+      # primitive := [ 1, ]
+      # is_complete := true
+       ) ,
   5 := rec(
       # finite_groups := [1],
        noncommutative := [],
@@ -309,6 +325,14 @@ rec(
        nonschurian := [ 13, 25, 26, 28, 29, 30, 70, 73, 74, 80, 95, 107, 122, 123, 143],
        number := 239,
        primitive := [1]
+      # is_complete := true
+       ) ,
+  31 := rec(
+      # finite_groups := [1],
+      # noncommutative := [],
+      # nonschurian := [],
+       number := 98306,
+      # primitive := [1,2],
       # is_complete := true
        ) ,
   32 := rec(
