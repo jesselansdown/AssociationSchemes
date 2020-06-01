@@ -1100,15 +1100,19 @@ InstallMethod( MinimalIdempotents,
 	"for IsAssociationScheme",
 	[ IsHomogeneousCoherentConfiguration],
 	function(a)
-		local j, i, mat, idems, d, Q, adjacencymatrices;
+		local j, i, mat, idems, d, Q, relmat, n, x, y;
 		idems:=[];
 		d := NumberOfClasses(a);
 		Q := DualMatrixOfEigenvalues(a)/Order(a);
-		adjacencymatrices := AdjacencyMatrices(a);;
+		relmat:=RelationMatrix(a);
+		n:=Order(a);
 		for j in [1 .. d+1] do
-			mat:=Q[1][j]*adjacencymatrices[1];;
-			for i in [2 .. d+1] do
-				mat := mat + Q[i][j]*adjacencymatrices[i];;
+			mat := NullMat(n, n);;
+			for x in [1 .. n] do
+				for y in [1 .. n] do
+					i:=relmat[x, y];
+					mat[x,y]:=Q[i+1][j+1];
+				od;
 			od;
 			Add(idems, mat);
 		od;
