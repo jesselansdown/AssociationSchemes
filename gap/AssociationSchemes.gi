@@ -1120,6 +1120,31 @@ InstallMethod( MinimalIdempotents,
 	end);
 
 
+InstallMethod( MinimalIdempotent, 
+	"for IsAssociationScheme",
+	[ IsHomogeneousCoherentConfiguration, IsInt],
+	function(A, j)
+		local relmat, mat, a, b, i, Q, n;
+		if not j in [0 .. NumberOfClasses(A)] then
+			return fail;
+		fi;
+		if HasMinimalIdempotents(A) then
+			return MinimalIdempotents(A)[j+1];
+		fi;
+		n:=Order(A);
+		relmat:=RelationMatrix(A);
+		Q:=DualMatrixOfEigenvalues(A)/Order(A);
+		mat := NullMat(n, n);;
+		for a in [1 .. n] do
+			for b in [1 .. n] do
+				i:=relmat[a, b]+1;
+				mat[a,b]:=Q[i][j+1];
+			od;
+		od;
+		return mat;
+	end);
+
+
 # InstallMethod( AutomorphismGroup, [IsHomogeneousCoherentConfiguration],
 # function( sch )
 #     local n, edges, colours, c, d, matrix, newedges, newedges2,  
