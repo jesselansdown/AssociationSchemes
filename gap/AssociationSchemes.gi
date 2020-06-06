@@ -1106,7 +1106,7 @@ InstallMethod( MinimalIdempotents,
 		Q := DualMatrixOfEigenvalues(a)/Order(a);
 		relmat:=RelationMatrix(a);
 		n:=Order(a);
-		for j in [1 .. d] do
+		for j in [0 .. d] do
 			mat := NullMat(n, n);;
 			for x in [1 .. n] do
 				for y in [1 .. n] do
