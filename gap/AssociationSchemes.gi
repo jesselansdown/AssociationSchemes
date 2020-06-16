@@ -66,7 +66,7 @@ InstallMethod(HomogeneousCoherentConfiguration,
 		mat := MakeImmutable(CanonicallyLabelRelationMatrix(M));
 		for i in [1 .. Size(mat)] do
 			if mat[i, i] <> mat[1,1] then
-				Print("Relation matrix does not define a homogeneous coherent configuration\n");
+#				Print("Relation matrix does not define a homogeneous coherent configuration\n");
 				return fail;
 			fi;
 		od;
@@ -77,14 +77,14 @@ InstallMethod(HomogeneousCoherentConfiguration,
 				if IsAssociationSchemeMatrix(mat) then
 					return ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, IsCommutative, true, IsSymmetricCoherentConfiguration, true);
 				else
-					Print("Must give a valid matrix\n");
+#					Print("Must give a valid matrix\n");
 					return fail;
 				fi;
 			else
 				if IsHomogeneousCoherentConfigurationMatrix(mat) then
 					return ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, IsSymmetricCoherentConfiguration, false);					
 				else
-					Print("Must give a valid matrix\n");
+#					Print("Must give a valid matrix\n");
 					return fail;
 				fi;
 			fi;
@@ -93,7 +93,7 @@ InstallMethod(HomogeneousCoherentConfiguration,
 			if IsHomogeneousCoherentConfigurationMatrix2(mat) then
 				return ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration);					
 			else
-				Print("Must give a valid matrix\n");
+#				Print("Must give a valid matrix\n");
 				return fail;
 			fi;
 		fi;
@@ -134,7 +134,7 @@ InstallMethod(AssociationScheme,
 		mat := MakeImmutable(CanonicallyLabelRelationMatrix(M));
 		for i in [1 .. Size(mat)] do
 			if mat[i, i] <> mat[1,1] then
-				Print("Relation matrix does not define a homogeneous coherent configuration\n");
+#				Print("Relation matrix does not define a homogeneous coherent configuration\n");
 				return fail;
 			fi;
 		od;
@@ -144,11 +144,12 @@ InstallMethod(AssociationScheme,
 			if IsAssociationSchemeMatrix(mat) then
 				return ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, IsCommutative, true, IsSymmetricCoherentConfiguration, true);
 			else
-				Print("Must give a valid matrix\n");
+#				Print("Must give a valid matrix\n");
 				return fail;
 			fi;
 		else
-			Error("Must give a symmetric relation matrix for an association scheme.\n");
+#			Error("Must give a symmetric relation matrix for an association scheme.\n");
+			return fail;
 		fi;
 	end );
 
