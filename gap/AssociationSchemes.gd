@@ -343,6 +343,26 @@ DeclareProperty( "IsPAntipodal", IsHomogeneousCoherentConfiguration );
 
 DeclareOperation("SchemeToGraph", [IsHomogeneousCoherentConfiguration]);
 
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC, p, $\sigma$
+#! @Returns true or false
+#! @Description
+#!	For a $d$-class homogeneous coherent configuration with relation matrix $M$ and order $n$, takes a permutation $p$ on the set
+#!		$\{1 .. n\}$ and permutation $\sigma$ on the set $\{1 .. d\}$ and returns the $d$-class homogenous coherent configuration with
+#!		relation matrix $P^{-1} M^\sigma P$, where $P$ is the permutation matrix defined by $P$.
+DeclareOperation("ImageOfHomogeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration, IsPerm, IsPerm]);
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC, p, $\sigma$
+#! @Returns true or false
+#! @Description
+#! If there exists a permutation matrix $P$ and permutation $\sigma$ such that if $M$ is the relation matrix of $A$, then 
+#!	$P^{-1} M^\sigma P$ is the relation matrix of $B$, then the operation will return $[p, \sigma]$, where $p$ is the permutation
+#!	defining $P$. If no such $P$ and $\sigma$ exist, then the operation will return false.
+DeclareOperation("AreIsomorphicHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
+
 DeclareOperation( "IsCharacterTableOfHomogeneousCoherentConfiguration", [ IsHomogeneousCoherentConfiguration, IsMatrix ] );
 
 #! @Chapter Functionality
