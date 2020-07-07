@@ -144,7 +144,7 @@ InstallMethod( Order,
 			perm:=FirstMetricOrdering(A);
 			Remove(perm, 1);
 			perm:=PermList(perm);
-			B:=ReorderRelations(A, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], perm)));
+			B:=ReorderRelations(A, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], Inverse(perm))));
 			L:=TransposedMat(IntersectionMatrices(B)[2]);
 			d:=NumberOfClasses(B);
 			ks:=List([0 .. d], t -> IntersectionNumber(B, t,t, 0));
@@ -183,7 +183,7 @@ InstallMethod( Order,
 			Q:=TransposedMat(Q);
 			P:=Inverse(Q)*Order(B);
 			SetMatrixOfEigenvalues(B, P);
-			B:=ReorderRelations(B, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], Inverse(perm))));
+			B:=ReorderRelations(B, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], perm)));
 			return MatrixOfEigenvalues(B);
 		fi;
 
