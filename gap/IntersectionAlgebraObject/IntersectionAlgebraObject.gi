@@ -137,8 +137,8 @@ InstallMethod( Order,
  	[ IsIntersectionAlgebraObject and IsCommutative],
 	function(A)
 		# This method assumes that the number of characters is d+1. This is true for commutative CCs.
-		local inter, idems, alg, reps, P1, k, i, valencies, d, P2, B, Q, m, v, vals, n, f, p, perm, L, ks, eigs,
-				polys, eig, lambda, P;
+		local inter, idems, alg, reps, P1, k, i, valencies, d, P2, B, Q, m, v, vals, n, f, pol, perm, L, ks, eigs,
+				polys, eig, lambda, P, factored, done, good, notdone;
 
 		if AdmitsMetricOrdering(A) then
 			perm:=FirstMetricOrdering(A);
@@ -148,18 +148,26 @@ InstallMethod( Order,
 			L:=TransposedMat(IntersectionMatrices(B)[2]);
 			d:=NumberOfClasses(B);
 			ks:=List([0 .. d], t -> IntersectionNumber(B, t,t, 0));
-			eigs:=[];
-			polys := Factors(MinimalPolynomial(L));;
-			n:=1; m:=1;
-			for p in polys do
-				f := RootsOfPolynomial(CF(n), p);;
-				while f = [] do
-					m:=m+1;
-					f := RootsOfPolynomial(CF(n*m), p);
-				od;
-				Append(eigs, f);
-				n:=n*m;	# Change the field if no roots found
+	
+			polys:=[MinimalPolynomial(L)];;
+			good:=[];;
+			m:=1;
+			n:=1;
+			while polys <> [] do
+				pol:=Remove(polys, Size(polys));;
+				factored:=Factors(PolynomialRing(CF(n*m)), pol);
+				done := Filtered(factored, t -> Degree(t)=1);;
+				if Size(factored) > 1 then
+					m:=n*m;
+					n:=0;
+				fi;
+				Append(good, done);
+				notdone := Filtered(factored, t -> Degree(t)>1);;
+				Append(polys, notdone);
+				Sort(polys);
+				n:=n+1;
 			od;
+			eigs := Concatenation(List(good, t -> RootsOfPolynomial(CF(n*m), t)));
 			if Size(eigs) <> d+1 then
 				Error("wrong number of eigenvalues!");
 			fi;
