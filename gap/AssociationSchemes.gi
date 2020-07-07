@@ -728,6 +728,9 @@ InstallMethod(IsCommutative,
  	"for IsAssociationScheme",
  	[ IsHomogeneousCoherentConfiguration ],
 	function(A)
+		if AdmitsMetricOrdering(A) then
+			return MatrixOfEigenvalues(IntersectionAlgebra(IntersectionMatrices(A)));
+		fi;
 		if NumberOfCharacters(A) = NumberOfClasses(A) +1 then
 			return MatrixOfEigenvaluesSquare(A);
 		else
