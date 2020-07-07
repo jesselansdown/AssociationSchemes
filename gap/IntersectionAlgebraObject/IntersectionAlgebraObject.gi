@@ -137,7 +137,56 @@ InstallMethod( Order,
  	[ IsIntersectionAlgebraObject and IsCommutative],
 	function(A)
 		# This method assumes that the number of characters is d+1. This is true for commutative CCs.
-		local inter, idems, alg, reps, P1, k, i, valencies, d, P2;
+		local inter, idems, alg, reps, P1, k, i, valencies, d, P2, B, Q, m, v, vals, n, f, p, perm, L, ks, eigs,
+				polys, eig, lambda, P;
+
+		if AdmitsMetricOrdering(A) then
+			perm:=FirstMetricOrdering(A);
+			Remove(perm, 1);
+			perm:=PermList(perm);
+			B:=ReorderRelations(A, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], perm)));
+			L:=TransposedMat(IntersectionMatrices(B)[2]);
+			d:=NumberOfClasses(B);
+			ks:=List([0 .. d], t -> IntersectionNumber(B, t,t, 0));
+			eigs:=[];
+			polys := Factors(MinimalPolynomial(L));;
+			n:=1; m:=1;
+			for p in polys do
+				f := RootsOfPolynomial(CF(n), p);;
+				while f = [] do
+					m:=m+1;
+					f := RootsOfPolynomial(CF(n*m), p);
+				od;
+				Append(eigs, f);
+				n:=n*m;	# Change the field if no roots found
+			od;
+			if Size(eigs) <> d+1 then
+				Error("wrong number of eigenvalues!");
+			fi;
+
+			# Compute standard sequences and hence eigenvectors
+			vals:=[];;
+			for lambda in eigs do
+				eig := [1, lambda / ks[2] ];;
+				for i in [ 1 .. Size(L)-2] do
+					Add( eig, ( lambda*eig[Size(eig)] - L[i+1][i+1]*eig[Size(eig)] - L[i+1][i]*eig[Size(eig)-1])/L[i+1][i+2] );
+				od;
+				Add(vals, eig);
+			od;
+
+			# Compute dual matrix of eigenvalues
+			Q:=[];;
+			for v in vals do
+				m := Sum(ks)/Sum(List([1 .. d+1], t -> ks[t]*v[t]^2));
+				Add(Q, v*m);;
+			od;
+			Q:=TransposedMat(Q);
+			P:=Inverse(Q)*Order(B);
+			SetMatrixOfEigenvalues(B, P);
+			B:=ReorderRelations(B, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], Inverse(perm))));
+			return MatrixOfEigenvalues(B);
+		fi;
+
 		inter:=IntersectionMatrices(A);
 		d:=NumberOfClasses(A);;
 
@@ -266,7 +315,7 @@ InstallMethod( IsPAntipodal, [IsIntersectionAlgebraObject],
 InstallMethod(ReorderRelations,
             [IsIntersectionAlgebraObject, IsList],
     function( a, L )
-        local d, P, P2, a2 ;
+        local d, P, P2, a2, i, j, k, intersectionMatrices;
         d:=NumberOfClasses(a);;
         if not Set(L) =[0..d] then
             return fail;
@@ -274,11 +323,23 @@ InstallMethod(ReorderRelations,
         if not L[1]=0 then
             return fail;
         fi;
-       	P:=TransposedMat(MatrixOfEigenvalues(a));
-       	P2:=TransposedMat(List([0 .. d], t -> P[L[t+1]+1] ));;
-       	a2 := IntersectionAlgebraFromMatrixOfEigenvalues(P2);;
-        SetMatrixOfEigenvalues(a2, P2);;
-        return a2;
+        if HasMatrixOfEigenvalues(a) then
+	       	P:=TransposedMat(MatrixOfEigenvalues(a));
+	       	P2:=TransposedMat(List([0 .. d], t -> P[L[t+1]+1] ));;
+	       	a2 := IntersectionAlgebraFromMatrixOfEigenvalues(P2);;
+	        SetMatrixOfEigenvalues(a2, P2);;
+	        return a2;
+	    else
+			intersectionMatrices:=List([1..d+1], t-> NullMat(d+1, d+1));
+			for i in [0 .. d] do
+				for j in [0 .. d] do
+					for k in [0 .. d] do
+						intersectionMatrices[j+1][i+1, k+1] :=  IntersectionNumber(a, L[i+1], L[j+1], L[k+1]);;
+					od;
+				od;
+			od;
+			return IntersectionAlgebra(intersectionMatrices);
+	    fi;
     end);
 
 InstallMethod(ReorderMinimalIdempotents,
