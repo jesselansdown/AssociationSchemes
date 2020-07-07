@@ -33,6 +33,14 @@ DeclareProperty( "IsPPolynomial", IsHomogeneousCoherentConfiguration );
 #! @Chapter Functionality
 #! @Section Properties Of Homogeneous Coherent Configurations
 #! @Arguments CC
+#! @Returns P-polynomial ordering or fail
+#! @Description
+#!	Returns the first P-polynomial ordering admitted by the homogeneous coherent configuration CC, and fail otherwise.
+DeclareOperation( "FirstPPolynomialOrdering", [IsHomogeneousCoherentConfiguration] );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Returns if the homogeneous coherent configuration CC admits a P-polynomial ordering.
@@ -45,6 +53,14 @@ DeclareProperty( "AdmitsPPolynomialOrdering", IsHomogeneousCoherentConfiguration
 #! @Description
 #!	Alias for IsPPolynomial.
 DeclareOperation( "IsMetric", [IsHomogeneousCoherentConfiguration] );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns metric ordering or fail
+#! @Description
+#!	Alias for FirstPPolynomialOrdering.
+DeclareOperation( "FirstMetricOrdering", [IsHomogeneousCoherentConfiguration] );
 
 #! @Chapter Functionality
 #! @Section Properties Of Homogeneous Coherent Configurations

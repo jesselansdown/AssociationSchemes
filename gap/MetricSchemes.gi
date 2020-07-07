@@ -79,7 +79,7 @@ InstallMethod( IsPPolynomial, [IsHomogeneousCoherentConfiguration],
     return true;
   end);
 
-InstallMethod( AdmitsPPolynomialOrdering, [IsHomogeneousCoherentConfiguration],
+InstallMethod( FirstPPolynomialOrdering, [IsHomogeneousCoherentConfiguration],
   function(A)
     local stack, current, children, checknext;
 
@@ -101,29 +101,43 @@ InstallMethod( AdmitsPPolynomialOrdering, [IsHomogeneousCoherentConfiguration],
     end;
 
     if IsPPolynomial(A) then
-      return true;
+      return [0 .. NumberOfClasses(A)];
     fi;
     if not IsAssociationScheme(A) then
-      return false;
+      return fail;
     fi;
     stack := [[0]];
     while stack <> [] do
       current := Remove(stack, Size(stack));
       if checknext(A, current) then
         if Size(current)=NumberOfClasses(A)+1 then
-          return true;
+          return current;
         else
           children:=Difference([1..NumberOfClasses(A)], current);
           Append(stack, List(children, t -> Concatenation(current, [t])));;
         fi;
       fi;
     od;
-    return false;
+    return fail;
+  end);
+
+InstallMethod( AdmitsPPolynomialOrdering, [IsHomogeneousCoherentConfiguration],
+  function(A)
+    if FirstPPolynomialOrdering(A) <> fail then
+      return true;
+    else
+      return false;
+    fi;
   end);
 
 InstallMethod( IsMetric, [IsHomogeneousCoherentConfiguration],
   function(R)
       return IsPPolynomial(R);
+  end);
+
+InstallMethod( FirstMetricOrdering, [IsHomogeneousCoherentConfiguration],
+  function(R)
+      return FirstPPolynomialOrdering(R);
   end);
 
 InstallMethod( AdmitsMetricOrdering, [IsHomogeneousCoherentConfiguration],
