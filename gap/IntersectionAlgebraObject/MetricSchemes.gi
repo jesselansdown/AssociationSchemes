@@ -76,7 +76,7 @@ InstallMethod( IsPPolynomial, [IsIntersectionAlgebraObject],
     return true;
   end);
 
-InstallMethod( AdmitsPPolynomialOrdering, [IsIntersectionAlgebraObject],
+InstallMethod( FirstPPolynomialOrdering, [IsIntersectionAlgebraObject],
   function(A)
     local stack, current, children, checknext;
 
@@ -98,27 +98,45 @@ InstallMethod( AdmitsPPolynomialOrdering, [IsIntersectionAlgebraObject],
     end;
 
     if IsPPolynomial(A) then
-      return true;
+      return [0 .. NumberOfClasses(A)];
+    fi;
+    if not IsCommutative(A) then
+      return fail;
     fi;
     stack := [[0]];
     while stack <> [] do
       current := Remove(stack, Size(stack));
       if checknext(A, current) then
         if Size(current)=NumberOfClasses(A)+1 then
-          return true;
+          return current;
         else
           children:=Difference([1..NumberOfClasses(A)], current);
           Append(stack, List(children, t -> Concatenation(current, [t])));;
         fi;
       fi;
     od;
-    return false;
+    return fail;
+  end);
+
+InstallMethod( AdmitsPPolynomialOrdering, [IsIntersectionAlgebraObject],
+  function(A)
+    if FirstPPolynomialOrdering(A) <> fail then
+      return true;
+    else
+      return false;
+    fi;
   end);
 
 InstallMethod( IsMetric, [IsIntersectionAlgebraObject],
   function(R)
       return IsPPolynomial(R);
   end);
+
+InstallMethod( FirstMetricOrdering, [IsIntersectionAlgebraObject],
+  function(R)
+      return FirstPPolynomialOrdering(R);
+  end);
+
 
 InstallMethod( AdmitsMetricOrdering, [IsIntersectionAlgebraObject],
   function(R)
