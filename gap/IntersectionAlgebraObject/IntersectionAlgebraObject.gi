@@ -85,7 +85,7 @@ InstallMethod( Order,
  	[ IsIntersectionAlgebraObject ],
 	function(A)
 
-		local inter, d, polys, vals, p, n, f, lcm, i, m, split;
+		local inter, polys, vals, n, i, m, pol, factored, notdone;
 
 		if HasMatrixOfEigenvalues(A) then
 			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
@@ -95,41 +95,23 @@ InstallMethod( Order,
 		fi;
 
 		inter:=IntersectionMatrices(A);
-		d:=NumberOfClasses(A);;
-		polys := Set(Union(List(inter, t -> Factors(MinimalPolynomial(t)))));
-
-		if Size(polys) > 0 then
-			vals:=[];
-			for p in polys do
-				n:=1;
-				f := RootsOfPolynomial(CF(n), p);;
-				while f = [] do
-					n:=n+1;
-					f := RootsOfPolynomial(CF(n), p);
-				od;
-				Add(vals, n);
-			od;
-			if Size(vals) > 1 then
-				lcm := LCM_INT(vals[1], vals[2]);
-				for i in [3 .. Size(vals)] do
-					lcm := LCM_INT(lcm, vals[i]);
-				od;
-
-				n:=1;
-				while true do
-					m :=n*lcm;
-					if ForAll(polys, t -> RootsOfPolynomial(CF(m),t) <> []) then
-						break;
-					fi;
-				od;
-				split := CF(m);
-				return split;
-			else
-				return CF(vals[1]);
+		polys:=List(inter, t -> MinimalPolynomial(t));;
+		polys:=List(polys, Factors);;
+		polys:=Set(Concatenation(polys));;
+		m:=1;
+		n:=0;
+		while polys <> [] do
+			n:=n+1;
+			pol:=Remove(polys, Size(polys));;
+			factored:=Factors(PolynomialRing(CF(n*m)), pol);
+			if Size(factored) > 1 then
+				m:=n*m;
+				n:=0;
 			fi;
-		else
-			return Rationals;
-		fi;
+			notdone := Filtered(factored, t -> Degree(t)>1);;
+			Append(polys, notdone);
+			Sort(polys);
+		od;
 	end);
 
  InstallMethod( MatrixOfEigenvalues, 
