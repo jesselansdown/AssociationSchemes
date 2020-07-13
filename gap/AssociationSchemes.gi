@@ -1297,7 +1297,7 @@ function(A, B)
 		return false;
 	fi;
 
-	if not IsCommutative(A) <> IsCommutative(B) then
+	if IsCommutative(A) <> IsCommutative(B) then
 		return false;
 	fi;
 
