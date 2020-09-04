@@ -706,6 +706,31 @@ InstallMethod(IsCommutative,
 		return CF(m);
 	end);
 
+ InstallMethod(HasRationalSplittingField,
+			[IsHomogeneousCoherentConfiguration],
+	function(A)
+		local inter, polys;
+		if HasSplittingField(A) then
+			if SplittingField(A) = Rationals then
+				return true;
+			else
+				return false;
+			fi;
+		else
+			inter:=IntersectionMatrices(A);
+			polys:=List(inter, t -> MinimalPolynomial(t));;
+			polys:=List(polys, Factors);;
+			polys:=Set(Concatenation(polys));;
+			if ForAny(List(polys, t ->  RootsOfPolynomial(Rationals, t)), x -> x =[]) then
+				return false;
+			else
+				SetSplittingField(A, Rationals);;
+				return true;
+			fi;
+		fi;
+	end);
+
+
 
  InstallMethod( MatrixOfEigenvalues, 
  	"for IsAssociationScheme",
