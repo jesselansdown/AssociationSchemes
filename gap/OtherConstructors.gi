@@ -110,6 +110,42 @@ InstallMethod(FusionOfHomogeneousCoherentConfigurations,
 		return m2;
 	end);
 
+InstallMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
+			[IsHomogeneousCoherentConfiguration],
+	function(A)
+	    local iter, fuse, all;
+	    IsCommutative(A);
+	    all:=[];
+	    iter := IteratorOfPartitionsSets([1 .. NumberOfClasses(A)]);
+	    while not IsDoneIterator(iter) do
+	        fuse := NextIterator(iter);
+	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
+	            if FusionOfHomogeneousCoherentConfigurations(A, Concatenation([[0]], fuse)) <> fail then
+	                Add(all, Concatenation([[0]], fuse));
+	            fi;
+	        fi;
+	    od;
+	    return all;
+	end );
+
+InstallMethod(AllNonTrivialFusionsOfHomgeneousCoherentConfiguration,
+			[IsHomogeneousCoherentConfiguration],
+	function(A)
+	    local all, fusions;
+			fusions := FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A);
+			all := List(fusions, t -> FusionOfHomogeneousCoherentConfigurations(A, t));;
+	    return all;
+	end);
+
+InstallMethod(AllFusionsOfHomgeneousCoherentConfiguration,
+			[IsHomogeneousCoherentConfiguration],
+	function(A)
+	    local all, fusions;
+			fusions := FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A);
+			all := List(fusions, t -> FusionOfHomogeneousCoherentConfigurations(A, t));;
+	    return Concatenation([FusionOfHomogeneousCoherentConfigurations(A, [[0], [1 .. NumberOfClasses(A)]])], all, [A]);
+	end);
+
 InstallMethod(DirectProductOfHomogeneousCoherentConfigurations,
 			[IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
 	function(M, N)

@@ -32,6 +32,34 @@
 DeclareOperation( "FusionOfHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsList]);
 
 #! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns list of feasibly fusionable relations
+#! @Description
+#!	Returns a list where each entry is a collection of relations which may be fused to form a feasible homogeneous coherent configuration
+#!  Non-trivial means either no relations are fused, or all non-identity relations are fused.
+DeclareAttribute( "FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments CC
+#! @Returns List of all non-trivial fusions of CC
+#! @Description
+#!	Returns a list of all homogeneous coherent configurations such that each element of the list is a non-trivial fusion of CC.
+#!  Non-trivial means either no relations are fused, or all non-identity relations are fused.
+DeclareOperation( "AllNonTrivialFusionsOfHomgeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration]);
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments CC
+#! @Returns List of all fusions of CC
+#! @Description
+#!	Returns a list of all homogeneous coherent configurations such that each element of the list is a fusion of CC.
+#!  Includes trivial fusions, i.e the original homogeneous coherent configuration, and the coherent configuration resulting
+#!  from the fusion of all non-identity relations
+DeclareOperation( "AllFusionsOfHomgeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration]);
+
+#! @Chapter Functionality
 #! @Section Constructor Methods
 #! @Arguments CC1, CC2
 #! @Returns homogeneous coherent configuration
