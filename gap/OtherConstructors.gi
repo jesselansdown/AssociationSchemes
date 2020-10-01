@@ -116,7 +116,7 @@ InstallMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
 	    local iter, fuse, all;
 	    IsCommutative(A);
 	    all:=[];
-	    iter := IteratorOfPartitionsSets([1 .. NumberOfClasses(A)]);
+	    iter := IteratorOfPartitionsSet([1 .. NumberOfClasses(A)]);
 	    while not IsDoneIterator(iter) do
 	        fuse := NextIterator(iter);
 	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
