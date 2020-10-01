@@ -19,6 +19,7 @@ ReadPackage( "AssociationSchemes", "gap/GroupCC.gd");
 ReadPackage( "AssociationSchemes", "gap/BilinearFormsScheme.gd");
 ReadPackage( "AssociationSchemes", "gap/Algebras.gd");
 ReadPackage( "AssociationSchemes", "gap/OtherConstructors.gd");
+ReadPackage( "AssociationSchemes", "gap/Approximation.gd");
 
 ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/IntersectionAlgebraObject.gd");
 ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/ConstructorMethods.gd");
