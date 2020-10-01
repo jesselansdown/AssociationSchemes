@@ -52,7 +52,7 @@ InstallMethod(FusionOfHomogeneousCoherentConfigurations,
 			[IsHomogeneousCoherentConfiguration and IsCommutative, IsList],
 	function( a, fuse )
 		local mat, m, i, j, m2, d, inds, s, NewIntersectionMatrices,
-		u, v, w, h, check, inter, adjMats, rel, assoc_rec;
+		u, v, w, h, check, inter, adjMats, rel, assoc_rec, S, PS, newP;
 		if not [0] in fuse then
 			return fail;
 		fi;
@@ -106,6 +106,20 @@ InstallMethod(FusionOfHomogeneousCoherentConfigurations,
 		assoc_rec := rec( matrix := mat);
 		m2 := ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, AdjacencyMatrices, adjMats,
 			IntersectionMatrices, NewIntersectionMatrices);
+		if HasMatrixOfEigenvalues(a) then
+			S:=NullMat(NumberOfClasses(a)+1, Size(fuse));
+			for i in [1 .. Size(fuse)] do
+				for j in [1 .. Size(fuse[i])] do
+					S[fuse[i][j]+1][i] := 1;
+				od;
+			od;
+			PS:=MatrixOfEigenvalues(a)*S;
+			newP :=[Remove(PS, 1)];
+			Append(newP, Set(PS));
+			if IsCharacterTableOfHomogeneousCoherentConfiguration(m2, newP) then
+				SetMatrixOfEigenvalues(m2, newP);
+			fi;
+		fi;
 		# set IsFusionOfHomogeneousCoherentConfigurations := true;
 		return m2;
 	end);
