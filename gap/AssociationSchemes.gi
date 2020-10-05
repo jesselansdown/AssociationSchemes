@@ -198,6 +198,13 @@ InstallMethod( \=,
 		return RelationMatrix(a)=RelationMatrix(b);
 	end);
 
+InstallMethod( \<,
+			 [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
+	function(a,b)
+		return RelationMatrix(a)<RelationMatrix(b);
+	end);
+
+
 InstallMethod( Relation,
 			 [IsHomogeneousCoherentConfiguration, IsPosInt, IsPosInt],
 	function(A,x,y)
