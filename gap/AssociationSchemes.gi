@@ -1720,7 +1720,7 @@ InstallMethod(IsCharacterTableOfHomogeneousCoherentConfiguration,
         fi;
         Q:=Inverse(P);
         if Q = fail then
-        	Print("The character table is not invertible\n");
+#        	Print("The character table is not invertible\n");
         	return fail;
         fi;
         idems:=[];
