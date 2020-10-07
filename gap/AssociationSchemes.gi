@@ -1491,6 +1491,93 @@ function(A, B)
 	return false;
 end);
 
+InstallMethod( CanonisingMap, [IsHomogeneousCoherentConfiguration],
+function(A)
+	local B, n, vertices, i, j, colours1, colours2, colours3, gamma, p, permuted_edges, permuted_edges_set, map, ords, ord, stab, temp, temp2, C, p1, p2, c1, c2, perm, edges, isoms1, isoms2, val, potential_canon, perm_kept, p_kept;
+
+	potential_canon := false;
+	if AdmitsMetricOrdering(A) then
+		ords := MutableCopyMat(AllMetricOrderings(A));
+		for ord in ords do
+			Remove(ord, 1);
+			perm:=Inverse(PermList(ord));;
+			C := ReorderRelations(A, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], perm)));
+			gamma:=SchemeToGraph(C);
+			p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+			B := ImageOfHomogeneousCoherentConfiguration(A, p2, perm);;
+			if IsHomogeneousCoherentConfiguration(potential_canon) then
+				if B < potential_canon then
+					potential_canon := B;
+					p_kept:=p2;
+					perm_kept:=perm;
+				fi;
+			else
+				potential_canon := B;
+				p_kept:=p2;
+				perm_kept := perm;
+			fi;
+		od;
+	else
+		isoms1 :=[];
+		for val in [1 .. NumberOfClasses(A)] do
+			edges := [];
+			for i in [1 .. Order(A)] do
+				for j in [1 .. Order(A)] do
+					if RelationMatrix(A)[i][j]=val then
+						Add(edges, [i, j]);
+					fi;
+				od;
+			od;
+			gamma := NautyGraph( edges );
+			p := CanonicalLabeling( gamma );
+			permuted_edges := OnTuplesTuples( edges, p^(-1) );
+			c2 := Set( List( permuted_edges, i -> Set( i ) ) );
+			Add(isoms1, [val, c2]);
+		od;
+
+		isoms2:=StructuralCopy(isoms1);;
+		Sort(isoms1, function(u, v) return u[2]<v[2];end);
+		map := [1 .. NumberOfClasses(A)];
+		for i in [1 .. NumberOfClasses(A)] do
+			map[isoms1[i][1]]:=isoms2[i][1];
+		od;
+		map:=PermList(map);
+		stab:=SymmetricGroup(NumberOfClasses(A));;
+		while isoms1 <> [] do
+			temp:=Filtered(isoms1, t -> t[2] = isoms1[1][2]);
+			temp2:=List(temp, t -> t[1]);
+			stab:=Stabiliser(stab, temp2, OnSets);;
+			isoms1:=Filtered(isoms1, t -> not t in temp);
+		od;
+		stab:=RightCoset(stab, map);;
+		for perm in stab do
+			C := ReorderRelations(A, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], perm)));
+			gamma:=SchemeToGraph(C);
+			p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+			B := ImageOfHomogeneousCoherentConfiguration(A, p2, perm);;
+			if IsHomogeneousCoherentConfiguration(potential_canon) then
+				if B < potential_canon then
+					potential_canon := B;
+					p_kept:=p2;
+					perm_kept:=perm;
+				fi;
+			else
+				potential_canon := B;
+				p_kept:=p2;
+				perm_kept := perm;
+			fi;
+		od;
+	fi;
+	return [p_kept, perm_kept];
+end);
+
+InstallMethod(CanonicalFormOfHomogeneousCoherentConfiguration, [IsHomogeneousCoherentConfiguration],
+	function(CC)
+		local map;
+		map := CanonisingMap(CC);;
+	    return ImageOfHomogeneousCoherentConfiguration(CC, map[1], map[2]);
+	end);
+
 InstallMethod( IsCometric, [IsHomogeneousCoherentConfiguration],
 	function(R)
 	    return IsQPolynomial(R);

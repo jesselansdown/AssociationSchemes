@@ -371,6 +371,25 @@ DeclareOperation("ImageOfHomogeneousCoherentConfiguration", [IsHomogeneousCohere
 #!	defining $P$. If no such $P$ and $\sigma$ exist, then the operation will return false.
 DeclareOperation("AreIsomorphicHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
 
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns [perm1, perm2]
+#! @Description
+#!	Returns two permutations which will produce the canonical form of the homogeneous coherent configuration CC.
+#!	The canonical form can be obtained by ImageOfHomogeneousCoherentConfiguration(CC, perm1, perm2)
+#!  Any homogenouse coherent configuration which is isomorphic to CC will the same canonical form.
+DeclareAttribute( "CanonisingMap", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns CC2
+#! @Description
+#!	Returns the canonical form, CC2, of the homogeneous coherent configuration CC.
+#!	Any homogenouse coherent configuration which is isomorphic to CC will have CC2 as the canonical form.
+DeclareOperation("CanonicalFormOfHomogeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration]);
+
 DeclareOperation( "IsCharacterTableOfHomogeneousCoherentConfiguration", [ IsHomogeneousCoherentConfiguration, IsMatrix ] );
 
 #! @Chapter Functionality
