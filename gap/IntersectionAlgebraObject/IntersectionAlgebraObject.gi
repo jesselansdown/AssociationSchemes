@@ -85,8 +85,27 @@ InstallMethod( Order,
  	[ IsIntersectionAlgebraObject ],
 	function(A)
 
-		local inter, polys, vals, n, i, m, pol, factored, notdone;
+		local inter, polys, vals, n, i, m, pol, factored, done, breakdownpoly, poly;
 
+		breakdownpoly := function(poly)
+			local m, n, factored;
+			if Degree(poly) = 1 then
+				return [poly];
+			fi;
+			m := Conductor(DefaultField(CoefficientsOfUnivariatePolynomial(poly)));
+			n:=1;
+			while true do
+				factored:=Factors(PolynomialRing(CF(n*m)), poly);
+				if Size(factored) > 1 then
+					return factored;
+				fi;
+				n:=n+1;
+			od;
+		end;
+
+		if not IsCommutative(A) then
+			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
+		fi;
 		if HasMatrixOfEigenvalues(A) then
 			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
 		fi;
@@ -98,20 +117,23 @@ InstallMethod( Order,
 		polys:=List(inter, t -> MinimalPolynomial(t));;
 		polys:=List(polys, Factors);;
 		polys:=Set(Concatenation(polys));;
-		m:=1;
-		n:=0;
+
+		done:=[];
 		while polys <> [] do
-			n:=n+1;
-			pol:=Remove(polys, Size(polys));;
-			factored:=Factors(PolynomialRing(CF(n*m)), pol);
-			if Size(factored) > 1 then
-				m:=n*m;
-				n:=0;
+			poly:=Remove(polys, 1);
+			if Degree(poly) = 1 then
+				Add(done, Conductor(DefaultField(CoefficientsOfUnivariatePolynomial(poly))));
+				done:=Set(done);
+			else
+				polys:=Concatenation(polys, breakdownpoly(poly));
 			fi;
-			notdone := Filtered(factored, t -> Degree(t)>1);;
-			Append(polys, notdone);
-			Sort(polys);
 		od;
+		n:=done[1];
+		for i in [2 .. Size(done)] do
+			n:=LCM_INT(n, done[i]);
+		od;
+
+		return CF(n);
 	end);
 
  InstallMethod( MatrixOfEigenvalues, 

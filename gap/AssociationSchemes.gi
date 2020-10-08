@@ -748,7 +748,8 @@ InstallMethod(IsCommutative,
 			polys:=List(inter, t -> MinimalPolynomial(t));;
 			polys:=List(polys, Factors);;
 			polys:=Set(Concatenation(polys));;
-			if ForAny(List(polys, t ->  RootsOfPolynomial(Rationals, t)), x -> x =[]) then
+#			if ForAny(List(polys, t ->  RootsOfPolynomial(Rationals, t)), x -> x =[]) then
+			if ForAny(polys, t -> Degree(t)>1) then
 				return false;
 			else
 				SetSplittingField(A, Rationals);;
