@@ -101,6 +101,14 @@ DeclareAttribute( "Order", IsIntersectionAlgebraObject );
 DeclareAttribute( "SplittingField", IsIntersectionAlgebraObject );
 
 #! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Returns true if the splitting field is the rationals, false otherwise.
+DeclareProperty( "HasRationalSplittingField", IsIntersectionAlgebraObject );
+
+#! @Chapter Functionality
 #! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns P
