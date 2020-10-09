@@ -518,3 +518,14 @@ InstallMethod(IsCommutative,
 		od;
 		return true;
 	end );
+
+ InstallMethod( NumberOfCharacters, 
+ 	"for IsAssociationScheme",
+ 	[ IsIntersectionAlgebraObject ],
+	function(A)
+		if IsCommutative(A) then
+		    return NumberOfClasses(A) + 1;;
+		else
+			return Size(CentralIdempotentsOfAlgebra(Algebra(SplittingField(A), IntersectionMatrices(A))));;
+		fi;
+	end);

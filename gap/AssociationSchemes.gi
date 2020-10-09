@@ -636,7 +636,7 @@ end);
 
 InstallMethod(IsCommutative,
 			[IsHomogeneousCoherentConfiguration],
-	function(a)
+	function(A)
 		local B;
 		B := IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);;
 		return IsCommutative(B);
@@ -646,28 +646,35 @@ InstallMethod(IsCommutative,
  	"for IsAssociationScheme",
  	[ IsHomogeneousCoherentConfiguration ],
 	function(A)
-		local i, j, k, l, m, n, AM, v, d, AM1, V, VB, U, P, C;
-		d := NumberOfClasses(A) + 1;
-		if IsCommutative(A) then
-		    return d;
+		local i, j, k, l, m, n, AM, v, d, AM1, V, VB, U, P, C, B;
+		B := IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);
+		if HasNumberOfCharacters(B) then
+			return NumberOfCharacters(B);
+		else
+			d := NumberOfClasses(A) + 1;
+			if IsCommutative(A) then
+				SetNumberOfCharacters(B, d);
+			    return d;
+			fi;
+			n := Order(A);
+			AM := AdjacencyMatrices(A);
+			v := List(AM, x -> Sum(x[1]));
+			AM1 := List([1..Length(AM)], x -> AM[x][1]);
+			V := VectorSpace(Rationals, AM1);
+			VB := Basis(V, AM1);
+			P := NullMat(d, d);
+			for i in [1..d] do
+			    for j in [1..d] do
+			        for k in [1..d] do
+			            U := TransposedMat(AM[k]) * AM[i] * AM[k];
+			            C := Coefficients(VB, U[1]);
+			            P[i][j] := P[i][j] + C[j]/v[k];
+			        od;
+			    od;
+			od;
+			SetNumberOfCharacters(B, Rank(P));
+		    return Rank(P);
 		fi;
-		n := Order(A);
-		AM := AdjacencyMatrices(A);
-		v := List(AM, x -> Sum(x[1]));
-		AM1 := List([1..Length(AM)], x -> AM[x][1]);
-		V := VectorSpace(Rationals, AM1);
-		VB := Basis(V, AM1);
-		P := NullMat(d, d);
-		for i in [1..d] do
-		    for j in [1..d] do
-		        for k in [1..d] do
-		            U := TransposedMat(AM[k]) * AM[i] * AM[k];
-		            C := Coefficients(VB, U[1]);
-		            P[i][j] := P[i][j] + C[j]/v[k];
-		        od;
-		    od;
-		od;    
-	    return Rank(P);
 	end);
 
  InstallMethod( SplittingField, 

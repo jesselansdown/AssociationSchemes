@@ -212,3 +212,11 @@ DeclareOperation( "ViewRelationDistributionDiagram", [ IsIntersectionAlgebraObje
 #!	Checks if the input is a commutative coherent configuration.
 DeclareProperty( "IsCommutative", IsIntersectionAlgebraObject );
 
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns n
+#! @Description
+#!	Returns the number $n$ of characters of CC.
+DeclareAttribute("NumberOfCharacters", IsIntersectionAlgebraObject);
+
