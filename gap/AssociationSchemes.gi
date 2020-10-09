@@ -564,6 +564,9 @@ InstallMethod(Valencies, " ", [IsHomogeneousCoherentConfiguration],
 		for i in [1 .. d+1] do
 			valencies[i]:=Number(RelationMatrix(a)[1], t -> t=i-1);
 		od;
+		if not HasValencies(IntersectionAlgebraOfHomogeneousCoherentConfiguration(a)) then
+			SetValencies(IntersectionAlgebraOfHomogeneousCoherentConfiguration(a), valencies);
+		fi;
 		return valencies;
 	end);
 
@@ -628,7 +631,7 @@ InstallMethod(IntersectionMatrices, " ", [IsHomogeneousCoherentConfiguration],
  	function(A)
  		local B;
  		B := IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);
-		return IntersectionMatrices();
+		return IntersectionMatrices(A);
 end);
 
 InstallMethod(IsCommutative,
