@@ -22,17 +22,6 @@
 ##
 #############################################################################
 
-
-InstallMethod(IntersectionAlgebra,
-  [IsHomogeneousCoherentConfiguration],
-  function(A)
-    local im, F;
-#    F := CF(Maximum(List(Union(MatrixOfEigenvalues(A)), Conductor)));
-    F := DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
-    im := List(IntersectionMatrices(A), i -> i * One(F));
-    return Algebra(F, im);
-  end);
-
 InstallMethod(BoseMesnerAlgebra,
   [IsHomogeneousCoherentConfiguration],
   function(A)

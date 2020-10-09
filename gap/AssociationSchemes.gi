@@ -587,9 +587,7 @@ InstallMethod(Valencies, " ", [IsHomogeneousCoherentConfiguration],
 # 		return intersectionMatrices;
 # end);
 
-
-
-InstallMethod(IntersectionMatrices, " ", [IsHomogeneousCoherentConfiguration],
+InstallMethod(IntersectionAlgebraOfHomogeneousCoherentConfiguration, " ", [IsHomogeneousCoherentConfiguration],
  	function(m)
  		local ComputeEntryOfAiAjAtXY, InterNum, M, d, intersectionMatrices, i, j, k;
 
@@ -623,7 +621,15 @@ InstallMethod(IntersectionMatrices, " ", [IsHomogeneousCoherentConfiguration],
 				od;
 			od;
 		od;
-		return intersectionMatrices;
+		return IntersectionAlgebra(intersectionMatrices);
+end);
+
+
+InstallMethod(IntersectionMatrices, " ", [IsHomogeneousCoherentConfiguration],
+ 	function(A)
+ 		local B;
+ 		B := IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);
+		return IntersectionMatrices();
 end);
 
 

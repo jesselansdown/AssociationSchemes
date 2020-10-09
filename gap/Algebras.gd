@@ -27,14 +27,6 @@
 #! @Arguments CC
 #! @Returns A
 #! @Description
-#!	Returns the intersection algebra $A$ of a homogeneous coherent configuration.
-DeclareOperation( "IntersectionAlgebra", [IsHomogeneousCoherentConfiguration]);
-
-#! @Chapter Functionality
-#! @Section Algebras
-#! @Arguments CC
-#! @Returns A
-#! @Description
 #!	Returns the Bose-Mesner algebra $A$ of a homogeneous coherent configuration.
 DeclareOperation( "BoseMesnerAlgebra", [IsHomogeneousCoherentConfiguration]);
 

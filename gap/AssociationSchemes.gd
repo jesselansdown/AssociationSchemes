@@ -216,6 +216,15 @@ DeclareAttribute( "Valencies", IsHomogeneousCoherentConfiguration );
 #! @Description
 #!	Returns a list L of the intersection matrices of a homogeneous coherent configuration $CC$, where the $i$-th entry of $L$
 #!	is $B_{i-1}$ and $(B_{i})_{jk} = p_{ji}^k$.
+DeclareAttribute("IntersectionAlgebraOfHomogeneousCoherentConfiguration", IsHomogeneousCoherentConfiguration);
+
+#! @Chapter Functionality
+#! @Section Matrices Describing Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns L
+#! @Description
+#!	Returns a list L of the intersection matrices of a homogeneous coherent configuration $CC$, where the $i$-th entry of $L$
+#!	is $B_{i-1}$ and $(B_{i})_{jk} = p_{ji}^k$.
 DeclareAttribute("IntersectionMatrices", IsHomogeneousCoherentConfiguration);
 
 
