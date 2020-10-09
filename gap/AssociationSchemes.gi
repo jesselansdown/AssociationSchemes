@@ -631,7 +631,7 @@ InstallMethod(IntersectionMatrices, " ", [IsHomogeneousCoherentConfiguration],
  	function(A)
  		local B;
  		B := IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);
-		return IntersectionMatrices(A);
+		return IntersectionMatrices(B);
 end);
 
 InstallMethod(IsCommutative,
