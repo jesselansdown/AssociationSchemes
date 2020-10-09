@@ -168,7 +168,7 @@ InstallMethod( Order,
 		local inter, idems, alg, reps, P1, k, i, valencies, d, P2, B, Q, m, v, vals, n, f, pol, perm, L, ks, eigs,
 				polys, eig, lambda, P, factored, done, good, notdone, RIdem, Alg, Idem, F, IM2, lenIdem, SimplifyIdem,
 				poly, breakdownpoly;
-		Print("USING METRIC METHOD!\n");
+#		Print("USING METRIC METHOD!\n");
 		breakdownpoly := function(poly)
 			local m, n, factored;
 			if Degree(poly) = 1 then
@@ -245,7 +245,7 @@ InstallMethod( Order,
 				polys, eig, lambda, P, factored, done, good, notdone, RIdem, Alg, Idem, F, IM2, lenIdem, SimplifyIdem,
 				poly, breakdownpoly;
 
-		Print("USING STANDARD METHOD!\n");
+#		Print("USING STANDARD METHOD!\n");
 
 	    SimplifyIdem := function(idem)
 	        local i, j, idem2, IsPrim;
@@ -478,7 +478,7 @@ InstallMethod(IsMatrixOfEigenvaluesForIntersectionAlgebra,
 			od;
 			return PopulateMatrixOfEigenvalues(A, M, eigs, 2, 2, NumberOfClasses(A)+1);
 		end;
-	Print("USING BACKTRACK METHOD!\n");
+#	Print("USING BACKTRACK METHOD!\n");
 	if not HasMatrixOfEigenvalues(A) then
 		P := ComputePMatrixViaBackTrack(A);
 		SetMatrixOfEigenvalues(A, P);
