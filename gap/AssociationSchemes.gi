@@ -1545,20 +1545,9 @@ InstallMethod(KreinParameter,
 InstallMethod(KreinParameters,
             [IsHomogeneousCoherentConfiguration],
 	function(A)
-		local K, i, j, k, d;
-		if not IsCommutative(A) then
-			return fail;
-		fi;
-		d:=NumberOfClasses(A);;
-		K:=List([1 .. d+1], t -> NullMat(d+1, d+1));;
-		for i in [0 .. d] do
-			for j in [0 .. d] do
-				for k in [0 .. d] do
-					K[i+1][j+1,k+1] := KreinParameter(A, i, j, k);
-				od;
-			od;
-		od;
-		return K;
+		local B;
+		B := IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);;
+		return KreinParameters(B);
 	end);
 
 # InstallMethod( IsQPolynomial, [IsHomogeneousCoherentConfiguration],
