@@ -103,9 +103,9 @@ InstallMethod( Order,
 			od;
 		end;
 
-		if not IsCommutative(A) then
-			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
-		fi;
+#		if not IsCommutative(A) then
+#			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
+#		fi;
 		if HasMatrixOfEigenvalues(A) then
 			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
 		fi;
