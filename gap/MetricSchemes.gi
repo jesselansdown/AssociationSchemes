@@ -93,11 +93,8 @@ InstallMethod( FirstPPolynomialOrdering, [IsHomogeneousCoherentConfiguration],
 
 InstallMethod( AdmitsPPolynomialOrdering, [IsHomogeneousCoherentConfiguration],
   function(A)
-    if FirstPPolynomialOrdering(A) <> fail then
-      return true;
-    else
-      return false;
-    fi;
+      FirstPPolynomialOrdering(A);
+      return AdmitsPPolynomialOrdering(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A));
   end);
 
 InstallMethod( IsMetric, [IsHomogeneousCoherentConfiguration],

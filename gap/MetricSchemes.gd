@@ -36,7 +36,7 @@ DeclareProperty( "IsPPolynomial", IsHomogeneousCoherentConfiguration );
 #! @Returns P-polynomial ordering or fail
 #! @Description
 #!	Returns the first P-polynomial ordering admitted by the homogeneous coherent configuration CC, and fail otherwise.
-DeclareOperation( "FirstPPolynomialOrdering", [IsHomogeneousCoherentConfiguration] );
+DeclareAttribute( "FirstPPolynomialOrdering", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Properties Of Homogeneous Coherent Configurations

@@ -1736,3 +1736,10 @@ InstallMethod( ViewRelationDistributionDiagram,
 			Splash(graph);
 			return true;
 		end);
+
+InstallMethod( MatrixOfEigenvaluesViaBacktrack, 
+	"for IsAssociationScheme",
+	[ IsHomogeneousCoherentConfiguration],
+	function( A )
+			return MatrixOfEigenvaluesViaBacktrack(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A));;
+		end);

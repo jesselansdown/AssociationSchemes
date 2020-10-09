@@ -220,3 +220,5 @@ DeclareProperty( "IsCommutative", IsIntersectionAlgebraObject );
 #!	Returns the number $n$ of characters of CC.
 DeclareAttribute("NumberOfCharacters", IsIntersectionAlgebraObject);
 
+DeclareOperation( "IsMatrixOfEigenvaluesForIntersectionAlgebra", [ IsIntersectionAlgebraObject, IsMatrix ] );
+DeclareOperation( "MatrixOfEigenvaluesViaBacktrack", [ IsIntersectionAlgebraObject ] );

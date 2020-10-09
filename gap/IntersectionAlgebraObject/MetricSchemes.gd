@@ -36,7 +36,7 @@ DeclareProperty( "IsPPolynomial", IsIntersectionAlgebraObject );
 #! @Returns P-polynomial ordering or fail
 #! @Description
 #!	Returns the first P-polynomial ordering admitted by the homogeneous coherent configuration CC, and fail otherwise.
-DeclareOperation( "FirstPPolynomialOrdering", [IsIntersectionAlgebraObject] );
+DeclareAttribute( "FirstPPolynomialOrdering", IsIntersectionAlgebraObject );
 
 #! @Chapter Functionality
 #! @Section Properties Of Homogeneous Coherent Configurations
