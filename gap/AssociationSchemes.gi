@@ -624,17 +624,12 @@ InstallMethod(IntersectionAlgebraOfHomogeneousCoherentConfiguration, " ", [IsHom
 		return IntersectionAlgebra(intersectionMatrices);
 end);
 
-
 InstallMethod(IntersectionMatrices, " ", [IsHomogeneousCoherentConfiguration],
  	function(A)
  		local B;
  		B := IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);
 		return IntersectionMatrices();
 end);
-
-
-
-
 
 InstallMethod(IsCommutative,
 			[IsHomogeneousCoherentConfiguration],
@@ -685,83 +680,17 @@ InstallMethod(IsCommutative,
  	"for IsAssociationScheme",
  	[ IsHomogeneousCoherentConfiguration ],
 	function(A)
-
-		local inter, polys, vals, n, i, m, pol, factored, done, breakdownpoly, poly;
-
-		breakdownpoly := function(poly)
-			local m, n, factored;
-			if Degree(poly) = 1 then
-				return [poly];
-			fi;
-			m := Conductor(DefaultField(CoefficientsOfUnivariatePolynomial(poly)));
-			n:=1;
-			while true do
-				factored:=Factors(PolynomialRing(CF(n*m)), poly);
-				if Size(factored) > 1 then
-					return factored;
-				fi;
-				n:=n+1;
-			od;
-		end;
-
-		if not IsCommutative(A) then
-			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
-		fi;
-		if HasMatrixOfEigenvalues(A) then
-			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
-		fi;
-		if HasDualMatrixOfEigenvalues(A) then
-			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
-		fi;
-
-		inter:=IntersectionMatrices(A);
-		polys:=List(inter, t -> MinimalPolynomial(t));;
-		polys:=List(polys, Factors);;
-		polys:=Set(Concatenation(polys));;
-
-		done:=[];
-		while polys <> [] do
-			poly:=Remove(polys, 1);
-			if Degree(poly) = 1 then
-				Add(done, Conductor(DefaultField(CoefficientsOfUnivariatePolynomial(poly))));
-				done:=Set(done);
-			else
-				polys:=Concatenation(polys, breakdownpoly(poly));
-			fi;
-		od;
-		n:=done[1];
-		for i in [2 .. Size(done)] do
-			n:=LCM_INT(n, done[i]);
-		od;
-
-		return CF(n);
+		local B;
+		B := IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);;
+		return SplittingField(B);
 	end);
-
-
 
  InstallMethod(HasRationalSplittingField,
 			[IsHomogeneousCoherentConfiguration],
 	function(A)
-		local inter, polys;
-		if HasSplittingField(A) then
-			if SplittingField(A) = Rationals then
-				return true;
-			else
-				return false;
-			fi;
-		else
-			inter:=IntersectionMatrices(A);
-			polys:=List(inter, t -> MinimalPolynomial(t));;
-			polys:=List(polys, Factors);;
-			polys:=Set(Concatenation(polys));;
-#			if ForAny(List(polys, t ->  RootsOfPolynomial(Rationals, t)), x -> x =[]) then
-			if ForAny(polys, t -> Degree(t)>1) then
-				return false;
-			else
-				SetSplittingField(A, Rationals);;
-				return true;
-			fi;
-		fi;
+		local B;
+		B := IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);;
+		return HasRationalSplittingField(B);;
 	end);
 
 
