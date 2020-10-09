@@ -161,10 +161,9 @@ InstallMethod( Order,
 		fi;
 	end);
 
-
  InstallMethod( MatrixOfEigenvalues, 
  	"for IsAssociationScheme",
- 	[ IsIntersectionAlgebraObject],
+ 	[ IsIntersectionAlgebraObject and AdmitsPPolynomialOrdering],
 	function(A)
 		local inter, idems, alg, reps, P1, k, i, valencies, d, P2, B, Q, m, v, vals, n, f, pol, perm, L, ks, eigs,
 				polys, eig, lambda, P, factored, done, good, notdone, RIdem, Alg, Idem, F, IM2, lenIdem, SimplifyIdem,
@@ -185,6 +184,67 @@ InstallMethod( Order,
 				n:=n+1;
 			od;
 		end;
+
+		perm:=FirstMetricOrdering(A);
+		Remove(perm, 1);
+		perm:=PermList(perm);
+		B:=ReorderRelations(A, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], Inverse(perm))));
+		L:=TransposedMat(IntersectionMatrices(B)[2]);
+		d:=NumberOfClasses(B);
+		ks:=List([0 .. d], t -> IntersectionNumber(B, t,t, 0));
+
+		if ForAny(ks, t -> t=0) then
+			TryNextMethod();
+		fi;
+	
+		polys:=MinimalPolynomial(L);;
+		polys:=Factors(polys);
+		done:=[];
+		while polys <> [] do
+			poly:=Remove(polys, 1);
+			if Degree(poly) = 1 then
+				Add(done, poly);
+			else
+				polys:=Concatenation(polys, breakdownpoly(poly));
+			fi;
+		od;
+		eigs := Concatenation(List(done, t -> RootsOfPolynomial(t)));
+
+		if Size(eigs) <> d+1 then
+			Error("wrong number of eigenvalues!");
+		fi;
+
+		# Compute standard sequences and hence eigenvectors
+		vals:=[];;
+		for lambda in eigs do
+			eig := [1, lambda / ks[2] ];;
+			for i in [ 1 .. Size(L)-2] do
+				Add( eig, ( lambda*eig[Size(eig)] - L[i+1][i+1]*eig[Size(eig)] - L[i+1][i]*eig[Size(eig)-1])/L[i+1][i+2] );
+			od;
+			Add(vals, eig);
+		od;
+
+		# Compute dual matrix of eigenvalues
+		Q:=[];;
+		for v in vals do
+			m := Sum(ks)/Sum(List([1 .. d+1], t -> ks[t]*v[t]^2));
+			Add(Q, v*m);;
+		od;
+		Q:=TransposedMat(Q);
+		P:=Inverse(Q)*Order(B);
+		SetMatrixOfEigenvalues(B, P);
+		B:=ReorderRelations(B, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], perm)));
+		return MatrixOfEigenvalues(B);
+	end);
+
+ InstallMethod( MatrixOfEigenvalues, 
+ 	"for IsAssociationScheme",
+ 	[ IsIntersectionAlgebraObject],
+	function(A)
+		local inter, idems, alg, reps, P1, k, i, valencies, d, P2, B, Q, m, v, vals, n, f, pol, perm, L, ks, eigs,
+				polys, eig, lambda, P, factored, done, good, notdone, RIdem, Alg, Idem, F, IM2, lenIdem, SimplifyIdem,
+				poly, breakdownpoly;
+
 
 	    SimplifyIdem := function(idem)
 	        local i, j, idem2, IsPrim;
@@ -213,55 +273,6 @@ InstallMethod( Order,
 
 	        return idem2;
 	    end;
-
-		if AdmitsMetricOrdering(A) then
-			perm:=FirstMetricOrdering(A);
-			Remove(perm, 1);
-			perm:=PermList(perm);
-			B:=ReorderRelations(A, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], Inverse(perm))));
-			L:=TransposedMat(IntersectionMatrices(B)[2]);
-			d:=NumberOfClasses(B);
-			ks:=List([0 .. d], t -> IntersectionNumber(B, t,t, 0));
-	
-			polys:=MinimalPolynomial(L);;
-			polys:=Factors(polys);
-			done:=[];
-			while polys <> [] do
-				poly:=Remove(polys, 1);
-				if Degree(poly) = 1 then
-					Add(done, poly);
-				else
-					polys:=Concatenation(polys, breakdownpoly(poly));
-				fi;
-			od;
-			eigs := Concatenation(List(done, t -> RootsOfPolynomial(t)));
-
-			if Size(eigs) <> d+1 then
-				Error("wrong number of eigenvalues!");
-			fi;
-
-			# Compute standard sequences and hence eigenvectors
-			vals:=[];;
-			for lambda in eigs do
-				eig := [1, lambda / ks[2] ];;
-				for i in [ 1 .. Size(L)-2] do
-					Add( eig, ( lambda*eig[Size(eig)] - L[i+1][i+1]*eig[Size(eig)] - L[i+1][i]*eig[Size(eig)-1])/L[i+1][i+2] );
-				od;
-				Add(vals, eig);
-			od;
-
-			# Compute dual matrix of eigenvalues
-			Q:=[];;
-			for v in vals do
-				m := Sum(ks)/Sum(List([1 .. d+1], t -> ks[t]*v[t]^2));
-				Add(Q, v*m);;
-			od;
-			Q:=TransposedMat(Q);
-			P:=Inverse(Q)*Order(B);
-			SetMatrixOfEigenvalues(B, P);
-			B:=ReorderRelations(B, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], perm)));
-			return MatrixOfEigenvalues(B);
-		fi;
 
 		if NumberOfCharacters(A) <> NumberOfClasses(A) + 1 then
 			return fail;

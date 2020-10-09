@@ -83,42 +83,12 @@ InstallMethod( FirstPPolynomialOrdering, [IsHomogeneousCoherentConfiguration],
   function(A)
     local stack, current, children, checknext;
 
-    checknext := function(A, ord)
-
-      local m;
-      if Size(ord)=1 and ord[1]=0 then
-        return true;
-      fi;
-      if IntersectionNumber(A, ord[2], ord[Size(ord)-1], ord[Size(ord)]) = 0 then
-        return false;
-      fi;
-      for m in [1 .. Size(ord)-2] do
-        if IntersectionNumber(A, ord[2], ord[m], ord[Size(ord)]) <> 0 then
-          return false;
-        fi;
-      od;
-      return true;
-    end;
-
-    if IsPPolynomial(A) then
-      return [0 .. NumberOfClasses(A)];
-    fi;
     if not IsAssociationScheme(A) then
+      SetFirstPPolynomialOrdering(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), fail);
       return fail;
     fi;
-    stack := [[0]];
-    while stack <> [] do
-      current := Remove(stack, Size(stack));
-      if checknext(A, current) then
-        if Size(current)=NumberOfClasses(A)+1 then
-          return current;
-        else
-          children:=Difference([1..NumberOfClasses(A)], current);
-          Append(stack, List(children, t -> Concatenation(current, [t])));;
-        fi;
-      fi;
-    od;
-    return fail;
+
+    return FirstPPolynomialOrdering(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A));
   end);
 
 InstallMethod( AdmitsPPolynomialOrdering, [IsHomogeneousCoherentConfiguration],
