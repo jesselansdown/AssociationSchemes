@@ -1525,21 +1525,9 @@ InstallMethod( IsCometric, [IsHomogeneousCoherentConfiguration],
 InstallMethod(KreinParameter,
             [IsHomogeneousCoherentConfiguration, IsInt, IsInt, IsInt],
 	function(A, i, j, k)
-		local P, Q, n, d, s, l;
-		if not IsCommutative(A) then
-			return fail;
-		fi;
-		P:=MatrixOfEigenvalues(A);
-		Q:=DualMatrixOfEigenvalues(A);;
-
-		n := Order(A);
-		d:=NumberOfClasses(A);;
-		s:=0;
-		for l in [0 .. d] do
-			s := s + ((ComplexConjugate( P[i+1,l+1] ) * ComplexConjugate( P[j+1,l+1] ) *  P[k+1,l+1])/P[1,l+1]^2);
-		od;
-		s := s*Q[1, i+1]*Q[1, j+1]/n;
-		return s;
+		local B;
+		B := IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);;
+		return KreinParameter(B, i, j, k);
 	end);
 
 InstallMethod(KreinParameters,
