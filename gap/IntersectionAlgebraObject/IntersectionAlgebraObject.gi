@@ -164,11 +164,55 @@ InstallMethod( Order,
 
  InstallMethod( MatrixOfEigenvalues, 
  	"for IsAssociationScheme",
- 	[ IsIntersectionAlgebraObject and IsCommutative],
+ 	[ IsIntersectionAlgebraObject],
 	function(A)
-		# This method assumes that the number of characters is d+1. This is true for commutative CCs.
 		local inter, idems, alg, reps, P1, k, i, valencies, d, P2, B, Q, m, v, vals, n, f, pol, perm, L, ks, eigs,
-				polys, eig, lambda, P, factored, done, good, notdone;
+				polys, eig, lambda, P, factored, done, good, notdone, RIdem, Alg, Idem, F, IM2, lenIdem, SimplifyIdem,
+				poly, breakdownpoly;
+
+		breakdownpoly := function(poly)
+			local m, n, factored;
+			if Degree(poly) = 1 then
+				return [poly];
+			fi;
+			m := Conductor(DefaultField(CoefficientsOfUnivariatePolynomial(poly)));
+			n:=1;
+			while true do
+				factored:=Factors(PolynomialRing(CF(n*m)), poly);
+				if Size(factored) > 1 then
+					return factored;
+				fi;
+				n:=n+1;
+			od;
+		end;
+
+	    SimplifyIdem := function(idem)
+	        local i, j, idem2, IsPrim;
+	        
+	        IsPrim := function(a)
+	            local j, k;
+	            
+	            for j in idem2 do
+	                k := a * j;
+	                if (a <> k) and (IsZero(k) = false) then
+	                    return false;
+	                fi;
+	            od;
+	            return true;
+	        end;
+	        
+	        idem2 := [];
+	        for i in [1..Length(idem)] do
+	            for j in [i..Length(idem)] do
+	                AddSet(idem2, idem[i] * idem[j]);
+	            od;
+	        od;
+	        idem2 := Set(idem2);
+	        idem2 := Filtered(idem2, i -> (IsZero(i) = false));
+	        idem2 := Filtered(idem2, i -> (IsPrim(i) = true));
+
+	        return idem2;
+	    end;
 
 		if AdmitsMetricOrdering(A) then
 			perm:=FirstMetricOrdering(A);
@@ -179,25 +223,19 @@ InstallMethod( Order,
 			d:=NumberOfClasses(B);
 			ks:=List([0 .. d], t -> IntersectionNumber(B, t,t, 0));
 	
-			polys:=[MinimalPolynomial(L)];;
-			good:=[];;
-			m:=1;
-			n:=1;
+			polys:=MinimalPolynomial(L);;
+			polys:=Factors(polys);
+			done:=[];
 			while polys <> [] do
-				pol:=Remove(polys, Size(polys));;
-				factored:=Factors(PolynomialRing(CF(n*m)), pol);
-				done := Filtered(factored, t -> Degree(t)=1);;
-				if Size(factored) > 1 then
-					m:=n*m;
-					n:=0;
+				poly:=Remove(polys, 1);
+				if Degree(poly) = 1 then
+					Add(done, poly);
+				else
+					polys:=Concatenation(polys, breakdownpoly(poly));
 				fi;
-				Append(good, done);
-				notdone := Filtered(factored, t -> Degree(t)>1);;
-				Append(polys, notdone);
-				Sort(polys);
-				n:=n+1;
 			od;
-			eigs := Concatenation(List(good, t -> RootsOfPolynomial(CF(n*m), t)));
+			eigs := Concatenation(List(done, t -> RootsOfPolynomial(t)));
+
 			if Size(eigs) <> d+1 then
 				Error("wrong number of eigenvalues!");
 			fi;
@@ -225,25 +263,62 @@ InstallMethod( Order,
 			return MatrixOfEigenvalues(B);
 		fi;
 
+		if NumberOfCharacters(A) <> NumberOfClasses(A) + 1 then
+			return fail;
+		fi;
+	    
 		inter:=IntersectionMatrices(A);
 		d:=NumberOfClasses(A);;
 
-		alg:=Algebra(SplittingField(A), inter);;
-		idems:=CentralIdempotentsOfAlgebra(alg);;
-	    if Size(idems) <> d+1 then
-	    	Error("Wrong number of idempotents!\n");
+	    Alg := Algebra(Rationals, IntersectionMatrices(A));
+	    RIdem := CentralIdempotentsOfAlgebra(Alg);
+	    if IsRationals(SplittingField(A)) then
+	        if Size(RIdem) <> d+1 then
+	            Error("Wrong number of idempotents!\n");
+	        fi;
+	        reps:=List(inter, t -> t[1]);;
+	        P1:=Inverse(TransposedMat(List(RIdem, t -> SolutionMat(reps, t[1]))));
+	        # The central idempotents are linear combinations of intersection matrices, defined by
+	        # the Q matrix.
+	        valencies:=Valencies(A);
+	        P2:=[valencies];; # By convention the valencies form the first row, so we reorder
+	        k:=First([1 .. d+1], t -> P1[t]=valencies);
+	        for i in Difference([1 .. d+1], [k]) do
+	            Add(P2, P1[i]);
+	        od;
+	        return P2;
+	    else
+	        L := DivisorsInt(Conductor(SplittingField(A)));
+	        L := Filtered(L, t -> t<>1);
+	        L := List(L, i->CF(i));
+	        Idem := [IdentityMat(NumberOfClasses(A)+1)];
+	        for F in L do
+	            for i in [1..Length(RIdem)] do
+	                IM2 := List(IntersectionMatrices(A), x -> x*RIdem[i]);
+	                Add(IM2, IdentityMat(NumberOfClasses(A)+1));
+	                IM2 := Set(IM2);
+	                Alg := Algebra(F, IM2);
+	                lenIdem := Length(Idem);
+	                UniteSet(Idem, CentralIdempotentsOfAlgebra(Alg));
+	                if Length(Idem) > lenIdem then
+	                    Idem := SimplifyIdem(Idem);
+	                    if Length(Idem) = NumberOfCharacters(A) then
+	                        reps:=List(inter, t -> t[1]);;
+	                        P1:=Inverse(TransposedMat(List(Idem, t -> SolutionMat(reps, t[1]))));
+	                        # The central idempotents are linear combinations of intersection matrices, defined by
+	                        # the Q matrix.
+	                        valencies:=Valencies(A);
+	                        P2:=[valencies];; # By convention the valencies form the first row, so we reorder
+	                        k:=First([1 .. d+1], t -> P1[t]=valencies);
+	                        for i in Difference([1 .. d+1], [k]) do
+	                        Add(P2, P1[i]);
+	                        od;
+	                        return P2;
+	                    fi;
+	                fi;
+	            od;
+	        od;
 	    fi;
-		reps:=List(inter, t -> t[1]);;
-		P1:=Inverse(TransposedMat(List(idems, t -> SolutionMat(reps, t[1]))));
-		# The central idempotents are linear combinations of intersection matrices, defined by
-		# the Q matrix.
-		valencies:=Valencies(A);
-		P2:=[valencies];; # By convention the valencies form the first row, so we reorder
-		k:=First([1 .. d+1], t -> P1[t]=valencies);
-		for i in Difference([1 .. d+1], [k]) do
-			Add(P2, P1[i]);
-		od;
-		return P2;
 	end);
 
 InstallMethod( DualMatrixOfEigenvalues, 
