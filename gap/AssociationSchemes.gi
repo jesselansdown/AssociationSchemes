@@ -637,18 +637,9 @@ end);
 InstallMethod(IsCommutative,
 			[IsHomogeneousCoherentConfiguration],
 	function(a)
-		local d, i, j, k;
-		d:=NumberOfClasses(a);;
-		for i in [0 .. d] do
-			for j in [0 .. d] do
-				for k in [0 .. d] do
-					if IntersectionMatrices(a)[j+1][i+1,k+1] <> IntersectionMatrices(a)[i+1][j+1,k+1] then
-						return false;
-					fi;
-				od;
-			od;
-		od;
-		return true;
+		local B;
+		B := IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);;
+		return IsCommutative(B);
 	end );
 
  InstallMethod( NumberOfCharacters, 
