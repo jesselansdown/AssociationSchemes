@@ -38,7 +38,12 @@ InstallMethod(HomogeneousCoherentConfiguration,
 
 		A := HomogeneousCoherentConfigurationNC(as[1]);;
 		SetMatrixOfEigenvalues(A, as[2]);;
-
+		if Size(as[2])=Size(TransposedMat(as[2])) then
+			SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), as[2]);
+		else 
+			SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), fail);
+			SetMatrixOfEigenvalues(A, as[2]);
+		fi;
 		return A;
 	end );
 
