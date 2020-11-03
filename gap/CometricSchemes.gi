@@ -24,44 +24,10 @@
 
 InstallMethod( AdmitsQPolynomialOrdering, [IsHomogeneousCoherentConfiguration],
   function(A)
-    local stack, current, children, checknext;
-
-    checknext := function(A, ord)
-
-      local m;
-      if Size(ord)=1 and ord[1]=0 then
-        return true;
-      fi;
-      if KreinParameter(A, ord[2], ord[Size(ord)-1], ord[Size(ord)]) = 0 then
-        return false;
-      fi;
-      for m in [1 .. Size(ord)-2] do
-        if KreinParameter(A, ord[2], ord[m], ord[Size(ord)]) <> 0 then
-          return false;
-        fi;
-      od;
-      return true;
-    end;
-
-    if IsQPolynomial(A) then
-      return true;
-    fi;
     if not IsAssociationScheme(A) then
       return false;
     fi;
-    stack := [[0]];
-    while stack <> [] do
-      current := Remove(stack, Size(stack));
-      if checknext(A, current) then
-        if Size(current)=NumberOfClasses(A)+1 then
-          return true;
-        else
-          children:=Difference([1..NumberOfClasses(A)], current);
-          Append(stack, List(children, t -> Concatenation(current, [t])));;
-        fi;
-      fi;
-    od;
-    return false;
+    return AdmitsQPolynomialOrdering(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A));
   end);
 
 InstallMethod( AdmitsCometricOrdering, [IsHomogeneousCoherentConfiguration],
@@ -72,31 +38,7 @@ InstallMethod( AdmitsCometricOrdering, [IsHomogeneousCoherentConfiguration],
 InstallMethod( IsQPolynomial, [IsHomogeneousCoherentConfiguration],
   function(A)
     local d, i, checknext;
-
-    checknext := function(A, ord)
-
-      local m;
-      if Size(ord)=1 and ord[1]=0 then
-        return true;
-      fi;
-      if KreinParameter(A, ord[2], ord[Size(ord)-1], ord[Size(ord)]) = 0 then
-        return false;
-      fi;
-      for m in [1 .. Size(ord)-2] do
-        if KreinParameter(A, ord[2], ord[m], ord[Size(ord)]) <> 0 then
-          return false;
-        fi;
-      od;
-      return true;
-    end;
-
-    d := NumberOfClasses(A);
-    for i in [0 .. d] do
-      if not checknext(A, [0 .. i]) then
-        return false;
-      fi;
-    od;
-    return true;
+    return IsQPolynomial(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A));
   end);
 
 InstallMethod( IsCometric, [IsHomogeneousCoherentConfiguration],
@@ -108,42 +50,10 @@ InstallMethod( IsCometric, [IsHomogeneousCoherentConfiguration],
 InstallMethod(AllQPolynomialOrderings,
             [IsHomogeneousCoherentConfiguration],
   function(A)
-    local stack, current, children, checknext, keep;
-
-    checknext := function(A, ord)
-
-      local m;
-      if Size(ord)=1 and ord[1]=0 then
-        return true;
-      fi;
-      if KreinParameter(A, ord[2], ord[Size(ord)-1], ord[Size(ord)]) = 0 then
-        return false;
-      fi;
-      for m in [1 .. Size(ord)-2] do
-        if KreinParameter(A, ord[2], ord[m], ord[Size(ord)]) <> 0 then
-          return false;
-        fi;
-      od;
-      return true;
-    end;
-
     if not IsAssociationScheme(A) then
-      return [];
+      return fail;
     fi;
-    stack := [[0]];
-    keep := [];
-    while stack <> [] do
-      current := Remove(stack, Size(stack));
-      if checknext(A, current) then
-        if Size(current)=NumberOfClasses(A)+1 then
-          Add(keep, current);
-        else
-          children:=Difference([1..NumberOfClasses(A)], current);
-          Append(stack, List(children, t -> Concatenation(current, [t])));;
-        fi;
-      fi;
-    od;
-    return Set(keep);
+    return AllQPolynomialOrderings(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A));
   end);
 
 InstallMethod( AllCometricOrderings, [IsHomogeneousCoherentConfiguration],
@@ -153,21 +63,9 @@ InstallMethod( AllCometricOrderings, [IsHomogeneousCoherentConfiguration],
 
 InstallMethod(KreinArray,
             [IsHomogeneousCoherentConfiguration],
-    function( A )
-        local krein_array, d, i;
-        krein_array:=[[],[]];
-        d:=NumberOfClasses(A);
-        if not IsCometric(A) then
-          return fail;
-        fi;
-        for i in [0 .. d-1] do
-            Add(krein_array[1], KreinParameter(A, 1, i+1, i));
-        od;
-        for i in [1 .. d] do
-            Add(krein_array[2], KreinParameter(A, 1, i-1, i));
-        od;
-        return krein_array;
-    end);
+  function( A )
+    return KreinArray(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A));
+  end);
 
 InstallMethod(DualIntersectionArray,
       [IsHomogeneousCoherentConfiguration],
