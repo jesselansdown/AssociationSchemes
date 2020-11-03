@@ -181,7 +181,7 @@ InstallMethod(ReorderRelations,
         if HasMatrixOfEigenvalues(a) then
         	P:=TransposedMat(MatrixOfEigenvalues(a));
         	P2:=TransposedMat(List([0 .. d], t -> P[L[t+1]+1] ));;
-        	SetMatrixOfEigenvalues(m2, P2);;
+        	SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), P2);;
         fi;
         return m2;
     end);
@@ -1515,6 +1515,9 @@ InstallMethod(ReadHomogeneousCoherentConfigurationWithCertainAttributes,
 		for x in out do
 			Setter(EvalString(x[1]))(A, x[2]);;
 		od;
+		if HasMatrixOfEigenvalues(A) then
+			SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), MatrixOfEigenvalues(A));;
+		fi;
 		return A;
 	end);
 
@@ -1530,7 +1533,7 @@ InstallMethod(ReorderMinimalIdempotents,
         Q:=TransposedMat(DualMatrixOfEigenvalues(a));
         Q2:=TransposedMat(List([0 .. d], t -> Q[L[t+1]+1] ));;
         P:=Inverse(Q2)*Order(a);;
-        SetMatrixOfEigenvalues(m2, P);;
+        SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), P);;
         return m2;
     end);
 
@@ -1620,6 +1623,9 @@ InstallMethod( Display,
 	"for IsAssociationScheme",
 	[ IsHomogeneousCoherentConfiguration],
 	function( a )
+		if HasMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(a)) then
+			MatrixOfEigenvalues(a);
+		fi;
  		if HasIsSymmetricCoherentConfiguration(a) and IsSymmetricCoherentConfiguration(a) then
  			Print( NumberOfClasses(a), "-class association scheme of order ", Order(a), ".\n");
  		else
