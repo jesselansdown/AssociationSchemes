@@ -27,6 +27,6 @@
 #! @Arguments G
 #! @Returns intersection algebra
 #! @Description
-#!	Returns the Schurian scheme defined by $G$, where $G$ is a generously transitive permutation group.
+#!	Returns the Schurian scheme defined by $G$, where $G$ is a transitive permutation group.
 #!	A Schurian scheme is a special case of CoherentConfigurationByOrbitals and is symmetric.
 DeclareOperation( "SchurianSchemeIntersectionAlgebra", [IsPermGroup]);
