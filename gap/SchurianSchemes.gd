@@ -24,6 +24,34 @@
 
 
 #! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns group or false
+#! @Description
+#!	Checks if the coherent configuration was constructed by a group and returns it if it was, or returns false otherwise.
+DeclareAttribute( "ConstructorGroup", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments G
+#! @Returns homogeneous coherent configuration
+#! @Description
+#!	Constructs a "group-case" coherent configuration, where the relations are defined by the orbitals
+#!	of $G$ on $\{1, \ldots, n\} \times \{1, \ldots, n\}$.
+#!	$G$ must be a permutation group which is transitive on $\{1, \ldots, n\}$.
+DeclareOperation( "HomogeneousCoherentConfigurationByOrbitals", [IsPermGroup]);
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments G, H
+#! @Returns homogeneous coherent configuration
+#! @Description
+#!	Constructs a "group-case" coherent configuration, where the relations are defined by the orbitals
+#!	of $G$ on $G/H$. $G$ is a group, $H$ is a subgroup of $G$, $G/H$ is the set of right cosets of $G$ on $H$,
+#!	and $G$ must be transitive on $G/H$.
+DeclareOperation( "HomogeneousCoherentConfigurationByOrbitals", [IsGroup, IsGroup]);
+
+#! @Chapter Functionality
 #! @Section Properties Of Homogeneous Coherent Configurations
 #! @Arguments G
 #! @Returns true or false
@@ -44,7 +72,7 @@ DeclareOperation("IsGenerouslyTransitive", [IsPermGroup, IsList]);
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
-#!	Checks if the input is a Schurian scheme, that is, if the automorphism group is generously transitive.
+#!	Checks if the input is a Schurian scheme, that is, if the automorphism group is transitive.
 DeclareProperty( "IsSchurian", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
@@ -54,4 +82,12 @@ DeclareProperty( "IsSchurian", IsHomogeneousCoherentConfiguration );
 #! @Description
 #!	Returns the Schurian scheme defined by $G$, where $G$ is a generously transitive permutation group.
 #!	A Schurian scheme is a special case of CoherentConfigurationByOrbitals and is symmetric.
-DeclareOperation( "SchurianScheme", [IsPermGroup]);
+DeclareOperation( "SchurianAssociationScheme", [IsPermGroup]);
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments G
+#! @Returns homogeneous coherent configuration
+#! @Description
+#!	Alias for HomogeneousCoherentConfigurationByOrbitals
+DeclareOperation("SchurianCoherentConfiguration", [IsPermGroup]);

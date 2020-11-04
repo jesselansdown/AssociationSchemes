@@ -44,7 +44,7 @@ InstallMethod(HammingScheme,
 			[IsPosInt, IsPosInt],
 	function( n, q)
 		local A;
-		A := SchurianScheme( WreathProductProductAction(SymmetricGroup(q),SymmetricGroup(n)));;
+		A := SchurianAssociationScheme( WreathProductProductAction(SymmetricGroup(q),SymmetricGroup(n)));;
 		SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), MatrixOfEigenvaluesOfHammingScheme(n, q));
 		return A;
 	end);
