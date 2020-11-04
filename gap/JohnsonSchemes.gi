@@ -51,6 +51,6 @@ InstallMethod(JohnsonScheme,
 	    G := SymmetricGroup(n);
 	    H := Stabiliser(G, [1..k], OnSets);;
         A := HomogeneousCoherentConfigurationByOrbitals(G, H);
-        SetMatrixOfEigenvalues(A, MatrixOfEigenvaluesOfJohnsonScheme(n, k));
+        SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), MatrixOfEigenvaluesOfJohnsonScheme(n, k));
         return A;
 	end);

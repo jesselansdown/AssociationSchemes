@@ -53,6 +53,6 @@ InstallMethod(GrassmannScheme,
 		maximals := List(maximals, Unpack);;
 		g_perm:=Action(g, maximals,OnSubspacesByCanonicalBasis);;
 		A := SchurianScheme(g_perm);;
-		SetMatrixOfEigenvalues(A, MatrixOfEigenvaluesOfGrassmannScheme(n, k, q));
+		SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), MatrixOfEigenvaluesOfGrassmannScheme(n, k, q));
 		return A;
 	end);

@@ -117,7 +117,7 @@ InstallMethod(FusionOfHomogeneousCoherentConfigurations,
 			newP :=[Remove(PS, 1)];
 			Append(newP, Set(PS));
 			if IsCharacterTableOfHomogeneousCoherentConfiguration(m2, newP) then
-				SetMatrixOfEigenvalues(m2, newP);
+				SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), newP);
 			fi;
 		fi;
 		# set IsFusionOfHomogeneousCoherentConfigurations := true;
