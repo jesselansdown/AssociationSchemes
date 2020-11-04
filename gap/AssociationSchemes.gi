@@ -708,17 +708,21 @@ InstallMethod(IsCommutative,
 		if NumberOfCharacters(A) = NumberOfClasses(A) +1 then
 			return MatrixOfEigenvalues(B);
 		else
-			return MatrixOfEigenvaluesNonSquare(A);
+			SetMatrixOfEigenvalues(B, fail);
+			return fail;
 		fi;
 	end);
 
 
- InstallMethod( MatrixOfEigenvaluesNonSquare, 
+ InstallMethod( CharacterTableOfHomogeneousCoherentConfiguration, 
  	"for IsAssociationScheme",
  	[ IsHomogeneousCoherentConfiguration ],
 	function(A)
 	    local nc, ct, d, i, j, k, am, n, Val, ct2, im, alg, idems, inter, valencies, polys, CyclotomicLimit, trigger, n2, mult, f, B, FieldLimit;
 
+	    	if MatrixOfEigenvalues(A) <> fail then
+	    		return MatrixOfEigenvalues(A);
+	    	fi;
 	        inter:=IntersectionMatrices(A);
 	        d:=NumberOfClasses(A)+1;;
 	        # If polys is empty, then all are reducible polynomials, and this returns 1.
@@ -785,100 +789,13 @@ InstallMethod(IsCommutative,
 	end);
 
 
-InstallMethod( CharacterTable, [IsHomogeneousCoherentConfiguration],
-	function(R)
-	    return MatrixOfEigenvalues(R);
-	end);
-
-
-
- # InstallMethod( MatrixOfEigenvalues, 
- # 	"for IsAssociationScheme",
- # 	[ IsHomogeneousCoherentConfiguration ],
-	# function(m)
-	# 	local orthogonality_check, inter, eigs, d, feasiblerows, posvals, stopvals, i, row, valencies, wow, stack, options, P, P2, current;;
-
-	# 	orthogonality_check := function(thing, valencies)
-	# 		local i;
-	# 		for i in [1 .. Size(thing)-1] do
-	# 			if not Sum(List([1..Size(thing[1])], t -> thing[i][t]*thing[Size(thing)][t]/valencies[t] ))=-1 then
-	# 				return false;
-	# 			fi;
-	# 		od;
-	# 		# also put the orthogonal relation with itself? This requires m_i
-	# 		return true;
-	# 	end;
-
-	# 	d:=NumberOfClasses(m);
-	# 	inter:=IntersectionMatrices(m);
-	# 	if Size(CentralIdempotentsOfAlgebra(Algebra(Rationals, inter))) <> d then
-	# 		# This method only works for rational eigenvalues, with d characters.
-	# 		# I.e some non-commutative schemes, or schemes with non-rational eigenvalues
-	# 		# must be tackled with a different method
-	# 		return fail;
-	# 	fi;
-
-	# 	valencies:=ShallowCopy(Valencies(m));
-	# 	Remove(valencies, 1);;
-
-	# 	eigs:=List(inter, t ->  Eigenvalues(Rationals,t));
-	# 	Remove(eigs,1);
-
-	# 	feasiblerows:=[];
-
-	# 	posvals := ListWithIdenticalEntries(d, 1);;
-	# 	stopvals := List(eigs, Size);;
-	#     posvals[1]:=0;
-	# 	while posvals <> stopvals do
-	# 		posvals[1]:=posvals[1]+1;
-	# 		for i in [1.. d] do
-	# 			if posvals[i] > Size(eigs[i]) then
-	# 				posvals[i]:=1;
-	# 				posvals[i+1]:=posvals[i+1]+1;
-	# 			fi;
-	# 		od;
-	# 		row:=ListWithIdenticalEntries(d,1);
-	# 		for i in [1 .. d] do
-	# 			row[i]:=eigs[i][posvals[i]];
-	# 			if Sum(row)=-1 then
-	# 				Add(feasiblerows, row);;
-	# 			fi;
-	# 		od;
-	# 	od;
-
-	# 	stack := List(feasiblerows, t -> [t]);;
-	# 	while stack <> [] do
-	# 		current:=Remove(stack);;
-	# 		if Size(current) < d then
-	# 		# 	if correct size, then check that for all i, eigs[i] in current{[1..d]}[i] - just take transpose
-	# 		#	if ok, then check the column orthogonality
-	# 		#	Any other checks? Gives a valid Q matrix?
-	# 		options:=List(feasiblerows, t -> Concatenation(current, [t]) );;
-	# 		options:=Filtered(options, t -> orthogonality_check(t, valencies));
-	# 		Append(stack, options);
-	# 		else
-	# 			P:=NullMat(d+1, d+1);
-	# 			P:=P+1;;
-	# 			P[1]{[2..d+1]}:=valencies;
-	# 			P{[2..d+1]}{[2..d+1]}:=current;
-	# 			P2 := TransposedMat(P);;
-	# 			if ForAll([1 .. d], t -> ForAll(eigs[t], x -> x in P2[t+1])) then
-	# 	         	if IsCharacterTableOfHomogeneousCoherentConfiguration(m, P) then
-	# 					return P;
-	# 			 	fi;
-	# 			fi;
-	# 		fi;
-	# 	od;
-	# 	return fail	;
-	# end);
-
-
-
-
 InstallMethod( DualMatrixOfEigenvalues, 
 	"for IsAssociationScheme",
 	[ IsHomogeneousCoherentConfiguration ],
 	function( a )
+		if MatrixOfEigenvalues(a) = fail then
+			return fail;
+		fi;
 		return Inverse(MatrixOfEigenvalues(a))*Order(a);
 	end );
 
@@ -1365,50 +1282,6 @@ InstallMethod(KreinParameters,
 	    
 # 	    return Set(L);
 # 	end);
-
-InstallMethod(IsCharacterTableOfHomogeneousCoherentConfiguration,
-			[IsHomogeneousCoherentConfiguration, IsMatrix],
-	function(a, P)
-        # Find minimal idempotents of the intersection matrix
-        # Check that they are actually minimal idempotents
-        # The intersection algebra is isomorphic to the Bose-Mesner algebra
-        # The adjacency matrices are in bijection with the intersection matrices.
-        # Note: This assumes that we can construct the Bose-Mesner algebra, i.e commutative
-        local j, i, mat, idems, d, Q, adjacencymatrices;
-        if not Size(P) = Size(P[1]) then
-            Print("This method is only for square matrices (corresponding to commutative schemes)\n");
-            return fail;
-        fi;
-        Q:=Inverse(P);
-        if Q = fail then
-#        	Print("The character table is not invertible\n");
-        	return fail;
-        fi;
-        idems:=[];
-        d := NumberOfClasses(a);
-        adjacencymatrices := IntersectionMatrices(a);;
-        for j in [1 .. d+1] do
-            mat:=Q[1][j]*adjacencymatrices[1];;
-            for i in [2 .. d+1] do
-                mat := mat + Q[i][j]*adjacencymatrices[i];;
-            od;
-            Add(idems, mat);
-        od;
-        for i in [1 .. d+1] do
-            for j in [1 .. d+1] do
-                if i <> j then
-                    if not IsZero(idems[i]*idems[j]) then
-                        return false;
-                    fi;
-                else
-                    if not (idems[i]*idems[j]=idems[i]) then
-                        return false;
-                    fi;
-                fi;
-            od;
-        od;
-        return true;
-   	end );
 
 InstallMethod(IsThin,
 			[IsHomogeneousCoherentConfiguration],

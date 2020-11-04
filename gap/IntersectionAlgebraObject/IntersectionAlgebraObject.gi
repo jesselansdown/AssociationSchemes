@@ -334,7 +334,7 @@ InstallMethod( Order,
 	end);
 
 
-InstallMethod(IsMatrixOfEigenvaluesForIntersectionAlgebra,
+InstallMethod(IsMatrixOfEigenvalues,
 			[IsIntersectionAlgebraObject, IsMatrix],
 	function(a, P)
         # Find minimal idempotents of the intersection matrix
@@ -344,7 +344,7 @@ InstallMethod(IsMatrixOfEigenvaluesForIntersectionAlgebra,
         # Note: This assumes that we can construct the Bose-Mesner algebra, i.e commutative
         local j, i, mat, idems, d, Q, adjacencymatrices;
         if not Size(P) = Size(P[1]) then
-            Print("This method is only for square matrices (corresponding to commutative schemes)\n");
+            Print("This method is only for square matrices\n");
             return fail;
         fi;
         Q:=Inverse(P);
@@ -394,7 +394,7 @@ InstallMethod(IsMatrixOfEigenvaluesForIntersectionAlgebra,
 			PopulateMatrixOfEigenvalues := function(A, M, eigs, i, j, n)
 				local i2, j2, eig, out, M2, eigs2, x;
 				if i = n and j = n then
-					if IsMatrixOfEigenvaluesForIntersectionAlgebra(A, M) = true then
+					if IsMatrixOfEigenvalues(A, M) = true then
 						return M;
 					else
 						return fail;

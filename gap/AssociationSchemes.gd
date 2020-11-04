@@ -266,11 +266,8 @@ DeclareAttribute( "MatrixOfEigenvalues", IsHomogeneousCoherentConfiguration );
 #! @Arguments CC
 #! @Returns P
 #! @Description
-#!	Alias for MatrixOfEigenvalues.
-DeclareOperation( "CharacterTable", [IsHomogeneousCoherentConfiguration] );
-
-DeclareAttribute( "MatrixOfEigenvaluesSquare", IsHomogeneousCoherentConfiguration );
-DeclareAttribute( "MatrixOfEigenvaluesNonSquare", IsHomogeneousCoherentConfiguration );
+#!	TODO.
+DeclareAttribute( "CharacterTableOfHomogeneousCoherentConfiguration", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Attributes Of Homogeneous Coherent Configurations
@@ -398,8 +395,6 @@ DeclareAttribute( "CanonisingMap", IsHomogeneousCoherentConfiguration );
 #!	Returns the canonical form, CC2, of the homogeneous coherent configuration CC.
 #!	Any homogenouse coherent configuration which is isomorphic to CC will have CC2 as the canonical form.
 DeclareOperation("CanonicalFormOfHomogeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration]);
-
-DeclareOperation( "IsCharacterTableOfHomogeneousCoherentConfiguration", [ IsHomogeneousCoherentConfiguration, IsMatrix ] );
 
 #! @Chapter Functionality
 #! @Section Constructor Methods
