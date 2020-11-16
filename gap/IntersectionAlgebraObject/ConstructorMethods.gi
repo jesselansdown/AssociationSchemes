@@ -67,6 +67,12 @@ InstallMethod(GrassmanSchemeIntersectionAlgebra,
 		return IntersectionAlgebraFromMatrixOfEigenvalues(MatrixOfEigenvaluesOfGrassmannScheme(n, k, q));
 	end);
 
+InstallMethod(CyclotomicSchemeIntersectionAlgebra,
+			[IsPosInt, IsPosInt],
+	function( n, d)
+		return IntersectionAlgebraFromMatrixOfEigenvalues(MatrixOfEigenvaluesOfCyclotomicScheme(n, d));
+	end);
+
 InstallMethod(IntersectionAlgebraFromIntersectionArray,
 			[IsList],
 	function( inter )

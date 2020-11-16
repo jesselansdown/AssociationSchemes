@@ -213,37 +213,3 @@ InstallMethod(WreathProductOfHomogeneousCoherentConfigurations,
 	  
 	    return HomogeneousCoherentConfigurationNC(L);
 	end);
-
-
-
-InstallMethod(CyclotomicScheme,
-			[IsPosInt, IsPosInt],
-	
-	function(n, d)
-	    local i, m, FEr, x, y, M, r, F, FE;
-
-	    if (n-1) mod d <> 0 then
-	    	Error("d must dived n-1\n");
-	    fi;
-	    m := (n - 1) / d;
-	    F := GF(n);
-	    FE := Elements(F);
-	    FEr := [];
-	    for i in [1..d] do
-	        Add(FEr, Set(List([0..m], x -> Z(n)^(d*x+i))));
-	    od;
-	    Add(FEr, [0*Z(n)]);
-	    FEr := Set(FEr);
-	    M := NullMat(n, n);
-	    for x in [1..n] do
-	        for y in [1..n] do
-	            for i in [1..d+1] do
-	                if FE[x] - FE[y] in FEr[i] then
-	                    M[x][y] := i - 1;
-	                fi;
-	            od;
-	        od;
-	    od;
-
-	    return HomogeneousCoherentConfigurationNC(M);
-	end);

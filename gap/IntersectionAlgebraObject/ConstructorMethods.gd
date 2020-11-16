@@ -49,6 +49,14 @@ DeclareOperation("GrassmanSchemeIntersectionAlgebra", [IsPosInt, IsPosInt, IsPos
 
 #! @Chapter Functionality
 #! @Section Constructor Methods
+#! @Arguments n, d
+#! @Returns intersection algebra object
+#! @Description
+#!	Returns the intersection algebra of the Cyclotomic scheme, $Cyc(n, d)$.
+DeclareOperation("CyclotomicSchemeIntersectionAlgebra", [IsPosInt, IsPosInt]);
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
 #! @Arguments n, k, q
 #! @Returns intersection algebra object
 #! @Description

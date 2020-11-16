@@ -11,6 +11,7 @@ ReadPackage( "AssociationSchemes", "gap/Library.gd");
 ReadPackage( "AssociationSchemes", "gap/SchurianSchemes.gd");
 ReadPackage( "AssociationSchemes", "gap/JohnsonSchemes.gd");
 ReadPackage( "AssociationSchemes", "gap/GrassmannSchemes.gd");
+ReadPackage( "AssociationSchemes", "gap/CyclotomicSchemes.gd");
 ReadPackage( "AssociationSchemes", "gap/HammingSchemes.gd");
 ReadPackage( "AssociationSchemes", "gap/Subsets.gd");
 ReadPackage( "AssociationSchemes", "gap/Codes.gd");
