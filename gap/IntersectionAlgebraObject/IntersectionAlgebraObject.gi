@@ -378,7 +378,7 @@ InstallMethod(IsMatrixOfEigenvalues,
         return true;
    	end );
 
- InstallMethod( MatrixOfEigenvaluesViaBacktrack, 
+InstallMethod( MatrixOfEigenvaluesViaBacktrack, 
  	"for IsAssociationScheme",
  	[ IsIntersectionAlgebraObject],
 	function(A)
@@ -448,22 +448,45 @@ InstallMethod(IsMatrixOfEigenvalues,
 				od;
 			end;
 
-			inter:=IntersectionMatrices(A);
-			eigs:=[];
-			for i in [1 .. Size(inter)] do
-				polys:=CharacteristicPolynomial(inter[i]);
-				polys:=Factors(polys);
-				done:=[];
-				while polys <> [] do
-					poly:=Remove(polys, 1);
-					if Degree(poly) = 1 then
-						Add(done, poly);
-					else
-						polys:=Concatenation(polys, breakdownpoly(poly));
-					fi;
+			if IsPrimePowerInt(Order(A)) and (Order(A)-1) mod NumberOfClasses(A) = 0 and Size(Set(Valencies(A){[2..NumberOfClasses(A)+1]}))=1 and Size(Set(List(IntersectionMatrices(A), CharacteristicPolynomial)))=2 then
+				eigs:=MutableCopyMat(TransposedMat(MatrixOfEigenvaluesOfCyclotomicScheme(Order(A), NumberOfClasses(A))));
+				inter:=IntersectionMatrices(A);
+				polys:=List(inter, CharacteristicPolynomial);
+				if not ForAll([1.. NumberOfClasses(A)+1], t -> ForAll(eigs[t], x -> IsZero(Value(polys[t], x)))) then
+					eigs:=[];
+					for i in [1 .. Size(inter)] do
+						polys:=CharacteristicPolynomial(inter[i]);
+						polys:=Factors(polys);
+						done:=[];
+						while polys <> [] do
+							poly:=Remove(polys, 1);
+							if Degree(poly) = 1 then
+								Add(done, poly);
+							else
+								polys:=Concatenation(polys, breakdownpoly(poly));
+							fi;
+						od;
+						Add(eigs, Concatenation(List(done, t -> RootsOfPolynomial(t))));
+					od;
+				fi;
+			else
+				inter:=IntersectionMatrices(A);
+				eigs:=[];
+				for i in [1 .. Size(inter)] do
+					polys:=CharacteristicPolynomial(inter[i]);
+					polys:=Factors(polys);
+					done:=[];
+					while polys <> [] do
+						poly:=Remove(polys, 1);
+						if Degree(poly) = 1 then
+							Add(done, poly);
+						else
+							polys:=Concatenation(polys, breakdownpoly(poly));
+						fi;
+					od;
+					Add(eigs, Concatenation(List(done, t -> RootsOfPolynomial(t))));
 				od;
-				Add(eigs, Concatenation(List(done, t -> RootsOfPolynomial(t))));
-			od;
+			fi;
 
 			for i in [1 .. NumberOfClasses(A)+1] do
 				x:=First([1 .. Size(eigs[i])], t -> eigs[i][t] = Valencies(A)[i]);
