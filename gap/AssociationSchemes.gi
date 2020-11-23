@@ -157,7 +157,7 @@ InstallMethod(AssociationScheme,
 InstallMethod(ReorderRelations,
             [IsHomogeneousCoherentConfiguration, IsList],
     function( a, L )
-        local mat, m, i, j, m2, d, n, L2, P, P2;
+        local mat, m, i, j, m2, d, n, L2, P, P2, Q, Q2;
         d:=NumberOfClasses(a);;
         n:=Order(a);
         if not Set(L) =[0..d] then
@@ -182,6 +182,11 @@ InstallMethod(ReorderRelations,
         	P:=TransposedMat(MatrixOfEigenvalues(a));
         	P2:=TransposedMat(List([0 .. d], t -> P[L[t+1]+1] ));;
         	SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), P2);;
+	        if HasDualMatrixOfEigenvalues(a) then
+	        	Q:=DualMatrixOfEigenvalues(a);
+		       	Q2:=List([0 .. d], t -> Q[L[t+1]+1] );;
+		        SetDualMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), Q2);;
+		    fi;
         fi;
         return m2;
     end);
@@ -1397,7 +1402,7 @@ InstallMethod(ReadHomogeneousCoherentConfigurationWithCertainAttributes,
 InstallMethod(ReorderMinimalIdempotents,
             [IsHomogeneousCoherentConfiguration, IsList],
     function( a, L )
-        local d, m2, Q, Q2, P;
+        local d, m2, Q, Q2, P, P2;
         d:=NumberOfClasses(a);;
         if not L[1]=0 then
             return fail;
@@ -1405,8 +1410,11 @@ InstallMethod(ReorderMinimalIdempotents,
         m2 := HomogeneousCoherentConfigurationNC(RelationMatrix(a));
         Q:=TransposedMat(DualMatrixOfEigenvalues(a));
         Q2:=TransposedMat(List([0 .. d], t -> Q[L[t+1]+1] ));;
-        P:=Inverse(Q2)*Order(a);;
-        SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), P);;
+       	P:=MatrixOfEigenvalues(a);
+       	P2:=List([0 .. d], t -> P[L[t+1]+1] );;
+       	SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), P2);;
+#        P:=Inverse(Q2)*Order(a);;
+#        SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), P);;
         return m2;
     end);
 

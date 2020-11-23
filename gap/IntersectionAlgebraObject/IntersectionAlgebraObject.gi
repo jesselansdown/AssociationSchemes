@@ -616,7 +616,7 @@ InstallMethod( IsPAntipodal, [IsIntersectionAlgebraObject],
 InstallMethod(ReorderRelations,
             [IsIntersectionAlgebraObject, IsList],
     function( a, L )
-        local d, P, P2, a2, i, j, k, intersectionMatrices;
+        local d, P, P2, a2, i, j, k, intersectionMatrices, Q, Q2;
         d:=NumberOfClasses(a);;
         if not Set(L) =[0..d] then
             return fail;
@@ -629,6 +629,11 @@ InstallMethod(ReorderRelations,
 	       	P2:=TransposedMat(List([0 .. d], t -> P[L[t+1]+1] ));;
 	       	a2 := IntersectionAlgebraFromMatrixOfEigenvalues(P2);;
 	        SetMatrixOfEigenvalues(a2, P2);;
+	        if HasDualMatrixOfEigenvalues(a) then
+	        	Q:=DualMatrixOfEigenvalues(a);
+		       	Q2:=List([0 .. d], t -> Q[L[t+1]+1] );;
+		        SetDualMatrixOfEigenvalues(a2, Q2);;
+		    fi;
 	        return a2;
 	    else
 			intersectionMatrices:=List([1..d+1], t-> NullMat(d+1, d+1));
@@ -646,15 +651,17 @@ InstallMethod(ReorderRelations,
 InstallMethod(ReorderMinimalIdempotents,
             [IsIntersectionAlgebraObject and IsCommutative, IsList],
     function( a, L )
-        local d, a2, Q, Q2, P;
+        local d, a2, Q, Q2, P, P2;
         d:=NumberOfClasses(a);;
         if not L[1]=0 then
             return fail;
         fi;
         Q:=TransposedMat(DualMatrixOfEigenvalues(a));
         Q2:=TransposedMat(List([0 .. d], t -> Q[L[t+1]+1] ));;
-        P:=Inverse(Q2)*Order(a);;
-    	a2:=IntersectionAlgebraFromMatrixOfEigenvalues(P);;
+       	P:=MatrixOfEigenvalues(a);
+       	P2:=List([0 .. d], t -> P[L[t+1]+1] );;
+    	a2:=IntersectionAlgebraFromMatrixOfEigenvalues(P2);;
+    	SetDualMatrixOfEigenvalues(a2, Q2);
         return a2;
     end);
 
