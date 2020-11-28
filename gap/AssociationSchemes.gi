@@ -801,7 +801,7 @@ InstallMethod( DualMatrixOfEigenvalues,
 		if MatrixOfEigenvalues(a) = fail then
 			return fail;
 		fi;
-		return Inverse(MatrixOfEigenvalues(a))*Order(a);
+		return DualMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(a));
 	end );
 
 InstallMethod( MinimalIdempotents, 
@@ -1413,6 +1413,7 @@ InstallMethod(ReorderMinimalIdempotents,
        	P:=MatrixOfEigenvalues(a);
        	P2:=List([0 .. d], t -> P[L[t+1]+1] );;
        	SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), P2);;
+       	SetDualMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), Q2);;
 #        P:=Inverse(Q2)*Order(a);;
 #        SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), P);;
         return m2;
