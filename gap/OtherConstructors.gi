@@ -213,3 +213,32 @@ InstallMethod(WreathProductOfHomogeneousCoherentConfigurations,
 	  
 	    return HomogeneousCoherentConfigurationNC(L);
 	end);
+
+
+InstallMethod(BipartiteDoubleOfAssociationScheme,
+			[IsHomogeneousCoherentConfiguration],
+# cf. Martin, Muzychuk, Williford, "Imprimitive cometric association schemes: Constructions and analysis"
+	function(A)
+	local M, B, Pmat, i, r;
+		if not IsAssociationScheme(A) then
+			return Error("Must give an association scheme, that is, a symmetric coherent configuration\n");
+		fi;
+		M:=NullMat(2*Order(A), 2*Order(A));;
+		M{[1 .. Order(A)]}{[1 .. Order(A)]} := RelationMatrix(A);;
+		M{[Order(A)+1 .. 2*Order(A)]}{[Order(A)+1 .. 2*Order(A)]} := RelationMatrix(A);;
+		M{[1 .. Order(A)]}{[Order(A)+1 .. 2*Order(A)]} := RelationMatrix(A)+NumberOfClasses(A)+1;;
+		M{[Order(A)+1 .. 2*Order(A)]}{[1 .. Order(A)]} := RelationMatrix(A)+NumberOfClasses(A)+1;;
+		B := AssociationSchemeNC(M);
+		if HasMatrixOfEigenvalues(A) then
+			Pmat:=NullMat(2*(NumberOfClasses(A)+1), 2*(NumberOfClasses(A)+1));
+			for i in [1 .. NumberOfClasses(A)+1] do
+				r:=MatrixOfEigenvalues(A)[i];
+				Pmat[i]{[1 .. Size(r)]}:=r;
+				Pmat[i]{[Size(r)+1 .. 2*Size(r)]}:=r;
+				Pmat[i+NumberOfClasses(A)+1]{[1 .. Size(r)]}:=r;
+				Pmat[i+NumberOfClasses(A)+1]{[Size(r)+1 .. 2*Size(r)]}:=-r;
+			od;
+			SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(B), Pmat);
+		fi;
+		return B;
+	end);

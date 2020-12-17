@@ -74,3 +74,11 @@ DeclareOperation( "DirectProductOfHomogeneousCoherentConfigurations", [IsHomogen
 #! @Description
 #!	Takes two homogeneous coherent configurations CC1 and CC2 and returns their wreath product.
 DeclareOperation( "WreathProductOfHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments A
+#! @Returns Association scheme
+#! @Description
+#!	Returns the bipartite double of an associatiojn scheme.
+DeclareOperation( "BipartiteDoubleOfAssociationScheme", [IsHomogeneousCoherentConfiguration]);
