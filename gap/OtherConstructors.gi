@@ -242,3 +242,51 @@ InstallMethod(BipartiteDoubleOfAssociationScheme,
 		fi;
 		return B;
 	end);
+
+InstallMethod(ExtendedQBipartiteDouble,
+			[IsHomogeneousCoherentConfiguration],
+	# See Martin, Muzychuk, Williford "Imprimitive cometric association schemes: Constructions and analysis"
+	function(A)
+	local Aplus, Aminus, x, y, B, d, mats, i;
+
+	if not IsAssociationScheme(A) then
+		Error("Must give an association scheme!\n");
+	fi;
+	if not IsCometric(A) then
+		Error("Extended Q-bipartite doubles can only be computed for cometric association schemes!\n");
+	fi;
+	if Size(Set(Sum(KreinArray(A)))) <> 1 then
+		Error("Krein conditions not met! We require b_j^* + c_{j+1}^* = m + 1 for 0 =< j < d\n");
+	fi;
+
+	Aplus := function(A, val)
+		local M;
+		M:=NullMat(2*Order(A), 2*Order(A));
+		M{[1 .. Order(A)]}{[1 .. Order(A)]}:=AdjacencyMatrices(A)[val+1];
+		M{[Order(A)+1 .. 2*Order(A)]}{[Order(A)+1 .. 2*Order(A)]}:=AdjacencyMatrices(A)[val+1];
+		return M;
+	end;
+
+	Aminus := function(A, val)
+		local M;
+		M:=NullMat(2*Order(A), 2*Order(A));
+		M{[Order(A)+1 .. 2*Order(A)]}{[1 .. Order(A)]}:=AdjacencyMatrices(A)[val+1];
+		M{[1 .. Order(A)]}{[Order(A)+1 .. 2*Order(A)]}:=AdjacencyMatrices(A)[val+1];
+		return M;
+	end;
+
+	x:=TransposedMat(DualMatrixOfEigenvalues(A))[2];
+	y:=List([1 .. Size(x)], t -> [x[t], t-1]);
+	Sort(y, function(u, v) return u[1]>v[1];end);
+	y:=List(y, t -> t[2]);
+	B:=ReorderRelations(A, y);
+
+	d:=NumberOfClasses(B);
+	mats:=[];;
+	Add(mats, Aplus(B, 0));
+	for i in [1 .. d] do
+		Add(mats, Aplus(B, i)+Aminus(B, d+1-i));
+	od;
+	Add(mats, Aminus(B, 0));
+	return HomogeneousCoherentConfiguration(Sum(List([1..5], t -> (t-1)*mats[t])));
+end);

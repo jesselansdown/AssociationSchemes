@@ -82,3 +82,11 @@ DeclareOperation( "WreathProductOfHomogeneousCoherentConfigurations", [IsHomogen
 #! @Description
 #!	Returns the bipartite double of an associatiojn scheme.
 DeclareOperation( "BipartiteDoubleOfAssociationScheme", [IsHomogeneousCoherentConfiguration]);
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments A
+#! @Returns Association scheme
+#! @Description
+#!	Given a cometric association scheme satisfying $b_j^* + c_{j+1}^* = m +1$ for $0 \leq j < d$, returns the extended Q-bipartite double.
+DeclareOperation( "ExtendedQBipartiteDouble", [IsHomogeneousCoherentConfiguration]);
