@@ -106,7 +106,7 @@ InstallMethod( Order,
 #		if not IsCommutative(A) then
 #			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
 #		fi;
-		if HasMatrixOfEigenvalues(A) then
+		if HasMatrixOfEigenvalues(A) and MatrixOfEigenvalues(A)<>fail then
 			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
 		fi;
 		if HasDualMatrixOfEigenvalues(A) then
