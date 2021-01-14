@@ -809,22 +809,63 @@ InstallMethod( MinimalIdempotents,
 	[ IsHomogeneousCoherentConfiguration],
 	function(a)
 		local j, i, mat, idems, d, Q, relmat, n, x, y;
-		idems:=[];
-		d := NumberOfClasses(a);
-		Q := DualMatrixOfEigenvalues(a)/Order(a);
-		relmat:=RelationMatrix(a);
-		n:=Order(a);
-		for j in [0 .. d] do
+		if IsCommutative(a) then
+			idems:=[];
+			d := NumberOfClasses(a);
+			Q := DualMatrixOfEigenvalues(a)/Order(a);
+			relmat:=RelationMatrix(a);
+			n:=Order(a);
+			for j in [0 .. d] do
+				mat := NullMat(n, n);;
+				for x in [1 .. n] do
+					for y in [1 .. n] do
+						i:=relmat[x, y];
+						mat[x,y]:=Q[i+1][j+1];
+					od;
+				od;
+				Add(idems, mat);
+			od;
+			return idems;
+		else
+			return MinimalIdempotentsOverField(a, SplittingField(a));;
+		fi;
+	end);
+
+
+InstallMethod( MinimalIdempotentsOverField, 
+	"for IsAssociationScheme",
+	[ IsHomogeneousCoherentConfiguration, IsField],
+	function(CC, F)
+		local idems, x, map, idems2, d, j, i, y, mat, n, relmat;;
+		if HasSplittingField(CC) and SplittingField(CC)=F then
+			if IsCommutative(CC) then
+				return MinimalIdempotents(CC);
+			else
+				if HasMinimalIdempotents(CC) then
+					return MinimalIdempotents(CC);
+				fi;
+			fi;
+		fi;
+		idems := CentralIdempotentsOfAlgebra(Algebra(F, IntersectionMatrices(CC)));;
+		x:=List(IntersectionMatrices(CC), t -> t[1]);
+		map:=List(idems, t -> SolutionMat(x, t[1]));
+		map:=Filtered(map, t -> not Set(t)=[1/Order(CC)]);
+		map := Concatenation([ListWithIdenticalEntries(NumberOfClasses(CC)+1, 1/Order(CC))], map);
+		idems2:=[];;
+		relmat:=RelationMatrix(CC);
+		d:=Size(map)-1;;
+		n:=Order(CC);;
+		for i in [0 .. d] do
 			mat := NullMat(n, n);;
 			for x in [1 .. n] do
 				for y in [1 .. n] do
-					i:=relmat[x, y];
-					mat[x,y]:=Q[i+1][j+1];
+					j:=relmat[x, y];
+					mat[x,y]:=map[i+1][j+1];
 				od;
 			od;
-			Add(idems, mat);
+			Add(idems2, mat);
 		od;
-		return idems;
+		return idems2;
 	end);
 
 

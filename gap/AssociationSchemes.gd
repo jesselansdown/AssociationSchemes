@@ -288,6 +288,15 @@ DeclareAttribute( "MinimalIdempotents", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Matrices Describing Homogeneous Coherent Configurations
+#! @Arguments CC, F
+#! @Returns L
+#! @Description
+#!	Returns a list $L$ which is a basis of minimal idempotents for the adjacency algebra of a homogeneous coherent configuration CC, over the field F.
+#!	The $i$-th entry of $L$ is $E_{i-1}$.
+DeclareOperation( "MinimalIdempotentsOverField", [ IsHomogeneousCoherentConfiguration, IsField ] );
+
+#! @Chapter Functionality
+#! @Section Matrices Describing Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns E_j
 #! @Description
