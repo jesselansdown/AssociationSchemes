@@ -29,7 +29,7 @@
 #! @Description
 #!	Takes a $d$-class homogeneous coherent configuration CC and returns a fusion scheme corresponding to L,
 #!	where L is a partion of $\{0, \ldots, d\}$. Returns fail if $L$ is not a valid partition.
-DeclareOperation( "FusionOfHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsList]);
+DeclareOperation( "FusionOfHomogeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration, IsList]);
 
 #! @Chapter Functionality
 #! @Section Attributes Of Homogeneous Coherent Configurations
@@ -37,7 +37,7 @@ DeclareOperation( "FusionOfHomogeneousCoherentConfigurations", [IsHomogeneousCoh
 #! @Returns list of feasibly fusionable relations
 #! @Description
 #!	Returns a list where each entry is a collection of relations which may be fused to form a feasible homogeneous coherent configuration
-#!  Non-trivial means either no relations are fused, or all non-identity relations are fused.
+#!  Trivial means either no relations are fused, or all non-identity relations are fused.
 DeclareAttribute( "FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
@@ -46,7 +46,7 @@ DeclareAttribute( "FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration", 
 #! @Returns List of all non-trivial fusions of CC
 #! @Description
 #!	Returns a list of all homogeneous coherent configurations such that each element of the list is a non-trivial fusion of CC.
-#!  Non-trivial means either no relations are fused, or all non-identity relations are fused.
+#!  Trivial means either no relations are fused, or all non-identity relations are fused.
 DeclareOperation( "AllNonTrivialFusionsOfHomgeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration]);
 
 #! @Chapter Functionality

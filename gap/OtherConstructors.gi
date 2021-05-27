@@ -22,7 +22,7 @@
 ##
 #############################################################################
 
-InstallMethod(FusionOfHomogeneousCoherentConfigurations,
+InstallMethod(FusionOfHomogeneousCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration, IsList],
 	function( a, fuse )
 		local mat, m, i, j, m2, d, inds;
