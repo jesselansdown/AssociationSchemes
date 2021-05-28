@@ -70,3 +70,12 @@ DeclareOperation("IntersectionAlgebraFromIntersectionArray", [IsList]);
 #! @Description
 #!	Returns the intersection algebra of a DRG given by its intersection array.
 DeclareOperation("IntersectionAlgebraFromClassicalParameters", [IsList]);
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments CC, L
+#! @Returns true or false
+#! @Description
+#!	Takes the intersection algebra object of a $d$-class homogeneous coherent configuration CC,
+#!	and checks if the partion L of $\{0, \ldots, d\}$ corresponds to a valid fusion.
+DeclareOperation( "IsFusionOfHomogeneousCoherentConfiguration", [IsIntersectionAlgebraObject, IsList]);

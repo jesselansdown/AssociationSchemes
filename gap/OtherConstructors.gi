@@ -25,7 +25,17 @@
 InstallMethod(IsFusionOfHomogeneousCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration, IsList],
 	function(A, fuse)
-		local l, m, o, k, h, p, x, y;
+		local l, m, o, k, h, p, x, y, rels;
+		if not [0] in fuse then
+			return false;
+		fi;
+		rels := Flat(fuse);;
+		if Size(Set(rels)) <> Size(rels) then
+			return false;
+		fi;
+		if Set(rels) <> [0 .. NumberOfClasses(A)] then
+			return false;
+		fi;
 		p:=Size(fuse);
 		for l in [1 .. p] do
 			for m in [1 .. p] do
@@ -48,62 +58,11 @@ InstallMethod(IsFusionOfHomogeneousCoherentConfiguration,
 InstallMethod(FusionOfHomogeneousCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration, IsList],
 	function( a, fuse )
-		local mat, m, i, j, m2, d, inds;
-		if not [0] in fuse then
-			return fail;
+		local mat, m, i, j, m2, d, inds, S, PS, newP;
+
+		if not IsFusionOfHomogeneousCoherentConfiguration(a, fuse) then
+			Error("Must give a valid fusion!\n");
 		fi;
-		mat :=  NullMat(Order(a), Order(a));
-		m:=RelationMatrix(a);;
-		d:=NumberOfClasses(a);;
-		inds := ListWithIdenticalEntries(d+1,0);;
-		for i in [1.. Size(fuse)] do
-			for j in fuse[i] do
-				inds[j+1]:=i-1;
-			od;
-		od;
-		for i in [1 .. Order(a)] do
-			for j in [1 .. Order(a)] do
-				mat[i][j]:=inds[m[i][j]+1];
-			od;
-		od;
-		m2 := HomogeneousCoherentConfiguration(mat);
-		# set IsFusionOfHomogeneousCoherentConfiguration := true;
-		return m2;
-	end);
-
-InstallMethod(FusionOfHomogeneousCoherentConfiguration,
-			[IsHomogeneousCoherentConfiguration and IsCommutative, IsList],
-	function( a, fuse )
-		local mat, m, i, j, m2, d, inds, s, NewIntersectionMatrices,
-		u, v, w, h, check, inter, adjMats, rel, assoc_rec, S, PS, newP;
-		if not [0] in fuse then
-			return fail;
-		fi;
-
-		s := Size(fuse) - 1;;
-
-		NewIntersectionMatrices := List([0 .. s], t -> NullMat(s+1, s+1));;
-		for u in [0 .. s] do
-			for v in [0 .. s] do
-				for w in [0 .. s] do
-					check := [];
-					for h in fuse[w+1] do
-						inter := 0;
-						for i in fuse[u+1] do
-							for j in fuse[v+1] do
-								inter := inter + IntersectionNumber(a, i, j, h);
-							od;
-						od;
-						Add(check, inter);;
-						check:=Set(check);;
-						if Size(check) <> 1 then
-							return fail;
-						fi;
-					od;
-					NewIntersectionMatrices[v+1][u+1, w+1] := check[1];
-				od;
-			od;
-		od;
 
 		mat :=  NullMat(Order(a), Order(a));
 		m:=RelationMatrix(a);;
@@ -120,15 +79,8 @@ InstallMethod(FusionOfHomogeneousCoherentConfiguration,
 			od;
 		od;
 
-		adjMats := AdjacencyMatricesOfMatrix(mat);;
-		for rel in adjMats do
-			if not TransposedMat(rel) in adjMats then
-				return fail;
-			fi;
-		od;
-		assoc_rec := rec( matrix := mat);
-		m2 := ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, AdjacencyMatrices, adjMats,
-			IntersectionMatrices, NewIntersectionMatrices);
+		m2 := HomogeneousCoherentConfigurationNC(mat);
+
 		if HasMatrixOfEigenvalues(a) then
 			S:=NullMat(NumberOfClasses(a)+1, Size(fuse));
 			for i in [1 .. Size(fuse)] do
@@ -143,9 +95,85 @@ InstallMethod(FusionOfHomogeneousCoherentConfiguration,
 				SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), newP);
 			fi;
 		fi;
-		# set IsFusionOfHomogeneousCoherentConfiguration := true;
+
 		return m2;
 	end);
+
+# InstallMethod(FusionOfHomogeneousCoherentConfiguration,
+# 			[IsHomogeneousCoherentConfiguration and IsCommutative, IsList],
+# 	function( a, fuse )
+# 		local mat, m, i, j, m2, d, inds, s, NewIntersectionMatrices,
+# 		u, v, w, h, check, inter, adjMats, rel, assoc_rec, S, PS, newP;
+# 		if not IsFusionOfHomogeneousCoherentConfiguration(a, fuse) then
+# 			Error("Must give a valid fusion!\n");
+# 		fi;
+
+# 		s := Size(fuse) - 1;;
+
+# 		NewIntersectionMatrices := List([0 .. s], t -> NullMat(s+1, s+1));;
+# 		for u in [0 .. s] do
+# 			for v in [0 .. s] do
+# 				for w in [0 .. s] do
+# 					check := [];
+# 					for h in fuse[w+1] do
+# 						inter := 0;
+# 						for i in fuse[u+1] do
+# 							for j in fuse[v+1] do
+# 								inter := inter + IntersectionNumber(a, i, j, h);
+# 							od;
+# 						od;
+# 						Add(check, inter);;
+# 						check:=Set(check);;
+# 						if Size(check) <> 1 then
+# 							return fail;
+# 						fi;
+# 					od;
+# 					NewIntersectionMatrices[v+1][u+1, w+1] := check[1];
+# 				od;
+# 			od;
+# 		od;
+
+# 		mat :=  NullMat(Order(a), Order(a));
+# 		m:=RelationMatrix(a);;
+# 		d:=NumberOfClasses(a);;
+# 		inds := ListWithIdenticalEntries(d+1,0);;
+# 		for i in [1.. Size(fuse)] do
+# 			for j in fuse[i] do
+# 				inds[j+1]:=i-1;
+# 			od;
+# 		od;
+# 		for i in [1 .. Order(a)] do
+# 			for j in [1 .. Order(a)] do
+# 				mat[i][j]:=inds[m[i][j]+1];
+# 			od;
+# 		od;
+
+# 		adjMats := AdjacencyMatricesOfMatrix(mat);;
+# 		for rel in adjMats do
+# 			if not TransposedMat(rel) in adjMats then
+# 				return fail;
+# 			fi;
+# 		od;
+# 		assoc_rec := rec( matrix := mat);
+# 		m2 := ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, AdjacencyMatrices, adjMats,
+# 			IntersectionMatrices, NewIntersectionMatrices);
+# 		if HasMatrixOfEigenvalues(a) then
+# 			S:=NullMat(NumberOfClasses(a)+1, Size(fuse));
+# 			for i in [1 .. Size(fuse)] do
+# 				for j in [1 .. Size(fuse[i])] do
+# 					S[fuse[i][j]+1][i] := 1;
+# 				od;
+# 			od;
+# 			PS:=MatrixOfEigenvalues(a)*S;
+# 			newP :=[Remove(PS, 1)];
+# 			Append(newP, Set(PS));
+# 			if IsMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), newP) then
+# 				SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), newP);
+# 			fi;
+# 		fi;
+# 		# set IsFusionOfHomogeneousCoherentConfiguration := true;
+# 		return m2;
+# 	end);
 
 InstallMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration],
@@ -157,7 +185,7 @@ InstallMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
 	    while not IsDoneIterator(iter) do
 	        fuse := NextIterator(iter);
 	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
-	            if FusionOfHomogeneousCoherentConfiguration(A, Concatenation([[0]], fuse)) <> fail then
+	            if IsFusionOfHomogeneousCoherentConfiguration(A, Concatenation([[0]], fuse)) then
 	                Add(all, Concatenation([[0]], fuse));
 	            fi;
 	        fi;

@@ -175,3 +175,36 @@ InstallMethod( IntersectionAlgebraFromClassicalParameters, [IsList],
 	inter := construct_array(classical);;
 	return IntersectionAlgebraFromIntersectionArray(inter);;
   end);
+
+InstallMethod(IsFusionOfHomogeneousCoherentConfiguration,
+			[IsIntersectionAlgebraObject, IsList],
+	function(A, fuse)
+		local l, m, o, k, h, p, x, y, rels;
+		if not [0] in fuse then
+			return false;
+		fi;
+		rels := Flat(fuse);;
+		if Size(Set(rels)) <> Size(rels) then
+			return false;
+		fi;
+		if Set(rels) <> [0 .. NumberOfClasses(A)] then
+			return false;
+		fi;
+		p:=Size(fuse);
+		for l in [1 .. p] do
+			for m in [1 .. p] do
+				for o in [1 .. p] do
+					for x in [1 .. Size(fuse[o])] do
+						k:=fuse[o][x];;
+						for y in [x .. Size(fuse[o])] do
+							h:=fuse[o][y];;
+							if Sum(fuse[l], i -> Sum(fuse[m], j -> IntersectionNumber(A, i, j, k))) <> Sum(fuse[l], i -> Sum(fuse[m], j -> IntersectionNumber(A, i, j, h))) then
+								return false;
+							fi;
+						od;
+					od;
+				od;
+			od;
+		od;
+		return true;
+	end);
