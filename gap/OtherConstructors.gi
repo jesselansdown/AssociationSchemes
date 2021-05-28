@@ -22,6 +22,29 @@
 ##
 #############################################################################
 
+InstallMethod(IsFusionOfHomogeneousCoherentConfiguration,
+			[IsHomogeneousCoherentConfiguration, IsList],
+	function(A, fuse)
+		local l, m, o, k, h, p, x, y;
+		p:=Size(fuse);
+		for l in [1 .. p] do
+			for m in [1 .. p] do
+				for o in [1 .. p] do
+					for x in [1 .. Size(fuse[o])] do
+						k:=fuse[o][x];;
+						for y in [x .. Size(fuse[o])] do
+							h:=fuse[o][y];;
+							if Sum(fuse[l], i -> Sum(fuse[m], j -> IntersectionNumber(A, i, j, k))) <> Sum(fuse[l], i -> Sum(fuse[m], j -> IntersectionNumber(A, i, j, h))) then
+								return false;
+							fi;
+						od;
+					od;
+				od;
+			od;
+		od;
+		return true;
+	end);
+
 InstallMethod(FusionOfHomogeneousCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration, IsList],
 	function( a, fuse )
@@ -44,11 +67,11 @@ InstallMethod(FusionOfHomogeneousCoherentConfiguration,
 			od;
 		od;
 		m2 := HomogeneousCoherentConfiguration(mat);
-		# set IsFusionOfHomogeneousCoherentConfigurations := true;
+		# set IsFusionOfHomogeneousCoherentConfiguration := true;
 		return m2;
 	end);
 
-InstallMethod(FusionOfHomogeneousCoherentConfigurations,
+InstallMethod(FusionOfHomogeneousCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration and IsCommutative, IsList],
 	function( a, fuse )
 		local mat, m, i, j, m2, d, inds, s, NewIntersectionMatrices,
@@ -120,7 +143,7 @@ InstallMethod(FusionOfHomogeneousCoherentConfigurations,
 				SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), newP);
 			fi;
 		fi;
-		# set IsFusionOfHomogeneousCoherentConfigurations := true;
+		# set IsFusionOfHomogeneousCoherentConfiguration := true;
 		return m2;
 	end);
 
@@ -134,7 +157,7 @@ InstallMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
 	    while not IsDoneIterator(iter) do
 	        fuse := NextIterator(iter);
 	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
-	            if FusionOfHomogeneousCoherentConfigurations(A, Concatenation([[0]], fuse)) <> fail then
+	            if FusionOfHomogeneousCoherentConfiguration(A, Concatenation([[0]], fuse)) <> fail then
 	                Add(all, Concatenation([[0]], fuse));
 	            fi;
 	        fi;
@@ -147,7 +170,7 @@ InstallMethod(AllNonTrivialFusionsOfHomgeneousCoherentConfiguration,
 	function(A)
 	    local all, fusions;
 			fusions := FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A);
-			all := List(fusions, t -> FusionOfHomogeneousCoherentConfigurations(A, t));;
+			all := List(fusions, t -> FusionOfHomogeneousCoherentConfiguration(A, t));;
 	    return all;
 	end);
 
@@ -156,8 +179,8 @@ InstallMethod(AllFusionsOfHomgeneousCoherentConfiguration,
 	function(A)
 	    local all, fusions;
 			fusions := FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A);
-			all := List(fusions, t -> FusionOfHomogeneousCoherentConfigurations(A, t));;
-	    return Concatenation([FusionOfHomogeneousCoherentConfigurations(A, [[0], [1 .. NumberOfClasses(A)]])], all, [A]);
+			all := List(fusions, t -> FusionOfHomogeneousCoherentConfiguration(A, t));;
+	    return Concatenation([FusionOfHomogeneousCoherentConfiguration(A, [[0], [1 .. NumberOfClasses(A)]])], all, [A]);
 	end);
 
 InstallMethod(DirectProductOfHomogeneousCoherentConfigurations,

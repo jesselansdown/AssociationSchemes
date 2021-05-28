@@ -25,6 +25,15 @@
 #! @Chapter Functionality
 #! @Section Constructor Methods
 #! @Arguments CC, L
+#! @Returns true or false
+#! @Description
+#!	Takes a $d$-class homogeneous coherent configuration CC, and checks if the partion 
+#!	L of $\{0, \ldots, d\}$ corresponds to a valid fusion.
+DeclareOperation( "IsFusionOfHomogeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration, IsList]);
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments CC, L
 #! @Returns homogeneous coherent configuration
 #! @Description
 #!	Takes a $d$-class homogeneous coherent configuration CC and returns a fusion scheme corresponding to L,
