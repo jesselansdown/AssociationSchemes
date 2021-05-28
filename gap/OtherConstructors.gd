@@ -99,3 +99,14 @@ DeclareOperation( "BipartiteDoubleOfAssociationScheme", [IsHomogeneousCoherentCo
 #! @Description
 #!	Given a cometric association scheme satisfying $b_j^* + c_{j+1}^* = m +1$ for $0 \leq j < d$, returns the extended Q-bipartite double.
 DeclareOperation( "ExtendedQBipartiteDouble", [IsHomogeneousCoherentConfiguration]);
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments CC
+#! @Returns Association scheme
+#! @Description
+#!	Given a homogeneous coherent configuration, CC, the symmetrisation is computed if possible, otherwise fail is returned.
+#!	The symmetrisation of a homogeneous coherent configuration takes any non-symmetric relations and fuses them together.
+#!	The result may or may not be a valid homogeneous coherent configuration. If it is valid, then it is an association scheme
+#!  (Symmetric coherent configuration). If CC is commutative, then it can be symmetrised.
+DeclareOperation( "SymmetrisationOfHomogeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration]);

@@ -341,3 +341,40 @@ InstallMethod(ExtendedQBipartiteDouble,
 	Add(mats, Aminus(B, 0));
 	return HomogeneousCoherentConfiguration(Sum(List([1..5], t -> (t-1)*mats[t])));
 end);
+
+InstallMethod(SymmetrisationOfHomogeneousCoherentConfiguration,
+			[IsHomogeneousCoherentConfiguration],
+	function( A )
+		local fuse, rels, i, x, y;
+
+		if IsAssociationScheme(A) then
+			return A;
+		fi;
+
+		fuse:=[];;
+		rels := [0 .. NumberOfClasses(A)];;
+		IsSet(rels);
+		for i in [1 .. Order(A)] do
+			x := RelationMatrix(A)[1][i];;
+			if x in rels then
+				y := RelationMatrix(A)[i][1];;
+				Add(fuse, Set([x,y]));;
+				rels:=Filtered(rels, t -> t <> x and t <> y);;
+				IsSet(rels);;
+			fi;
+			if IsEmpty(rels) then
+				break;
+			fi;
+		od;
+
+		if IsCommutative(A) then
+			return FusionOfHomogeneousCoherentConfiguration(A, fuse);
+		fi;
+
+		if IsFusionOfHomogeneousCoherentConfiguration(A, fuse) then
+			return FusionOfHomogeneousCoherentConfiguration(A, fuse);
+		else
+			return fail;
+		fi;
+
+	end);
