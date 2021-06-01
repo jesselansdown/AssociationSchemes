@@ -99,6 +99,45 @@ InstallMethod(FusionOfHomogeneousCoherentConfiguration,
 		return m2;
 	end);
 
+InstallMethod(FusingPartitionOfHomogeneousCoherentConfigurations,
+			[IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
+	function( A, B )
+		local adj1, adj2, j, i, sol, fuse;
+	
+		if NumberOfClasses(A)<NumberOfClasses(B) then
+			return fail;
+		fi;
+		adj1 := NullMat(NumberOfClasses(A)+1, Order(A));;
+		for j in [1 .. Order(A)] do
+			i := RelationMatrix(A)[1][j];;
+			adj1[i+1][j]:=1;
+		od;
+		adj2 := NullMat(NumberOfClasses(B)+1, Order(B));;
+		for j in [1 .. Order(B)] do
+			i := RelationMatrix(B)[1][j];;
+			adj2[i+1][j]:=1;
+		od;
+		fuse:=[];;
+		for j in [1 .. NumberOfClasses(B)+1] do
+			sol := SolutionMat(adj1, adj2[j]);;
+			if sol = fail then
+				return fail;
+			fi;
+			sol := Filtered([1 .. NumberOfClasses(A)+1], t -> sol[t]=1);;
+			sol := sol - 1;;
+			Add(fuse, sol);;
+		od;
+		if not IsFusionOfHomogeneousCoherentConfiguration(A, fuse) then
+			return fail;
+		fi;
+		if FusionOfHomogeneousCoherentConfiguration(A, fuse) = B then
+			return fuse;
+		else
+			return fail;
+		fi;
+	end);
+
+
 # InstallMethod(FusionOfHomogeneousCoherentConfiguration,
 # 			[IsHomogeneousCoherentConfiguration and IsCommutative, IsList],
 # 	function( a, fuse )
