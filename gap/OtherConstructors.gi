@@ -234,11 +234,86 @@ InstallMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
 	    return all;
 	end );
 
+
+InstallOtherMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
+			[IsHomogeneousCoherentConfiguration, IsInt],
+	function(A, k)
+	    local iter, fuse, all;
+	    if k < 1 then
+	    	Error("Fusion must have at least 1 class!\n");
+	    fi;
+	    if k > NumberOfClasses(A) then
+	    	Error("Fusion cannot have more classes than original homogeneous coherent configuration!\n");
+	    fi;
+	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) then
+	    	return Filtered(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)=k+1);
+	    fi;
+	    IsCommutative(A);
+	    all:=[];
+	    iter := IteratorOfPartitionsSet([1 .. NumberOfClasses(A)], k);
+	    while not IsDoneIterator(iter) do
+	        fuse := NextIterator(iter);
+	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
+	            if IsFusionOfHomogeneousCoherentConfiguration(A, Concatenation([[0]], fuse)) then
+	                Add(all, Concatenation([[0]], fuse));
+	            fi;
+	        fi;
+	    od;
+	    return all;
+	end );
+
+
+InstallOtherMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
+			[IsHomogeneousCoherentConfiguration, IsInt, IsBool],
+	function(A, k, flag)
+	    local iter, fuse, all;
+	    if k < 1 then
+	    	Error("Fusion must have at least 1 class!\n");
+	    fi;
+	    if k > NumberOfClasses(A) then
+	    	Error("Fusion cannot have more classes than original homogeneous coherent configuration!\n");
+	    fi;
+	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) then
+	    	return Filtered(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)<=k+1);
+	    fi;
+	    IsCommutative(A);
+	    all:=[];
+	    iter := IteratorOfPartitionsSet([1 .. NumberOfClasses(A)], k, flag);
+	    while not IsDoneIterator(iter) do
+	        fuse := NextIterator(iter);
+	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
+	            if IsFusionOfHomogeneousCoherentConfiguration(A, Concatenation([[0]], fuse)) then
+	                Add(all, Concatenation([[0]], fuse));
+	            fi;
+	        fi;
+	    od;
+	    return all;
+	end );
+
+
 InstallMethod(AllNonTrivialFusionsOfHomgeneousCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration],
 	function(A)
 	    local all, fusions;
 			fusions := FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A);
+			all := List(fusions, t -> FusionOfHomogeneousCoherentConfiguration(A, t));;
+	    return all;
+	end);
+
+InstallOtherMethod(AllNonTrivialFusionsOfHomgeneousCoherentConfiguration,
+			[IsHomogeneousCoherentConfiguration, IsInt],
+	function(A, k)
+	    local all, fusions;
+			fusions := FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A, k);
+			all := List(fusions, t -> FusionOfHomogeneousCoherentConfiguration(A, t));;
+	    return all;
+	end);
+
+InstallOtherMethod(AllNonTrivialFusionsOfHomgeneousCoherentConfiguration,
+			[IsHomogeneousCoherentConfiguration, IsInt, IsBool],
+	function(A, k, flag)
+	    local all, fusions;
+			fusions := FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A, k, flag);
 			all := List(fusions, t -> FusionOfHomogeneousCoherentConfiguration(A, t));;
 	    return all;
 	end);
