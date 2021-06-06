@@ -64,7 +64,7 @@ InstallMethod(FusionOfHomogeneousCoherentConfiguration,
 			Error("Must give a valid fusion!\n");
 		fi;
 
-		fuse:=StructuralCopy(fuse1);;
+		fuse:=MutableCopyMat(fuse1);;
 		Sort(fuse);
 		mat :=  NullMat(Order(a), Order(a));
 		m:=RelationMatrix(a);;
