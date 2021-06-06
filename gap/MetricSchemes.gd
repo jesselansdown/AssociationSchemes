@@ -119,3 +119,19 @@ DeclareOperation( "DistanceRegularGraphScheme", [IsMatrix]);
 #! @Description
 #!	Same as DistanceRegularGraphScheme but without checking that a valid association scheme arises.
 DeclareOperation( "DistanceRegularGraphSchemeNC", [IsMatrix]);
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Returns if the homogeneous coherent configuration CC is bipartite.
+DeclareProperty( "IsPBipartite", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Returns if the homogeneous coherent configuration CC is antipodal.
+DeclareProperty( "IsPAntipodal", IsHomogeneousCoherentConfiguration );

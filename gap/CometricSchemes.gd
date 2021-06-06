@@ -85,3 +85,19 @@ DeclareAttribute( "KreinArray", IsHomogeneousCoherentConfiguration );
 #! @Description
 #!	Alias for KreinArray.
 DeclareOperation( "DualIntersectionArray", [IsHomogeneousCoherentConfiguration] );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Returns if the homogeneous coherent configuration CC is Q-bipartite.
+DeclareProperty( "IsQBipartite", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Returns if the homogeneous coherent configuration CC is Q-antipodal.
+DeclareProperty( "IsQAntipodal", IsHomogeneousCoherentConfiguration );

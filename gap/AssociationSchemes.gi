@@ -1483,62 +1483,6 @@ InstallMethod(ReorderMinimalIdempotents,
     end);
 
 
-InstallMethod( IsQBipartite, [IsHomogeneousCoherentConfiguration],
-	function(A)
-	local i, j, k, d;
-	d:=NumberOfClasses(A);
-	for i in [0 .. d] do
-		for j in [0 .. d] do
-			for k in [0 .. d] do
-				if IsOddInt(i+j+k) and KreinParameter(A, i, j, k)<>0 then
-					return false;
-				fi;
-			od;
-		od;
-	od;
-	return true;
-	end);
-
-InstallMethod( IsPBipartite, [IsHomogeneousCoherentConfiguration],
-	function(A)
-	local i, j, k, d;
-	d:=NumberOfClasses(A);
-	for i in [0 .. d] do
-		for j in [0 .. d] do
-			for k in [0 .. d] do
-				if IsOddInt(i+j+k) and IntersectionNumber(A, i, j, k)<>0 then
-					return false;
-				fi;
-			od;
-		od;
-	od;
-	return true;
-	end);
-
-InstallMethod( IsQAntipodal, [IsHomogeneousCoherentConfiguration],
-	function(A)
-		local j, d;
-		d:=NumberOfClasses(A);;
-		for j in [1 .. d] do
-			if j <> Int(Floor(Float(d/2))) + 1 and KreinArray(A)[1][j] <> Reversed(KreinArray(A)[2])[j] then
-				return false;
-			fi;
-		od;
-		return true;
-	end);
-
-InstallMethod( IsPAntipodal, [IsHomogeneousCoherentConfiguration],
-	function(A)
-		local j, d;
-		d:=NumberOfClasses(A);;
-		for j in [1 .. d] do
-			if j <> Int(Floor(Float(d/2))) + 1 and IntersectionArray(A)[1][j] <> Reversed(IntersectionArray(A)[2])[j] then
-				return false;
-			fi;
-		od;
-		return true;
-	end);
-
 ################################################################################################################
 #
 # Display methods

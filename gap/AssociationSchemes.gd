@@ -325,37 +325,6 @@ DeclareOperation( "KreinParameter", [ IsHomogeneousCoherentConfiguration, IsInt,
 #!	where $L[i][j,k] = q_{i,j}^k$.
 DeclareAttribute( "KreinParameters", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns true or false
-#! @Description
-#!	Returns if the homogeneous coherent configuration CC is Q-bipartite.
-DeclareProperty( "IsQBipartite", IsHomogeneousCoherentConfiguration );
-
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns true or false
-#! @Description
-#!	Returns if the homogeneous coherent configuration CC is bipartite.
-DeclareProperty( "IsPBipartite", IsHomogeneousCoherentConfiguration );
-
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns true or false
-#! @Description
-#!	Returns if the homogeneous coherent configuration CC is Q-antipodal.
-DeclareProperty( "IsQAntipodal", IsHomogeneousCoherentConfiguration );
-
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns true or false
-#! @Description
-#!	Returns if the homogeneous coherent configuration CC is antipodal.
-DeclareProperty( "IsPAntipodal", IsHomogeneousCoherentConfiguration );
 
 DeclareOperation("SchemeToGraph", [IsHomogeneousCoherentConfiguration]);
 
