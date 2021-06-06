@@ -313,6 +313,28 @@ InstallMethod(AdjacencyMatrices,
 		return adjMats;
 	end);
 
+InstallOtherMethod(AdjacencyMatrices,
+			[IsHomogeneousCoherentConfiguration, IsInt],
+	function(a, k)
+		local d, n, adjMats, i, j, mat;
+		if not k in [0 .. NumberOfClasses(a)] then
+			Error("Must ask for adjacency matrix between 0 and ", NumberOfClasses(a), "\n");
+		fi;
+		if HasAdjacencyMatrices(a) then
+			return AdjacencyMatrices(a)[k+1];
+		fi;
+		n := Order(a);;
+		mat := NullMat(n, n);;
+		for i in [1 .. n] do
+			for j in [1 .. n] do
+				if RelationMatrix(a)[i][j]=k then
+					mat[i][j]:=1;
+				fi;
+			od;
+		od;
+		return mat;
+	end);
+
 InstallMethod(AdjacencyMatricesOfMatrix,
 			[IsMatrix],
 	function(mat)
@@ -869,7 +891,7 @@ InstallMethod( MinimalIdempotentsOverField,
 	end);
 
 
-InstallMethod( MinimalIdempotent, 
+InstallOtherMethod( MinimalIdempotents, 
 	"for IsAssociationScheme",
 	[ IsHomogeneousCoherentConfiguration, IsInt],
 	function(A, j)

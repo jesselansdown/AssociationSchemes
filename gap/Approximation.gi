@@ -51,7 +51,7 @@ InstallMethod(ApproximateRealMinimalIdempotent,
 				return Mcopy;
 			end;
 
-			M:=MinimalIdempotent(A, val);;
+			M:=MinimalIdempotents(A, val);;
 			if ForAny(Flat(M), t -> RealPart(t)<>t) then
 				Print("Note, this operation only works for real valued matrices\n");
 				return fail;

@@ -295,13 +295,6 @@ DeclareAttribute( "MinimalIdempotents", IsHomogeneousCoherentConfiguration );
 #!	The $i$-th entry of $L$ is $E_{i-1}$.
 DeclareOperation( "MinimalIdempotentsOverField", [ IsHomogeneousCoherentConfiguration, IsField ] );
 
-#! @Chapter Functionality
-#! @Section Matrices Describing Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns E_j
-#! @Description
-#!	Returns minimal idempotent $E_j$ for the adjacency algebra of a homogeneous coherent configuration CC.
-DeclareOperation( "MinimalIdempotent", [IsHomogeneousCoherentConfiguration, IsInt] );
 
 
 DeclareOperation("BinaryExpansion", [IsPosInt]);
