@@ -57,13 +57,15 @@ InstallMethod(IsFusionOfHomogeneousCoherentConfiguration,
 
 InstallMethod(FusionOfHomogeneousCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration, IsList],
-	function( a, fuse )
-		local mat, m, i, j, m2, d, inds, S, PS, newP;
+	function( a, fuse1 )
+		local mat, m, i, j, m2, d, inds, S, PS, newP, fuse;
 
-		if not IsFusionOfHomogeneousCoherentConfiguration(a, fuse) then
+		if not IsFusionOfHomogeneousCoherentConfiguration(a, fuse1) then
 			Error("Must give a valid fusion!\n");
 		fi;
 
+		fuse:=StructuralCopy(fuse1);;
+		Sort(fuse);
 		mat :=  NullMat(Order(a), Order(a));
 		m:=RelationMatrix(a);;
 		d:=NumberOfClasses(a);;

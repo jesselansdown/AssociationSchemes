@@ -37,7 +37,8 @@ DeclareOperation( "IsFusionOfHomogeneousCoherentConfiguration", [IsHomogeneousCo
 #! @Returns homogeneous coherent configuration
 #! @Description
 #!	Takes a $d$-class homogeneous coherent configuration CC and returns a fusion scheme corresponding to L,
-#!	where L is a partion of $\{0, \ldots, d\}$.
+#!	where L is a partion of $\{0, \ldots, d\}$. Note that the ordering of the cells of L is irrelevant.
+#!  The method will sort the fused relations according to the smallest value in each cell.
 DeclareOperation( "FusionOfHomogeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration, IsList]);
 
 #! @Chapter Functionality
