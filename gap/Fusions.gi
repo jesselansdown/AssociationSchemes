@@ -480,6 +480,10 @@ InstallMethod(AllSymmetricFusionsOfHomgeneousCoherentConfiguration,
 	function(A)
 	    local all, fusions;
 			fusions := FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A);
-			all := List(fusions, t -> FusionOfHomogeneousCoherentConfiguration(A, t));;
-	    return Concatenation([FusionOfHomogeneousCoherentConfiguration(A, [[0], [1 .. NumberOfClasses(A)]])], all, [A]);
+			all := List(fusions, t -> FusionOfHomogeneousCoherentConfiguration(A, t));; 
+	    	all := Concatenation([FusionOfHomogeneousCoherentConfiguration(A, [[0], [1 .. NumberOfClasses(A)]])], all);
+	    	if IsAssociationScheme(A) then
+	    		Add(all, A);
+	    	fi;
+	    return all;
 	end);
