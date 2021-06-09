@@ -162,6 +162,14 @@ DeclareOperation( "IsAssociationScheme", [IsHomogeneousCoherentConfiguration] );
 DeclareAttribute( "NumberOfClasses", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns d
+#! @Description
+#!	Returns $d$ for a $d$-class association scheme.
+DeclareOperation( "Rank", [IsHomogeneousCoherentConfiguration] );
+
+#! @Chapter Functionality
 #! @Section Properties Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns true or false

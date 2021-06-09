@@ -291,6 +291,10 @@ InstallMethod(NumberOfClasses,
 # Need to check if integers
 # Neet to check if square matrix
 
+InstallMethod(Rank,
+			[IsHomogeneousCoherentConfiguration],
+			NumberOfClasses );
+
 InstallMethod(IsStronglyRegularGraph,
 			[IsHomogeneousCoherentConfiguration],
 	function(a)
