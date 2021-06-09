@@ -286,3 +286,181 @@ InstallMethod(AllFusionsOfHomgeneousCoherentConfiguration,
 			all := List(fusions, t -> FusionOfHomogeneousCoherentConfiguration(A, t));;
 	    return Concatenation([FusionOfHomogeneousCoherentConfiguration(A, [[0], [1 .. NumberOfClasses(A)]])], all, [A]);
 	end);
+
+
+
+InstallMethod(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration,
+			[IsHomogeneousCoherentConfiguration],
+	function(A)
+	    local iter, fuse, all, map, rels, i, x, y;
+	    if IsAssociationScheme(A) then
+	    	return FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A);
+	    fi;
+
+	    rels := [1 .. NumberOfClasses(A)];;
+  		map:=[];;
+		IsSet(rels);
+		for i in [1 .. Order(A)] do
+			x := RelationMatrix(A)[1][i];;
+			if x in rels then
+				y := RelationMatrix(A)[i][1];;
+				Add(map, Set([x,y]));;
+				rels:=Filtered(rels, t -> t <> x and t <> y);;
+				IsSet(rels);;
+			fi;
+			if IsEmpty(rels) then
+				break;
+			fi;
+		od;
+
+	    IsCommutative(A);
+	    all:=[];
+	    iter := IteratorOfPartitionsSet(map);
+	    while not IsDoneIterator(iter) do
+	        fuse := NextIterator(iter);
+	        fuse := List(fuse, Flat);
+	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
+	            if IsFusionOfHomogeneousCoherentConfiguration(A, Concatenation([[0]], fuse)) then
+	                Add(all, Concatenation([[0]], fuse));
+	            fi;
+	        fi;
+	    od;
+	    return all;
+	end );
+
+
+InstallOtherMethod(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration,
+			[IsHomogeneousCoherentConfiguration, IsInt],
+	function(A, k)
+	    local iter, fuse, all, map, rels, i, x, y;
+	    if IsAssociationScheme(A) then
+	    	return FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A, k);
+	    fi;
+
+	    if k < 1 then
+	    	Error("Fusion must have at least 1 class!\n");
+	    fi;
+	    if k > NumberOfClasses(A) then
+	    	Error("Fusion cannot have more classes than original homogeneous coherent configuration!\n");
+	    fi;
+	    if HasFeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A) then
+	    	return Filtered(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)=k+1);
+	    fi;
+
+	    rels := [1 .. NumberOfClasses(A)];;
+  		map:=[];;
+		IsSet(rels);
+		for i in [1 .. Order(A)] do
+			x := RelationMatrix(A)[1][i];;
+			if x in rels then
+				y := RelationMatrix(A)[i][1];;
+				Add(map, Set([x,y]));;
+				rels:=Filtered(rels, t -> t <> x and t <> y);;
+				IsSet(rels);;
+			fi;
+			if IsEmpty(rels) then
+				break;
+			fi;
+		od;
+
+	    IsCommutative(A);
+	    all:=[];
+	    iter := IteratorOfPartitionsSet(map, k);
+	    while not IsDoneIterator(iter) do
+	        fuse := NextIterator(iter);
+	        fuse := List(fuse, Flat);
+	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
+	            if IsFusionOfHomogeneousCoherentConfiguration(A, Concatenation([[0]], fuse)) then
+	                Add(all, Concatenation([[0]], fuse));
+	            fi;
+	        fi;
+	    od;
+	    return all;
+	end );
+
+
+InstallOtherMethod(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration,
+			[IsHomogeneousCoherentConfiguration, IsInt, IsBool],
+	function(A, k, flag)
+	    local iter, fuse, all, map, rels, i, x, y;
+	    if IsAssociationScheme(A) then
+	    	return FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A, k, flag);
+	    fi;
+
+	    if k < 1 then
+	    	Error("Fusion must have at least 1 class!\n");
+	    fi;
+	    if k > NumberOfClasses(A) then
+	    	Error("Fusion cannot have more classes than original homogeneous coherent configuration!\n");
+	    fi;
+	    if HasFeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A) then
+	    	return Filtered(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)<=k+1);
+	    fi;
+
+	    rels := [1 .. NumberOfClasses(A)];;
+  		map:=[];;
+		IsSet(rels);
+		for i in [1 .. Order(A)] do
+			x := RelationMatrix(A)[1][i];;
+			if x in rels then
+				y := RelationMatrix(A)[i][1];;
+				Add(map, Set([x,y]));;
+				rels:=Filtered(rels, t -> t <> x and t <> y);;
+				IsSet(rels);;
+			fi;
+			if IsEmpty(rels) then
+				break;
+			fi;
+		od;
+
+	    IsCommutative(A);
+	    all:=[];
+	    iter := IteratorOfPartitionsSet(map, k, flag);
+	    while not IsDoneIterator(iter) do
+	        fuse := NextIterator(iter);
+	        fuse := List(fuse, Flat);
+	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
+	            if IsFusionOfHomogeneousCoherentConfiguration(A, Concatenation([[0]], fuse)) then
+	                Add(all, Concatenation([[0]], fuse));
+	            fi;
+	        fi;
+	    od;
+	    return all;
+	end );
+
+
+InstallMethod(AllNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration,
+			[IsHomogeneousCoherentConfiguration],
+	function(A)
+	    local all, fusions;
+			fusions := FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A);
+			all := List(fusions, t -> FusionOfHomogeneousCoherentConfiguration(A, t));;
+	    return all;
+	end);
+
+InstallOtherMethod(AllNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration,
+			[IsHomogeneousCoherentConfiguration, IsInt],
+	function(A, k)
+	    local all, fusions;
+			fusions := FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A, k);
+			all := List(fusions, t -> FusionOfHomogeneousCoherentConfiguration(A, t));;
+	    return all;
+	end);
+
+InstallOtherMethod(AllNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration,
+			[IsHomogeneousCoherentConfiguration, IsInt, IsBool],
+	function(A, k, flag)
+	    local all, fusions;
+			fusions := FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A, k, flag);
+			all := List(fusions, t -> FusionOfHomogeneousCoherentConfiguration(A, t));;
+	    return all;
+	end);
+
+InstallMethod(AllSymmetricFusionsOfHomgeneousCoherentConfiguration,
+			[IsHomogeneousCoherentConfiguration],
+	function(A)
+	    local all, fusions;
+			fusions := FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A);
+			all := List(fusions, t -> FusionOfHomogeneousCoherentConfiguration(A, t));;
+	    return Concatenation([FusionOfHomogeneousCoherentConfiguration(A, [[0], [1 .. NumberOfClasses(A)]])], all, [A]);
+	end);

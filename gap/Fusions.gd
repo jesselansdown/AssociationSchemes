@@ -66,11 +66,13 @@ DeclareOperation( "FusingPartitionOfHomogeneousCoherentConfigurations", [IsHomog
 
 #! @Chapter Functionality
 #! @Section Attributes Of Homogeneous Coherent Configurations
-#! @Arguments CC
+#! @Arguments CC [k [, flag ]]
 #! @Returns list of feasibly fusionable relations
 #! @Description
 #!	Returns a list where each entry is a collection of relations which may be fused to form a feasible homogeneous coherent configuration
 #!  Trivial means either no relations are fused, or all non-identity relations are fused.
+#!  If the additional argument k is given, only fusions with k-classes are returned. If flag is also given
+#! 	and is equal to true, then all fusions with at most k-classes are returned.
 DeclareAttribute( "FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
@@ -80,6 +82,8 @@ DeclareAttribute( "FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration", 
 #! @Description
 #!	Returns a list of all homogeneous coherent configurations such that each element of the list is a non-trivial fusion of CC.
 #!  Trivial means either no relations are fused, or all non-identity relations are fused.
+#!  If the additional argument k is given, only fusions with k-classes are returned. If flag is also given
+#! 	and is equal to true, then all fusions with at most k-classes are returned.
 DeclareOperation( "AllNonTrivialFusionsOfHomgeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration]);
 
 #! @Chapter Functionality
@@ -91,3 +95,35 @@ DeclareOperation( "AllNonTrivialFusionsOfHomgeneousCoherentConfiguration", [IsHo
 #!  Includes trivial fusions, i.e the original homogeneous coherent configuration, and the coherent configuration resulting
 #!  from the fusion of all non-identity relations
 DeclareOperation( "AllFusionsOfHomgeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration]);
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns list of feasibly fusionable relations
+#! @Description
+#!	Returns a list where each entry is a collection of relations which may be fused to form a feasible association scheme (i.e. relations are symmetric)
+#!  Trivial means either no relations are fused, or all non-identity relations are fused.
+#!  If the additional argument k is given, only fusions with k-classes are returned. If flag is also given
+#! 	and is equal to true, then all fusions with at most k-classes are returned.
+DeclareAttribute( "FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments CC
+#! @Returns List of all non-trivial fusions of CC
+#! @Description
+#!	Returns a list of all association schemes (i.e symmetric relations) such that each element of the list is a non-trivial fusion of CC.
+#!  Trivial means either no relations are fused, or all non-identity relations are fused.
+#!  If the additional argument k is given, only fusions with k-classes are returned. If flag is also given
+#! 	and is equal to true, then all fusions with at most k-classes are returned.
+DeclareOperation( "AllNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration]);
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments CC
+#! @Returns List of all fusions of CC
+#! @Description
+#!	Returns a list of all association schemes (i.e symmetric relations) such that each element of the list is a fusion of CC.
+#!  Includes trivial fusions, i.e the original homogeneous coherent configuration (if it is an association scheme), and the coherent configuration resulting
+#!  from the fusion of all non-identity relations
+DeclareOperation( "AllSymmetricFusionsOfHomgeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration]);
