@@ -292,7 +292,7 @@ InstallMethod(AllFusionsOfHomgeneousCoherentConfiguration,
 InstallMethod(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration],
 	function(A)
-	    local iter, fuse, all, map, rels, i, x, y;
+	    local iter, fuse, all, map, rels, i, x, y, pairs;
 	    if IsAssociationScheme(A) then
 	    	return FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A);
 	    fi;
@@ -313,8 +313,17 @@ InstallMethod(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguratio
 			fi;
 		od;
 
-	    IsCommutative(A);
 	    all:=[];
+	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) then
+			pairs := Filtered(map, t -> Size(t)=2);
+			for fuse in FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) do
+				if ForAll(pairs, t -> Filtered([1 .. Size(fuse)], x -> t[1] in fuse[x])=Filtered([1 .. Size(fuse)], x -> t[2] in fuse[x])) then
+					Add(all, fuse);
+				fi;
+			od;
+			return all;
+		fi;
+
 	    iter := IteratorOfPartitionsSet(map);
 	    while not IsDoneIterator(iter) do
 	        fuse := NextIterator(iter);
@@ -342,6 +351,9 @@ InstallOtherMethod(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfigu
 	    fi;
 	    if k > NumberOfClasses(A) then
 	    	Error("Fusion cannot have more classes than original homogeneous coherent configuration!\n");
+	    fi;
+	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) and not HasFeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A) then
+	    	FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A);
 	    fi;
 	    if HasFeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A) then
 	    	return Filtered(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)=k+1);
@@ -393,6 +405,9 @@ InstallOtherMethod(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfigu
 	    if k > NumberOfClasses(A) then
 	    	Error("Fusion cannot have more classes than original homogeneous coherent configuration!\n");
 	    fi;
+	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) and not HasFeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A) then
+	    	FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A);
+	    fi;
 	    if HasFeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A) then
 	    	return Filtered(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)<=k+1);
 	    fi;
@@ -416,7 +431,7 @@ InstallOtherMethod(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfigu
 		if k >= Size(map) then
 			return FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A);
 		fi;
-		
+
 	    IsCommutative(A);
 	    all:=[];
 	    iter := IteratorOfPartitionsSet(map, k, flag);
