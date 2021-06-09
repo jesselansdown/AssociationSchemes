@@ -413,6 +413,10 @@ InstallOtherMethod(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfigu
 			fi;
 		od;
 
+		if k >= Size(map) then
+			return FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A);
+		fi;
+		
 	    IsCommutative(A);
 	    all:=[];
 	    iter := IteratorOfPartitionsSet(map, k, flag);
