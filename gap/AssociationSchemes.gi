@@ -1200,14 +1200,14 @@ function(A)
 	else
 		isoms1 :=[];
 		for val in [1 .. NumberOfClasses(A)] do
-#			edges := [];
-#			for i in [1 .. Order(A)] do
-#				for j in [1 .. Order(A)] do
-#					if RelationMatrix(A)[i][j]=val then
-#						Add(edges, [i, j]);
-#					fi;
-#				od;
-#			od;
+			edges := [];
+			for i in [1 .. Order(A)] do
+				for j in [1 .. Order(A)] do
+					if RelationMatrix(A)[i][j]=val then
+						Add(edges, [i, j]);
+					fi;
+				od;
+			od;
 #			gamma := NautyGraph( edges );
 			gamma := Digraph([1 .. Order(A)], function(x, y) return RelationMatrix(A)[x][y]=val;end);
 #			p := CanonicalLabeling( gamma );
