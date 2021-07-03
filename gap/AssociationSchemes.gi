@@ -22,6 +22,11 @@
 ##
 #############################################################################
 
+# Use nauty/traces rather than Bliss when possible.
+if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
+    DigraphsUseNauty();
+fi;
+
 # Take a matrix and return a TheTypeAssociationScheme object.
 # Does not perform any checks, other than that a matrix is given as input.
 
@@ -1023,46 +1028,20 @@ end);
 
 InstallMethod( AutomorphismGroup, [IsHomogeneousCoherentConfiguration],
 function( sch )
-	local n, gr, aut;
-	    n := Order(sch);
-		gr := SchemeToGraph(sch);;
-	    aut := NautyAutomorphismGroup(gr[1], gr[2]); 
-#    	Print("computing perm group\n");
-    return Action(aut,[1..n]);
-end);
-
-InstallMethod( AutomorphismGroup, [IsHomogeneousCoherentConfiguration and IsStronglyRegularGraph],
-function( R )
-    local G, mat, gr, n, i, gp, x, y, s, edges;
-    if not "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
-       Error("You must load the NautyTracesInterface package\n");
-    fi;    
-    n := Order(R);
-    mat:=RelationMatrix(R);
-    i :=1;
-    if Valencies(R)[2]<Valencies(R)[1] then
-    	i:=2;
-    fi;
-   	edges:=[];
-   	for x in [1 .. n] do
-		if IsSymmetricCoherentConfiguration(R) then
-	   		s := x+1;
-	   	else
-	   		s := 1;
-	   	fi;
-   		for y in [s .. n] do
-   			if mat[x][y] = 1 then
-   				Add(edges, [x,y]);
-   			fi;
-   		od;
-   	od;
-	if IsSymmetricCoherentConfiguration(R) then
-	    gr := NautyGraph(edges);;
+	local n, gr, aut, rel, M;
+	n := Order(sch);
+	if AdmitsPPolynomialOrdering(sch) then
+		# if it is a drg, just compute the automorphism group of the relevant graph
+	    rel := FirstMetricOrdering(sch)[2];
+	    M:=RelationMatrix(sch);;
+	    gr := Digraph([1 .. n], function(x, y) return M[x][y]=rel;end);
+	    aut := AutomorphismGroup(gr);
 	else
-	    gr := NautyDiGraph(edges);;
+		gr := SchemeToGraph(sch);;
+#	    aut := NautyAutomorphismGroup(gr[1], gr[2]); 
+	    aut := AutomorphismGroup(gr[1], gr[2]); 
 	fi;
-    G := AutomorphismGroup(gr);
-    return G;
+    return Action(aut,[1..n]);
 end);
 
 InstallMethod( ImageOfHomogeneousCoherentConfiguration, [IsHomogeneousCoherentConfiguration, IsPerm, IsPerm],
@@ -1107,8 +1086,14 @@ function(A, B)
 				fi;
 			od;
 		od;
-		gamma := NautyGraph( edges );
-		p := CanonicalLabeling( gamma );
+#		gamma := NautyGraph( edges );
+		gamma := Digraph([1 .. Order(A)], function(x, y) return RelationMatrix(A)[x][y]=val;end);
+#		p := CanonicalLabeling( gamma );
+		if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
+		    p := NautyCanonicalLabelling( gamma );
+		else
+		    p := BlissCanonicalLabelling( gamma )^(-1);
+		fi;
 		permuted_edges := OnTuplesTuples( edges, p^(-1) );
 		c2 := Set( List( permuted_edges, i -> Set( i ) ) );
 		Add(isoms1, [val, c2]);
@@ -1123,8 +1108,14 @@ function(A, B)
 				fi;
 			od;
 		od;
-		gamma := NautyGraph( edges );
-		p := CanonicalLabeling( gamma );
+		gamma := Digraph([1 .. Order(B)], function(x, y) return RelationMatrix(B)[x][y]=val;end);
+#		gamma := NautyGraph( edges );
+#		p := CanonicalLabeling( gamma );
+		if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
+		    p := NautyCanonicalLabelling( gamma );
+		else
+		    p := BlissCanonicalLabelling( gamma )^(-1);
+		fi;
 		permuted_edges := OnTuplesTuples( edges, p^(-1) );
 		c2 := Set( List( permuted_edges, i -> Set( i ) ) );
 		Add(isoms2, [val, c2]);
@@ -1150,12 +1141,22 @@ function(A, B)
 	stab:=RightCoset(stab, map);;
 
 	gamma:=SchemeToGraph(A);                    
-	p1 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+#	p1 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+	if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
+    	p1 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+	else
+    	p1 := BlissCanonicalLabelling( gamma[1], gamma[2] );
+	fi;
 
 	for perm in stab do
 		C := ReorderRelations(B, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], perm)));
 		gamma:=SchemeToGraph(C);
-		p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+#		p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+		if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
+    		p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+		else
+    		p2 := BlissCanonicalLabelling( gamma[1], gamma[2] );
+		fi;
 		p := p1 * Inverse(p2);
 		if B = ImageOfHomogeneousCoherentConfiguration(A, p, Inverse(perm)) then
 			return [p, Inverse(perm)];
@@ -1168,6 +1169,7 @@ InstallMethod( CanonisingMap, [IsHomogeneousCoherentConfiguration],
 function(A)
 	local B, n, vertices, i, j, colours1, colours2, colours3, gamma, p, permuted_edges, permuted_edges_set, map, ords, ord, stab, temp, temp2, C, p1, p2, c1, c2, perm, edges, isoms1, isoms2, val, potential_canon, perm_kept, p_kept;
 
+	Print("Warning! The canonising process relies upon either Nauty/Traces or Bliss. The canon may differ depending upon which program is used, which version, which hardware etc... However, it will be consistent if these factors are kept constant.");
 	potential_canon := false;
 	if AdmitsMetricOrdering(A) then
 		ords := MutableCopyMat(AllMetricOrderings(A));
@@ -1176,7 +1178,12 @@ function(A)
 			perm:=Inverse(PermList(ord));;
 			C := ReorderRelations(A, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], perm)));
 			gamma:=SchemeToGraph(C);
-			p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+#			p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+			if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
+    			p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+			else
+			    p2 := BlissCanonicalLabelling( gamma[1], gamma[2] );
+			fi;
 			B := ImageOfHomogeneousCoherentConfiguration(A, p2, perm);;
 			if IsHomogeneousCoherentConfiguration(potential_canon) then
 				if B < potential_canon then
@@ -1193,16 +1200,22 @@ function(A)
 	else
 		isoms1 :=[];
 		for val in [1 .. NumberOfClasses(A)] do
-			edges := [];
-			for i in [1 .. Order(A)] do
-				for j in [1 .. Order(A)] do
-					if RelationMatrix(A)[i][j]=val then
-						Add(edges, [i, j]);
-					fi;
-				od;
-			od;
-			gamma := NautyGraph( edges );
-			p := CanonicalLabeling( gamma );
+#			edges := [];
+#			for i in [1 .. Order(A)] do
+#				for j in [1 .. Order(A)] do
+#					if RelationMatrix(A)[i][j]=val then
+#						Add(edges, [i, j]);
+#					fi;
+#				od;
+#			od;
+#			gamma := NautyGraph( edges );
+			gamma := Digraph([1 .. Order(A)], function(x, y) return RelationMatrix(A)[x][y]=val;end);
+#			p := CanonicalLabeling( gamma );
+			if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
+			    p := NautyCanonicalLabelling( gamma );
+			else
+			    p := BlissCanonicalLabelling( gamma )^(-1);
+			fi;
 			permuted_edges := OnTuplesTuples( edges, p^(-1) );
 			c2 := Set( List( permuted_edges, i -> Set( i ) ) );
 			Add(isoms1, [val, c2]);
@@ -1226,7 +1239,12 @@ function(A)
 		for perm in stab do
 			C := ReorderRelations(A, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], perm)));
 			gamma:=SchemeToGraph(C);
-			p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+#			p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+			if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
+    			p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+			else
+    			p2 := BlissCanonicalLabelling( gamma[1], gamma[2] );
+			fi;
 			B := ImageOfHomogeneousCoherentConfiguration(A, p2, perm);;
 			if IsHomogeneousCoherentConfiguration(potential_canon) then
 				if B < potential_canon then
