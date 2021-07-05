@@ -1055,7 +1055,7 @@ end);
 
 InstallMethod( AreIsomorphicHomogeneousCoherentConfigurations, [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
 function(A, B)
-	local n, vertices, i, j, colours1, colours2, colours3, gamma, p, permuted_edges, permuted_edges_set, map, deg1, deg2, stab, temp, temp2, C, p1, p2, c1, c2, perm, edges, isoms1, isoms2, val;
+	local perm, charpolysA, charpolysB, gamma, p1, p2, orderings, next, children, p, gammaA, gammaB, i, k, Bmat, Bmat2, Amat, C;
 
 	if Order(A) <> Order(B) then
 		return false;
@@ -1064,102 +1064,62 @@ function(A, B)
 		return false;
 	fi;
 
+	if Collected(Valencies(A)) <> Collected(Valencies(B)) then
+		return false;
+	fi;
+
 	if IsCommutative(A) <> IsCommutative(B) then
 		return false;
 	fi;
 
-	deg1 := List([1 .. NumberOfClasses(A)], t -> Size(Neighbours(A, 1, t)));
-	Sort(deg1, function(u, v) return u<v;end);
-	deg2 := List([1 .. NumberOfClasses(A)], t -> Size(Neighbours(B, 1, t)));
-	Sort(deg2, function(u, v) return u<v;end);
-	if deg1 <> deg2 then
+	charpolysA := List(IntersectionMatrices(A), CharacteristicPolynomial);;
+	charpolysB := List(IntersectionMatrices(A), CharacteristicPolynomial);;
+	if Collected(charpolysA) <> Collected(charpolysB) then
 		return false;
 	fi;
-
-	isoms1 :=[];
-	for val in [1 .. NumberOfClasses(A)] do
-		edges := [];
-		for i in [1 .. Order(A)] do
-			for j in [1 .. Order(A)] do
-				if RelationMatrix(A)[i][j]=val then
-					Add(edges, [i, j]);
-				fi;
-			od;
-		od;
-#		gamma := NautyGraph( edges );
-		gamma := Digraph([1 .. Order(A)], function(x, y) return RelationMatrix(A)[x][y]=val;end);
-#		p := CanonicalLabeling( gamma );
-		if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
-		    p := NautyCanonicalLabelling( gamma );
-		else
-		    p := BlissCanonicalLabelling( gamma )^(-1);
-		fi;
-		permuted_edges := OnTuplesTuples( edges, p^(-1) );
-		c2 := Set( List( permuted_edges, i -> Set( i ) ) );
-		Add(isoms1, [val, c2]);
-	od;
-	isoms2 :=[];
-	for val in [1 .. NumberOfClasses(B)] do
-		edges := [];
-		for i in [1 .. Order(B)] do
-			for j in [1 .. Order(B)] do
-				if RelationMatrix(B)[i][j]=val then
-					Add(edges, [i, j]);
-				fi;
-			od;
-		od;
-		gamma := Digraph([1 .. Order(B)], function(x, y) return RelationMatrix(B)[x][y]=val;end);
-#		gamma := NautyGraph( edges );
-#		p := CanonicalLabeling( gamma );
-		if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
-		    p := NautyCanonicalLabelling( gamma );
-		else
-		    p := BlissCanonicalLabelling( gamma )^(-1);
-		fi;
-		permuted_edges := OnTuplesTuples( edges, p^(-1) );
-		c2 := Set( List( permuted_edges, i -> Set( i ) ) );
-		Add(isoms2, [val, c2]);
-	od;
-
-	Sort(isoms1, function(u, v) return u[2]<v[2];end);
-	Sort(isoms2, function(u, v) return u[2]<v[2];end);
-	if List(isoms2, t -> t[2]) <> List(isoms1, t -> t[2]) then
-		return false;
-	fi;
-	map := [1 .. NumberOfClasses(A)];
-	for i in [1 .. NumberOfClasses(A)] do
-		map[isoms2[i][1]]:=isoms1[i][1];
-	od;
-	map:=PermList(map);
-	stab:=SymmetricGroup(NumberOfClasses(A));;
-	while isoms2 <> [] do
-		temp:=Filtered(isoms2, t -> t[2] = isoms2[1][2]);
-		temp2:=List(temp, t -> t[1]);
-		stab:=Stabiliser(stab, temp2, OnSets);;
-		isoms2:=Filtered(isoms2, t -> not t in temp);
-	od;
-	stab:=RightCoset(stab, map);;
 
 	gamma:=SchemeToGraph(A);                    
-#	p1 := NautyCanonicalLabelling( gamma[1], gamma[2] );
 	if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
     	p1 := NautyCanonicalLabelling( gamma[1], gamma[2] );
 	else
     	p1 := BlissCanonicalLabelling( gamma[1], gamma[2] );
 	fi;
 
-	for perm in stab do
-		C := ReorderRelations(B, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], perm)));
-		gamma:=SchemeToGraph(C);
-#		p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
-		if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
-    		p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+	orderings := [[]];;
+	while orderings <> [] do
+		next := Remove(orderings, Size(orderings));;
+		if Size(next)<NumberOfClasses(A) then
+			children:=Filtered([1 .. NumberOfClasses(B)], t -> not t in next);;
+			children:=Filtered(children, t -> Valencies(A)[Size(next)+2] = Valencies(B)[t+1]);
+			Amat:=NullMat(Order(A), Order(A));;
+			for i in [1 .. Size(next)+1] do
+				Amat:=Amat+AdjacencyMatrices(A, i);;
+			od;
+			gammaA := Digraph([1 .. Order(A)], function(x, y) return Amat[x][y]=1;end);
+			Bmat:=NullMat(Order(B), Order(B));;
+			for i in [1 .. Size(next)] do
+				Bmat:=Bmat+AdjacencyMatrices(B, next[i]);;
+			od;
+			for k in children do
+				Bmat2:=Bmat+AdjacencyMatrices(B, k);;
+				gammaB := Digraph([1 .. Order(B)], function(x, y) return Bmat2[x][y]=1;end);
+				if IsIsomorphicDigraph(gammaA, gammaB) then
+					Add(orderings, Concatenation(next,[k]));
+				fi;
+			od;
 		else
-    		p2 := BlissCanonicalLabelling( gamma[1], gamma[2] );
-		fi;
-		p := p1 * Inverse(p2);
-		if B = ImageOfHomogeneousCoherentConfiguration(A, p, Inverse(perm)) then
-			return [p, Inverse(perm)];
+			perm := PermList(next);
+			C := ReorderRelations(B, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], Inverse(perm))));
+			gamma:=SchemeToGraph(C);
+			if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
+    			p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+			else
+    			p2 := BlissCanonicalLabelling( gamma[1], gamma[2] );
+			fi;
+			p := p1 * Inverse(p2);
+			if B = ImageOfHomogeneousCoherentConfiguration(A, p, perm) then
+				return [p, Inverse(perm)];
+			fi;
 		fi;
 	od;
 	return false;
