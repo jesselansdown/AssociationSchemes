@@ -257,10 +257,14 @@ InstallMethod(IsSymmetricCoherentConfiguration,
 	function(a)
 		local mat;
 		mat:=RelationMatrix(a);;
-		if TransposedMat(mat)=mat then
-			return true;
-		fi;
-		return false;
+		for i in [1 .. Order(a)-1] do
+			for j in [i+2 .. Order(a)] do
+				if mat[i][j]<>mat[j][i] then
+					return false;
+				fi;
+			od;
+		od;
+		return true;
 	end );
 
 InstallMethod(IsAssociationScheme,
