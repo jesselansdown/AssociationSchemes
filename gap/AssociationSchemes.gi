@@ -257,12 +257,10 @@ InstallMethod(IsSymmetricCoherentConfiguration,
 	function(a)
 		local mat;
 		mat:=RelationMatrix(a);;
-		for i in [1 .. Order(a)-1] do
-			for j in [i+2 .. Order(a)] do
-				if mat[i][j]<>mat[j][i] then
-					return false;
-				fi;
-			od;
+		for i in [1 .. Order(a)] do # Given a HCC, sufficient to check only one row/column
+			if mat[1][i]<>mat[i][1] then
+				return false;
+			fi;
 		od;
 		return true;
 	end );
@@ -1072,7 +1070,15 @@ function(A, B)
 		return false;
 	fi;
 
+	if IsAssociationScheme(A) <> IsAssociationScheme(B) then
+		return false;
+	fi;
+
 	if IsCommutative(A) <> IsCommutative(B) then
+		return false;
+	fi;
+
+	if AdmitsMetricOrdering(A) <> AdmitsMetricOrdering(B) then
 		return false;
 	fi;
 
