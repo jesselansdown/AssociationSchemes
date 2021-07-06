@@ -255,7 +255,7 @@ InstallMethod(Neighbours,
 InstallMethod(IsSymmetricCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration],
 	function(a)
-		local mat;
+		local mat, i;
 		mat:=RelationMatrix(a);;
 		for i in [1 .. Order(a)] do # Given a HCC, sufficient to check only one row/column
 			if mat[1][i]<>mat[i][1] then
@@ -1067,6 +1067,10 @@ function(A, B)
 	fi;
 
 	if Collected(Valencies(A)) <> Collected(Valencies(B)) then
+		return false;
+	fi;
+
+	if Collected(Flat(IntersectionMatrices(A))) <> Collected(Flat(IntersectionMatrices(B))) then
 		return false;
 	fi;
 
