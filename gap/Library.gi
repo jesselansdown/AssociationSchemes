@@ -101,3 +101,38 @@ InstallMethod(AvailableHomogeneousCoherentConfigurations,
 		CloseStream(strm);;
 		return Set(RecNames(tab), t -> Int(t));
 	end );
+
+ InstallMethod( SmallSchemeIdentification, 
+ 	"for IsAssociationScheme",
+ 	[ IsHomogeneousCoherentConfiguration ],
+ function( A )
+	local id, options, B, charpolysA, charpolysB, x, filename, strm, tab, classes;
+	if not Order(A) in AvailableHomogeneousCoherentConfigurations() then
+		Error("This only works for small schemes with order in the database:\n", AvailableHomogeneousCoherentConfigurations(), "\n");
+	fi;
+	if IsThin(A) then
+		Error("Only non-thin coherent configurations are contained in the database.\n");
+	fi;
+	filename := Concatenation(GAPInfo.PackagesInfo.associationschemes[1].InstallationPath,
+		 "/library/AssociationSchemeWithSmallVerticesTable.g");
+	strm :=InputTextFile(filename);;
+	if strm = fail then
+		Print("Can't find the table of association schemes!\n");
+		return fail;
+	fi;
+	tab:=EvalString(ReadAll(strm));;
+	CloseStream(strm);;
+	classes:=tab.(Order(A)).classes;;
+	options:=[];
+	charpolysA := List(IntersectionMatrices(A), CharacteristicPolynomial);;
+	for id in [1 .. NumberOfHomogeneousCoherentConfigurations(Order(A))] do
+		if NumberOfClasses(A) = classes[id] then
+			B:=HomogeneousCoherentConfiguration(Order(A), id);
+			if AreIsomorphicHomogeneousCoherentConfigurations(A, HomogeneousCoherentConfiguration(Order(A), id)) <> false then
+				return id;
+			fi;
+		fi;
+	od;
+	return fail;
+end);
+

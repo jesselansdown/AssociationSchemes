@@ -54,3 +54,11 @@ DeclareOperation( "AvailableHomogeneousCoherentConfigurations", [  ] );
 #! @Description
 #!	Returns a list $L$ of all homogeneous coherent configuration of order $n$.
 DeclareOperation( "AllHomogeneousCoherentConfigurations", [ IsPosInt ] );
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns id
+#! @Description
+#!	Returns the identification, id, of the homogeneous coherent configuration in the library which is is isomorphic to CC. Thus HomogeneousCoherentConfiguration(n, id) will be isomorphic to CC, where n is the order of CC.
+DeclareAttribute( "SmallSchemeIdentification", IsHomogeneousCoherentConfiguration );
