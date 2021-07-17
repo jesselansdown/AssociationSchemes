@@ -26,3 +26,4 @@ ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/ConstructorMet
 ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/MetricSchemes.gi");
 ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/CometricSchemes.gi");
 ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/SchurianSchemes.gi");
+ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/Idempotents.gi");

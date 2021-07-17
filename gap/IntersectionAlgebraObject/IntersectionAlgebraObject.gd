@@ -109,22 +109,6 @@ DeclareAttribute( "SplittingField", IsIntersectionAlgebraObject );
 DeclareProperty( "HasRationalSplittingField", IsIntersectionAlgebraObject );
 
 #! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns P
-#! @Description
-#!	Returns a the matrix of eigenvalues (or character table), $P$, for a homogeneous coherent configuration CC.
-DeclareAttribute( "MatrixOfEigenvalues", IsIntersectionAlgebraObject );
-
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns Q
-#! @Description
-#!	Returns a the dual matrix of eigenvalues, $Q$, for a homogeneous coherent configuration CC.
-DeclareAttribute( "DualMatrixOfEigenvalues", IsIntersectionAlgebraObject );
-
-#! @Chapter Functionality
 #! @Section Methods
 #! @Arguments CC, i, j, k
 #! @Returns $q_{i,j}^k$
@@ -219,6 +203,3 @@ DeclareProperty( "IsCommutative", IsIntersectionAlgebraObject );
 #! @Description
 #!	Returns the number $n$ of characters of CC.
 DeclareAttribute("NumberOfCharacters", IsIntersectionAlgebraObject);
-
-DeclareOperation( "IsMatrixOfEigenvalues", [ IsIntersectionAlgebraObject, IsMatrix ] );
-DeclareOperation( "MatrixOfEigenvaluesViaBacktrack", [ IsIntersectionAlgebraObject ] );
