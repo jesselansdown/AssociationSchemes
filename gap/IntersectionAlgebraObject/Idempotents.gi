@@ -114,6 +114,22 @@
 		fi;
 	end);
 
+ InstallMethod( MapFromIntersectionMatricesToCentralIdempotentsOverRationals, 
+ 	"for IsAssociationScheme",
+ 	[ IsIntersectionAlgebraObject],
+	function(A)
+		local inter, e, Alg, RIdem, reps;
+
+		inter := IntersectionMatrices(A);
+		e := Sum(inter)/Order(A);
+
+	    Alg := Algebra(Rationals, IntersectionMatrices(A));
+	    RIdem := CentralIdempotentsOfAlgebra(Alg);
+	    RIdem := Filtered(RIdem, t -> t <> e);;
+	    RIdem := Concatenation([e], RIdem);;
+        reps:=List(inter, t -> t[1]);;
+        return TransposedMat(List(RIdem, t -> SolutionMat(reps, t[1])));
+	end);
 
  InstallMethod( CentralIdempotentsOfIntersectionAlgebra, 
  	"for IsAssociationScheme",
@@ -122,6 +138,16 @@
 		local inter, map;
 		inter:=IntersectionMatrices(A);;
 		map:=TransposedMat(MapFromIntersectionMatricesToCentralIdempotents(A));
+		return List(map, t -> inter*t);
+	end);
+
+ InstallMethod( CentralIdempotentsOfIntersectionAlgebraOverRationals, 
+ 	"for IsAssociationScheme",
+ 	[ IsIntersectionAlgebraObject],
+	function(A)
+		local inter, map;
+		inter:=IntersectionMatrices(A);;
+		map:=TransposedMat(MapFromIntersectionMatricesToCentralIdempotentsOverRationals(A));
 		return List(map, t -> inter*t);
 	end);
 

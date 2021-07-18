@@ -41,10 +41,28 @@ DeclareAttribute( "MapFromIntersectionMatricesToCentralIdempotents", IsIntersect
 #! @Chapter Functionality
 #! @Section Attributes Of Intersection Algebras
 #! @Arguments I
+#! @Returns M
+#! @Description
+#!    Takes an intersection algebra object, I, and returns a matrix, M, which maps the intersection matrices to
+#!    the central idempotents of the intersection algebra over the rationals.
+#!    The central idempotent $F_i = \Sum_{i=1}^d+1$ M_{ij} #! B_j$.
+DeclareAttribute( "MapFromIntersectionMatricesToCentralIdempotentsOverRationals", IsIntersectionAlgebraObject );
+
+#! @Chapter Functionality
+#! @Section Attributes Of Intersection Algebras
+#! @Arguments I
 #! @Returns central idempotents
 #! @Description
 #!    Returns the central idempotents of the intersection algebra.
 DeclareAttribute( "CentralIdempotentsOfIntersectionAlgebra", IsIntersectionAlgebraObject );
+
+#! @Chapter Functionality
+#! @Section Attributes Of Intersection Algebras
+#! @Arguments I
+#! @Returns central idempotents
+#! @Description
+#!    Returns the central idempotents of the intersection algebra over the rationals.
+DeclareAttribute( "CentralIdempotentsOfIntersectionAlgebraOverRationals", IsIntersectionAlgebraObject );
 
 #! @Chapter Functionality
 #! @Section Attributes Of Homogeneous Coherent Configurations
