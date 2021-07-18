@@ -7,19 +7,20 @@ ReadPackage( "AssociationSchemes", "gap/AssociationSchemes.gi");
 ReadPackage( "AssociationSchemes", "gap/MetricSchemes.gi");
 ReadPackage( "AssociationSchemes", "gap/CometricSchemes.gi");
 ReadPackage( "AssociationSchemes", "gap/Library.gi");
-ReadPackage( "AssociationSchemes", "gap/SchurianSchemes.gi");
-ReadPackage( "AssociationSchemes", "gap/JohnsonSchemes.gi");
-ReadPackage( "AssociationSchemes", "gap/GrassmannSchemes.gi");
-ReadPackage( "AssociationSchemes", "gap/CyclotomicSchemes.gi");
-ReadPackage( "AssociationSchemes", "gap/HammingSchemes.gi");
 ReadPackage( "AssociationSchemes", "gap/Subsets.gi");
 ReadPackage( "AssociationSchemes", "gap/Codes.gi");
-ReadPackage( "AssociationSchemes", "gap/GroupCC.gi");
-ReadPackage( "AssociationSchemes", "gap/BilinearFormsScheme.gi");
 ReadPackage( "AssociationSchemes", "gap/Algebras.gi");
 ReadPackage( "AssociationSchemes", "gap/Fusions.gi");
-ReadPackage( "AssociationSchemes", "gap/OtherConstructors.gi");
 ReadPackage( "AssociationSchemes", "gap/Approximation.gi");
+
+ReadPackage( "AssociationSchemes", "gap/Constructions/SchurianSchemes.gi");
+ReadPackage( "AssociationSchemes", "gap/Constructions/JohnsonSchemes.gi");
+ReadPackage( "AssociationSchemes", "gap/Constructions/GrassmannSchemes.gi");
+ReadPackage( "AssociationSchemes", "gap/Constructions/CyclotomicSchemes.gi");
+ReadPackage( "AssociationSchemes", "gap/Constructions/HammingSchemes.gi");
+ReadPackage( "AssociationSchemes", "gap/Constructions/GroupCC.gi");
+ReadPackage( "AssociationSchemes", "gap/Constructions/BilinearFormsScheme.gi");
+ReadPackage( "AssociationSchemes", "gap/Constructions/OtherConstructors.gi");
 
 ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/IntersectionAlgebraObject.gi");
 ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/ConstructorMethods.gi");
