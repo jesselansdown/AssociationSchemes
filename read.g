@@ -4,6 +4,7 @@
 # Reading the implementation part of the package.
 #
 ReadPackage( "AssociationSchemes", "gap/AssociationSchemes.gi");
+ReadPackage( "AssociationSchemes", "gap/Idempotents.gi");
 ReadPackage( "AssociationSchemes", "gap/MetricSchemes.gi");
 ReadPackage( "AssociationSchemes", "gap/CometricSchemes.gi");
 ReadPackage( "AssociationSchemes", "gap/Library.gi");

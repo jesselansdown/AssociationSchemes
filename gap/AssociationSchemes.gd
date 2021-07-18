@@ -261,29 +261,6 @@ DeclareAttribute( "SplittingField", IsHomogeneousCoherentConfiguration );
 DeclareProperty( "HasRationalSplittingField", IsHomogeneousCoherentConfiguration );
 
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns P
-#! @Description
-#!	Returns a the matrix of eigenvalues (or character table), $P$, for a homogeneous coherent configuration CC.
-DeclareAttribute( "MatrixOfEigenvalues", IsHomogeneousCoherentConfiguration );
-
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns P
-#! @Description
-#!	TODO.
-DeclareAttribute( "CharacterTableOfHomogeneousCoherentConfiguration", IsHomogeneousCoherentConfiguration );
-
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns Q
-#! @Description
-#!	Returns a the dual matrix of eigenvalues, $Q$, for a homogeneous coherent configuration CC.
-DeclareAttribute( "DualMatrixOfEigenvalues", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Matrices Describing Homogeneous Coherent Configurations
