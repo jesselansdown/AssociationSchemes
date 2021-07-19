@@ -25,7 +25,7 @@
 InstallMethod(HomogeneousCoherentConfiguration,
 			[IsPosInt, IsPosInt],
 	function(n, k)
-		local filename, path, allpaths, strm, mat, ct, as, A;
+		local filename, path, allpaths, strm, mat, ct, as, A, d;
 		filename := Concatenation(GAPInfo.PackagesInfo.associationschemes[1].InstallationPath,
 		 "/library/data/as_",String(n),"_", String(k), ".g");
 		strm :=InputTextFile(filename);;
@@ -36,13 +36,15 @@ InstallMethod(HomogeneousCoherentConfiguration,
 		as:=EvalString(ReadAll(strm));;
 		CloseStream(strm);;
 
-		A := HomogeneousCoherentConfigurationNC(as[1]);;
+		A := HomogeneousCoherentConfigurationNC(as.RelationMatrix);;
+		d := NumberOfClasses(A);;
 		SetSmallSchemeIdentification(A, k);
-		if Size(as[2])=Size(TransposedMat(as[2])) then
-			SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), as[2]);
+		if Size(as.CharacterTable)=d+1 then
+			SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), as.CharacterTable{[1 .. d+1]}{[1 .. d+1]});
+			SetCharacterTableOfHomogeneousCoherentConfiguration(A, as.CharacterTable);
 		else 
 			SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), fail);
-			SetCharacterTableOfHomogeneousCoherentConfiguration(A, as[2]);
+			SetCharacterTableOfHomogeneousCoherentConfiguration(A, as.CharacterTable);
 		fi;
 		return A;
 	end );
