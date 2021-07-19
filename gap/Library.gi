@@ -37,6 +37,7 @@ InstallMethod(HomogeneousCoherentConfiguration,
 		CloseStream(strm);;
 
 		A := HomogeneousCoherentConfigurationNC(as[1]);;
+		SetSmallSchemeIdentification(A, k);
 		if Size(as[2])=Size(TransposedMat(as[2])) then
 			SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), as[2]);
 		else 
@@ -123,7 +124,6 @@ InstallMethod(AvailableHomogeneousCoherentConfigurations,
 	CloseStream(strm);;
 	classes:=tab.(Order(A)).classes;;
 	options:=[];
-	charpolysA := List(IntersectionMatrices(A), CharacteristicPolynomial);;
 	for id in [1 .. NumberOfHomogeneousCoherentConfigurations(Order(A))] do
 		if NumberOfClasses(A) = classes[id] then
 			B:=HomogeneousCoherentConfiguration(Order(A), id);
