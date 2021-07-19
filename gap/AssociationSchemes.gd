@@ -247,6 +247,14 @@ DeclareAttribute("NumberOfCharacters", IsHomogeneousCoherentConfiguration);
 #! @Chapter Functionality
 #! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
+#! @Returns n
+#! @Description
+#!      Returns the multiplicities of characters of CC.
+DeclareAttribute("Multiplicities", IsHomogeneousCoherentConfiguration);
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
 #! @Returns F
 #! @Description
 #!	Returns the splitting field of the CC
