@@ -651,10 +651,14 @@ InstallMethod(IsCommutative,
  	"for IsAssociationScheme",
  	[ IsHomogeneousCoherentConfiguration ],
 	function(A)
-		local i, j, k, l, m, n, AM, v, d, AM1, V, VB, U, P, C;
+		local i, j, k, l, m, n, AM, v, d, AM1, V, VB, U, P, C, B, o;
 		d := NumberOfClasses(A) + 1;
 		if IsCommutative(A) then
 		    return d;
+		fi;
+		B := IntersectionAlgebraObject(A);
+		if HasNumberOfCharacters(B) then
+			return NumberOfCharacters(B);
 		fi;
 		n := Order(A);
 		AM := AdjacencyMatrices(A);
@@ -671,8 +675,10 @@ InstallMethod(IsCommutative,
 		            P[i][j] := P[i][j] + C[j]/v[k];
 		        od;
 		    od;
-		od;    
-	    return Rank(P);
+		od;
+		o := Rank(P);
+		SetNumberOfCharacters(B, o);
+	    return o;
 	end);
 
  InstallMethod( SplittingField, 

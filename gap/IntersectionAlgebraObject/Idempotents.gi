@@ -28,7 +28,7 @@
 	function(A)
 		local inter, idems, alg, reps, P1, k, i, valencies, d, P2, B, Q, m, v, vals, n, f, pol, perm, L, ks, eigs,
 				polys, eig, lambda, P, factored, done, good, notdone, RIdem, Alg, Idem, F, IM2, lenIdem, SimplifyIdem,
-				poly, breakdownpoly, e;
+				poly, breakdownpoly, e, nchar;
 
 	    SimplifyIdem := function(idem)
 	        local i, j, idem2, IsPrim;
@@ -68,7 +68,12 @@
 		e := Sum(inter)/Order(A);
 		d := NumberOfClasses(A);;
 
-		if IsCommutative(A) then
+		if IsCommutative(A) or HasNumberOfCharacters(A) then
+			if IsCommutative(A) then
+				nchar := d+1;
+			else
+				nchar := HasNumberOfCharacters(A);
+			fi;
 		    Alg := Algebra(Rationals, IntersectionMatrices(A));
 		    RIdem := CentralIdempotentsOfAlgebra(Alg);
 		    RIdem := Filtered(RIdem, t -> t <> e);;
@@ -94,7 +99,7 @@
 		                UniteSet(Idem, CentralIdempotentsOfAlgebra(Alg));
 		                if Length(Idem) > lenIdem then
 		                    Idem := SimplifyIdem(Idem);
-		                    if Length(Idem) = d+1 then
+		                    if Length(Idem) = nchar then
 	               			    Idem := Filtered(Idem, t -> t <> e);;
 							    Idem := Concatenation([e], Idem);;
 		                        reps:=List(inter, t -> t[1]);;
