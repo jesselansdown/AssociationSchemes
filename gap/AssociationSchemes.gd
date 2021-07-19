@@ -261,27 +261,6 @@ DeclareAttribute( "SplittingField", IsHomogeneousCoherentConfiguration );
 DeclareProperty( "HasRationalSplittingField", IsHomogeneousCoherentConfiguration );
 
 
-
-#! @Chapter Functionality
-#! @Section Matrices Describing Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns L
-#! @Description
-#!	Returns a list $L$ which is a basis of minimal idempotents for the adjacency algebra of a homogeneous coherent configuration CC.
-#!	The $i$-th entry of $L$ is $E_{i-1}$.
-DeclareAttribute( "MinimalIdempotents", IsHomogeneousCoherentConfiguration );
-
-#! @Chapter Functionality
-#! @Section Matrices Describing Homogeneous Coherent Configurations
-#! @Arguments CC, F
-#! @Returns L
-#! @Description
-#!	Returns a list $L$ which is a basis of minimal idempotents for the adjacency algebra of a homogeneous coherent configuration CC, over the field F.
-#!	The $i$-th entry of $L$ is $E_{i-1}$.
-DeclareOperation( "MinimalIdempotentsOverField", [ IsHomogeneousCoherentConfiguration, IsField ] );
-
-
-
 DeclareOperation("BinaryExpansion", [IsPosInt]);
 
 #! @Chapter Functionality

@@ -48,7 +48,7 @@ DeclareAttribute( "MapFromAdjacencyMatricesToMinimalIdempotentsOverRationals", I
 #! @Returns minimal idempotents
 #! @Description
 #!    Returns the minimal idempotents of the homogeneous coherent configuration.
-DeclareAttribute( "MinimalIdempotentsOfHomogeneousCoherentConfiguration", IsHomogeneousCoherentConfiguration );
+DeclareAttribute( "MinimalIdempotents", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Attributes Of Homogeneous Coherent Configurations
@@ -56,7 +56,7 @@ DeclareAttribute( "MinimalIdempotentsOfHomogeneousCoherentConfiguration", IsHomo
 #! @Returns minimal idempotents
 #! @Description
 #!    Returns the minimal idempotents of the homogeneous coherent configuration over the rationals.
-DeclareAttribute( "MinimalIdempotentsOfHomogeneousCoherentConfigurationOverRationals", IsHomogeneousCoherentConfiguration );
+DeclareAttribute( "MinimalIdempotentsOverRationals", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Attributes Of Homogeneous Coherent Configurations
@@ -81,4 +81,3 @@ DeclareAttribute( "DualMatrixOfEigenvalues", IsHomogeneousCoherentConfiguration 
 #! @Description
 #!	TODO.
 DeclareAttribute( "CharacterTableOfHomogeneousCoherentConfiguration", IsHomogeneousCoherentConfiguration );
-

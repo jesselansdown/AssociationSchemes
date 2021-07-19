@@ -32,23 +32,101 @@ InstallMethod( MapFromAdjacencyMatricesToMinimalIdempotentsOverRationals, [IsHom
     return MapFromIntersectionMatricesToCentralIdempotentsOverRationals(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A));
   end);
 
-InstallMethod( MinimalIdempotentsOfHomogeneousCoherentConfiguration, [IsHomogeneousCoherentConfiguration],
-  function(A)
-		local adj, map;
-		# Later set this up to loop rather than compute all matrices
-		adj:=AdjacencyMatrices(A);;
-		map:=TransposedMat(MapFromAdjacencyMatricesToMinimalIdempotents(A));
-		return List(map, t -> adj*t);
+InstallMethod( MinimalIdempotents, [IsHomogeneousCoherentConfiguration],
+	function(a)
+		local j, i, mat, idems, d, map, relmat, n, x, y;
+			idems:=[];
+			d := NumberOfClasses(a);
+			map := MapFromAdjacencyMatricesToMinimalIdempotents(a);;
+			relmat:=RelationMatrix(a);
+			n:=Order(a);
+			for j in [0 .. d] do
+				mat := NullMat(n, n);;
+				for x in [1 .. n] do
+					for y in [1 .. n] do
+						i:=relmat[x, y];
+						mat[x,y]:=map[i+1][j+1];
+					od;
+				od;
+				Add(idems, mat);
+			od;
+			return idems;
   end);
 
-InstallMethod( MinimalIdempotentsOfHomogeneousCoherentConfigurationOverRationals, [IsHomogeneousCoherentConfiguration],
-  function(A)
-		local adj, map;
-		# Later set this up to loop rather than compute all matrices
-		adj:=AdjacencyMatrices(A);;
-		map:=TransposedMat(MapFromAdjacencyMatricesToMinimalIdempotentsOverRationals(A));
-		return List(map, t -> adj*t);
+InstallOtherMethod( MinimalIdempotents, 
+	"for IsAssociationScheme",
+	[ IsHomogeneousCoherentConfiguration, IsInt],
+	function(A, j)
+		local relmat, mat, a, b, i, map, n;
+		if not j in [0 .. NumberOfClasses(A)] then
+			return fail;
+		fi;
+		if HasMinimalIdempotents(A) then
+			return MinimalIdempotents(A)[j+1];
+		fi;
+		n:=Order(A);
+		relmat:=RelationMatrix(A);
+		map := MapFromAdjacencyMatricesToMinimalIdempotents(A);;
+		mat := NullMat(n, n);;
+		for a in [1 .. n] do
+			for b in [1 .. n] do
+				i:=relmat[a, b]+1;
+				mat[a,b]:=map[i][j+1];
+			od;
+		od;
+		return mat;
+	end);
+
+
+
+
+
+
+
+InstallMethod( MinimalIdempotentsOverRationals, [IsHomogeneousCoherentConfiguration],
+	function(a)
+		local j, i, mat, idems, d, map, relmat, n, x, y;
+			idems:=[];
+			d := NumberOfClasses(a);
+			map := MapFromAdjacencyMatricesToMinimalIdempotentsOverRationals(a);;
+			relmat:=RelationMatrix(a);
+			n:=Order(a);
+			for j in [0 .. Size(map[1])-1] do
+				mat := NullMat(n, n);;
+				for x in [1 .. n] do
+					for y in [1 .. n] do
+						i:=relmat[x, y];
+						mat[x,y]:=map[i+1][j+1];
+					od;
+				od;
+				Add(idems, mat);
+			od;
+			return idems;
   end);
+
+InstallOtherMethod( MinimalIdempotentsOverRationals, 
+	"for IsAssociationScheme",
+	[ IsHomogeneousCoherentConfiguration, IsInt],
+	function(A, j)
+		local relmat, mat, a, b, i, map, n;
+		if not j in [0 .. NumberOfClasses(A)] then
+			return fail;
+		fi;
+		if HasMinimalIdempotents(A) then
+			return MinimalIdempotentsOverRationals(A)[j+1];
+		fi;
+		n:=Order(A);
+		relmat:=RelationMatrix(A);
+		map := MapFromAdjacencyMatricesToMinimalIdempotentsOverRationals(A);;
+		mat := NullMat(n, n);;
+		for a in [1 .. n] do
+			for b in [1 .. n] do
+				i:=relmat[a, b]+1;
+				mat[a,b]:=map[i][j+1];
+			od;
+		od;
+		return mat;
+	end);
 
 InstallMethod( MatrixOfEigenvalues, 
  	"for IsAssociationScheme",

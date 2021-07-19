@@ -74,7 +74,7 @@
 		    RIdem := Filtered(RIdem, t -> t <> e);;
 		    RIdem := Concatenation([e], RIdem);;
 		    if IsRationals(SplittingField(A)) then
-		        if Length(Idem) <> d+1 then
+		        if Length(RIdem) <> d+1 then
 		            Error("Wrong number of idempotents!\n");
 		        fi;
 		        reps:=List(inter, t -> t[1]);;
