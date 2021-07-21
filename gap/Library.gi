@@ -39,6 +39,9 @@ InstallMethod(HomogeneousCoherentConfiguration,
 		A := HomogeneousCoherentConfigurationNC(as.RelationMatrix);;
 		d := NumberOfClasses(A);;
 		SetSmallSchemeIdentification(A, k);
+		if "Description" in RecNames(as) then
+			SetDescription(A, as.Description);
+		fi;
 		if Size(as.CharacterTable)=d+1 then
 			SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), as.CharacterTable{[1 .. d+1]}{[1 .. d+1]});
 			SetCharacterTableOfHomogeneousCoherentConfiguration(A, as.CharacterTable);

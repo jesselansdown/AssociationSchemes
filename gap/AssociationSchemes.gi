@@ -1325,6 +1325,7 @@ InstallMethod( Display,
 	"for IsAssociationScheme",
 	[ IsHomogeneousCoherentConfiguration],
 	function( a )
+		local i;
 		if HasMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(a)) then
 			MatrixOfEigenvalues(a);
 		fi;
@@ -1332,6 +1333,12 @@ InstallMethod( Display,
  			Print( NumberOfClasses(a), "-class association scheme of order ", Order(a), ".\n");
  		else
  			Print( NumberOfClasses(a), "-class homogeneous coherent configuration of order ", Order(a), ".\n");
+ 		fi;
+ 		if HasDescription(a) then
+ 			Print("  Description: ", Description(a)[1], "\n");
+ 			for i in [2 .. Size(Description(a))] do
+ 				Print("               ", Description(a)[i], "\n");
+ 			od;
  		fi;
  		if HasIsSymmetricCoherentConfiguration(a) then
  			Print("  Symmetric: ", IsSymmetricCoherentConfiguration(a), "\n");
@@ -1348,7 +1355,7 @@ InstallMethod( Display,
  		if HasIsPrimitive(a) then
  			Print("  Primitive: ", IsPrimitive(a), "\n");
  		fi;
- 		if HasIsPPolynomial(a) then
+ 		if HasIsPPolynomial(a) or HasAdmitsPPolynomialOrdering(a) then
  			Print("  Metric: ", IsMetric(a), "\n");
  			if IsMetric(a) = false and HasAdmitsPPolynomialOrdering(a) then
 	 			Print("    Admits metric ordering: ", AdmitsPPolynomialOrdering(a), "\n");
@@ -1368,7 +1375,7 @@ InstallMethod( Display,
  				Print(ClassicalParameters(a), "\n");
  			fi;
  		fi;
- 		if HasIsQPolynomial(a) then
+ 		if HasIsQPolynomial(a) or HasAdmitsQPolynomialOrdering(a) then
  			Print("  Cometric: ", IsCometric(a), "\n");
  			if IsCometric(a) = false and HasAdmitsQPolynomialOrdering(a) then
 	 			Print("    Admits cometric ordering: ", AdmitsQPolynomialOrdering(a), "\n");

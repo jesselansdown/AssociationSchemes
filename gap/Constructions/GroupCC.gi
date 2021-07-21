@@ -31,7 +31,7 @@ InstallMethod(GroupCoherentConfiguration,
 		# if g^{-1}h in C_i. We get a homogeneous,
 		# but not necessarily symmetric, coherent
 		# configuration.
-    local C, x, i, n, c, GE, M, M2, v, perm, indices, list, tau;
+    local C, x, i, n, c, GE, M, M2, v, perm, indices, list, tau, cc;
     C := ConjugacyClasses(G);
     c := Length(C);
     GE := Elements(G);
@@ -53,5 +53,7 @@ InstallMethod(GroupCoherentConfiguration,
     list := List(M, t -> Position(t, 0)); 
     tau := PermList(list);
     M2 := Permuted(M, tau);;
-	return HomogeneousCoherentConfiguration( M2 );
+	cc := HomogeneousCoherentConfiguration( M2 );
+    SetDescription(cc, ["Group coherent configuration"]);
+    return cc;
 end );

@@ -112,5 +112,6 @@ InstallMethod(CyclotomicScheme,
 	    od;
 		A := HomogeneousCoherentConfigurationNC(M);;
 		SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), MatrixOfEigenvaluesOfCyclotomicScheme(n, d));
+		SetDescription(A, [Concatenation("Cyclotomic scheme, Cyc(",String(n),",", String(d), ")")]);
 	    return A;
 	end);

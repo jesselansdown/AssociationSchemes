@@ -62,7 +62,7 @@ InstallMethod(HomogeneousCoherentConfigurationByOrbitals,
 InstallMethod(HomogeneousCoherentConfigurationByOrbitals,
       [IsGroup, IsGroup],
   function(G, H)
-    local omega, g_perm;
+    local omega, g_perm, sch;
     if not IsSubgroup(G, H) then
       Print("H must be a subgroup of G\n");
       return fail;
@@ -73,7 +73,9 @@ InstallMethod(HomogeneousCoherentConfigurationByOrbitals,
       Print("G must act transitively on G/H\n");
       return fail;
     fi;
-    return HomogeneousCoherentConfigurationByOrbitals(g_perm);
+    sch := HomogeneousCoherentConfigurationByOrbitals(g_perm);
+    SetDescription(sch, [Concatenation("Orbital scheme from group of order ", String(Order(G)), " and subgroup of order ", String(Order(H)))]);
+    return sch;
   end );
 
 InstallMethod( MinimalIdempotents, 
@@ -159,7 +161,8 @@ InstallMethod(SchurianAssociationScheme,
 			return fail;
 		fi;
 		sch := HomogeneousCoherentConfigurationByOrbitals(g_perm);
-		return sch;
+    SetDescription(sch, [Concatenation("Schurian scheme constructed from permutation group of order ", String(Order(g_perm)))]);
+    return sch;
 	end);
 
 InstallMethod(SchurianCoherentConfiguration,
@@ -171,6 +174,7 @@ InstallMethod(SchurianCoherentConfiguration,
       return fail;
     fi;
     sch := HomogeneousCoherentConfigurationByOrbitals(g_perm);
+    SetDescription(sch, [Concatenation("Schurian scheme constructed from permutation group of order ", String(Order(g_perm)))]);
     return sch;
   end);
 

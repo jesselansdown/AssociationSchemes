@@ -26,10 +26,10 @@ InstallMethod(MatrixOfEigenvaluesOfGrassmannScheme,
             [IsPosInt, IsPosInt, IsPosInt],
     function( n, k, q)
     	local P, j, i, d, p, s;
-    	P:=NullMat(k+1, k+1);;
     	d := Minimum(k, n-k);
-    	for j in [0 .. k] do
-    		for i in [0 .. k] do
+    	P:=NullMat(d+1, d+1);;
+    	for j in [0 .. d] do
+    		for i in [0 .. d] do
 				p := 0;
 				for s in [0 .. i] do
 					p := p + (-1)^(i+s) * GaussianCoefficient(d-s, i-s, q) * GaussianCoefficient(d-j, s, q) * GaussianCoefficient(n-d+s-j,s, q) * q^(s*j+(i-s)*(i-s-1)/2);
@@ -54,5 +54,6 @@ InstallMethod(GrassmannScheme,
 		g_perm:=Action(g, maximals,OnSubspacesByCanonicalBasis);;
 		A := SchurianAssociationScheme(g_perm);;
 		SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), MatrixOfEigenvaluesOfGrassmannScheme(n, k, q));
+		SetDescription(A, [Concatenation("Grassmann scheme, J_", String(q), "(",String(n), ",", String(k), ")")]);
 		return A;
 	end);

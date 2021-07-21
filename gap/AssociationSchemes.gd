@@ -409,3 +409,11 @@ DeclareOperation( "ReorderMinimalIdempotents", [ IsHomogeneousCoherentConfigurat
 DeclareOperation( "ViewRelationDistributionDiagram", [ IsHomogeneousCoherentConfiguration ] );
 
 DeclareOperation( "MatrixOfEigenvaluesViaBacktrack", [ IsHomogeneousCoherentConfiguration ] );
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments CC
+#! @Returns lis
+#! @Description
+#!      Take a CC and returns a list containing various descriptions/names of the CC, if available. Note that most homogeneous coherent configurations will not have a description. Some famous homogeneous coherent configurations, association schemes, or distance regular graphs in the library, as well families that have constructor methods, will have names. Some will have multiple descriptions, hence they are given as a list.
+DeclareAttribute( "Description", IsHomogeneousCoherentConfiguration );

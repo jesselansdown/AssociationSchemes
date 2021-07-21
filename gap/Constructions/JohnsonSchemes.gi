@@ -52,5 +52,6 @@ InstallMethod(JohnsonScheme,
 	    H := Stabiliser(G, [1..k], OnSets);;
         A := HomogeneousCoherentConfigurationByOrbitals(G, H);
         SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), MatrixOfEigenvaluesOfJohnsonScheme(n, k));
+        SetDescription(A, [Concatenation("Johnson scheme, J(", String(n), ",", String(k), ")")]);
         return A;
 	end);

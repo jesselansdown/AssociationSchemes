@@ -40,5 +40,6 @@ InstallMethod(BilinearFormsScheme,
 	od;
 	cc := HomogeneousCoherentConfigurationNC( mat );
 	SetIsSymmetricCoherentConfiguration(cc, true);
+	SetDescription(cc, [Concatenation("Bilinear forms scheme, ", String(F), "^", String(m)," x ", String(F), "^", String(m), " -> ", String(F), "^", String(n))]);
 	return cc;
 end );

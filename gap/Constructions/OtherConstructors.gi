@@ -25,7 +25,7 @@
 InstallMethod(DirectProductOfHomogeneousCoherentConfigurations,
 			[IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
 	function(M, N)
-	    local L, i, j, MM, NM, A;
+	    local L, i, j, MM, NM, A, cc;
 	    
 	    MM := AdjacencyMatrices(M);
 	    NM := AdjacencyMatrices(N);
@@ -41,14 +41,16 @@ InstallMethod(DirectProductOfHomogeneousCoherentConfigurations,
 	        L := L + A[i] * (i-1);
 	    od;
 	  
-	    return HomogeneousCoherentConfigurationNC(L);
+	    cc:= HomogeneousCoherentConfigurationNC(L);
+	    SetDescription(cc, [Concatenation("Direct product of ", String(Rank(M)), "-class HCC of order ", String(Order(M)), " and ", String(Rank(N)), "-class HCC of order ", String(Order(N)))]);
+	    return cc;
 	end);
 
 
 InstallMethod(WreathProductOfHomogeneousCoherentConfigurations,
 			[IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
 	function(M, N)
-	    local L, i, j, MM, NM, A, J;
+	    local L, i, j, MM, NM, A, J, cc;
 
 	    MM := AdjacencyMatrices(M);
 	    NM := AdjacencyMatrices(N);
@@ -73,7 +75,9 @@ InstallMethod(WreathProductOfHomogeneousCoherentConfigurations,
 	        L := L + A[i] * (i-1);
 	    od;
 	  
-	    return HomogeneousCoherentConfigurationNC(L);
+	    cc:= HomogeneousCoherentConfigurationNC(L);
+	    SetDescription(cc, [Concatenation("Wreath product of ", String(Rank(M)), "-class HCC of order ", String(Order(M)), " and ", String(Rank(N)), "-class HCC of order ", String(Order(N)))]);
+	    return cc;
 	end);
 
 
@@ -102,6 +106,7 @@ InstallMethod(BipartiteDoubleOfAssociationScheme,
 			od;
 			SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(B), Pmat);
 		fi;
+	    SetDescription(B, [Concatenation("Bipartite double of ", String(Rank(A)), "-class association scheme of order ", String(Order(A)))]);
 		return B;
 	end);
 
@@ -109,7 +114,7 @@ InstallMethod(ExtendedQBipartiteDouble,
 			[IsHomogeneousCoherentConfiguration],
 	# See Martin, Muzychuk, Williford "Imprimitive cometric association schemes: Constructions and analysis"
 	function(A)
-	local Aplus, Aminus, x, y, B, d, mats, i;
+	local Aplus, Aminus, x, y, B, d, mats, i, cc;
 
 	if not IsAssociationScheme(A) then
 		Error("Must give an association scheme!\n");
@@ -150,5 +155,7 @@ InstallMethod(ExtendedQBipartiteDouble,
 		Add(mats, Aplus(B, i)+Aminus(B, d+1-i));
 	od;
 	Add(mats, Aminus(B, 0));
-	return HomogeneousCoherentConfiguration(Sum(List([1..5], t -> (t-1)*mats[t])));
+	cc:= HomogeneousCoherentConfiguration(Sum(List([1..5], t -> (t-1)*mats[t])));
+	SetDescription(cc, [Concatenation("Extended Q-bipartite double of ", String(Rank(A)), "-class association scheme of order ", String(Order(A)))]);
+	return cc;
 end);
