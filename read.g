@@ -13,6 +13,7 @@ ReadPackage( "AssociationSchemes", "gap/Codes.gi");
 ReadPackage( "AssociationSchemes", "gap/Algebras.gi");
 ReadPackage( "AssociationSchemes", "gap/Fusions.gi");
 ReadPackage( "AssociationSchemes", "gap/Approximation.gi");
+ReadPackage( "AssociationSchemes", "gap/GraphsAndAutomorphsims.gi");
 
 ReadPackage( "AssociationSchemes", "gap/Constructions/SchurianSchemes.gi");
 ReadPackage( "AssociationSchemes", "gap/Constructions/JohnsonSchemes.gi");
