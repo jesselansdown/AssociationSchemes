@@ -129,15 +129,12 @@ InstallMethod(ConverseRelationPairs,
 InstallMethod(IsStratifiable,
 			[IsHomogeneousCoherentConfiguration],
 	function( A )
-		local fuse, rels, i, x, y;
 
 		if IsCommutative(A) then
 			return true;
 		fi;
 
-		fuse:=ConverseRelationPairs(A);
-
-		if IsFusionOfHomogeneousCoherentConfiguration(A, fuse) then
+		if IsFusionOfHomogeneousCoherentConfiguration(A, ConverseRelationPairs(A)) then
 			return true;
 		else
 			return false;
@@ -149,16 +146,14 @@ InstallMethod(IsStratifiable,
 InstallMethod(SymmetrisationOfHomogeneousCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration],
 	function( A )
-		local fuse, rels, i, x, y, A2;
+		local A2;
 
 		if IsAssociationScheme(A) then
 			return A;
 		fi;
 
-		fuse:=ConverseRelationPairs(A);;
-
 		if IsStratifiable(A) then
-			A2:=FusionOfHomogeneousCoherentConfiguration(A, fuse);
+			A2:=FusionOfHomogeneousCoherentConfiguration(A, ConverseRelationPairs(A));
 			SetIsSymmetricCoherentConfiguration(A2, true);
 			return A2;
 		else
