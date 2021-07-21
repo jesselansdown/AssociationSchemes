@@ -44,6 +44,22 @@ DeclareOperation( "FusionOfHomogeneousCoherentConfiguration", [IsHomogeneousCohe
 #! @Chapter Functionality
 #! @Section Constructor Methods
 #! @Arguments CC
+#! @Returns L
+#! @Description
+#!	Returns a list L of either tuples or singletons, corresponding to relations and their converses or symmetric relations.
+DeclareAttribute( "ConverseRelationPairs", IsHomogeneousCoherentConfiguration);
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	If the fusion of transposed relations produces a valid association scheme, then CC is stratifiable.
+DeclareAttribute( "IsStratifiable", IsHomogeneousCoherentConfiguration);
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments CC
 #! @Returns Association scheme
 #! @Description
 #!	Given a homogeneous coherent configuration, CC, the symmetrisation is computed if possible, otherwise fail is returned.

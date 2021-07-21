@@ -101,14 +101,11 @@ InstallMethod(FusionOfHomogeneousCoherentConfiguration,
 		return m2;
 	end);
 
-InstallMethod(SymmetrisationOfHomogeneousCoherentConfiguration,
+
+InstallMethod(ConverseRelationPairs,
 			[IsHomogeneousCoherentConfiguration],
 	function( A )
 		local fuse, rels, i, x, y;
-
-		if IsAssociationScheme(A) then
-			return A;
-		fi;
 
 		fuse:=[];;
 		rels := [0 .. NumberOfClasses(A)];;
@@ -125,13 +122,45 @@ InstallMethod(SymmetrisationOfHomogeneousCoherentConfiguration,
 				break;
 			fi;
 		od;
+		return fuse;
+	end);
+
+
+InstallMethod(IsStratifiable,
+			[IsHomogeneousCoherentConfiguration],
+	function( A )
+		local fuse, rels, i, x, y;
 
 		if IsCommutative(A) then
-			return FusionOfHomogeneousCoherentConfiguration(A, fuse);
+			return true;
 		fi;
 
+		fuse:=ConverseRelationPairs(A);
+
 		if IsFusionOfHomogeneousCoherentConfiguration(A, fuse) then
-			return FusionOfHomogeneousCoherentConfiguration(A, fuse);
+			return true;
+		else
+			return false;
+		fi;
+
+	end);
+
+
+InstallMethod(SymmetrisationOfHomogeneousCoherentConfiguration,
+			[IsHomogeneousCoherentConfiguration],
+	function( A )
+		local fuse, rels, i, x, y, A2;
+
+		if IsAssociationScheme(A) then
+			return A;
+		fi;
+
+		fuse:=ConverseRelationPairs(A);;
+
+		if IsStratifiable(A) then
+			A2:=FusionOfHomogeneousCoherentConfiguration(A, fuse);
+			SetIsSymmetricCoherentConfiguration(A2, true);
+			return A2;
 		else
 			return fail;
 		fi;

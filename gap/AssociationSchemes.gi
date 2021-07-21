@@ -1308,9 +1308,13 @@ InstallMethod(ReorderMinimalIdempotents,
  	[ IsHomogeneousCoherentConfiguration],
  	function( a )
  		if HasIsSymmetricCoherentConfiguration(a) and IsSymmetricCoherentConfiguration(a) then
- 			Print( NumberOfClasses(a), "-class association scheme of order ", Order(a));
+ 			Print( "< ", NumberOfClasses(a), "-class association scheme of order ", Order(a), " >");
+ 		elif HasIsCommutative(a) and IsCommutative(a) then
+ 			Print( "< ", NumberOfClasses(a), "-class commutative coherent configuration of order ", Order(a), " >");
+ 		elif HasIsStratifiable(a) and IsStratifiable(a) then
+ 			Print( "< ", NumberOfClasses(a), "-class stratifiable coherent configuration of order ", Order(a), " >");
  		else
- 			Print( NumberOfClasses(a), "-class homogeneous coherent configuration of order ", Order(a));
+ 			Print( "< ", NumberOfClasses(a), "-class homogeneous coherent configuration of order ", Order(a), " >");
  		fi;
  	end );
 
@@ -1331,6 +1335,10 @@ InstallMethod( Display,
 		fi;
  		if HasIsSymmetricCoherentConfiguration(a) and IsSymmetricCoherentConfiguration(a) then
  			Print( NumberOfClasses(a), "-class association scheme of order ", Order(a), ".\n");
+ 		elif HasIsCommutative(a) and IsCommutative(a) then
+ 			Print( "< ", NumberOfClasses(a), "-class commutative coherent configuration of order ", Order(a), " >");
+ 		elif HasIsStratifiable(a) and IsStratifiable(a) then
+ 			Print( "< ", NumberOfClasses(a), "-class stratifiable coherent configuration of order ", Order(a), " >");
  		else
  			Print( NumberOfClasses(a), "-class homogeneous coherent configuration of order ", Order(a), ".\n");
  		fi;
