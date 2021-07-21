@@ -36,4 +36,54 @@ DeclareOperation( "Digraph", [ IsHomogeneousCoherentConfiguration, IsPosInt ] );
 #! @Returns homogeneous coherent configuration
 #! @Description
 #!	Returns the digraph object which is a union of the relations of a homogeneous coherent configuration CC given by the set S. Note that the identity relation is excluded.
-DeclareOtherOperation( "Digraph", [ IsHomogeneousCoherentConfiguration, IsList ] );
+DeclareOperation( "Digraph", [ IsHomogeneousCoherentConfiguration, IsList ] );
+
+DeclareOperation("SchemeToGraph", [IsHomogeneousCoherentConfiguration]);
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns G
+#! @Description
+#!	Returns the automorphism group $G$ of the coherent configuration CC.
+#!	$G$ is a permutation group acting on the index set of the vertices.
+DeclareAttribute( "AutomorphismGroup", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC, p, $\sigma$
+#! @Returns true or false
+#! @Description
+#!	For a $d$-class homogeneous coherent configuration with relation matrix $M$ and order $n$, takes a permutation $p$ on the set
+#!		$\{1 .. n\}$ and permutation $\sigma$ on the set $\{1 .. d\}$ and returns the $d$-class homogenous coherent configuration with
+#!		relation matrix $P^{-1} M^\sigma P$, where $P$ is the permutation matrix defined by $P$.
+DeclareOperation("ImageOfHomogeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration, IsPerm, IsPerm]);
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC, p, $\sigma$
+#! @Returns true or false
+#! @Description
+#! If there exists a permutation matrix $P$ and permutation $\sigma$ such that if $M$ is the relation matrix of $A$, then 
+#!	$P^{-1} M^\sigma P$ is the relation matrix of $B$, then the operation will return $[p, \sigma]$, where $p$ is the permutation
+#!	defining $P$. If no such $P$ and $\sigma$ exist, then the operation will return false.
+DeclareOperation("AreIsomorphicHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns [perm1, perm2]
+#! @Description
+#!	Returns two permutations which will produce the canonical form of the homogeneous coherent configuration CC.
+#!	The canonical form can be obtained by ImageOfHomogeneousCoherentConfiguration(CC, perm1, perm2)
+#!  Any homogenouse coherent configuration which is isomorphic to CC will the same canonical form.
+DeclareAttribute( "CanonisingMap", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns CC2
+#! @Description
+#!	Returns the canonical form, CC2, of the homogeneous coherent configuration CC.
+#!	Any homogenouse coherent configuration which is isomorphic to CC will have CC2 as the canonical form.
+DeclareOperation("CanonicalFormOfHomogeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration]);

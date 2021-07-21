@@ -5,6 +5,7 @@
 #
 
 ReadPackage( "AssociationSchemes", "gap/AssociationSchemes.gd");
+ReadPackage( "AssociationSchemes", "gap/GraphsAndAutomorphsims.gd");
 ReadPackage( "AssociationSchemes", "gap/Idempotents.gd");
 ReadPackage( "AssociationSchemes", "gap/MetricSchemes.gd");
 ReadPackage( "AssociationSchemes", "gap/CometricSchemes.gd");
@@ -14,7 +15,6 @@ ReadPackage( "AssociationSchemes", "gap/Codes.gd");
 ReadPackage( "AssociationSchemes", "gap/Algebras.gd");
 ReadPackage( "AssociationSchemes", "gap/Fusions.gd");
 ReadPackage( "AssociationSchemes", "gap/Approximation.gd");
-ReadPackage( "AssociationSchemes", "gap/GraphsAndAutomorphsims");
 
 ReadPackage( "AssociationSchemes", "gap/Constructions/BilinearFormsScheme.gd");
 ReadPackage( "AssociationSchemes", "gap/Constructions/SchurianSchemes.gd");

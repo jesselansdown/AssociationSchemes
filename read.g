@@ -4,6 +4,7 @@
 # Reading the implementation part of the package.
 #
 ReadPackage( "AssociationSchemes", "gap/AssociationSchemes.gi");
+ReadPackage( "AssociationSchemes", "gap/GraphsAndAutomorphsims.gi");
 ReadPackage( "AssociationSchemes", "gap/Idempotents.gi");
 ReadPackage( "AssociationSchemes", "gap/MetricSchemes.gi");
 ReadPackage( "AssociationSchemes", "gap/CometricSchemes.gi");
@@ -13,7 +14,6 @@ ReadPackage( "AssociationSchemes", "gap/Codes.gi");
 ReadPackage( "AssociationSchemes", "gap/Algebras.gi");
 ReadPackage( "AssociationSchemes", "gap/Fusions.gi");
 ReadPackage( "AssociationSchemes", "gap/Approximation.gi");
-ReadPackage( "AssociationSchemes", "gap/GraphsAndAutomorphsims.gi");
 
 ReadPackage( "AssociationSchemes", "gap/Constructions/SchurianSchemes.gi");
 ReadPackage( "AssociationSchemes", "gap/Constructions/JohnsonSchemes.gi");
