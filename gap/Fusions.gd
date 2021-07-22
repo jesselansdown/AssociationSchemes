@@ -51,6 +51,15 @@ DeclareAttribute( "ConverseRelationPairs", IsHomogeneousCoherentConfiguration);
 
 #! @Chapter Functionality
 #! @Section Constructor Methods
+#! @Arguments CC, i
+#! @Returns j
+#! @Description
+#!	Returns j such that $R_j = R_i^\Top$, the converse relation of $i$	.
+DeclareOperation( "ConverseRelation", [IsHomogeneousCoherentConfiguration, IsInt]);
+
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
 #! @Arguments CC
 #! @Returns true or false
 #! @Description

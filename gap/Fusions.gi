@@ -125,6 +125,25 @@ InstallMethod(ConverseRelationPairs,
 		return fuse;
 	end);
 
+InstallMethod(ConverseRelation,
+			[IsHomogeneousCoherentConfiguration, IsInt],
+	function( A, i )
+		local fuse, x, j;
+
+		if not i in [0 .. NumberOfClasses(A)] then
+			Error("i must be in [0 .. d]\n");
+		fi;
+		fuse:=ConverseRelationPairs(A);;
+		x := Filtered(fuse, t -> i in t)[1];
+		if Size(x)=1 then
+			return i;
+		elif Size(x)=2 then
+			j:=Filtered(x, t -> t<> i)[1];
+			return j;
+		else
+			Error("This should not happen!\n");
+		fi;
+	end);
 
 InstallMethod(IsStratifiable,
 			[IsHomogeneousCoherentConfiguration],
