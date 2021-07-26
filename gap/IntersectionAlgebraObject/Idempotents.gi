@@ -28,7 +28,7 @@
 	function(A)
 		local inter, idems, alg, reps, P1, k, i, valencies, d, P2, B, Q, m, v, vals, n, f, pol, perm, L, ks, eigs,
 				polys, eig, lambda, P, factored, done, good, notdone, RIdem, Alg, Idem, F, IM2, lenIdem, SimplifyIdem,
-				poly, breakdownpoly, e, nchar;
+				poly, breakdownpoly, e, nchar, Idem2;
 
 	    SimplifyIdem := function(idem)
 	        local i, j, idem2, IsPrim;
@@ -78,36 +78,34 @@
 		    RIdem := CentralIdempotentsOfAlgebra(Alg);
 		    RIdem := Filtered(RIdem, t -> t <> e);;
 		    RIdem := Concatenation([e], RIdem);;
-		    if IsRationals(SplittingField(A)) then
-		        if Length(RIdem) <> d+1 then
-		            Error("Wrong number of idempotents!\n");
-		        fi;
+		    if Length(RIdem) = d+1 then
 		        reps:=List(inter, t -> t[1]);;
 		        return TransposedMat(List(RIdem, t -> SolutionMat(reps, t[1])));
 		    else
 		        L := DivisorsInt(Conductor(SplittingField(A)));
-		        L := Filtered(L, t -> t<>1);
+		        L := Filtered(L, t -> not t in [1, 2]);
 		        L := List(L, i->CF(i));
-		        Idem := [IdentityMat(NumberOfClasses(A)+1)];
+		        Idem := StructuralCopy(RIdem);;
 		        for F in L do
-		            for i in [1..Length(RIdem)] do
-		                IM2 := List(IntersectionMatrices(A), x -> x*RIdem[i]);
-		                Add(IM2, IdentityMat(NumberOfClasses(A)+1));
-		                IM2 := Set(IM2);
-		                Alg := Algebra(F, IM2);
-		                lenIdem := Length(Idem);
-		                UniteSet(Idem, CentralIdempotentsOfAlgebra(Alg));
-		                if Length(Idem) > lenIdem then
-		                    Idem := SimplifyIdem(Idem);
-		                    if Length(Idem) = nchar then
-	               			    Idem := Filtered(Idem, t -> t <> e);;
-							    Idem := Concatenation([e], Idem);;
-		                        reps:=List(inter, t -> t[1]);;
-		                        return TransposedMat(List(Idem, t -> SolutionMat(reps, t[1])));
-		                    fi;
-		                fi;
+		        	Idem2 := [];;
+		            for i in [1..Length(Idem)] do
+		            	if Conductor(F) mod Conductor(DefaultFieldOfMatrix(Idem[i])) = 0 then
+			                IM2 := List(IntersectionMatrices(A), x -> x*Idem[i]);
+			                Add(IM2, IdentityMat(NumberOfClasses(A)+1));
+			                IM2 := Set(IM2);
+			                Alg := Algebra(F, IM2);
+			                Append(Idem2, CentralIdempotentsOfAlgebra(Alg));
+			            else
+			            	Add(Idem2, Idem[i]);
+			            fi;
 		            od;
+		            Idem:=Set(Idem2);
+		            Idem:=SimplifyIdem(Idem);;
 		        od;
+	           	Idem := Filtered(Idem, t -> t <> e);;
+				Idem := Concatenation([e], Idem);;
+		        reps:=List(inter, t -> t[1]);;
+		        return TransposedMat(List(Idem, t -> SolutionMat(reps, t[1])));
 		    fi;
 		else
 		    Alg := Algebra(SplittingField(A), IntersectionMatrices(A));
