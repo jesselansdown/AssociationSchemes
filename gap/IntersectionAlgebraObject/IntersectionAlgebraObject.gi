@@ -87,13 +87,18 @@ InstallMethod( Order,
 
 		local inter, polys, vals, n, i, m, pol, factored, done, breakdownpoly, poly;
 
-		breakdownpoly := function(poly, sz)
+		breakdownpoly := function(poly, A)
 			local m, n, factored, tryfirst;
 			if Degree(poly) = 1 then
 				return [poly];
 			fi;
 			m := Conductor(DefaultField(CoefficientsOfUnivariatePolynomial(poly)));
-			tryfirst := DivisorsInt(sz);
+#			tryfirst := Set(Concatenation(List([1 .. NumberOfClasses(A)], t -> DivisorsInt(Order(A)*t))));
+#			tryfirst := Filtered(tryfirst, t -> t <= Order(A));
+			tryfirst := [];
+			if IsPrime(Order(A)) then
+				Add(tryfirst, Order(A));
+			fi;
 			for n in tryfirst do
 				if n mod m = 0 then
 					factored:=Factors(PolynomialRing(CF(n)), poly);
@@ -102,7 +107,7 @@ InstallMethod( Order,
 					fi;
 				fi;
 			od;
-			n:=1;
+			n:=3;
 			while true do
 				if not n*m in tryfirst then
 					factored:=Factors(PolynomialRing(CF(n*m)), poly);
@@ -130,12 +135,12 @@ InstallMethod( Order,
 
 		done:=[];
 		while polys <> [] do
-			poly:=Remove(polys, 1);
+			poly:=Remove(polys, Size(polys));
 			if Degree(poly) = 1 then
 				Add(done, Conductor(DefaultField(CoefficientsOfUnivariatePolynomial(poly))));
 				done:=Set(done);
 			else
-				polys:=Concatenation(polys, breakdownpoly(poly, Order(A)));
+				polys:=Set(Concatenation(polys, breakdownpoly(poly, A)));
 			fi;
 		od;
 		n:=done[1];
