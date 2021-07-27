@@ -87,22 +87,32 @@ InstallMethod( Order,
 
 		local inter, polys, vals, n, i, m, pol, factored, done, breakdownpoly, poly;
 
-		breakdownpoly := function(poly)
-			local m, n, factored;
+		breakdownpoly := function(poly, sz)
+			local m, n, factored, tryfirst;
 			if Degree(poly) = 1 then
 				return [poly];
 			fi;
 			m := Conductor(DefaultField(CoefficientsOfUnivariatePolynomial(poly)));
+			tryfirst := DivisorsInt(sz);
+			for n in tryfirst do
+				if n mod m = 0 then
+					factored:=Factors(PolynomialRing(CF(n)), poly);
+					if Size(factored) > 1 then
+						return factored;
+					fi;
+				fi;
+			od;
 			n:=1;
 			while true do
-				factored:=Factors(PolynomialRing(CF(n*m)), poly);
-				if Size(factored) > 1 then
-					return factored;
+				if not n*m in tryfirst then
+					factored:=Factors(PolynomialRing(CF(n*m)), poly);
+					if Size(factored) > 1 then
+						return factored;
+					fi;
+					n:=n+1;
 				fi;
-				n:=n+1;
 			od;
 		end;
-
 #		if not IsCommutative(A) then
 #			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
 #		fi;
@@ -125,7 +135,7 @@ InstallMethod( Order,
 				Add(done, Conductor(DefaultField(CoefficientsOfUnivariatePolynomial(poly))));
 				done:=Set(done);
 			else
-				polys:=Concatenation(polys, breakdownpoly(poly));
+				polys:=Concatenation(polys, breakdownpoly(poly, Order(A)));
 			fi;
 		od;
 		n:=done[1];
