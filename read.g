@@ -10,7 +10,6 @@ ReadPackage( "AssociationSchemes", "gap/MetricSchemes.gi");
 ReadPackage( "AssociationSchemes", "gap/CometricSchemes.gi");
 ReadPackage( "AssociationSchemes", "gap/Library.gi");
 ReadPackage( "AssociationSchemes", "gap/Subsets.gi");
-ReadPackage( "AssociationSchemes", "gap/Codes.gi");
 ReadPackage( "AssociationSchemes", "gap/Algebras.gi");
 ReadPackage( "AssociationSchemes", "gap/Fusions.gi");
 ReadPackage( "AssociationSchemes", "gap/Approximation.gi");

@@ -11,7 +11,6 @@ ReadPackage( "AssociationSchemes", "gap/MetricSchemes.gd");
 ReadPackage( "AssociationSchemes", "gap/CometricSchemes.gd");
 ReadPackage( "AssociationSchemes", "gap/Library.gd");
 ReadPackage( "AssociationSchemes", "gap/Subsets.gd");
-ReadPackage( "AssociationSchemes", "gap/Codes.gd");
 ReadPackage( "AssociationSchemes", "gap/Algebras.gd");
 ReadPackage( "AssociationSchemes", "gap/Fusions.gd");
 ReadPackage( "AssociationSchemes", "gap/Approximation.gd");
