@@ -58,6 +58,10 @@
 	        return idem2;
 	    end;
 
+	    if HasMatrixOfEigenvalues(A) and MatrixOfEigenvalues(A)<>fail then
+	    	DualMatrixOfEigenvalues(A);
+	    fi;
+
 	    if HasDualMatrixOfEigenvalues(A) then
 	    	if DualMatrixOfEigenvalues(A)<>fail then
 		    	return DualMatrixOfEigenvalues(A)/Order(A);
