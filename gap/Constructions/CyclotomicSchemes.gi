@@ -86,7 +86,7 @@ InstallMethod(CyclotomicScheme,
 			[IsPosInt, IsPosInt],
 	
 	function(n, d)
-	    local i, m, FEr, x, y, M, r, F, FE, A;
+	    local i, m, FEr, x, y, M, r, F, FE, A, B, P;
 
 	    if (n-1) mod d <> 0 then
 	    	Error("d must dived n-1\n");
@@ -111,7 +111,11 @@ InstallMethod(CyclotomicScheme,
 	        od;
 	    od;
 		A := HomogeneousCoherentConfigurationNC(M);;
-		SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), MatrixOfEigenvaluesOfCyclotomicScheme(n, d));
+		B:=IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);
+		P:=MatrixOfEigenvaluesOfCyclotomicScheme(n, d);
+		if IsMatrixOfEigenvalues(B, P) then
+			SetMatrixOfEigenvalues(B, P);
+		fi;
 		SetDescription(A, [Concatenation("Cyclotomic scheme, Cyc(",String(n),",", String(d), ")")]);
 	    return A;
 	end);
