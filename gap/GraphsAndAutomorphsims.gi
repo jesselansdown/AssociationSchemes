@@ -235,7 +235,7 @@ function(A, B)
 		fi;
 		p := p1 * p2;
 		if B = ImageOfHomogeneousCoherentConfiguration(A, p, map*perm) then
-			return [p, perm];
+			return [p, map*perm];
 		fi;
 	od;
 	return false;
