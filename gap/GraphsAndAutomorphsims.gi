@@ -169,13 +169,27 @@ function(A, p, perm)
 	local P, C;
 	P := PermutationMat(p, Order(A), 1);;
 	C := HomogeneousCoherentConfigurationNC( Inverse(P)*RelationMatrix(A)*P);;
-	C := ReorderRelations(C, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], perm)));
+	C := ReorderRelations(C, Concatenation([0], List([1 .. NumberOfClasses(A)], t -> t^perm)));
 	return C;
 end);
 
 InstallMethod( AreIsomorphicHomogeneousCoherentConfigurations, [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
 function(A, B)
-	local perm, charpolysA, charpolysB, gamma, p1, p2, orderings, next, children, p, gammaA, gammaB, i, k, Bmat, Bmat2, Amat, C;
+	local perm, charpolysA, charpolysB, gamma, p1, p2, children, p, gammaA, gammaB, i, k, Bmat, Bmat2, Amat, C, check_mapped_intersection_numbers_to_depth, d, stack, current;
+
+	check_mapped_intersection_numbers_to_depth := function(A, B, perm, depth)
+		local i, j, k;
+		for i in [1 .. depth] do
+			for j in [1 .. depth] do
+				for k in [1 .. depth] do
+					if IntersectionNumber(A, i^perm, j^perm, k^perm) <> IntersectionNumber(B, i, j, k) then
+						return false;
+					fi;
+				od;
+			od;
+		od;
+		return true;
+	end;
 
 	if Order(A) <> Order(B) then
 		return false;
@@ -217,40 +231,28 @@ function(A, B)
     	p1 := BlissCanonicalLabelling( gamma[1], gamma[2] );
 	fi;
 
-	orderings := [[]];;
-	while orderings <> [] do
-		next := Remove(orderings, Size(orderings));;
-		if Size(next)<NumberOfClasses(A) then
-			children:=Filtered([1 .. NumberOfClasses(B)], t -> not t in next);;
-			children:=Filtered(children, t -> Valencies(A)[Size(next)+2] = Valencies(B)[t+1]);
-			Amat:=NullMat(Order(A), Order(A));;
-			for i in [1 .. Size(next)+1] do
-				Amat:=Amat+AdjacencyMatrices(A, i);;
-			od;
-			gammaA := Digraph([1 .. Order(A)], function(x, y) return Amat[x][y]=1;end);
-			Bmat:=NullMat(Order(B), Order(B));;
-			for i in [1 .. Size(next)] do
-				Bmat:=Bmat+AdjacencyMatrices(B, next[i]);;
-			od;
-			for k in children do
-				Bmat2:=Bmat+AdjacencyMatrices(B, k);;
-				gammaB := Digraph([1 .. Order(B)], function(x, y) return Bmat2[x][y]=1;end);
-				if IsIsomorphicDigraph(gammaA, gammaB) then
-					Add(orderings, Concatenation(next,[k]));
+	d:=NumberOfClasses(A);
+	stack := [[]];
+	while stack <> [] do
+		current := Remove(stack, Size(stack));
+		perm:=MappingPermListList([1 .. Size(current)], current);
+		if check_mapped_intersection_numbers_to_depth(A, B, perm, Size(current)) then
+			if Size(current)=d then
+				C := ReorderRelations(B, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], perm)));
+				gamma:=SchemeToGraph(C);
+				if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
+	    			p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+				else
+	    			p2 := BlissCanonicalLabelling( gamma[1], gamma[2] );
 				fi;
-			od;
-		else
-			perm := PermList(next);
-			C := ReorderRelations(B, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], Inverse(perm))));
-			gamma:=SchemeToGraph(C);
-			if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
-    			p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+				p := p1 * Inverse(p2);
+				if B = ImageOfHomogeneousCoherentConfiguration(A, p, perm) then
+					return [p, perm];
+				fi;
 			else
-    			p2 := BlissCanonicalLabelling( gamma[1], gamma[2] );
-			fi;
-			p := p1 * Inverse(p2);
-			if B = ImageOfHomogeneousCoherentConfiguration(A, p, perm) then
-				return [p, Inverse(perm)];
+				children:=Filtered([1 .. d], t -> not t in current);;
+				children:=List(children, t -> Concatenation(current, [t]));;
+				Append(stack, children);
 			fi;
 		fi;
 	od;
