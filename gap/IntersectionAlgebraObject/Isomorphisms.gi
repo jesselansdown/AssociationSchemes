@@ -55,7 +55,7 @@ InstallMethod( ImageOfIntersectionAlgebra,
 	end);
 
 InstallMethod( AreIsomorphicIntersectionAlgebras,
-			 [IsIntersectionAlgebraObject, IsPerm],
+			 [IsIntersectionAlgebraObject, IsIntersectionAlgebraObject],
 
 	function(A, B)
 		local check_mapped_intersection_numbers_to_depth, d, stack, current, perm, children, charpolysA, charpolysB;
@@ -114,4 +114,116 @@ InstallMethod( AreIsomorphicIntersectionAlgebras,
 			fi;
 		od;
 		return false;
+	end);
+
+InstallMethod( CanonisingMap, [IsIntersectionAlgebraObject],
+	function(A)
+		local check_mapped_intersection_numbers_to_depth_less_than_or_equal, check_mapped_intersection_numbers_to_depth_less_than, d, stack, B, best, current, perm, children;
+		check_mapped_intersection_numbers_to_depth_less_than_or_equal := function(A, B, perm, depth)
+			local i, j, k;
+			for i in [1 .. depth] do
+				for j in [1 .. depth] do
+					for k in [1 .. depth] do
+						if IntersectionNumber(A, i^perm, j^perm, k^perm) > IntersectionNumber(B, i, j, k) 	then
+							return false;
+						fi; 
+						if IntersectionNumber(A, i^perm, j^perm, k^perm) < IntersectionNumber(B, i, j, k) 	then
+							return true;
+						fi; 
+					od;
+				od;
+			od;
+			return true;
+		end;
+
+		check_mapped_intersection_numbers_to_depth_less_than := function(A, B, perm, depth)
+			local i, j, k;
+			for i in [1 .. depth] do
+				for j in [1 .. depth] do
+					for k in [1 .. depth] do
+						if IntersectionNumber(A, i^perm, j^perm, k^perm) > IntersectionNumber(B, i, j, k) then
+							return false;
+						fi;
+						if IntersectionNumber(A, i^perm, j^perm, k^perm) < IntersectionNumber(B, i, j, k) then
+							return true;
+						fi;
+					od;
+				od;
+			od;
+			return false;
+		end;
+
+		d:=NumberOfClasses(A);
+		stack := [[]];
+		B:=A;
+		best:=();;
+		while stack <> [] do
+			current := Remove(stack, Size(stack));
+			perm:=MappingPermListList([1 .. Size(current)], current);
+			if check_mapped_intersection_numbers_to_depth_less_than_or_equal(A, B, perm, Size(current)) then
+				if check_mapped_intersection_numbers_to_depth_less_than(A, B, perm, Size(current)) then
+					B:=ImageOfIntersectionAlgebra(A, perm);
+				fi;
+				if Size(current)<d then
+					children:=Filtered([1 .. d], t -> not t in current);;
+					children:=List(children, t -> Concatenation(current, [t]));;
+					Append(stack, children);
+				else
+					best:=perm;
+				fi;
+			fi;
+		od;
+		return best;
+	end);
+
+
+
+InstallMethod(CanonicalFormOfIntersectionAlgebra, [IsIntersectionAlgebraObject],
+	function(A)
+		local perm;
+		perm := CanonisingMap(A);;
+	    return ImageOfIntersectionAlgebra(A, perm);
+	end);
+
+
+InstallMethod( AutomorphismGroup,
+			 [IsIntersectionAlgebraObject],
+	function(A)
+	local check_mapped_intersection_numbers_to_depth, d, stack, current, perm, children, auts, g, gens;
+		check_mapped_intersection_numbers_to_depth := function(A, perm, depth)
+			local i, j, k;
+			for i in [1 .. depth] do
+				for j in [1 .. depth] do
+					for k in [1 .. depth] do
+						if IntersectionNumber(A, i^perm, j^perm, k^perm) <> IntersectionNumber(A, i, j, k) then
+							return false;
+						fi;
+					od;
+				od;
+			od;
+			return true;
+		end;
+
+		auts:=[];
+		d:=NumberOfClasses(A);
+		stack := [[]];
+		while stack <> [] do
+			current := Remove(stack, Size(stack));
+			perm:=MappingPermListList([1 .. Size(current)], current);
+			if check_mapped_intersection_numbers_to_depth(A, perm, Size(current)) then
+				if Size(current)=d then
+					Add(auts, perm);
+				else
+					children:=Filtered([1 .. d], t -> not t in current);;
+					children:=List(children, t -> Concatenation(current, [t]));;
+					Append(stack, children);
+				fi;
+			fi;
+		od;
+		g := Group(auts);;
+		gens := SmallGeneratingSet(g);
+		if gens = [] then
+			gens:=[()];
+		fi;
+		return Group(gens);
 	end);

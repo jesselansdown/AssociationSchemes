@@ -37,4 +37,32 @@ DeclareOperation( "ImageOfIntersectionAlgebra", [ IsIntersectionAlgebraObject, I
 #! @Returns $\sigma$
 #! @Description
 #!	Take two $d$-class intersection algebras $A$ and $B$ and return $\sigma \in Sym([1 .. d])$ such that $A^\sigma = B$.
-DeclareOperation( "AreIsomorphicIntersectionAlgebras", [ IsIntersectionAlgebraObject, IsPerm ] );
+DeclareOperation( "AreIsomorphicIntersectionAlgebras", [ IsIntersectionAlgebraObject, IsIntersectionAlgebraObject ] );
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments A
+#! @Returns perm
+#! @Description
+#!	Returns two permutations which will produce the canonical form of the intersection algebra A.
+#!	The canonical form can be obtained by ImageOfIntersectionAlgebra(A, perm)
+#!  Any intersection algebra which is isomorphic to A will the same canonical form.
+DeclareAttribute( "CanonisingMap", IsIntersectionAlgebraObject );
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments A
+#! @Returns B
+#! @Description
+#!	Returns the canonical form, B, of the intersection algebra A.
+#!	Any intersection algebra which is isomorphic to A will have B as the canonical form.
+DeclareOperation("CanonicalFormOfIntersectionAlgebra", [IsIntersectionAlgebraObject]);
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments A
+#! @Returns G
+#! @Description
+#!	Returns the automorphism group $G$ of the intersection algebra object A.
+#!	$G$ is a permutation group acting on the relations, such that for all $g \in G$, $p_{i^g j^g}^{k^g} = p_{ij}^k$.
+DeclareAttribute( "AutomorphismGroup", IsIntersectionAlgebraObject );
