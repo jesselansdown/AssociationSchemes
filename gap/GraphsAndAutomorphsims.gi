@@ -175,21 +175,7 @@ end);
 
 InstallMethod( AreIsomorphicHomogeneousCoherentConfigurations, [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
 function(A, B)
-	local perm, charpolysA, charpolysB, gamma, p1, p2, children, p, gammaA, gammaB, i, k, Bmat, Bmat2, Amat, C, check_mapped_intersection_numbers_to_depth, d, stack, current;
-
-	check_mapped_intersection_numbers_to_depth := function(A, B, perm, depth)
-		local i, j, k;
-		for i in [1 .. depth] do
-			for j in [1 .. depth] do
-				for k in [1 .. depth] do
-					if IntersectionNumber(A, i^perm, j^perm, k^perm) <> IntersectionNumber(B, i, j, k) then
-						return false;
-					fi;
-				od;
-			od;
-		od;
-		return true;
-	end;
+	local charpolysA, charpolysB, algA, algB, map, autA, gamma, perm, p1, p2, p, C; 
 
 	if Order(A) <> Order(B) then
 		return false;
@@ -224,36 +210,32 @@ function(A, B)
 		return false;
 	fi;
 
-	gamma:=SchemeToGraph(A);                    
+	algA :=IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);;
+	algB :=IntersectionAlgebraOfHomogeneousCoherentConfiguration(B);;
+	map := AreIsomorphicIntersectionAlgebras(algA, algB);
+	if map = false then
+		return false;
+	fi;
+	autA := AutomorphismGroup(algA);
+
+	gamma:=SchemeToGraph(B);                    
 	if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
-    	p1 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+    	p2 := Inverse(NautyCanonicalLabelling( gamma[1], gamma[2] ));
 	else
-    	p1 := BlissCanonicalLabelling( gamma[1], gamma[2] );
+    	p2 := Inverse(BlissCanonicalLabelling( gamma[1], gamma[2] ));
 	fi;
 
-	d:=NumberOfClasses(A);
-	stack := [[]];
-	while stack <> [] do
-		current := Remove(stack, Size(stack));
-		perm:=MappingPermListList([1 .. Size(current)], current);
-		if check_mapped_intersection_numbers_to_depth(A, B, perm, Size(current)) then
-			if Size(current)=d then
-				C := ReorderRelations(B, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], perm)));
-				gamma:=SchemeToGraph(C);
-				if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
-	    			p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
-				else
-	    			p2 := BlissCanonicalLabelling( gamma[1], gamma[2] );
-				fi;
-				p := p1 * Inverse(p2);
-				if B = ImageOfHomogeneousCoherentConfiguration(A, p, perm) then
-					return [p, perm];
-				fi;
-			else
-				children:=Filtered([1 .. d], t -> not t in current);;
-				children:=List(children, t -> Concatenation(current, [t]));;
-				Append(stack, children);
-			fi;
+	for perm in autA do
+		C := ReorderRelations(A, Concatenation([0], List([1 .. NumberOfClasses(A)], t -> t^(map*perm))));
+		gamma:=SchemeToGraph(C);
+		if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
+	    	p1 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+		else
+			p1 := BlissCanonicalLabelling( gamma[1], gamma[2] );
+		fi;
+		p := p1 * p2;
+		if B = ImageOfHomogeneousCoherentConfiguration(A, p, map*perm) then
+			return [p, perm];
 		fi;
 	od;
 	return false;
