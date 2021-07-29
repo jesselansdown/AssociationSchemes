@@ -88,6 +88,14 @@ DeclareAttribute( "AllPPolynomialOrderings", IsHomogeneousCoherentConfiguration 
 DeclareOperation( "AllMetricOrderings", [IsHomogeneousCoherentConfiguration] );
 
 #! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Check if a coherent configuration is a strongly regular graph (a $2$-class primitive association scheme).
+DeclareProperty( "IsStronglyRegularGraph", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Functionality
 #! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns List

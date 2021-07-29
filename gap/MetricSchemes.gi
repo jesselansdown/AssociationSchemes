@@ -74,6 +74,12 @@ InstallMethod( AllMetricOrderings, [IsHomogeneousCoherentConfiguration],
       return AllPPolynomialOrderings(R);
   end);
 
+InstallMethod(IsStronglyRegularGraph,
+      [IsHomogeneousCoherentConfiguration],
+  function(a)
+    return NumberOfClasses(a)=2 and IsAssociationScheme(a) and AdmitsPPolynomialOrdering(a);
+  end );
+
 InstallMethod(IntersectionArray,
             [IsHomogeneousCoherentConfiguration],
     function( A )

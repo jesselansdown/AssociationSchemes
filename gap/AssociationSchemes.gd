@@ -170,14 +170,6 @@ DeclareAttribute( "NumberOfClasses", IsHomogeneousCoherentConfiguration );
 DeclareOperation( "Rank", [IsHomogeneousCoherentConfiguration] );
 
 #! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns true or false
-#! @Description
-#!	Check if a coherent configuration is a strongly regular graph (a $2$-class homogeneous coherent configuration).
-DeclareProperty( "IsStronglyRegularGraph", IsHomogeneousCoherentConfiguration );
-
-#! @Chapter Functionality
 #! @Section Matrices Describing Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns L

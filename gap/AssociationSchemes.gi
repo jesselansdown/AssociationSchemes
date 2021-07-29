@@ -296,12 +296,6 @@ InstallMethod(Rank,
 			[IsHomogeneousCoherentConfiguration],
 			NumberOfClasses );
 
-InstallMethod(IsStronglyRegularGraph,
-			[IsHomogeneousCoherentConfiguration],
-	function(a)
-		return NumberOfClasses(a)=2;
-	end );
-
 InstallMethod(AdjacencyMatrices,
 			[IsHomogeneousCoherentConfiguration],
 	function(a)
