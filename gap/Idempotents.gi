@@ -224,3 +224,10 @@ InstallMethod( DualMatrixOfEigenvalues,
 	    
 	    return ct2;
 	end);
+
+InstallMethod( FitMatrixOfEigenvalues, 
+ 	"for IsAssociationScheme",
+ 	[ IsHomogeneousCoherentConfiguration, IsMatrix],
+	function(A, P)
+		return FitMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), P);
+	end);

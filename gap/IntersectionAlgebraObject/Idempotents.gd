@@ -82,3 +82,12 @@ DeclareAttribute( "MatrixOfEigenvalues", IsIntersectionAlgebraObject );
 
 DeclareOperation( "IsMatrixOfEigenvalues", [ IsIntersectionAlgebraObject, IsMatrix ] );
 DeclareOperation( "MatrixOfEigenvaluesViaBacktrack", [ IsIntersectionAlgebraObject ] );
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments A, P
+#! @Returns P2
+#! @Description
+#!   Checks if P is the matrix of eigenvalues of intersection algebra A, upto some reordering of the columns.
+#!   In such a case, P2, the reordered matrix is returned. If not, returns fail.
+DeclareOperation( "FitMatrixOfEigenvalues", [ IsIntersectionAlgebraObject, IsMatrix ] );

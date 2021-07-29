@@ -250,6 +250,22 @@ InstallMethod( DualMatrixOfEigenvalues,
  	"for IsAssociationScheme",
  	[ IsIntersectionAlgebraObject],
 	function(A)
+		local q, P2;
+		if (not HasMatrixOfEigenvalues(A)) and (not HasDualMatrixOfEigenvalues(A)) and (not HasMapFromIntersectionMatricesToCentralIdempotents(A)) then
+			# Here we can try to fit P-matrices of known families if the parameters fit,
+			# rather than computing from scratch
+			if (not HasRationalSplittingField(A)) or NumberOfClasses(A) > 15 then
+				if IsPrimePowerInt(Order(A)) then
+					q:=Set(Factors(Order(A)))[1];
+					if (q-1) mod NumberOfClasses(A) = 0 then
+						P2:=FitMatrixOfEigenvalues(A, MatrixOfEigenvaluesOfCyclotomicScheme(Order(A), NumberOfClasses(A)));
+						if P2 <> fail then
+							return P2;
+						fi;
+					fi;
+				fi;
+			fi;
+		fi;
 		return Inverse(DualMatrixOfEigenvalues(A))*Order(A);
 	end);
 
@@ -435,3 +451,32 @@ InstallMethod( MatrixOfEigenvaluesViaBacktrack,
 	return MatrixOfEigenvalues(A);
 end);
 
+InstallMethod( FitMatrixOfEigenvalues, 
+ 	"for IsAssociationScheme",
+ 	[ IsIntersectionAlgebraObject, IsMatrix],
+	function(A, P)
+		local B, map, d, P2, i, j;
+		B := IntersectionAlgebraFromMatrixOfEigenvalues(P);
+		if B = fail then
+			return fail;
+		fi;
+		map := AreIsomorphicIntersectionAlgebras(B, A);
+		if map = false then
+			return fail;
+		fi;
+		d:=NumberOfClasses(A);
+		P2:=NullMat(d+1, d+1);;
+		for i in [0 .. d] do
+			for j in [0 .. d] do
+				if j = 0 then
+					P2[i+1][j+1]:=P[i+1][j+1];
+				else
+					P2[i+1][j+1] := P[i+1][j^map + 1];
+				fi;
+			od;
+		od;
+		if IsMatrixOfEigenvalues(A, P2) then
+			return P2;
+		fi;
+		return fail;
+	end);
