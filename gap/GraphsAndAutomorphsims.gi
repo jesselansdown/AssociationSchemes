@@ -243,99 +243,48 @@ end);
 
 InstallMethod( CanonisingMap, [IsHomogeneousCoherentConfiguration],
 function(A)
-	local B, n, vertices, i, j, colours1, colours2, colours3, gamma, p, permuted_edges, permuted_edges_set, map, ords, ord, stab, temp, temp2, C, p1, p2, c1, c2, perm, edges, isoms1, isoms2, val, potential_canon, perm_kept, p_kept;
+	local algA, algB, map, autA, gamma, perm, p1, p2, C, best, best_map1, best_map2, B, ords, ord; 
 
-	Print("Warning! The canonising process relies upon either Nauty/Traces or Bliss. The canon may differ depending upon which program is used, which version, which hardware etc... However, it will be consistent if these factors are kept constant.");
-	potential_canon := false;
 	if AdmitsMetricOrdering(A) then
+		map:=();;
+		autA := [];
 		ords := MutableCopyMat(AllMetricOrderings(A));
 		for ord in ords do
 			Remove(ord, 1);
-			perm:=Inverse(PermList(ord));;
-			C := ReorderRelations(A, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], perm)));
-			gamma:=SchemeToGraph(C);
-#			p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
-			if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
-    			p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
-			else
-			    p2 := BlissCanonicalLabelling( gamma[1], gamma[2] );
-			fi;
-			B := ImageOfHomogeneousCoherentConfiguration(A, p2, perm);;
-			if IsHomogeneousCoherentConfiguration(potential_canon) then
-				if B < potential_canon then
-					potential_canon := B;
-					p_kept:=p2;
-					perm_kept:=perm;
-				fi;
-			else
-				potential_canon := B;
-				p_kept:=p2;
-				perm_kept := perm;
-			fi;
+			perm:=PermList(ord);;
+			Add(autA, perm);
 		od;
 	else
-		isoms1 :=[];
-		for val in [1 .. NumberOfClasses(A)] do
-			edges := [];
-			for i in [1 .. Order(A)] do
-				for j in [1 .. Order(A)] do
-					if RelationMatrix(A)[i][j]=val then
-						Add(edges, [i, j]);
-					fi;
-				od;
-			od;
-#			gamma := NautyGraph( edges );
-			gamma := Digraph([1 .. Order(A)], function(x, y) return RelationMatrix(A)[x][y]=val;end);
-#			p := CanonicalLabeling( gamma );
-			if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
-			    p := NautyCanonicalLabelling( gamma );
-			else
-			    p := BlissCanonicalLabelling( gamma )^(-1);
-			fi;
-			permuted_edges := OnTuplesTuples( edges, p^(-1) );
-			c2 := Set( List( permuted_edges, i -> Set( i ) ) );
-			Add(isoms1, [val, c2]);
-		od;
-
-		isoms2:=StructuralCopy(isoms1);;
-		Sort(isoms1, function(u, v) return u[2]<v[2];end);
-		map := [1 .. NumberOfClasses(A)];
-		for i in [1 .. NumberOfClasses(A)] do
-			map[isoms1[i][1]]:=isoms2[i][1];
-		od;
-		map:=PermList(map);
-		stab:=SymmetricGroup(NumberOfClasses(A));;
-		while isoms1 <> [] do
-			temp:=Filtered(isoms1, t -> t[2] = isoms1[1][2]);
-			temp2:=List(temp, t -> t[1]);
-			stab:=Stabiliser(stab, temp2, OnSets);;
-			isoms1:=Filtered(isoms1, t -> not t in temp);
-		od;
-		stab:=RightCoset(stab, map);;
-		for perm in stab do
-			C := ReorderRelations(A, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], perm)));
-			gamma:=SchemeToGraph(C);
-#			p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
-			if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
-    			p2 := NautyCanonicalLabelling( gamma[1], gamma[2] );
-			else
-    			p2 := BlissCanonicalLabelling( gamma[1], gamma[2] );
-			fi;
-			B := ImageOfHomogeneousCoherentConfiguration(A, p2, perm);;
-			if IsHomogeneousCoherentConfiguration(potential_canon) then
-				if B < potential_canon then
-					potential_canon := B;
-					p_kept:=p2;
-					perm_kept:=perm;
-				fi;
-			else
-				potential_canon := B;
-				p_kept:=p2;
-				perm_kept := perm;
-			fi;
-		od;
+		algA :=IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);;
+		map := CanonisingMap(algA);
+		if map = false then
+			return false;
+		fi;
+		autA := AutomorphismGroup(algA);
 	fi;
-	return [p_kept, perm_kept];
+	best:=false;
+	best_map1:=();
+	best_map2:=();
+	for perm in autA do
+		C := ReorderRelations(A, Concatenation([0], List([1 .. NumberOfClasses(A)], t -> t^(map*perm))));
+		gamma:=SchemeToGraph(C);
+		if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
+	    	p1 := NautyCanonicalLabelling( gamma[1], gamma[2] );
+		else
+			p1 := BlissCanonicalLabelling( gamma[1], gamma[2] );
+		fi;
+		B := ImageOfHomogeneousCoherentConfiguration(A, p1, map*perm);
+		if best = false then
+			best:=B;
+			best_map1 := p1;
+			best_map2 := map*perm;
+		elif B < best then
+			best:=B;
+			best_map1 := p1;
+			best_map2 := map*perm;
+		fi;
+	od;
+	return [best_map1, best_map2];
 end);
 
 InstallMethod(CanonicalFormOfHomogeneousCoherentConfiguration, [IsHomogeneousCoherentConfiguration],
