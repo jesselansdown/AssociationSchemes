@@ -463,3 +463,15 @@ InstallMethod(IsCommutative,
 			return Size(MapFromIntersectionMatricesToCentralIdempotents(A)[1]);;
 		fi;
 	end);
+
+InstallMethod( \=,
+			 [IsIntersectionAlgebraObject, IsIntersectionAlgebraObject],
+	function(a,b)
+		return IntersectionMatrices(a)=IntersectionMatrices(b);
+	end);
+
+InstallMethod( \<,
+			 [IsIntersectionAlgebraObject, IsIntersectionAlgebraObject],
+	function(a,b)
+		return IntersectionMatrices(a)<IntersectionMatrices(b);
+	end);
