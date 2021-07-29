@@ -203,21 +203,3 @@ DeclareProperty( "IsCommutative", IsIntersectionAlgebraObject );
 #! @Description
 #!	Returns the number $n$ of characters of CC.
 DeclareAttribute("NumberOfCharacters", IsIntersectionAlgebraObject);
-
-
-#! @Chapter Functionality
-#! @Section Constructor Methods
-#! @Arguments $A$, $\sigma$
-#! @Returns true $A^\sigma$
-#! @Description
-#!	Take a $d$-class intersection algebra $A$ and return its image under the permutation $\sigma \in Sym([1 .. d])$.
-#!  If $p_{ij}^k$ is an intersection number of $A$, then in the image the intersection number is $p_{i^\sigma j^\sigma}^{k^\sigma}$
-DeclareOperation( "ImageOfIntersectionAlgebra", [ IsIntersectionAlgebraObject, IsPerm ] );
-
-#! @Chapter Functionality
-#! @Section Constructor Methods
-#! @Arguments $A$, $B$
-#! @Returns $\sigma$
-#! @Description
-#!	Take two $d$-class intersection algebras $A$ and $B$ and return $\sigma \in Sym([1 .. d])$ such that $A^\sigma = B$.
-DeclareOperation( "AreIsomorphicIntersectionAlgebras", [ IsIntersectionAlgebraObject, IsPerm ] );
