@@ -89,9 +89,6 @@ InstallMethod( AreIsomorphicIntersectionAlgebras,
 		if Collected(Flat(IntersectionMatrices(A))) <> Collected(Flat(IntersectionMatrices(B))) then
 			return false;
 		fi;
-		if AdmitsMetricOrdering(A) <> AdmitsMetricOrdering(B) then
-			return false;
-		fi;
 		charpolysA := List(IntersectionMatrices(A), CharacteristicPolynomial);;
 		charpolysB := List(IntersectionMatrices(A), CharacteristicPolynomial);;
 		if Collected(charpolysA) <> Collected(charpolysB) then
