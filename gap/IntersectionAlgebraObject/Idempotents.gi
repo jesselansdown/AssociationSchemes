@@ -170,7 +170,7 @@ InstallMethod( DualMatrixOfEigenvalues,
 		return map*Order(a);
 	end );
 
- InstallOtherMethod( MatrixOfEigenvalues, 
+ InstallMethod( MatrixOfEigenvaluesForMetricScheme, 
  	"for IsAssociationScheme",
  	[ IsIntersectionAlgebraObject and AdmitsPPolynomialOrdering],
 	function(A)
@@ -251,19 +251,28 @@ InstallMethod( DualMatrixOfEigenvalues,
  	[ IsIntersectionAlgebraObject],
 	function(A)
 		local q, P2;
-		if (not HasMatrixOfEigenvalues(A)) and (not HasDualMatrixOfEigenvalues(A)) and (not HasMapFromIntersectionMatricesToCentralIdempotents(A)) then
-			# Here we can try to fit P-matrices of known families if the parameters fit,
-			# rather than computing from scratch
-			if (not HasRationalSplittingField(A)) or NumberOfClasses(A) > 15 then
-				if IsPrimePowerInt(Order(A)) then
-					q:=Set(Factors(Order(A)))[1];
-					if (q-1) mod NumberOfClasses(A) = 0 then
+		# If DualMatrixOfEigenvalues or MapFromIntersectionMatricesToCentralIdempotents are known,
+		# these should be used to compute the P-matrix, or there could be conflicts.
+		if (not HasDualMatrixOfEigenvalues(A)) and (not HasMapFromIntersectionMatricesToCentralIdempotents(A)) then
+
+			# Could the scheme be cyclotomic?
+			if IsPrimePowerInt(Order(A)) then
+				q:=Set(Factors(Order(A)))[1];
+				if (q-1) mod NumberOfClasses(A) = 0 then
+					# If the field is rational and the rank small enough, it is probably faster
+					# to compute the P-matrix directly
+					if (not HasRationalSplittingField(A)) or NumberOfClasses(A) > 10 then
 						P2:=FitMatrixOfEigenvalues(A, MatrixOfEigenvaluesOfCyclotomicScheme(Order(A), NumberOfClasses(A)));
 						if P2 <> fail then
 							return P2;
 						fi;
 					fi;
 				fi;
+			fi;
+			# If the scheme is metric, it will typically be much faster to compute the P-matrix
+			# using DRG theory (assuming no known P-matrix could be fitted) than to compute generically
+			if AdmitsPPolynomialOrdering(A) then
+				return MatrixOfEigenvaluesForMetricScheme(A);
 			fi;
 		fi;
 		return Inverse(DualMatrixOfEigenvalues(A))*Order(A);

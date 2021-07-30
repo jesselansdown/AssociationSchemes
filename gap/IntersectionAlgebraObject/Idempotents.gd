@@ -80,6 +80,7 @@ DeclareAttribute( "DualMatrixOfEigenvalues", IsIntersectionAlgebraObject );
 #!      Returns a the matrix of eigenvalues (or character table), $P$, for the intersection algebra of a homogeneous coherent configuration CC.
 DeclareAttribute( "MatrixOfEigenvalues", IsIntersectionAlgebraObject );
 
+DeclareOperation( "MatrixOfEigenvaluesForMetricScheme", [ IsIntersectionAlgebraObject and AdmitsPPolynomialOrdering] );
 DeclareOperation( "IsMatrixOfEigenvalues", [ IsIntersectionAlgebraObject, IsMatrix ] );
 DeclareOperation( "MatrixOfEigenvaluesViaBacktrack", [ IsIntersectionAlgebraObject ] );
 
