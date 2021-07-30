@@ -485,6 +485,9 @@ InstallMethod( FitMatrixOfEigenvalues,
 			od;
 		od;
 		if IsMatrixOfEigenvalues(A, P2) then
+			if (not HasMatrixOfEigenvalues(A)) and (not HasDualMatrixOfEigenvalues(A)) and (not HasMapFromIntersectionMatricesToCentralIdempotents(A)) then
+				SetMatrixOfEigenvalues(A, P2);;
+			fi;
 			return P2;
 		fi;
 		return fail;
