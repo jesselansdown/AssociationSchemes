@@ -703,16 +703,6 @@ InstallMethod(IsCommutative,
 		fi;
 	end);
 
- InstallMethod( Multiplicities, 
- 	"for IsAssociationScheme",
- 	[ IsHomogeneousCoherentConfiguration ],
-	function(A)
-		local ct, d;
-		d:=NumberOfClasses(A);
-		ct:=CharacterTableOfHomogeneousCoherentConfiguration(A);;
-		return List(ct, x -> x[d+2]);
-	end);
-
  InstallMethod( SplittingField, 
  	"for IsAssociationScheme",
  	[ IsHomogeneousCoherentConfiguration ],

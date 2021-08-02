@@ -44,10 +44,12 @@ InstallMethod(HomogeneousCoherentConfiguration,
 		fi;
 		if Size(as.CharacterTable)=d+1 then
 			SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), as.CharacterTable{[1 .. d+1]}{[1 .. d+1]});
-			SetCharacterTableOfHomogeneousCoherentConfiguration(A, as.CharacterTable);
+			SetMultiplicities(A, List([1 .. d+1], t -> as.CharacterTable[t, d+2]));
+			SetCharacterTableOfHomogeneousCoherentConfiguration(A, as.CharacterTable{[1 .. d+1]}{[1 .. d+1]});
 		else 
 			SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), fail);
-			SetCharacterTableOfHomogeneousCoherentConfiguration(A, as.CharacterTable);
+			SetMultiplicities(A, List([1 .. Size(as.CharacterTable)], t -> as.CharacterTable[t, d+2]));
+			SetCharacterTableOfHomogeneousCoherentConfiguration(A, as.CharacterTable{[1 .. Size(as.CharacterTable)]}{[1 .. d+1]});
 		fi;
 		return A;
 	end );

@@ -77,6 +77,14 @@ DeclareAttribute( "DualMatrixOfEigenvalues", IsHomogeneousCoherentConfiguration 
 #! @Chapter Functionality
 #! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
+#! @Returns n
+#! @Description
+#!      Returns the multiplicities of characters of CC.
+DeclareAttribute("Multiplicities", IsHomogeneousCoherentConfiguration);
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
 #! @Returns P
 #! @Description
 #!	TODO.

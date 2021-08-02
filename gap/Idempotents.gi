@@ -155,41 +155,51 @@ InstallMethod( DualMatrixOfEigenvalues,
 		return DualMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(a));
 	end );
 
+ InstallMethod( Multiplicities, 
+ 	"for IsAssociationScheme",
+ 	[ IsHomogeneousCoherentConfiguration ],
+	function(A)
+	    local d, nc, idems, n, mults, i;
+
+	    	if MatrixOfEigenvalues(A) <> fail then
+	    		return DualMatrixOfEigenvalues(A)[1];
+	    	fi;
+
+	        d:=NumberOfClasses(A)+1;;
+	        nc := NumberOfCharacters(A);
+
+	        idems := CentralIdempotentsOfIntersectionAlgebra(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A));;
+	  
+	        n := Order(A);
+	        mults := List([1 .. nc], t -> 0);
+	        for i in [1..nc] do
+	            mults[i] := (n * idems[i][1][1]) / Sqrt(Trace(idems[i]));
+	        od;
+	    
+	    return mults;
+	end);
+
  InstallMethod( CharacterTableOfHomogeneousCoherentConfiguration, 
  	"for IsAssociationScheme",
  	[ IsHomogeneousCoherentConfiguration ],
 	function(A)
-	    local nc, ct, d, i, j, k, am, n, Val, ct2, im, alg, idems, inter, valencies, polys, CyclotomicLimit, trigger, n2, mult, f, B, FieldLimit;
+	    local d, nc, idems, ct, n, Val, i, ct2, j, k;
 
 	    	if MatrixOfEigenvalues(A) <> fail then
-	    		ct := NullMat(NumberOfClasses(A)+1, NumberOfClasses(A)+2);
-	    		for i in [1 .. NumberOfClasses(A)+1] do
-	    			for j in [1 .. NumberOfClasses(A)+1] do
-	    				ct[i][j] := MatrixOfEigenvalues(A)[i][j];
-	    			od;
-	    		od;
-	    		for i in [1 .. NumberOfClasses(A)+1] do
-	    			ct[i][NumberOfClasses(A)+2] := DualMatrixOfEigenvalues(A)[1][i];
-	    		od;
-	    		return ct;
+	    		return MatrixOfEigenvalues(A);
 	    	fi;
-	        inter:=IntersectionMatrices(A);
+
 	        d:=NumberOfClasses(A)+1;;
 	        nc := NumberOfCharacters(A);
 
 	        idems := CentralIdempotentsOfIntersectionAlgebra(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A));;
 	  
 	        ct := NullMat(nc, d + 1);
-	        am := AdjacencyMatrices(A);
 	        n := Order(A);
 	        Val := Valencies(A);
 	        for i in [1..nc] do
 	            ct[i][1] := Sqrt(Trace(idems[i])); # degree
-	            B := NullMat(n, n);
-	            for j in [1..d] do
-	                B := B + am[j] * idems[i][1][j];
-	            od;
-	            ct[i][d + 1] := Trace(B) / ct[i][1]; # multiplicity
+	            ct[i][d + 1] := Multiplicities(A)[i]; # multiplicity
 	            for j in [2..d] do
 	                ct[i][j] := idems[i][1][j] * n * Val[j] / ct[i][d + 1];
 	            od;
@@ -218,9 +228,9 @@ InstallMethod( DualMatrixOfEigenvalues,
 	            od;
 	        od;
 	    
-#	        for i in [1..nc] do
-#	            Unbind(ct2[i][d + 1]);
-#	        od;
+	        for i in [1..nc] do
+	            Unbind(ct2[i][d + 1]);
+	        od;
 	    
 	    return ct2;
 	end);
