@@ -219,78 +219,372 @@ InstallMethod(FusingPartitionOfHomogeneousCoherentConfigurations,
 		fi;
 	end);
 
+# InstallMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
+# 			[IsHomogeneousCoherentConfiguration],
+# 	function(A)
+# 	    local iter, fuse, all;
+# 	    IsCommutative(A);
+# 	    all:=[];
+# 	    iter := IteratorOfPartitionsSet([1 .. NumberOfClasses(A)]);
+# 	    while not IsDoneIterator(iter) do
+# 	        fuse := NextIterator(iter);
+# 	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
+# 	            if IsFusionOfHomogeneousCoherentConfiguration(A, Concatenation([[0]], fuse)) then
+# 	                Add(all, Concatenation([[0]], fuse));
+# 	            fi;
+# 	        fi;
+# 	    od;
+# 	    return all;
+# 	end );
+
 InstallMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration],
 	function(A)
-	    local iter, fuse, all;
-	    IsCommutative(A);
-	    all:=[];
-	    iter := IteratorOfPartitionsSet([1 .. NumberOfClasses(A)]);
-	    while not IsDoneIterator(iter) do
-	        fuse := NextIterator(iter);
-	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
-	            if IsFusionOfHomogeneousCoherentConfiguration(A, Concatenation([[0]], fuse)) then
-	                Add(all, Concatenation([[0]], fuse));
-	            fi;
-	        fi;
-	    od;
-	    return all;
+		local checkCell, findCell, checkPartialFusion, good, stack, current, S, children;
+
+		checkCell := function(A, C)
+			local k1, k2, y1, y2, i, j;
+			for k1 in C do
+				for k2 in C do
+					y1:=0;
+					y2:=0;
+					for i in C do
+						for j in C do
+							y1:=y1+IntersectionNumber(A, i, j, k1);
+							y2:=y2+IntersectionNumber(A, i, j, k2);
+						od;
+					od;
+					if y1 <> y2 then
+						return false;
+					fi;
+				od;
+			od;
+			return true;
+		end;
+		findCell := function(A, S)
+			local x, good, stack, current, children;
+			x:=Minimum(S);
+			good :=[];
+			stack :=[[x]];
+			while stack <> [] do
+				current:=Remove(stack, Size(stack));
+				if checkCell(A, current) then
+					Add(good, current);
+				fi;
+				children:=Filtered(S, t -> t > current[Size(current)]);
+				children:=List(children, t -> Concatenation(current, [t]));
+				Append(stack, children);
+			od;
+			return good;
+		end;
+		checkPartialFusion := function(A, fuse)
+			local l, m, o, k1, k2, y1, y2, i, j;
+			for l in [1 .. Size(fuse)] do
+				for m in [1 .. Size(fuse)] do
+					for o in [1 .. Size(fuse)] do
+						if (Size(fuse) in [l, m, o]) and (not [l, m, o] = [Size(fuse), Size(fuse), Size(fuse)]) then
+							# we want to make sure we are checking the newest cell, but we have already checked it by itself
+							for k1 in fuse[o] do
+								for k2 in fuse[o] do
+									y1:=0;
+									y2:=0;
+									for i in fuse[l] do
+										for j in fuse[m] do
+											y1:=y1+IntersectionNumber(A, i, j, k1);
+											y2:=y2+IntersectionNumber(A, i, j, k2);
+										od;
+									od;
+									if y1 <> y2 then
+										return false;
+									fi;
+								od;
+							od;
+						fi;
+					od;
+				od;
+			od;
+			return true;
+		end;
+
+		good :=[];
+		stack :=[[[0]]];
+		while stack <> [] do
+			current := Remove(stack, Size(stack));
+			S := Filtered([1 .. NumberOfClasses(A)], t -> not ForAny(current, x -> t in x));
+			if IsEmpty(S) then
+				if IsFusionOfHomogeneousCoherentConfiguration(A, current) then
+					Add(good, Set(current, Set));
+				fi;
+			else
+				children:=findCell(A, S);
+				children:=List(children, t -> Concatenation(current, [t]));
+				children:=Filtered(children, t -> checkPartialFusion(A, t));
+				Append(stack, children);
+			fi;
+		od;
+		good := Filtered(good, t -> not Size(t) in [2, NumberOfClasses(A)+1]);
+		return good;
 	end );
 
+
+# InstallOtherMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
+# 			[IsHomogeneousCoherentConfiguration, IsInt],
+# 	function(A, k)
+# 	    local iter, fuse, all;
+# 	    if k < 1 then
+# 	    	Error("Fusion must have at least 1 class!\n");
+# 	    fi;
+# 	    if k > NumberOfClasses(A) then
+# 	    	Error("Fusion cannot have more classes than original homogeneous coherent configuration!\n");
+# 	    fi;
+# 	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) then
+# 	    	return Filtered(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)=k+1);
+# 	    fi;
+# 	    IsCommutative(A);
+# 	    all:=[];
+# 	    iter := IteratorOfPartitionsSet([1 .. NumberOfClasses(A)], k);
+# 	    while not IsDoneIterator(iter) do
+# 	        fuse := NextIterator(iter);
+# 	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
+# 	            if IsFusionOfHomogeneousCoherentConfiguration(A, Concatenation([[0]], fuse)) then
+# 	                Add(all, Concatenation([[0]], fuse));
+# 	            fi;
+# 	        fi;
+# 	    od;
+# 	    return all;
+# 	end );
 
 InstallOtherMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration, IsInt],
-	function(A, k)
-	    local iter, fuse, all;
-	    if k < 1 then
-	    	Error("Fusion must have at least 1 class!\n");
-	    fi;
-	    if k > NumberOfClasses(A) then
-	    	Error("Fusion cannot have more classes than original homogeneous coherent configuration!\n");
-	    fi;
-	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) then
-	    	return Filtered(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)=k+1);
-	    fi;
-	    IsCommutative(A);
-	    all:=[];
-	    iter := IteratorOfPartitionsSet([1 .. NumberOfClasses(A)], k);
-	    while not IsDoneIterator(iter) do
-	        fuse := NextIterator(iter);
-	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
-	            if IsFusionOfHomogeneousCoherentConfiguration(A, Concatenation([[0]], fuse)) then
-	                Add(all, Concatenation([[0]], fuse));
-	            fi;
-	        fi;
-	    od;
-	    return all;
+	function(A, r)
+		local checkCell, findCell, checkPartialFusion, good, stack, current, S, children;
+
+		checkCell := function(A, C)
+			local k1, k2, y1, y2, i, j;
+			for k1 in C do
+				for k2 in C do
+					y1:=0;
+					y2:=0;
+					for i in C do
+						for j in C do
+							y1:=y1+IntersectionNumber(A, i, j, k1);
+							y2:=y2+IntersectionNumber(A, i, j, k2);
+						od;
+					od;
+					if y1 <> y2 then
+						return false;
+					fi;
+				od;
+			od;
+			return true;
+		end;
+		findCell := function(A, S)
+			local x, good, stack, current, children;
+			x:=Minimum(S);
+			good :=[];
+			stack :=[[x]];
+			while stack <> [] do
+				current:=Remove(stack, Size(stack));
+				if checkCell(A, current) then
+					Add(good, current);
+				fi;
+				children:=Filtered(S, t -> t > current[Size(current)]);
+				children:=List(children, t -> Concatenation(current, [t]));
+				Append(stack, children);
+			od;
+			return good;
+		end;
+		checkPartialFusion := function(A, fuse)
+			local l, m, o, k1, k2, y1, y2, i, j;
+			for l in [1 .. Size(fuse)] do
+				for m in [1 .. Size(fuse)] do
+					for o in [1 .. Size(fuse)] do
+						if (Size(fuse) in [l, m, o]) and (not [l, m, o] = [Size(fuse), Size(fuse), Size(fuse)]) then
+							# we want to make sure we are checking the newest cell, but we have already checked it by itself
+							for k1 in fuse[o] do
+								for k2 in fuse[o] do
+									y1:=0;
+									y2:=0;
+									for i in fuse[l] do
+										for j in fuse[m] do
+											y1:=y1+IntersectionNumber(A, i, j, k1);
+											y2:=y2+IntersectionNumber(A, i, j, k2);
+										od;
+									od;
+									if y1 <> y2 then
+										return false;
+									fi;
+								od;
+							od;
+						fi;
+					od;
+				od;
+			od;
+			return true;
+		end;
+
+ 	    if r < 1 then
+ 	    	Error("Fusion must have at least 1 class!\n");
+ 	    fi;
+ 	    if r > NumberOfClasses(A) then
+ 	    	Error("Fusion cannot have more classes than original homogeneous coherent configuration!\n");
+ 	    fi;
+ 	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) then
+ 	    	return Filtered(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)=r+1);
+ 	    fi;
+
+		good :=[];
+		stack :=[[[0]]];
+		while stack <> [] do
+			current := Remove(stack, Size(stack));
+			if Size(current) <= (r+1) then
+				S := Filtered([1 .. NumberOfClasses(A)], t -> not ForAny(current, x -> t in x));
+				if IsEmpty(S) then
+					if Size(current)=(r+1) and IsFusionOfHomogeneousCoherentConfiguration(A, current) then
+						Add(good, Set(current, Set));
+					fi;
+				else
+					children:=findCell(A, S);
+					children:=List(children, t -> Concatenation(current, [t]));
+					children:=Filtered(children, t -> checkPartialFusion(A, t));
+					Append(stack, children);
+				fi;
+			fi;
+		od;
+		good := Filtered(good, t -> not Size(t) in [2, NumberOfClasses(A)+1]);
+		return good;
 	end );
 
+# InstallOtherMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
+# 			[IsHomogeneousCoherentConfiguration, IsInt, IsBool],
+# 	function(A, k, flag)
+# 	    local iter, fuse, all;
+# 	    if k < 1 then
+# 	    	Error("Fusion must have at least 1 class!\n");
+# 	    fi;
+# 	    if k > NumberOfClasses(A) then
+# 	    	Error("Fusion cannot have more classes than original homogeneous coherent configuration!\n");
+# 	    fi;
+# 	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) then
+# 	    	return Filtered(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)<=k+1);
+# 	    fi;
+# 	    IsCommutative(A);
+# 	    all:=[];
+# 	    iter := IteratorOfPartitionsSet([1 .. NumberOfClasses(A)], k, flag);
+# 	    while not IsDoneIterator(iter) do
+# 	        fuse := NextIterator(iter);
+# 	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
+# 	            if IsFusionOfHomogeneousCoherentConfiguration(A, Concatenation([[0]], fuse)) then
+# 	                Add(all, Concatenation([[0]], fuse));
+# 	            fi;
+# 	        fi;
+# 	    od;
+# 	    return all;
+# 	end );
 
 InstallOtherMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration, IsInt, IsBool],
-	function(A, k, flag)
-	    local iter, fuse, all;
-	    if k < 1 then
-	    	Error("Fusion must have at least 1 class!\n");
-	    fi;
-	    if k > NumberOfClasses(A) then
-	    	Error("Fusion cannot have more classes than original homogeneous coherent configuration!\n");
-	    fi;
-	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) then
-	    	return Filtered(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)<=k+1);
-	    fi;
-	    IsCommutative(A);
-	    all:=[];
-	    iter := IteratorOfPartitionsSet([1 .. NumberOfClasses(A)], k, flag);
-	    while not IsDoneIterator(iter) do
-	        fuse := NextIterator(iter);
-	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
-	            if IsFusionOfHomogeneousCoherentConfiguration(A, Concatenation([[0]], fuse)) then
-	                Add(all, Concatenation([[0]], fuse));
-	            fi;
-	        fi;
-	    od;
-	    return all;
+	function(A, r, flag)
+		local checkCell, findCell, checkPartialFusion, good, stack, current, S, children;
+
+		checkCell := function(A, C)
+			local k1, k2, y1, y2, i, j;
+			for k1 in C do
+				for k2 in C do
+					y1:=0;
+					y2:=0;
+					for i in C do
+						for j in C do
+							y1:=y1+IntersectionNumber(A, i, j, k1);
+							y2:=y2+IntersectionNumber(A, i, j, k2);
+						od;
+					od;
+					if y1 <> y2 then
+						return false;
+					fi;
+				od;
+			od;
+			return true;
+		end;
+		findCell := function(A, S)
+			local x, good, stack, current, children;
+			x:=Minimum(S);
+			good :=[];
+			stack :=[[x]];
+			while stack <> [] do
+				current:=Remove(stack, Size(stack));
+				if checkCell(A, current) then
+					Add(good, current);
+				fi;
+				children:=Filtered(S, t -> t > current[Size(current)]);
+				children:=List(children, t -> Concatenation(current, [t]));
+				Append(stack, children);
+			od;
+			return good;
+		end;
+		checkPartialFusion := function(A, fuse)
+			local l, m, o, k1, k2, y1, y2, i, j;
+			for l in [1 .. Size(fuse)] do
+				for m in [1 .. Size(fuse)] do
+					for o in [1 .. Size(fuse)] do
+						if (Size(fuse) in [l, m, o]) and (not [l, m, o] = [Size(fuse), Size(fuse), Size(fuse)]) then
+							# we want to make sure we are checking the newest cell, but we have already checked it by itself
+							for k1 in fuse[o] do
+								for k2 in fuse[o] do
+									y1:=0;
+									y2:=0;
+									for i in fuse[l] do
+										for j in fuse[m] do
+											y1:=y1+IntersectionNumber(A, i, j, k1);
+											y2:=y2+IntersectionNumber(A, i, j, k2);
+										od;
+									od;
+									if y1 <> y2 then
+										return false;
+									fi;
+								od;
+							od;
+						fi;
+					od;
+				od;
+			od;
+			return true;
+		end;
+
+ 	    if r < 1 then
+ 	    	Error("Fusion must have at least 1 class!\n");
+ 	    fi;
+ 	    if r > NumberOfClasses(A) then
+ 	    	Error("Fusion cannot have more classes than original homogeneous coherent configuration!\n");
+ 	    fi;
+ 	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) then
+ 	    	return Filtered(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)<=r+1);
+ 	    fi;
+
+		good :=[];
+		stack :=[[[0]]];
+		while stack <> [] do
+			current := Remove(stack, Size(stack));
+			if Size(current) <= (r+1) then
+				S := Filtered([1 .. NumberOfClasses(A)], t -> not ForAny(current, x -> t in x));
+				if IsEmpty(S) then
+					if flag = true then
+						Add(good, Set(current, Set));
+					else
+						if Size(current)=(r+1) and IsFusionOfHomogeneousCoherentConfiguration(A, current) then
+							Add(good, Set(current, Set));
+						fi;
+					fi;
+				else
+					children:=findCell(A, S);
+					children:=List(children, t -> Concatenation(current, [t]));
+					children:=Filtered(children, t -> checkPartialFusion(A, t));
+					Append(stack, children);
+				fi;
+			fi;
+		od;
+		good := Filtered(good, t -> not Size(t) in [2, NumberOfClasses(A)+1]);
+		return good;
 	end );
 
 
@@ -335,160 +629,461 @@ InstallMethod(AllFusionsOfHomgeneousCoherentConfiguration,
 InstallMethod(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration],
 	function(A)
-	    local iter, fuse, all, map, rels, i, x, y, pairs;
-	    if IsAssociationScheme(A) then
-	    	return FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A);
-	    fi;
-
-	    rels := [1 .. NumberOfClasses(A)];;
-  		map:=[];;
-		IsSet(rels);
-		for i in [1 .. Order(A)] do
-			x := RelationMatrix(A)[1][i];;
-			if x in rels then
-				y := RelationMatrix(A)[i][1];;
-				Add(map, Set([x,y]));;
-				rels:=Filtered(rels, t -> t <> x and t <> y);;
-				IsSet(rels);;
-			fi;
-			if IsEmpty(rels) then
-				break;
-			fi;
-		od;
-
-	    all:=[];
-	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) then
-			pairs := Filtered(map, t -> Size(t)=2);
-			for fuse in FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) do
-				if ForAll(pairs, t -> Filtered([1 .. Size(fuse)], x -> t[1] in fuse[x])=Filtered([1 .. Size(fuse)], x -> t[2] in fuse[x])) then
-					Add(all, fuse);
-				fi;
+		local checkCell, findCell, checkPartialFusion, good, stack, current, S, children, fuse, map;
+		checkCell := function(A, C1, map)
+			local k1, k2, y1, y2, i, j, C;
+			C:=Concatenation(List(C1, t -> map[t]));;
+			for k1 in C do
+				for k2 in C do
+					y1:=0;
+					y2:=0;
+					for i in C do
+						for j in C do
+							y1:=y1+IntersectionNumber(A, i, j, k1);
+							y2:=y2+IntersectionNumber(A, i, j, k2);
+						od;
+					od;
+					if y1 <> y2 then
+						return false;
+					fi;
+				od;
 			od;
-			return all;
-		fi;
+			return true;
+		end;
+		findCell := function(A, S, map)
+			local x, good, stack, current, children;
+			x:=Minimum(S);
+			good :=[];
+			stack :=[[x]];
+			while stack <> [] do
+				current:=Remove(stack, Size(stack));
+				if checkCell(A, current, map) then
+					Add(good, current);
+				fi;
+				children:=Filtered(S, t -> t > current[Size(current)]);
+				children:=List(children, t -> Concatenation(current, [t]));
+				Append(stack, children);
+			od;
+			return good;
+		end;
+		checkPartialFusion := function(A, fuse, map)
+			local l, m, o, k1, k2, y1, y2, i, j, i2, j2, k3, k4;
+			for l in [1 .. Size(fuse)] do
+				for m in [1 .. Size(fuse)] do
+					for o in [1 .. Size(fuse)] do
+						if (Size(fuse) in [l, m, o]) and (not [l, m, o] = [Size(fuse), Size(fuse), Size(fuse)]) then
+							# we want to make sure we are checking the newest cell, but we have already checked it by itself
+							for k1 in fuse[o] do
+								for k2 in fuse[o] do
+									y1:=0;
+									y2:=0;
+									for i in fuse[l] do
+										for j in fuse[m] do
+											for i2 in map[i] do
+												for j2 in map[j] do
+													for k3 in map[k1] do
+														for k4 in map[k2] do
+															y1:=y1+IntersectionNumber(A, i2, j2, k3);
+															y2:=y2+IntersectionNumber(A, i2, j2, k4);
+														od;
+													od;
+												od;
+											od;
+										od;
+									od;
+									if y1 <> y2 then
+										return false;
+									fi;
+								od;
+							od;
+						fi;
+					od;
+				od;
+			od;
+			return true;
+		end;
 
-	    iter := IteratorOfPartitionsSet(map);
-	    while not IsDoneIterator(iter) do
-	        fuse := NextIterator(iter);
-	        fuse := List(fuse, Flat);
-	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
-	            if IsFusionOfHomogeneousCoherentConfiguration(A, Concatenation([[0]], fuse)) then
-	                Add(all, Concatenation([[0]], fuse));
-	            fi;
-	        fi;
-	    od;
-	    return all;
+		map:=MutableCopyMat(ConverseRelationPairs(A));
+ 	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) then
+ 	    	good:=[];
+ 	    	for current in FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) do
+ 	    		if ForAll(map, x -> ForAny(current, t -> IsSubset(t, x))) then
+ 	    			Add(good, current);
+ 	    		fi;
+ 	    	od;
+ 	    	return good;
+ 	    fi;
+		Remove(map, 1);
+		good :=[];
+		stack :=[[]];
+		while stack <> [] do
+			current := Remove(stack, Size(stack));
+			S := Filtered([1 .. Size(map)], t -> not ForAny(current, x -> t in x));
+			if IsEmpty(S) then
+				fuse := List(current, t -> Concatenation(List(t, x -> map[x])));;
+				fuse := Concatenation([[0]], fuse);
+				fuse := Set(fuse, Set);;
+				if IsFusionOfHomogeneousCoherentConfiguration(A, fuse) then
+					Add(good, fuse);
+				fi;
+			else
+				children:=findCell(A, S, map);
+				children:=List(children, t -> Concatenation(current, [t]));
+				children:=Filtered(children, t -> checkPartialFusion(A, t, map));
+				Append(stack, children);
+			fi;
+		od;
+		good := Filtered(good, t -> not Size(t) in [2, NumberOfClasses(A)+1]);
+		return good;
 	end );
 
 
 InstallOtherMethod(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration,
-			[IsHomogeneousCoherentConfiguration, IsInt],
-	function(A, k)
-	    local iter, fuse, all, map, rels, i, x, y;
-	    if IsAssociationScheme(A) then
-	    	return FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A, k);
-	    fi;
+			[IsHomogeneousCoherentConfiguration, IsPosInt],
+	function(A, r)
+		local checkCell, findCell, checkPartialFusion, good, stack, current, S, children, fuse, map;
+		checkCell := function(A, C1, map)
+			local k1, k2, y1, y2, i, j, C;
+			C:=Concatenation(List(C1, t -> map[t]));;
+			for k1 in C do
+				for k2 in C do
+					y1:=0;
+					y2:=0;
+					for i in C do
+						for j in C do
+							y1:=y1+IntersectionNumber(A, i, j, k1);
+							y2:=y2+IntersectionNumber(A, i, j, k2);
+						od;
+					od;
+					if y1 <> y2 then
+						return false;
+					fi;
+				od;
+			od;
+			return true;
+		end;
+		findCell := function(A, S, map)
+			local x, good, stack, current, children;
+			x:=Minimum(S);
+			good :=[];
+			stack :=[[x]];
+			while stack <> [] do
+				current:=Remove(stack, Size(stack));
+				if checkCell(A, current, map) then
+					Add(good, current);
+				fi;
+				children:=Filtered(S, t -> t > current[Size(current)]);
+				children:=List(children, t -> Concatenation(current, [t]));
+				Append(stack, children);
+			od;
+			return good;
+		end;
+		checkPartialFusion := function(A, fuse, map)
+			local l, m, o, k1, k2, y1, y2, i, j, i2, j2, k3, k4;
+			for l in [1 .. Size(fuse)] do
+				for m in [1 .. Size(fuse)] do
+					for o in [1 .. Size(fuse)] do
+						if (Size(fuse) in [l, m, o]) and (not [l, m, o] = [Size(fuse), Size(fuse), Size(fuse)]) then
+							# we want to make sure we are checking the newest cell, but we have already checked it by itself
+							for k1 in fuse[o] do
+								for k2 in fuse[o] do
+									y1:=0;
+									y2:=0;
+									for i in fuse[l] do
+										for j in fuse[m] do
+											for i2 in map[i] do
+												for j2 in map[j] do
+													for k3 in map[k1] do
+														for k4 in map[k2] do
+															y1:=y1+IntersectionNumber(A, i2, j2, k3);
+															y2:=y2+IntersectionNumber(A, i2, j2, k4);
+														od;
+													od;
+												od;
+											od;
+										od;
+									od;
+									if y1 <> y2 then
+										return false;
+									fi;
+								od;
+							od;
+						fi;
+					od;
+				od;
+			od;
+			return true;
+		end;
 
-	    if k < 1 then
-	    	Error("Fusion must have at least 1 class!\n");
-	    fi;
-	    if k > NumberOfClasses(A) then
-	    	Error("Fusion cannot have more classes than original homogeneous coherent configuration!\n");
-	    fi;
-	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) and not HasFeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A) then
-	    	FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A);
-	    fi;
-	    if HasFeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A) then
-	    	return Filtered(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)=k+1);
-	    fi;
+	    if r < 1 then
+ 	    	Error("Fusion must have at least 1 class!\n");
+ 	    fi;
+ 	    if r > NumberOfClasses(A) then
+ 	    	Error("Fusion cannot have more classes than original homogeneous coherent configuration!\n");
+ 	    fi;
+ 	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) and not HasFeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A) then
+ 	    	FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A);
+ 	    fi;
+ 	    if HasFeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A) then
+ 	    	return Filtered(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)=r+1);
+ 	    fi;
 
-	    rels := [1 .. NumberOfClasses(A)];;
-  		map:=[];;
-		IsSet(rels);
-		for i in [1 .. Order(A)] do
-			x := RelationMatrix(A)[1][i];;
-			if x in rels then
-				y := RelationMatrix(A)[i][1];;
-				Add(map, Set([x,y]));;
-				rels:=Filtered(rels, t -> t <> x and t <> y);;
-				IsSet(rels);;
-			fi;
-			if IsEmpty(rels) then
-				break;
+		map:=MutableCopyMat(ConverseRelationPairs(A));
+		Remove(map, 1);
+		good :=[];
+		stack :=[[]];
+		while stack <> [] do
+			current := Remove(stack, Size(stack));
+			if Size(current) <= r then
+				S := Filtered([1 .. Size(map)], t -> not ForAny(current, x -> t in x));
+				if IsEmpty(S) then
+					fuse := List(current, t -> Concatenation(List(t, x -> map[x])));;
+					fuse := Concatenation([[0]], fuse);
+					fuse := Set(fuse, Set);;
+					if Size(fuse) = (r+1) and IsFusionOfHomogeneousCoherentConfiguration(A, fuse) then
+						Add(good, fuse);
+					fi;
+				else
+					children:=findCell(A, S, map);
+					children:=List(children, t -> Concatenation(current, [t]));
+					children:=Filtered(children, t -> checkPartialFusion(A, t, map));
+					Append(stack, children);
+				fi;
 			fi;
 		od;
-
-	    IsCommutative(A);
-	    all:=[];
-	    iter := IteratorOfPartitionsSet(map, k);
-	    while not IsDoneIterator(iter) do
-	        fuse := NextIterator(iter);
-	        fuse := List(fuse, Flat);
-	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
-	            if IsFusionOfHomogeneousCoherentConfiguration(A, Concatenation([[0]], fuse)) then
-	                Add(all, Concatenation([[0]], fuse));
-	            fi;
-	        fi;
-	    od;
-	    return all;
+		good := Filtered(good, t -> not Size(t) in [2, NumberOfClasses(A)+1]);
+		return good;
 	end );
-
 
 InstallOtherMethod(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration,
-			[IsHomogeneousCoherentConfiguration, IsInt, IsBool],
-	function(A, k, flag)
-	    local iter, fuse, all, map, rels, i, x, y;
-	    if IsAssociationScheme(A) then
-	    	return FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A, k, flag);
-	    fi;
+			[IsHomogeneousCoherentConfiguration, IsPosInt, IsBool],
+	function(A, r, flag)
+		local checkCell, findCell, checkPartialFusion, good, stack, current, S, children, fuse, map;
+		checkCell := function(A, C1, map)
+			local k1, k2, y1, y2, i, j, C;
+			C:=Concatenation(List(C1, t -> map[t]));;
+			for k1 in C do
+				for k2 in C do
+					y1:=0;
+					y2:=0;
+					for i in C do
+						for j in C do
+							y1:=y1+IntersectionNumber(A, i, j, k1);
+							y2:=y2+IntersectionNumber(A, i, j, k2);
+						od;
+					od;
+					if y1 <> y2 then
+						return false;
+					fi;
+				od;
+			od;
+			return true;
+		end;
+		findCell := function(A, S, map)
+			local x, good, stack, current, children;
+			x:=Minimum(S);
+			good :=[];
+			stack :=[[x]];
+			while stack <> [] do
+				current:=Remove(stack, Size(stack));
+				if checkCell(A, current, map) then
+					Add(good, current);
+				fi;
+				children:=Filtered(S, t -> t > current[Size(current)]);
+				children:=List(children, t -> Concatenation(current, [t]));
+				Append(stack, children);
+			od;
+			return good;
+		end;
+		checkPartialFusion := function(A, fuse, map)
+			local l, m, o, k1, k2, y1, y2, i, j, i2, j2, k3, k4;
+			for l in [1 .. Size(fuse)] do
+				for m in [1 .. Size(fuse)] do
+					for o in [1 .. Size(fuse)] do
+						if (Size(fuse) in [l, m, o]) and (not [l, m, o] = [Size(fuse), Size(fuse), Size(fuse)]) then
+							# we want to make sure we are checking the newest cell, but we have already checked it by itself
+							for k1 in fuse[o] do
+								for k2 in fuse[o] do
+									y1:=0;
+									y2:=0;
+									for i in fuse[l] do
+										for j in fuse[m] do
+											for i2 in map[i] do
+												for j2 in map[j] do
+													for k3 in map[k1] do
+														for k4 in map[k2] do
+															y1:=y1+IntersectionNumber(A, i2, j2, k3);
+															y2:=y2+IntersectionNumber(A, i2, j2, k4);
+														od;
+													od;
+												od;
+											od;
+										od;
+									od;
+									if y1 <> y2 then
+										return false;
+									fi;
+								od;
+							od;
+						fi;
+					od;
+				od;
+			od;
+			return true;
+		end;
 
-	    if k < 1 then
-	    	Error("Fusion must have at least 1 class!\n");
-	    fi;
-	    if k > NumberOfClasses(A) then
-	    	Error("Fusion cannot have more classes than original homogeneous coherent configuration!\n");
-	    fi;
-	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) and not HasFeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A) then
-	    	FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A);
-	    fi;
-	    if HasFeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A) then
-	    	return Filtered(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)<=k+1);
-	    fi;
+	    if r < 1 then
+ 	    	Error("Fusion must have at least 1 class!\n");
+ 	    fi;
+ 	    if r > NumberOfClasses(A) then
+ 	    	Error("Fusion cannot have more classes than original homogeneous coherent configuration!\n");
+ 	    fi;
+ 	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) and not HasFeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A) then
+ 	    	FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A);
+ 	    fi;
+ 	    if HasFeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A) then
+ 	    	return Filtered(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)<=r+1);
+ 	    fi;
 
-	    rels := [1 .. NumberOfClasses(A)];;
-  		map:=[];;
-		IsSet(rels);
-		for i in [1 .. Order(A)] do
-			x := RelationMatrix(A)[1][i];;
-			if x in rels then
-				y := RelationMatrix(A)[i][1];;
-				Add(map, Set([x,y]));;
-				rels:=Filtered(rels, t -> t <> x and t <> y);;
-				IsSet(rels);;
-			fi;
-			if IsEmpty(rels) then
-				break;
+		map:=MutableCopyMat(ConverseRelationPairs(A));
+		Remove(map, 1);
+		good :=[];
+		stack :=[[]];
+		while stack <> [] do
+			current := Remove(stack, Size(stack));
+			if Size(current) <= r then
+				S := Filtered([1 .. Size(map)], t -> not ForAny(current, x -> t in x));
+				if IsEmpty(S) then
+					fuse := List(current, t -> Concatenation(List(t, x -> map[x])));;
+					fuse := Concatenation([[0]], fuse);
+					fuse := Set(fuse, Set);;
+					if flag = true then
+						Add(good, fuse);
+					else
+						if Size(fuse) = (r+1) and IsFusionOfHomogeneousCoherentConfiguration(A, fuse) then
+							Add(good, fuse);
+						fi;
+					fi;
+				else
+					children:=findCell(A, S, map);
+					children:=List(children, t -> Concatenation(current, [t]));
+					children:=Filtered(children, t -> checkPartialFusion(A, t, map));
+					Append(stack, children);
+				fi;
 			fi;
 		od;
-
-		if k >= Size(map) then
-			return FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A);
-		fi;
-
-	    IsCommutative(A);
-	    all:=[];
-	    iter := IteratorOfPartitionsSet(map, k, flag);
-	    while not IsDoneIterator(iter) do
-	        fuse := NextIterator(iter);
-	        fuse := List(fuse, Flat);
-	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
-	            if IsFusionOfHomogeneousCoherentConfiguration(A, Concatenation([[0]], fuse)) then
-	                Add(all, Concatenation([[0]], fuse));
-	            fi;
-	        fi;
-	    od;
-	    return all;
+		good := Filtered(good, t -> not Size(t) in [2, NumberOfClasses(A)+1]);
+		return good;
 	end );
+
+# InstallOtherMethod(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration,
+# 			[IsHomogeneousCoherentConfiguration, IsInt],
+# 	function(A, k)
+# 	    local iter, fuse, all, map, rels, i, x, y;
+# 	    if IsAssociationScheme(A) then
+# 	    	return FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A, k);
+# 	    fi;
+
+# 	    if k < 1 then
+# 	    	Error("Fusion must have at least 1 class!\n");
+# 	    fi;
+# 	    if k > NumberOfClasses(A) then
+# 	    	Error("Fusion cannot have more classes than original homogeneous coherent configuration!\n");
+# 	    fi;
+# 	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) and not HasFeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A) then
+# 	    	FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A);
+# 	    fi;
+# 	    if HasFeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A) then
+# 	    	return Filtered(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)=k+1);
+# 	    fi;
+
+# 	    rels := [1 .. NumberOfClasses(A)];;
+#   		map:=[];;
+# 		IsSet(rels);
+# 		for i in [1 .. Order(A)] do
+# 			x := RelationMatrix(A)[1][i];;
+# 			if x in rels then
+# 				y := RelationMatrix(A)[i][1];;
+# 				Add(map, Set([x,y]));;
+# 				rels:=Filtered(rels, t -> t <> x and t <> y);;
+# 				IsSet(rels);;
+# 			fi;
+# 			if IsEmpty(rels) then
+# 				break;
+# 			fi;
+# 		od;
+
+# 	    IsCommutative(A);
+# 	    all:=[];
+# 	    iter := IteratorOfPartitionsSet(map, k);
+# 	    while not IsDoneIterator(iter) do
+# 	        fuse := NextIterator(iter);
+# 	        fuse := List(fuse, Flat);
+# 	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
+# 	            if IsFusionOfHomogeneousCoherentConfiguration(A, Concatenation([[0]], fuse)) then
+# 	                Add(all, Concatenation([[0]], fuse));
+# 	            fi;
+# 	        fi;
+# 	    od;
+# 	    return all;
+# 	end );
+
+
+# InstallOtherMethod(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration,
+# 			[IsHomogeneousCoherentConfiguration, IsInt, IsBool],
+# 	function(A, k, flag)
+# 	    local iter, fuse, all, map, rels, i, x, y;
+# 	    if IsAssociationScheme(A) then
+# 	    	return FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A, k, flag);
+# 	    fi;
+
+# 	    if k < 1 then
+# 	    	Error("Fusion must have at least 1 class!\n");
+# 	    fi;
+# 	    if k > NumberOfClasses(A) then
+# 	    	Error("Fusion cannot have more classes than original homogeneous coherent configuration!\n");
+# 	    fi;
+# 	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) and not HasFeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A) then
+# 	    	FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A);
+# 	    fi;
+# 	    if HasFeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A) then
+# 	    	return Filtered(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)<=k+1);
+# 	    fi;
+
+# 	    rels := [1 .. NumberOfClasses(A)];;
+#   		map:=[];;
+# 		IsSet(rels);
+# 		for i in [1 .. Order(A)] do
+# 			x := RelationMatrix(A)[1][i];;
+# 			if x in rels then
+# 				y := RelationMatrix(A)[i][1];;
+# 				Add(map, Set([x,y]));;
+# 				rels:=Filtered(rels, t -> t <> x and t <> y);;
+# 				IsSet(rels);;
+# 			fi;
+# 			if IsEmpty(rels) then
+# 				break;
+# 			fi;
+# 		od;
+
+# 		if k >= Size(map) then
+# 			return FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A);
+# 		fi;
+
+# 	    IsCommutative(A);
+# 	    all:=[];
+# 	    iter := IteratorOfPartitionsSet(map, k, flag);
+# 	    while not IsDoneIterator(iter) do
+# 	        fuse := NextIterator(iter);
+# 	        fuse := List(fuse, Flat);
+# 	        if Size(fuse) <> 1 and Size(fuse) <> NumberOfClasses(A) then
+# 	            if IsFusionOfHomogeneousCoherentConfiguration(A, Concatenation([[0]], fuse)) then
+# 	                Add(all, Concatenation([[0]], fuse));
+# 	            fi;
+# 	        fi;
+# 	    od;
+# 	    return all;
+# 	end );
 
 
 InstallMethod(AllNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration,
