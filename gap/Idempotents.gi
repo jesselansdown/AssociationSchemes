@@ -241,3 +241,44 @@ InstallMethod( FitMatrixOfEigenvalues,
 	function(A, P)
 		return FitMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), P);
 	end);
+
+InstallMethod( CharacterTableOfSchurianHomogeneousCoherentConfiguration, 
+ 	"for IsAssociationScheme",
+ 	[ IsHomogeneousCoherentConfiguration ],
+	function(A)
+		local G, H, chi, const, conj, dcs, P, i, j, P2;  
+		if HasConstructorGroup(A) then
+			G:=ConstructorGroup(A);
+		elif IsSchurian(A) then
+			G:=AutomorphismGroup(A);
+		else
+			return fail;
+		fi;
+    	H := Stabilizer(G,1);
+    	chi := NaturalCharacter(G);
+        const := ConstituentsOfCharacter(chi);
+    	conj := ConjugacyClasses( G );
+    	dcs := DoubleCosets(G, H, H);
+
+    	P := NullMat(Size(dcs), Size(const));
+        for i in [1..Size(dcs)] do
+        for j in [1..Size(const)] do
+              P[j][i] := 1/Size(H) * Sum(List([1..Size(conj)], k -> 
+              Size(Intersection(AsSet(conj[k]), AsSet(dcs[i]) )) * Representative(conj[k])^const[j]));
+        od;
+    od;
+    P2:=[];
+    for i in [1 .. Size(P)] do
+    	if Set(P[i]) <> [0] then
+    		Add(P2, P[i]);
+    	fi;
+  	od;
+  	# Put things here to set the character table if it isn't known and won't clash with anything
+  	# In particular, if multiplicities aren't known, then this might clash with the idempotent map
+  	# Also, P, Q, and the idempotent map could clash if any are known.
+  	# For P-matrix, also check that the top row is the one with the valencies - actually, for all?
+  	# Also, use the "FitMatrixOfEigenvalues" to fit the matrix appropriately
+  	# Fitting can only be done currently for P-matrices?
+  	# Don't fit non-square character tables, and print a warning that the columns might be permuted?
+    return P2;
+	end);

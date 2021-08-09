@@ -98,3 +98,11 @@ DeclareAttribute( "CharacterTableOfHomogeneousCoherentConfiguration", IsHomogene
 #!   Checks if P is the matrix of eigenvalues of homogeneous coherent configuration CC, upto some reordering of the columns.
 #!   In such a case, P2, the reordered matrix is returned. If not, returns fail.
 DeclareOperation( "FitMatrixOfEigenvalues", [ IsHomogeneousCoherentConfiguration, IsMatrix ] );
+
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC, P
+#! @Returns P2
+#! @Description
+#!   TODO.
+DeclareOperation( "CharacterTableOfSchurianHomogeneousCoherentConfiguration", [ IsHomogeneousCoherentConfiguration ] );
