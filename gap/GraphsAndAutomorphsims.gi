@@ -173,48 +173,48 @@ function(A, p, perm)
 	return C;
 end);
 
-InstallMethod( AreIsomorphicHomogeneousCoherentConfigurations, [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
+InstallMethod( IsomorphismHomogeneousCoherentConfigurations, [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
 function(A, B)
 	local charpolysA, charpolysB, algA, algB, map, autA, gamma, perm, p1, p2, p, C; 
 
 	if Order(A) <> Order(B) then
-		return false;
+		return fail;
 	fi;
 	if NumberOfClasses(A) <> NumberOfClasses(B) then
-		return false;
+		return fail;
 	fi;
 
 	if Collected(Valencies(A)) <> Collected(Valencies(B)) then
-		return false;
+		return fail;
 	fi;
 
 	if Collected(Flat(IntersectionMatrices(A))) <> Collected(Flat(IntersectionMatrices(B))) then
-		return false;
+		return fail;
 	fi;
 
 	if IsAssociationScheme(A) <> IsAssociationScheme(B) then
-		return false;
+		return fail;
 	fi;
 
 	if IsCommutative(A) <> IsCommutative(B) then
-		return false;
+		return fail;
 	fi;
 
 	if AdmitsMetricOrdering(A) <> AdmitsMetricOrdering(B) then
-		return false;
+		return fail;
 	fi;
 
 	charpolysA := List(IntersectionMatrices(A), CharacteristicPolynomial);;
 	charpolysB := List(IntersectionMatrices(A), CharacteristicPolynomial);;
 	if Collected(charpolysA) <> Collected(charpolysB) then
-		return false;
+		return fail;
 	fi;
 
 	algA :=IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);;
 	algB :=IntersectionAlgebraOfHomogeneousCoherentConfiguration(B);;
-	map := AreIsomorphicIntersectionAlgebras(algA, algB);
-	if map = false then
-		return false;
+	map := IsomorphismIntersectionAlgebras(algA, algB);
+	if map = fail then
+		return fail;
 	fi;
 	autA := AutomorphismGroup(algA);
 
@@ -238,7 +238,16 @@ function(A, B)
 			return [p, map*perm];
 		fi;
 	od;
-	return false;
+	return fail;
+end);
+
+InstallMethod( AreIsomorphicHomogeneousCoherentConfigurations, [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
+function(A, B)
+	if IsomorphismHomogeneousCoherentConfigurations(A, B) <> fail then
+		return true;
+	else
+		return false;
+	fi;
 end);
 
 InstallMethod( CanonisingMap, [IsHomogeneousCoherentConfiguration],
@@ -257,8 +266,8 @@ function(A)
 	else
 		algA :=IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);;
 		map := CanonisingMap(algA);
-		if map = false then
-			return false;
+		if map = fail then
+			return fail;
 		fi;
 		autA := AutomorphismGroup(algA);
 	fi;

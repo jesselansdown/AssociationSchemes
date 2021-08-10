@@ -37,6 +37,14 @@ DeclareOperation( "ImageOfIntersectionAlgebra", [ IsIntersectionAlgebraObject, I
 #! @Returns $\sigma$
 #! @Description
 #!	Take two $d$-class intersection algebras $A$ and $B$ and return $\sigma \in Sym([1 .. d])$ such that $A^\sigma = B$.
+DeclareOperation( "IsomorphismIntersectionAlgebras", [ IsIntersectionAlgebraObject, IsIntersectionAlgebraObject ] );
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments $A$, $B$
+#! @Returns $\sigma$
+#! @Description
+#!	Take two $d$-class intersection algebras $A$ and $B$ and return true if they are isomorphic. Return false otherwise.
 DeclareOperation( "AreIsomorphicIntersectionAlgebras", [ IsIntersectionAlgebraObject, IsIntersectionAlgebraObject ] );
 
 #! @Chapter Functionality

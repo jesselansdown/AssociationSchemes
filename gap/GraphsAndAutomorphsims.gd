@@ -61,12 +61,21 @@ DeclareOperation("ImageOfHomogeneousCoherentConfiguration", [IsHomogeneousCohere
 
 #! @Chapter Functionality
 #! @Section Properties Of Homogeneous Coherent Configurations
-#! @Arguments CC, p, $\sigma$
+#! @Arguments A, B
 #! @Returns true or false
 #! @Description
 #! If there exists a permutation matrix $P$ and permutation $\sigma$ such that if $M$ is the relation matrix of $A$, then 
 #!	$P^{-1} M^\sigma P$ is the relation matrix of $B$, then the operation will return $[p, \sigma]$, where $p$ is the permutation
-#!	defining $P$. If no such $P$ and $\sigma$ exist, then the operation will return false.
+#!	defining $P$. If no such $P$ and $\sigma$ exist, then the operation will return fail.
+DeclareOperation("IsomorphismHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments A, B
+#! @Returns true or false
+#! @Description
+#! If there exists a permutation matrix $P$ and permutation $\sigma$ such that if $M$ is the relation matrix of $A$, then 
+#!	$P^{-1} M^\sigma P$ is the relation matrix of $B$, then the operation will return true. Returns false otherwise.
 DeclareOperation("AreIsomorphicHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
 
 #! @Chapter Functionality

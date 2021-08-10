@@ -54,7 +54,7 @@ InstallMethod( ImageOfIntersectionAlgebra,
 		return IntersectionAlgebra(L);
 	end);
 
-InstallMethod( AreIsomorphicIntersectionAlgebras,
+InstallMethod( IsomorphismIntersectionAlgebras,
 			 [IsIntersectionAlgebraObject, IsIntersectionAlgebraObject],
 
 	function(A, B)
@@ -75,24 +75,24 @@ InstallMethod( AreIsomorphicIntersectionAlgebras,
 		end;
 
 		if NumberOfClasses(A) <> NumberOfClasses(B) then
-			return false;
+			return fail;
 		fi;
 		if Order(A) <> Order(B) then
-			return false;
+			return fail;
 		fi;
 		if Collected(Valencies(A)) <> Collected(Valencies(B)) then
-			return false;
+			return fail;
 		fi;
 		if IsCommutative(A) <> IsCommutative(B) then
-			return false;
+			return fail;
 		fi;
 		if Collected(Flat(IntersectionMatrices(A))) <> Collected(Flat(IntersectionMatrices(B))) then
-			return false;
+			return fail;
 		fi;
 		charpolysA := List(IntersectionMatrices(A), CharacteristicPolynomial);;
 		charpolysB := List(IntersectionMatrices(A), CharacteristicPolynomial);;
 		if Collected(charpolysA) <> Collected(charpolysB) then
-			return false;
+			return fail;
 		fi;
 
 		d:=NumberOfClasses(A);
@@ -110,7 +110,17 @@ InstallMethod( AreIsomorphicIntersectionAlgebras,
 				fi;
 			fi;
 		od;
-		return false;
+		return fail;
+	end);
+
+InstallMethod( AreIsomorphicIntersectionAlgebras,
+			 [IsIntersectionAlgebraObject, IsIntersectionAlgebraObject],
+	function(A, B)
+		if IsomorphismIntersectionAlgebras(A, B) <> fail then
+			return true;
+		else
+			return false;
+		fi;
 	end);
 
 InstallMethod( CanonisingMap, [IsIntersectionAlgebraObject],

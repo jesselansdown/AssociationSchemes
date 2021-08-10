@@ -134,7 +134,7 @@ InstallMethod(AvailableHomogeneousCoherentConfigurations,
 	for id in [1 .. NumberOfHomogeneousCoherentConfigurations(Order(A))] do
 		if NumberOfClasses(A) = classes[id] then
 			B:=HomogeneousCoherentConfiguration(Order(A), id);
-			if AreIsomorphicHomogeneousCoherentConfigurations(A, HomogeneousCoherentConfiguration(Order(A), id)) <> false then
+			if AreIsomorphicHomogeneousCoherentConfigurations(A, HomogeneousCoherentConfiguration(Order(A), id)) then
 				return id;
 			fi;
 		fi;

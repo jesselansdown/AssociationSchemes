@@ -469,8 +469,8 @@ InstallMethod( FitMatrixOfEigenvalues,
 		if B = fail then
 			return fail;
 		fi;
-		map := AreIsomorphicIntersectionAlgebras(B, A);
-		if map = false then
+		map := IsomorphismIntersectionAlgebras(B, A);
+		if map = fail then
 			return fail;
 		fi;
 		d:=NumberOfClasses(A);
