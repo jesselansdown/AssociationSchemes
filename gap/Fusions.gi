@@ -357,7 +357,7 @@ InstallMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
 InstallOtherMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration, IsInt],
 	function(A, r)
-		local checkCell, findCell, checkPartialFusion, good, stack, current, S, children;
+		local checkCell, findCell, checkPartialFusion, good, stack, current, S, children, fuse;
 
 		checkCell := function(A, C)
 			local k1, k2, y1, y2, i, j;
@@ -443,6 +443,11 @@ InstallOtherMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
 					if Size(current)=(r+1) and IsFusionOfHomogeneousCoherentConfiguration(A, current) then
 						Add(good, Set(current, Set));
 					fi;
+				elif Size(current)=r then
+					fuse := Concatenation(current, [S]);;
+					if IsFusionOfHomogeneousCoherentConfiguration(A, fuse) then
+						Add(good, Set(fuse, Set));
+					fi;
 				else
 					children:=findCell(A, S);
 					children:=List(children, t -> Concatenation(current, [t]));
@@ -485,7 +490,7 @@ InstallOtherMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
 InstallOtherMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration, IsInt, IsBool],
 	function(A, r, flag)
-		local checkCell, findCell, checkPartialFusion, good, stack, current, S, children;
+		local checkCell, findCell, checkPartialFusion, good, stack, current, S, children, fuse;
 
 		checkCell := function(A, C)
 			local k1, k2, y1, y2, i, j;
@@ -574,6 +579,11 @@ InstallOtherMethod(FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration,
 						if Size(current)=(r+1) and IsFusionOfHomogeneousCoherentConfiguration(A, current) then
 							Add(good, Set(current, Set));
 						fi;
+					fi;
+				elif Size(current)=r then
+					fuse := Concatenation(current, [S]);;
+					if IsFusionOfHomogeneousCoherentConfiguration(A, fuse) then
+						Add(good, Set(fuse, Set));
 					fi;
 				else
 					children:=findCell(A, S);
@@ -843,6 +853,14 @@ InstallOtherMethod(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfigu
 					if Size(fuse) = (r+1) and IsFusionOfHomogeneousCoherentConfiguration(A, fuse) then
 						Add(good, fuse);
 					fi;
+				elif Size(current)=(r-1) then
+					fuse := Concatenation(current, [S]);;
+					fuse := List(fuse, t -> Concatenation(List(t, x -> map[x])));;
+					fuse := Concatenation([[0]], fuse);
+					fuse := Set(fuse, Set);;
+					if IsFusionOfHomogeneousCoherentConfiguration(A, fuse) then
+						Add(good, Set(fuse, Set));
+					fi;
 				else
 					children:=findCell(A, S, map);
 					children:=List(children, t -> Concatenation(current, [t]));
@@ -963,6 +981,14 @@ InstallOtherMethod(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfigu
 						if Size(fuse) = (r+1) and IsFusionOfHomogeneousCoherentConfiguration(A, fuse) then
 							Add(good, fuse);
 						fi;
+					fi;
+				elif Size(current)=(r-1) then
+					fuse := Concatenation(current, [S]);;
+					fuse := List(fuse, t -> Concatenation(List(t, x -> map[x])));;
+					fuse := Concatenation([[0]], fuse);
+					fuse := Set(fuse, Set);;
+					if IsFusionOfHomogeneousCoherentConfiguration(A, fuse) then
+						Add(good, Set(fuse, Set));
 					fi;
 				else
 					children:=findCell(A, S, map);
