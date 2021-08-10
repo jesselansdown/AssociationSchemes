@@ -1151,3 +1151,52 @@ InstallMethod(AllSymmetricFusionsOfHomgeneousCoherentConfiguration,
 	    	fi;
 	    return all;
 	end);
+
+InstallMethod(IsomorphismToFusionScheme,
+			[IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
+	function(A, B)
+		local fusions, f, C, map;
+
+		if Rank(A)>Rank(B) then
+			Error("The number of classes of A must be no larger than the number of classes of B\n");
+		fi;
+		if Order(A)<>Order(B) then
+			return fail;
+		fi;
+		if Rank(A)=1 then
+			return [(), (), [[0], [1 .. Rank(B)]]];
+		fi;
+		if Rank(A)=Rank(B) then
+			map:=IsomorphismHomogeneousCoherentConfigurations(A, B);
+			if map <> fail then
+				return [map[1], map[2], List([0 .. Rank(A)], t -> [t])];
+			fi;
+		fi;
+		f := FusingPartitionOfHomogeneousCoherentConfigurations(A, B);
+		if f <> fail then
+			return [(), (), f];
+		fi;
+		if IsAssociationScheme(A) then
+			fusions:=FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(B, Rank(A));;
+		else
+			fusions:=FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(B, Rank(A));;
+		fi;
+		for f in fusions do
+			C := FusionOfHomogeneousCoherentConfiguration(B, f);;
+			map := IsomorphismHomogeneousCoherentConfigurations(A, C);
+			if map <> fail then
+				return [map[1], map[2], f];
+			fi;
+		od;
+		return fail;
+	end);
+
+InstallMethod(IsIsomorphicToFusionScheme,
+			[IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
+	function(A, B)
+		if IsomorphismToFusionScheme(A, B) <> fail then
+			return true;
+		else
+			return false;
+		fi;
+	end);

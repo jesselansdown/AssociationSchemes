@@ -152,3 +152,19 @@ DeclareOperation( "AllNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguratio
 #!  Includes trivial fusions, i.e the original homogeneous coherent configuration (if it is an association scheme), and the coherent configuration resulting
 #!  from the fusion of all non-identity relations
 DeclareOperation( "AllSymmetricFusionsOfHomgeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration]);
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments A, B
+#! @Returns p1, p2, f
+#! @Description
+#!  If A is isomorphic to a fusion of B, then f is the fusion of $B$, and [p1, p2] is the map which carries $B$ to this fusion.
+DeclareOperation("IsomorphismToFusionScheme", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
+
+#! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments A, B
+#! @Returns p1, p2, f
+#! @Description
+#!  Returns true if $A$ is isomorphic to a fusion of $B$. Returns false otherwise.
+DeclareOperation("IsIsomorphicToFusionScheme", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
