@@ -346,7 +346,13 @@ InstallMethod( ViewObj,
  	"for IsAssociationScheme",
  	[ IsIntersectionAlgebraObject],
  	function( a )
- 		Print( NumberOfClasses(a), "-class intersection algebra of order ", Order(a));
+ 		if HasIsCommutative(a) and IsCommutative(a) then
+	 		Print("< ", NumberOfClasses(a), "-class commutative intersection algebra of order ", Order(a), " >");
+ 		elif HasIsCommutative and not IsCommutative(a) then
+ 	 		Print("< ", NumberOfClasses(a), "-class non-commutative intersection algebra of order ", Order(a), " >");
+ 		else
+	 		Print("< ", NumberOfClasses(a), "-class intersection algebra of order ", Order(a), " >");
+	 	fi;
  	end );
 
 #InstallMethod( PrintObj, 
