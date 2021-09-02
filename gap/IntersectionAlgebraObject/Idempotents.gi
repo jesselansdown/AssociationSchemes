@@ -82,7 +82,7 @@
 		    RIdem := CentralIdempotentsOfAlgebra(Alg);
 		    RIdem := Filtered(RIdem, t -> t <> e);;
 		    RIdem := Concatenation([e], RIdem);;
-		    if Length(RIdem) = d+1 then
+		    if Length(RIdem) = nchar then
 		        reps:=List(inter, t -> t[1]);;
 		        return TransposedMat(List(RIdem, t -> SolutionMat(reps, t[1])));
 		    else
@@ -105,6 +105,9 @@
 		            od;
 		            Idem:=Set(Idem2);
 		            Idem:=SimplifyIdem(Idem);;
+		            if Length(Idem) = nchar then
+		            	break;
+		            fi;
 		        od;
 	           	Idem := Filtered(Idem, t -> t <> e);;
 				Idem := Concatenation([e], Idem);;
