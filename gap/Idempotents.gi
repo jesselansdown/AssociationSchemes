@@ -112,12 +112,15 @@ InstallOtherMethod( MinimalIdempotentsOverRationals,
 		if not j in [0 .. NumberOfClasses(A)] then
 			return fail;
 		fi;
+		map := MapFromAdjacencyMatricesToMinimalIdempotentsOverRationals(A);;
+		if not j in [0 .. Size(map[1])-1] then
+			return fail;
+		fi;
 		if HasMinimalIdempotents(A) then
 			return MinimalIdempotentsOverRationals(A)[j+1];
 		fi;
 		n:=Order(A);
 		relmat:=RelationMatrix(A);
-		map := MapFromAdjacencyMatricesToMinimalIdempotentsOverRationals(A);;
 		mat := NullMat(n, n);;
 		for a in [1 .. n] do
 			for b in [1 .. n] do
