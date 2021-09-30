@@ -41,7 +41,7 @@ InstallMethod(IntersectionAlgebra,
 		m := MakeImmutable(StructuralCopy(L));;
 		assoc_rec := rec( intersection_matrices := m);
 		A := ObjectifyWithAttributes(assoc_rec, TheTypeIntersectionAlgebraObject);;
-		IsCommutative(A);
+#		IsCommutative(A);
 		return A;
 	end );
 
@@ -348,7 +348,7 @@ InstallMethod( ViewObj,
  	function( a )
  		if HasIsCommutative(a) and IsCommutative(a) then
 	 		Print("< ", NumberOfClasses(a), "-class commutative intersection algebra of order ", Order(a), " >");
- 		elif HasIsCommutative and not IsCommutative(a) then
+ 		elif HasIsCommutative(a) and not IsCommutative(a) then
  	 		Print("< ", NumberOfClasses(a), "-class non-commutative intersection algebra of order ", Order(a), " >");
  		else
 	 		Print("< ", NumberOfClasses(a), "-class intersection algebra of order ", Order(a), " >");
