@@ -193,6 +193,36 @@ InstallMethod( DistanceRegularGraphSchemeNC, [IsMatrix],
     return AssociationSchemeNC(RelationMatrixFromDRG(M));;
   end);
 
+InstallMethod( StronglyRegularGraphScheme, [IsMatrix],
+  function(M)
+    local srg_relmat;
+    srg_relmat := function(x)
+      local n, M, i;
+      n:=Size(x);
+      M:=(NullMat(n, n)+2)-x;;        
+      for i in [1 .. n] do
+        M[i][i]:=0;
+      od;
+      return M;
+    end;
+    return AssociationScheme(srg_relmat(M));;
+  end);
+
+InstallMethod( StronglyRegularGraphSchemeNC, [IsMatrix],
+  function(M)
+    local srg_relmat;
+    srg_relmat := function(x)
+      local n, M, i;
+      n:=Size(x);
+      M:=(NullMat(n, n)+2)-x;;        
+      for i in [1 .. n] do
+        M[i][i]:=0;
+      od;
+      return M;
+    end;
+    return AssociationSchemeNC(srg_relmat(M));;
+  end);
+
 InstallMethod( IsPBipartite, [IsHomogeneousCoherentConfiguration],
   function(A)
   local i, j, k, d;

@@ -129,6 +129,22 @@ DeclareOperation( "DistanceRegularGraphScheme", [IsMatrix]);
 DeclareOperation( "DistanceRegularGraphSchemeNC", [IsMatrix]);
 
 #! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments A
+#! @Returns homogeneous coherent configuration
+#! @Description
+#!	Constructs an association scheme from the adjacency matrix A of a strongly regular graph.
+DeclareOperation( "StronglyRegularGraphScheme", [IsMatrix]);
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments A
+#! @Returns homogeneous coherent configuration
+#! @Description
+#!	Same as StronglyRegularGraphScheme but without checking that a valid association scheme arises.
+DeclareOperation( "StronglyRegularGraphSchemeNC", [IsMatrix]);
+
+#! @Chapter Functionality
 #! @Section Properties Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns true or false
