@@ -31,6 +31,34 @@ InstallMethod( ConstructorGroup, [ IsHomogeneousCoherentConfiguration ],
   fi;
  end);
 
+# InstallMethod(HomogeneousCoherentConfigurationByOrbitals,
+#       [IsPermGroup],
+#   function( g_perm )
+#     local stab, sz, points, orbs, row1, i, charvec, rts, pos, mat, assoc_rec;
+#     if not IsTransitive(g_perm) then
+#       Print("G must be transitive\n");
+#       return fail;
+#     fi;
+#     stab := Stabiliser(g_perm, 1);
+#     sz := DegreeAction(g_perm);
+#     points := [2 .. sz];
+#     orbs := Orbits(stab, points);
+#     row1 := ListWithIdenticalEntries(sz, 0);
+#     for i in [1 .. Size(orbs)] do
+#       charvec := ListWithIdenticalEntries(sz, 0);
+#       charvec{orbs[i]}:=ListWithIdenticalEntries(Size(orbs[i]), i);
+#       row1 := row1 + charvec;
+#     od;
+#     rts := RightTransversal(g_perm, stab);;
+#     mat :=ListWithIdenticalEntries(sz, []);
+#     for i in rts do
+#       pos := 1^i;
+#       mat[pos]:=Permuted(row1, i);
+#     od;
+#     assoc_rec := rec( matrix := MakeImmutable(mat));
+#     return ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, IsSchurian, true, ConstructorGroup, g_perm);;
+#   end);
+
 InstallMethod(HomogeneousCoherentConfigurationByOrbitals,
       [IsPermGroup],
   function( g_perm )
@@ -45,15 +73,11 @@ InstallMethod(HomogeneousCoherentConfigurationByOrbitals,
     orbs := Orbits(stab, points);
     row1 := ListWithIdenticalEntries(sz, 0);
     for i in [1 .. Size(orbs)] do
-      charvec := ListWithIdenticalEntries(sz, 0);
-      charvec{orbs[i]}:=ListWithIdenticalEntries(Size(orbs[i]), i);
-      row1 := row1 + charvec;
+      row1{orbs[i]}:=ListWithIdenticalEntries(Size(orbs[i]), i);
     od;
-    rts := RightTransversal(g_perm, stab);;
     mat :=ListWithIdenticalEntries(sz, []);
-    for i in rts do
-      pos := 1^i;
-      mat[pos]:=Permuted(row1, i);
+    for i in [1 .. sz] do
+      mat[i]:=Permuted(row1, RepresentativeAction(g_perm,1,i));
     od;
     assoc_rec := rec( matrix := MakeImmutable(mat));
     return ObjectifyWithAttributes(assoc_rec, TheTypeHomogeneousCoherentConfiguration, IsSchurian, true, ConstructorGroup, g_perm);;
@@ -91,8 +115,9 @@ InstallMethod( MinimalIdempotents,
     Q := DualMatrixOfEigenvalues(a)/Order(a);
     row1 := RelationMatrix(a)[1];
     stab := Stabiliser(g_perm, 1);
-    rts := RightTransversal(g_perm, stab);;
     sz := DegreeAction(g_perm);
+#    rts := RightTransversal(g_perm, stab);;
+    rts:=List([1 .. sz], t -> RepresentativeAction(g_perm,1,t));
     points := [1 .. sz];
     d := Maximum(row1);
     rows := [];

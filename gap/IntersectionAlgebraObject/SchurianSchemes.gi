@@ -140,42 +140,11 @@ InstallMethod(SchurianSchemeIntersectionAlgebra,
           return fail;
         fi;
 
-        transversals := function(g_perm)
-          local s, x, g, t, transversals, orb, i, gens;
-            if not IsTransitive(g_perm) then
-              Error("Must give a transitive permutation group\n");
-              return fail;
-            fi;
-            gens := GeneratorsOfGroup(g_perm);;
-            s := [1];
-            transversals := ListWithIdenticalEntries(DegreeAction(g_perm), 0);;
-            transversals[1]:=[];
-            for x in s do
-              for i in [1 .. Size(gens)] do
-                t := x^gens[i];
-                if transversals[t] = 0 then
-                  Add(s, t);;
-                  transversals[t]:=Concatenation(transversals[x], [i]);
-                fi;
-              od;
-            od;
-          return [gens, transversals];
-        end;
-
-        retrieve_transversal := function(gens, transversals, i)
-          if transversals[i] = [] then
-            return ();
-          fi;
-          return Product(List(transversals[i], t -> gens[t]));;
-        end;
-
         n:=DegreeAction(g_perm);;
         stab := Stabiliser(g_perm, 1);;
         o:=Orbits(stab, [1 .. n]);;
         o:=List(o, Set);;
         o:=Set(o);;
-
-        rts:=transversals(g_perm);;
 
         c := ListWithIdenticalEntries(n, 0);;
         for k in [1 .. Size(o)] do
@@ -188,7 +157,7 @@ InstallMethod(SchurianSchemeIntersectionAlgebra,
 
         rows:=[];;
         for r in reps do
-          Add(rows, Permuted(c, retrieve_transversal(rts[1], rts[2], r)));
+          Add(rows, Permuted(c, RepresentativeAction(g_perm,1,r)));
         od;
 
         d:=Size(o)-1;
