@@ -206,7 +206,7 @@ InstallMethod( DualMatrixOfEigenvalues,
 		ks:=List([0 .. d], t -> IntersectionNumber(B, t,t, 0));
 
 		if ForAny(ks, t -> t=0) then
-			TryNextMethod();
+			return fail;
 		fi;
 	
 		polys:=MinimalPolynomial(L);;
@@ -275,7 +275,10 @@ InstallMethod( DualMatrixOfEigenvalues,
 			# If the scheme is metric, it will typically be much faster to compute the P-matrix
 			# using DRG theory (assuming no known P-matrix could be fitted) than to compute generically
 			if AdmitsPPolynomialOrdering(A) then
-				return MatrixOfEigenvaluesForMetricScheme(A);
+				P2 := MatrixOfEigenvaluesForMetricScheme(A);
+				if P2 <> fail then
+					return P2;
+				fi;
 			fi;
 		fi;
 		return Inverse(DualMatrixOfEigenvalues(A))*Order(A);
