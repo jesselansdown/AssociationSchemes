@@ -182,12 +182,12 @@ InstallMethod( Order,
 
 
 InstallMethod(KreinParameter,
-            [IsIntersectionAlgebraObject and IsCommutative, IsInt, IsInt, IsInt],
+            [IsIntersectionAlgebraObject, IsInt, IsInt, IsInt],
 	function(A, i, j, k)
 		local P, Q, n, d, s, l;
-#		if not IsCommutative(A) then
-#			return fail;
-#		fi;
+		if not IsCommutative(A) then
+			return fail;
+		fi;
 		P:=MatrixOfEigenvalues(A);
 		Q:=DualMatrixOfEigenvalues(A);;
 
@@ -202,12 +202,12 @@ InstallMethod(KreinParameter,
 	end);
 
 InstallMethod(KreinParameters,
-            [IsIntersectionAlgebraObject and IsCommutative],
+            [IsIntersectionAlgebraObject],
 	function(A)
 		local K, i, j, k, d;
-#		if not IsCommutative(A) then
-#			return fail;
-#		fi;
+		if not IsCommutative(A) then
+			return fail;
+		fi;
 		d:=NumberOfClasses(A);;
 		K:=List([1 .. d+1], t -> NullMat(d+1, d+1));;
 		for i in [0 .. d] do
