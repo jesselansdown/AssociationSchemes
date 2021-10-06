@@ -71,6 +71,8 @@ InstallMethod(HomogeneousCoherentConfigurationByOrbitals,
     sz := DegreeAction(g_perm);
     points := [2 .. sz];
     orbs := Orbits(stab, points);
+    orbs:=List(orbs, Set);;
+    orbs:=Set(orbs);;
     row1 := ListWithIdenticalEntries(sz, 0);
     for i in [1 .. Size(orbs)] do
       row1{orbs[i]}:=ListWithIdenticalEntries(Size(orbs[i]), i);
