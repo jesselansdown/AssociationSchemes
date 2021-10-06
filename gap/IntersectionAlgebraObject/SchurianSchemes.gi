@@ -133,7 +133,7 @@
 InstallMethod(SchurianSchemeIntersectionAlgebra,
       [IsPermGroup],
       function(g_perm)
-        local transversals, retrieve_transversal, n, stab, o, rts, c, k, i, j, d, reps, r, rows, mats, s, m;
+        local  n, stab, o, row1, k, i, positions, map, rows, tau, d, mats, j, s, m, r;
 
         if not IsPermGroup(g_perm) or not IsTransitive(g_perm) or IsTrivial(g_perm) then
           Error("Must give a nontrivial transitive permutation group\n");
@@ -145,19 +145,26 @@ InstallMethod(SchurianSchemeIntersectionAlgebra,
         o:=Orbits(stab, [1 .. n]);;
         o:=List(o, Set);;
         o:=Set(o);;
+        d:=Size(o)-1;
 
-        c := ListWithIdenticalEntries(n, 0);;
+        row1 := ListWithIdenticalEntries(n, 0);;
         for k in [1 .. Size(o)] do
           for i in o[k] do
-            c[i]:=k-1;
+            row1[i]:=k-1;
           od;
         od;
 
-        reps := List(o, t -> t[1]);;
-
+        positions := [];
+        for i in [0 .. d] do
+         Add(positions, First([1 .. n], t -> row1[t]=i));
+         od;
+        map := [];
         rows:=[];;
-        for r in reps do
-          Add(rows, Permuted(c, RepresentativeAction(g_perm,1,r)));
+        for i in [0 .. d] do
+          tau := RepresentativeAction(g_perm, 1, positions[i+1]);
+          r := Permuted(row1, tau);;
+          Add(map, r[1]);
+          Add(rows, r);
         od;
 
         d:=Size(o)-1;
@@ -167,7 +174,7 @@ InstallMethod(SchurianSchemeIntersectionAlgebra,
             for j in [0 .. d] do
               s:=0;
               for m in [1 .. n] do
-                if rows[1][m] = i and rows[k][m] = j then
+                if rows[1][m] = i and rows[k][m] = map[j+1] then
                   s:=s+1;
                 fi;
               od;
