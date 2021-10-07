@@ -104,3 +104,10 @@ DeclareAttribute( "IntersectionArray", IsIntersectionAlgebraObject );
 #!  parameters.
 DeclareAttribute( "ClassicalParameters", IsIntersectionAlgebraObject );
 
+#! @Chapter Functionality
+#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns [d, b, $\alpha$, $\beta$]
+#! @Description
+#!	Returns the parameters $\{n, k; \lambda, \mu \}$ if the CC is an association scheme with 2 classes.
+DeclareAttribute( "StronglyRegularGraphParameters", IsIntersectionAlgebraObject );

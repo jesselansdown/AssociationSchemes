@@ -315,3 +315,11 @@ InstallMethod( ClassicalParameters, [IsIntersectionAlgebraObject],
       return fail;
     fi;
   end);
+
+InstallMethod( StronglyRegularGraphParameters, [IsIntersectionAlgebraObject],
+  function(A)
+    if NumberOfClasses(A)<> 2 or not IsCommutative(A) then
+      return fail;
+    fi;
+    return [Order(A), IntersectionNumber(A, 1,1, 0), IntersectionNumber(A, 1,1,1), IntersectionNumber(A, 1,1,2)];
+  end);

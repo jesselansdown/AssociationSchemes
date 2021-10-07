@@ -89,6 +89,15 @@ InstallMethod(IntersectionArray,
         return IntersectionArray(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A));
     end);
 
+InstallMethod(StronglyRegularGraphParameters,
+            [IsHomogeneousCoherentConfiguration],
+    function( A )
+        if NumberOfClasses(A)<>2 or not IsAssociationScheme(A) then
+          return fail;
+        fi;
+        return StronglyRegularGraphParameters(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A));
+    end);
+
 InstallMethod( ClassicalParameters, [IsHomogeneousCoherentConfiguration],
   function(A)
     if not IsMetric(A) then
