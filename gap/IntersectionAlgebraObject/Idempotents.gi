@@ -201,7 +201,8 @@ InstallMethod( DualMatrixOfEigenvalues,
 		Remove(perm, 1);
 		perm:=PermList(perm);
 		B:=ReorderRelations(A, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], Inverse(perm))));
-		L:=TransposedMat(IntersectionMatrices(B)[2]);
+#		L:=TransposedMat(IntersectionMatrices(B)[2]);
+		L:=IntersectionMatrices(B)[2];
 		d:=NumberOfClasses(B);
 		ks:=List([0 .. d], t -> IntersectionNumber(B, t,t, 0));
 

@@ -579,7 +579,7 @@ InstallMethod(IsHomogeneousCoherentConfigurationMatrix2,
 InstallMethod(IntersectionNumber,
 			[IsHomogeneousCoherentConfiguration, IsInt,  IsInt,  IsInt],
 	function( a, i, j, k )
-		return IntersectionMatrices(a)[j+1][i+1, k+1];;
+		return IntersectionMatrices(a)[i+1][j+1, k+1];;
 	end);
 
 InstallMethod(Valencies, " ", [IsHomogeneousCoherentConfiguration], 
@@ -646,7 +646,7 @@ InstallMethod(IntersectionAlgebraOfHomogeneousCoherentConfiguration, " ", [IsHom
 		for i in [0 .. d] do
 			for j in [0 .. d] do
 				for k in [0 .. d] do
-					intersectionMatrices[j+1][i+1, k+1] :=  InterNum(M, i, j, k);;
+					intersectionMatrices[i+1][j+1, k+1] :=  InterNum(M, i, j, k);;
 				od;
 			od;
 		od;

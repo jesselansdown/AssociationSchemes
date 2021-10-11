@@ -54,7 +54,7 @@ InstallMethod(IntersectionMatrices,
 InstallMethod(IntersectionNumber,
 			[IsIntersectionAlgebraObject, IsInt,  IsInt,  IsInt],
 	function( a, i, j, k )
-		return IntersectionMatrices(a)[j+1][i+1, k+1];;
+		return IntersectionMatrices(a)[i+1][j+1, k+1];;
 	end);
 
 
@@ -304,7 +304,7 @@ InstallMethod(ReorderRelations,
 			for i in [0 .. d] do
 				for j in [0 .. d] do
 					for k in [0 .. d] do
-						intersectionMatrices[j+1][i+1, k+1] :=  IntersectionNumber(a, L[i+1], L[j+1], L[k+1]);;
+						intersectionMatrices[i+1][j+1, k+1] :=  IntersectionNumber(a, L[i+1], L[j+1], L[k+1]);;
 					od;
 				od;
 			od;
