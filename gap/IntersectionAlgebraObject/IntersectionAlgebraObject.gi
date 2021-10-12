@@ -346,7 +346,9 @@ InstallMethod( ViewObj,
  	"for IsAssociationScheme",
  	[ IsIntersectionAlgebraObject],
  	function( a )
- 		if HasIsCommutative(a) and IsCommutative(a) then
+ 		if HasIsSymmetricIntersectionAlgebra(a) and IsSymmetricIntersectionAlgebra(a) then
+	 		Print("< ", NumberOfClasses(a), "-class symmetric intersection algebra of order ", Order(a), " >");
+ 		elif HasIsCommutative(a) and IsCommutative(a) then
 	 		Print("< ", NumberOfClasses(a), "-class commutative intersection algebra of order ", Order(a), " >");
  		elif HasIsCommutative(a) and not IsCommutative(a) then
  	 		Print("< ", NumberOfClasses(a), "-class non-commutative intersection algebra of order ", Order(a), " >");
@@ -367,7 +369,10 @@ InstallMethod( Display,
 	[ IsIntersectionAlgebraObject],
 	function( a )
  		Print( NumberOfClasses(a), "-class intersection algebra of order ", Order(a), "\n");
- 		if HasIsCommutative(a) then
+ 		if HasIsSymmetricIntersectionAlgebra(a) then
+ 			Print("  Symmetric: ", IsSymmetricIntersectionAlgebra(a), "\n");;
+ 		fi;
+  		if HasIsCommutative(a) then
  			Print("  Commutative: ", IsCommutative(a), "\n");;
  		fi;
  		if HasIsPPolynomial(a) then
@@ -455,6 +460,19 @@ InstallMethod(IsCommutative,
 					fi;
 				od;
 			od;
+		od;
+		return true;
+	end );
+
+InstallMethod(IsSymmetricIntersectionAlgebra,
+			[IsIntersectionAlgebraObject],
+	function(a)
+		local i, d;
+		d:=NumberOfClasses(a);;
+		for i in [0 .. d] do
+			if IntersectionNumber(a, i, i, 0) = 0 then
+				return false;
+			fi;
 		od;
 		return true;
 	end );

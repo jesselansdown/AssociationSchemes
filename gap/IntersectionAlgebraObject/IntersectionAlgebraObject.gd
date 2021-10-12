@@ -197,6 +197,14 @@ DeclareOperation( "ViewRelationDistributionDiagram", [ IsIntersectionAlgebraObje
 DeclareProperty( "IsCommutative", IsIntersectionAlgebraObject );
 
 #! @Chapter Functionality
+#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Checks if the input is a symmetric coherent configuration.
+DeclareProperty( "IsSymmetricIntersectionAlgebra", IsIntersectionAlgebraObject );
+
+#! @Chapter Functionality
 #! @Section Attributes Of Homogeneous Coherent Configurations
 #! @Arguments CC
 #! @Returns n

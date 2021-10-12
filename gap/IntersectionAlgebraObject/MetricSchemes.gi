@@ -67,6 +67,9 @@ InstallMethod( IsPPolynomial, [IsIntersectionAlgebraObject],
       return true;
     end;
 
+    if not IsSymmetricIntersectionAlgebra(A) then
+      return false;
+    fi;
     d:=NumberOfClasses(A);
     for i in [0 .. d] do
       if not checknext(A, [0 .. i]) then
@@ -100,7 +103,7 @@ InstallMethod( FirstPPolynomialOrdering, [IsIntersectionAlgebraObject],
     if IsPPolynomial(A) then
       return [0 .. NumberOfClasses(A)];
     fi;
-    if not IsCommutative(A) then
+    if not IsSymmetricIntersectionAlgebra(A) then
       return fail;
     fi;
     stack := [[0]];
@@ -212,6 +215,9 @@ InstallMethod(AllPPolynomialOrderings,
       return true;
     end;
 
+    if not IsSymmetricIntersectionAlgebra(A) then
+      return fail;
+    fi;
     stack := [[0]];
     keep := [];
     while stack <> [] do
@@ -318,7 +324,7 @@ InstallMethod( ClassicalParameters, [IsIntersectionAlgebraObject],
 
 InstallMethod( StronglyRegularGraphParameters, [IsIntersectionAlgebraObject],
   function(A)
-    if NumberOfClasses(A)<> 2 or not IsCommutative(A) then
+    if NumberOfClasses(A)<> 2 or not IsSymmetricIntersectionAlgebra(A) then
       return fail;
     fi;
     return [Order(A), IntersectionNumber(A, 1,1, 0), IntersectionNumber(A, 1,1,1), IntersectionNumber(A, 1,1,2)];

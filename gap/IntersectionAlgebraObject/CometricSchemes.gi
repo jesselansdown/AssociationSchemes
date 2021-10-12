@@ -43,6 +43,9 @@ InstallMethod( AdmitsQPolynomialOrdering, [IsIntersectionAlgebraObject],
       return true;
     end;
 
+    if not IsSymmetricIntersectionAlgebra(A) then
+      return false;
+    fi;
     if IsQPolynomial(A) then
       return true;
     fi;
@@ -87,6 +90,10 @@ InstallMethod( IsQPolynomial, [IsIntersectionAlgebraObject],
       return true;
     end;
 
+    if not IsSymmetricIntersectionAlgebra(A) then
+      return false;
+    fi;
+
     d := NumberOfClasses(A);
     for i in [0 .. d] do
       if not checknext(A, [0 .. i]) then
@@ -123,6 +130,10 @@ InstallMethod(AllQPolynomialOrderings,
       od;
       return true;
     end;
+
+    if not IsSymmetricIntersectionAlgebra(A) then
+      return false;
+    fi;
 
     stack := [[0]];
     keep := [];

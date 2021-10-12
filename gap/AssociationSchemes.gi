@@ -249,14 +249,15 @@ InstallMethod(Neighbours,
 InstallMethod(IsSymmetricCoherentConfiguration,
 			[IsHomogeneousCoherentConfiguration],
 	function(a)
-		local mat, i;
-		mat:=RelationMatrix(a);;
-		for i in [1 .. Order(a)] do # Given a HCC, sufficient to check only one row/column
-			if mat[1][i]<>mat[i][1] then
-				return false;
-			fi;
-		od;
-		return true;
+		return IsSymmetricIntersectionAlgebra(IntersectionAlgebraOfHomogeneousCoherentConfiguration(a));
+#		local mat, i;
+#		mat:=RelationMatrix(a);;
+#		for i in [1 .. Order(a)] do # Given a HCC, sufficient to check only one row/column
+#			if mat[1][i]<>mat[i][1] then
+#				return false;
+#			fi;
+#		od;
+#		return true;
 	end );
 
 InstallMethod(IsAssociationScheme,

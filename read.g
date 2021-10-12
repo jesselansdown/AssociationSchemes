@@ -30,3 +30,4 @@ ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/CometricScheme
 ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/SchurianSchemes.gi");
 ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/Idempotents.gi");
 ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/Isomorphisms.gi");
+ReadPackage( "AssociationSchemes", "gap/IntersectionAlgebraObject/Fusions.gi");
