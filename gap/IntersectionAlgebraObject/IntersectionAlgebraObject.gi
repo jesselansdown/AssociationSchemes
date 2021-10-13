@@ -375,6 +375,9 @@ InstallMethod( Display,
   		if HasIsCommutative(a) then
  			Print("  Commutative: ", IsCommutative(a), "\n");;
  		fi;
+ 		if HasIsStratifiable(a) then
+ 			Print("  Stratifiable: ", IsStratifiable(a), "\n");;
+ 		fi;
  		if HasIsPPolynomial(a) then
  			Print("  Metric: ", IsMetric(a), "\n");
  			if IsMetric(a) = false and HasAdmitsPPolynomialOrdering(a) then
