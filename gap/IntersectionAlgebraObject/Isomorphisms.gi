@@ -116,7 +116,23 @@ InstallMethod( IsomorphismIntersectionAlgebras,
 InstallMethod( AreIsomorphicIntersectionAlgebras,
 			 [IsIntersectionAlgebraObject, IsIntersectionAlgebraObject],
 	function(A, B)
-		if IsomorphismIntersectionAlgebras(A, B) <> fail then
+		local isom;
+		# if they have canonical forms check them against one another first
+		if HasCanonisingMap(A) and HasCanonisingMap(B) then
+			if CanonicalFormOfIntersectionAlgebra(A) = CanonicalFormOfIntersectionAlgebra(B) then
+				return true;
+			else
+				return false;
+			fi;
+		fi;
+		isom := IsomorphismIntersectionAlgebras(A, B);
+		if isom <> fail then
+			if HasCanonisingMap(A) and not HasCanonisingMap(B) then
+				SetCanonisingMap(B, CanonisingMap(A)*Inverse(isom));
+			fi;
+			if HasCanonisingMap(B) and not HasCanonisingMap(A) then
+				SetCanonisingMap(A, CanonisingMap(B)*isom);
+			fi;
 			return true;
 		else
 			return false;
