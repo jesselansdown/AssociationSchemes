@@ -61,9 +61,9 @@ InstallMethod( ImageOfIntersectionAlgebra,
 					P2[i][j+1]:=P[i][j^perm + 1];
 				od;
 			od;
-			if IntersectionAlgebraFromMatrixOfEigenvalues(P2)=B then
+#			if IntersectionAlgebraFromMatrixOfEigenvalues(P2)=B then
 				SetMatrixOfEigenvalues(B, P2);
-			fi;
+#			fi;
 		fi;
 		return B;
 	end);
@@ -229,9 +229,9 @@ InstallMethod(CanonicalFormOfIntersectionAlgebra, [IsIntersectionAlgebraObject],
 					P2[i][j+1]:=P[i][j^perm + 1];
 				od;
 			od;
-			if IntersectionAlgebraFromMatrixOfEigenvalues(P2)=B then
+#			if IntersectionAlgebraFromMatrixOfEigenvalues(P2)=B then
 				SetMatrixOfEigenvalues(B, P2);
-			fi;
+#			fi;
 		fi;
 		return B;
 	end);
