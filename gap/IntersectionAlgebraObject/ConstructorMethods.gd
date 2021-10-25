@@ -68,8 +68,16 @@ DeclareOperation("IntersectionAlgebraFromIntersectionArray", [IsList]);
 #! @Arguments n, k, q
 #! @Returns intersection algebra object
 #! @Description
-#!	Returns the intersection algebra of a DRG given by its intersection array.
+#!	Returns the intersection algebra of a DRG given by its classical parameters.
 DeclareOperation("IntersectionAlgebraFromClassicalParameters", [IsList]);
+
+#! @Chapter Functionality
+#! @Section Constructor Methods
+#! @Arguments n, k, q
+#! @Returns intersection algebra object
+#! @Description
+#!	Returns the intersection algebra of a SRG given by its parameters $[n, k, \lambda, \mu]$.
+DeclareOperation("IntersectionAlgebraFromStronglyRegularGraphParameters", [IsPosInt, IsPosInt, IsInt, IsInt]);
 
 #! @Chapter Functionality
 #! @Section Constructor Methods
