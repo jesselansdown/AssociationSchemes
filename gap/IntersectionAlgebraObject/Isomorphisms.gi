@@ -26,7 +26,7 @@ InstallMethod( ImageOfIntersectionAlgebra,
 			 [IsIntersectionAlgebraObject, IsPerm],
 
 	function(A, perm)
-		local d, L, i, j, k, i2, j2, k2;
+		local d, L, i, j, k, i2, j2, k2, B, P, P2;
 		d:=NumberOfClasses(A);
 		L:=List([1 .. d+1], t -> NullMat(d+1, d+1));;
 		for i in [0 .. d] do
@@ -51,7 +51,21 @@ InstallMethod( ImageOfIntersectionAlgebra,
 				od;
 			od;
 		od;
-		return IntersectionAlgebra(L);
+		B := IntersectionAlgebra(L);
+		if HasMatrixOfEigenvalues(A) and MatrixOfEigenvalues(A) <> fail then
+		    P:=MatrixOfEigenvalues(A);
+			P2:=NullMat(Size(P), Size(P));;
+			P2:=P2+1;;
+			for i in [1 .. Size(P2)] do
+				for j in [1 .. Size(P[1])-1] do
+					P2[i][j+1]:=P[i][j^perm + 1];
+				od;
+			od;
+			if IntersectionAlgebraFromMatrixOfEigenvalues(P2)=B then
+				SetMatrixOfEigenvalues(B, P2);
+			fi;
+		fi;
+		return B;
 	end);
 
 InstallMethod( IsomorphismIntersectionAlgebras,
@@ -203,9 +217,23 @@ InstallMethod( CanonisingMap, [IsIntersectionAlgebraObject],
 
 InstallMethod(CanonicalFormOfIntersectionAlgebra, [IsIntersectionAlgebraObject],
 	function(A)
-		local perm;
+		local perm, B, P, P2, i, j;
 		perm := CanonisingMap(A);;
-	    return ImageOfIntersectionAlgebra(A, perm);
+	    B := ImageOfIntersectionAlgebra(A, perm);
+	    if HasMatrixOfEigenvalues(A) and MatrixOfEigenvalues(A) <> fail then
+		    P:=MatrixOfEigenvalues(A);
+			P2:=NullMat(Size(P), Size(P));;
+			P2:=P2+1;;
+			for i in [1 .. Size(P2)] do
+				for j in [1 .. Size(P[1])-1] do
+					P2[i][j+1]:=P[i][j^perm + 1];
+				od;
+			od;
+			if IntersectionAlgebraFromMatrixOfEigenvalues(P2)=B then
+				SetMatrixOfEigenvalues(B, P2);
+			fi;
+		fi;
+		return B;
 	end);
 
 
