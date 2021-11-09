@@ -50,7 +50,7 @@ InstallMethod(IntersectionAlgebraFromMatrixOfEigenvalues,
 		od;
 		A := IntersectionAlgebra(intersection_matrices);;
 		SetMatrixOfEigenvalues(A, P);
-		SetDualMatrixOfEigenvalues(A, Q);
+		SetMatrixOfDualEigenvalues(A, Q);
 		return A;
 	end);
 

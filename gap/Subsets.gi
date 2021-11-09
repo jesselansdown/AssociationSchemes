@@ -77,9 +77,9 @@ InstallMethod(MacWilliamsTransform,
         Error("Must give a vector with rational entries.\n");
       fi;
       if Size(v) = NumberOfClasses(sch)+1 then
-        return v*DualMatrixOfEigenvalues(sch);
+        return v*MatrixOfDualEigenvalues(sch);
       elif Size(v) = Order(sch) then
-        return InnerDistribution(v, sch)*DualMatrixOfEigenvalues(sch);
+        return InnerDistribution(v, sch)*MatrixOfDualEigenvalues(sch);
       else
         Error("Must give either a vector in R^n or its innter distribution vector.\n");
       fi;

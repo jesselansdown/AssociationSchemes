@@ -142,7 +142,7 @@ InstallMethod(ExtendedQBipartiteDouble,
 		return M;
 	end;
 
-	x:=TransposedMat(DualMatrixOfEigenvalues(A))[2];
+	x:=TransposedMat(MatrixOfDualEigenvalues(A))[2];
 	y:=List([1 .. Size(x)], t -> [x[t], t-1]);
 	Sort(y, function(u, v) return u[1]>v[1];end);
 	y:=List(y, t -> t[2]);

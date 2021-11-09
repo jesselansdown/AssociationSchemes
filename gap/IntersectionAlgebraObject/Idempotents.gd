@@ -70,7 +70,7 @@ DeclareAttribute( "CentralIdempotentsOfIntersectionAlgebraOverRationals", IsInte
 #! @Returns Q
 #! @Description
 #!      Returns a the dual matrix of eigenvalues, $Q$, for a homogeneous coherent configuration CC.
-DeclareAttribute( "DualMatrixOfEigenvalues", IsIntersectionAlgebraObject );
+DeclareAttribute( "MatrixOfDualEigenvalues", IsIntersectionAlgebraObject );
 
 #! @Chapter Functionality
 #! @Section Attributes Of Homogeneous Coherent Configurations

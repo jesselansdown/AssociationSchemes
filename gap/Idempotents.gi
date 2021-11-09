@@ -148,14 +148,14 @@ InstallMethod( MatrixOfEigenvalues,
 		fi;
 	end);
 
-InstallMethod( DualMatrixOfEigenvalues, 
+InstallMethod( MatrixOfDualEigenvalues, 
 	"for IsAssociationScheme",
 	[ IsHomogeneousCoherentConfiguration ],
 	function( a )
 		if MatrixOfEigenvalues(a) = fail then
 			return fail;
 		fi;
-		return DualMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(a));
+		return MatrixOfDualEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(a));
 	end );
 
  InstallMethod( Multiplicities, 
@@ -165,7 +165,7 @@ InstallMethod( DualMatrixOfEigenvalues,
 	    local d, nc, idems, n, mults, i;
 
 	    	if MatrixOfEigenvalues(A) <> fail then
-	    		return DualMatrixOfEigenvalues(A)[1];
+	    		return MatrixOfDualEigenvalues(A)[1];
 	    	fi;
 
 	        d:=NumberOfClasses(A)+1;;

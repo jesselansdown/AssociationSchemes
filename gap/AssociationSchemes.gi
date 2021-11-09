@@ -181,10 +181,10 @@ InstallMethod(ReorderRelations,
         	P:=TransposedMat(MatrixOfEigenvalues(a));
         	P2:=TransposedMat(List([0 .. d], t -> P[L[t+1]+1] ));;
         	SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), P2);;
-	        if HasDualMatrixOfEigenvalues(a) then
-	        	Q:=DualMatrixOfEigenvalues(a);
+	        if HasMatrixOfDualEigenvalues(a) then
+	        	Q:=MatrixOfDualEigenvalues(a);
 		       	Q2:=List([0 .. d], t -> Q[L[t+1]+1] );;
-		        SetDualMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), Q2);;
+		        SetMatrixOfDualEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), Q2);;
 		    fi;
         fi;
         return m2;
@@ -945,12 +945,12 @@ InstallMethod(ReorderMinimalIdempotents,
             return fail;
         fi;
         m2 := HomogeneousCoherentConfigurationNC(RelationMatrix(a));
-        Q:=TransposedMat(DualMatrixOfEigenvalues(a));
+        Q:=TransposedMat(MatrixOfDualEigenvalues(a));
         Q2:=TransposedMat(List([0 .. d], t -> Q[L[t+1]+1] ));;
        	P:=MatrixOfEigenvalues(a);
        	P2:=List([0 .. d], t -> P[L[t+1]+1] );;
        	SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), P2);;
-       	SetDualMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), Q2);;
+       	SetMatrixOfDualEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), Q2);;
 #        P:=Inverse(Q2)*Order(a);;
 #        SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), P);;
         return m2;
@@ -1073,7 +1073,7 @@ InstallMethod( Display,
 	 			Print("  Matrix of eigenvalues:\n");
 	 			Display(MatrixOfEigenvalues(a));
 	 			Print("  Dual matrix of eigenvalues:\n");
-	 			Display(DualMatrixOfEigenvalues(a));
+	 			Display(MatrixOfDualEigenvalues(a));
 	 		fi;
  		fi;
 

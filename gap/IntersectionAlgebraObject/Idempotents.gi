@@ -59,12 +59,12 @@
 	    end;
 
 	    if HasMatrixOfEigenvalues(A) and MatrixOfEigenvalues(A)<>fail then
-	    	DualMatrixOfEigenvalues(A);
+	    	MatrixOfDualEigenvalues(A);
 	    fi;
 
-	    if HasDualMatrixOfEigenvalues(A) then
-	    	if DualMatrixOfEigenvalues(A)<>fail then
-		    	return DualMatrixOfEigenvalues(A)/Order(A);
+	    if HasMatrixOfDualEigenvalues(A) then
+	    	if MatrixOfDualEigenvalues(A)<>fail then
+		    	return MatrixOfDualEigenvalues(A)/Order(A);
 		    fi;
 	    fi;
 
@@ -161,7 +161,7 @@
 		return List(map, t -> inter*t);
 	end);
 
-InstallMethod( DualMatrixOfEigenvalues, 
+InstallMethod( MatrixOfDualEigenvalues, 
 	"for IsAssociationScheme",
 	[ IsIntersectionAlgebraObject ],
 	function( a )
@@ -254,9 +254,9 @@ InstallMethod( DualMatrixOfEigenvalues,
  	[ IsIntersectionAlgebraObject],
 	function(A)
 		local q, P2;
-		# If DualMatrixOfEigenvalues or MapFromIntersectionMatricesToCentralIdempotents are known,
+		# If MatrixOfDualEigenvalues or MapFromIntersectionMatricesToCentralIdempotents are known,
 		# these should be used to compute the P-matrix, or there could be conflicts.
-		if (not HasDualMatrixOfEigenvalues(A)) and (not HasMapFromIntersectionMatricesToCentralIdempotents(A)) then
+		if (not HasMatrixOfDualEigenvalues(A)) and (not HasMapFromIntersectionMatricesToCentralIdempotents(A)) then
 
 			# Could the scheme be cyclotomic?
 			if IsPrimePowerInt(Order(A)) then
@@ -281,7 +281,7 @@ InstallMethod( DualMatrixOfEigenvalues,
 				fi;
 			fi;
 		fi;
-		return Inverse(DualMatrixOfEigenvalues(A))*Order(A);
+		return Inverse(MatrixOfDualEigenvalues(A))*Order(A);
 	end);
 
 
@@ -491,7 +491,7 @@ InstallMethod( FitMatrixOfEigenvalues,
 			od;
 		od;
 		if IsMatrixOfEigenvalues(A, P2) then
-			if (not HasMatrixOfEigenvalues(A)) and (not HasDualMatrixOfEigenvalues(A)) and (not HasMapFromIntersectionMatricesToCentralIdempotents(A)) then
+			if (not HasMatrixOfEigenvalues(A)) and (not HasMatrixOfDualEigenvalues(A)) and (not HasMapFromIntersectionMatricesToCentralIdempotents(A)) then
 				SetMatrixOfEigenvalues(A, P2);;
 			fi;
 			return P2;

@@ -114,7 +114,7 @@ InstallMethod( MinimalIdempotents,
     else
       g_perm := AutomorphismGroup(a);
     fi;
-    Q := DualMatrixOfEigenvalues(a)/Order(a);
+    Q := MatrixOfDualEigenvalues(a)/Order(a);
     row1 := RelationMatrix(a)[1];
     stab := Stabiliser(g_perm, 1);
     sz := DegreeAction(g_perm);

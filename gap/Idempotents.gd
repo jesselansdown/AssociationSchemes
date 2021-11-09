@@ -72,7 +72,7 @@ DeclareAttribute( "MatrixOfEigenvalues", IsHomogeneousCoherentConfiguration );
 #! @Returns Q
 #! @Description
 #!	Returns a the dual matrix of eigenvalues, $Q$, for a homogeneous coherent configuration CC.
-DeclareAttribute( "DualMatrixOfEigenvalues", IsHomogeneousCoherentConfiguration );
+DeclareAttribute( "MatrixOfDualEigenvalues", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
 #! @Section Attributes Of Homogeneous Coherent Configurations

@@ -124,7 +124,7 @@ InstallMethod( Order,
 		if HasMatrixOfEigenvalues(A) and MatrixOfEigenvalues(A)<>fail then
 			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
 		fi;
-		if HasDualMatrixOfEigenvalues(A) then
+		if HasMatrixOfDualEigenvalues(A) then
 			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
 		fi;
 
@@ -189,7 +189,7 @@ InstallMethod(KreinParameter,
 			return fail;
 		fi;
 		P:=MatrixOfEigenvalues(A);
-		Q:=DualMatrixOfEigenvalues(A);;
+		Q:=MatrixOfDualEigenvalues(A);;
 
 		n := Order(A);
 		d:=NumberOfClasses(A);;
@@ -293,10 +293,10 @@ InstallMethod(ReorderRelations,
 	       	P2:=TransposedMat(List([0 .. d], t -> P[L[t+1]+1] ));;
 	       	a2 := IntersectionAlgebraFromMatrixOfEigenvalues(P2);;
 	        SetMatrixOfEigenvalues(a2, P2);;
-	        if HasDualMatrixOfEigenvalues(a) then
-	        	Q:=DualMatrixOfEigenvalues(a);
+	        if HasMatrixOfDualEigenvalues(a) then
+	        	Q:=MatrixOfDualEigenvalues(a);
 		       	Q2:=List([0 .. d], t -> Q[L[t+1]+1] );;
-		        SetDualMatrixOfEigenvalues(a2, Q2);;
+		        SetMatrixOfDualEigenvalues(a2, Q2);;
 		    fi;
 	        return a2;
 	    else
@@ -320,12 +320,12 @@ InstallMethod(ReorderMinimalIdempotents,
         if not L[1]=0 then
             return fail;
         fi;
-        Q:=TransposedMat(DualMatrixOfEigenvalues(a));
+        Q:=TransposedMat(MatrixOfDualEigenvalues(a));
         Q2:=TransposedMat(List([0 .. d], t -> Q[L[t+1]+1] ));;
        	P:=MatrixOfEigenvalues(a);
        	P2:=List([0 .. d], t -> P[L[t+1]+1] );;
     	a2:=IntersectionAlgebraFromMatrixOfEigenvalues(P2);;
-    	SetDualMatrixOfEigenvalues(a2, Q2);
+    	SetMatrixOfDualEigenvalues(a2, Q2);
         return a2;
     end);
 
@@ -419,7 +419,7 @@ InstallMethod( Display,
 	 			Print("  Matrix of eigenvalues:\n");
 	 			Display(MatrixOfEigenvalues(a));
 	 			Print("  Dual matrix of eigenvalues:\n");
-	 			Display(DualMatrixOfEigenvalues(a));
+	 			Display(MatrixOfDualEigenvalues(a));
 	 		fi;
  		fi;
 
