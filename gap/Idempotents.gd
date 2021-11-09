@@ -29,7 +29,7 @@
 #! @Description
 #!    Takes a homogeneous coherent configuration object, CC, and returns a matrix, M, which maps the adjacency matrices to
 #!    the minimal idempotents of the adjacency algebra.
-#!    The central idempotent $E_i = \Sum_{i=1}^d+1$ M_{ij} A_j$.
+#!    The central idempotent $E_i = \sum_{i=0}^d M_{ij} A_j$.
 DeclareAttribute( "MapFromAdjacencyMatricesToMinimalIdempotents", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality
@@ -39,7 +39,7 @@ DeclareAttribute( "MapFromAdjacencyMatricesToMinimalIdempotents", IsHomogeneousC
 #! @Description
 #!    Takes a homogeneous coherent configuration, CC, and returns a matrix, M, which maps the adjacency matrices to
 #!    the minimal idempotents of the adjacency algebra over the rationals.
-#!    The minimal idempotent $E_i = \Sum_{i=1}^d+1$ M_{ij} A_j$.
+#!    The minimal idempotent $E_i = \sum_{i=0}^d M_{ij} A_j$.
 DeclareAttribute( "MapFromAdjacencyMatricesToMinimalIdempotentsOverRationals", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Functionality

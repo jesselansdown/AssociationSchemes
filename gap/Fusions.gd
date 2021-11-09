@@ -84,8 +84,8 @@ DeclareOperation( "SymmetrisationOfHomogeneousCoherentConfiguration", [IsHomogen
 #! @Description
 #!	Takes two homogeneous coherent configurations, CC1 and CC2, where CC1 is $d$-class.
 #!  If CC2 is equal to a homogeneous coherent configuration formed by fusing the relations of CC2, 
-#!  this will return the partition of $\{0, \ldots, d\}$ corresponding to this fusion. If CC2 cannot
-#!  be produced as a fusion, then `fail' is returned. This operation does not consider isomorphic
+#!  this will return the partition of ${0, \ldots, d}$ corresponding to this fusion. If CC2 cannot
+#!  be produced as a fusion, then "fail" is returned. This operation does not consider isomorphic
 #!  homogeneous coherent configurations - CC2 must be exactly equal to a fusion.
 DeclareOperation( "FusingPartitionOfHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
 
