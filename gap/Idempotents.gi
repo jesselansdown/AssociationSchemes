@@ -249,7 +249,7 @@ InstallMethod( CharacterTableOfSchurianHomogeneousCoherentConfiguration,
  	"for IsAssociationScheme",
  	[ IsHomogeneousCoherentConfiguration ],
 	function(A)
-		local G, H, chi, const, conj, dcs, P, i, j, P2;  
+		local G, H, chi, const, conj, dcs, P, i, j, P2, vals, f, x;  
 		if HasConstructorGroup(A) then
 			G:=ConstructorGroup(A);
 		elif IsSchurian(A) then
@@ -283,5 +283,9 @@ InstallMethod( CharacterTableOfSchurianHomogeneousCoherentConfiguration,
   	# Also, use the "FitMatrixOfEigenvalues" to fit the matrix appropriately
   	# Fitting can only be done currently for P-matrices?
   	# Don't fit non-square character tables, and print a warning that the columns might be permuted?
+	  	vals:=Collected(Valencies(A));
+	  	f := First([1 .. Size(P2)], t -> Collected(P2[t])=vals);
+	  	x := Remove(P2, f);
+	  	P2 := Concatenation([x], P2); # Make sure that valencies are in the first row
 	    return P2;
 	end);
