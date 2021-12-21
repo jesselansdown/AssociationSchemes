@@ -22,8 +22,8 @@
 ##
 #############################################################################
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Constructor methods
 #! @Arguments F, n, k
 #! @Returns homogeneous coherent configuration
 #! @Description

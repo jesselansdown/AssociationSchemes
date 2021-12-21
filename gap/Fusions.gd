@@ -22,8 +22,8 @@
 ##
 #############################################################################
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Fusions
 #! @Arguments CC, L
 #! @Returns true or false
 #! @Description
@@ -31,8 +31,8 @@
 #!	L of $\{0, \ldots, d\}$ corresponds to a valid fusion.
 DeclareOperation( "IsFusionOfHomogeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration, IsList]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Fusions
 #! @Arguments CC, L
 #! @Returns homogeneous coherent configuration
 #! @Description
@@ -41,33 +41,33 @@ DeclareOperation( "IsFusionOfHomogeneousCoherentConfiguration", [IsHomogeneousCo
 #!  The method will sort the fused relations according to the smallest value in each cell.
 DeclareOperation( "FusionOfHomogeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration, IsList]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Fusions
 #! @Arguments CC
 #! @Returns L
 #! @Description
 #!	Returns a list L of either tuples or singletons, corresponding to relations and their converses or symmetric relations.
 DeclareAttribute( "ConverseRelationPairs", IsHomogeneousCoherentConfiguration);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Fusions
 #! @Arguments CC, i
 #! @Returns j
 #! @Description
-#!	Returns j such that $R_j = R_i^\Top$, the converse relation of $i$	.
+#!	Returns j such that $R_j = R_i^\top$, the converse relation of $i$	.
 DeclareOperation( "ConverseRelation", [IsHomogeneousCoherentConfiguration, IsInt]);
 
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Fusions
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	If the fusion of transposed relations produces a valid association scheme, then CC is stratifiable.
 DeclareAttribute( "IsStratifiable", IsHomogeneousCoherentConfiguration);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Fusions
 #! @Arguments CC
 #! @Returns Association scheme
 #! @Description
@@ -77,8 +77,8 @@ DeclareAttribute( "IsStratifiable", IsHomogeneousCoherentConfiguration);
 #!  (Symmetric coherent configuration). If CC is commutative, then it can be symmetrised.
 DeclareOperation( "SymmetrisationOfHomogeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Fusions
 #! @Arguments CC1, CC2
 #! @Returns partition
 #! @Description
@@ -89,8 +89,8 @@ DeclareOperation( "SymmetrisationOfHomogeneousCoherentConfiguration", [IsHomogen
 #!  homogeneous coherent configurations - CC2 must be exactly equal to a fusion.
 DeclareOperation( "FusingPartitionOfHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Fusions
 #! @Arguments CC [k [, flag ]]
 #! @Returns list of feasibly fusionable relations
 #! @Description
@@ -100,8 +100,8 @@ DeclareOperation( "FusingPartitionOfHomogeneousCoherentConfigurations", [IsHomog
 #! 	and is equal to true, then all fusions with at most k-classes are returned.
 DeclareAttribute( "FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Fusions
 #! @Arguments CC
 #! @Returns List of all non-trivial fusions of CC
 #! @Description
@@ -111,8 +111,8 @@ DeclareAttribute( "FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration", 
 #! 	and is equal to true, then all fusions with at most k-classes are returned.
 DeclareOperation( "AllNonTrivialFusionsOfHomgeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Fusions
 #! @Arguments CC
 #! @Returns List of all fusions of CC
 #! @Description
@@ -121,8 +121,8 @@ DeclareOperation( "AllNonTrivialFusionsOfHomgeneousCoherentConfiguration", [IsHo
 #!  from the fusion of all non-identity relations
 DeclareOperation( "AllFusionsOfHomgeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration]);
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Fusions
 #! @Arguments CC
 #! @Returns list of feasibly fusionable relations
 #! @Description
@@ -132,8 +132,8 @@ DeclareOperation( "AllFusionsOfHomgeneousCoherentConfiguration", [IsHomogeneousC
 #! 	and is equal to true, then all fusions with at most k-classes are returned.
 DeclareAttribute( "FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Fusions
 #! @Arguments CC
 #! @Returns List of all non-trivial fusions of CC
 #! @Description
@@ -143,8 +143,8 @@ DeclareAttribute( "FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfigu
 #! 	and is equal to true, then all fusions with at most k-classes are returned.
 DeclareOperation( "AllNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Fusions
 #! @Arguments CC
 #! @Returns List of all fusions of CC
 #! @Description
@@ -153,16 +153,16 @@ DeclareOperation( "AllNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguratio
 #!  from the fusion of all non-identity relations
 DeclareOperation( "AllSymmetricFusionsOfHomgeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration]);
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Fusions
 #! @Arguments A, B
 #! @Returns p1, p2, f
 #! @Description
 #!  If A is isomorphic to a fusion of B, then f is the fusion of $B$, and [p1, p2] is the map which carries $B$ to this fusion.
 DeclareOperation("IsomorphismToFusionScheme", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Fusions
 #! @Arguments A, B
 #! @Returns p1, p2, f
 #! @Description

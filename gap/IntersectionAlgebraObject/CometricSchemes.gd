@@ -22,64 +22,64 @@
 ##
 #############################################################################
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Cometric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Returns if the homogeneous coherent configuration CC admits a Q-polynomial ordering.
 DeclareProperty( "AdmitsQPolynomialOrdering", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Cometric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Alias for AdmitsQPolynomialOrdering.
 DeclareOperation( "AdmitsCometricOrdering", [IsIntersectionAlgebraObject] );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Cometric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Returns if the commutative coherent configuration CC is Q-polynomial.
 DeclareProperty( "IsQPolynomial", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Cometric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Alias for is Q-polynomial.
 DeclareOperation( "IsCometric", [IsIntersectionAlgebraObject] );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Cometric schemes
 #! @Arguments CC
 #! @Returns L
 #! @Description
 #!	Calculate a list $L$ of all Q-polynomial orderings of a homogeneous coherent configuration.
 DeclareAttribute( "AllQPolynomialOrderings", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Cometric schemes
 #! @Arguments CC
 #! @Returns L
 #! @Description
 #!	Alias for AllQPolynomialOrderings.
 DeclareOperation( "AllCometricOrderings", [IsIntersectionAlgebraObject] );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Cometric schemes
 #! @Arguments CC
 #! @Returns List
 #! @Description
 #!	Returns the Krein (or dual intersection) array if CC is Q-polynomial.
 DeclareAttribute( "KreinArray", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Cometric schemes
 #! @Arguments CC
 #! @Returns List
 #! @Description

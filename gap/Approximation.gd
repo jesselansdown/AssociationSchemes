@@ -22,24 +22,24 @@
 ##
 #############################################################################
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Approximations
 #! @Arguments CC, i
 #! @Returns approximation of $E_i$
 #! @Description
 #!	Returns the $i$-th idempotent with entries approximated by floats. All entries must be real values.
 DeclareOperation( "ApproximateRealMinimalIdempotent", [ IsHomogeneousCoherentConfiguration, IsInt ] );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Approximations
 #! @Arguments CC
 #! @Returns approximation of minimal idempotents
 #! @Description
 #!	Returns a list of idempotents with entries approximated by floats. All entries must be real values.
 DeclareOperation( "ApproximateRealMinimalIdempotents", [ IsHomogeneousCoherentConfiguration ] );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Approximations
 #! @Arguments CC
 #! @Returns approximation of matrix of eigenvalues
 #! @Description

@@ -22,56 +22,56 @@
 ##
 #############################################################################
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Returns if the homogeneous coherent configuration CC is P-polynomial.
 DeclareProperty( "IsPPolynomial", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns P-polynomial ordering or fail
 #! @Description
 #!	Returns the first P-polynomial ordering admitted by the homogeneous coherent configuration CC, and fail otherwise.
 DeclareAttribute( "FirstPPolynomialOrdering", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Returns if the homogeneous coherent configuration CC admits a P-polynomial ordering.
 DeclareProperty( "AdmitsPPolynomialOrdering", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Alias for IsPPolynomial.
 DeclareOperation( "IsMetric", [IsIntersectionAlgebraObject] );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns metric ordering or fail
 #! @Description
 #!	Alias for FirstPPolynomialOrdering.
 DeclareOperation( "FirstMetricOrdering", [IsIntersectionAlgebraObject] );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Alias for AdmitsPPolynomialOrdering.
 DeclareOperation( "AdmitsMetricOrdering", [IsIntersectionAlgebraObject] );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns L
 #! @Description
@@ -79,24 +79,24 @@ DeclareOperation( "AdmitsMetricOrdering", [IsIntersectionAlgebraObject] );
 DeclareAttribute( "AllPPolynomialOrderings", IsIntersectionAlgebraObject );
 
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns L
 #! @Description
 #!	Alias for AllPPolynomialOrderings.
 DeclareOperation( "AllMetricOrderings", [IsIntersectionAlgebraObject] );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns List
 #! @Description
 #!	Returns the intersection array if CC is P-polynomial.
 DeclareAttribute( "IntersectionArray", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns [d, b, $\alpha$, $\beta$]
 #! @Description
@@ -104,8 +104,8 @@ DeclareAttribute( "IntersectionArray", IsIntersectionAlgebraObject );
 #!  parameters.
 DeclareAttribute( "ClassicalParameters", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns [d, b, $\alpha$, $\beta$]
 #! @Description

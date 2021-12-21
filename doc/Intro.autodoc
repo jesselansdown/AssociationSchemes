@@ -52,14 +52,27 @@ Alternatively, you may load the package from a location other than the &GAP; "pk
 @Chapter Getting Started
 	@Section Tutorial - A first session with AssociationSchemes
 
-@Chapter Functionality
-	@Section Constructor Methods
-	@Section Matrices Describing Homogeneous Coherent Configurations
-	@Section Properties Of Homogeneous Coherent Configurations
-	@Section Attributes Of Homogeneous Coherent Configurations
-	@Section Methods
+@Chapter Homogeneous Coherent Configuration objects
+	@Section Core functionality
+	@Section Constructor methods
+	@Section Library
+	@Section Graphs, automorphisms, and maps
+	@Section Fusions
+	@Section Bose-Mesner algebra
+	@Section Metric schemes
+	@Section Cometric schemes
+	@Section Subsets
+	@Section Approximations
 	@Section Algebras
-	@Section Subsets And Codes
+
+@Chapter Intersection Algebra objects
+	@Section Core functionality
+	@Section Constructor methods
+	@Section Automorphisms and maps
+	@Section Fusions
+	@Section Intersection algebra
+	@Section Metric schemes
+	@Section Cometric schemes
 
 @Chapter Examples
 

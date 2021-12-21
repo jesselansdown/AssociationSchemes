@@ -22,8 +22,8 @@
 ##
 #############################################################################
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Constructor methods
 #! @Arguments G
 #! @Returns intersection algebra
 #! @Description

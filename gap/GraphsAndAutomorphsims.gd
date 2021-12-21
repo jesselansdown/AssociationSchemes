@@ -22,16 +22,16 @@
 ##
 #############################################################################
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Graphs, automorphisms, and maps
 #! @Arguments CC, k
 #! @Returns homogeneous coherent configuration
 #! @Description
 #!	Returns the digraph object associated with the k-th relation of a homogeneous coherent configuration CC. Note that the identity relation is excluded.
 DeclareOperation( "Digraph", [ IsHomogeneousCoherentConfiguration, IsPosInt ] );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Graphs, automorphisms, and maps
 #! @Arguments CC, S
 #! @Returns homogeneous coherent configuration
 #! @Description
@@ -40,8 +40,8 @@ DeclareOperation( "Digraph", [ IsHomogeneousCoherentConfiguration, IsList ] );
 
 DeclareOperation("SchemeToGraph", [IsHomogeneousCoherentConfiguration]);
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Graphs, automorphisms, and maps
 #! @Arguments CC
 #! @Returns G
 #! @Description
@@ -49,8 +49,8 @@ DeclareOperation("SchemeToGraph", [IsHomogeneousCoherentConfiguration]);
 #!	$G$ is a permutation group acting on the index set of the vertices.
 DeclareAttribute( "AutomorphismGroup", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Graphs, automorphisms, and maps
 #! @Arguments CC, p, $\sigma$
 #! @Returns true or false
 #! @Description
@@ -59,8 +59,8 @@ DeclareAttribute( "AutomorphismGroup", IsHomogeneousCoherentConfiguration );
 #!		relation matrix $P^{-1} M^\sigma P$, where $P$ is the permutation matrix defined by $P$.
 DeclareOperation("ImageOfHomogeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration, IsPerm, IsPerm]);
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Graphs, automorphisms, and maps
 #! @Arguments A, B
 #! @Returns true or false
 #! @Description
@@ -69,8 +69,8 @@ DeclareOperation("ImageOfHomogeneousCoherentConfiguration", [IsHomogeneousCohere
 #!	defining $P$. If no such $P$ and $\sigma$ exist, then the operation will return fail.
 DeclareOperation("IsomorphismHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Graphs, automorphisms, and maps
 #! @Arguments A, B
 #! @Returns true or false
 #! @Description
@@ -78,8 +78,8 @@ DeclareOperation("IsomorphismHomogeneousCoherentConfigurations", [IsHomogeneousC
 #!	$P^{-1} M^\sigma P$ is the relation matrix of $B$, then the operation will return true. Returns false otherwise.
 DeclareOperation("AreIsomorphicHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Graphs, automorphisms, and maps
 #! @Arguments CC
 #! @Returns [perm1, perm2]
 #! @Description
@@ -88,8 +88,8 @@ DeclareOperation("AreIsomorphicHomogeneousCoherentConfigurations", [IsHomogeneou
 #!  Any homogenouse coherent configuration which is isomorphic to CC will the same canonical form.
 DeclareAttribute( "CanonisingMap", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Graphs, automorphisms, and maps
 #! @Arguments CC
 #! @Returns CC2
 #! @Description

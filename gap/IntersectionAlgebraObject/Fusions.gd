@@ -22,8 +22,8 @@
 ##
 #############################################################################
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Fusions
 #! @Arguments CC, L
 #! @Returns true or false
 #! @Description
@@ -31,8 +31,8 @@
 #!	L of $\{0, \ldots, d\}$ corresponds to a valid fusion.
 DeclareOperation( "IsFusionOfIntersectionAlgebra", [IsIntersectionAlgebraObject, IsList]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Fusions
 #! @Arguments CC, L
 #! @Returns homogeneous coherent configuration
 #! @Description
@@ -41,33 +41,33 @@ DeclareOperation( "IsFusionOfIntersectionAlgebra", [IsIntersectionAlgebraObject,
 #!  The method will sort the fused relations according to the smallest value in each cell.
 DeclareOperation( "FusionOfIntersectionAlgebra", [IsIntersectionAlgebraObject, IsList]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Fusions
 #! @Arguments CC
 #! @Returns L
 #! @Description
 #!	Returns a list L of either tuples or singletons, corresponding to relations and their converses or symmetric relations.
 DeclareAttribute( "ConverseRelationPairs", IsIntersectionAlgebraObject);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Fusions
 #! @Arguments CC, i
 #! @Returns j
 #! @Description
-#!	Returns j such that $R_j = R_i^\Top$, the converse relation of $i$	.
+#!	Returns j such that $R_j = R_i^\top$, the converse relation of $i$	.
 DeclareOperation( "ConverseRelation", [IsIntersectionAlgebraObject, IsInt]);
 
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Fusions
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	If the fusion of transposed relations produces a valid association scheme, then CC is stratifiable.
 DeclareAttribute( "IsStratifiable", IsIntersectionAlgebraObject);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Fusions
 #! @Arguments CC
 #! @Returns Association scheme
 #! @Description
@@ -77,8 +77,8 @@ DeclareAttribute( "IsStratifiable", IsIntersectionAlgebraObject);
 #!  (Symmetric coherent configuration). If CC is commutative, then it can be symmetrised.
 DeclareOperation( "SymmetrisationOfIntersectionAlgebra", [IsIntersectionAlgebraObject]);
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Fusions
 #! @Arguments CC [k [, flag ]]
 #! @Returns list of feasibly fusionable relations
 #! @Description
@@ -88,8 +88,8 @@ DeclareOperation( "SymmetrisationOfIntersectionAlgebra", [IsIntersectionAlgebraO
 #! 	and is equal to true, then all fusions with at most k-classes are returned.
 DeclareAttribute( "FeasibleNonTrivialFusionsOfIntersectionAlgebra", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Fusions
 #! @Arguments CC
 #! @Returns List of all non-trivial fusions of CC
 #! @Description
@@ -99,8 +99,8 @@ DeclareAttribute( "FeasibleNonTrivialFusionsOfIntersectionAlgebra", IsIntersecti
 #! 	and is equal to true, then all fusions with at most k-classes are returned.
 DeclareOperation( "AllNonTrivialFusionsOfIntersectionAlgebra", [IsIntersectionAlgebraObject]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Fusions
 #! @Arguments CC
 #! @Returns List of all fusions of CC
 #! @Description
@@ -109,8 +109,8 @@ DeclareOperation( "AllNonTrivialFusionsOfIntersectionAlgebra", [IsIntersectionAl
 #!  from the fusion of all non-identity relations
 DeclareOperation( "AllFusionsOfIntersectionAlgebra", [IsIntersectionAlgebraObject]);
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Fusions
 #! @Arguments CC
 #! @Returns list of feasibly fusionable relations
 #! @Description
@@ -120,8 +120,8 @@ DeclareOperation( "AllFusionsOfIntersectionAlgebra", [IsIntersectionAlgebraObjec
 #! 	and is equal to true, then all fusions with at most k-classes are returned.
 DeclareAttribute( "FeasibleNonTrivialSymmetricFusionsOfIntersectionAlgebra", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Fusions
 #! @Arguments CC
 #! @Returns List of all non-trivial fusions of CC
 #! @Description
@@ -131,8 +131,8 @@ DeclareAttribute( "FeasibleNonTrivialSymmetricFusionsOfIntersectionAlgebra", IsI
 #! 	and is equal to true, then all fusions with at most k-classes are returned.
 DeclareOperation( "AllNonTrivialSymmetricFusionsOfIntersectionAlgebra", [IsIntersectionAlgebraObject]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Fusions
 #! @Arguments CC
 #! @Returns List of all fusions of CC
 #! @Description

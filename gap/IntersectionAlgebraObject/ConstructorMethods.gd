@@ -23,64 +23,64 @@
 #############################################################################
 
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Constructor methods
 #! @Arguments P
 #! @Returns intersection algebra object
 #! @Description
 #!	Returns the intersection algebra determined by a matrix of eigenvalues.
 DeclareOperation("IntersectionAlgebraFromMatrixOfEigenvalues", [IsMatrix]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Constructor methods
 #! @Arguments n, q
 #! @Returns intersection algebra objectn
 #! @Description
 #!	Returns the intersection algebra of the Hamming scheme, $H(n, q)$.
 DeclareOperation("HammingSchemeIntersectionAlgebra", [IsPosInt, IsPosInt]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Constructor methods
 #! @Arguments n, k, q
 #! @Returns intersection algebra object
 #! @Description
 #!	Returns the intersection algebra of the Grassmann scheme, $J_q(n, k)$.
 DeclareOperation("GrassmanSchemeIntersectionAlgebra", [IsPosInt, IsPosInt, IsPosInt]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Constructor methods
 #! @Arguments n, d
 #! @Returns intersection algebra object
 #! @Description
 #!	Returns the intersection algebra of the Cyclotomic scheme, $Cyc(n, d)$.
 DeclareOperation("CyclotomicSchemeIntersectionAlgebra", [IsPosInt, IsPosInt]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Constructor methods
 #! @Arguments n, k, q
 #! @Returns intersection algebra object
 #! @Description
 #!	Returns the intersection algebra of a DRG given by its intersection array.
 DeclareOperation("IntersectionAlgebraFromIntersectionArray", [IsList]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Constructor methods
 #! @Arguments n, k, q
 #! @Returns intersection algebra object
 #! @Description
 #!	Returns the intersection algebra of a DRG given by its classical parameters.
 DeclareOperation("IntersectionAlgebraFromClassicalParameters", [IsList]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Constructor methods
 #! @Arguments n, k, q
 #! @Returns intersection algebra object
 #! @Description
 #!	Returns the intersection algebra of a SRG given by its parameters $[n, k, \lambda, \mu]$.
 DeclareOperation("IntersectionAlgebraFromStronglyRegularGraphParameters", [IsPosInt, IsPosInt, IsInt, IsInt]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Constructor methods
 #! @Arguments CC, L
 #! @Returns true or false
 #! @Description

@@ -8,5 +8,5 @@ if fail = LoadPackage("AutoDoc", "2018.02.14") then
 fi;
 
 #AutoDoc( rec( maketest := rec( commands := [ "LoadPackage( \"AssociationSchemes\" );"]), scaffold := true, autodoc := rec( files := [ "doc/Intro.autodoc"] ) ) );
-AutoDoc( rec( scaffold := true, autodoc := rec( files := [ "doc/Intro.autodoc"] ) ) );
+AutoDoc( rec( scaffold := true, autodoc := rec( files := [ "doc/Intro.autodoc" ], scan_dirs := [ "gap/", "gap/test/", "gap/IntersectionAlgebraObject/", "gap/Constructions/" ] ) ) );
 #AutoDoc( rec( scaffold := true, autodoc := true ) );

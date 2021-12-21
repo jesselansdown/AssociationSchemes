@@ -22,8 +22,8 @@
 ##
 #############################################################################
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Bose-Mesner algebra
 #! @Arguments CC
 #! @Returns M
 #! @Description
@@ -32,8 +32,8 @@
 #!    The central idempotent $E_i = \sum_{i=0}^d M_{ij} A_j$.
 DeclareAttribute( "MapFromAdjacencyMatricesToMinimalIdempotents", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Bose-Mesner algebra
 #! @Arguments CC
 #! @Returns M
 #! @Description
@@ -42,56 +42,56 @@ DeclareAttribute( "MapFromAdjacencyMatricesToMinimalIdempotents", IsHomogeneousC
 #!    The minimal idempotent $E_i = \sum_{i=0}^d M_{ij} A_j$.
 DeclareAttribute( "MapFromAdjacencyMatricesToMinimalIdempotentsOverRationals", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Bose-Mesner algebra
 #! @Arguments CC
 #! @Returns minimal idempotents
 #! @Description
 #!    Returns the minimal idempotents of the homogeneous coherent configuration.
 DeclareAttribute( "MinimalIdempotents", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Bose-Mesner algebra
 #! @Arguments CC
 #! @Returns minimal idempotents
 #! @Description
 #!    Returns the minimal idempotents of the homogeneous coherent configuration over the rationals.
 DeclareAttribute( "MinimalIdempotentsOverRationals", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Bose-Mesner algebra
 #! @Arguments CC
 #! @Returns P
 #! @Description
 #!	Returns a the matrix of eigenvalues (or character table), $P$, for a homogeneous coherent configuration CC.
 DeclareAttribute( "MatrixOfEigenvalues", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Bose-Mesner algebra
 #! @Arguments CC
 #! @Returns Q
 #! @Description
 #!	Returns a the dual matrix of eigenvalues, $Q$, for a homogeneous coherent configuration CC.
 DeclareAttribute( "MatrixOfDualEigenvalues", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Bose-Mesner algebra
 #! @Arguments CC
 #! @Returns n
 #! @Description
 #!      Returns the multiplicities of characters of CC.
 DeclareAttribute("Multiplicities", IsHomogeneousCoherentConfiguration);
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Bose-Mesner algebra
 #! @Arguments CC
 #! @Returns P
 #! @Description
 #!	TODO.
 DeclareAttribute( "CharacterTableOfHomogeneousCoherentConfiguration", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Bose-Mesner algebra
 #! @Arguments CC, P
 #! @Returns P2
 #! @Description
@@ -99,8 +99,8 @@ DeclareAttribute( "CharacterTableOfHomogeneousCoherentConfiguration", IsHomogene
 #!   In such a case, P2, the reordered matrix is returned. If not, returns fail.
 DeclareOperation( "FitMatrixOfEigenvalues", [ IsHomogeneousCoherentConfiguration, IsMatrix ] );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Bose-Mesner algebra
 #! @Arguments CC, P
 #! @Returns P2
 #! @Description

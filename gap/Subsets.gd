@@ -24,8 +24,8 @@
 
 
 
-#! @Chapter Functionality
-#! @Section Subsets And Codes
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Subsets
 #! @Arguments Omega, X
 #! @Returns $\chi_X$
 #! @Description
@@ -33,14 +33,14 @@
 #!	0,1-vector indexed by the entries of Omega, with a 1 at position x if x is in X, and 0 otherwise.
 DeclareOperation( "CharacteristicVector", [IsList, IsList]);
 
-#! @Chapter Functionality
-#! @Section Subsets And Codes
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Subsets
 #! @Arguments X, n
 #! @Returns $\chi_X$
 #! @Description
 #!	Takes a subset X of of [1 .. n] and returns the characteristic vector $chi_X$.
 DeclareOperation( "CharacteristicVector", [IsList, IsPosInt]);
-#! @Chapter Functionality
+#! @Chapter Homogeneous Coherent Configuration objects
 #! @Section Subsets
 #! @Arguments v, CC
 #! @Returns a
@@ -50,7 +50,7 @@ DeclareOperation( "CharacteristicVector", [IsList, IsPosInt]);
 #!	the order of CC. CC must be commutative.
 DeclareOperation( "InnerDistribution", [IsHomogeneousCoherentConfiguration, IsList]);
 
-#! @Chapter Functionality
+#! @Chapter Homogeneous Coherent Configuration objects
 #! @Section Subsets
 #! @Arguments v, CC
 #! @Returns aQ
@@ -60,7 +60,7 @@ DeclareOperation( "InnerDistribution", [IsHomogeneousCoherentConfiguration, IsLi
 #!	inner distribution vector first, or takes the inner distribution directly.
 DeclareOperation( "MacWilliamsTransform", [IsHomogeneousCoherentConfiguration, IsList]);
 
-#! @Chapter Functionality
+#! @Chapter Homogeneous Coherent Configuration objects
 #! @Section Subsets
 #! @Arguments CC, p
 #! @Returns L
@@ -69,7 +69,7 @@ DeclareOperation( "MacWilliamsTransform", [IsHomogeneousCoherentConfiguration, I
 #!  such that $L_i = \tilde E_{i-1}$.
 DeclareOperation( "DualBoseMesnerBasis", [IsHomogeneousCoherentConfiguration, IsPosInt]);
 
-#! @Chapter Functionality
+#! @Chapter Homogeneous Coherent Configuration objects
 #! @Section Subsets
 #! @Arguments CC
 #! @Returns L
@@ -78,7 +78,7 @@ DeclareOperation( "DualBoseMesnerBasis", [IsHomogeneousCoherentConfiguration, Is
 #!  such that $L_i = \tilde E_{i-1}$.
 DeclareOperation( "DualBoseMesnerBasis", [IsHomogeneousCoherentConfiguration]);
 
-#! @Chapter Functionality
+#! @Chapter Homogeneous Coherent Configuration objects
 #! @Section Subsets
 #! @Arguments v, CC
 #! @Returns B
@@ -88,7 +88,7 @@ DeclareOperation( "DualBoseMesnerBasis", [IsHomogeneousCoherentConfiguration]);
 #!	the order of CC. CC must be commutative.
 DeclareOperation( "OuterDistribution", [IsHomogeneousCoherentConfiguration, IsList]);
 
-#! @Chapter Functionality
+#! @Chapter Homogeneous Coherent Configuration objects
 #! @Section Subsets
 #! @Arguments CC, S
 #! @Returns T
@@ -97,7 +97,7 @@ DeclareOperation( "OuterDistribution", [IsHomogeneousCoherentConfiguration, IsLi
 #!  S must be a subset of the vertices.
 DeclareOperation( "DelsarteDesignType", [IsHomogeneousCoherentConfiguration, IsList]);
 
-#! @Chapter Functionality
+#! @Chapter Homogeneous Coherent Configuration objects
 #! @Section Subsets
 #! @Arguments CC, S
 #! @Returns T
@@ -106,7 +106,7 @@ DeclareOperation( "DelsarteDesignType", [IsHomogeneousCoherentConfiguration, IsL
 #!  v must be a weighted characteristic vector with respect to the vertices.
 DeclareOperation( "WeightedDelsarteDesignType", [IsHomogeneousCoherentConfiguration, IsList]);
 
-#! @Chapter Functionality
+#! @Chapter Homogeneous Coherent Configuration objects
 #! @Section Subsets
 #! @Arguments CC, S
 #! @Returns true or false
@@ -115,7 +115,7 @@ DeclareOperation( "WeightedDelsarteDesignType", [IsHomogeneousCoherentConfigurat
 #!  S must be either a subset of the vertices, or a weighted characteristic vector with respect to the vertices.
 DeclareOperation( "IsDelsarteTDesign", [IsHomogeneousCoherentConfiguration, IsList, IsList]);
 
-#! @Chapter Functionality
+#! @Chapter Homogeneous Coherent Configuration objects
 #! @Section Subsets
 #! @Arguments CC, S
 #! @Returns K
@@ -124,7 +124,7 @@ DeclareOperation( "IsDelsarteTDesign", [IsHomogeneousCoherentConfiguration, IsLi
 #!  S must be a subset of the vertices.
 DeclareOperation( "DualDegreeSet", [IsHomogeneousCoherentConfiguration, IsList]);
 
-#! @Chapter Functionality
+#! @Chapter Homogeneous Coherent Configuration objects
 #! @Section Subsets
 #! @Arguments CC, S
 #! @Returns K
@@ -133,7 +133,7 @@ DeclareOperation( "DualDegreeSet", [IsHomogeneousCoherentConfiguration, IsList])
 #!  v must be a (weighted) characteristic vector with restpect to the vertices.
 DeclareOperation( "WeightedDualDegreeSet", [IsHomogeneousCoherentConfiguration, IsList]);
 
-#! @Chapter Functionality
+#! @Chapter Homogeneous Coherent Configuration objects
 #! @Section Subsets
 #! @Arguments CC, S1, S2
 #! @Returns true or false

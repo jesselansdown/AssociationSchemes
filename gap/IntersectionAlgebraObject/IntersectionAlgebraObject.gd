@@ -40,8 +40,8 @@ BindGlobal( "TheTypeIntersectionAlgebraObject",
 
 #BindGlobal("TheTypeAssociationScheme", NewType( AssociationSchemeFamily, IsAssociationScheme ));
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments M
 #! @Returns homogeneous coherent configuration
 #! @Description
@@ -51,8 +51,8 @@ BindGlobal( "TheTypeIntersectionAlgebraObject",
 #!	$M = \sum_{i=0}^d a_i A_i$ where $a_i$ is not equal to $i$, however, it will first convert to the form $M = \sum_{i=0}^d i A_i$).
 DeclareOperation( "IntersectionAlgebra", [ IsList ] );
 
-#! @Chapter Functionality
-#! @Section Matrices Describing Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns L
 #! @Description
@@ -60,64 +60,64 @@ DeclareOperation( "IntersectionAlgebra", [ IsList ] );
 #!	is $B_{i-1}$ and $(B_{i})_{jk} = p_{ij}^k$.
 DeclareAttribute("IntersectionMatrices", IsIntersectionAlgebraObject);
 
-#! @Chapter Functionality
-#! @Section Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments CC, i, j, k
 #! @Returns $p_{ij}^k$
 #! @Description
 #!	Returns the intersection number $p_{ij}^k$ for a intersection algebra.
 DeclareOperation( "IntersectionNumber", [IsIntersectionAlgebraObject, IsInt, IsInt, IsInt]);
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns d
 #! @Description
 #!	Returns $d$ for a $d$-class association scheme.
 DeclareAttribute( "NumberOfClasses", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns L
 #! @Description
 #!	Returns a list L of valencies of a coherent configuration CC. The $i$-th entry of $L$ is $k_{i-1}$.
 DeclareAttribute( "Valencies", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns n
 #! @Description
 #!	Returns the order $n$ (number of vertices) of the coherent configuration.
 DeclareAttribute( "Order", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns F
 #! @Description
 #!	Returns the splitting field of the CC
 DeclareAttribute( "SplittingField", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Returns true if the splitting field is the rationals, false otherwise.
 DeclareProperty( "HasRationalSplittingField", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments CC, i, j, k
 #! @Returns $q_{i,j}^k$
 #! @Description
 #!	Compute the krein parameter $q_{i,j}^k$ of a commutative homogeneous coherent configuration.
 DeclareOperation( "KreinParameter", [ IsIntersectionAlgebraObject, IsInt, IsInt, IsInt ] );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns L
 #! @Description
@@ -125,40 +125,40 @@ DeclareOperation( "KreinParameter", [ IsIntersectionAlgebraObject, IsInt, IsInt,
 #!	where $L[i][j,k] = q_{i,j}^k$.
 DeclareAttribute( "KreinParameters", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Returns if the homogeneous coherent configuration CC is Q-bipartite.
 DeclareProperty( "IsQBipartite", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Returns if the homogeneous coherent configuration CC is bipartite.
 DeclareProperty( "IsPBipartite", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Returns if the homogeneous coherent configuration CC is Q-antipodal.
 DeclareProperty( "IsQAntipodal", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Returns if the homogeneous coherent configuration CC is antipodal.
 DeclareProperty( "IsPAntipodal", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments CC, L
 #! @Returns coherent configuration
 #! @Description
@@ -168,8 +168,8 @@ DeclareProperty( "IsPAntipodal", IsIntersectionAlgebraObject );
 #!	as a set, and additionally requires that $L_1 = 0$.
 DeclareOperation( "ReorderRelations", [ IsIntersectionAlgebraObject, IsList ] );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments CC, L
 #! @Returns coherent configuration
 #! @Description
@@ -180,32 +180,32 @@ DeclareOperation( "ReorderRelations", [ IsIntersectionAlgebraObject, IsList ] );
 DeclareOperation( "ReorderMinimalIdempotents", [ IsIntersectionAlgebraObject, IsList ] );
 
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns true (Displays relation distribution diagram)
 #! @Description
 #!	Take a CC and display the relation-distribution diagram with respect to $R_1$.
 DeclareOperation( "ViewRelationDistributionDiagram", [ IsIntersectionAlgebraObject ] );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Checks if the input is a commutative coherent configuration.
 DeclareProperty( "IsCommutative", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Checks if the input is a symmetric coherent configuration.
 DeclareProperty( "IsSymmetricIntersectionAlgebra", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns n
 #! @Description

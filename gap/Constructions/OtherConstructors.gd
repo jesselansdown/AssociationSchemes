@@ -22,34 +22,34 @@
 ##
 #############################################################################
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Constructor methods
 #! @Arguments CC1, CC2
 #! @Returns homogeneous coherent configuration
 #! @Description
 #!	Takes two homogeneous coherent configurations CC1 and CC2 and returns their direct product.
 DeclareOperation( "DirectProductOfHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Constructor methods
 #! @Arguments CC1, CC2
 #! @Returns homogeneous coherent configuration
 #! @Description
 #!	Takes two homogeneous coherent configurations CC1 and CC2 and returns their wreath product.
 DeclareOperation( "WreathProductOfHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Constructor methods
 #! @Arguments A
 #! @Returns Association scheme
 #! @Description
 #!	Returns the bipartite double of an associatiojn scheme.
 DeclareOperation( "BipartiteDoubleOfAssociationScheme", [IsHomogeneousCoherentConfiguration]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Constructor methods
 #! @Arguments A
 #! @Returns Association scheme
 #! @Description
-#!	Given a cometric association scheme satisfying $b_j^* + c_{j+1}^* = m +1$ for $0 \leq j < d$, returns the extended Q-bipartite double.
+#!	Given a cometric association scheme satisfying $b_j^{*} + c_{j+1}^{*} = m +1$ for $0 \leq j \leq d-1 $, returns the extended Q-bipartite double.
 DeclareOperation( "ExtendedQBipartiteDouble", [IsHomogeneousCoherentConfiguration]);

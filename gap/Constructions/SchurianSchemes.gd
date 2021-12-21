@@ -23,16 +23,16 @@
 #############################################################################
 
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Graphs, automorphisms, and maps
 #! @Arguments CC
 #! @Returns group or false
 #! @Description
 #!	Checks if the coherent configuration was constructed by a group and returns it if it was, or returns false otherwise.
 DeclareAttribute( "ConstructorGroup", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Constructor methods
 #! @Arguments G
 #! @Returns homogeneous coherent configuration
 #! @Description
@@ -41,8 +41,8 @@ DeclareAttribute( "ConstructorGroup", IsHomogeneousCoherentConfiguration );
 #!	$G$ must be a permutation group which is transitive on $\{1, \ldots, n\}$.
 DeclareOperation( "HomogeneousCoherentConfigurationByOrbitals", [IsPermGroup]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Constructor methods
 #! @Arguments G, H
 #! @Returns homogeneous coherent configuration
 #! @Description
@@ -51,32 +51,32 @@ DeclareOperation( "HomogeneousCoherentConfigurationByOrbitals", [IsPermGroup]);
 #!	and $G$ must be transitive on $G/H$.
 DeclareOperation( "HomogeneousCoherentConfigurationByOrbitals", [IsGroup, IsGroup]);
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Graphs, automorphisms, and maps
 #! @Arguments G
 #! @Returns true or false
 #! @Description
 #!	Checks if the permutation group $G$ is generously transitive.
 DeclareProperty("IsGenerouslyTransitive", IsPermGroup); 
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Graphs, automorphisms, and maps
 #! @Arguments G, L
 #! @Returns true or false
 #! @Description
 #!	Checks that the permutation group $G$ acts generously transitive on the set $L$.
 DeclareOperation("IsGenerouslyTransitive", [IsPermGroup, IsList]);
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Graphs, automorphisms, and maps
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Checks if the input is a Schurian scheme, that is, if the automorphism group is transitive.
 DeclareProperty( "IsSchurian", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Constructor methods
 #! @Arguments G
 #! @Returns homogeneous coherent configuration
 #! @Description
@@ -84,8 +84,8 @@ DeclareProperty( "IsSchurian", IsHomogeneousCoherentConfiguration );
 #!	A Schurian scheme is a special case of CoherentConfigurationByOrbitals and is symmetric.
 DeclareOperation( "SchurianAssociationScheme", [IsPermGroup]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Constructor methods
 #! @Arguments G
 #! @Returns homogeneous coherent configuration
 #! @Description

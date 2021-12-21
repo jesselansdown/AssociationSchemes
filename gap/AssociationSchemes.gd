@@ -43,8 +43,8 @@ BindGlobal( "TheTypeHomogeneousCoherentConfiguration",
 
 #BindGlobal("TheTypeAssociationScheme", NewType( AssociationSchemeFamily, IsAssociationScheme ));
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Constructor methods
 #! @Arguments M
 #! @Returns homogeneous coherent configuration
 #! @Description
@@ -54,8 +54,8 @@ BindGlobal( "TheTypeHomogeneousCoherentConfiguration",
 #!	$M = \sum_{i=0}^d a_i A_i$ where $a_i$ is not equal to $i$, however, it will first convert to the form $M = \sum_{i=0}^d i A_i$).
 DeclareOperation( "HomogeneousCoherentConfiguration", [ IsMatrix ] );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments M
 #! @Returns homogeneous coherent configuration
 #! @Description
@@ -63,8 +63,8 @@ DeclareOperation( "HomogeneousCoherentConfiguration", [ IsMatrix ] );
 #!	that $M$ describes a coherent configuration.
 DeclareOperation( "HomogeneousCoherentConfigurationNC", [ IsMatrix ] );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments M
 #! @Returns homogeneous coherent configuration
 #! @Description
@@ -75,8 +75,8 @@ DeclareOperation( "HomogeneousCoherentConfigurationNC", [ IsMatrix ] );
 #!	$M = \sum_{i=0}^d a_i A_i$ where $a_i$ is not equal to $i$, however, it will first convert to the form $M = \sum_{i=0}^d i A_i$).
 DeclareOperation( "AssociationScheme", [ IsMatrix ] );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments M
 #! @Returns homogeneous coherent configuration
 #! @Description
@@ -84,8 +84,8 @@ DeclareOperation( "AssociationScheme", [ IsMatrix ] );
 #!	that $M$ describes an association scheme (symmetric coherent configuration).
 DeclareOperation( "AssociationSchemeNC", [ IsMatrix ] );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC, L
 #! @Returns coherent configuration
 #! @Description
@@ -95,8 +95,8 @@ DeclareOperation( "AssociationSchemeNC", [ IsMatrix ] );
 #!	as a set, and additionally requires that $L_1 = 0$.
 DeclareOperation( "ReorderRelations", [ IsHomogeneousCoherentConfiguration, IsList ] );
 
-#! @Chapter Functionality
-#! @Section Matrices Describing Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns $M$
 #! @Description
@@ -104,24 +104,24 @@ DeclareOperation( "ReorderRelations", [ IsHomogeneousCoherentConfiguration, IsLi
 #!	the adjacency matrices of the coherent configuration
 DeclareOperation( "RelationMatrix", [ IsHomogeneousCoherentConfiguration ] );
 
-#! @Chapter Functionality
-#! @Section Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC, x, y
 #! @Returns i
 #! @Description
 #!	Takes a CC and two points, x and y, and returns i such that $(x, y) \in R_i$.
 DeclareOperation( "Relation", [ IsHomogeneousCoherentConfiguration, IsPosInt, IsPosInt] );
 
-#! @Chapter Functionality
-#! @Section Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC, p, k
 #! @Returns L
 #! @Description
 #!	Returns a list $L$ of all the points $y$ of CC such that $(p,y) \in R_k$.
 DeclareOperation( "Neighbours", [ IsHomogeneousCoherentConfiguration, IsPosInt, IsInt] );
 
-#! @Chapter Functionality
-#! @Section Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC, p, L
 #! @Returns L
 #! @Description
@@ -129,48 +129,48 @@ DeclareOperation( "Neighbours", [ IsHomogeneousCoherentConfiguration, IsPosInt, 
 DeclareOperation( "Neighbours", [IsHomogeneousCoherentConfiguration, IsInt, IsList] );
 
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Checks if the input is a commutative coherent configuration.
 DeclareProperty( "IsCommutative", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Checks if the input is a symmetric coherent configuration.
 DeclareProperty( "IsSymmetricCoherentConfiguration", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Alias for IsSymmetricCoherentConfiguration
 DeclareOperation( "IsAssociationScheme", [IsHomogeneousCoherentConfiguration] );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns d
 #! @Description
 #!	Returns $d$ for a $d$-class association scheme.
 DeclareAttribute( "NumberOfClasses", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns d
 #! @Description
 #!	Returns $d$ for a $d$-class association scheme.
 DeclareOperation( "Rank", [IsHomogeneousCoherentConfiguration] );
 
-#! @Chapter Functionality
-#! @Section Matrices Describing Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns L
 #! @Description
@@ -184,16 +184,16 @@ DeclareOperation( "IsHomogeneousCoherentConfigurationMatrix", [ IsMatrix ]);
 DeclareOperation( "IsHomogeneousCoherentConfigurationMatrix2", [ IsMatrix ]);
 
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns n
 #! @Description
 #!	Returns the order $n$ (number of vertices) of the coherent configuration.
 DeclareAttribute( "Order", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC, i, j, k
 #! @Returns $p_{ij}^k$
 #! @Description
@@ -201,16 +201,16 @@ DeclareAttribute( "Order", IsHomogeneousCoherentConfiguration );
 DeclareOperation( "IntersectionNumber", [IsHomogeneousCoherentConfiguration, IsInt, IsInt, IsInt]);
 
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns L
 #! @Description
 #!	Returns a list L of valencies of a coherent configuration CC. The $i$-th entry of $L$ is $k_{i-1}$.
 DeclareAttribute( "Valencies", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Matrices Describing Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns L
 #! @Description
@@ -218,8 +218,8 @@ DeclareAttribute( "Valencies", IsHomogeneousCoherentConfiguration );
 #!	is $B_{i-1}$ and $(B_{i})_{jk} = p_{ji}^k$.
 DeclareAttribute("IntersectionAlgebraOfHomogeneousCoherentConfiguration", IsHomogeneousCoherentConfiguration);
 
-#! @Chapter Functionality
-#! @Section Matrices Describing Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns L
 #! @Description
@@ -228,24 +228,24 @@ DeclareAttribute("IntersectionAlgebraOfHomogeneousCoherentConfiguration", IsHomo
 DeclareAttribute("IntersectionMatrices", IsHomogeneousCoherentConfiguration);
 
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns n
 #! @Description
 #!	Returns the number $n$ of characters of CC.
 DeclareAttribute("NumberOfCharacters", IsHomogeneousCoherentConfiguration);
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns F
 #! @Description
 #!	Returns the splitting field of the CC
 DeclareAttribute( "SplittingField", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
@@ -255,25 +255,17 @@ DeclareProperty( "HasRationalSplittingField", IsHomogeneousCoherentConfiguration
 
 DeclareOperation("BinaryExpansion", [IsPosInt]);
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
-#! @Arguments CC
-#! @Returns G
-#! @Description
-#!	Returns the automorphism group $G$ of the coherent configuration CC.
-#!	$G$ is a permutation group acting on the index set of the vertices.
-DeclareAttribute( "AutomorphismGroup", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC, i, j, k
 #! @Returns $q_{i,j}^k$
 #! @Description
 #!	Compute the krein parameter $q_{i,j}^k$ of a commutative homogeneous coherent configuration.
 DeclareOperation( "KreinParameter", [ IsHomogeneousCoherentConfiguration, IsInt, IsInt, IsInt ] );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns L
 #! @Description
@@ -281,8 +273,8 @@ DeclareOperation( "KreinParameter", [ IsHomogeneousCoherentConfiguration, IsInt,
 #!	where $L[i][j,k] = q_{i,j}^k$.
 DeclareAttribute( "KreinParameters", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments file, A, L
 #! @Returns true
 #! @Description
@@ -297,8 +289,8 @@ DeclareAttribute( "KreinParameters", IsHomogeneousCoherentConfiguration );
 #!	adjacency matrices or minimal idempotents.
 DeclareOperation( "SaveHomogeneousCoherentConfigurationWithCertainAttributes", [ IsString, IsHomogeneousCoherentConfiguration, IsList ] );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments file, A, L
 #! @Returns homogeneous coherent configuration
 #! @Description
@@ -306,16 +298,16 @@ DeclareOperation( "SaveHomogeneousCoherentConfigurationWithCertainAttributes", [
 #!	stored in the file. This reads files of the type formed by SaveHomogeneousCoherentConfigurationWithCertainAttributes.
 DeclareOperation( "ReadHomogeneousCoherentConfigurationWithCertainAttributes", [ IsString ] );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Check if the homogeneous coherent configuration is thin.
 DeclareProperty( "IsThin", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
@@ -323,16 +315,16 @@ DeclareProperty( "IsThin", IsHomogeneousCoherentConfiguration );
 DeclareProperty( "IsQuasiThin", IsHomogeneousCoherentConfiguration );
 
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Check if the homogeneous coherent configuration is primitve.
 DeclareProperty( "IsPrimitive", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC, L
 #! @Returns coherent configuration
 #! @Description
@@ -342,8 +334,8 @@ DeclareProperty( "IsPrimitive", IsHomogeneousCoherentConfiguration );
 #!	as a set, and additionally requires that $L_1 = 0$.
 DeclareOperation( "ReorderMinimalIdempotents", [ IsHomogeneousCoherentConfiguration, IsList ] );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns true (Displays relation diistribution diagram)
 #! @Description
@@ -352,8 +344,8 @@ DeclareOperation( "ViewRelationDistributionDiagram", [ IsHomogeneousCoherentConf
 
 DeclareOperation( "MatrixOfEigenvaluesViaBacktrack", [ IsHomogeneousCoherentConfiguration ] );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
 #! @Arguments CC
 #! @Returns lis
 #! @Description

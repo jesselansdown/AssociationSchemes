@@ -23,18 +23,18 @@
 #############################################################################
 
 
-#! @Chapter Functionality
-#! @Section Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Bose-Mesner algebra
 #! @Arguments n, k, q
 #! @Returns P
 #! @Description
 #!	Returns the matrix of eigenvalues $P$ of the Grassmann scheme $J_q(n, k)$.
 DeclareOperation("MatrixOfEigenvaluesOfGrassmannScheme", [IsPosInt, IsPosInt, IsPosInt]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Constructor methods
 #! @Arguments n, k, q
 #! @Returns homogeneous coherent configuration
 #! @Description
-#!	Returns the Grassman scheme, $J_q(n, k)$.
+#!	Returns the Grassmann scheme, $J_q(n, k)$.
 DeclareOperation("GrassmannScheme", [IsPosInt, IsPosInt, IsPosInt]);

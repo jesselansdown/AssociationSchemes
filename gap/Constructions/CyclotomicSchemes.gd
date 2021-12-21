@@ -22,16 +22,16 @@
 ##
 #############################################################################
 
-#! @Chapter Functionality
-#! @Section Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Bose-Mesner algebra
 #! @Arguments n, k, q
 #! @Returns P
 #! @Description
 #!	Returns the matrix of eigenvalues $P$ of the scheme $Cyc(q,d)$.
 DeclareOperation("MatrixOfEigenvaluesOfCyclotomicScheme", [IsPosInt, IsPosInt]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Constructor methods
 #! @Arguments q, d
 #! @Returns homogeneous coherent configuration
 #! @Description

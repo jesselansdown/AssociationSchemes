@@ -22,16 +22,16 @@
 ##
 #############################################################################
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Constructor methods
 #! @Arguments n, q
 #! @Returns homogeneous coherent configuration
 #! @Description
 #!	Returns the Hamming scheme, $H(n, q)$.
 DeclareOperation("HammingScheme", [IsPosInt, IsPosInt]);
 
-#! @Chapter Functionality
-#! @Section Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Bose-Mesner algebra
 #! @Arguments n, q
 #! @Returns P
 #! @Description

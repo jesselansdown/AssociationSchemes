@@ -22,7 +22,7 @@
 ##
 #############################################################################
 
-#! @Chapter Functionality
+#! @Chapter Homogeneous Coherent Configuration objects
 #! @Section Algebras
 #! @Arguments CC
 #! @Returns A
@@ -30,7 +30,7 @@
 #!	Returns the Bose-Mesner algebra $A$ of a homogeneous coherent configuration.
 DeclareOperation( "BoseMesnerAlgebra", [IsHomogeneousCoherentConfiguration]);
 
-#! @Chapter Functionality
+#! @Chapter Homogeneous Coherent Configuration objects
 #! @Section Algebras
 #! @Arguments CC
 #! @Returns A
@@ -39,7 +39,7 @@ DeclareOperation( "BoseMesnerAlgebra", [IsHomogeneousCoherentConfiguration]);
 #!	This is an alias for BoseMesnerAlgebra.
 DeclareOperation( "AdjacencyAlgebra", [IsHomogeneousCoherentConfiguration]);
 
-#! @Chapter Functionality
+#! @Chapter Homogeneous Coherent Configuration objects
 #! @Section Algebras
 #! @Arguments CC, p
 #! @Returns T
@@ -47,7 +47,7 @@ DeclareOperation( "AdjacencyAlgebra", [IsHomogeneousCoherentConfiguration]);
 #!	Returns the Terwilliger algebra $T$ of a homogeneous coherent configuration with respect to the point p.
 DeclareOperation( "TerwilligerAlgebra", [IsHomogeneousCoherentConfiguration, IsInt]);
 
-#! @Chapter Functionality
+#! @Chapter Homogeneous Coherent Configuration objects
 #! @Section Algebras
 #! @Arguments CC
 #! @Returns T

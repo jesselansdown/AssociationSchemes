@@ -28,52 +28,52 @@
 # AssociationSchemes: A GAP package for working with association schemes
 #
 
-#! @Chapter Functionality
-#! @Section Attributes Of Intersection Algebras
+#! @Chapter Intersection Algebra objects
+#! @Section Automorphisms and maps
 #! @Arguments I
 #! @Returns M
 #! @Description
 #!    Takes an intersection algebra object, I, and returns a matrix, M, which maps the intersection matrices to
 #!    the central idempotents of the intersection algebra.
-#!    The central idempotent $F_i = \Sum_{i=1}^d+1$ M_{ij} #! B_j$.
+#!    The central idempotent $F_i = \sum_{i=1}^{d+1} M_{ij} B_j$.
 DeclareAttribute( "MapFromIntersectionMatricesToCentralIdempotents", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Intersection Algebras
+#! @Chapter Intersection Algebra objects
+#! @Section Automorphisms and maps
 #! @Arguments I
 #! @Returns M
 #! @Description
 #!    Takes an intersection algebra object, I, and returns a matrix, M, which maps the intersection matrices to
 #!    the central idempotents of the intersection algebra over the rationals.
-#!    The central idempotent $F_i = \Sum_{i=1}^d+1$ M_{ij} #! B_j$.
+#!    The central idempotent $F_i = \sum_{i=1}^{d+1} M_{ij} B_j$.
 DeclareAttribute( "MapFromIntersectionMatricesToCentralIdempotentsOverRationals", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Intersection Algebras
+#! @Chapter Intersection Algebra objects
+#! @Section Intersection algebra
 #! @Arguments I
 #! @Returns central idempotents
 #! @Description
 #!    Returns the central idempotents of the intersection algebra.
 DeclareAttribute( "CentralIdempotentsOfIntersectionAlgebra", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Intersection Algebras
+#! @Chapter Intersection Algebra objects
+#! @Section Intersection algebra
 #! @Arguments I
 #! @Returns central idempotents
 #! @Description
 #!    Returns the central idempotents of the intersection algebra over the rationals.
 DeclareAttribute( "CentralIdempotentsOfIntersectionAlgebraOverRationals", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Intersection algebra
 #! @Arguments CC
 #! @Returns Q
 #! @Description
 #!      Returns a the dual matrix of eigenvalues, $Q$, for a homogeneous coherent configuration CC.
 DeclareAttribute( "MatrixOfDualEigenvalues", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Intersection algebra
 #! @Arguments CC
 #! @Returns P
 #! @Description
@@ -84,8 +84,8 @@ DeclareOperation( "MatrixOfEigenvaluesForMetricScheme", [ IsIntersectionAlgebraO
 DeclareOperation( "IsMatrixOfEigenvalues", [ IsIntersectionAlgebraObject, IsMatrix ] );
 DeclareOperation( "MatrixOfEigenvaluesViaBacktrack", [ IsIntersectionAlgebraObject ] );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Intersection algebra
 #! @Arguments A, P
 #! @Returns P2
 #! @Description

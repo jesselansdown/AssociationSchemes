@@ -22,56 +22,56 @@
 ##
 #############################################################################
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Returns if the homogeneous coherent configuration CC is P-polynomial.
 DeclareProperty( "IsPPolynomial", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns P-polynomial ordering or fail
 #! @Description
 #!	Returns the first P-polynomial ordering admitted by the homogeneous coherent configuration CC, and fail otherwise.
 DeclareAttribute( "FirstPPolynomialOrdering", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Returns if the homogeneous coherent configuration CC admits a P-polynomial ordering.
 DeclareProperty( "AdmitsPPolynomialOrdering", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Alias for IsPPolynomial.
 DeclareOperation( "IsMetric", [IsHomogeneousCoherentConfiguration] );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns metric ordering or fail
 #! @Description
 #!	Alias for FirstPPolynomialOrdering.
 DeclareOperation( "FirstMetricOrdering", [IsHomogeneousCoherentConfiguration] );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Alias for AdmitsPPolynomialOrdering.
 DeclareOperation( "AdmitsMetricOrdering", [IsHomogeneousCoherentConfiguration] );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns L
 #! @Description
@@ -79,32 +79,32 @@ DeclareOperation( "AdmitsMetricOrdering", [IsHomogeneousCoherentConfiguration] )
 DeclareAttribute( "AllPPolynomialOrderings", IsHomogeneousCoherentConfiguration );
 
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns L
 #! @Description
 #!	Alias for AllPPolynomialOrderings.
 DeclareOperation( "AllMetricOrderings", [IsHomogeneousCoherentConfiguration] );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Check if a coherent configuration is a strongly regular graph (a $2$-class primitive association scheme).
 DeclareProperty( "IsStronglyRegularGraph", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns List
 #! @Description
 #!	Returns the intersection array if CC is P-polynomial.
 DeclareAttribute( "IntersectionArray", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns [d, b, $\alpha$, $\beta$]
 #! @Description
@@ -112,56 +112,56 @@ DeclareAttribute( "IntersectionArray", IsHomogeneousCoherentConfiguration );
 #!  parameters.
 DeclareAttribute( "ClassicalParameters", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns [d, b, $\alpha$, $\beta$]
 #! @Description
 #!	Returns the parameters $\{n, k; \lambda, \mu \}$ if the CC is an association scheme with 2 classes.
 DeclareAttribute( "StronglyRegularGraphParameters", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Constructor methods
 #! @Arguments A
 #! @Returns homogeneous coherent configuration
 #! @Description
 #!	Constructs an association scheme from the adjacency matrix A of a distance regular graph.
 DeclareOperation( "DistanceRegularGraphScheme", [IsMatrix]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Constructor methods
 #! @Arguments A
 #! @Returns homogeneous coherent configuration
 #! @Description
 #!	Same as DistanceRegularGraphScheme but without checking that a valid association scheme arises.
 DeclareOperation( "DistanceRegularGraphSchemeNC", [IsMatrix]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Constructor methods
 #! @Arguments A
 #! @Returns homogeneous coherent configuration
 #! @Description
 #!	Constructs an association scheme from the adjacency matrix A of a strongly regular graph.
 DeclareOperation( "StronglyRegularGraphScheme", [IsMatrix]);
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Constructor methods
 #! @Arguments A
 #! @Returns homogeneous coherent configuration
 #! @Description
 #!	Same as StronglyRegularGraphScheme but without checking that a valid association scheme arises.
 DeclareOperation( "StronglyRegularGraphSchemeNC", [IsMatrix]);
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Returns if the homogeneous coherent configuration CC is bipartite.
 DeclareProperty( "IsPBipartite", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Metric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description

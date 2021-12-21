@@ -22,80 +22,80 @@
 ##
 #############################################################################
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Cometric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Returns if the homogeneous coherent configuration CC admits a Q-polynomial ordering.
 DeclareProperty( "AdmitsQPolynomialOrdering", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Cometric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Alias for AdmitsQPolynomialOrdering.
 DeclareOperation( "AdmitsCometricOrdering", [IsHomogeneousCoherentConfiguration] );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Cometric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Returns if the commutative coherent configuration CC is Q-polynomial.
 DeclareProperty( "IsQPolynomial", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Cometric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Alias for is Q-polynomial.
 DeclareOperation( "IsCometric", [IsHomogeneousCoherentConfiguration] );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Cometric schemes
 #! @Arguments CC
 #! @Returns L
 #! @Description
 #!	Calculate a list $L$ of all Q-polynomial orderings of a homogeneous coherent configuration.
 DeclareAttribute( "AllQPolynomialOrderings", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Cometric schemes
 #! @Arguments CC
 #! @Returns L
 #! @Description
 #!	Alias for AllQPolynomialOrderings.
 DeclareOperation( "AllCometricOrderings", [IsHomogeneousCoherentConfiguration] );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Cometric schemes
 #! @Arguments CC
 #! @Returns List
 #! @Description
 #!	Returns the Krein (or dual intersection) array if CC is Q-polynomial.
 DeclareAttribute( "KreinArray", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Cometric schemes
 #! @Arguments CC
 #! @Returns List
 #! @Description
 #!	Alias for KreinArray.
 DeclareOperation( "DualIntersectionArray", [IsHomogeneousCoherentConfiguration] );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Cometric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
 #!	Returns if the homogeneous coherent configuration CC is Q-bipartite.
 DeclareProperty( "IsQBipartite", IsHomogeneousCoherentConfiguration );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Cometric schemes
 #! @Arguments CC
 #! @Returns true or false
 #! @Description

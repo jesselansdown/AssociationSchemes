@@ -22,8 +22,8 @@
 ##
 #############################################################################
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Automorphisms and maps
 #! @Arguments $A$, $\sigma$
 #! @Returns true $A^\sigma$
 #! @Description
@@ -31,24 +31,24 @@
 #!  If $p_{ij}^k$ is an intersection number of $A$, then in the image the intersection number is $p_{i^\sigma j^\sigma}^{k^\sigma}$
 DeclareOperation( "ImageOfIntersectionAlgebra", [ IsIntersectionAlgebraObject, IsPerm ] );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Automorphisms and maps
 #! @Arguments $A$, $B$
 #! @Returns $\sigma$
 #! @Description
 #!	Take two $d$-class intersection algebras $A$ and $B$ and return $\sigma \in Sym([1 .. d])$ such that $A^\sigma = B$.
 DeclareOperation( "IsomorphismIntersectionAlgebras", [ IsIntersectionAlgebraObject, IsIntersectionAlgebraObject ] );
 
-#! @Chapter Functionality
-#! @Section Constructor Methods
+#! @Chapter Intersection Algebra objects
+#! @Section Automorphisms and maps
 #! @Arguments $A$, $B$
 #! @Returns $\sigma$
 #! @Description
 #!	Take two $d$-class intersection algebras $A$ and $B$ and return true if they are isomorphic. Return false otherwise.
 DeclareOperation( "AreIsomorphicIntersectionAlgebras", [ IsIntersectionAlgebraObject, IsIntersectionAlgebraObject ] );
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Automorphisms and maps
 #! @Arguments A
 #! @Returns perm
 #! @Description
@@ -57,8 +57,8 @@ DeclareOperation( "AreIsomorphicIntersectionAlgebras", [ IsIntersectionAlgebraOb
 #!  Any intersection algebra which is isomorphic to A will the same canonical form.
 DeclareAttribute( "CanonisingMap", IsIntersectionAlgebraObject );
 
-#! @Chapter Functionality
-#! @Section Properties Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Automorphisms and maps
 #! @Arguments A
 #! @Returns B
 #! @Description
@@ -66,8 +66,8 @@ DeclareAttribute( "CanonisingMap", IsIntersectionAlgebraObject );
 #!	Any intersection algebra which is isomorphic to A will have B as the canonical form.
 DeclareOperation("CanonicalFormOfIntersectionAlgebra", [IsIntersectionAlgebraObject]);
 
-#! @Chapter Functionality
-#! @Section Attributes Of Homogeneous Coherent Configurations
+#! @Chapter Intersection Algebra objects
+#! @Section Automorphisms and maps
 #! @Arguments A
 #! @Returns G
 #! @Description
