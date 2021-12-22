@@ -44,7 +44,7 @@ BindGlobal( "TheTypeHomogeneousCoherentConfiguration",
 #BindGlobal("TheTypeAssociationScheme", NewType( AssociationSchemeFamily, IsAssociationScheme ));
 
 #! @Chapter Homogeneous Coherent Configuration objects
-#! @Section Constructor methods
+#! @Section Core functionality
 #! @Arguments M
 #! @Returns homogeneous coherent configuration
 #! @Description
@@ -68,7 +68,7 @@ DeclareOperation( "HomogeneousCoherentConfigurationNC", [ IsMatrix ] );
 #! @Arguments M
 #! @Returns homogeneous coherent configuration
 #! @Description
-#!	Takes the relationship matrix, $M$, describing an associatioin scheme and returns a association scheme (symmetric coherent configuration).
+#!	Takes the relationship matrix, $M$, describing an associatioin scheme and returns an association scheme (symmetric coherent configuration).
 #!  This is simply a HomogeneousCoherentConfiguration object, but with the known property of being symmetric.
 #!	The matrix $M = \sum_{i=0}^d i A_i$, where $A_i$ are the adjacency matrices describing an association scheme.
 #!	Checks that the matrix satisfies the association scheme axioms. (Note that this accepts a matrix of the form
@@ -158,7 +158,7 @@ DeclareOperation( "IsAssociationScheme", [IsHomogeneousCoherentConfiguration] );
 #! @Arguments CC
 #! @Returns d
 #! @Description
-#!	Returns $d$ for a $d$-class association scheme.
+#!	Returns $d$ for a $d$-class homogeneous coherent configuration.
 DeclareAttribute( "NumberOfClasses", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Homogeneous Coherent Configuration objects
@@ -166,7 +166,7 @@ DeclareAttribute( "NumberOfClasses", IsHomogeneousCoherentConfiguration );
 #! @Arguments CC
 #! @Returns d
 #! @Description
-#!	Returns $d$ for a $d$-class association scheme.
+#!	Returns $d$ for a $d$-class homogeneous coherent configuration.
 DeclareOperation( "Rank", [IsHomogeneousCoherentConfiguration] );
 
 #! @Chapter Homogeneous Coherent Configuration objects
@@ -214,8 +214,7 @@ DeclareAttribute( "Valencies", IsHomogeneousCoherentConfiguration );
 #! @Arguments CC
 #! @Returns L
 #! @Description
-#!	Returns a list L of the intersection matrices of a homogeneous coherent configuration $CC$, where the $i$-th entry of $L$
-#!	is $B_{i-1}$ and $(B_{i})_{jk} = p_{ji}^k$.
+#!	Returns an IntersectionAlgebra object for CC
 DeclareAttribute("IntersectionAlgebraOfHomogeneousCoherentConfiguration", IsHomogeneousCoherentConfiguration);
 
 #! @Chapter Homogeneous Coherent Configuration objects
@@ -349,5 +348,9 @@ DeclareOperation( "MatrixOfEigenvaluesViaBacktrack", [ IsHomogeneousCoherentConf
 #! @Arguments CC
 #! @Returns lis
 #! @Description
-#!      Take a CC and returns a list containing various descriptions/names of the CC, if available. Note that most homogeneous coherent configurations will not have a description. Some famous homogeneous coherent configurations, association schemes, or distance regular graphs in the library, as well families that have constructor methods, will have names. Some will have multiple descriptions, hence they are given as a list.
+#!      Take a CC and returns a list containing various descriptions/names of the CC, if available.
+#!    Note that most homogeneous coherent configurations will not have a description.
+#!    Some famous homogeneous coherent configurations, association schemes, or distance regular graphs in the library,
+#!    as well families that have constructor methods, will have names. Some will have multiple descriptions, hence they are given as a list.
+#!    You can check if a homogeneous coherent configuration has assigned descriptions with HasDescription, or set one with SetDescription.
 DeclareAttribute( "Description", IsHomogeneousCoherentConfiguration );
