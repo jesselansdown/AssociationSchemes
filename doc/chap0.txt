@@ -7,10 +7,10 @@
                                 configurations [101X
   
   
-                                     1.0.0
+                                     2.0.0
   
   
-                                 10 April 2019
+                                2 February 2022
   
   
                                   John Bamberg
@@ -61,7 +61,7 @@
   
   -------------------------------------------------------
   [1XCopyright[101X
-  [33X[0;0Y© 2019 John Bamberg, Akihide Hanaki, Jesse Lansdown[133X
+  [33X[0;0Y© 2019 - 2022 John Bamberg, Akihide Hanaki, Jesse Lansdown[133X
   
   [33X[0;0YThis  program  is  free  software;  you can redistribute it and/or modify it
   under  the  terms of the GNU General Public License as published by the Free
@@ -99,96 +99,249 @@
     1.4 [33X[0;0YInstallation[133X
   2 [33X[0;0YGetting Started[133X
     2.1 [33X[0;0YTutorial - A first session with AssociationSchemes[133X
-  3 [33X[0;0YFunctionality[133X
-    3.1 [33X[0;0YConstructor Methods[133X
+  3 [33X[0;0YHomogeneous Coherent Configuration objects[133X
+    3.1 [33X[0;0YCore functionality[133X
       3.1-1 HomogeneousCoherentConfiguration
       3.1-2 HomogeneousCoherentConfigurationNC
       3.1-3 AssociationScheme
       3.1-4 AssociationSchemeNC
       3.1-5 ReorderRelations
-      3.1-6 SaveHomogeneousCoherentConfigurationWithCertainAttributes
-      3.1-7 ReadHomogeneousCoherentConfigurationWithCertainAttributes
-      3.1-8 BilinearFormsScheme
-      3.1-9 HomogeneousCoherentConfigurationByOrbitals
-      3.1-10 HomogeneousCoherentConfigurationByOrbitals
-      3.1-11 GrassmannScheme
-      3.1-12 GroupCoherentConfiguration
-      3.1-13 HammingScheme
-      3.1-14 JohnsonScheme
-      3.1-15 HomogeneousCoherentConfiguration
-      3.1-16 NumberOfHomogeneousCoherentConfigurations
-      3.1-17 AvailableHomogeneousCoherentConfigurations
-      3.1-18 AllHomogeneousCoherentConfigurations
-      3.1-19 FusionOfHomogeneousCoherentConfigurations
-      3.1-20 DirectProductOfHomogeneousCoherentConfigurations
-      3.1-21 WreathProductOfHomogeneousCoherentConfigurations
-      3.1-22 CyclotomicScheme
-      3.1-23 SchurianScheme
-    3.2 [33X[0;0YMatrices Describing Homogeneous Coherent Configurations[133X
-      3.2-1 RelationMatrix
-      3.2-2 AdjacencyMatrices
-      3.2-3 IntersectionMatrices
-      3.2-4 MinimalIdempotents
-    3.3 [33X[0;0YProperties Of Homogeneous Coherent Configurations[133X
-      3.3-1 IsCommutative
-      3.3-2 IsSymmetricCoherentConfiguration
-      3.3-3 IsAssociationScheme
-      3.3-4 IsStronglyRegularGraph
-      3.3-5 IsPPolynomial
-      3.3-6 IsMetric
-      3.3-7 IsQPolynomial
-      3.3-8 IsCometric
-      3.3-9 IsThin
-      3.3-10 IsQuasiThin
-      3.3-11 IsPrimitive
-      3.3-12 IsHomogeneousCoherentConfigurationByOrbitals
-      3.3-13 IsGenerouslyTransitive
-      3.3-14 IsGenerouslyTransitive
-      3.3-15 IsSchurian
-    3.4 [33X[0;0YAttributes Of Homogeneous Coherent Configurations[133X
-      3.4-1 NumberOfClasses
-      3.4-2 Order
-      3.4-3 Valencies
-      3.4-4 NumberOfCharacters
-      3.4-5 MatrixOfEigenvalues
-      3.4-6 CharacterTable
-      3.4-7 DualMatrixOfEigenvalues
-      3.4-8 AutomorphismGroup
-      3.4-9 AllPPolynomialOrderings
-      3.4-10 KreinParameters
-      3.4-11 AllQPolynomialOrderings
-      3.4-12 ConstructorGroup
-    3.5 [33X[0;0YMethods[133X
-      3.5-1 Relation
-      3.5-2 Neighbours
-      3.5-3 Neighbours
-      3.5-4 IntersectionNumber
-      3.5-5 KreinParameter
-      3.5-6 MatrixOfEigenvaluesOfHammingScheme
-      3.5-7 MatrixOfEigenvaluesOfJohnsonScheme
-    3.6 [33X[0;0YAlgebras[133X
-      3.6-1 IntersectionAlgebra
-      3.6-2 BoseMesnerAlgebra
-      3.6-3 AdjacencyAlgebra
-      3.6-4 TerwilligerAlgebra
-      3.6-5 TerwilligerAlgebra
-    3.7 [33X[0;0YSubsets And Codes[133X
-      3.7-1 InnerDistribution
-      3.7-2 MacWilliamsTransform
-      3.7-3 DualBoseMesnerBasis
-      3.7-4 DualBoseMesnerBasis
-      3.7-5 OuterDistribution
-      3.7-6 CharacteristicVector
-      3.7-7 CharacteristicVector
-  4 [33X[0;0YExamples[133X
-    4.1 [33X[0;0YExample 1 -- Constructing groups[133X
-    4.2 [33X[0;0YExample 2 -- Dual polar spaces and their graphs[133X
-    4.3 [33X[0;0YExample 3 -- Codes[133X
-    4.4 [33X[0;0YExample 4 -- Using the library[133X
-    4.5 [33X[0;0YExample 5 -- Constructing HS (advanced example)[133X
-  5 [33X[0;0YAppendix[133X
-    5.1 [33X[0;0YAssociationSchemes Links[133X
-    5.2 [33X[0;0Y[5XGAP[105X Links[133X
+      3.1-6 RelationMatrix
+      3.1-7 Relation
+      3.1-8 Neighbours
+      3.1-9 Neighbours
+      3.1-10 IsCommutative
+      3.1-11 IsSymmetricCoherentConfiguration
+      3.1-12 IsAssociationScheme
+      3.1-13 NumberOfClasses
+      3.1-14 Rank
+      3.1-15 AdjacencyMatrices
+      3.1-16 Order
+      3.1-17 IntersectionNumber
+      3.1-18 Valencies
+      3.1-19 IntersectionAlgebraOfHomogeneousCoherentConfiguration
+      3.1-20 IntersectionMatrices
+      3.1-21 NumberOfCharacters
+      3.1-22 SplittingField
+      3.1-23 HasRationalSplittingField
+      3.1-24 KreinParameter
+      3.1-25 KreinParameters
+      3.1-26 SaveHomogeneousCoherentConfigurationWithCertainAttributes
+      3.1-27 ReadHomogeneousCoherentConfigurationWithCertainAttributes
+      3.1-28 IsThin
+      3.1-29 IsQuasiThin
+      3.1-30 IsPrimitive
+      3.1-31 ReorderMinimalIdempotents
+      3.1-32 ViewRelationDistributionDiagram
+      3.1-33 Description
+    3.2 [33X[0;0YConstructor methods[133X
+      3.2-1 DistanceRegularGraphScheme
+      3.2-2 DistanceRegularGraphSchemeNC
+      3.2-3 StronglyRegularGraphScheme
+      3.2-4 StronglyRegularGraphSchemeNC
+      3.2-5 BilinearFormsScheme
+      3.2-6 CyclotomicScheme
+      3.2-7 GrassmannScheme
+      3.2-8 GroupCoherentConfiguration
+      3.2-9 HammingScheme
+      3.2-10 JohnsonScheme
+      3.2-11 DirectProductOfHomogeneousCoherentConfigurations
+      3.2-12 WreathProductOfHomogeneousCoherentConfigurations
+      3.2-13 BipartiteDoubleOfAssociationScheme
+      3.2-14 ExtendedQBipartiteDouble
+      3.2-15 HomogeneousCoherentConfigurationByOrbitals
+      3.2-16 HomogeneousCoherentConfigurationByOrbitals
+      3.2-17 SchurianAssociationScheme
+      3.2-18 SchurianCoherentConfiguration
+    3.3 [33X[0;0YLibrary[133X
+      3.3-1 HomogeneousCoherentConfiguration
+      3.3-2 NumberOfHomogeneousCoherentConfigurations
+      3.3-3 AvailableHomogeneousCoherentConfigurations
+      3.3-4 AllHomogeneousCoherentConfigurations
+      3.3-5 SmallSchemeIdentification
+    3.4 [33X[0;0YGraphs, automorphisms, and maps[133X
+      3.4-1 Digraph
+      3.4-2 Digraph
+      3.4-3 AutomorphismGroup
+      3.4-4 ImageOfHomogeneousCoherentConfiguration
+      3.4-5 IsomorphismHomogeneousCoherentConfigurations
+      3.4-6 AreIsomorphicHomogeneousCoherentConfigurations
+      3.4-7 CanonisingMap
+      3.4-8 CanonicalFormOfHomogeneousCoherentConfiguration
+      3.4-9 ConstructorGroup
+      3.4-10 IsGenerouslyTransitive
+      3.4-11 IsGenerouslyTransitive
+      3.4-12 IsSchurian
+    3.5 [33X[0;0YFusions[133X
+      3.5-1 IsFusionOfHomogeneousCoherentConfiguration
+      3.5-2 FusionOfHomogeneousCoherentConfiguration
+      3.5-3 ConverseRelationPairs
+      3.5-4 ConverseRelation
+      3.5-5 IsStratifiable
+      3.5-6 SymmetrisationOfHomogeneousCoherentConfiguration
+      3.5-7 FusingPartitionOfHomogeneousCoherentConfigurations
+      3.5-8 FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration
+      3.5-9 AllNonTrivialFusionsOfHomgeneousCoherentConfiguration
+      3.5-10 AllFusionsOfHomgeneousCoherentConfiguration
+      3.5-11 FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration
+      3.5-12 AllNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration
+      3.5-13 AllSymmetricFusionsOfHomgeneousCoherentConfiguration
+      3.5-14 IsomorphismToFusionScheme
+      3.5-15 IsIsomorphicToFusionScheme
+    3.6 [33X[0;0YBose-Mesner algebra[133X
+      3.6-1 MapFromAdjacencyMatricesToMinimalIdempotents
+      3.6-2 MapFromAdjacencyMatricesToMinimalIdempotentsOverRationals
+      3.6-3 MinimalIdempotents
+      3.6-4 MinimalIdempotentsOverRationals
+      3.6-5 MatrixOfEigenvalues
+      3.6-6 MatrixOfDualEigenvalues
+      3.6-7 Multiplicities
+      3.6-8 CharacterTableOfHomogeneousCoherentConfiguration
+      3.6-9 FitMatrixOfEigenvalues
+      3.6-10 CharacterTableOfSchurianHomogeneousCoherentConfiguration
+      3.6-11 MatrixOfEigenvaluesOfCyclotomicScheme
+      3.6-12 MatrixOfEigenvaluesOfGrassmannScheme
+      3.6-13 MatrixOfEigenvaluesOfHammingScheme
+      3.6-14 MatrixOfEigenvaluesOfJohnsonScheme
+    3.7 [33X[0;0YMetric schemes[133X
+      3.7-1 IsPPolynomial
+      3.7-2 FirstPPolynomialOrdering
+      3.7-3 AdmitsPPolynomialOrdering
+      3.7-4 IsMetric
+      3.7-5 FirstMetricOrdering
+      3.7-6 AdmitsMetricOrdering
+      3.7-7 AllPPolynomialOrderings
+      3.7-8 AllMetricOrderings
+      3.7-9 IsStronglyRegularGraph
+      3.7-10 IntersectionArray
+      3.7-11 ClassicalParameters
+      3.7-12 StronglyRegularGraphParameters
+      3.7-13 IsPBipartite
+      3.7-14 IsPAntipodal
+    3.8 [33X[0;0YCometric schemes[133X
+      3.8-1 AdmitsQPolynomialOrdering
+      3.8-2 AdmitsCometricOrdering
+      3.8-3 IsQPolynomial
+      3.8-4 IsCometric
+      3.8-5 AllQPolynomialOrderings
+      3.8-6 AllCometricOrderings
+      3.8-7 KreinArray
+      3.8-8 DualIntersectionArray
+      3.8-9 IsQBipartite
+      3.8-10 IsQAntipodal
+    3.9 [33X[0;0YSubsets[133X
+      3.9-1 CharacteristicVector
+      3.9-2 CharacteristicVector
+      3.9-3 InnerDistribution
+      3.9-4 MacWilliamsTransform
+      3.9-5 DualBoseMesnerBasis
+      3.9-6 DualBoseMesnerBasis
+      3.9-7 OuterDistribution
+      3.9-8 DelsarteDesignType
+      3.9-9 WeightedDelsarteDesignType
+      3.9-10 IsDelsarteTDesign
+      3.9-11 DualDegreeSet
+      3.9-12 WeightedDualDegreeSet
+      3.9-13 AreDesignOrthogonal
+    3.10 [33X[0;0YApproximations[133X
+      3.10-1 ApproximateRealMinimalIdempotent
+      3.10-2 ApproximateRealMinimalIdempotents
+      3.10-3 ApproximateRealMatrixOfEigenvalues
+    3.11 [33X[0;0YAlgebras[133X
+      3.11-1 BoseMesnerAlgebra
+      3.11-2 AdjacencyAlgebra
+      3.11-3 TerwilligerAlgebra
+      3.11-4 TerwilligerAlgebra
+  4 [33X[0;0YIntersection Algebra objects[133X
+    4.1 [33X[0;0YCore functionality[133X
+      4.1-1 IntersectionAlgebra
+      4.1-2 IntersectionMatrices
+      4.1-3 IntersectionNumber
+      4.1-4 NumberOfClasses
+      4.1-5 Valencies
+      4.1-6 Order
+      4.1-7 SplittingField
+      4.1-8 HasRationalSplittingField
+      4.1-9 KreinParameter
+      4.1-10 KreinParameters
+      4.1-11 IsQBipartite
+      4.1-12 IsPBipartite
+      4.1-13 IsQAntipodal
+      4.1-14 IsPAntipodal
+      4.1-15 ReorderRelations
+      4.1-16 ReorderMinimalIdempotents
+      4.1-17 ViewRelationDistributionDiagram
+      4.1-18 IsCommutative
+      4.1-19 IsSymmetricIntersectionAlgebra
+      4.1-20 NumberOfCharacters
+    4.2 [33X[0;0YConstructor methods[133X
+      4.2-1 IntersectionAlgebraFromMatrixOfEigenvalues
+      4.2-2 HammingSchemeIntersectionAlgebra
+      4.2-3 GrassmanSchemeIntersectionAlgebra
+      4.2-4 CyclotomicSchemeIntersectionAlgebra
+      4.2-5 IntersectionAlgebraFromIntersectionArray
+      4.2-6 IntersectionAlgebraFromClassicalParameters
+      4.2-7 IntersectionAlgebraFromStronglyRegularGraphParameters
+      4.2-8 IsFusionOfHomogeneousCoherentConfiguration
+      4.2-9 SchurianSchemeIntersectionAlgebra
+    4.3 [33X[0;0YAutomorphisms and maps[133X
+      4.3-1 MapFromIntersectionMatricesToCentralIdempotents
+      4.3-2 MapFromIntersectionMatricesToCentralIdempotentsOverRationals
+      4.3-3 ImageOfIntersectionAlgebra
+      4.3-4 IsomorphismIntersectionAlgebras
+      4.3-5 AreIsomorphicIntersectionAlgebras
+      4.3-6 CanonisingMap
+      4.3-7 CanonicalFormOfIntersectionAlgebra
+      4.3-8 AutomorphismGroup
+    4.4 [33X[0;0YFusions[133X
+      4.4-1 IsFusionOfIntersectionAlgebra
+      4.4-2 FusionOfIntersectionAlgebra
+      4.4-3 ConverseRelationPairs
+      4.4-4 ConverseRelation
+      4.4-5 IsStratifiable
+      4.4-6 SymmetrisationOfIntersectionAlgebra
+      4.4-7 FeasibleNonTrivialFusionsOfIntersectionAlgebra
+      4.4-8 AllNonTrivialFusionsOfIntersectionAlgebra
+      4.4-9 AllFusionsOfIntersectionAlgebra
+      4.4-10 FeasibleNonTrivialSymmetricFusionsOfIntersectionAlgebra
+      4.4-11 AllNonTrivialSymmetricFusionsOfIntersectionAlgebra
+      4.4-12 AllSymmetricFusionsOfIntersectionAlgebra
+    4.5 [33X[0;0YIntersection algebra[133X
+      4.5-1 CentralIdempotentsOfIntersectionAlgebra
+      4.5-2 CentralIdempotentsOfIntersectionAlgebraOverRationals
+      4.5-3 MatrixOfDualEigenvalues
+      4.5-4 MatrixOfEigenvalues
+      4.5-5 FitMatrixOfEigenvalues
+    4.6 [33X[0;0YMetric schemes[133X
+      4.6-1 IsPPolynomial
+      4.6-2 FirstPPolynomialOrdering
+      4.6-3 AdmitsPPolynomialOrdering
+      4.6-4 IsMetric
+      4.6-5 FirstMetricOrdering
+      4.6-6 AdmitsMetricOrdering
+      4.6-7 AllPPolynomialOrderings
+      4.6-8 AllMetricOrderings
+      4.6-9 IntersectionArray
+      4.6-10 ClassicalParameters
+      4.6-11 StronglyRegularGraphParameters
+    4.7 [33X[0;0YCometric schemes[133X
+      4.7-1 AdmitsQPolynomialOrdering
+      4.7-2 AdmitsCometricOrdering
+      4.7-3 IsQPolynomial
+      4.7-4 IsCometric
+      4.7-5 AllQPolynomialOrderings
+      4.7-6 AllCometricOrderings
+      4.7-7 KreinArray
+      4.7-8 DualIntersectionArray
+  5 [33X[0;0YExamples[133X
+    5.1 [33X[0;0YExample 1 -- Constructing groups[133X
+    5.2 [33X[0;0YExample 2 -- Dual polar spaces and their graphs[133X
+    5.3 [33X[0;0YExample 3 -- Codes[133X
+    5.4 [33X[0;0YExample 4 -- Using the library[133X
+    5.5 [33X[0;0YExample 5 -- Constructing HS (advanced example)[133X
+  6 [33X[0;0YAppendix[133X
+    6.1 [33X[0;0YAssociationSchemes Links[133X
+    6.2 [33X[0;0Y[5XGAP[105X Links[133X
   
   
   [32X

@@ -1,0 +1,470 @@
+\begin{theindex}
+
+  \item \texttt  {AdjacencyAlgebra}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{32}
+  \item \texttt  {AdjacencyMatrices}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{13}
+  \item \texttt  {AdmitsCometricOrdering}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{28}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{44}
+  \item \texttt  {AdmitsMetricOrdering}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{27}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{43}
+  \item \texttt  {AdmitsPPolynomialOrdering}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{27}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{42}
+  \item \texttt  {AdmitsQPolynomialOrdering}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{28}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{44}
+  \item \texttt  {AllCometricOrderings}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{29}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{44}
+  \item \texttt  {All}\-\texttt  {Fusions}\-\texttt  {Of}\-\texttt  {Homgeneous}\-\texttt  {Coherent}\-\texttt  {Configuration}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{23}
+  \item \texttt  {AllFusionsOfIntersectionAlgebra}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{41}
+  \item \texttt  {All}\-\texttt  {Homogeneous}\-\texttt  {Coherent}\-\texttt  {Configurations}
+    \subitem for IsPosInt, \hyperpage{19}
+  \item \texttt  {AllMetricOrderings}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{27}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{43}
+  \item \texttt  {All}\-\texttt  {Non}\-\texttt  {Trivial}\-\texttt  {Fusions}\-\texttt  {Of}\-\texttt  {Homgeneous}\-\texttt  {Coherent}\-\texttt  {Configuration}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{23}
+  \item \texttt  {All}\-\texttt  {Non}\-\texttt  {Trivial}\-\texttt  {Fusions}\-\texttt  {Of}\-\texttt  {Intersection}\-\texttt  {Algebra}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{40}
+  \item \texttt  {All}\-\texttt  {Non}\-\texttt  {Trivial}\-\texttt  {Symmetric}\-\texttt  {Fusions}\-\texttt  {Of}\-\texttt  {Homgeneous}\-\texttt  {Coherent}\-\texttt  {Configuration}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{24}
+  \item \texttt  {All}\-\texttt  {Non}\-\texttt  {Trivial}\-\texttt  {Symmetric}\-\texttt  {Fusions}\-\texttt  {Of}\-\texttt  {Intersection}\-\texttt  {Algebra}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{41}
+  \item \texttt  {AllPPolynomialOrderings}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{27}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{43}
+  \item \texttt  {AllQPolynomialOrderings}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{29}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{44}
+  \item \texttt  {All}\-\texttt  {Symmetric}\-\texttt  {Fusions}\-\texttt  {Of}\-\texttt  {Homgeneous}\-\texttt  {Coherent}\-\texttt  {Configuration}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{24}
+  \item \texttt  {All}\-\texttt  {Symmetric}\-\texttt  {Fusions}\-\texttt  {Of}\-\texttt  {Intersection}\-\texttt  {Algebra}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{41}
+  \item \texttt  {ApproximateRealMatrixOfEigenvalues}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{32}
+  \item \texttt  {ApproximateRealMinimalIdempotent}
+    \subitem for IsHomogeneousCoherentConfiguration, IsInt, 
+		\hyperpage{32}
+  \item \texttt  {ApproximateRealMinimalIdempotents}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{32}
+  \item \texttt  {AreDesignOrthogonal}
+    \subitem for IsHomogeneousCoherentConfiguration, IsList, IsList, 
+		\hyperpage{31}
+  \item \texttt  {Are}\-\texttt  {Isomorphic}\-\texttt  {Homogeneous}\-\texttt  {Coherent}\-\texttt  {Configurations}
+    \subitem for IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration, 
+		\hyperpage{20}
+  \item \texttt  {AreIsomorphicIntersectionAlgebras}
+    \subitem for IsIntersectionAlgebraObject, IsIntersectionAlgebraObject, 
+		\hyperpage{39}
+  \item \texttt  {AssociationScheme}
+    \subitem for IsMatrix, \hyperpage{11}
+  \item \texttt  {AssociationSchemeNC}
+    \subitem for IsMatrix, \hyperpage{11}
+  \item \texttt  {AutomorphismGroup}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{20}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{39}
+  \item \texttt  {Available}\-\texttt  {Homogeneous}\-\texttt  {Coherent}\-\texttt  {Configurations}, 
+		\hyperpage{19}
+
+  \indexspace
+
+  \item \texttt  {BilinearFormsScheme}
+    \subitem for IsField, IsPosInt, IsPosInt, \hyperpage{17}
+  \item \texttt  {BipartiteDoubleOfAssociationScheme}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{18}
+  \item \texttt  {BoseMesnerAlgebra}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{32}
+
+  \indexspace
+
+  \item \texttt  {Canonical}\-\texttt  {Form}\-\texttt  {Of}\-\texttt  {Homogeneous}\-\texttt  {Coherent}\-\texttt  {Configuration}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{21}
+  \item \texttt  {CanonicalFormOfIntersectionAlgebra}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{39}
+  \item \texttt  {CanonisingMap}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{20}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{39}
+  \item \texttt  {Central}\-\texttt  {Idempotents}\-\texttt  {Of}\-\texttt  {Intersection}\-\texttt  {Algebra}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{41}
+  \item \texttt  {Central}\-\texttt  {Idempotents}\-\texttt  {Of}\-\texttt  {Intersection}\-\texttt  {Algebra}\-\texttt  {Over}\-\texttt  {Rationals}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{42}
+  \item \texttt  {CharacteristicVector}
+    \subitem for IsList, IsList, \hyperpage{30}
+    \subitem for IsList, IsPosInt, \hyperpage{30}
+  \item \texttt  {Character}\-\texttt  {Table}\-\texttt  {Of}\-\texttt  {Homogeneous}\-\texttt  {Coherent}\-\texttt  {Configuration}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{25}
+  \item \texttt  {Character}\-\texttt  {Table}\-\texttt  {Of}\-\texttt  {Schurian}\-\texttt  {Homogeneous}\-\texttt  {Coherent}\-\texttt  {Configuration}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{26}
+  \item \texttt  {ClassicalParameters}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{28}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{43}
+  \item \texttt  {ConstructorGroup}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{21}
+  \item \texttt  {ConverseRelation}
+    \subitem for IsHomogeneousCoherentConfiguration, IsInt, 
+		\hyperpage{22}
+    \subitem for IsIntersectionAlgebraObject, IsInt, \hyperpage{40}
+  \item \texttt  {ConverseRelationPairs}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{22}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{40}
+  \item \texttt  {CyclotomicScheme}
+    \subitem for IsPosInt, IsPosInt, \hyperpage{17}
+  \item \texttt  {CyclotomicSchemeIntersectionAlgebra}
+    \subitem for IsPosInt, IsPosInt, \hyperpage{37}
+
+  \indexspace
+
+  \item \texttt  {DelsarteDesignType}
+    \subitem for IsHomogeneousCoherentConfiguration, IsList, 
+		\hyperpage{31}
+  \item \texttt  {Description}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{16}
+  \item \texttt  {Digraph}
+    \subitem for IsHomogeneousCoherentConfiguration, IsList, 
+		\hyperpage{20}
+    \subitem for IsHomogeneousCoherentConfiguration, IsPosInt, 
+		\hyperpage{19}
+  \item \texttt  {Direct}\-\texttt  {Product}\-\texttt  {Of}\-\texttt  {Homogeneous}\-\texttt  {Coherent}\-\texttt  {Configurations}
+    \subitem for IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration, 
+		\hyperpage{17}
+  \item \texttt  {DistanceRegularGraphScheme}
+    \subitem for IsMatrix, \hyperpage{16}
+  \item \texttt  {DistanceRegularGraphSchemeNC}
+    \subitem for IsMatrix, \hyperpage{16}
+  \item \texttt  {DualBoseMesnerBasis}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{30}
+    \subitem for IsHomogeneousCoherentConfiguration, IsPosInt, 
+		\hyperpage{30}
+  \item \texttt  {DualDegreeSet}
+    \subitem for IsHomogeneousCoherentConfiguration, IsList, 
+		\hyperpage{31}
+  \item \texttt  {DualIntersectionArray}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{29}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{44}
+
+  \indexspace
+
+  \item \texttt  {ExtendedQBipartiteDouble}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{18}
+
+  \indexspace
+
+  \item \texttt  {Feasible}\-\texttt  {Non}\-\texttt  {Trivial}\-\texttt  {Fusions}\-\texttt  {Of}\-\texttt  {Homgeneous}\-\texttt  {Coherent}\-\texttt  {Configuration}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{23}
+  \item \texttt  {Feasible}\-\texttt  {Non}\-\texttt  {Trivial}\-\texttt  {Fusions}\-\texttt  {Of}\-\texttt  {Intersection}\-\texttt  {Algebra}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{40}
+  \item \texttt  {Feasible}\-\texttt  {Non}\-\texttt  {Trivial}\-\texttt  {Symmetric}\-\texttt  {Fusions}\-\texttt  {Of}\-\texttt  {Homgeneous}\-\texttt  {Coherent}\-\texttt  {Configuration}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{23}
+  \item \texttt  {Feasible}\-\texttt  {Non}\-\texttt  {Trivial}\-\texttt  {Symmetric}\-\texttt  {Fusions}\-\texttt  {Of}\-\texttt  {Intersection}\-\texttt  {Algebra}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{41}
+  \item \texttt  {FirstMetricOrdering}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{27}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{43}
+  \item \texttt  {FirstPPolynomialOrdering}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{27}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{42}
+  \item \texttt  {FitMatrixOfEigenvalues}
+    \subitem for IsHomogeneousCoherentConfiguration, IsMatrix, 
+		\hyperpage{26}
+    \subitem for IsIntersectionAlgebraObject, IsMatrix, \hyperpage{42}
+  \item \texttt  {Fusing}\-\texttt  {Partition}\-\texttt  {Of}\-\texttt  {Homogeneous}\-\texttt  {Coherent}\-\texttt  {Configurations}
+    \subitem for IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration, 
+		\hyperpage{22}
+  \item \texttt  {Fusion}\-\texttt  {Of}\-\texttt  {Homogeneous}\-\texttt  {Coherent}\-\texttt  {Configuration}
+    \subitem for IsHomogeneousCoherentConfiguration, IsList, 
+		\hyperpage{22}
+  \item \texttt  {FusionOfIntersectionAlgebra}
+    \subitem for IsIntersectionAlgebraObject, IsList, \hyperpage{39}
+
+  \indexspace
+
+  \item \texttt  {GrassmannScheme}
+    \subitem for IsPosInt, IsPosInt, IsPosInt, \hyperpage{17}
+  \item \texttt  {GrassmanSchemeIntersectionAlgebra}
+    \subitem for IsPosInt, IsPosInt, IsPosInt, \hyperpage{37}
+  \item \texttt  {GroupCoherentConfiguration}
+    \subitem for IsGroup, \hyperpage{17}
+
+  \indexspace
+
+  \item \texttt  {HammingScheme}
+    \subitem for IsPosInt, IsPosInt, \hyperpage{17}
+  \item \texttt  {HammingSchemeIntersectionAlgebra}
+    \subitem for IsPosInt, IsPosInt, \hyperpage{37}
+  \item \texttt  {HasRationalSplittingField}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{14}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{35}
+  \item \texttt  {HomogeneousCoherentConfiguration}
+    \subitem for IsMatrix, \hyperpage{11}
+    \subitem for IsPosInt, IsPosInt, \hyperpage{19}
+  \item \texttt  {Homogeneous}\-\texttt  {Coherent}\-\texttt  {Configuration}\-\texttt  {By}\-\texttt  {Orbitals}
+    \subitem for IsGroup, IsGroup, \hyperpage{18}
+    \subitem for IsPermGroup, \hyperpage{18}
+  \item \texttt  {HomogeneousCoherentConfigurationNC}
+    \subitem for IsMatrix, \hyperpage{11}
+
+  \indexspace
+
+  \item \texttt  {Image}\-\texttt  {Of}\-\texttt  {Homogeneous}\-\texttt  {Coherent}\-\texttt  {Configuration}
+    \subitem for IsHomogeneousCoherentConfiguration, IsPerm, IsPerm, 
+		\hyperpage{20}
+  \item \texttt  {ImageOfIntersectionAlgebra}
+    \subitem for IsIntersectionAlgebraObject, IsPerm, \hyperpage{38}
+  \item \texttt  {InnerDistribution}
+    \subitem for IsHomogeneousCoherentConfiguration, IsList, 
+		\hyperpage{30}
+  \item \texttt  {IntersectionAlgebra}
+    \subitem for IsList, \hyperpage{34}
+  \item \texttt  {Intersection}\-\texttt  {Algebra}\-\texttt  {From}\-\texttt  {Classical}\-\texttt  {Parameters}
+    \subitem for IsList, \hyperpage{37}
+  \item \texttt  {Intersection}\-\texttt  {Algebra}\-\texttt  {From}\-\texttt  {Intersection}\-\texttt  {Array}
+    \subitem for IsList, \hyperpage{37}
+  \item \texttt  {Intersection}\-\texttt  {Algebra}\-\texttt  {From}\-\texttt  {Matrix}\-\texttt  {Of}\-\texttt  {Eigenvalues}
+    \subitem for IsMatrix, \hyperpage{37}
+  \item \texttt  {Intersection}\-\texttt  {Algebra}\-\texttt  {From}\-\texttt  {Strongly}\-\texttt  {Regular}\-\texttt  {Graph}\-\texttt  {Parameters}
+    \subitem for IsPosInt, IsPosInt, IsInt, IsInt, \hyperpage{37}
+  \item \texttt  {Intersection}\-\texttt  {Algebra}\-\texttt  {Of}\-\texttt  {Homogeneous}\-\texttt  {Coherent}\-\texttt  {Configuration}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{14}
+  \item \texttt  {IntersectionArray}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{28}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{43}
+  \item \texttt  {IntersectionMatrices}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{14}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{34}
+  \item \texttt  {IntersectionNumber}
+    \subitem for IsHomogeneousCoherentConfiguration, IsInt, IsInt, IsInt, 
+		\hyperpage{13}
+    \subitem for IsIntersectionAlgebraObject, IsInt, IsInt, IsInt, 
+		\hyperpage{34}
+  \item \texttt  {IsAssociationScheme}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{13}
+  \item \texttt  {IsCometric}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{29}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{44}
+  \item \texttt  {IsCommutative}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{12}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{36}
+  \item \texttt  {IsDelsarteTDesign}
+    \subitem for IsHomogeneousCoherentConfiguration, IsList, IsList, 
+		\hyperpage{31}
+  \item \texttt  {IsFusion}\-\texttt  {Of}\-\texttt  {Homogeneous}\-\texttt  {Coherent}\-\texttt  {Configuration}
+    \subitem for IsHomogeneousCoherentConfiguration, IsList, 
+		\hyperpage{21}
+    \subitem for IsIntersectionAlgebraObject, IsList, \hyperpage{38}
+  \item \texttt  {IsFusionOfIntersectionAlgebra}
+    \subitem for IsIntersectionAlgebraObject, IsList, \hyperpage{39}
+  \item \texttt  {IsGenerouslyTransitive}
+    \subitem for IsPermGroup, \hyperpage{21}
+    \subitem for IsPermGroup, IsList, \hyperpage{21}
+  \item \texttt  {IsIsomorphicToFusionScheme}
+    \subitem for IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration, 
+		\hyperpage{24}
+  \item \texttt  {IsMetric}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{27}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{43}
+  \item \texttt  {Isomorphism}\-\texttt  {Homogeneous}\-\texttt  {Coherent}\-\texttt  {Configurations}
+    \subitem for IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration, 
+		\hyperpage{20}
+  \item \texttt  {IsomorphismIntersectionAlgebras}
+    \subitem for IsIntersectionAlgebraObject, IsIntersectionAlgebraObject, 
+		\hyperpage{38}
+  \item \texttt  {IsomorphismToFusionScheme}
+    \subitem for IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration, 
+		\hyperpage{24}
+  \item \texttt  {IsPAntipodal}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{28}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{36}
+  \item \texttt  {IsPBipartite}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{28}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{35}
+  \item \texttt  {IsPPolynomial}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{26}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{42}
+  \item \texttt  {IsPrimitive}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{15}
+  \item \texttt  {IsQAntipodal}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{29}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{35}
+  \item \texttt  {IsQBipartite}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{29}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{35}
+  \item \texttt  {IsQPolynomial}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{29}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{44}
+  \item \texttt  {IsQuasiThin}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{15}
+  \item \texttt  {IsSchurian}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{21}
+  \item \texttt  {IsStratifiable}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{22}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{40}
+  \item \texttt  {IsStronglyRegularGraph}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{27}
+  \item \texttt  {IsSymmetricCoherentConfiguration}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{12}
+  \item \texttt  {IsSymmetricIntersectionAlgebra}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{36}
+  \item \texttt  {IsThin}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{15}
+
+  \indexspace
+
+  \item \texttt  {JohnsonScheme}
+    \subitem for IsPosInt, IsPosInt, \hyperpage{17}
+
+  \indexspace
+
+  \item \texttt  {KreinArray}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{29}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{44}
+  \item \texttt  {KreinParameter}
+    \subitem for IsHomogeneousCoherentConfiguration, IsInt, IsInt, IsInt, 
+		\hyperpage{14}
+    \subitem for IsIntersectionAlgebraObject, IsInt, IsInt, IsInt, 
+		\hyperpage{35}
+  \item \texttt  {KreinParameters}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{14}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{35}
+
+  \indexspace
+
+  \item \texttt  {MacWilliamsTransform}
+    \subitem for IsHomogeneousCoherentConfiguration, IsList, 
+		\hyperpage{30}
+  \item \texttt  {Map}\-\texttt  {From}\-\texttt  {Adjacency}\-\texttt  {Matrices}\-\texttt  {To}\-\texttt  {Minimal}\-\texttt  {Idempotents}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{24}
+  \item \texttt  {Map}\-\texttt  {From}\-\texttt  {Adjacency}\-\texttt  {Matrices}\-\texttt  {To}\-\texttt  {Minimal}\-\texttt  {Idempotents}\-\texttt  {Over}\-\texttt  {Rationals}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{25}
+  \item \texttt  {Map}\-\texttt  {From}\-\texttt  {Intersection}\-\texttt  {Matrices}\-\texttt  {To}\-\texttt  {Central}\-\texttt  {Idempotents}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{38}
+  \item \texttt  {Map}\-\texttt  {From}\-\texttt  {Intersection}\-\texttt  {Matrices}\-\texttt  {To}\-\texttt  {Central}\-\texttt  {Idempotents}\-\texttt  {Over}\-\texttt  {Rationals}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{38}
+  \item \texttt  {MatrixOfDualEigenvalues}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{25}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{42}
+  \item \texttt  {MatrixOfEigenvalues}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{25}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{42}
+  \item \texttt  {Matrix}\-\texttt  {Of}\-\texttt  {Eigenvalues}\-\texttt  {Of}\-\texttt  {Cyclotomic}\-\texttt  {Scheme}
+    \subitem for IsPosInt, IsPosInt, \hyperpage{26}
+  \item \texttt  {Matrix}\-\texttt  {Of}\-\texttt  {Eigenvalues}\-\texttt  {Of}\-\texttt  {Grassmann}\-\texttt  {Scheme}
+    \subitem for IsPosInt, IsPosInt, IsPosInt, \hyperpage{26}
+  \item \texttt  {MatrixOfEigenvaluesOfHammingScheme}
+    \subitem for IsPosInt, IsPosInt, \hyperpage{26}
+  \item \texttt  {MatrixOfEigenvaluesOfJohnsonScheme}
+    \subitem for IsPosInt, IsPosInt, \hyperpage{26}
+  \item \texttt  {MinimalIdempotents}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{25}
+  \item \texttt  {MinimalIdempotentsOverRationals}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{25}
+  \item \texttt  {Multiplicities}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{25}
+
+  \indexspace
+
+  \item \texttt  {Neighbours}
+    \subitem for IsHomogeneousCoherentConfiguration, IsInt, IsList, 
+		\hyperpage{12}
+    \subitem for IsHomogeneousCoherentConfiguration, IsPosInt, IsInt, 
+		\hyperpage{12}
+  \item \texttt  {NumberOfCharacters}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{14}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{36}
+  \item \texttt  {NumberOfClasses}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{13}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{34}
+  \item \texttt  {Number}\-\texttt  {Of}\-\texttt  {Homogeneous}\-\texttt  {Coherent}\-\texttt  {Configurations}
+    \subitem for IsPosInt, \hyperpage{19}
+
+  \indexspace
+
+  \item \texttt  {Order}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{13}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{35}
+  \item \texttt  {OuterDistribution}
+    \subitem for IsHomogeneousCoherentConfiguration, IsList, 
+		\hyperpage{31}
+
+  \indexspace
+
+  \item \texttt  {Rank}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{13}
+  \item \texttt  {Read}\-\texttt  {Homogeneous}\-\texttt  {Coherent}\-\texttt  {Configuration}\-\texttt  {With}\-\texttt  {Certain}\-\texttt  {Attributes}
+    \subitem for IsString, \hyperpage{15}
+  \item \texttt  {Relation}
+    \subitem for IsHomogeneousCoherentConfiguration, IsPosInt, IsPosInt, 
+		\hyperpage{12}
+  \item \texttt  {RelationMatrix}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{12}
+  \item \texttt  {ReorderMinimalIdempotents}
+    \subitem for IsHomogeneousCoherentConfiguration, IsList, 
+		\hyperpage{15}
+    \subitem for IsIntersectionAlgebraObject, IsList, \hyperpage{36}
+  \item \texttt  {ReorderRelations}
+    \subitem for IsHomogeneousCoherentConfiguration, IsList, 
+		\hyperpage{12}
+    \subitem for IsIntersectionAlgebraObject, IsList, \hyperpage{36}
+
+  \indexspace
+
+  \item \texttt  {Save}\-\texttt  {Homogeneous}\-\texttt  {Coherent}\-\texttt  {Configuration}\-\texttt  {With}\-\texttt  {Certain}\-\texttt  {Attributes}
+    \subitem for IsString, IsHomogeneousCoherentConfiguration, IsList, 
+		\hyperpage{15}
+  \item \texttt  {SchurianAssociationScheme}
+    \subitem for IsPermGroup, \hyperpage{18}
+  \item \texttt  {SchurianCoherentConfiguration}
+    \subitem for IsPermGroup, \hyperpage{18}
+  \item \texttt  {SchurianSchemeIntersectionAlgebra}
+    \subitem for IsPermGroup, \hyperpage{38}
+  \item \texttt  {SmallSchemeIdentification}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{19}
+  \item \texttt  {SplittingField}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{14}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{35}
+  \item \texttt  {StronglyRegularGraphParameters}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{28}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{43}
+  \item \texttt  {StronglyRegularGraphScheme}
+    \subitem for IsMatrix, \hyperpage{16}
+  \item \texttt  {StronglyRegularGraphSchemeNC}
+    \subitem for IsMatrix, \hyperpage{17}
+  \item \texttt  {Symmetrisation}\-\texttt  {Of}\-\texttt  {Homogeneous}\-\texttt  {Coherent}\-\texttt  {Configuration}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{22}
+  \item \texttt  {SymmetrisationOfIntersectionAlgebra}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{40}
+
+  \indexspace
+
+  \item \texttt  {TerwilligerAlgebra}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{33}
+    \subitem for IsHomogeneousCoherentConfiguration, IsInt, 
+		\hyperpage{32}
+
+  \indexspace
+
+  \item \texttt  {Valencies}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{13}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{34}
+  \item \texttt  {ViewRelationDistributionDiagram}
+    \subitem for IsHomogeneousCoherentConfiguration, \hyperpage{16}
+    \subitem for IsIntersectionAlgebraObject, \hyperpage{36}
+
+  \indexspace
+
+  \item \texttt  {WeightedDelsarteDesignType}
+    \subitem for IsHomogeneousCoherentConfiguration, IsList, 
+		\hyperpage{31}
+  \item \texttt  {WeightedDualDegreeSet}
+    \subitem for IsHomogeneousCoherentConfiguration, IsList, 
+		\hyperpage{31}
+  \item \texttt  {Wreath}\-\texttt  {Product}\-\texttt  {Of}\-\texttt  {Homogeneous}\-\texttt  {Coherent}\-\texttt  {Configurations}
+    \subitem for IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration, 
+		\hyperpage{18}
+
+\end{theindex}

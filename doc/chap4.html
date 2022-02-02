@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>GAP (AssociationSchemes) - Chapter 4: Examples</title>
+<title>GAP (AssociationSchemes) - Chapter 4: Intersection Algebra objects</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -15,435 +15,808 @@
 <body class="chap4"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap4_mj.html">[MathJax on]</a></p>
-<p><a id="X7A489A5D79DA9E5C" name="X7A489A5D79DA9E5C"></a></p>
-<div class="ChapSects"><a href="chap4.html#X7A489A5D79DA9E5C">4 <span class="Heading">Examples</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7A0C31A67CF49C08">4.1 <span class="Heading">Example 1 -- Constructing groups</span></a>
+<p><a id="X785CC0977ACB7807" name="X785CC0977ACB7807"></a></p>
+<div class="ChapSects"><a href="chap4.html#X785CC0977ACB7807">4 <span class="Heading">Intersection Algebra objects</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X851AE2B98382B550">4.1 <span class="Heading">Core functionality</span></a>
 </span>
-</div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X83AE03A179F223FD">4.2 <span class="Heading">Example 2 -- Dual polar spaces and their graphs</span></a>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X80FF69E585F8E179">4.1-1 IntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X790BECF9797E075D">4.1-2 IntersectionMatrices</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X84FCFC117F92A772">4.1-3 IntersectionNumber</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7C4F5A1485AA676B">4.1-4 NumberOfClasses</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7B14A4317DEE2AC5">4.1-5 Valencies</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7B8F4F6C78A44799">4.1-6 Order</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X791D09F6835ED527">4.1-7 SplittingField</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X87E3C51878414487">4.1-8 HasRationalSplittingField</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7DD2B3A679EA3698">4.1-9 KreinParameter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7F5118AC83CA120C">4.1-10 KreinParameters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7DD1A98E84BEECBF">4.1-11 IsQBipartite</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X87C231C084A2CA1C">4.1-12 IsPBipartite</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7F9A176979843B60">4.1-13 IsQAntipodal</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X85898F2779981DC3">4.1-14 IsPAntipodal</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7E1425D9780A8CA6">4.1-15 ReorderRelations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X86F72366870753E3">4.1-16 ReorderMinimalIdempotents</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7EE0A7017A7A89EE">4.1-17 ViewRelationDistributionDiagram</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7D34641A79D5A111">4.1-18 IsCommutative</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X787265D5870A8B9A">4.1-19 IsSymmetricIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8034C62985C2232A">4.1-20 NumberOfCharacters</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X820CD05F85142F0A">4.2 <span class="Heading">Constructor methods</span></a>
 </span>
-</div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7F31FB6D7897A23B">4.3 <span class="Heading">Example 3 -- Codes</span></a>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7E05148D80305715">4.2-1 IntersectionAlgebraFromMatrixOfEigenvalues</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X86DFDA3F86B4390D">4.2-2 HammingSchemeIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7D09346C8602DBAA">4.2-3 GrassmanSchemeIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7E2E077F81242C77">4.2-4 CyclotomicSchemeIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7813B9CB85C361CB">4.2-5 IntersectionAlgebraFromIntersectionArray</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7AA6FADB83444453">4.2-6 IntersectionAlgebraFromClassicalParameters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X82E28A4E83434396">4.2-7 IntersectionAlgebraFromStronglyRegularGraphParameters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7887CDF2811D5AAD">4.2-8 IsFusionOfHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7CF0D6B878269365">4.2-9 SchurianSchemeIntersectionAlgebra</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7FC3546D85D4FF29">4.3 <span class="Heading">Automorphisms and maps</span></a>
 </span>
-</div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X869C42647960C7AC">4.4 <span class="Heading">Example 4 -- Using the library</span></a>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7F58CA6B87D5D9B9">4.3-1 MapFromIntersectionMatricesToCentralIdempotents</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8524F6998417238B">4.3-2 MapFromIntersectionMatricesToCentralIdempotentsOverRationals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7D7B6E69830C785E">4.3-3 ImageOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X80E1857E7CF06B41">4.3-4 IsomorphismIntersectionAlgebras</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7AEFAE9F7C8FD7FC">4.3-5 AreIsomorphicIntersectionAlgebras</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X78D9D1E2827ADA58">4.3-6 CanonisingMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7FD9045C7A8D2F75">4.3-7 CanonicalFormOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8521C6DD7DBDE766">4.3-8 AutomorphismGroup</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X791CDD977B9FD97A">4.4 <span class="Heading">Fusions</span></a>
 </span>
-</div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7F8954C27C3CCAAC">4.5 <span class="Heading">Example 5 -- Constructing HS (advanced example)</span></a>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7A2AE752848B5FEB">4.4-1 IsFusionOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7F43C9937A538D77">4.4-2 FusionOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8435162780C90C07">4.4-3 ConverseRelationPairs</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7D8A365087D85C0D">4.4-4 ConverseRelation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8530E48E83318A72">4.4-5 IsStratifiable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X81CC46958133415A">4.4-6 SymmetrisationOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8212A528859E9045">4.4-7 FeasibleNonTrivialFusionsOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7A42D1AF80E1C9A8">4.4-8 AllNonTrivialFusionsOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7CE39DC97A0F1393">4.4-9 AllFusionsOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X82A5979583C921AD">4.4-10 FeasibleNonTrivialSymmetricFusionsOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X874E117E7CF92FA3">4.4-11 AllNonTrivialSymmetricFusionsOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X84881BF07A927379">4.4-12 AllSymmetricFusionsOfIntersectionAlgebra</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7EBD17797F391938">4.5 <span class="Heading">Intersection algebra</span></a>
 </span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X85467C9F78AE489A">4.5-1 CentralIdempotentsOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X81043F1E7EBF019E">4.5-2 CentralIdempotentsOfIntersectionAlgebraOverRationals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8214E4828479DB33">4.5-3 MatrixOfDualEigenvalues</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X79DF2613822843F2">4.5-4 MatrixOfEigenvalues</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X86A133187ED9D892">4.5-5 FitMatrixOfEigenvalues</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7EEAC69486AF989B">4.6 <span class="Heading">Metric schemes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X80974BA47FC6BF38">4.6-1 IsPPolynomial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7C84FB8B7CF27E91">4.6-2 FirstPPolynomialOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X85C393DD7D3AC351">4.6-3 AdmitsPPolynomialOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X86FE341F8436B2F1">4.6-4 IsMetric</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7EF0929E86278943">4.6-5 FirstMetricOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8234F6FC878D0573">4.6-6 AdmitsMetricOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X790D7CDB85570564">4.6-7 AllPPolynomialOrderings</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7B0635CC80BED05D">4.6-8 AllMetricOrderings</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7BE960BF807C8725">4.6-9 IntersectionArray</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7AFB848F7D33F5CA">4.6-10 ClassicalParameters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X83418B9878424CF5">4.6-11 StronglyRegularGraphParameters</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X81F482747C1E7A48">4.7 <span class="Heading">Cometric schemes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X79607CE4875DB3EA">4.7-1 AdmitsQPolynomialOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7C1CE6DC85622EE0">4.7-2 AdmitsCometricOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X84E674CB7FDA999B">4.7-3 IsQPolynomial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7A4AEBE3825C32B9">4.7-4 IsCometric</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7F91B31B7EDCC312">4.7-5 AllQPolynomialOrderings</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7B05438D7C4760D8">4.7-6 AllCometricOrderings</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X83156F2F7C785E65">4.7-7 KreinArray</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X81BB6D5B7BC9A829">4.7-8 DualIntersectionArray</a></span>
+</div></div>
 </div>
-</div>
-
-<h3>4 <span class="Heading">Examples</span></h3>
-
-<p><a id="X7A0C31A67CF49C08" name="X7A0C31A67CF49C08"></a></p>
-
-<h4>4.1 <span class="Heading">Example 1 -- Constructing groups</span></h4>
-
-<p>In this example, we show how we can use coherent configurations to construct an entriely different almost simple permutation group from another one. We first show how <span class="Math">PSU(4,3)</span> can be made out of its subgroup <span class="Math">PSL(3,4)</span>.</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psl34 := PSL(3,4);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sylow3 := SylowSubgroup(psl34, 3);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">normaliser := Normaliser(psl34, sylow3);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := Image( FactorCosetAction(psl34, normaliser) );;</span>
-</pre></div>
-
-<p>At this stage, we have constructed the unique permutation representation of degree 280, for <span class="Math">PSL(3,4)</span>.</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := HomogeneousCoherentConfigurationByOrbitals(G);</span>
-7-class homogeneous coherent configuration of order 280
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mat := RelationMatrix(A);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := MatrixOfEigenvalues(A);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Print(P);</span>
-[ [ 1, 18, 18, 18, 72, 72, 72, 9 ], [ 1, 4, 4, 4, 16, -12, -12, -5 ],
- [ 1, -2, -2, 10, -8, 0, 0, 1 ], [ 1, -2, 10, -2, -8, 0, 0, 1 ], 
- [ 1, 10, -2, -2, -8, 0, 0, 1 ],
- [ 1, -2, -2, -2, 0, -8*E(7)^3-8*E(7)^5-8*E(7)^6, -8*E(7)-8*E(7)^2-8*E(7)^4, -3 ], 
- [ 1, -2, -2, -2, 0, -8*E(7)-8*E(7)^2-8*E(7)^4, -8*E(7)^3-8*E(7)^5-8*E(7)^6, -3 ],
- [ 1, -2, -2, -2, 7, -3, -3, 4 ] ]
-</pre></div>
-
-<p>We now take a particular fusion of this coherent configuration to obtain a 2-class association scheme.</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">valency18 := Filtered([1..7], j -&gt; Number(mat[1], i -&gt; i = j) = 18);</span>
-[1,2,3]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fusions := List(Combinations(valency18,2), t -&gt; </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">		FusionOfHomogeneousCoherentConfigurations(A, [[0], t, </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">			Difference([1..7],t)]) );;</span>
-</pre></div>
-
-<p>Any of these three fusions will do:</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">autgroup := AutomorphismGroup( fusions[1] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DisplayCompositionSeries( autgroup );</span>
-G (11 gens, size 26127360)
- | Z(2)
-S (4 gens, size 13063680)
- | Z(2)
-S (3 gens, size 6531840)
- | Z(2)
-S (2 gens, size 3265920)
- | 2A(3,3) = U(4,3) ~ 2D(3,3) = O-(6,3)
-1 (0 gens, size 1)
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">socle := Socle(autgroup);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StructureDescription(socle);</span>
-"PSU(4,3)"
-</pre></div>
-
-<p><a id="X83AE03A179F223FD" name="X83AE03A179F223FD"></a></p>
-
-<h4>4.2 <span class="Heading">Example 2 -- Dual polar spaces and their graphs</span></h4>
-
-<p>For this example, we also use the package FinInG <a href="chapBib.html#biBFinInG">[BBDB+18]</a>. We will construct a metric association scheme coming from a dual polar space.</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage("FinInG", false);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quadric := EllipticQuadric(7, 2);</span>
-Q-(7, 2)
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">points := AsList( Planes(quadric) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mat := NullMat(Length(points), Length(points));;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">for i in [1..Length(points)] do</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">	for j in [i+1..Length(points)] do</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">		intersection := Meet( points{[i,j]} );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">		mat[i][j] := 2 - ProjectiveDimension( intersection );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">		mat[j][i] := mat[i][j];</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	od;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">od;</span>
-</pre></div>
-
-<p>So far we have constructed the relation matrix arising from the dual polar space.</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := HomogeneousCoherentConfiguration( mat );</span>
-3-class association scheme of order 765
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := MatrixOfEigenvalues(a);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := DualMatrixOfEigenvalues(a);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(P);</span>
-[ [    1,   28,  224,  512 ],
-  [    1,   11,   20,  -32 ],
-  [    1,   -7,   14,   -8 ],
-  [    1,    1,  -10,    8 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(Q);</span>
-[ [       1,      84,     204,     476 ],
-  [       1,      33,     -51,      17 ],
-  [       1,    15/2,    51/4,   -85/4 ],
-  [       1,   -21/4,  -51/16,  119/16 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsPPolynomial(a);</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsQPolynomial(a);</span>
-true 
-</pre></div>
-
-<p>A simpler way (perhaps) uses the automorphism group of the ambient polar space:</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cgroup := CollineationGroup(quadric);</span>
-PGO(-1,8,2)
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := Action(cgroup, points);</span>
-&lt;permutation group with 3 generators&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := SchurianScheme(G);</span>
-3-class homogeneous coherent configuration of order 765
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsPPolynomial(a);</span>
-true
-</pre></div>
-
-<p>The automorphism group of the association scheme should be the same:</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">autgroup := AutomorphismGroup(a);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">autgroup = G;</span>
-true
-</pre></div>
-
-<p>Now (for the purist!) we see if there are interesting subsets. Take a nondegenerate hyperplane section defining a parabolic quadric.</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hyperplane := First(Hyperplanes(PG(7,2)), h -&gt; </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">		TypeOfSubspace(quadric, h) = "parabolic");</span>
-&lt;a proj. 6-space in ProjectiveSpace(7, 2)&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">insidehyp := Filtered(points, t -&gt; t * hyperplane);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vector := CharacteristicVector(insidehyp,points);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dist := InnerDistribution(vector, a);</span>
-[ 1, 56, 64, 14 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">macw := MacWilliamsTransform(dist, a);</span>
-[ 135, 630, 0, 0 ]
-</pre></div>
-
-<p>Therefore, a hyperplane section gives rise to a design that is not a code, in this association scheme. Now we produce the dual polar graph.</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := MatrixOfEigenvalues(a);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(P);</span>
-[ [    1,  224,  512,   28 ],
-  [    1,   20,  -32,   11 ],
-  [    1,   14,   -8,   -7 ],
-  [    1,  -10,    8,    1 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">position := Position(P[1], 28);</span>
-4
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := AdjacencyMatrices(a)[ position ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">graph := Graph(G, [1..Order(a)], OnPoints, {x,y} -&gt; M[x][y] = 1);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsDistanceRegular(graph);</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">GlobalParameters(graph);</span>
-[ [ 0, 0, 28 ], [ 1, 3, 24 ], [ 3, 9, 16 ], [ 7, 21, 0 ] ]
-</pre></div>
-
-<p><a id="X7F31FB6D7897A23B" name="X7F31FB6D7897A23B"></a></p>
-
-<h4>4.3 <span class="Heading">Example 3 -- Codes</span></h4>
-
-<p>For this example, we use the package Guava<a href="chapBib.html#biBGUAVA">[BBC+18]</a> for its facility with block codes. We will see that the inner distribution vector of a subset coincides with the weight enumerator of a code when the association scheme is a Hamming scheme.</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hammingscheme := HammingScheme(7,2);</span>
-7-class homogeneous coherent configuration of order 128
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage("Guava", false);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">hammingcode := HammingCode(3, GF(2));</span>
-a linear [7,4,3]1 Hamming (3,2) code over GF(2)
-</pre></div>
-
-<p>We now use an operation from Guava:</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InnerDistribution(hammingcode);</span>
-[ 1, 0, 0, 7, 7, 0, 0, 1 ]
-</pre></div>
-
-<p>From the association scheme perspective ...</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">codewords := List( hammingcode, VectorCodeword );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vector := CharacteristicVector( codewords,  AsList(GF(2)^7) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Collected(vector);</span>
-[ [ 0, 112 ], [ 1, 16 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InnerDistribution(vector, hammingscheme);</span>
-[ 1, 0, 0, 7, 7, 0, 0, 1 ]
-</pre></div>
-
-<p>The MacWilliams transform coincides with the distribution vector of the dual code:</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">1/16 * MacWilliamsTransform(vector, hammingscheme);</span>
-[ 1, 0, 0, 0, 7, 0, 0, 0 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dualcode := DualCode( hammingcode );</span>
-a linear [7,3,4]2..3 dual code
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InnerDistribution( dualcode );</span>
-[ 1, 0, 0, 0, 7, 0, 0, 0 ]
-</pre></div>
-
-<p><a id="X869C42647960C7AC" name="X869C42647960C7AC"></a></p>
-
-<h4>4.4 <span class="Heading">Example 4 -- Using the library</span></h4>
-
-<p>In this package, we also have a library of all small homogeneous coherent configurations, of order at most 38 (except 31, ,35, 36, 37), corresponding to <a href="chapBib.html#biBHanaki">[HM]</a>.</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">for i in [5..20] do</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">	Print(i,"    ",NumberOfHomogeneousCoherentConfigurations(i),"\n");</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">od;</span>
-5    2
-6    6
-7    3
-8    16
-9    10
-10    11
-11    3
-12    54
-13    5
-14    14
-15    24
-16    208
-17    4
-18    90
-19    6
-20    90
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">order7 := List([1..3], i -&gt; HomogeneousCoherentConfiguration(7, i));</span>
- 1-class homogeneous coherent configuration of order 7, 
- 2-class homogeneous coherent configuration of order 7, 
- 3-class homogeneous coherent configuration of order 7 ]
-</pre></div>
-
-<p>The first of these is trivial, so we look at the other two. The first arises from the Paley graph of order 7.</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a1 := order7[2];</span>
-2-class homogeneous coherent configuration of order 7
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsStronglyRegularGraph( a1 );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">autgroup := AutomorphismGroup(a1);</span>
-Group([ (2,3,4)(5,7,6), (1,2,3,5,4,6,7) ])
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StructureDescription(autgroup);</span>
-"C7 : C3"
-</pre></div>
-
-<p>The last one is a 3-class association scheme:</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a2 := order7[3];</span>
-3-class homogeneous coherent configuration of order 7
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAssociationScheme(a2);</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsPPolynomial( a2 );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsPrimitive(a2);</span>
-rue
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Valencies(a2);</span>
-[ 1, 2, 2, 2 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">autgroup := AutomorphismGroup(a2);</span>
-Group([ (2,3)(4,5)(6,7), (1,2)(3,4)(5,6) ])
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StructureDescription(autgroup);</span>
-"D14"
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := MatrixOfEigenvalues(a2);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(P);</span>
-[ [              1,              2,              2,              2 ],
-  [              1,  E(7)^3+E(7)^4,    E(7)+E(7)^6,  E(7)^2+E(7)^5 ],
-  [              1,  E(7)^2+E(7)^5,  E(7)^3+E(7)^4,    E(7)+E(7)^6 ],
-  [              1,    E(7)+E(7)^6,  E(7)^2+E(7)^5,  E(7)^3+E(7)^4 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AllPPolynomialOrderings(a2);</span>
-[ [ 0, 1, 2, 3 ], [ 0, 2, 3, 1 ], [ 0, 3, 1, 2 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsQPolynomial(a2);</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AllQPolynomialOrderings(a2);</span>
-[ [ 0, 1, 3, 2 ], [ 0, 2, 1, 3 ], [ 0, 3, 2, 1 ] ]
-</pre></div>
-
-<p><a id="X7F8954C27C3CCAAC" name="X7F8954C27C3CCAAC"></a></p>
-
-<h4>4.5 <span class="Heading">Example 5 -- Constructing HS (advanced example)</span></h4>
-
-<p>We redo an example that appears in Section 3.6 of Peter Cameron's "Permutation Groups" book <a href="chapBib.html#biBcameron">[Cam99]</a> and construct the Higman-Sims group. <br /> <br /> First we construct the Hoffman-Singleton graph from the alternating group of degree 7.</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A7 := AlternatingGroup(7);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Pi := [ [ 1, 2, 4 ], [ 1, 3, 7 ], [ 1, 5, 6 ], </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"> [ 2, 3, 5 ], [ 2, 6, 7 ], [ 3, 4, 6 ], [ 4, 5, 7 ] ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">OnSetsRecursive := function(x,g) </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">	if not IsSet(x) then</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">		return x^g; </span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	else </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">		return Set(x,y-&gt;OnSetsRecursive(y,g));</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	fi;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">triples := Combinations([1..7], 3);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">allFanos := Orbit(A7, Pi, OnSetsSets);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fifty := Concatenation(triples, allFanos);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A7action := Action(A7, fifty, OnSetsRecursive);</span>
-&lt;permutation group with 2 generators&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">orbitals := Orbits(A7action, Combinations([1..50],2), OnSets);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">List(orbitals, Size);</span>
-[ 210, 315, 70, 420, 105, 105 ]
-</pre></div>
-
-<p>We will now make a homogeneous coherent configuration from scratch, from these orbitals.</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mat := NullMat(50,50);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">for i in [1..50] do</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">	for j in [i+1..50] do</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">		pos := First([1..Length(orbitals)], k -&gt; [i,j] in orbitals[k]);</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">		mat[i][j] := pos;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">		mat[j][i] := pos;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">	od;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">od;</span>
-</pre></div>
-
-<p>This is not a CC yet. We will fuse the relations of valency 3 and 4:</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">l := Collected(mat[1]);</span>
-[ [ 0, 1 ], [ 1, 12 ], [ 2, 18 ], [ 3, 4 ], [ 4, 12 ], [ 5, 3 ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">to_fuse := Filtered([1..Length(l)], t -&gt; l[t][2] in [3,4])-1;</span>
-[ 3, 5 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">to_fuse2 := Difference([1..6],to_fuse);</span>
-[ 1, 2, 4, 6 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">poly := InterpolatedPolynomial(Rationals, Concatenation([0], to_fuse, </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">	to_fuse2), [0,1,1,2,2,2,2] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">newmat := List(mat, row -&gt; List(row, x -&gt; Value(poly,x)));;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Collected(newmat[1]);</span>
-[ [ 0, 1 ], [ 1, 7 ], [ 2, 42 ] ]
-</pre></div>
-
-<p>This now leads us directly to the Hoffman-Singleton graph:</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cc := HomogeneousCoherentConfiguration( newmat ); </span>
-2-class association scheme of order 50
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">autHoffSing := AutomorphismGroup( cc );</span>
-&lt;permutation group with 7 generators&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StructureDescription( autHoffSing );</span>
-"PSU(3,5) : C2"
-</pre></div>
-
-<p>We will now construct the Mesner-Higman-Sims graph</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vals := Valencies(cc);</span>
-[ 1, 7, 42 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">adjmat := AdjacencyMatrices(cc)[ Position(vals, 42) ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">graph := Graph(autHoffSing, [1..50], OnPoints, {x,y} -&gt; adjmat[x][y]=1);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">one_coclique := CompleteSubgraphsOfGivenSize(graph, 15)[1];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">all_cocliques := Orbit(autHoffSing, </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">	Set(VertexNames(graph){one_coclique}), OnSets);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size(all_cocliques);</span>
-100
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := Action(autHoffSing, all_cocliques, OnSets);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := SchurianScheme(G);</span>
-4-class homogeneous coherent configuration of order 100
-</pre></div>
-
-<p>Now fuse the relations with valencies 7 and 15 (and the complement)</p>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vals := Valencies(a);</span>
-[ 1, 35, 42, 15, 7 ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">to_fuse := Filtered([1..Length(vals)], t -&gt; vals[t] in [7,15])-1;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">to_fuse2 := Difference([1..4], to_fuse);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fusion := FusionOfHomogeneousCoherentConfigurations(a, [[0], to_fuse,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">	to_fuse2]);</span>
-2-class association scheme of order 100
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">autgroup2 := AutomorphismGroup(fusion);</span>
-&lt;permutation group with 10 generators&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StructureDescription(autgroup2);</span>
-"HS : C2"
-</pre></div>
+
+<h3>4 <span class="Heading">Intersection Algebra objects</span></h3>
+
+<p><a id="X851AE2B98382B550" name="X851AE2B98382B550"></a></p>
+
+<h4>4.1 <span class="Heading">Core functionality</span></h4>
+
+<p><a id="X80FF69E585F8E179" name="X80FF69E585F8E179"></a></p>
+
+<h5>4.1-1 IntersectionAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntersectionAlgebra</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Takes a list of intersection matrices, B, and returns the Intersection Algebra. The intersection matrix <span class="Math">(B_i)_{jk} = p_{ij}^k</span> must be for valid intersection numbers <span class="Math">p_{ij}^k</span> for some homogeneous coherent configuration.</p>
+
+<p><a id="X790BECF9797E075D" name="X790BECF9797E075D"></a></p>
+
+<h5>4.1-2 IntersectionMatrices</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntersectionMatrices</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Returns a list L of the intersection matrices of an intersecgion algebra object, <span class="Math">CC</span>, where the <span class="Math">i</span>-th entry of <span class="Math">L</span> is <span class="Math">B_{i-1}</span> and <span class="Math">(B_{i})_{jk} = p_{ij}^k</span>.</p>
+
+<p><a id="X84FCFC117F92A772" name="X84FCFC117F92A772"></a></p>
+
+<h5>4.1-3 IntersectionNumber</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntersectionNumber</code>( <var class="Arg">CC</var>, <var class="Arg">i</var>, <var class="Arg">j</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: <span class="Math">p_{ij}^k</span></p>
+
+<p>Returns the intersection number <span class="Math">p_{ij}^k</span> for a intersection algebra.</p>
+
+<p><a id="X7C4F5A1485AA676B" name="X7C4F5A1485AA676B"></a></p>
+
+<h5>4.1-4 NumberOfClasses</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NumberOfClasses</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: d</p>
+
+<p>Returns <span class="Math">d</span> for a <span class="Math">d</span>-class intersection algebra.</p>
+
+<p><a id="X7B14A4317DEE2AC5" name="X7B14A4317DEE2AC5"></a></p>
+
+<h5>4.1-5 Valencies</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Valencies</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Returns a list L of valencies of a coherent configuration CC. The <span class="Math">i</span>-th entry of <span class="Math">L</span> is <span class="Math">k_{i-1}</span>.</p>
+
+<p><a id="X7B8F4F6C78A44799" name="X7B8F4F6C78A44799"></a></p>
+
+<h5>4.1-6 Order</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Order</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: n</p>
+
+<p>Returns the order <span class="Math">n</span> (number of vertices) of the intersection algebra.</p>
+
+<p><a id="X791D09F6835ED527" name="X791D09F6835ED527"></a></p>
+
+<h5>4.1-7 SplittingField</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SplittingField</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: F</p>
+
+<p>Returns the splitting field of the CC</p>
+
+<p><a id="X87E3C51878414487" name="X87E3C51878414487"></a></p>
+
+<h5>4.1-8 HasRationalSplittingField</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HasRationalSplittingField</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Returns true if the splitting field is the rationals, false otherwise.</p>
+
+<p><a id="X7DD2B3A679EA3698" name="X7DD2B3A679EA3698"></a></p>
+
+<h5>4.1-9 KreinParameter</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; KreinParameter</code>( <var class="Arg">CC</var>, <var class="Arg">i</var>, <var class="Arg">j</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: <span class="Math">q_{i,j}^k</span></p>
+
+<p>Compute the krein parameter <span class="Math">q_{i,j}^k</span> of a commutative intersection algebra.</p>
+
+<p><a id="X7F5118AC83CA120C" name="X7F5118AC83CA120C"></a></p>
+
+<h5>4.1-10 KreinParameters</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; KreinParameters</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Return a list <span class="Math">L</span> of all Krein parameters of a commutative intersection algebra, where <span class="Math">L[i][j,k] = q_{i,j}^k</span>.</p>
+
+<p><a id="X7DD1A98E84BEECBF" name="X7DD1A98E84BEECBF"></a></p>
+
+<h5>4.1-11 IsQBipartite</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsQBipartite</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Returns if the intersection algebra CC is Q-bipartite.</p>
+
+<p><a id="X87C231C084A2CA1C" name="X87C231C084A2CA1C"></a></p>
+
+<h5>4.1-12 IsPBipartite</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPBipartite</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Returns if the intersection algebra CC is bipartite.</p>
+
+<p><a id="X7F9A176979843B60" name="X7F9A176979843B60"></a></p>
+
+<h5>4.1-13 IsQAntipodal</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsQAntipodal</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Returns if the intersection algebra CC is Q-antipodal.</p>
+
+<p><a id="X85898F2779981DC3" name="X85898F2779981DC3"></a></p>
+
+<h5>4.1-14 IsPAntipodal</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPAntipodal</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Returns if the intersection algebra CC is antipodal.</p>
+
+<p><a id="X7E1425D9780A8CA6" name="X7E1425D9780A8CA6"></a></p>
+
+<h5>4.1-15 ReorderRelations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ReorderRelations</code>( <var class="Arg">CC</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: coherent configuration</p>
+
+<p>Takes a intersection algebra CC and a list L, where L is a reordering of the relations. Returns an intersection algebra where the <span class="Math">i</span>-th relation of the CC becomes the <span class="Math">j</span>-th relation in the intersection algebra, where <span class="Math">j = L_i</span>. Note that <span class="Math">L_i</span> must be equal to <span class="Math">\{0, \ldots, d \}</span> as a set, and additionally requires that <span class="Math">L_1 = 0</span>.</p>
+
+<p><a id="X86F72366870753E3" name="X86F72366870753E3"></a></p>
+
+<h5>4.1-16 ReorderMinimalIdempotents</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ReorderMinimalIdempotents</code>( <var class="Arg">CC</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: coherent configuration</p>
+
+<p>Takes an intersection algebra CC and a list L, where L is a reordering of the minimal idempotents. Returns an intersection algebra where the <span class="Math">i</span>-th idempotent of the CC becomes the <span class="Math">j</span>-th idempotent in the new intersection algebra, where <span class="Math">j = L_i</span>. Note that <span class="Math">L_i</span> must be equal to <span class="Math">\{0, \ldots, d \}</span> as a set, and additionally requires that <span class="Math">L_1 = 0</span>.</p>
+
+<p><a id="X7EE0A7017A7A89EE" name="X7EE0A7017A7A89EE"></a></p>
+
+<h5>4.1-17 ViewRelationDistributionDiagram</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ViewRelationDistributionDiagram</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true (Displays relation distribution diagram)</p>
+
+<p>Take a CC and display the relation-distribution diagram with respect to <span class="Math">R_1</span>.</p>
+
+<p><a id="X7D34641A79D5A111" name="X7D34641A79D5A111"></a></p>
+
+<h5>4.1-18 IsCommutative</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCommutative</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Checks if the input is a commutative intersection algebra.</p>
+
+<p><a id="X787265D5870A8B9A" name="X787265D5870A8B9A"></a></p>
+
+<h5>4.1-19 IsSymmetricIntersectionAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSymmetricIntersectionAlgebra</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Checks if the input is a symmetric intersection algebra.</p>
+
+<p><a id="X8034C62985C2232A" name="X8034C62985C2232A"></a></p>
+
+<h5>4.1-20 NumberOfCharacters</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NumberOfCharacters</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: n</p>
+
+<p>Returns the number <span class="Math">n</span> of characters of CC.</p>
+
+<p><a id="X820CD05F85142F0A" name="X820CD05F85142F0A"></a></p>
+
+<h4>4.2 <span class="Heading">Constructor methods</span></h4>
+
+<p><a id="X7E05148D80305715" name="X7E05148D80305715"></a></p>
+
+<h5>4.2-1 IntersectionAlgebraFromMatrixOfEigenvalues</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntersectionAlgebraFromMatrixOfEigenvalues</code>( <var class="Arg">P</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: intersection algebra object</p>
+
+<p>Returns the intersection algebra determined by a matrix of eigenvalues.</p>
+
+<p><a id="X86DFDA3F86B4390D" name="X86DFDA3F86B4390D"></a></p>
+
+<h5>4.2-2 HammingSchemeIntersectionAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HammingSchemeIntersectionAlgebra</code>( <var class="Arg">n</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: intersection algebra objectn</p>
+
+<p>Returns the intersection algebra of the Hamming scheme, <span class="Math">H(n, q)</span>.</p>
+
+<p><a id="X7D09346C8602DBAA" name="X7D09346C8602DBAA"></a></p>
+
+<h5>4.2-3 GrassmanSchemeIntersectionAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GrassmanSchemeIntersectionAlgebra</code>( <var class="Arg">n</var>, <var class="Arg">k</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: intersection algebra object</p>
+
+<p>Returns the intersection algebra of the Grassmann scheme, <span class="Math">J_q(n, k)</span>.</p>
+
+<p><a id="X7E2E077F81242C77" name="X7E2E077F81242C77"></a></p>
+
+<h5>4.2-4 CyclotomicSchemeIntersectionAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CyclotomicSchemeIntersectionAlgebra</code>( <var class="Arg">n</var>, <var class="Arg">d</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: intersection algebra object</p>
+
+<p>Returns the intersection algebra of the Cyclotomic scheme, <span class="Math">Cyc(n, d)</span>.</p>
+
+<p><a id="X7813B9CB85C361CB" name="X7813B9CB85C361CB"></a></p>
+
+<h5>4.2-5 IntersectionAlgebraFromIntersectionArray</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntersectionAlgebraFromIntersectionArray</code>( <var class="Arg">n</var>, <var class="Arg">k</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: intersection algebra object</p>
+
+<p>Returns the intersection algebra of a DRG given by its intersection array.</p>
+
+<p><a id="X7AA6FADB83444453" name="X7AA6FADB83444453"></a></p>
+
+<h5>4.2-6 IntersectionAlgebraFromClassicalParameters</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntersectionAlgebraFromClassicalParameters</code>( <var class="Arg">n</var>, <var class="Arg">k</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: intersection algebra object</p>
+
+<p>Returns the intersection algebra of a DRG given by its classical parameters.</p>
+
+<p><a id="X82E28A4E83434396" name="X82E28A4E83434396"></a></p>
+
+<h5>4.2-7 IntersectionAlgebraFromStronglyRegularGraphParameters</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntersectionAlgebraFromStronglyRegularGraphParameters</code>( <var class="Arg">n</var>, <var class="Arg">k</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: intersection algebra object</p>
+
+<p>Returns the intersection algebra of a SRG given by its parameters <span class="Math">[n, k, \lambda, \mu]</span>.</p>
+
+<p><a id="X7887CDF2811D5AAD" name="X7887CDF2811D5AAD"></a></p>
+
+<h5>4.2-8 IsFusionOfHomogeneousCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsFusionOfHomogeneousCoherentConfiguration</code>( <var class="Arg">CC</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Takes the intersection algebra object of a <span class="Math">d</span>-class homogeneous coherent configuration CC, and checks if the partion L of <span class="Math">\{0, \ldots, d\}</span> corresponds to a valid fusion.</p>
+
+<p><a id="X7CF0D6B878269365" name="X7CF0D6B878269365"></a></p>
+
+<h5>4.2-9 SchurianSchemeIntersectionAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SchurianSchemeIntersectionAlgebra</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: intersection algebra</p>
+
+<p>Returns the Schurian scheme defined by <span class="Math">G</span>, where <span class="Math">G</span> is a transitive permutation group. A Schurian scheme is a special case of CoherentConfigurationByOrbitals and is symmetric.</p>
+
+<p><a id="X7FC3546D85D4FF29" name="X7FC3546D85D4FF29"></a></p>
+
+<h4>4.3 <span class="Heading">Automorphisms and maps</span></h4>
+
+<p><a id="X7F58CA6B87D5D9B9" name="X7F58CA6B87D5D9B9"></a></p>
+
+<h5>4.3-1 MapFromIntersectionMatricesToCentralIdempotents</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MapFromIntersectionMatricesToCentralIdempotents</code>( <var class="Arg">I</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: M</p>
+
+<p>Takes an intersection algebra object, I, and returns a matrix, M, which maps the intersection matrices to the central idempotents of the intersection algebra. The central idempotent <span class="Math">F_i = \sum_{i=1}^{d+1} M_{ij} B_j</span>.</p>
+
+<p><a id="X8524F6998417238B" name="X8524F6998417238B"></a></p>
+
+<h5>4.3-2 MapFromIntersectionMatricesToCentralIdempotentsOverRationals</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MapFromIntersectionMatricesToCentralIdempotentsOverRationals</code>( <var class="Arg">I</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: M</p>
+
+<p>Takes an intersection algebra object, I, and returns a matrix, M, which maps the intersection matrices to the central idempotents of the intersection algebra over the rationals. The central idempotent <span class="Math">F_i = \sum_{i=1}^{d+1} M_{ij} B_j</span>.</p>
+
+<p><a id="X7D7B6E69830C785E" name="X7D7B6E69830C785E"></a></p>
+
+<h5>4.3-3 ImageOfIntersectionAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ImageOfIntersectionAlgebra</code>( <var class="Arg">$A$</var>, <var class="Arg">$\sigma$</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true <span class="Math">A^\sigma</span></p>
+
+<p>Take a <span class="Math">d</span>-class intersection algebra <span class="Math">A</span> and return its image under the permutation <span class="Math">\sigma \in Sym([1 .. d])</span>. If <span class="Math">p_{ij}^k</span> is an intersection number of <span class="Math">A</span>, then in the image the intersection number is <span class="Math">p_{i^\sigma j^\sigma}^{k^\sigma}</span></p>
+
+<p><a id="X80E1857E7CF06B41" name="X80E1857E7CF06B41"></a></p>
+
+<h5>4.3-4 IsomorphismIntersectionAlgebras</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismIntersectionAlgebras</code>( <var class="Arg">$A$</var>, <var class="Arg">$B$</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: <span class="Math">\sigma</span></p>
+
+<p>Take two <span class="Math">d</span>-class intersection algebras <span class="Math">A</span> and <span class="Math">B</span> and return <span class="Math">\sigma \in Sym([1 .. d])</span> such that <span class="Math">A^\sigma = B</span>.</p>
+
+<p><a id="X7AEFAE9F7C8FD7FC" name="X7AEFAE9F7C8FD7FC"></a></p>
+
+<h5>4.3-5 AreIsomorphicIntersectionAlgebras</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AreIsomorphicIntersectionAlgebras</code>( <var class="Arg">$A$</var>, <var class="Arg">$B$</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: <span class="Math">\sigma</span></p>
+
+<p>Take two <span class="Math">d</span>-class intersection algebras <span class="Math">A</span> and <span class="Math">B</span> and return true if they are isomorphic. Return false otherwise.</p>
+
+<p><a id="X78D9D1E2827ADA58" name="X78D9D1E2827ADA58"></a></p>
+
+<h5>4.3-6 CanonisingMap</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CanonisingMap</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: perm</p>
+
+<p>Returns two permutations which will produce the canonical form of the intersection algebra A. The canonical form can be obtained by ImageOfIntersectionAlgebra(A, perm) Any intersection algebra which is isomorphic to A will the same canonical form.</p>
+
+<p><a id="X7FD9045C7A8D2F75" name="X7FD9045C7A8D2F75"></a></p>
+
+<h5>4.3-7 CanonicalFormOfIntersectionAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CanonicalFormOfIntersectionAlgebra</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: B</p>
+
+<p>Returns the canonical form, B, of the intersection algebra A. Any intersection algebra which is isomorphic to A will have B as the canonical form.</p>
+
+<p><a id="X8521C6DD7DBDE766" name="X8521C6DD7DBDE766"></a></p>
+
+<h5>4.3-8 AutomorphismGroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AutomorphismGroup</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: G</p>
+
+<p>Returns the automorphism group <span class="Math">G</span> of the intersection algebra object A. <span class="Math">G</span> is a permutation group acting on the relations, such that for all <span class="Math">g \in G</span>, <span class="Math">p_{i^g j^g}^{k^g} = p_{ij}^k</span>.</p>
+
+<p><a id="X791CDD977B9FD97A" name="X791CDD977B9FD97A"></a></p>
+
+<h4>4.4 <span class="Heading">Fusions</span></h4>
+
+<p><a id="X7A2AE752848B5FEB" name="X7A2AE752848B5FEB"></a></p>
+
+<h5>4.4-1 IsFusionOfIntersectionAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsFusionOfIntersectionAlgebra</code>( <var class="Arg">CC</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Takes a <span class="Math">d</span>-class homogeneous coherent configuration CC, and checks if the partion L of <span class="Math">\{0, \ldots, d\}</span> corresponds to a valid fusion.</p>
+
+<p><a id="X7F43C9937A538D77" name="X7F43C9937A538D77"></a></p>
+
+<h5>4.4-2 FusionOfIntersectionAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FusionOfIntersectionAlgebra</code>( <var class="Arg">CC</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Takes a <span class="Math">d</span>-class homogeneous coherent configuration CC and returns a fusion scheme corresponding to L, where L is a partion of <span class="Math">\{0, \ldots, d\}</span>. Note that the ordering of the cells of L is irrelevant. The method will sort the fused relations according to the smallest value in each cell.</p>
+
+<p><a id="X8435162780C90C07" name="X8435162780C90C07"></a></p>
+
+<h5>4.4-3 ConverseRelationPairs</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ConverseRelationPairs</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Returns a list L of either tuples or singletons, corresponding to relations and their converses or symmetric relations.</p>
+
+<p><a id="X7D8A365087D85C0D" name="X7D8A365087D85C0D"></a></p>
+
+<h5>4.4-4 ConverseRelation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ConverseRelation</code>( <var class="Arg">CC</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: j</p>
+
+<p>Returns j such that <span class="Math">R_j = R_i^\top</span>, the converse relation of <span class="Math">i</span> .</p>
+
+<p><a id="X8530E48E83318A72" name="X8530E48E83318A72"></a></p>
+
+<h5>4.4-5 IsStratifiable</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsStratifiable</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>If the fusion of transposed relations produces a valid association scheme, then CC is stratifiable.</p>
+
+<p><a id="X81CC46958133415A" name="X81CC46958133415A"></a></p>
+
+<h5>4.4-6 SymmetrisationOfIntersectionAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SymmetrisationOfIntersectionAlgebra</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: Association scheme</p>
+
+<p>Given a homogeneous coherent configuration, CC, the symmetrisation is computed if possible, otherwise fail is returned. The symmetrisation of a homogeneous coherent configuration takes any non-symmetric relations and fuses them together. The result may or may not be a valid homogeneous coherent configuration. If it is valid, then it is an association scheme (Symmetric coherent configuration). If CC is commutative, then it can be symmetrised.</p>
+
+<p><a id="X8212A528859E9045" name="X8212A528859E9045"></a></p>
+
+<h5>4.4-7 FeasibleNonTrivialFusionsOfIntersectionAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FeasibleNonTrivialFusionsOfIntersectionAlgebra</code>( <var class="Arg">CC</var>[, <var class="Arg">k</var>[, <var class="Arg">flag</var>]] )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: list of feasibly fusionable relations</p>
+
+<p>Returns a list where each entry is a collection of relations which may be fused to form a feasible homogeneous coherent configuration Trivial means either no relations are fused, or all non-identity relations are fused. If the additional argument k is given, only fusions with k-classes are returned. If flag is also given and is equal to true, then all fusions with at most k-classes are returned.</p>
+
+<p><a id="X7A42D1AF80E1C9A8" name="X7A42D1AF80E1C9A8"></a></p>
+
+<h5>4.4-8 AllNonTrivialFusionsOfIntersectionAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllNonTrivialFusionsOfIntersectionAlgebra</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: List of all non-trivial fusions of CC</p>
+
+<p>Returns a list of all homogeneous coherent configurations such that each element of the list is a non-trivial fusion of CC. Trivial means either no relations are fused, or all non-identity relations are fused. If the additional argument k is given, only fusions with k-classes are returned. If flag is also given and is equal to true, then all fusions with at most k-classes are returned.</p>
+
+<p><a id="X7CE39DC97A0F1393" name="X7CE39DC97A0F1393"></a></p>
+
+<h5>4.4-9 AllFusionsOfIntersectionAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllFusionsOfIntersectionAlgebra</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: List of all fusions of CC</p>
+
+<p>Returns a list of all homogeneous coherent configurations such that each element of the list is a fusion of CC. Includes trivial fusions, i.e the original homogeneous coherent configuration, and the coherent configuration resulting from the fusion of all non-identity relations</p>
+
+<p><a id="X82A5979583C921AD" name="X82A5979583C921AD"></a></p>
+
+<h5>4.4-10 FeasibleNonTrivialSymmetricFusionsOfIntersectionAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FeasibleNonTrivialSymmetricFusionsOfIntersectionAlgebra</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: list of feasibly fusionable relations</p>
+
+<p>Returns a list where each entry is a collection of relations which may be fused to form a feasible association scheme (i.e. relations are symmetric) Trivial means either no relations are fused, or all non-identity relations are fused. If the additional argument k is given, only fusions with k-classes are returned. If flag is also given and is equal to true, then all fusions with at most k-classes are returned.</p>
+
+<p><a id="X874E117E7CF92FA3" name="X874E117E7CF92FA3"></a></p>
+
+<h5>4.4-11 AllNonTrivialSymmetricFusionsOfIntersectionAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllNonTrivialSymmetricFusionsOfIntersectionAlgebra</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: List of all non-trivial fusions of CC</p>
+
+<p>Returns a list of all association schemes (i.e symmetric relations) such that each element of the list is a non-trivial fusion of CC. Trivial means either no relations are fused, or all non-identity relations are fused. If the additional argument k is given, only fusions with k-classes are returned. If flag is also given and is equal to true, then all fusions with at most k-classes are returned.</p>
+
+<p><a id="X84881BF07A927379" name="X84881BF07A927379"></a></p>
+
+<h5>4.4-12 AllSymmetricFusionsOfIntersectionAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllSymmetricFusionsOfIntersectionAlgebra</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: List of all fusions of CC</p>
+
+<p>Returns a list of all association schemes (i.e symmetric relations) such that each element of the list is a fusion of CC. Includes trivial fusions, i.e the original homogeneous coherent configuration (if it is an association scheme), and the coherent configuration resulting from the fusion of all non-identity relations</p>
+
+<p><a id="X7EBD17797F391938" name="X7EBD17797F391938"></a></p>
+
+<h4>4.5 <span class="Heading">Intersection algebra</span></h4>
+
+<p><a id="X85467C9F78AE489A" name="X85467C9F78AE489A"></a></p>
+
+<h5>4.5-1 CentralIdempotentsOfIntersectionAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CentralIdempotentsOfIntersectionAlgebra</code>( <var class="Arg">I</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: central idempotents</p>
+
+<p>Returns the central idempotents of the intersection algebra.</p>
+
+<p><a id="X81043F1E7EBF019E" name="X81043F1E7EBF019E"></a></p>
+
+<h5>4.5-2 CentralIdempotentsOfIntersectionAlgebraOverRationals</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CentralIdempotentsOfIntersectionAlgebraOverRationals</code>( <var class="Arg">I</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: central idempotents</p>
+
+<p>Returns the central idempotents of the intersection algebra over the rationals.</p>
+
+<p><a id="X8214E4828479DB33" name="X8214E4828479DB33"></a></p>
+
+<h5>4.5-3 MatrixOfDualEigenvalues</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MatrixOfDualEigenvalues</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: Q</p>
+
+<p>Returns a the dual matrix of eigenvalues, <span class="Math">Q</span>, for a homogeneous coherent configuration CC.</p>
+
+<p><a id="X79DF2613822843F2" name="X79DF2613822843F2"></a></p>
+
+<h5>4.5-4 MatrixOfEigenvalues</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MatrixOfEigenvalues</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: P</p>
+
+<p>Returns a the matrix of eigenvalues (or character table), <span class="Math">P</span>, for the intersection algebra of a homogeneous coherent configuration CC.</p>
+
+<p><a id="X86A133187ED9D892" name="X86A133187ED9D892"></a></p>
+
+<h5>4.5-5 FitMatrixOfEigenvalues</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FitMatrixOfEigenvalues</code>( <var class="Arg">A</var>, <var class="Arg">P</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: P2</p>
+
+<p>Checks if P is the matrix of eigenvalues of intersection algebra A, upto some reordering of the columns. In such a case, P2, the reordered matrix is returned. If not, returns fail.</p>
+
+<p><a id="X7EEAC69486AF989B" name="X7EEAC69486AF989B"></a></p>
+
+<h4>4.6 <span class="Heading">Metric schemes</span></h4>
+
+<p><a id="X80974BA47FC6BF38" name="X80974BA47FC6BF38"></a></p>
+
+<h5>4.6-1 IsPPolynomial</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPPolynomial</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Returns if the homogeneous coherent configuration CC is P-polynomial.</p>
+
+<p><a id="X7C84FB8B7CF27E91" name="X7C84FB8B7CF27E91"></a></p>
+
+<h5>4.6-2 FirstPPolynomialOrdering</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FirstPPolynomialOrdering</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: P-polynomial ordering or fail</p>
+
+<p>Returns the first P-polynomial ordering admitted by the homogeneous coherent configuration CC, and fail otherwise.</p>
+
+<p><a id="X85C393DD7D3AC351" name="X85C393DD7D3AC351"></a></p>
+
+<h5>4.6-3 AdmitsPPolynomialOrdering</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdmitsPPolynomialOrdering</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Returns if the homogeneous coherent configuration CC admits a P-polynomial ordering.</p>
+
+<p><a id="X86FE341F8436B2F1" name="X86FE341F8436B2F1"></a></p>
+
+<h5>4.6-4 IsMetric</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMetric</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Alias for IsPPolynomial.</p>
+
+<p><a id="X7EF0929E86278943" name="X7EF0929E86278943"></a></p>
+
+<h5>4.6-5 FirstMetricOrdering</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FirstMetricOrdering</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: metric ordering or fail</p>
+
+<p>Alias for FirstPPolynomialOrdering.</p>
+
+<p><a id="X8234F6FC878D0573" name="X8234F6FC878D0573"></a></p>
+
+<h5>4.6-6 AdmitsMetricOrdering</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdmitsMetricOrdering</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Alias for AdmitsPPolynomialOrdering.</p>
+
+<p><a id="X790D7CDB85570564" name="X790D7CDB85570564"></a></p>
+
+<h5>4.6-7 AllPPolynomialOrderings</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllPPolynomialOrderings</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Calculate the list <span class="Math">L</span> of all P-polynomial orderings of a homogeneous coherent configuration.</p>
+
+<p><a id="X7B0635CC80BED05D" name="X7B0635CC80BED05D"></a></p>
+
+<h5>4.6-8 AllMetricOrderings</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllMetricOrderings</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Alias for AllPPolynomialOrderings.</p>
+
+<p><a id="X7BE960BF807C8725" name="X7BE960BF807C8725"></a></p>
+
+<h5>4.6-9 IntersectionArray</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntersectionArray</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: List</p>
+
+<p>Returns the intersection array if CC is P-polynomial.</p>
+
+<p><a id="X7AFB848F7D33F5CA" name="X7AFB848F7D33F5CA"></a></p>
+
+<h5>4.6-10 ClassicalParameters</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ClassicalParameters</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: [d, b, <span class="Math">\alpha</span>, <span class="Math">\beta</span>]</p>
+
+<p>Returns the classical parameters if the CC is metric with classical parameters.</p>
+
+<p><a id="X83418B9878424CF5" name="X83418B9878424CF5"></a></p>
+
+<h5>4.6-11 StronglyRegularGraphParameters</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StronglyRegularGraphParameters</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: [d, b, <span class="Math">\alpha</span>, <span class="Math">\beta</span>]</p>
+
+<p>Returns the parameters <span class="Math">\{n, k; \lambda, \mu \}</span> if the CC is an association scheme with 2 classes.</p>
+
+<p><a id="X81F482747C1E7A48" name="X81F482747C1E7A48"></a></p>
+
+<h4>4.7 <span class="Heading">Cometric schemes</span></h4>
+
+<p><a id="X79607CE4875DB3EA" name="X79607CE4875DB3EA"></a></p>
+
+<h5>4.7-1 AdmitsQPolynomialOrdering</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdmitsQPolynomialOrdering</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Returns if the homogeneous coherent configuration CC admits a Q-polynomial ordering.</p>
+
+<p><a id="X7C1CE6DC85622EE0" name="X7C1CE6DC85622EE0"></a></p>
+
+<h5>4.7-2 AdmitsCometricOrdering</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdmitsCometricOrdering</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Alias for AdmitsQPolynomialOrdering.</p>
+
+<p><a id="X84E674CB7FDA999B" name="X84E674CB7FDA999B"></a></p>
+
+<h5>4.7-3 IsQPolynomial</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsQPolynomial</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Returns if the commutative coherent configuration CC is Q-polynomial.</p>
+
+<p><a id="X7A4AEBE3825C32B9" name="X7A4AEBE3825C32B9"></a></p>
+
+<h5>4.7-4 IsCometric</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCometric</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Alias for is Q-polynomial.</p>
+
+<p><a id="X7F91B31B7EDCC312" name="X7F91B31B7EDCC312"></a></p>
+
+<h5>4.7-5 AllQPolynomialOrderings</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllQPolynomialOrderings</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Calculate a list <span class="Math">L</span> of all Q-polynomial orderings of a homogeneous coherent configuration.</p>
+
+<p><a id="X7B05438D7C4760D8" name="X7B05438D7C4760D8"></a></p>
+
+<h5>4.7-6 AllCometricOrderings</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllCometricOrderings</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Alias for AllQPolynomialOrderings.</p>
+
+<p><a id="X83156F2F7C785E65" name="X83156F2F7C785E65"></a></p>
+
+<h5>4.7-7 KreinArray</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; KreinArray</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: List</p>
+
+<p>Returns the Krein (or dual intersection) array if CC is Q-polynomial.</p>
+
+<p><a id="X81BB6D5B7BC9A829" name="X81BB6D5B7BC9A829"></a></p>
+
+<h5>4.7-8 DualIntersectionArray</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DualIntersectionArray</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: List</p>
+
+<p>Alias for KreinArray.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

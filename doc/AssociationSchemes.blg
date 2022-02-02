@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: AssociationSchemes.aux
+The style file: alpha.bst
+Database file #1: AssociationSchemes.bib.bib
+I was expecting a `,' or a `}'---line 24 of file AssociationSchemes.bib.bib
+ :   
+ :   title = {Classification of association schemes with small vertices},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You've used 7 entries,
+            2543 wiz_defined-function locations,
+            602 strings with 5619 characters,
+and the built_in function-call counts, 2483 in all, are:
+= -- 224
+> -- 155
+< -- 2
++ -- 55
+- -- 54
+* -- 169
+:= -- 436
+add.period$ -- 23
+call.type$ -- 7
+change.case$ -- 46
+chr.to.int$ -- 7
+cite$ -- 7
+duplicate$ -- 88
+empty$ -- 172
+format.name$ -- 60
+if$ -- 493
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 6
+newline$ -- 39
+num.names$ -- 18
+pop$ -- 66
+preamble$ -- 1
+purify$ -- 58
+quote$ -- 0
+skip$ -- 74
+stack$ -- 0
+substring$ -- 51
+swap$ -- 7
+text.length$ -- 2
+text.prefix$ -- 3
+top$ -- 0
+type$ -- 44
+warning$ -- 0
+while$ -- 16
+width$ -- 11
+write$ -- 88
+(There was 1 error message)

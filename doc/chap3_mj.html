@@ -8,7 +8,7 @@
 <script type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<title>GAP (AssociationSchemes) - Chapter 3: Functionality</title>
+<title>GAP (AssociationSchemes) - Chapter 3: Homogeneous Coherent Configuration objects</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -18,14 +18,14 @@
 <body class="chap3"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap3.html">[MathJax off]</a></p>
-<p><a id="X87F1120883F5B4D0" name="X87F1120883F5B4D0"></a></p>
-<div class="ChapSects"><a href="chap3_mj.html#X87F1120883F5B4D0">3 <span class="Heading">Functionality</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X820CD05F85142F0A">3.1 <span class="Heading">Constructor Methods</span></a>
+<p><a id="X7CD35ADB7EC02992" name="X7CD35ADB7EC02992"></a></p>
+<div class="ChapSects"><a href="chap3_mj.html#X7CD35ADB7EC02992">3 <span class="Heading">Homogeneous Coherent Configuration objects</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X851AE2B98382B550">3.1 <span class="Heading">Core functionality</span></a>
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X862EA9667BCADC04">3.1-1 HomogeneousCoherentConfiguration</a></span>
@@ -33,106 +33,190 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C92838B87816988">3.1-3 AssociationScheme</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E3565C17884BF57">3.1-4 AssociationSchemeNC</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C7210787E5A87D0">3.1-5 ReorderRelations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79D2FE8C7AC7C2A6">3.1-6 SaveHomogeneousCoherentConfigurationWithCertainAttributes</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F1CC5F2874495B4">3.1-7 ReadHomogeneousCoherentConfigurationWithCertainAttributes</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83DA0DF97CE4EEBB">3.1-8 BilinearFormsScheme</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X85D3B60C8693F466">3.1-9 HomogeneousCoherentConfigurationByOrbitals</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B20E1AC7CAFCA4D">3.1-10 HomogeneousCoherentConfigurationByOrbitals</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C6A577980AFC545">3.1-11 GrassmannScheme</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86AE1E9C7B3A87A3">3.1-12 GroupCoherentConfiguration</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X84E428FD7E53D329">3.1-13 HammingScheme</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87F73F177F55A0A6">3.1-14 JohnsonScheme</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8610716786531117">3.1-15 HomogeneousCoherentConfiguration</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83905BC079F11C47">3.1-16 NumberOfHomogeneousCoherentConfigurations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B72D0D081591C5E">3.1-17 AvailableHomogeneousCoherentConfigurations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X78064175875695D6">3.1-18 AllHomogeneousCoherentConfigurations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X80FE63407BCB0EF6">3.1-19 FusionOfHomogeneousCoherentConfigurations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X82C27C987D42E738">3.1-20 DirectProductOfHomogeneousCoherentConfigurations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X78E3E09A7C979521">3.1-21 WreathProductOfHomogeneousCoherentConfigurations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7BFC0DE884896A25">3.1-22 CyclotomicScheme</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7873613B7C723A02">3.1-23 SchurianScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E5F3FFA862C3FF1">3.1-6 RelationMatrix</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81B6F58485D31123">3.1-7 Relation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81A33D6D7B581567">3.1-8 Neighbours</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86B7FB54839FB92A">3.1-9 Neighbours</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A08AD147E087933">3.1-10 IsCommutative</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X811BE49B82475787">3.1-11 IsSymmetricCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X801063A083CF6BA0">3.1-12 IsAssociationScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87DFF5E98044D47C">3.1-13 NumberOfClasses</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7FF700697A625831">3.1-14 Rank</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X795BD63780A058D3">3.1-15 AdjacencyMatrices</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F8EBBAB79CF3102">3.1-16 Order</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81D573D978ED7818">3.1-17 IntersectionNumber</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86DA7C9780CC7184">3.1-18 Valencies</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B22C9BD7B67A5AF">3.1-19 IntersectionAlgebraOfHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81A168787D0FA745">3.1-20 IntersectionMatrices</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8137DD257F503890">3.1-21 NumberOfCharacters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X829FF25680025270">3.1-22 SplittingField</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8628587081EA7495">3.1-23 HasRationalSplittingField</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X783D72627DC6C094">3.1-24 KreinParameter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F90E9B58624A11B">3.1-25 KreinParameters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79D2FE8C7AC7C2A6">3.1-26 SaveHomogeneousCoherentConfigurationWithCertainAttributes</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F1CC5F2874495B4">3.1-27 ReadHomogeneousCoherentConfigurationWithCertainAttributes</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B3A1FAB86F88033">3.1-28 IsThin</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7EE5E0897CD88C21">3.1-29 IsQuasiThin</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87769E5C7BACEF1D">3.1-30 IsPrimitive</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F853FE983D32745">3.1-31 ReorderMinimalIdempotents</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X874EB8097E4B31C9">3.1-32 ViewRelationDistributionDiagram</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86D99EDC7B479A6E">3.1-33 Description</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7FB263297897C6C9">3.2 <span class="Heading">Matrices Describing Homogeneous Coherent Configurations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X820CD05F85142F0A">3.2 <span class="Heading">Constructor methods</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E5F3FFA862C3FF1">3.2-1 RelationMatrix</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X795BD63780A058D3">3.2-2 AdjacencyMatrices</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81A168787D0FA745">3.2-3 IntersectionMatrices</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86E4696378C91275">3.2-4 MinimalIdempotents</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8644D8D47A767BAB">3.2-1 DistanceRegularGraphScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7CB794B085EF524A">3.2-2 DistanceRegularGraphSchemeNC</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B53D816825017B5">3.2-3 StronglyRegularGraphScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8180A6437DC93E54">3.2-4 StronglyRegularGraphSchemeNC</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83DA0DF97CE4EEBB">3.2-5 BilinearFormsScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7BFC0DE884896A25">3.2-6 CyclotomicScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C6A577980AFC545">3.2-7 GrassmannScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86AE1E9C7B3A87A3">3.2-8 GroupCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X84E428FD7E53D329">3.2-9 HammingScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87F73F177F55A0A6">3.2-10 JohnsonScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X82C27C987D42E738">3.2-11 DirectProductOfHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X78E3E09A7C979521">3.2-12 WreathProductOfHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X854AA5FC7C353609">3.2-13 BipartiteDoubleOfAssociationScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8534326B82EE9891">3.2-14 ExtendedQBipartiteDouble</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X85D3B60C8693F466">3.2-15 HomogeneousCoherentConfigurationByOrbitals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B20E1AC7CAFCA4D">3.2-16 HomogeneousCoherentConfigurationByOrbitals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X806EA85F83549F53">3.2-17 SchurianAssociationScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8471FF757ADD27F0">3.2-18 SchurianCoherentConfiguration</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X84DCAE9B8320046B">3.3 <span class="Heading">Properties Of Homogeneous Coherent Configurations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7970DB3384AF719F">3.3 <span class="Heading">Library</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A08AD147E087933">3.3-1 IsCommutative</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X811BE49B82475787">3.3-2 IsSymmetricCoherentConfiguration</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X801063A083CF6BA0">3.3-3 IsAssociationScheme</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7816543D7994BC51">3.3-4 IsStronglyRegularGraph</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X789D746E781B671A">3.3-5 IsPPolynomial</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X85DD4C3A86B5AC83">3.3-6 IsMetric</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X80DE65F1780741B9">3.3-7 IsQPolynomial</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B1853C97D873F75">3.3-8 IsCometric</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B3A1FAB86F88033">3.3-9 IsThin</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7EE5E0897CD88C21">3.3-10 IsQuasiThin</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87769E5C7BACEF1D">3.3-11 IsPrimitive</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X85FE64307CA22AD9">3.3-12 IsHomogeneousCoherentConfigurationByOrbitals</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E9D8FA485C36A2B">3.3-13 IsGenerouslyTransitive</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7DB4FFBC7C0A2173">3.3-14 IsGenerouslyTransitive</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8305508584992579">3.3-15 IsSchurian</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8610716786531117">3.3-1 HomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83905BC079F11C47">3.3-2 NumberOfHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B72D0D081591C5E">3.3-3 AvailableHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X78064175875695D6">3.3-4 AllHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X792738D57B9DE5EB">3.3-5 SmallSchemeIdentification</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X86A51E428337F850">3.4 <span class="Heading">Attributes Of Homogeneous Coherent Configurations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7A99E8E67C672076">3.4 <span class="Heading">Graphs, automorphisms, and maps</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87DFF5E98044D47C">3.4-1 NumberOfClasses</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F8EBBAB79CF3102">3.4-2 Order</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86DA7C9780CC7184">3.4-3 Valencies</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8137DD257F503890">3.4-4 NumberOfCharacters</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7D66223978A4AC1C">3.4-5 MatrixOfEigenvalues</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81BB73C186BA1982">3.4-6 CharacterTable</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X78A70E9384ECB89C">3.4-7 DualMatrixOfEigenvalues</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7DC6AA86846CB888">3.4-8 AutomorphismGroup</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F80E2E3851FEEF8">3.4-9 AllPPolynomialOrderings</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F90E9B58624A11B">3.4-10 KreinParameters</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X791422BC7E94288E">3.4-11 AllQPolynomialOrderings</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X792D264C80BA1A3B">3.4-12 ConstructorGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X860EBD847DBEE0E4">3.4-1 Digraph</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F5760E97D92586F">3.4-2 Digraph</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7DC6AA86846CB888">3.4-3 AutomorphismGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8165808287B61ACD">3.4-4 ImageOfHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7CC1855982DF9DE4">3.4-5 IsomorphismHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8156304D817F8C22">3.4-6 AreIsomorphicHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A6C4BCF85A7027A">3.4-7 CanonisingMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X85BE27AA7ABB96CD">3.4-8 CanonicalFormOfHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X792D264C80BA1A3B">3.4-9 ConstructorGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E9D8FA485C36A2B">3.4-10 IsGenerouslyTransitive</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7DB4FFBC7C0A2173">3.4-11 IsGenerouslyTransitive</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8305508584992579">3.4-12 IsSchurian</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X8606FDCE878850EF">3.5 <span class="Heading">Methods</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X791CDD977B9FD97A">3.5 <span class="Heading">Fusions</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81B6F58485D31123">3.5-1 Relation</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81A33D6D7B581567">3.5-2 Neighbours</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86B7FB54839FB92A">3.5-3 Neighbours</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81D573D978ED7818">3.5-4 IntersectionNumber</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X783D72627DC6C094">3.5-5 KreinParameter</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X861E3C8080FE3A0D">3.5-6 MatrixOfEigenvaluesOfHammingScheme</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X850D2B6A799A9263">3.5-7 MatrixOfEigenvaluesOfJohnsonScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81A5B33780DFAE1D">3.5-1 IsFusionOfHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81E2D8678593F6B7">3.5-2 FusionOfHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X843860417966869C">3.5-3 ConverseRelationPairs</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7FA127E67B7399C8">3.5-4 ConverseRelation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E2240F0806D0D25">3.5-5 IsStratifiable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7BB4E2B27F9E2390">3.5-6 SymmetrisationOfHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79E4F7917BF736B7">3.5-7 FusingPartitionOfHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79453D1A81CE4047">3.5-8 FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X804E8749792F2CB7">3.5-9 AllNonTrivialFusionsOfHomgeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83C9C5DB7C87500F">3.5-10 AllFusionsOfHomgeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8432F3617F33B1BE">3.5-11 FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X841E8F567F9D3C18">3.5-12 AllNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A63406C84E706E5">3.5-13 AllSymmetricFusionsOfHomgeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87D08BC5870911CF">3.5-14 IsomorphismToFusionScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X819EE3A478CD95F2">3.5-15 IsIsomorphicToFusionScheme</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7DDBF6F47A2E021C">3.6 <span class="Heading">Algebras</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7BEA38D2788CD9FC">3.6 <span class="Heading">Bose-Mesner algebra</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7DF593207D530056">3.6-1 IntersectionAlgebra</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81D2BD717BA813C0">3.6-2 BoseMesnerAlgebra</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X811233BD7EC4ED5F">3.6-3 AdjacencyAlgebra</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X820C1A5A7FF8F6B0">3.6-4 TerwilligerAlgebra</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8164E1657B7ED844">3.6-5 TerwilligerAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7AD11E4E83F31019">3.6-1 MapFromAdjacencyMatricesToMinimalIdempotents</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7951042A7DC233F1">3.6-2 MapFromAdjacencyMatricesToMinimalIdempotentsOverRationals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86E4696378C91275">3.6-3 MinimalIdempotents</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X84BFF34F7F5B4EB9">3.6-4 MinimalIdempotentsOverRationals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7D66223978A4AC1C">3.6-5 MatrixOfEigenvalues</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B5FBF42843130AF">3.6-6 MatrixOfDualEigenvalues</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X844CA82583657047">3.6-7 Multiplicities</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B3AD5F67E3FDC50">3.6-8 CharacterTableOfHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X821425FA7923B4C8">3.6-9 FitMatrixOfEigenvalues</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7BF28D4185AE6B89">3.6-10 CharacterTableOfSchurianHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X823719AA854623FB">3.6-11 MatrixOfEigenvaluesOfCyclotomicScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81D585B285091A4F">3.6-12 MatrixOfEigenvaluesOfGrassmannScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X861E3C8080FE3A0D">3.6-13 MatrixOfEigenvaluesOfHammingScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X850D2B6A799A9263">3.6-14 MatrixOfEigenvaluesOfJohnsonScheme</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7FF621D183D6F49D">3.7 <span class="Heading">Subsets And Codes</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7EEAC69486AF989B">3.7 <span class="Heading">Metric schemes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X831BFF8B81B679D8">3.7-1 InnerDistribution</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7AA8B45482AC9CAC">3.7-2 MacWilliamsTransform</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X867926D07A427660">3.7-3 DualBoseMesnerBasis</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7ADD9C5E7A3279A2">3.7-4 DualBoseMesnerBasis</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X810D3A5984A83D58">3.7-5 OuterDistribution</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X807E4FBF7B15CB1D">3.7-6 CharacteristicVector</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7FAF72567E7AFEA0">3.7-7 CharacteristicVector</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X789D746E781B671A">3.7-1 IsPPolynomial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81E16D677C3957C9">3.7-2 FirstPPolynomialOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86B225878491F343">3.7-3 AdmitsPPolynomialOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X85DD4C3A86B5AC83">3.7-4 IsMetric</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A5DF9F07CAB66AD">3.7-5 FirstMetricOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8399CD2783FCA56B">3.7-6 AdmitsMetricOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F80E2E3851FEEF8">3.7-7 AllPPolynomialOrderings</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X810B62B37A2CCBE7">3.7-8 AllMetricOrderings</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7816543D7994BC51">3.7-9 IsStronglyRegularGraph</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79B6D31979ADD8CB">3.7-10 IntersectionArray</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B51DF2587BF1A24">3.7-11 ClassicalParameters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79DDD11F7F64FDF3">3.7-12 StronglyRegularGraphParameters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8703BDD579030384">3.7-13 IsPBipartite</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7998D1728439D45B">3.7-14 IsPAntipodal</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X81F482747C1E7A48">3.8 <span class="Heading">Cometric schemes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X821E557E7EF683F8">3.8-1 AdmitsQPolynomialOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X872EC130803BD308">3.8-2 AdmitsCometricOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X80DE65F1780741B9">3.8-3 IsQPolynomial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B1853C97D873F75">3.8-4 IsCometric</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X791422BC7E94288E">3.8-5 AllQPolynomialOrderings</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F70C9E27836C0C0">3.8-6 AllCometricOrderings</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C63079983A353A9">3.8-7 KreinArray</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7EA51F43826622B2">3.8-8 DualIntersectionArray</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7FF63F24791F2527">3.8-9 IsQBipartite</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X816D53838425F2F8">3.8-10 IsQAntipodal</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X87BB51CD81E9D34A">3.9 <span class="Heading">Subsets</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X807E4FBF7B15CB1D">3.9-1 CharacteristicVector</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7FAF72567E7AFEA0">3.9-2 CharacteristicVector</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B8EAB02816156F1">3.9-3 InnerDistribution</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X823DE0DD84783724">3.9-4 MacWilliamsTransform</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X867926D07A427660">3.9-5 DualBoseMesnerBasis</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7ADD9C5E7A3279A2">3.9-6 DualBoseMesnerBasis</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79986ED0847F1271">3.9-7 OuterDistribution</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7ECE798F847B0FF4">3.9-8 DelsarteDesignType</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8633CF8481B95FE7">3.9-9 WeightedDelsarteDesignType</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A277D597C52EAA9">3.9-10 IsDelsarteTDesign</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8270DDAF7F79F0E5">3.9-11 DualDegreeSet</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7FEC532685C555AE">3.9-12 WeightedDualDegreeSet</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E263036846B1111">3.9-13 AreDesignOrthogonal</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X80EB12DF81F8C650">3.10 <span class="Heading">Approximations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A0BD21D7E275ACD">3.10-1 ApproximateRealMinimalIdempotent</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7CC529B279C1AB60">3.10-2 ApproximateRealMinimalIdempotents</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8221482C82DF4E2D">3.10-3 ApproximateRealMatrixOfEigenvalues</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7DDBF6F47A2E021C">3.11 <span class="Heading">Algebras</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81D2BD717BA813C0">3.11-1 BoseMesnerAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X811233BD7EC4ED5F">3.11-2 AdjacencyAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X820C1A5A7FF8F6B0">3.11-3 TerwilligerAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8164E1657B7ED844">3.11-4 TerwilligerAlgebra</a></span>
 </div></div>
 </div>
 
-<h3>3 <span class="Heading">Functionality</span></h3>
+<h3>3 <span class="Heading">Homogeneous Coherent Configuration objects</span></h3>
 
-<p><a id="X820CD05F85142F0A" name="X820CD05F85142F0A"></a></p>
+<p><a id="X851AE2B98382B550" name="X851AE2B98382B550"></a></p>
 
-<h4>3.1 <span class="Heading">Constructor Methods</span></h4>
+<h4>3.1 <span class="Heading">Core functionality</span></h4>
 
 <p><a id="X862EA9667BCADC04" name="X862EA9667BCADC04"></a></p>
 
@@ -141,7 +225,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HomogeneousCoherentConfiguration</code>( <var class="Arg">M</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: homogeneous coherent configuration</p>
 
-<p>Takes the relationship matrix, <span class="SimpleMath">\(M\)</span>, describing a homogensous coherent configuration and returns a HomogeneousCoherentConfiguration object. The matrix <span class="SimpleMath">\(M = \sum_{i=0}^d i A_i\)</span>, where <span class="SimpleMath">\(A_i\)</span> are the adjacency matrices describing a coherent configuration. Checks that the matrix satisfies the axioms of a homogeneous coherent configuration. (Note that this accepts a matrix of the form <span class="SimpleMath">\(M = \sum_{i=0}^d a_i A_i\)</span> where <span class="SimpleMath">\(a_i\)</span> is not equal to <span class="SimpleMath">\(i\)</span>, however, it will first convert to the form <span class="SimpleMath">\(M = \sum_{i=0}^d i A_i\)</span>).</p>
+<p>Takes the relationship matrix, <span class="SimpleMath">\(M\)</span>, describing a homogeneous coherent configuration and returns a HomogeneousCoherentConfiguration object. The matrix <span class="SimpleMath">\(M = \sum_{i=0}^d i A_i\)</span>, where <span class="SimpleMath">\(A_i\)</span> are the adjacency matrices describing a coherent configuration. Checks that the matrix satisfies the axioms of a homogeneous coherent configuration.</p>
 
 <p><a id="X7E6AEC267E78078C" name="X7E6AEC267E78078C"></a></p>
 
@@ -159,7 +243,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociationScheme</code>( <var class="Arg">M</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: homogeneous coherent configuration</p>
 
-<p>Takes the relationship matrix, <span class="SimpleMath">\(M\)</span>, describing an associatioin scheme and returns a association scheme (symmetric coherent configuration). This is simply a HomogeneousCoherentConfiguration object, but with the known property of being symmetric. The matrix <span class="SimpleMath">\(M = \sum_{i=0}^d i A_i\)</span>, where <span class="SimpleMath">\(A_i\)</span> are the adjacency matrices describing an association scheme. Checks that the matrix satisfies the association scheme axioms. (Note that this accepts a matrix of the form <span class="SimpleMath">\(M = \sum_{i=0}^d a_i A_i\)</span> where <span class="SimpleMath">\(a_i\)</span> is not equal to <span class="SimpleMath">\(i\)</span>, however, it will first convert to the form <span class="SimpleMath">\(M = \sum_{i=0}^d i A_i\)</span>).</p>
+<p>Takes the relationship matrix, <span class="SimpleMath">\(M\)</span>, describing an associatioin scheme and returns an association scheme (symmetric coherent configuration). This is simply a HomogeneousCoherentConfiguration object, but with the known property of being symmetric. The matrix <span class="SimpleMath">\(M = \sum_{i=0}^d i A_i\)</span>, where <span class="SimpleMath">\(A_i\)</span> are the adjacency matrices describing an association scheme. Checks that the matrix satisfies the association scheme axioms.</p>
 
 <p><a id="X7E3565C17884BF57" name="X7E3565C17884BF57"></a></p>
 
@@ -177,468 +261,20 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ReorderRelations</code>( <var class="Arg">CC</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: coherent configuration</p>
 
-<p>Takes a homogeneous coherent configuration CC and a list L, where L is a reordering of the relations. Returns a homogeneous coherent configuration where the <span class="SimpleMath">\(i\)</span>-th relation of the CC becomes the <span class="SimpleMath">\(j\)</span>-th relation in the new homogeneous coherent configuration, where <span class="SimpleMath">\(j = L_i\)</span>. Note that <span class="SimpleMath">\(L_i\)</span> must be equal to <span class="SimpleMath">\(\{0, \ldots, d \}\)</span> as a set, and additionally requires that <span class="SimpleMath">\(L_1 = 0\)</span>.</p>
-
-<p><a id="X79D2FE8C7AC7C2A6" name="X79D2FE8C7AC7C2A6"></a></p>
-
-<h5>3.1-6 SaveHomogeneousCoherentConfigurationWithCertainAttributes</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SaveHomogeneousCoherentConfigurationWithCertainAttributes</code>( <var class="Arg">file</var>, <var class="Arg">A</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: true</p>
-
-<p>Saves homogeneous coherent configuration A to file F with the attributes listed in L. Note that L must be a list of strings, where each entry is an attribute known for A. Note that Print or PrintTo will only return the relation matrix of a homogeneous coherent configuration, which contains all necessary information about the homogeneous coherent configuration, but may require a lot of computation to reobtain its attributes. Hence this method is intended to alow saving of computationally difficult or time consuming attributes directly. It also alows the user to choose which attributes to save, since some attributes are very large, but easily recomputed. For example, it is often desirable to save the matrix of eigenvalues, and perhaps the automorphism group and intersection matrices, while it is not generally desirable to also save the adjacency matrices or minimal idempotents.</p>
-
-<p><a id="X7F1CC5F2874495B4" name="X7F1CC5F2874495B4"></a></p>
-
-<h5>3.1-7 ReadHomogeneousCoherentConfigurationWithCertainAttributes</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ReadHomogeneousCoherentConfigurationWithCertainAttributes</code>( <var class="Arg">file</var>, <var class="Arg">A</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: homogeneous coherent configuration</p>
-
-<p>Reads in a homogenous coherent configuration from file and sets it to have the attributes stored in the file. This reads files of the type formed by SaveHomogeneousCoherentConfigurationWithCertainAttributes.</p>
-
-<p><a id="X83DA0DF97CE4EEBB" name="X83DA0DF97CE4EEBB"></a></p>
-
-<h5>3.1-8 BilinearFormsScheme</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BilinearFormsScheme</code>( <var class="Arg">F</var>, <var class="Arg">n</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: homogeneous coherent configuration</p>
-
-<p>Returns the bilinear forms scheme for the finite field <span class="SimpleMath">\(F\)</span> with a bilinear form from <span class="SimpleMath">\(F^n \times F^n\)</span> to <span class="SimpleMath">\(F^k\)</span>.</p>
-
-<p><a id="X85D3B60C8693F466" name="X85D3B60C8693F466"></a></p>
-
-<h5>3.1-9 HomogeneousCoherentConfigurationByOrbitals</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HomogeneousCoherentConfigurationByOrbitals</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: homogeneous coherent configuration</p>
-
-<p>Constructs a "group-case" coherent configuration, where the relations are defined by the orbitals of <span class="SimpleMath">\(G\)</span> on <span class="SimpleMath">\(\{1, \ldots, n\} \times \{1, \ldots, n\}\)</span>. <span class="SimpleMath">\(G\)</span> must be a permutation group which is transitive on <span class="SimpleMath">\(\{1, \ldots, n\}\)</span>.</p>
-
-<p><a id="X7B20E1AC7CAFCA4D" name="X7B20E1AC7CAFCA4D"></a></p>
-
-<h5>3.1-10 HomogeneousCoherentConfigurationByOrbitals</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HomogeneousCoherentConfigurationByOrbitals</code>( <var class="Arg">G</var>, <var class="Arg">H</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: homogeneous coherent configuration</p>
-
-<p>Constructs a "group-case" coherent configuration, where the relations are defined by the orbitals of <span class="SimpleMath">\(G\)</span> on <span class="SimpleMath">\(G/H\)</span>. <span class="SimpleMath">\(G\)</span> is a group, <span class="SimpleMath">\(H\)</span> is a subgroup of <span class="SimpleMath">\(G\)</span>, <span class="SimpleMath">\(G/H\)</span> is the set of right cosets of <span class="SimpleMath">\(G\)</span> on <span class="SimpleMath">\(H\)</span>, and <span class="SimpleMath">\(G\)</span> must be transitive on <span class="SimpleMath">\(G/H\)</span>.</p>
-
-<p><a id="X7C6A577980AFC545" name="X7C6A577980AFC545"></a></p>
-
-<h5>3.1-11 GrassmannScheme</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GrassmannScheme</code>( <var class="Arg">n</var>, <var class="Arg">k</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: homogeneous coherent configuration</p>
-
-<p>Returns the Grassman scheme, <span class="SimpleMath">\(J_q(n, k)\)</span>.</p>
-
-<p><a id="X86AE1E9C7B3A87A3" name="X86AE1E9C7B3A87A3"></a></p>
-
-<h5>3.1-12 GroupCoherentConfiguration</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GroupCoherentConfiguration</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: homogeneous coherent configuration</p>
-
-<p>Returns the coherent configuration on the conjugacy classes of a group <span class="SimpleMath">\(G\)</span>.</p>
-
-<p><a id="X84E428FD7E53D329" name="X84E428FD7E53D329"></a></p>
-
-<h5>3.1-13 HammingScheme</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HammingScheme</code>( <var class="Arg">n</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: homogeneous coherent configuration</p>
-
-<p>Returns the Hamming scheme, <span class="SimpleMath">\(H(n, q)\)</span>.</p>
-
-<p><a id="X87F73F177F55A0A6" name="X87F73F177F55A0A6"></a></p>
-
-<h5>3.1-14 JohnsonScheme</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; JohnsonScheme</code>( <var class="Arg">n</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: homogeneous coherent configuration</p>
-
-<p>Returns the Johnson scheme, <span class="SimpleMath">\(J(n, k)\)</span>.</p>
-
-<p><a id="X8610716786531117" name="X8610716786531117"></a></p>
-
-<h5>3.1-15 HomogeneousCoherentConfiguration</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HomogeneousCoherentConfiguration</code>( <var class="Arg">n</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: homogeneous coherent configuration</p>
-
-<p>Returns the <span class="SimpleMath">\(k\)</span>-th homogeneous coherent configuration of order <span class="SimpleMath">\(n\)</span>. Library is complete for <span class="SimpleMath">\(5 \le n \le 38\)</span> excluding <span class="SimpleMath">\(n \in \{31, 35, 36, 37\}\)</span>, corresponding to <a href="chapBib_mj.html#biBHanaki">[HM]</a>.</p>
-
-<p><a id="X83905BC079F11C47" name="X83905BC079F11C47"></a></p>
-
-<h5>3.1-16 NumberOfHomogeneousCoherentConfigurations</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NumberOfHomogeneousCoherentConfigurations</code>( <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: m</p>
-
-<p>Returns the number <span class="SimpleMath">\(m\)</span> of homogeneous coherent configuration of order <span class="SimpleMath">\(n\)</span> contained in the library.</p>
-
-<p><a id="X7B72D0D081591C5E" name="X7B72D0D081591C5E"></a></p>
-
-<h5>3.1-17 AvailableHomogeneousCoherentConfigurations</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AvailableHomogeneousCoherentConfigurations</code>(  )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: L</p>
-
-<p>Returns a list <span class="SimpleMath">\(L\)</span> of the orders for which the library contains homogeneous coherent configurations.</p>
-
-<p><a id="X78064175875695D6" name="X78064175875695D6"></a></p>
-
-<h5>3.1-18 AllHomogeneousCoherentConfigurations</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllHomogeneousCoherentConfigurations</code>( <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: L</p>
-
-<p>Returns a list <span class="SimpleMath">\(L\)</span> of all homogeneous coherent configuration of order <span class="SimpleMath">\(n\)</span>.</p>
-
-<p><a id="X80FE63407BCB0EF6" name="X80FE63407BCB0EF6"></a></p>
-
-<h5>3.1-19 FusionOfHomogeneousCoherentConfigurations</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FusionOfHomogeneousCoherentConfigurations</code>( <var class="Arg">CC</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: homogeneous coherent configuration</p>
-
-<p>Takes a <span class="SimpleMath">\(d\)</span>-class homogeneous coherent configuration CC and returns a fusion scheme corresponding to L, where L is a partion of <span class="SimpleMath">\(\{0, \ldots, d\}\)</span>. Returns fail if <span class="SimpleMath">\(L\)</span> is not a valid partition.</p>
-
-<p><a id="X82C27C987D42E738" name="X82C27C987D42E738"></a></p>
-
-<h5>3.1-20 DirectProductOfHomogeneousCoherentConfigurations</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectProductOfHomogeneousCoherentConfigurations</code>( <var class="Arg">CC1</var>, <var class="Arg">CC2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: homogeneous coherent configuration</p>
-
-<p>Takes two homogeneous coherent configurations CC1 and CC2 and returns their direct product.</p>
-
-<p><a id="X78E3E09A7C979521" name="X78E3E09A7C979521"></a></p>
-
-<h5>3.1-21 WreathProductOfHomogeneousCoherentConfigurations</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WreathProductOfHomogeneousCoherentConfigurations</code>( <var class="Arg">CC1</var>, <var class="Arg">CC2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: homogeneous coherent configuration</p>
-
-<p>Takes two homogeneous coherent configurations CC1 and CC2 and returns their wreath product.</p>
-
-<p><a id="X7BFC0DE884896A25" name="X7BFC0DE884896A25"></a></p>
-
-<h5>3.1-22 CyclotomicScheme</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CyclotomicScheme</code>( <var class="Arg">q</var>, <var class="Arg">d</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: homogeneous coherent configuration</p>
-
-<p>Let <span class="SimpleMath">\(q\)</span> be a prime power, and <span class="SimpleMath">\(d\)</span> a divisor of <span class="SimpleMath">\(q-1\)</span>. Returns the cyclotomic scheme <span class="SimpleMath">\(Cyc(q,d)\)</span>.</p>
-
-<p><a id="X7873613B7C723A02" name="X7873613B7C723A02"></a></p>
-
-<h5>3.1-23 SchurianScheme</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SchurianScheme</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: homogeneous coherent configuration</p>
-
-<p>Returns the Schurian scheme defined by <span class="SimpleMath">\(G\)</span>, where <span class="SimpleMath">\(G\)</span> is a generously transitive permutation group. A Schurian scheme is a special case of CoherentConfigurationByOrbitals and is symmetric.</p>
-
-<p><a id="X7FB263297897C6C9" name="X7FB263297897C6C9"></a></p>
-
-<h4>3.2 <span class="Heading">Matrices Describing Homogeneous Coherent Configurations</span></h4>
+<p>Takes a homogeneous coherent configuration CC and a list L, where L is a reordering of the relations. Returns a homogeneous coherent configuration where the <span class="SimpleMath">\(i\)</span>-th relation of the CC becomes the <span class="SimpleMath">\(j\)</span>-th relation in the new homogeneous coherent configuration, where <span class="SimpleMath">\(j = L_i\)</span>. Note that <span class="SimpleMath">\(L\)</span> must be equal to <span class="SimpleMath">\(\{0, \ldots, d \}\)</span> as a set, and additionally requires that <span class="SimpleMath">\(L_1 = 0\)</span>.</p>
 
 <p><a id="X7E5F3FFA862C3FF1" name="X7E5F3FFA862C3FF1"></a></p>
 
-<h5>3.2-1 RelationMatrix</h5>
+<h5>3.1-6 RelationMatrix</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RelationMatrix</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: <span class="SimpleMath">\(M\)</span></p>
 
 <p>Takes a homogeneous coherent configuration and returns the underlying relation matrix <span class="SimpleMath">\(M = \sum_{i=0}^d i A_i\)</span>, where <span class="SimpleMath">\(A_i\)</span> are the adjacency matrices of the coherent configuration</p>
 
-<p><a id="X795BD63780A058D3" name="X795BD63780A058D3"></a></p>
-
-<h5>3.2-2 AdjacencyMatrices</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdjacencyMatrices</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: L</p>
-
-<p>Returns a list <span class="SimpleMath">\(L\)</span>, where the <span class="SimpleMath">\(i\)</span>-th entry of <span class="SimpleMath">\(L\)</span> is the adjacency matrix <span class="SimpleMath">\(A_{i-1}\)</span>, where <span class="SimpleMath">\((A_i)_{xy} =1\)</span> if <span class="SimpleMath">\((x,y) \in R_i\)</span> and <span class="SimpleMath">\((A_i)_{xy} =0\)</span> otherwise.</p>
-
-<p><a id="X81A168787D0FA745" name="X81A168787D0FA745"></a></p>
-
-<h5>3.2-3 IntersectionMatrices</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntersectionMatrices</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: L</p>
-
-<p>Returns a list L of the intersection matrices of a homogeneous coherent configuration <span class="SimpleMath">\(CC\)</span>, where the <span class="SimpleMath">\(i\)</span>-th entry of <span class="SimpleMath">\(L\)</span> is <span class="SimpleMath">\(B_{i-1}\)</span> and <span class="SimpleMath">\((B_{i})_{jk} = p_{ji}^k\)</span>.</p>
-
-<p><a id="X86E4696378C91275" name="X86E4696378C91275"></a></p>
-
-<h5>3.2-4 MinimalIdempotents</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MinimalIdempotents</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: L</p>
-
-<p>Returns a list <span class="SimpleMath">\(L\)</span> which is a basis of minimal idempotents for the adjacency algebra of a homogeneous coherent configuration CC. The <span class="SimpleMath">\(i\)</span>-th entry of <span class="SimpleMath">\(L\)</span> is <span class="SimpleMath">\(E_{i-1}\)</span>.</p>
-
-<p><a id="X84DCAE9B8320046B" name="X84DCAE9B8320046B"></a></p>
-
-<h4>3.3 <span class="Heading">Properties Of Homogeneous Coherent Configurations</span></h4>
-
-<p><a id="X7A08AD147E087933" name="X7A08AD147E087933"></a></p>
-
-<h5>3.3-1 IsCommutative</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCommutative</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Checks if the input is a commutative coherent configuration.</p>
-
-<p><a id="X811BE49B82475787" name="X811BE49B82475787"></a></p>
-
-<h5>3.3-2 IsSymmetricCoherentConfiguration</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSymmetricCoherentConfiguration</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Checks if the input is a symmetric coherent configuration.</p>
-
-<p><a id="X801063A083CF6BA0" name="X801063A083CF6BA0"></a></p>
-
-<h5>3.3-3 IsAssociationScheme</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAssociationScheme</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Alias for IsSymmetricCoherentConfiguration</p>
-
-<p><a id="X7816543D7994BC51" name="X7816543D7994BC51"></a></p>
-
-<h5>3.3-4 IsStronglyRegularGraph</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsStronglyRegularGraph</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Check if a coherent configuration is a strongly regular graph (a <span class="SimpleMath">\(2\)</span>-class homogeneous coherent configuration).</p>
-
-<p><a id="X789D746E781B671A" name="X789D746E781B671A"></a></p>
-
-<h5>3.3-5 IsPPolynomial</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPPolynomial</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Returns if the homogeneous coherent configuration CC is P-polynomial.</p>
-
-<p><a id="X85DD4C3A86B5AC83" name="X85DD4C3A86B5AC83"></a></p>
-
-<h5>3.3-6 IsMetric</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMetric</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Alias for is P-polynomial.</p>
-
-<p><a id="X80DE65F1780741B9" name="X80DE65F1780741B9"></a></p>
-
-<h5>3.3-7 IsQPolynomial</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsQPolynomial</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Returns if the commutative coherent configuration CC is Q-polynomial.</p>
-
-<p><a id="X7B1853C97D873F75" name="X7B1853C97D873F75"></a></p>
-
-<h5>3.3-8 IsCometric</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCometric</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Alias for is Q-polynomial.</p>
-
-<p><a id="X7B3A1FAB86F88033" name="X7B3A1FAB86F88033"></a></p>
-
-<h5>3.3-9 IsThin</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsThin</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Check if the homogeneous coherent configuration is thin.</p>
-
-<p><a id="X7EE5E0897CD88C21" name="X7EE5E0897CD88C21"></a></p>
-
-<h5>3.3-10 IsQuasiThin</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsQuasiThin</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Check if the homogeneous coherent configuration is quasi thin.</p>
-
-<p><a id="X87769E5C7BACEF1D" name="X87769E5C7BACEF1D"></a></p>
-
-<h5>3.3-11 IsPrimitive</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPrimitive</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Check if the homogeneous coherent configuration is primitve.</p>
-
-<p><a id="X85FE64307CA22AD9" name="X85FE64307CA22AD9"></a></p>
-
-<h5>3.3-12 IsHomogeneousCoherentConfigurationByOrbitals</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsHomogeneousCoherentConfigurationByOrbitals</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Checks if the coherent configuration <span class="SimpleMath">\(CC\)</span> can be constructed from relations defined by the orbitals of a group <span class="SimpleMath">\(G\)</span> acting transitively on a set <span class="SimpleMath">\(X\)</span>.</p>
-
-<p><a id="X7E9D8FA485C36A2B" name="X7E9D8FA485C36A2B"></a></p>
-
-<h5>3.3-13 IsGenerouslyTransitive</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsGenerouslyTransitive</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Checks if the permutation group <span class="SimpleMath">\(G\)</span> is generously transitive.</p>
-
-<p><a id="X7DB4FFBC7C0A2173" name="X7DB4FFBC7C0A2173"></a></p>
-
-<h5>3.3-14 IsGenerouslyTransitive</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsGenerouslyTransitive</code>( <var class="Arg">G</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Checks that the permutation group <span class="SimpleMath">\(G\)</span> acts generously transitive on the set <span class="SimpleMath">\(L\)</span>.</p>
-
-<p><a id="X8305508584992579" name="X8305508584992579"></a></p>
-
-<h5>3.3-15 IsSchurian</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSchurian</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: true or false</p>
-
-<p>Checks if the input is a Schurian scheme, that is, if the automorphism group is generously transitive.</p>
-
-<p><a id="X86A51E428337F850" name="X86A51E428337F850"></a></p>
-
-<h4>3.4 <span class="Heading">Attributes Of Homogeneous Coherent Configurations</span></h4>
-
-<p><a id="X87DFF5E98044D47C" name="X87DFF5E98044D47C"></a></p>
-
-<h5>3.4-1 NumberOfClasses</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NumberOfClasses</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: d</p>
-
-<p>Returns <span class="SimpleMath">\(d\)</span> for a <span class="SimpleMath">\(d\)</span>-class association scheme.</p>
-
-<p><a id="X7F8EBBAB79CF3102" name="X7F8EBBAB79CF3102"></a></p>
-
-<h5>3.4-2 Order</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Order</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: n</p>
-
-<p>Returns the order <span class="SimpleMath">\(n\)</span> (number of vertices) of the coherent configuration.</p>
-
-<p><a id="X86DA7C9780CC7184" name="X86DA7C9780CC7184"></a></p>
-
-<h5>3.4-3 Valencies</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Valencies</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: L</p>
-
-<p>Returns a list L of valencies of a coherent configuration CC. The <span class="SimpleMath">\(i\)</span>-th entry of <span class="SimpleMath">\(L\)</span> is <span class="SimpleMath">\(k_{i-1}\)</span>.</p>
-
-<p><a id="X8137DD257F503890" name="X8137DD257F503890"></a></p>
-
-<h5>3.4-4 NumberOfCharacters</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NumberOfCharacters</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: n</p>
-
-<p>Returns the number <span class="SimpleMath">\(n\)</span> of characters of CC.</p>
-
-<p><a id="X7D66223978A4AC1C" name="X7D66223978A4AC1C"></a></p>
-
-<h5>3.4-5 MatrixOfEigenvalues</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MatrixOfEigenvalues</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: P</p>
-
-<p>Returns a the matrix of eigenvalues (or character table), <span class="SimpleMath">\(P\)</span>, for a homogeneous coherent configuration CC.</p>
-
-<p><a id="X81BB73C186BA1982" name="X81BB73C186BA1982"></a></p>
-
-<h5>3.4-6 CharacterTable</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CharacterTable</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: P</p>
-
-<p>Alias for MatrixOfEigenvalues.</p>
-
-<p><a id="X78A70E9384ECB89C" name="X78A70E9384ECB89C"></a></p>
-
-<h5>3.4-7 DualMatrixOfEigenvalues</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DualMatrixOfEigenvalues</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: Q</p>
-
-<p>Returns a the dual matrix of eigenvalues, <span class="SimpleMath">\(Q\)</span>, for a homogeneous coherent configuration CC.</p>
-
-<p><a id="X7DC6AA86846CB888" name="X7DC6AA86846CB888"></a></p>
-
-<h5>3.4-8 AutomorphismGroup</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AutomorphismGroup</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: G</p>
-
-<p>Returns the automorphism group <span class="SimpleMath">\(G\)</span> of the coherent configuration CC. <span class="SimpleMath">\(G\)</span> is a permutation group acting on the index set of the vertices.</p>
-
-<p><a id="X7F80E2E3851FEEF8" name="X7F80E2E3851FEEF8"></a></p>
-
-<h5>3.4-9 AllPPolynomialOrderings</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllPPolynomialOrderings</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: L</p>
-
-<p>Calculate the list <span class="SimpleMath">\(L\)</span> of all P-polynomial orderings of a homogeneous coherent configuration.</p>
-
-<p><a id="X7F90E9B58624A11B" name="X7F90E9B58624A11B"></a></p>
-
-<h5>3.4-10 KreinParameters</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; KreinParameters</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: L</p>
-
-<p>Return a list <span class="SimpleMath">\(L\)</span> of all Krein parameters of a commutative homogeneous coherent configuration, where <span class="SimpleMath">\(L[i][j,k] = q_{i,j}^k\)</span>.</p>
-
-<p><a id="X791422BC7E94288E" name="X791422BC7E94288E"></a></p>
-
-<h5>3.4-11 AllQPolynomialOrderings</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllQPolynomialOrderings</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: L</p>
-
-<p>Calculate a list <span class="SimpleMath">\(L\)</span> of all Q-polynomial orderings of a homogeneous coherent configuration.</p>
-
-<p><a id="X792D264C80BA1A3B" name="X792D264C80BA1A3B"></a></p>
-
-<h5>3.4-12 ConstructorGroup</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ConstructorGroup</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: group or false</p>
-
-<p>Checks if the coherent configuration was constructed by a group and returns it if it was, or returns false otherwise.</p>
-
-<p><a id="X8606FDCE878850EF" name="X8606FDCE878850EF"></a></p>
-
-<h4>3.5 <span class="Heading">Methods</span></h4>
-
 <p><a id="X81B6F58485D31123" name="X81B6F58485D31123"></a></p>
 
-<h5>3.5-1 Relation</h5>
+<h5>3.1-7 Relation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Relation</code>( <var class="Arg">CC</var>, <var class="Arg">x</var>, <var class="Arg">y</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: i</p>
@@ -647,7 +283,7 @@
 
 <p><a id="X81A33D6D7B581567" name="X81A33D6D7B581567"></a></p>
 
-<h5>3.5-2 Neighbours</h5>
+<h5>3.1-8 Neighbours</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Neighbours</code>( <var class="Arg">CC</var>, <var class="Arg">p</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: L</p>
@@ -656,34 +292,810 @@
 
 <p><a id="X86B7FB54839FB92A" name="X86B7FB54839FB92A"></a></p>
 
-<h5>3.5-3 Neighbours</h5>
+<h5>3.1-9 Neighbours</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Neighbours</code>( <var class="Arg">CC</var>, <var class="Arg">p</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: L</p>
 
 <p>Returns a list <span class="SimpleMath">\(L\)</span> of all the points <span class="SimpleMath">\(y\)</span> of CC such that <span class="SimpleMath">\((p,y) \in R_k\)</span> for some <span class="SimpleMath">\(k \in L\)</span>.</p>
 
+<p><a id="X7A08AD147E087933" name="X7A08AD147E087933"></a></p>
+
+<h5>3.1-10 IsCommutative</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCommutative</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Checks if the input is a commutative coherent configuration.</p>
+
+<p><a id="X811BE49B82475787" name="X811BE49B82475787"></a></p>
+
+<h5>3.1-11 IsSymmetricCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSymmetricCoherentConfiguration</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Checks if the input is a symmetric coherent configuration.</p>
+
+<p><a id="X801063A083CF6BA0" name="X801063A083CF6BA0"></a></p>
+
+<h5>3.1-12 IsAssociationScheme</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAssociationScheme</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Alias for IsSymmetricCoherentConfiguration</p>
+
+<p><a id="X87DFF5E98044D47C" name="X87DFF5E98044D47C"></a></p>
+
+<h5>3.1-13 NumberOfClasses</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NumberOfClasses</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: d</p>
+
+<p>Returns <span class="SimpleMath">\(d\)</span> for a <span class="SimpleMath">\(d\)</span>-class homogeneous coherent configuration.</p>
+
+<p><a id="X7FF700697A625831" name="X7FF700697A625831"></a></p>
+
+<h5>3.1-14 Rank</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Rank</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: d</p>
+
+<p>Returns <span class="SimpleMath">\(d\)</span> for a <span class="SimpleMath">\(d\)</span>-class homogeneous coherent configuration.</p>
+
+<p><a id="X795BD63780A058D3" name="X795BD63780A058D3"></a></p>
+
+<h5>3.1-15 AdjacencyMatrices</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdjacencyMatrices</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Returns a list <span class="SimpleMath">\(L\)</span>, where the <span class="SimpleMath">\(i\)</span>-th entry of <span class="SimpleMath">\(L\)</span> is the adjacency matrix <span class="SimpleMath">\(A_{i-1}\)</span>, where <span class="SimpleMath">\((A_i)_{xy} =1\)</span> if <span class="SimpleMath">\((x,y) \in R_i\)</span> and <span class="SimpleMath">\((A_i)_{xy} =0\)</span> otherwise.</p>
+
+<p><a id="X7F8EBBAB79CF3102" name="X7F8EBBAB79CF3102"></a></p>
+
+<h5>3.1-16 Order</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Order</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: n</p>
+
+<p>Returns the order <span class="SimpleMath">\(n\)</span> (number of vertices) of the coherent configuration.</p>
+
 <p><a id="X81D573D978ED7818" name="X81D573D978ED7818"></a></p>
 
-<h5>3.5-4 IntersectionNumber</h5>
+<h5>3.1-17 IntersectionNumber</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntersectionNumber</code>( <var class="Arg">CC</var>, <var class="Arg">i</var>, <var class="Arg">j</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: <span class="SimpleMath">\(p_{ij}^k\)</span></p>
 
 <p>Returns the intersection number <span class="SimpleMath">\(p_{ij}^k\)</span> for a coherent configuration CC.</p>
 
+<p><a id="X86DA7C9780CC7184" name="X86DA7C9780CC7184"></a></p>
+
+<h5>3.1-18 Valencies</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Valencies</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Returns a list L of valencies of a coherent configuration CC. The <span class="SimpleMath">\(i\)</span>-th entry of <span class="SimpleMath">\(L\)</span> is <span class="SimpleMath">\(k_{i-1}\)</span>.</p>
+
+<p><a id="X7B22C9BD7B67A5AF" name="X7B22C9BD7B67A5AF"></a></p>
+
+<h5>3.1-19 IntersectionAlgebraOfHomogeneousCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntersectionAlgebraOfHomogeneousCoherentConfiguration</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Returns an IntersectionAlgebra object for CC</p>
+
+<p><a id="X81A168787D0FA745" name="X81A168787D0FA745"></a></p>
+
+<h5>3.1-20 IntersectionMatrices</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntersectionMatrices</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Returns a list L of the intersection matrices of a homogeneous coherent configuration <span class="SimpleMath">\(CC\)</span>, where the <span class="SimpleMath">\(i\)</span>-th entry of <span class="SimpleMath">\(L\)</span> is <span class="SimpleMath">\(B_{i-1}\)</span> and <span class="SimpleMath">\((B_{i})_{jk} = p_{ij}^k\)</span>.</p>
+
+<p><a id="X8137DD257F503890" name="X8137DD257F503890"></a></p>
+
+<h5>3.1-21 NumberOfCharacters</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NumberOfCharacters</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: n</p>
+
+<p>Returns the number <span class="SimpleMath">\(n\)</span> of characters of CC.</p>
+
+<p><a id="X829FF25680025270" name="X829FF25680025270"></a></p>
+
+<h5>3.1-22 SplittingField</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SplittingField</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: F</p>
+
+<p>Returns the splitting field of the CC</p>
+
+<p><a id="X8628587081EA7495" name="X8628587081EA7495"></a></p>
+
+<h5>3.1-23 HasRationalSplittingField</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HasRationalSplittingField</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Returns true if the splitting field is the rationals, false otherwise.</p>
+
 <p><a id="X783D72627DC6C094" name="X783D72627DC6C094"></a></p>
 
-<h5>3.5-5 KreinParameter</h5>
+<h5>3.1-24 KreinParameter</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; KreinParameter</code>( <var class="Arg">CC</var>, <var class="Arg">i</var>, <var class="Arg">j</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: <span class="SimpleMath">\(q_{i,j}^k\)</span></p>
 
 <p>Compute the krein parameter <span class="SimpleMath">\(q_{i,j}^k\)</span> of a commutative homogeneous coherent configuration.</p>
 
+<p><a id="X7F90E9B58624A11B" name="X7F90E9B58624A11B"></a></p>
+
+<h5>3.1-25 KreinParameters</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; KreinParameters</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Return a list <span class="SimpleMath">\(L\)</span> of all Krein parameters of a commutative homogeneous coherent configuration, where <span class="SimpleMath">\(L[i][j,k] = q_{i,j}^k\)</span>.</p>
+
+<p><a id="X79D2FE8C7AC7C2A6" name="X79D2FE8C7AC7C2A6"></a></p>
+
+<h5>3.1-26 SaveHomogeneousCoherentConfigurationWithCertainAttributes</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SaveHomogeneousCoherentConfigurationWithCertainAttributes</code>( <var class="Arg">file</var>, <var class="Arg">A</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true</p>
+
+<p>Saves homogeneous coherent configuration A to file F with the attributes listed in L. Note that L must be a list of strings, where each entry is an attribute known for A. Note that Print or PrintTo will only return the relation matrix of a homogeneous coherent configuration, which contains all necessary information about the homogeneous coherent configuration, but may require a lot of computation to reobtain its attributes. Hence this method is intended to alow saving of computationally difficult or time consuming attributes directly. It also alows the user to choose which attributes to save, since some attributes are very large, but easily recomputed. For example, it is often desirable to save the matrix of eigenvalues, and perhaps the automorphism group and intersection matrices, while it is not generally desirable to also save the adjacency matrices or minimal idempotents.</p>
+
+<p><a id="X7F1CC5F2874495B4" name="X7F1CC5F2874495B4"></a></p>
+
+<h5>3.1-27 ReadHomogeneousCoherentConfigurationWithCertainAttributes</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ReadHomogeneousCoherentConfigurationWithCertainAttributes</code>( <var class="Arg">file</var>, <var class="Arg">A</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Reads in a homogenous coherent configuration from file and sets it to have the attributes stored in the file. This reads files of the type formed by SaveHomogeneousCoherentConfigurationWithCertainAttributes.</p>
+
+<p><a id="X7B3A1FAB86F88033" name="X7B3A1FAB86F88033"></a></p>
+
+<h5>3.1-28 IsThin</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsThin</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Check if the homogeneous coherent configuration is thin.</p>
+
+<p><a id="X7EE5E0897CD88C21" name="X7EE5E0897CD88C21"></a></p>
+
+<h5>3.1-29 IsQuasiThin</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsQuasiThin</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Check if the homogeneous coherent configuration is quasi thin.</p>
+
+<p><a id="X87769E5C7BACEF1D" name="X87769E5C7BACEF1D"></a></p>
+
+<h5>3.1-30 IsPrimitive</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPrimitive</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Check if the homogeneous coherent configuration is primitve.</p>
+
+<p><a id="X7F853FE983D32745" name="X7F853FE983D32745"></a></p>
+
+<h5>3.1-31 ReorderMinimalIdempotents</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ReorderMinimalIdempotents</code>( <var class="Arg">CC</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: coherent configuration</p>
+
+<p>Takes a homogeneous coherent configuration CC and a list L, where L is a reordering of the minimal idempotents. Returns a homogeneous coherent configuration where the <span class="SimpleMath">\(i\)</span>-th idempotent of the CC becomes the <span class="SimpleMath">\(j\)</span>-th idempotent in the new homogeneous coherent configuration, where <span class="SimpleMath">\(j = L_i\)</span>. Note that <span class="SimpleMath">\(L_i\)</span> must be equal to <span class="SimpleMath">\(\{0, \ldots, d \}\)</span> as a set, and additionally requires that <span class="SimpleMath">\(L_1 = 0\)</span>.</p>
+
+<p><a id="X874EB8097E4B31C9" name="X874EB8097E4B31C9"></a></p>
+
+<h5>3.1-32 ViewRelationDistributionDiagram</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ViewRelationDistributionDiagram</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true (Displays relation diistribution diagram)</p>
+
+<p>Take a CC and display the relation-distribution diagram with respect to <span class="SimpleMath">\(R_1\)</span>.</p>
+
+<p><a id="X86D99EDC7B479A6E" name="X86D99EDC7B479A6E"></a></p>
+
+<h5>3.1-33 Description</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Description</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: lis</p>
+
+<p>Take a CC and returns a list containing various descriptions/names of the CC, if available. Note that most homogeneous coherent configurations will not have a description. Some famous homogeneous coherent configurations, association schemes, or distance regular graphs in the library, as well as families that have constructor methods, will have names. Some will have multiple descriptions, hence they are given as a list. You can check if a homogeneous coherent configuration has assigned descriptions with HasDescription, or set one with SetDescription.</p>
+
+<p><a id="X820CD05F85142F0A" name="X820CD05F85142F0A"></a></p>
+
+<h4>3.2 <span class="Heading">Constructor methods</span></h4>
+
+<p><a id="X8644D8D47A767BAB" name="X8644D8D47A767BAB"></a></p>
+
+<h5>3.2-1 DistanceRegularGraphScheme</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DistanceRegularGraphScheme</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Constructs an association scheme from the adjacency matrix A of a distance regular graph.</p>
+
+<p><a id="X7CB794B085EF524A" name="X7CB794B085EF524A"></a></p>
+
+<h5>3.2-2 DistanceRegularGraphSchemeNC</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DistanceRegularGraphSchemeNC</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Same as DistanceRegularGraphScheme but without checking that a valid association scheme arises.</p>
+
+<p><a id="X7B53D816825017B5" name="X7B53D816825017B5"></a></p>
+
+<h5>3.2-3 StronglyRegularGraphScheme</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StronglyRegularGraphScheme</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Constructs an association scheme from the adjacency matrix A of a strongly regular graph.</p>
+
+<p><a id="X8180A6437DC93E54" name="X8180A6437DC93E54"></a></p>
+
+<h5>3.2-4 StronglyRegularGraphSchemeNC</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StronglyRegularGraphSchemeNC</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Same as StronglyRegularGraphScheme but without checking that a valid association scheme arises.</p>
+
+<p><a id="X83DA0DF97CE4EEBB" name="X83DA0DF97CE4EEBB"></a></p>
+
+<h5>3.2-5 BilinearFormsScheme</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BilinearFormsScheme</code>( <var class="Arg">F</var>, <var class="Arg">n</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Returns the bilinear forms scheme for the finite field <span class="SimpleMath">\(F\)</span> with a bilinear form from <span class="SimpleMath">\(F^n \times F^n\)</span> to <span class="SimpleMath">\(F^k\)</span>.</p>
+
+<p><a id="X7BFC0DE884896A25" name="X7BFC0DE884896A25"></a></p>
+
+<h5>3.2-6 CyclotomicScheme</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CyclotomicScheme</code>( <var class="Arg">q</var>, <var class="Arg">d</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Let <span class="SimpleMath">\(q\)</span> be a prime power, and <span class="SimpleMath">\(d\)</span> a divisor of <span class="SimpleMath">\(q-1\)</span>. Returns the cyclotomic scheme <span class="SimpleMath">\(Cyc(q,d)\)</span>.</p>
+
+<p><a id="X7C6A577980AFC545" name="X7C6A577980AFC545"></a></p>
+
+<h5>3.2-7 GrassmannScheme</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GrassmannScheme</code>( <var class="Arg">n</var>, <var class="Arg">k</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Returns the Grassmann scheme, <span class="SimpleMath">\(J_q(n, k)\)</span>.</p>
+
+<p><a id="X86AE1E9C7B3A87A3" name="X86AE1E9C7B3A87A3"></a></p>
+
+<h5>3.2-8 GroupCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GroupCoherentConfiguration</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Returns the coherent configuration on the conjugacy classes of a group <span class="SimpleMath">\(G\)</span>.</p>
+
+<p><a id="X84E428FD7E53D329" name="X84E428FD7E53D329"></a></p>
+
+<h5>3.2-9 HammingScheme</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HammingScheme</code>( <var class="Arg">n</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Returns the Hamming scheme, <span class="SimpleMath">\(H(n, q)\)</span>.</p>
+
+<p><a id="X87F73F177F55A0A6" name="X87F73F177F55A0A6"></a></p>
+
+<h5>3.2-10 JohnsonScheme</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; JohnsonScheme</code>( <var class="Arg">n</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Returns the Johnson scheme, <span class="SimpleMath">\(J(n, k)\)</span>.</p>
+
+<p><a id="X82C27C987D42E738" name="X82C27C987D42E738"></a></p>
+
+<h5>3.2-11 DirectProductOfHomogeneousCoherentConfigurations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DirectProductOfHomogeneousCoherentConfigurations</code>( <var class="Arg">CC1</var>, <var class="Arg">CC2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Takes two homogeneous coherent configurations CC1 and CC2 and returns their direct product.</p>
+
+<p><a id="X78E3E09A7C979521" name="X78E3E09A7C979521"></a></p>
+
+<h5>3.2-12 WreathProductOfHomogeneousCoherentConfigurations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WreathProductOfHomogeneousCoherentConfigurations</code>( <var class="Arg">CC1</var>, <var class="Arg">CC2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Takes two homogeneous coherent configurations CC1 and CC2 and returns their wreath product.</p>
+
+<p><a id="X854AA5FC7C353609" name="X854AA5FC7C353609"></a></p>
+
+<h5>3.2-13 BipartiteDoubleOfAssociationScheme</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BipartiteDoubleOfAssociationScheme</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: Association scheme</p>
+
+<p>Returns the bipartite double of an association scheme.</p>
+
+<p><a id="X8534326B82EE9891" name="X8534326B82EE9891"></a></p>
+
+<h5>3.2-14 ExtendedQBipartiteDouble</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendedQBipartiteDouble</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: Association scheme</p>
+
+<p>Given a cometric association scheme satisfying <span class="SimpleMath">\(b_j^{*} + c_{j+1}^{*} = m +1\)</span> for <span class="SimpleMath">\(0 \leq j \leq d-1 \)</span>, returns the extended Q-bipartite double.</p>
+
+<p><a id="X85D3B60C8693F466" name="X85D3B60C8693F466"></a></p>
+
+<h5>3.2-15 HomogeneousCoherentConfigurationByOrbitals</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HomogeneousCoherentConfigurationByOrbitals</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Constructs a "group-case" coherent configuration, where the relations are defined by the orbitals of <span class="SimpleMath">\(G\)</span> on <span class="SimpleMath">\(\{1, \ldots, n\} \times \{1, \ldots, n\}\)</span>. <span class="SimpleMath">\(G\)</span> must be a permutation group which is transitive on <span class="SimpleMath">\(\{1, \ldots, n\}\)</span>.</p>
+
+<p><a id="X7B20E1AC7CAFCA4D" name="X7B20E1AC7CAFCA4D"></a></p>
+
+<h5>3.2-16 HomogeneousCoherentConfigurationByOrbitals</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HomogeneousCoherentConfigurationByOrbitals</code>( <var class="Arg">G</var>, <var class="Arg">H</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Constructs a "group-case" coherent configuration, where the relations are defined by the orbitals of <span class="SimpleMath">\(G\)</span> on <span class="SimpleMath">\(G/H\)</span>. <span class="SimpleMath">\(G\)</span> is a group, <span class="SimpleMath">\(H\)</span> is a subgroup of <span class="SimpleMath">\(G\)</span>, <span class="SimpleMath">\(G/H\)</span> is the set of right cosets of <span class="SimpleMath">\(G\)</span> on <span class="SimpleMath">\(H\)</span>, and <span class="SimpleMath">\(G\)</span> must be transitive on <span class="SimpleMath">\(G/H\)</span>.</p>
+
+<p><a id="X806EA85F83549F53" name="X806EA85F83549F53"></a></p>
+
+<h5>3.2-17 SchurianAssociationScheme</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SchurianAssociationScheme</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Returns the Schurian scheme defined by <span class="SimpleMath">\(G\)</span>, where <span class="SimpleMath">\(G\)</span> is a generously transitive permutation group. A Schurian scheme is a special case of CoherentConfigurationByOrbitals and is symmetric.</p>
+
+<p><a id="X8471FF757ADD27F0" name="X8471FF757ADD27F0"></a></p>
+
+<h5>3.2-18 SchurianCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SchurianCoherentConfiguration</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Alias for HomogeneousCoherentConfigurationByOrbitals</p>
+
+<p><a id="X7970DB3384AF719F" name="X7970DB3384AF719F"></a></p>
+
+<h4>3.3 <span class="Heading">Library</span></h4>
+
+<p><a id="X8610716786531117" name="X8610716786531117"></a></p>
+
+<h5>3.3-1 HomogeneousCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HomogeneousCoherentConfiguration</code>( <var class="Arg">n</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Returns the <span class="SimpleMath">\(k\)</span>-th homogeneous coherent configuration of order <span class="SimpleMath">\(n\)</span>. Library is complete for <span class="SimpleMath">\(5 \le n \le 38\)</span> excluding <span class="SimpleMath">\(n \in \{31, 35, 36, 37\}\)</span>, corresponding to <a href="chapBib_mj.html#biBHanaki">[HM]</a>.</p>
+
+<p><a id="X83905BC079F11C47" name="X83905BC079F11C47"></a></p>
+
+<h5>3.3-2 NumberOfHomogeneousCoherentConfigurations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NumberOfHomogeneousCoherentConfigurations</code>( <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: m</p>
+
+<p>Returns the number <span class="SimpleMath">\(m\)</span> of homogeneous coherent configuration of order <span class="SimpleMath">\(n\)</span> contained in the library.</p>
+
+<p><a id="X7B72D0D081591C5E" name="X7B72D0D081591C5E"></a></p>
+
+<h5>3.3-3 AvailableHomogeneousCoherentConfigurations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AvailableHomogeneousCoherentConfigurations</code>(  )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Returns a list <span class="SimpleMath">\(L\)</span> of the orders for which the library contains homogeneous coherent configurations.</p>
+
+<p><a id="X78064175875695D6" name="X78064175875695D6"></a></p>
+
+<h5>3.3-4 AllHomogeneousCoherentConfigurations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllHomogeneousCoherentConfigurations</code>( <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Returns a list <span class="SimpleMath">\(L\)</span> of all homogeneous coherent configuration of order <span class="SimpleMath">\(n\)</span>.</p>
+
+<p><a id="X792738D57B9DE5EB" name="X792738D57B9DE5EB"></a></p>
+
+<h5>3.3-5 SmallSchemeIdentification</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SmallSchemeIdentification</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: id</p>
+
+<p>Returns the identification, id, of the homogeneous coherent configuration in the library which is is isomorphic to CC. Thus HomogeneousCoherentConfiguration(n, id) will be isomorphic to CC, where n is the order of CC.</p>
+
+<p><a id="X7A99E8E67C672076" name="X7A99E8E67C672076"></a></p>
+
+<h4>3.4 <span class="Heading">Graphs, automorphisms, and maps</span></h4>
+
+<p><a id="X860EBD847DBEE0E4" name="X860EBD847DBEE0E4"></a></p>
+
+<h5>3.4-1 Digraph</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Digraph</code>( <var class="Arg">CC</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Returns the digraph object associated with the k-th relation of a homogeneous coherent configuration CC. Note that the identity relation is excluded.</p>
+
+<p><a id="X7F5760E97D92586F" name="X7F5760E97D92586F"></a></p>
+
+<h5>3.4-2 Digraph</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Digraph</code>( <var class="Arg">CC</var>, <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Returns the digraph object which is a union of the relations of a homogeneous coherent configuration CC given by the set S. Note that the identity relation is excluded.</p>
+
+<p><a id="X7DC6AA86846CB888" name="X7DC6AA86846CB888"></a></p>
+
+<h5>3.4-3 AutomorphismGroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AutomorphismGroup</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: G</p>
+
+<p>Returns the automorphism group <span class="SimpleMath">\(G\)</span> of the coherent configuration CC. <span class="SimpleMath">\(G\)</span> is a permutation group acting on the index set of the vertices.</p>
+
+<p><a id="X8165808287B61ACD" name="X8165808287B61ACD"></a></p>
+
+<h5>3.4-4 ImageOfHomogeneousCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ImageOfHomogeneousCoherentConfiguration</code>( <var class="Arg">CC</var>, <var class="Arg">p</var>, <var class="Arg">$\sigma$</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>For a <span class="SimpleMath">\(d\)</span>-class homogeneous coherent configuration with relation matrix <span class="SimpleMath">\(M\)</span> and order <span class="SimpleMath">\(n\)</span>, takes a permutation <span class="SimpleMath">\(p\)</span> on the set <span class="SimpleMath">\(\{1 .. n\}\)</span> and permutation <span class="SimpleMath">\(\sigma\)</span> on the set <span class="SimpleMath">\(\{1 .. d\}\)</span> and returns the <span class="SimpleMath">\(d\)</span>-class homogenous coherent configuration with relation matrix <span class="SimpleMath">\(P^{-1} M^\sigma P\)</span>, where <span class="SimpleMath">\(P\)</span> is the permutation matrix defined by <span class="SimpleMath">\(\sigma\)</span>.</p>
+
+<p><a id="X7CC1855982DF9DE4" name="X7CC1855982DF9DE4"></a></p>
+
+<h5>3.4-5 IsomorphismHomogeneousCoherentConfigurations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismHomogeneousCoherentConfigurations</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>If there exists a permutation matrix <span class="SimpleMath">\(P\)</span> and permutation <span class="SimpleMath">\(\sigma\)</span> such that if <span class="SimpleMath">\(M\)</span> is the relation matrix of <span class="SimpleMath">\(A\)</span>, then <span class="SimpleMath">\(P^{-1} M^\sigma P\)</span> is the relation matrix of <span class="SimpleMath">\(B\)</span>, then the operation will return <span class="SimpleMath">\([p, \sigma]\)</span>, where <span class="SimpleMath">\(p\)</span> is the permutation defining <span class="SimpleMath">\(P\)</span>. If no such <span class="SimpleMath">\(P\)</span> and <span class="SimpleMath">\(\sigma\)</span> exist, then the operation will return fail.</p>
+
+<p><a id="X8156304D817F8C22" name="X8156304D817F8C22"></a></p>
+
+<h5>3.4-6 AreIsomorphicHomogeneousCoherentConfigurations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AreIsomorphicHomogeneousCoherentConfigurations</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>If there exists a permutation matrix <span class="SimpleMath">\(P\)</span> and permutation <span class="SimpleMath">\(\sigma\)</span> such that if <span class="SimpleMath">\(M\)</span> is the relation matrix of <span class="SimpleMath">\(A\)</span>, then <span class="SimpleMath">\(P^{-1} M^\sigma P\)</span> is the relation matrix of <span class="SimpleMath">\(B\)</span>, then the operation will return true. Returns false otherwise.</p>
+
+<p><a id="X7A6C4BCF85A7027A" name="X7A6C4BCF85A7027A"></a></p>
+
+<h5>3.4-7 CanonisingMap</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CanonisingMap</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: [perm1, perm2]</p>
+
+<p>Returns two permutations which will produce the canonical form of the homogeneous coherent configuration CC. The canonical form can be obtained by ImageOfHomogeneousCoherentConfiguration(CC, perm1, perm2) Any homogenouse coherent configuration which is isomorphic to CC will the same canonical form.</p>
+
+<p><a id="X85BE27AA7ABB96CD" name="X85BE27AA7ABB96CD"></a></p>
+
+<h5>3.4-8 CanonicalFormOfHomogeneousCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CanonicalFormOfHomogeneousCoherentConfiguration</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: CC2</p>
+
+<p>Returns the canonical form, CC2, of the homogeneous coherent configuration CC. Any homogenouse coherent configuration which is isomorphic to CC will have CC2 as the canonical form.</p>
+
+<p><a id="X792D264C80BA1A3B" name="X792D264C80BA1A3B"></a></p>
+
+<h5>3.4-9 ConstructorGroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ConstructorGroup</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: group or false</p>
+
+<p>Checks if the coherent configuration was constructed by a group and returns it if it was, or returns false otherwise.</p>
+
+<p><a id="X7E9D8FA485C36A2B" name="X7E9D8FA485C36A2B"></a></p>
+
+<h5>3.4-10 IsGenerouslyTransitive</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsGenerouslyTransitive</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Checks if the permutation group <span class="SimpleMath">\(G\)</span> is generously transitive.</p>
+
+<p><a id="X7DB4FFBC7C0A2173" name="X7DB4FFBC7C0A2173"></a></p>
+
+<h5>3.4-11 IsGenerouslyTransitive</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsGenerouslyTransitive</code>( <var class="Arg">G</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Checks that the permutation group <span class="SimpleMath">\(G\)</span> acts generously transitive on the set <span class="SimpleMath">\(L\)</span>.</p>
+
+<p><a id="X8305508584992579" name="X8305508584992579"></a></p>
+
+<h5>3.4-12 IsSchurian</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSchurian</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Checks if the input is a Schurian scheme, that is, if the automorphism group is transitive.</p>
+
+<p><a id="X791CDD977B9FD97A" name="X791CDD977B9FD97A"></a></p>
+
+<h4>3.5 <span class="Heading">Fusions</span></h4>
+
+<p><a id="X81A5B33780DFAE1D" name="X81A5B33780DFAE1D"></a></p>
+
+<h5>3.5-1 IsFusionOfHomogeneousCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsFusionOfHomogeneousCoherentConfiguration</code>( <var class="Arg">CC</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Takes a <span class="SimpleMath">\(d\)</span>-class homogeneous coherent configuration CC, and checks if the partion L of <span class="SimpleMath">\(\{0, \ldots, d\}\)</span> corresponds to a valid fusion.</p>
+
+<p><a id="X81E2D8678593F6B7" name="X81E2D8678593F6B7"></a></p>
+
+<h5>3.5-2 FusionOfHomogeneousCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FusionOfHomogeneousCoherentConfiguration</code>( <var class="Arg">CC</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: homogeneous coherent configuration</p>
+
+<p>Takes a <span class="SimpleMath">\(d\)</span>-class homogeneous coherent configuration CC and returns a fusion scheme corresponding to L, where L is a partion of <span class="SimpleMath">\(\{0, \ldots, d\}\)</span>. Note that the ordering of the cells of L is irrelevant. The method will sort the fused relations according to the smallest value in each cell.</p>
+
+<p><a id="X843860417966869C" name="X843860417966869C"></a></p>
+
+<h5>3.5-3 ConverseRelationPairs</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ConverseRelationPairs</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Returns a list L of either tuples or singletons, corresponding to relations and their converses or symmetric relations.</p>
+
+<p><a id="X7FA127E67B7399C8" name="X7FA127E67B7399C8"></a></p>
+
+<h5>3.5-4 ConverseRelation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ConverseRelation</code>( <var class="Arg">CC</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: j</p>
+
+<p>Returns j such that <span class="SimpleMath">\(R_j = R_i^\top\)</span>, the converse relation of <span class="SimpleMath">\(i\)</span> .</p>
+
+<p><a id="X7E2240F0806D0D25" name="X7E2240F0806D0D25"></a></p>
+
+<h5>3.5-5 IsStratifiable</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsStratifiable</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>If the fusion of transposed relations produces a valid association scheme, then CC is stratifiable.</p>
+
+<p><a id="X7BB4E2B27F9E2390" name="X7BB4E2B27F9E2390"></a></p>
+
+<h5>3.5-6 SymmetrisationOfHomogeneousCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SymmetrisationOfHomogeneousCoherentConfiguration</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: Association scheme</p>
+
+<p>Given a homogeneous coherent configuration, CC, the symmetrisation is computed if possible, otherwise fail is returned. The symmetrisation of a homogeneous coherent configuration takes any non-symmetric relations and fuses them together. The result may or may not be a valid homogeneous coherent configuration. If it is valid, then it is an association scheme (Symmetric coherent configuration). If CC is commutative, then it can be symmetrised.</p>
+
+<p><a id="X79E4F7917BF736B7" name="X79E4F7917BF736B7"></a></p>
+
+<h5>3.5-7 FusingPartitionOfHomogeneousCoherentConfigurations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FusingPartitionOfHomogeneousCoherentConfigurations</code>( <var class="Arg">CC1</var>, <var class="Arg">CC2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: partition</p>
+
+<p>Takes two homogeneous coherent configurations, CC1 and CC2, where CC1 is <span class="SimpleMath">\(d\)</span>-class. If CC2 is equal to a homogeneous coherent configuration formed by fusing the relations of CC2, this will return the partition of <span class="SimpleMath">\({0, \ldots, d}\)</span> corresponding to this fusion. If CC2 cannot be produced as a fusion, then "fail" is returned. This operation does not consider isomorphic homogeneous coherent configurations - CC2 must be exactly equal to a fusion.</p>
+
+<p><a id="X79453D1A81CE4047" name="X79453D1A81CE4047"></a></p>
+
+<h5>3.5-8 FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration</code>( <var class="Arg">CC</var>[, <var class="Arg">k</var>[, <var class="Arg">flag</var>]] )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: list of feasibly fusionable relations</p>
+
+<p>Returns a list where each entry is a collection of relations which may be fused to form a feasible homogeneous coherent configuration Trivial means either no relations are fused, or all non-identity relations are fused. If the additional argument k is given, only fusions with k-classes are returned. If flag is also given and is equal to true, then all fusions with at most k-classes are returned.</p>
+
+<p><a id="X804E8749792F2CB7" name="X804E8749792F2CB7"></a></p>
+
+<h5>3.5-9 AllNonTrivialFusionsOfHomgeneousCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllNonTrivialFusionsOfHomgeneousCoherentConfiguration</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: List of all non-trivial fusions of CC</p>
+
+<p>Returns a list of all homogeneous coherent configurations such that each element of the list is a non-trivial fusion of CC. Trivial means either no relations are fused, or all non-identity relations are fused. If the additional argument k is given, only fusions with k-classes are returned. If flag is also given and is equal to true, then all fusions with at most k-classes are returned.</p>
+
+<p><a id="X83C9C5DB7C87500F" name="X83C9C5DB7C87500F"></a></p>
+
+<h5>3.5-10 AllFusionsOfHomgeneousCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllFusionsOfHomgeneousCoherentConfiguration</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: List of all fusions of CC</p>
+
+<p>Returns a list of all homogeneous coherent configurations such that each element of the list is a fusion of CC. Includes trivial fusions, i.e the original homogeneous coherent configuration, and the coherent configuration resulting from the fusion of all non-identity relations</p>
+
+<p><a id="X8432F3617F33B1BE" name="X8432F3617F33B1BE"></a></p>
+
+<h5>3.5-11 FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: list of feasibly fusionable relations</p>
+
+<p>Returns a list where each entry is a collection of relations which may be fused to form a feasible association scheme (i.e. relations are symmetric) Trivial means either no relations are fused, or all non-identity relations are fused. If the additional argument k is given, only fusions with k-classes are returned. If flag is also given and is equal to true, then all fusions with at most k-classes are returned.</p>
+
+<p><a id="X841E8F567F9D3C18" name="X841E8F567F9D3C18"></a></p>
+
+<h5>3.5-12 AllNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: List of all non-trivial fusions of CC</p>
+
+<p>Returns a list of all association schemes (i.e symmetric relations) such that each element of the list is a non-trivial fusion of CC. Trivial means either no relations are fused, or all non-identity relations are fused. If the additional argument k is given, only fusions with k-classes are returned. If flag is also given and is equal to true, then all fusions with at most k-classes are returned.</p>
+
+<p><a id="X7A63406C84E706E5" name="X7A63406C84E706E5"></a></p>
+
+<h5>3.5-13 AllSymmetricFusionsOfHomgeneousCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllSymmetricFusionsOfHomgeneousCoherentConfiguration</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: List of all fusions of CC</p>
+
+<p>Returns a list of all association schemes (i.e symmetric relations) such that each element of the list is a fusion of CC. Includes trivial fusions, i.e the original homogeneous coherent configuration (if it is an association scheme), and the coherent configuration resulting from the fusion of all non-identity relations</p>
+
+<p><a id="X87D08BC5870911CF" name="X87D08BC5870911CF"></a></p>
+
+<h5>3.5-14 IsomorphismToFusionScheme</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismToFusionScheme</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: p1, p2, f</p>
+
+<p>If A is isomorphic to a fusion of B, then f is the fusion of <span class="SimpleMath">\(B\)</span>, and [p1, p2] is the map which carries <span class="SimpleMath">\(B\)</span> to this fusion.</p>
+
+<p><a id="X819EE3A478CD95F2" name="X819EE3A478CD95F2"></a></p>
+
+<h5>3.5-15 IsIsomorphicToFusionScheme</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsIsomorphicToFusionScheme</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: p1, p2, f</p>
+
+<p>Returns true if <span class="SimpleMath">\(A\)</span> is isomorphic to a fusion of <span class="SimpleMath">\(B\)</span>. Returns false otherwise.</p>
+
+<p><a id="X7BEA38D2788CD9FC" name="X7BEA38D2788CD9FC"></a></p>
+
+<h4>3.6 <span class="Heading">Bose-Mesner algebra</span></h4>
+
+<p><a id="X7AD11E4E83F31019" name="X7AD11E4E83F31019"></a></p>
+
+<h5>3.6-1 MapFromAdjacencyMatricesToMinimalIdempotents</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MapFromAdjacencyMatricesToMinimalIdempotents</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: M</p>
+
+<p>Takes a homogeneous coherent configuration object, CC, and returns a matrix, M, which maps the adjacency matrices to the minimal idempotents of the adjacency algebra. The central idempotent <span class="SimpleMath">\(E_i = \sum_{i=0}^d M_{ij} A_j\)</span>.</p>
+
+<p><a id="X7951042A7DC233F1" name="X7951042A7DC233F1"></a></p>
+
+<h5>3.6-2 MapFromAdjacencyMatricesToMinimalIdempotentsOverRationals</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MapFromAdjacencyMatricesToMinimalIdempotentsOverRationals</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: M</p>
+
+<p>Takes a homogeneous coherent configuration, CC, and returns a matrix, M, which maps the adjacency matrices to the minimal idempotents of the adjacency algebra over the rationals. The minimal idempotent <span class="SimpleMath">\(E_i = \sum_{i=0}^d M_{ij} A_j\)</span>.</p>
+
+<p><a id="X86E4696378C91275" name="X86E4696378C91275"></a></p>
+
+<h5>3.6-3 MinimalIdempotents</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MinimalIdempotents</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: minimal idempotents</p>
+
+<p>Returns the minimal idempotents of the homogeneous coherent configuration.</p>
+
+<p><a id="X84BFF34F7F5B4EB9" name="X84BFF34F7F5B4EB9"></a></p>
+
+<h5>3.6-4 MinimalIdempotentsOverRationals</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MinimalIdempotentsOverRationals</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: minimal idempotents</p>
+
+<p>Returns the minimal idempotents of the homogeneous coherent configuration over the rationals.</p>
+
+<p><a id="X7D66223978A4AC1C" name="X7D66223978A4AC1C"></a></p>
+
+<h5>3.6-5 MatrixOfEigenvalues</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MatrixOfEigenvalues</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: P</p>
+
+<p>Returns a the matrix of eigenvalues (or character table), <span class="SimpleMath">\(P\)</span>, for a homogeneous coherent configuration CC.</p>
+
+<p><a id="X7B5FBF42843130AF" name="X7B5FBF42843130AF"></a></p>
+
+<h5>3.6-6 MatrixOfDualEigenvalues</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MatrixOfDualEigenvalues</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: Q</p>
+
+<p>Returns a the matrix of dual eigenvalues, <span class="SimpleMath">\(Q\)</span>, for a homogeneous coherent configuration CC.</p>
+
+<p><a id="X844CA82583657047" name="X844CA82583657047"></a></p>
+
+<h5>3.6-7 Multiplicities</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Multiplicities</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: n</p>
+
+<p>Returns the multiplicities of characters of CC.</p>
+
+<p><a id="X7B3AD5F67E3FDC50" name="X7B3AD5F67E3FDC50"></a></p>
+
+<h5>3.6-8 CharacterTableOfHomogeneousCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CharacterTableOfHomogeneousCoherentConfiguration</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: P</p>
+
+<p>TODO.</p>
+
+<p><a id="X821425FA7923B4C8" name="X821425FA7923B4C8"></a></p>
+
+<h5>3.6-9 FitMatrixOfEigenvalues</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FitMatrixOfEigenvalues</code>( <var class="Arg">CC</var>, <var class="Arg">P</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: P2</p>
+
+<p>Checks if P is the matrix of eigenvalues of homogeneous coherent configuration CC, upto some reordering of the columns. In such a case, P2, the reordered matrix is returned. If not, returns fail.</p>
+
+<p><a id="X7BF28D4185AE6B89" name="X7BF28D4185AE6B89"></a></p>
+
+<h5>3.6-10 CharacterTableOfSchurianHomogeneousCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CharacterTableOfSchurianHomogeneousCoherentConfiguration</code>( <var class="Arg">CC</var>, <var class="Arg">P</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: P2</p>
+
+<p>Computes the character table of a Schurian coherent configuration by using the group. The ordering of the columns does not respect the ordering of the coherent configuration, so "FitMatrixOfEigenvalues" must be used. Sometimes the group theoretic method is much faster and sometimes it is much slower than the other methods.</p>
+
+<p><a id="X823719AA854623FB" name="X823719AA854623FB"></a></p>
+
+<h5>3.6-11 MatrixOfEigenvaluesOfCyclotomicScheme</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MatrixOfEigenvaluesOfCyclotomicScheme</code>( <var class="Arg">n</var>, <var class="Arg">k</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: P</p>
+
+<p>Returns the matrix of eigenvalues <span class="SimpleMath">\(P\)</span> of the scheme <span class="SimpleMath">\(Cyc(q,d)\)</span>.</p>
+
+<p><a id="X81D585B285091A4F" name="X81D585B285091A4F"></a></p>
+
+<h5>3.6-12 MatrixOfEigenvaluesOfGrassmannScheme</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MatrixOfEigenvaluesOfGrassmannScheme</code>( <var class="Arg">n</var>, <var class="Arg">k</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: P</p>
+
+<p>Returns the matrix of eigenvalues <span class="SimpleMath">\(P\)</span> of the Grassmann scheme <span class="SimpleMath">\(J_q(n, k)\)</span>.</p>
+
 <p><a id="X861E3C8080FE3A0D" name="X861E3C8080FE3A0D"></a></p>
 
-<h5>3.5-6 MatrixOfEigenvaluesOfHammingScheme</h5>
+<h5>3.6-13 MatrixOfEigenvaluesOfHammingScheme</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MatrixOfEigenvaluesOfHammingScheme</code>( <var class="Arg">n</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: P</p>
@@ -692,78 +1104,271 @@
 
 <p><a id="X850D2B6A799A9263" name="X850D2B6A799A9263"></a></p>
 
-<h5>3.5-7 MatrixOfEigenvaluesOfJohnsonScheme</h5>
+<h5>3.6-14 MatrixOfEigenvaluesOfJohnsonScheme</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MatrixOfEigenvaluesOfJohnsonScheme</code>( <var class="Arg">n</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: P</p>
 
 <p>Returns the matrix of eigenvalues <span class="SimpleMath">\(P\)</span> of the Johnson scheme <span class="SimpleMath">\(J(n, k)\)</span>.</p>
 
-<p><a id="X7DDBF6F47A2E021C" name="X7DDBF6F47A2E021C"></a></p>
+<p><a id="X7EEAC69486AF989B" name="X7EEAC69486AF989B"></a></p>
 
-<h4>3.6 <span class="Heading">Algebras</span></h4>
+<h4>3.7 <span class="Heading">Metric schemes</span></h4>
 
-<p><a id="X7DF593207D530056" name="X7DF593207D530056"></a></p>
+<p><a id="X789D746E781B671A" name="X789D746E781B671A"></a></p>
 
-<h5>3.6-1 IntersectionAlgebra</h5>
+<h5>3.7-1 IsPPolynomial</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntersectionAlgebra</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: A</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPPolynomial</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
 
-<p>Returns the intersection algebra <span class="SimpleMath">\(A\)</span> of a homogeneous coherent configuration.</p>
+<p>Returns if the homogeneous coherent configuration CC is P-polynomial.</p>
 
-<p><a id="X81D2BD717BA813C0" name="X81D2BD717BA813C0"></a></p>
+<p><a id="X81E16D677C3957C9" name="X81E16D677C3957C9"></a></p>
 
-<h5>3.6-2 BoseMesnerAlgebra</h5>
+<h5>3.7-2 FirstPPolynomialOrdering</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BoseMesnerAlgebra</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: A</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FirstPPolynomialOrdering</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: P-polynomial ordering or fail</p>
 
-<p>Returns the Bose-Mesner algebra <span class="SimpleMath">\(A\)</span> of a homogeneous coherent configuration.</p>
+<p>Returns the first P-polynomial ordering admitted by the homogeneous coherent configuration CC, and fail otherwise.</p>
 
-<p><a id="X811233BD7EC4ED5F" name="X811233BD7EC4ED5F"></a></p>
+<p><a id="X86B225878491F343" name="X86B225878491F343"></a></p>
 
-<h5>3.6-3 AdjacencyAlgebra</h5>
+<h5>3.7-3 AdmitsPPolynomialOrdering</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdjacencyAlgebra</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: A</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdmitsPPolynomialOrdering</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
 
-<p>Returns the adjacency algebra <span class="SimpleMath">\(A\)</span> of a homogeneous coherent configuration. This is an alias for BoseMesnerAlgebra.</p>
+<p>Returns if the homogeneous coherent configuration CC admits a P-polynomial ordering.</p>
 
-<p><a id="X820C1A5A7FF8F6B0" name="X820C1A5A7FF8F6B0"></a></p>
+<p><a id="X85DD4C3A86B5AC83" name="X85DD4C3A86B5AC83"></a></p>
 
-<h5>3.6-4 TerwilligerAlgebra</h5>
+<h5>3.7-4 IsMetric</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TerwilligerAlgebra</code>( <var class="Arg">CC</var>, <var class="Arg">p</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: T</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMetric</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
 
-<p>Returns the Terwilliger algebra <span class="SimpleMath">\(T\)</span> of a homogeneous coherent configuration with respect to the point p.</p>
+<p>Alias for IsPPolynomial.</p>
 
-<p><a id="X8164E1657B7ED844" name="X8164E1657B7ED844"></a></p>
+<p><a id="X7A5DF9F07CAB66AD" name="X7A5DF9F07CAB66AD"></a></p>
 
-<h5>3.6-5 TerwilligerAlgebra</h5>
+<h5>3.7-5 FirstMetricOrdering</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TerwilligerAlgebra</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: T</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FirstMetricOrdering</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: metric ordering or fail</p>
 
-<p>Returns the Terwilliger algebra <span class="SimpleMath">\(T\)</span> of a homogeneous coherent configuration with respect to the first point.</p>
+<p>Alias for FirstPPolynomialOrdering.</p>
 
-<p><a id="X7FF621D183D6F49D" name="X7FF621D183D6F49D"></a></p>
+<p><a id="X8399CD2783FCA56B" name="X8399CD2783FCA56B"></a></p>
 
-<h4>3.7 <span class="Heading">Subsets And Codes</span></h4>
+<h5>3.7-6 AdmitsMetricOrdering</h5>
 
-<p><a id="X831BFF8B81B679D8" name="X831BFF8B81B679D8"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdmitsMetricOrdering</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
 
-<h5>3.7-1 InnerDistribution</h5>
+<p>Alias for AdmitsPPolynomialOrdering.</p>
+
+<p><a id="X7F80E2E3851FEEF8" name="X7F80E2E3851FEEF8"></a></p>
+
+<h5>3.7-7 AllPPolynomialOrderings</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllPPolynomialOrderings</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Calculate the list <span class="SimpleMath">\(L\)</span> of all P-polynomial orderings of a homogeneous coherent configuration.</p>
+
+<p><a id="X810B62B37A2CCBE7" name="X810B62B37A2CCBE7"></a></p>
+
+<h5>3.7-8 AllMetricOrderings</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllMetricOrderings</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Alias for AllPPolynomialOrderings.</p>
+
+<p><a id="X7816543D7994BC51" name="X7816543D7994BC51"></a></p>
+
+<h5>3.7-9 IsStronglyRegularGraph</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsStronglyRegularGraph</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Check if a coherent configuration is a strongly regular graph (a <span class="SimpleMath">\(2\)</span>-class primitive association scheme).</p>
+
+<p><a id="X79B6D31979ADD8CB" name="X79B6D31979ADD8CB"></a></p>
+
+<h5>3.7-10 IntersectionArray</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IntersectionArray</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: List</p>
+
+<p>Returns the intersection array if CC is P-polynomial.</p>
+
+<p><a id="X7B51DF2587BF1A24" name="X7B51DF2587BF1A24"></a></p>
+
+<h5>3.7-11 ClassicalParameters</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ClassicalParameters</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: [d, b, <span class="SimpleMath">\(\alpha\)</span>, <span class="SimpleMath">\(\beta\)</span>]</p>
+
+<p>Returns the classical parameters if the CC is metric with classical parameters.</p>
+
+<p><a id="X79DDD11F7F64FDF3" name="X79DDD11F7F64FDF3"></a></p>
+
+<h5>3.7-12 StronglyRegularGraphParameters</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StronglyRegularGraphParameters</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: [d, b, <span class="SimpleMath">\(\alpha\)</span>, <span class="SimpleMath">\(\beta\)</span>]</p>
+
+<p>Returns the parameters <span class="SimpleMath">\(\{n, k; \lambda, \mu \}\)</span> if the CC is an association scheme with 2 classes.</p>
+
+<p><a id="X8703BDD579030384" name="X8703BDD579030384"></a></p>
+
+<h5>3.7-13 IsPBipartite</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPBipartite</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Returns if the homogeneous coherent configuration CC is bipartite.</p>
+
+<p><a id="X7998D1728439D45B" name="X7998D1728439D45B"></a></p>
+
+<h5>3.7-14 IsPAntipodal</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPAntipodal</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Returns if the homogeneous coherent configuration CC is antipodal.</p>
+
+<p><a id="X81F482747C1E7A48" name="X81F482747C1E7A48"></a></p>
+
+<h4>3.8 <span class="Heading">Cometric schemes</span></h4>
+
+<p><a id="X821E557E7EF683F8" name="X821E557E7EF683F8"></a></p>
+
+<h5>3.8-1 AdmitsQPolynomialOrdering</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdmitsQPolynomialOrdering</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Returns if the homogeneous coherent configuration CC admits a Q-polynomial ordering.</p>
+
+<p><a id="X872EC130803BD308" name="X872EC130803BD308"></a></p>
+
+<h5>3.8-2 AdmitsCometricOrdering</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdmitsCometricOrdering</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Alias for AdmitsQPolynomialOrdering.</p>
+
+<p><a id="X80DE65F1780741B9" name="X80DE65F1780741B9"></a></p>
+
+<h5>3.8-3 IsQPolynomial</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsQPolynomial</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Returns if the commutative coherent configuration CC is Q-polynomial.</p>
+
+<p><a id="X7B1853C97D873F75" name="X7B1853C97D873F75"></a></p>
+
+<h5>3.8-4 IsCometric</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCometric</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Alias for is Q-polynomial.</p>
+
+<p><a id="X791422BC7E94288E" name="X791422BC7E94288E"></a></p>
+
+<h5>3.8-5 AllQPolynomialOrderings</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllQPolynomialOrderings</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Calculate a list <span class="SimpleMath">\(L\)</span> of all Q-polynomial orderings of a homogeneous coherent configuration.</p>
+
+<p><a id="X7F70C9E27836C0C0" name="X7F70C9E27836C0C0"></a></p>
+
+<h5>3.8-6 AllCometricOrderings</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AllCometricOrderings</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: L</p>
+
+<p>Alias for AllQPolynomialOrderings.</p>
+
+<p><a id="X7C63079983A353A9" name="X7C63079983A353A9"></a></p>
+
+<h5>3.8-7 KreinArray</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; KreinArray</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: List</p>
+
+<p>Returns the Krein (or dual intersection) array if CC is Q-polynomial.</p>
+
+<p><a id="X7EA51F43826622B2" name="X7EA51F43826622B2"></a></p>
+
+<h5>3.8-8 DualIntersectionArray</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DualIntersectionArray</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: List</p>
+
+<p>Alias for KreinArray.</p>
+
+<p><a id="X7FF63F24791F2527" name="X7FF63F24791F2527"></a></p>
+
+<h5>3.8-9 IsQBipartite</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsQBipartite</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Returns if the homogeneous coherent configuration CC is Q-bipartite.</p>
+
+<p><a id="X816D53838425F2F8" name="X816D53838425F2F8"></a></p>
+
+<h5>3.8-10 IsQAntipodal</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsQAntipodal</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Returns if the homogeneous coherent configuration CC is Q-antipodal.</p>
+
+<p><a id="X87BB51CD81E9D34A" name="X87BB51CD81E9D34A"></a></p>
+
+<h4>3.9 <span class="Heading">Subsets</span></h4>
+
+<p><a id="X807E4FBF7B15CB1D" name="X807E4FBF7B15CB1D"></a></p>
+
+<h5>3.9-1 CharacteristicVector</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CharacteristicVector</code>( <var class="Arg">Omega</var>, <var class="Arg">X</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: <span class="SimpleMath">\(\chi_X\)</span></p>
+
+<p>Takes a subset X of Omega and returns the characteristic vector. The characteristic vector is a 0,1-vector indexed by the entries of Omega, with a 1 at position x if x is in X, and 0 otherwise.</p>
+
+<p><a id="X7FAF72567E7AFEA0" name="X7FAF72567E7AFEA0"></a></p>
+
+<h5>3.9-2 CharacteristicVector</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CharacteristicVector</code>( <var class="Arg">X</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: <span class="SimpleMath">\(\chi_X\)</span></p>
+
+<p>Takes a subset X of of [1 .. n] and returns the characteristic vector <span class="SimpleMath">\(chi_X\)</span>.</p>
+
+<p><a id="X7B8EAB02816156F1" name="X7B8EAB02816156F1"></a></p>
+
+<h5>3.9-3 InnerDistribution</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InnerDistribution</code>( <var class="Arg">v</var>, <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a</p>
 
 <p>Returns the inner distribution <span class="SimpleMath">\(a\)</span> of a vector v with respect to the adjacency matrices of the coherent configuration CC. Note that v must be a vector over R^n where n is the order of CC. CC must be commutative.</p>
 
-<p><a id="X7AA8B45482AC9CAC" name="X7AA8B45482AC9CAC"></a></p>
+<p><a id="X823DE0DD84783724" name="X823DE0DD84783724"></a></p>
 
-<h5>3.7-2 MacWilliamsTransform</h5>
+<h5>3.9-4 MacWilliamsTransform</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MacWilliamsTransform</code>( <var class="Arg">v</var>, <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: aQ</p>
@@ -772,7 +1377,7 @@
 
 <p><a id="X867926D07A427660" name="X867926D07A427660"></a></p>
 
-<h5>3.7-3 DualBoseMesnerBasis</h5>
+<h5>3.9-5 DualBoseMesnerBasis</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DualBoseMesnerBasis</code>( <var class="Arg">CC</var>, <var class="Arg">p</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: L</p>
@@ -781,45 +1386,152 @@
 
 <p><a id="X7ADD9C5E7A3279A2" name="X7ADD9C5E7A3279A2"></a></p>
 
-<h5>3.7-4 DualBoseMesnerBasis</h5>
+<h5>3.9-6 DualBoseMesnerBasis</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DualBoseMesnerBasis</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: L</p>
 
 <p>Returns a list <span class="SimpleMath">\(L\)</span> with the dual Bose-Mesner basis of a homogeneous coherent configuration with respect to the first point, such that <span class="SimpleMath">\(L_i = \tilde E_{i-1}\)</span>.</p>
 
-<p><a id="X810D3A5984A83D58" name="X810D3A5984A83D58"></a></p>
+<p><a id="X79986ED0847F1271" name="X79986ED0847F1271"></a></p>
 
-<h5>3.7-5 OuterDistribution</h5>
+<h5>3.9-7 OuterDistribution</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; OuterDistribution</code>( <var class="Arg">v</var>, <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: B</p>
 
 <p>Returns the outer distribution <span class="SimpleMath">\(B\)</span> of a vector <span class="SimpleMath">\(v\)</span> with respect to the adjacency matrices of the coherent configuration CC. Note that <span class="SimpleMath">\(v\)</span> must be a vector over <span class="SimpleMath">\(R^n\)</span> where n is the order of CC. CC must be commutative.</p>
 
-<p><a id="X807E4FBF7B15CB1D" name="X807E4FBF7B15CB1D"></a></p>
+<p><a id="X7ECE798F847B0FF4" name="X7ECE798F847B0FF4"></a></p>
 
-<h5>3.7-6 CharacteristicVector</h5>
+<h5>3.9-8 DelsarteDesignType</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CharacteristicVector</code>( <var class="Arg">X</var>, <var class="Arg">Omega</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: <span class="SimpleMath">\(\chi_X\)</span></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DelsarteDesignType</code>( <var class="Arg">CC</var>, <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: T</p>
 
-<p>Takes a subset X of Omega and returns the characteristic vector. The characteristic vector is a 0,1-vector indexed by the entries of Omega, with a 1 at position x if x is in X, and 0 otherwise.</p>
+<p>Returns T such that S is a Delsarte T-design, that is, <span class="SimpleMath">\(\chi_S E_i =0\)</span> for all <span class="SimpleMath">\(i \in T\)</span>. S must be a subset of the vertices.</p>
 
-<p><a id="X7FAF72567E7AFEA0" name="X7FAF72567E7AFEA0"></a></p>
+<p><a id="X8633CF8481B95FE7" name="X8633CF8481B95FE7"></a></p>
 
-<h5>3.7-7 CharacteristicVector</h5>
+<h5>3.9-9 WeightedDelsarteDesignType</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CharacteristicVector</code>( <var class="Arg">X</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: <span class="SimpleMath">\(\chi_X\)</span></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WeightedDelsarteDesignType</code>( <var class="Arg">CC</var>, <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: T</p>
 
-<p>Takes a subset X of of [1 .. n] and returns the characteristic vector <span class="SimpleMath">\(chi_X\)</span>.</p>
+<p>Returns T such that v is a (weighted) Delsarte T-design, that is, <span class="SimpleMath">\(v E_i =0\)</span> for all <span class="SimpleMath">\(i \in T\)</span>. v must be a weighted characteristic vector with respect to the vertices.</p>
+
+<p><a id="X7A277D597C52EAA9" name="X7A277D597C52EAA9"></a></p>
+
+<h5>3.9-10 IsDelsarteTDesign</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDelsarteTDesign</code>( <var class="Arg">CC</var>, <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Checks that S is a (weighted) Delsarte T-design, that is, <span class="SimpleMath">\(\chi_S E_i =0\)</span> for all <span class="SimpleMath">\(i \in T\)</span>. S must be either a subset of the vertices, or a weighted characteristic vector with respect to the vertices.</p>
+
+<p><a id="X8270DDAF7F79F0E5" name="X8270DDAF7F79F0E5"></a></p>
+
+<h5>3.9-11 DualDegreeSet</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DualDegreeSet</code>( <var class="Arg">CC</var>, <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: K</p>
+
+<p>Returns the dual degree set K for a set S, that is, <span class="SimpleMath">\(\chi_S E_i \neq 0\)</span> for all <span class="SimpleMath">\(i \in K\)</span>. S must be a subset of the vertices.</p>
+
+<p><a id="X7FEC532685C555AE" name="X7FEC532685C555AE"></a></p>
+
+<h5>3.9-12 WeightedDualDegreeSet</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WeightedDualDegreeSet</code>( <var class="Arg">CC</var>, <var class="Arg">S</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: K</p>
+
+<p>Returns the dual degree set K for a set S, that is, <span class="SimpleMath">\(v E_i \neq 0\)</span> for all <span class="SimpleMath">\(i \in K\)</span>. v must be a (weighted) characteristic vector with restpect to the vertices.</p>
+
+<p><a id="X7E263036846B1111" name="X7E263036846B1111"></a></p>
+
+<h5>3.9-13 AreDesignOrthogonal</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AreDesignOrthogonal</code>( <var class="Arg">CC</var>, <var class="Arg">S1</var>, <var class="Arg">S2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>If S1 and S2 are either subsets of vertices, or (weighted) characteristic vectors, this checks that they are design orthogonal, that is, their dual degree sets are disjoint.</p>
+
+<p><a id="X80EB12DF81F8C650" name="X80EB12DF81F8C650"></a></p>
+
+<h4>3.10 <span class="Heading">Approximations</span></h4>
+
+<p><a id="X7A0BD21D7E275ACD" name="X7A0BD21D7E275ACD"></a></p>
+
+<h5>3.10-1 ApproximateRealMinimalIdempotent</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApproximateRealMinimalIdempotent</code>( <var class="Arg">CC</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: approximation of <span class="SimpleMath">\(E_i\)</span></p>
+
+<p>Returns the <span class="SimpleMath">\(i\)</span>-th idempotent with entries approximated by floats. All entries must be real values.</p>
+
+<p><a id="X7CC529B279C1AB60" name="X7CC529B279C1AB60"></a></p>
+
+<h5>3.10-2 ApproximateRealMinimalIdempotents</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApproximateRealMinimalIdempotents</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: approximation of minimal idempotents</p>
+
+<p>Returns a list of idempotents with entries approximated by floats. All entries must be real values.</p>
+
+<p><a id="X8221482C82DF4E2D" name="X8221482C82DF4E2D"></a></p>
+
+<h5>3.10-3 ApproximateRealMatrixOfEigenvalues</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApproximateRealMatrixOfEigenvalues</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: approximation of matrix of eigenvalues</p>
+
+<p>Returns the matrix of eigenvalues with entries approximated by floats. All entries must be real values.</p>
+
+<p><a id="X7DDBF6F47A2E021C" name="X7DDBF6F47A2E021C"></a></p>
+
+<h4>3.11 <span class="Heading">Algebras</span></h4>
+
+<p><a id="X81D2BD717BA813C0" name="X81D2BD717BA813C0"></a></p>
+
+<h5>3.11-1 BoseMesnerAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BoseMesnerAlgebra</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: A</p>
+
+<p>Returns the Bose-Mesner algebra <span class="SimpleMath">\(A\)</span> of a homogeneous coherent configuration.</p>
+
+<p><a id="X811233BD7EC4ED5F" name="X811233BD7EC4ED5F"></a></p>
+
+<h5>3.11-2 AdjacencyAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdjacencyAlgebra</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: A</p>
+
+<p>Returns the adjacency algebra <span class="SimpleMath">\(A\)</span> of a homogeneous coherent configuration. This is an alias for BoseMesnerAlgebra.</p>
+
+<p><a id="X820C1A5A7FF8F6B0" name="X820C1A5A7FF8F6B0"></a></p>
+
+<h5>3.11-3 TerwilligerAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TerwilligerAlgebra</code>( <var class="Arg">CC</var>, <var class="Arg">p</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: T</p>
+
+<p>Returns the Terwilliger algebra <span class="SimpleMath">\(T\)</span> of a homogeneous coherent configuration with respect to the point p.</p>
+
+<p><a id="X8164E1657B7ED844" name="X8164E1657B7ED844"></a></p>
+
+<h5>3.11-4 TerwilligerAlgebra</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TerwilligerAlgebra</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: T</p>
+
+<p>Returns the Terwilliger algebra <span class="SimpleMath">\(T\)</span> of a homogeneous coherent configuration with respect to the first point.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

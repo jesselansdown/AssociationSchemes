@@ -1,0 +1,259 @@
+\GAPDocLabFile{associationschemes}
+\makelabel{associationschemes:Title page}{}{X7D2C85EC87DD46E5}
+\makelabel{associationschemes:Abstract}{}{X7AA6C5737B711C89}
+\makelabel{associationschemes:Copyright}{}{X81488B807F2A1CF1}
+\makelabel{associationschemes:Acknowledgements}{}{X82A988D47DFAFCFA}
+\makelabel{associationschemes:Table of Contents}{}{X8537FEB07AF2BEC8}
+\makelabel{associationschemes:Introduction}{1}{X7DFB63A97E67C0A1}
+\makelabel{associationschemes:Welcome to AssociationSchemes}{1.1}{X84CBAD1987E00213}
+\makelabel{associationschemes:Citing AssociationSchemes}{1.2}{X8424F0C17AAE4D39}
+\makelabel{associationschemes:Dependencies}{1.3}{X7C0B91E37C8FC531}
+\makelabel{associationschemes:Installation}{1.4}{X8360C04082558A12}
+\makelabel{associationschemes:Getting Started}{2}{X7B1863E17896BCE1}
+\makelabel{associationschemes:Tutorial - A first session with AssociationSchemes}{2.1}{X7E1DAE3779F9F9E0}
+\makelabel{associationschemes:Homogeneous Coherent Configuration objects}{3}{X7CD35ADB7EC02992}
+\makelabel{associationschemes:Core functionality}{3.1}{X851AE2B98382B550}
+\makelabel{associationschemes:Constructor methods}{3.2}{X820CD05F85142F0A}
+\makelabel{associationschemes:Library}{3.3}{X7970DB3384AF719F}
+\makelabel{associationschemes:Graphs, automorphisms, and maps}{3.4}{X7A99E8E67C672076}
+\makelabel{associationschemes:Fusions}{3.5}{X791CDD977B9FD97A}
+\makelabel{associationschemes:Bose-Mesner algebra}{3.6}{X7BEA38D2788CD9FC}
+\makelabel{associationschemes:Metric schemes}{3.7}{X7EEAC69486AF989B}
+\makelabel{associationschemes:Cometric schemes}{3.8}{X81F482747C1E7A48}
+\makelabel{associationschemes:Subsets}{3.9}{X87BB51CD81E9D34A}
+\makelabel{associationschemes:Approximations}{3.10}{X80EB12DF81F8C650}
+\makelabel{associationschemes:Algebras}{3.11}{X7DDBF6F47A2E021C}
+\makelabel{associationschemes:Intersection Algebra objects}{4}{X785CC0977ACB7807}
+\makelabel{associationschemes:Core functionality}{4.1}{X851AE2B98382B550}
+\makelabel{associationschemes:Constructor methods}{4.2}{X820CD05F85142F0A}
+\makelabel{associationschemes:Automorphisms and maps}{4.3}{X7FC3546D85D4FF29}
+\makelabel{associationschemes:Fusions}{4.4}{X791CDD977B9FD97A}
+\makelabel{associationschemes:Intersection algebra}{4.5}{X7EBD17797F391938}
+\makelabel{associationschemes:Metric schemes}{4.6}{X7EEAC69486AF989B}
+\makelabel{associationschemes:Cometric schemes}{4.7}{X81F482747C1E7A48}
+\makelabel{associationschemes:Examples}{5}{X7A489A5D79DA9E5C}
+\makelabel{associationschemes:Example 1 -- Constructing groups}{5.1}{X7A0C31A67CF49C08}
+\makelabel{associationschemes:Example 2 -- Dual polar spaces and their graphs}{5.2}{X83AE03A179F223FD}
+\makelabel{associationschemes:Example 3 -- Codes}{5.3}{X7F31FB6D7897A23B}
+\makelabel{associationschemes:Example 4 -- Using the library}{5.4}{X869C42647960C7AC}
+\makelabel{associationschemes:Example 5 -- Constructing HS (advanced example)}{5.5}{X7F8954C27C3CCAAC}
+\makelabel{associationschemes:Appendix}{6}{X86E649828230497D}
+\makelabel{associationschemes:AssociationSchemes Links}{6.1}{X8780F3D87DD387DA}
+\makelabel{associationschemes:GAP Links}{6.2}{X8122776087DEC60B}
+\makelabel{associationschemes:Bibliography}{Bib}{X7A6F98FD85F02BFE}
+\makelabel{associationschemes:References}{Bib}{X7A6F98FD85F02BFE}
+\makelabel{associationschemes:Index}{Ind}{X83A0356F839C696F}
+\makelabel{associationschemes:HomogeneousCoherentConfiguration for ismatrix}{3.1.1}{X862EA9667BCADC04}
+\makelabel{associationschemes:HomogeneousCoherentConfigurationNC for ismatrix}{3.1.2}{X7E6AEC267E78078C}
+\makelabel{associationschemes:AssociationScheme for ismatrix}{3.1.3}{X7C92838B87816988}
+\makelabel{associationschemes:AssociationSchemeNC for ismatrix}{3.1.4}{X7E3565C17884BF57}
+\makelabel{associationschemes:ReorderRelations for ishomogeneouscoherentconfiguration, islist}{3.1.5}{X7C7210787E5A87D0}
+\makelabel{associationschemes:RelationMatrix for ishomogeneouscoherentconfiguration}{3.1.6}{X7E5F3FFA862C3FF1}
+\makelabel{associationschemes:Relation for ishomogeneouscoherentconfiguration, isposint, isposint}{3.1.7}{X81B6F58485D31123}
+\makelabel{associationschemes:Neighbours for ishomogeneouscoherentconfiguration, isposint, isint}{3.1.8}{X81A33D6D7B581567}
+\makelabel{associationschemes:Neighbours for ishomogeneouscoherentconfiguration, isint, islist}{3.1.9}{X86B7FB54839FB92A}
+\makelabel{associationschemes:IsCommutative for ishomogeneouscoherentconfiguration}{3.1.10}{X7A08AD147E087933}
+\makelabel{associationschemes:IsSymmetricCoherentConfiguration for ishomogeneouscoherentconfiguration}{3.1.11}{X811BE49B82475787}
+\makelabel{associationschemes:IsAssociationScheme for ishomogeneouscoherentconfiguration}{3.1.12}{X801063A083CF6BA0}
+\makelabel{associationschemes:NumberOfClasses for ishomogeneouscoherentconfiguration}{3.1.13}{X87DFF5E98044D47C}
+\makelabel{associationschemes:Rank for ishomogeneouscoherentconfiguration}{3.1.14}{X7FF700697A625831}
+\makelabel{associationschemes:AdjacencyMatrices for ishomogeneouscoherentconfiguration}{3.1.15}{X795BD63780A058D3}
+\makelabel{associationschemes:Order for ishomogeneouscoherentconfiguration}{3.1.16}{X7F8EBBAB79CF3102}
+\makelabel{associationschemes:IntersectionNumber for ishomogeneouscoherentconfiguration, isint, isint, isint}{3.1.17}{X81D573D978ED7818}
+\makelabel{associationschemes:Valencies for ishomogeneouscoherentconfiguration}{3.1.18}{X86DA7C9780CC7184}
+\makelabel{associationschemes:IntersectionAlgebraOfHomogeneousCoherentConfiguration for ishomogeneouscoherentconfiguration}{3.1.19}{X7B22C9BD7B67A5AF}
+\makelabel{associationschemes:IntersectionMatrices for ishomogeneouscoherentconfiguration}{3.1.20}{X81A168787D0FA745}
+\makelabel{associationschemes:NumberOfCharacters for ishomogeneouscoherentconfiguration}{3.1.21}{X8137DD257F503890}
+\makelabel{associationschemes:SplittingField for ishomogeneouscoherentconfiguration}{3.1.22}{X829FF25680025270}
+\makelabel{associationschemes:HasRationalSplittingField for ishomogeneouscoherentconfiguration}{3.1.23}{X8628587081EA7495}
+\makelabel{associationschemes:KreinParameter for ishomogeneouscoherentconfiguration, isint, isint, isint}{3.1.24}{X783D72627DC6C094}
+\makelabel{associationschemes:KreinParameters for ishomogeneouscoherentconfiguration}{3.1.25}{X7F90E9B58624A11B}
+\makelabel{associationschemes:SaveHomogeneousCoherentConfigurationWithCertainAttributes for isstring, ishomogeneouscoherentconfiguration, islist}{3.1.26}{X79D2FE8C7AC7C2A6}
+\makelabel{associationschemes:ReadHomogeneousCoherentConfigurationWithCertainAttributes for isstring}{3.1.27}{X7F1CC5F2874495B4}
+\makelabel{associationschemes:IsThin for ishomogeneouscoherentconfiguration}{3.1.28}{X7B3A1FAB86F88033}
+\makelabel{associationschemes:IsQuasiThin for ishomogeneouscoherentconfiguration}{3.1.29}{X7EE5E0897CD88C21}
+\makelabel{associationschemes:IsPrimitive for ishomogeneouscoherentconfiguration}{3.1.30}{X87769E5C7BACEF1D}
+\makelabel{associationschemes:ReorderMinimalIdempotents for ishomogeneouscoherentconfiguration, islist}{3.1.31}{X7F853FE983D32745}
+\makelabel{associationschemes:ViewRelationDistributionDiagram for ishomogeneouscoherentconfiguration}{3.1.32}{X874EB8097E4B31C9}
+\makelabel{associationschemes:Description for ishomogeneouscoherentconfiguration}{3.1.33}{X86D99EDC7B479A6E}
+\makelabel{associationschemes:DistanceRegularGraphScheme for ismatrix}{3.2.1}{X8644D8D47A767BAB}
+\makelabel{associationschemes:DistanceRegularGraphSchemeNC for ismatrix}{3.2.2}{X7CB794B085EF524A}
+\makelabel{associationschemes:StronglyRegularGraphScheme for ismatrix}{3.2.3}{X7B53D816825017B5}
+\makelabel{associationschemes:StronglyRegularGraphSchemeNC for ismatrix}{3.2.4}{X8180A6437DC93E54}
+\makelabel{associationschemes:BilinearFormsScheme for isfield, isposint, isposint}{3.2.5}{X83DA0DF97CE4EEBB}
+\makelabel{associationschemes:CyclotomicScheme for isposint, isposint}{3.2.6}{X7BFC0DE884896A25}
+\makelabel{associationschemes:GrassmannScheme for isposint, isposint, isposint}{3.2.7}{X7C6A577980AFC545}
+\makelabel{associationschemes:GroupCoherentConfiguration for isgroup}{3.2.8}{X86AE1E9C7B3A87A3}
+\makelabel{associationschemes:HammingScheme for isposint, isposint}{3.2.9}{X84E428FD7E53D329}
+\makelabel{associationschemes:JohnsonScheme for isposint, isposint}{3.2.10}{X87F73F177F55A0A6}
+\makelabel{associationschemes:DirectProductOfHomogeneousCoherentConfigurations for ishomogeneouscoherentconfiguration, ishomogeneouscoherentconfiguration}{3.2.11}{X82C27C987D42E738}
+\makelabel{associationschemes:WreathProductOfHomogeneousCoherentConfigurations for ishomogeneouscoherentconfiguration, ishomogeneouscoherentconfiguration}{3.2.12}{X78E3E09A7C979521}
+\makelabel{associationschemes:BipartiteDoubleOfAssociationScheme for ishomogeneouscoherentconfiguration}{3.2.13}{X854AA5FC7C353609}
+\makelabel{associationschemes:ExtendedQBipartiteDouble for ishomogeneouscoherentconfiguration}{3.2.14}{X8534326B82EE9891}
+\makelabel{associationschemes:HomogeneousCoherentConfigurationByOrbitals for ispermgroup}{3.2.15}{X85D3B60C8693F466}
+\makelabel{associationschemes:HomogeneousCoherentConfigurationByOrbitals for isgroup, isgroup}{3.2.16}{X7B20E1AC7CAFCA4D}
+\makelabel{associationschemes:SchurianAssociationScheme for ispermgroup}{3.2.17}{X806EA85F83549F53}
+\makelabel{associationschemes:SchurianCoherentConfiguration for ispermgroup}{3.2.18}{X8471FF757ADD27F0}
+\makelabel{associationschemes:HomogeneousCoherentConfiguration for isposint, isposint}{3.3.1}{X8610716786531117}
+\makelabel{associationschemes:NumberOfHomogeneousCoherentConfigurations for isposint}{3.3.2}{X83905BC079F11C47}
+\makelabel{associationschemes:AvailableHomogeneousCoherentConfigurations}{3.3.3}{X7B72D0D081591C5E}
+\makelabel{associationschemes:AllHomogeneousCoherentConfigurations for isposint}{3.3.4}{X78064175875695D6}
+\makelabel{associationschemes:SmallSchemeIdentification for ishomogeneouscoherentconfiguration}{3.3.5}{X792738D57B9DE5EB}
+\makelabel{associationschemes:Digraph for ishomogeneouscoherentconfiguration, isposint}{3.4.1}{X860EBD847DBEE0E4}
+\makelabel{associationschemes:Digraph for ishomogeneouscoherentconfiguration, islist}{3.4.2}{X7F5760E97D92586F}
+\makelabel{associationschemes:AutomorphismGroup for ishomogeneouscoherentconfiguration}{3.4.3}{X7DC6AA86846CB888}
+\makelabel{associationschemes:ImageOfHomogeneousCoherentConfiguration for ishomogeneouscoherentconfiguration, isperm, isperm}{3.4.4}{X8165808287B61ACD}
+\makelabel{associationschemes:IsomorphismHomogeneousCoherentConfigurations for ishomogeneouscoherentconfiguration, ishomogeneouscoherentconfiguration}{3.4.5}{X7CC1855982DF9DE4}
+\makelabel{associationschemes:AreIsomorphicHomogeneousCoherentConfigurations for ishomogeneouscoherentconfiguration, ishomogeneouscoherentconfiguration}{3.4.6}{X8156304D817F8C22}
+\makelabel{associationschemes:CanonisingMap for ishomogeneouscoherentconfiguration}{3.4.7}{X7A6C4BCF85A7027A}
+\makelabel{associationschemes:CanonicalFormOfHomogeneousCoherentConfiguration for ishomogeneouscoherentconfiguration}{3.4.8}{X85BE27AA7ABB96CD}
+\makelabel{associationschemes:ConstructorGroup for ishomogeneouscoherentconfiguration}{3.4.9}{X792D264C80BA1A3B}
+\makelabel{associationschemes:IsGenerouslyTransitive for ispermgroup}{3.4.10}{X7E9D8FA485C36A2B}
+\makelabel{associationschemes:IsGenerouslyTransitive for ispermgroup, islist}{3.4.11}{X7DB4FFBC7C0A2173}
+\makelabel{associationschemes:IsSchurian for ishomogeneouscoherentconfiguration}{3.4.12}{X8305508584992579}
+\makelabel{associationschemes:IsFusionOfHomogeneousCoherentConfiguration for ishomogeneouscoherentconfiguration, islist}{3.5.1}{X81A5B33780DFAE1D}
+\makelabel{associationschemes:FusionOfHomogeneousCoherentConfiguration for ishomogeneouscoherentconfiguration, islist}{3.5.2}{X81E2D8678593F6B7}
+\makelabel{associationschemes:ConverseRelationPairs for ishomogeneouscoherentconfiguration}{3.5.3}{X843860417966869C}
+\makelabel{associationschemes:ConverseRelation for ishomogeneouscoherentconfiguration, isint}{3.5.4}{X7FA127E67B7399C8}
+\makelabel{associationschemes:IsStratifiable for ishomogeneouscoherentconfiguration}{3.5.5}{X7E2240F0806D0D25}
+\makelabel{associationschemes:SymmetrisationOfHomogeneousCoherentConfiguration for ishomogeneouscoherentconfiguration}{3.5.6}{X7BB4E2B27F9E2390}
+\makelabel{associationschemes:FusingPartitionOfHomogeneousCoherentConfigurations for ishomogeneouscoherentconfiguration, ishomogeneouscoherentconfiguration}{3.5.7}{X79E4F7917BF736B7}
+\makelabel{associationschemes:FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration for ishomogeneouscoherentconfiguration}{3.5.8}{X79453D1A81CE4047}
+\makelabel{associationschemes:AllNonTrivialFusionsOfHomgeneousCoherentConfiguration for ishomogeneouscoherentconfiguration}{3.5.9}{X804E8749792F2CB7}
+\makelabel{associationschemes:AllFusionsOfHomgeneousCoherentConfiguration for ishomogeneouscoherentconfiguration}{3.5.10}{X83C9C5DB7C87500F}
+\makelabel{associationschemes:FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration for ishomogeneouscoherentconfiguration}{3.5.11}{X8432F3617F33B1BE}
+\makelabel{associationschemes:AllNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration for ishomogeneouscoherentconfiguration}{3.5.12}{X841E8F567F9D3C18}
+\makelabel{associationschemes:AllSymmetricFusionsOfHomgeneousCoherentConfiguration for ishomogeneouscoherentconfiguration}{3.5.13}{X7A63406C84E706E5}
+\makelabel{associationschemes:IsomorphismToFusionScheme for ishomogeneouscoherentconfiguration, ishomogeneouscoherentconfiguration}{3.5.14}{X87D08BC5870911CF}
+\makelabel{associationschemes:IsIsomorphicToFusionScheme for ishomogeneouscoherentconfiguration, ishomogeneouscoherentconfiguration}{3.5.15}{X819EE3A478CD95F2}
+\makelabel{associationschemes:MapFromAdjacencyMatricesToMinimalIdempotents for ishomogeneouscoherentconfiguration}{3.6.1}{X7AD11E4E83F31019}
+\makelabel{associationschemes:MapFromAdjacencyMatricesToMinimalIdempotentsOverRationals for ishomogeneouscoherentconfiguration}{3.6.2}{X7951042A7DC233F1}
+\makelabel{associationschemes:MinimalIdempotents for ishomogeneouscoherentconfiguration}{3.6.3}{X86E4696378C91275}
+\makelabel{associationschemes:MinimalIdempotentsOverRationals for ishomogeneouscoherentconfiguration}{3.6.4}{X84BFF34F7F5B4EB9}
+\makelabel{associationschemes:MatrixOfEigenvalues for ishomogeneouscoherentconfiguration}{3.6.5}{X7D66223978A4AC1C}
+\makelabel{associationschemes:MatrixOfDualEigenvalues for ishomogeneouscoherentconfiguration}{3.6.6}{X7B5FBF42843130AF}
+\makelabel{associationschemes:Multiplicities for ishomogeneouscoherentconfiguration}{3.6.7}{X844CA82583657047}
+\makelabel{associationschemes:CharacterTableOfHomogeneousCoherentConfiguration for ishomogeneouscoherentconfiguration}{3.6.8}{X7B3AD5F67E3FDC50}
+\makelabel{associationschemes:FitMatrixOfEigenvalues for ishomogeneouscoherentconfiguration, ismatrix}{3.6.9}{X821425FA7923B4C8}
+\makelabel{associationschemes:CharacterTableOfSchurianHomogeneousCoherentConfiguration for ishomogeneouscoherentconfiguration}{3.6.10}{X7BF28D4185AE6B89}
+\makelabel{associationschemes:MatrixOfEigenvaluesOfCyclotomicScheme for isposint, isposint}{3.6.11}{X823719AA854623FB}
+\makelabel{associationschemes:MatrixOfEigenvaluesOfGrassmannScheme for isposint, isposint, isposint}{3.6.12}{X81D585B285091A4F}
+\makelabel{associationschemes:MatrixOfEigenvaluesOfHammingScheme for isposint, isposint}{3.6.13}{X861E3C8080FE3A0D}
+\makelabel{associationschemes:MatrixOfEigenvaluesOfJohnsonScheme for isposint, isposint}{3.6.14}{X850D2B6A799A9263}
+\makelabel{associationschemes:IsPPolynomial for ishomogeneouscoherentconfiguration}{3.7.1}{X789D746E781B671A}
+\makelabel{associationschemes:FirstPPolynomialOrdering for ishomogeneouscoherentconfiguration}{3.7.2}{X81E16D677C3957C9}
+\makelabel{associationschemes:AdmitsPPolynomialOrdering for ishomogeneouscoherentconfiguration}{3.7.3}{X86B225878491F343}
+\makelabel{associationschemes:IsMetric for ishomogeneouscoherentconfiguration}{3.7.4}{X85DD4C3A86B5AC83}
+\makelabel{associationschemes:FirstMetricOrdering for ishomogeneouscoherentconfiguration}{3.7.5}{X7A5DF9F07CAB66AD}
+\makelabel{associationschemes:AdmitsMetricOrdering for ishomogeneouscoherentconfiguration}{3.7.6}{X8399CD2783FCA56B}
+\makelabel{associationschemes:AllPPolynomialOrderings for ishomogeneouscoherentconfiguration}{3.7.7}{X7F80E2E3851FEEF8}
+\makelabel{associationschemes:AllMetricOrderings for ishomogeneouscoherentconfiguration}{3.7.8}{X810B62B37A2CCBE7}
+\makelabel{associationschemes:IsStronglyRegularGraph for ishomogeneouscoherentconfiguration}{3.7.9}{X7816543D7994BC51}
+\makelabel{associationschemes:IntersectionArray for ishomogeneouscoherentconfiguration}{3.7.10}{X79B6D31979ADD8CB}
+\makelabel{associationschemes:ClassicalParameters for ishomogeneouscoherentconfiguration}{3.7.11}{X7B51DF2587BF1A24}
+\makelabel{associationschemes:StronglyRegularGraphParameters for ishomogeneouscoherentconfiguration}{3.7.12}{X79DDD11F7F64FDF3}
+\makelabel{associationschemes:IsPBipartite for ishomogeneouscoherentconfiguration}{3.7.13}{X8703BDD579030384}
+\makelabel{associationschemes:IsPAntipodal for ishomogeneouscoherentconfiguration}{3.7.14}{X7998D1728439D45B}
+\makelabel{associationschemes:AdmitsQPolynomialOrdering for ishomogeneouscoherentconfiguration}{3.8.1}{X821E557E7EF683F8}
+\makelabel{associationschemes:AdmitsCometricOrdering for ishomogeneouscoherentconfiguration}{3.8.2}{X872EC130803BD308}
+\makelabel{associationschemes:IsQPolynomial for ishomogeneouscoherentconfiguration}{3.8.3}{X80DE65F1780741B9}
+\makelabel{associationschemes:IsCometric for ishomogeneouscoherentconfiguration}{3.8.4}{X7B1853C97D873F75}
+\makelabel{associationschemes:AllQPolynomialOrderings for ishomogeneouscoherentconfiguration}{3.8.5}{X791422BC7E94288E}
+\makelabel{associationschemes:AllCometricOrderings for ishomogeneouscoherentconfiguration}{3.8.6}{X7F70C9E27836C0C0}
+\makelabel{associationschemes:KreinArray for ishomogeneouscoherentconfiguration}{3.8.7}{X7C63079983A353A9}
+\makelabel{associationschemes:DualIntersectionArray for ishomogeneouscoherentconfiguration}{3.8.8}{X7EA51F43826622B2}
+\makelabel{associationschemes:IsQBipartite for ishomogeneouscoherentconfiguration}{3.8.9}{X7FF63F24791F2527}
+\makelabel{associationschemes:IsQAntipodal for ishomogeneouscoherentconfiguration}{3.8.10}{X816D53838425F2F8}
+\makelabel{associationschemes:CharacteristicVector for islist, islist}{3.9.1}{X807E4FBF7B15CB1D}
+\makelabel{associationschemes:CharacteristicVector for islist, isposint}{3.9.2}{X7FAF72567E7AFEA0}
+\makelabel{associationschemes:InnerDistribution for ishomogeneouscoherentconfiguration, islist}{3.9.3}{X7B8EAB02816156F1}
+\makelabel{associationschemes:MacWilliamsTransform for ishomogeneouscoherentconfiguration, islist}{3.9.4}{X823DE0DD84783724}
+\makelabel{associationschemes:DualBoseMesnerBasis for ishomogeneouscoherentconfiguration, isposint}{3.9.5}{X867926D07A427660}
+\makelabel{associationschemes:DualBoseMesnerBasis for ishomogeneouscoherentconfiguration}{3.9.6}{X7ADD9C5E7A3279A2}
+\makelabel{associationschemes:OuterDistribution for ishomogeneouscoherentconfiguration, islist}{3.9.7}{X79986ED0847F1271}
+\makelabel{associationschemes:DelsarteDesignType for ishomogeneouscoherentconfiguration, islist}{3.9.8}{X7ECE798F847B0FF4}
+\makelabel{associationschemes:WeightedDelsarteDesignType for ishomogeneouscoherentconfiguration, islist}{3.9.9}{X8633CF8481B95FE7}
+\makelabel{associationschemes:IsDelsarteTDesign for ishomogeneouscoherentconfiguration, islist, islist}{3.9.10}{X7A277D597C52EAA9}
+\makelabel{associationschemes:DualDegreeSet for ishomogeneouscoherentconfiguration, islist}{3.9.11}{X8270DDAF7F79F0E5}
+\makelabel{associationschemes:WeightedDualDegreeSet for ishomogeneouscoherentconfiguration, islist}{3.9.12}{X7FEC532685C555AE}
+\makelabel{associationschemes:AreDesignOrthogonal for ishomogeneouscoherentconfiguration, islist, islist}{3.9.13}{X7E263036846B1111}
+\makelabel{associationschemes:ApproximateRealMinimalIdempotent for ishomogeneouscoherentconfiguration, isint}{3.10.1}{X7A0BD21D7E275ACD}
+\makelabel{associationschemes:ApproximateRealMinimalIdempotents for ishomogeneouscoherentconfiguration}{3.10.2}{X7CC529B279C1AB60}
+\makelabel{associationschemes:ApproximateRealMatrixOfEigenvalues for ishomogeneouscoherentconfiguration}{3.10.3}{X8221482C82DF4E2D}
+\makelabel{associationschemes:BoseMesnerAlgebra for ishomogeneouscoherentconfiguration}{3.11.1}{X81D2BD717BA813C0}
+\makelabel{associationschemes:AdjacencyAlgebra for ishomogeneouscoherentconfiguration}{3.11.2}{X811233BD7EC4ED5F}
+\makelabel{associationschemes:TerwilligerAlgebra for ishomogeneouscoherentconfiguration, isint}{3.11.3}{X820C1A5A7FF8F6B0}
+\makelabel{associationschemes:TerwilligerAlgebra for ishomogeneouscoherentconfiguration}{3.11.4}{X8164E1657B7ED844}
+\makelabel{associationschemes:IntersectionAlgebra for islist}{4.1.1}{X80FF69E585F8E179}
+\makelabel{associationschemes:IntersectionMatrices for isintersectionalgebraobject}{4.1.2}{X790BECF9797E075D}
+\makelabel{associationschemes:IntersectionNumber for isintersectionalgebraobject, isint, isint, isint}{4.1.3}{X84FCFC117F92A772}
+\makelabel{associationschemes:NumberOfClasses for isintersectionalgebraobject}{4.1.4}{X7C4F5A1485AA676B}
+\makelabel{associationschemes:Valencies for isintersectionalgebraobject}{4.1.5}{X7B14A4317DEE2AC5}
+\makelabel{associationschemes:Order for isintersectionalgebraobject}{4.1.6}{X7B8F4F6C78A44799}
+\makelabel{associationschemes:SplittingField for isintersectionalgebraobject}{4.1.7}{X791D09F6835ED527}
+\makelabel{associationschemes:HasRationalSplittingField for isintersectionalgebraobject}{4.1.8}{X87E3C51878414487}
+\makelabel{associationschemes:KreinParameter for isintersectionalgebraobject, isint, isint, isint}{4.1.9}{X7DD2B3A679EA3698}
+\makelabel{associationschemes:KreinParameters for isintersectionalgebraobject}{4.1.10}{X7F5118AC83CA120C}
+\makelabel{associationschemes:IsQBipartite for isintersectionalgebraobject}{4.1.11}{X7DD1A98E84BEECBF}
+\makelabel{associationschemes:IsPBipartite for isintersectionalgebraobject}{4.1.12}{X87C231C084A2CA1C}
+\makelabel{associationschemes:IsQAntipodal for isintersectionalgebraobject}{4.1.13}{X7F9A176979843B60}
+\makelabel{associationschemes:IsPAntipodal for isintersectionalgebraobject}{4.1.14}{X85898F2779981DC3}
+\makelabel{associationschemes:ReorderRelations for isintersectionalgebraobject, islist}{4.1.15}{X7E1425D9780A8CA6}
+\makelabel{associationschemes:ReorderMinimalIdempotents for isintersectionalgebraobject, islist}{4.1.16}{X86F72366870753E3}
+\makelabel{associationschemes:ViewRelationDistributionDiagram for isintersectionalgebraobject}{4.1.17}{X7EE0A7017A7A89EE}
+\makelabel{associationschemes:IsCommutative for isintersectionalgebraobject}{4.1.18}{X7D34641A79D5A111}
+\makelabel{associationschemes:IsSymmetricIntersectionAlgebra for isintersectionalgebraobject}{4.1.19}{X787265D5870A8B9A}
+\makelabel{associationschemes:NumberOfCharacters for isintersectionalgebraobject}{4.1.20}{X8034C62985C2232A}
+\makelabel{associationschemes:IntersectionAlgebraFromMatrixOfEigenvalues for ismatrix}{4.2.1}{X7E05148D80305715}
+\makelabel{associationschemes:HammingSchemeIntersectionAlgebra for isposint, isposint}{4.2.2}{X86DFDA3F86B4390D}
+\makelabel{associationschemes:GrassmanSchemeIntersectionAlgebra for isposint, isposint, isposint}{4.2.3}{X7D09346C8602DBAA}
+\makelabel{associationschemes:CyclotomicSchemeIntersectionAlgebra for isposint, isposint}{4.2.4}{X7E2E077F81242C77}
+\makelabel{associationschemes:IntersectionAlgebraFromIntersectionArray for islist}{4.2.5}{X7813B9CB85C361CB}
+\makelabel{associationschemes:IntersectionAlgebraFromClassicalParameters for islist}{4.2.6}{X7AA6FADB83444453}
+\makelabel{associationschemes:IntersectionAlgebraFromStronglyRegularGraphParameters for isposint, isposint, isint, isint}{4.2.7}{X82E28A4E83434396}
+\makelabel{associationschemes:IsFusionOfHomogeneousCoherentConfiguration for isintersectionalgebraobject, islist}{4.2.8}{X7887CDF2811D5AAD}
+\makelabel{associationschemes:SchurianSchemeIntersectionAlgebra for ispermgroup}{4.2.9}{X7CF0D6B878269365}
+\makelabel{associationschemes:MapFromIntersectionMatricesToCentralIdempotents for isintersectionalgebraobject}{4.3.1}{X7F58CA6B87D5D9B9}
+\makelabel{associationschemes:MapFromIntersectionMatricesToCentralIdempotentsOverRationals for isintersectionalgebraobject}{4.3.2}{X8524F6998417238B}
+\makelabel{associationschemes:ImageOfIntersectionAlgebra for isintersectionalgebraobject, isperm}{4.3.3}{X7D7B6E69830C785E}
+\makelabel{associationschemes:IsomorphismIntersectionAlgebras for isintersectionalgebraobject, isintersectionalgebraobject}{4.3.4}{X80E1857E7CF06B41}
+\makelabel{associationschemes:AreIsomorphicIntersectionAlgebras for isintersectionalgebraobject, isintersectionalgebraobject}{4.3.5}{X7AEFAE9F7C8FD7FC}
+\makelabel{associationschemes:CanonisingMap for isintersectionalgebraobject}{4.3.6}{X78D9D1E2827ADA58}
+\makelabel{associationschemes:CanonicalFormOfIntersectionAlgebra for isintersectionalgebraobject}{4.3.7}{X7FD9045C7A8D2F75}
+\makelabel{associationschemes:AutomorphismGroup for isintersectionalgebraobject}{4.3.8}{X8521C6DD7DBDE766}
+\makelabel{associationschemes:IsFusionOfIntersectionAlgebra for isintersectionalgebraobject, islist}{4.4.1}{X7A2AE752848B5FEB}
+\makelabel{associationschemes:FusionOfIntersectionAlgebra for isintersectionalgebraobject, islist}{4.4.2}{X7F43C9937A538D77}
+\makelabel{associationschemes:ConverseRelationPairs for isintersectionalgebraobject}{4.4.3}{X8435162780C90C07}
+\makelabel{associationschemes:ConverseRelation for isintersectionalgebraobject, isint}{4.4.4}{X7D8A365087D85C0D}
+\makelabel{associationschemes:IsStratifiable for isintersectionalgebraobject}{4.4.5}{X8530E48E83318A72}
+\makelabel{associationschemes:SymmetrisationOfIntersectionAlgebra for isintersectionalgebraobject}{4.4.6}{X81CC46958133415A}
+\makelabel{associationschemes:FeasibleNonTrivialFusionsOfIntersectionAlgebra for isintersectionalgebraobject}{4.4.7}{X8212A528859E9045}
+\makelabel{associationschemes:AllNonTrivialFusionsOfIntersectionAlgebra for isintersectionalgebraobject}{4.4.8}{X7A42D1AF80E1C9A8}
+\makelabel{associationschemes:AllFusionsOfIntersectionAlgebra for isintersectionalgebraobject}{4.4.9}{X7CE39DC97A0F1393}
+\makelabel{associationschemes:FeasibleNonTrivialSymmetricFusionsOfIntersectionAlgebra for isintersectionalgebraobject}{4.4.10}{X82A5979583C921AD}
+\makelabel{associationschemes:AllNonTrivialSymmetricFusionsOfIntersectionAlgebra for isintersectionalgebraobject}{4.4.11}{X874E117E7CF92FA3}
+\makelabel{associationschemes:AllSymmetricFusionsOfIntersectionAlgebra for isintersectionalgebraobject}{4.4.12}{X84881BF07A927379}
+\makelabel{associationschemes:CentralIdempotentsOfIntersectionAlgebra for isintersectionalgebraobject}{4.5.1}{X85467C9F78AE489A}
+\makelabel{associationschemes:CentralIdempotentsOfIntersectionAlgebraOverRationals for isintersectionalgebraobject}{4.5.2}{X81043F1E7EBF019E}
+\makelabel{associationschemes:MatrixOfDualEigenvalues for isintersectionalgebraobject}{4.5.3}{X8214E4828479DB33}
+\makelabel{associationschemes:MatrixOfEigenvalues for isintersectionalgebraobject}{4.5.4}{X79DF2613822843F2}
+\makelabel{associationschemes:FitMatrixOfEigenvalues for isintersectionalgebraobject, ismatrix}{4.5.5}{X86A133187ED9D892}
+\makelabel{associationschemes:IsPPolynomial for isintersectionalgebraobject}{4.6.1}{X80974BA47FC6BF38}
+\makelabel{associationschemes:FirstPPolynomialOrdering for isintersectionalgebraobject}{4.6.2}{X7C84FB8B7CF27E91}
+\makelabel{associationschemes:AdmitsPPolynomialOrdering for isintersectionalgebraobject}{4.6.3}{X85C393DD7D3AC351}
+\makelabel{associationschemes:IsMetric for isintersectionalgebraobject}{4.6.4}{X86FE341F8436B2F1}
+\makelabel{associationschemes:FirstMetricOrdering for isintersectionalgebraobject}{4.6.5}{X7EF0929E86278943}
+\makelabel{associationschemes:AdmitsMetricOrdering for isintersectionalgebraobject}{4.6.6}{X8234F6FC878D0573}
+\makelabel{associationschemes:AllPPolynomialOrderings for isintersectionalgebraobject}{4.6.7}{X790D7CDB85570564}
+\makelabel{associationschemes:AllMetricOrderings for isintersectionalgebraobject}{4.6.8}{X7B0635CC80BED05D}
+\makelabel{associationschemes:IntersectionArray for isintersectionalgebraobject}{4.6.9}{X7BE960BF807C8725}
+\makelabel{associationschemes:ClassicalParameters for isintersectionalgebraobject}{4.6.10}{X7AFB848F7D33F5CA}
+\makelabel{associationschemes:StronglyRegularGraphParameters for isintersectionalgebraobject}{4.6.11}{X83418B9878424CF5}
+\makelabel{associationschemes:AdmitsQPolynomialOrdering for isintersectionalgebraobject}{4.7.1}{X79607CE4875DB3EA}
+\makelabel{associationschemes:AdmitsCometricOrdering for isintersectionalgebraobject}{4.7.2}{X7C1CE6DC85622EE0}
+\makelabel{associationschemes:IsQPolynomial for isintersectionalgebraobject}{4.7.3}{X84E674CB7FDA999B}
+\makelabel{associationschemes:IsCometric for isintersectionalgebraobject}{4.7.4}{X7A4AEBE3825C32B9}
+\makelabel{associationschemes:AllQPolynomialOrderings for isintersectionalgebraobject}{4.7.5}{X7F91B31B7EDCC312}
+\makelabel{associationschemes:AllCometricOrderings for isintersectionalgebraobject}{4.7.6}{X7B05438D7C4760D8}
+\makelabel{associationschemes:KreinArray for isintersectionalgebraobject}{4.7.7}{X83156F2F7C785E65}
+\makelabel{associationschemes:DualIntersectionArray for isintersectionalgebraobject}{4.7.8}{X81BB6D5B7BC9A829}

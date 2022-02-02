@@ -18,7 +18,7 @@
 <body class="chap0"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
@@ -32,10 +32,10 @@
 <h2>A <strong class="pkg">GAP</strong> package for working with association schemes and homogeneous coherent configurations</h2>
 
 <p>
-    1.0.0</p>
+    2.0.0</p>
 
 <p>
-    10 April 2019
+    2 February 2022
   </p>
 
 </div>
@@ -77,7 +77,7 @@
 
 <p><a id="X81488B807F2A1CF1" name="X81488B807F2A1CF1"></a></p>
 <h3>Copyright</h3>
-<p>© 2019 John Bamberg, Akihide Hanaki, Jesse Lansdown</p>
+<p>© 2019 - 2022 John Bamberg, Akihide Hanaki, Jesse Lansdown</p>
 
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</p>
 
@@ -113,8 +113,8 @@
 </span>
 </div>
 </div>
-<div class="ContChap"><a href="chap3_mj.html#X87F1120883F5B4D0">3 <span class="Heading">Functionality</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X820CD05F85142F0A">3.1 <span class="Heading">Constructor Methods</span></a>
+<div class="ContChap"><a href="chap3_mj.html#X7CD35ADB7EC02992">3 <span class="Heading">Homogeneous Coherent Configuration objects</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X851AE2B98382B550">3.1 <span class="Heading">Core functionality</span></a>
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X862EA9667BCADC04">3.1-1 HomogeneousCoherentConfiguration</a></span>
@@ -122,122 +122,309 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C92838B87816988">3.1-3 AssociationScheme</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E3565C17884BF57">3.1-4 AssociationSchemeNC</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C7210787E5A87D0">3.1-5 ReorderRelations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79D2FE8C7AC7C2A6">3.1-6 SaveHomogeneousCoherentConfigurationWithCertainAttributes</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F1CC5F2874495B4">3.1-7 ReadHomogeneousCoherentConfigurationWithCertainAttributes</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83DA0DF97CE4EEBB">3.1-8 BilinearFormsScheme</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X85D3B60C8693F466">3.1-9 HomogeneousCoherentConfigurationByOrbitals</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B20E1AC7CAFCA4D">3.1-10 HomogeneousCoherentConfigurationByOrbitals</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C6A577980AFC545">3.1-11 GrassmannScheme</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86AE1E9C7B3A87A3">3.1-12 GroupCoherentConfiguration</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X84E428FD7E53D329">3.1-13 HammingScheme</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87F73F177F55A0A6">3.1-14 JohnsonScheme</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8610716786531117">3.1-15 HomogeneousCoherentConfiguration</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83905BC079F11C47">3.1-16 NumberOfHomogeneousCoherentConfigurations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B72D0D081591C5E">3.1-17 AvailableHomogeneousCoherentConfigurations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X78064175875695D6">3.1-18 AllHomogeneousCoherentConfigurations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X80FE63407BCB0EF6">3.1-19 FusionOfHomogeneousCoherentConfigurations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X82C27C987D42E738">3.1-20 DirectProductOfHomogeneousCoherentConfigurations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X78E3E09A7C979521">3.1-21 WreathProductOfHomogeneousCoherentConfigurations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7BFC0DE884896A25">3.1-22 CyclotomicScheme</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7873613B7C723A02">3.1-23 SchurianScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E5F3FFA862C3FF1">3.1-6 RelationMatrix</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81B6F58485D31123">3.1-7 Relation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81A33D6D7B581567">3.1-8 Neighbours</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86B7FB54839FB92A">3.1-9 Neighbours</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A08AD147E087933">3.1-10 IsCommutative</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X811BE49B82475787">3.1-11 IsSymmetricCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X801063A083CF6BA0">3.1-12 IsAssociationScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87DFF5E98044D47C">3.1-13 NumberOfClasses</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7FF700697A625831">3.1-14 Rank</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X795BD63780A058D3">3.1-15 AdjacencyMatrices</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F8EBBAB79CF3102">3.1-16 Order</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81D573D978ED7818">3.1-17 IntersectionNumber</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86DA7C9780CC7184">3.1-18 Valencies</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B22C9BD7B67A5AF">3.1-19 IntersectionAlgebraOfHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81A168787D0FA745">3.1-20 IntersectionMatrices</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8137DD257F503890">3.1-21 NumberOfCharacters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X829FF25680025270">3.1-22 SplittingField</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8628587081EA7495">3.1-23 HasRationalSplittingField</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X783D72627DC6C094">3.1-24 KreinParameter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F90E9B58624A11B">3.1-25 KreinParameters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79D2FE8C7AC7C2A6">3.1-26 SaveHomogeneousCoherentConfigurationWithCertainAttributes</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F1CC5F2874495B4">3.1-27 ReadHomogeneousCoherentConfigurationWithCertainAttributes</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B3A1FAB86F88033">3.1-28 IsThin</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7EE5E0897CD88C21">3.1-29 IsQuasiThin</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87769E5C7BACEF1D">3.1-30 IsPrimitive</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F853FE983D32745">3.1-31 ReorderMinimalIdempotents</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X874EB8097E4B31C9">3.1-32 ViewRelationDistributionDiagram</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86D99EDC7B479A6E">3.1-33 Description</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7FB263297897C6C9">3.2 <span class="Heading">Matrices Describing Homogeneous Coherent Configurations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X820CD05F85142F0A">3.2 <span class="Heading">Constructor methods</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E5F3FFA862C3FF1">3.2-1 RelationMatrix</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X795BD63780A058D3">3.2-2 AdjacencyMatrices</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81A168787D0FA745">3.2-3 IntersectionMatrices</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86E4696378C91275">3.2-4 MinimalIdempotents</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8644D8D47A767BAB">3.2-1 DistanceRegularGraphScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7CB794B085EF524A">3.2-2 DistanceRegularGraphSchemeNC</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B53D816825017B5">3.2-3 StronglyRegularGraphScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8180A6437DC93E54">3.2-4 StronglyRegularGraphSchemeNC</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83DA0DF97CE4EEBB">3.2-5 BilinearFormsScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7BFC0DE884896A25">3.2-6 CyclotomicScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C6A577980AFC545">3.2-7 GrassmannScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86AE1E9C7B3A87A3">3.2-8 GroupCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X84E428FD7E53D329">3.2-9 HammingScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87F73F177F55A0A6">3.2-10 JohnsonScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X82C27C987D42E738">3.2-11 DirectProductOfHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X78E3E09A7C979521">3.2-12 WreathProductOfHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X854AA5FC7C353609">3.2-13 BipartiteDoubleOfAssociationScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8534326B82EE9891">3.2-14 ExtendedQBipartiteDouble</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X85D3B60C8693F466">3.2-15 HomogeneousCoherentConfigurationByOrbitals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B20E1AC7CAFCA4D">3.2-16 HomogeneousCoherentConfigurationByOrbitals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X806EA85F83549F53">3.2-17 SchurianAssociationScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8471FF757ADD27F0">3.2-18 SchurianCoherentConfiguration</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X84DCAE9B8320046B">3.3 <span class="Heading">Properties Of Homogeneous Coherent Configurations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7970DB3384AF719F">3.3 <span class="Heading">Library</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A08AD147E087933">3.3-1 IsCommutative</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X811BE49B82475787">3.3-2 IsSymmetricCoherentConfiguration</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X801063A083CF6BA0">3.3-3 IsAssociationScheme</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7816543D7994BC51">3.3-4 IsStronglyRegularGraph</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X789D746E781B671A">3.3-5 IsPPolynomial</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X85DD4C3A86B5AC83">3.3-6 IsMetric</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X80DE65F1780741B9">3.3-7 IsQPolynomial</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B1853C97D873F75">3.3-8 IsCometric</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B3A1FAB86F88033">3.3-9 IsThin</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7EE5E0897CD88C21">3.3-10 IsQuasiThin</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87769E5C7BACEF1D">3.3-11 IsPrimitive</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X85FE64307CA22AD9">3.3-12 IsHomogeneousCoherentConfigurationByOrbitals</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E9D8FA485C36A2B">3.3-13 IsGenerouslyTransitive</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7DB4FFBC7C0A2173">3.3-14 IsGenerouslyTransitive</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8305508584992579">3.3-15 IsSchurian</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8610716786531117">3.3-1 HomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83905BC079F11C47">3.3-2 NumberOfHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B72D0D081591C5E">3.3-3 AvailableHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X78064175875695D6">3.3-4 AllHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X792738D57B9DE5EB">3.3-5 SmallSchemeIdentification</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X86A51E428337F850">3.4 <span class="Heading">Attributes Of Homogeneous Coherent Configurations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7A99E8E67C672076">3.4 <span class="Heading">Graphs, automorphisms, and maps</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87DFF5E98044D47C">3.4-1 NumberOfClasses</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F8EBBAB79CF3102">3.4-2 Order</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86DA7C9780CC7184">3.4-3 Valencies</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8137DD257F503890">3.4-4 NumberOfCharacters</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7D66223978A4AC1C">3.4-5 MatrixOfEigenvalues</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81BB73C186BA1982">3.4-6 CharacterTable</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X78A70E9384ECB89C">3.4-7 DualMatrixOfEigenvalues</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7DC6AA86846CB888">3.4-8 AutomorphismGroup</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F80E2E3851FEEF8">3.4-9 AllPPolynomialOrderings</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F90E9B58624A11B">3.4-10 KreinParameters</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X791422BC7E94288E">3.4-11 AllQPolynomialOrderings</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X792D264C80BA1A3B">3.4-12 ConstructorGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X860EBD847DBEE0E4">3.4-1 Digraph</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F5760E97D92586F">3.4-2 Digraph</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7DC6AA86846CB888">3.4-3 AutomorphismGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8165808287B61ACD">3.4-4 ImageOfHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7CC1855982DF9DE4">3.4-5 IsomorphismHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8156304D817F8C22">3.4-6 AreIsomorphicHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A6C4BCF85A7027A">3.4-7 CanonisingMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X85BE27AA7ABB96CD">3.4-8 CanonicalFormOfHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X792D264C80BA1A3B">3.4-9 ConstructorGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E9D8FA485C36A2B">3.4-10 IsGenerouslyTransitive</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7DB4FFBC7C0A2173">3.4-11 IsGenerouslyTransitive</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8305508584992579">3.4-12 IsSchurian</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X8606FDCE878850EF">3.5 <span class="Heading">Methods</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X791CDD977B9FD97A">3.5 <span class="Heading">Fusions</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81B6F58485D31123">3.5-1 Relation</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81A33D6D7B581567">3.5-2 Neighbours</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86B7FB54839FB92A">3.5-3 Neighbours</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81D573D978ED7818">3.5-4 IntersectionNumber</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X783D72627DC6C094">3.5-5 KreinParameter</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X861E3C8080FE3A0D">3.5-6 MatrixOfEigenvaluesOfHammingScheme</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X850D2B6A799A9263">3.5-7 MatrixOfEigenvaluesOfJohnsonScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81A5B33780DFAE1D">3.5-1 IsFusionOfHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81E2D8678593F6B7">3.5-2 FusionOfHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X843860417966869C">3.5-3 ConverseRelationPairs</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7FA127E67B7399C8">3.5-4 ConverseRelation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E2240F0806D0D25">3.5-5 IsStratifiable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7BB4E2B27F9E2390">3.5-6 SymmetrisationOfHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79E4F7917BF736B7">3.5-7 FusingPartitionOfHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79453D1A81CE4047">3.5-8 FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X804E8749792F2CB7">3.5-9 AllNonTrivialFusionsOfHomgeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83C9C5DB7C87500F">3.5-10 AllFusionsOfHomgeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8432F3617F33B1BE">3.5-11 FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X841E8F567F9D3C18">3.5-12 AllNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A63406C84E706E5">3.5-13 AllSymmetricFusionsOfHomgeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87D08BC5870911CF">3.5-14 IsomorphismToFusionScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X819EE3A478CD95F2">3.5-15 IsIsomorphicToFusionScheme</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7DDBF6F47A2E021C">3.6 <span class="Heading">Algebras</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7BEA38D2788CD9FC">3.6 <span class="Heading">Bose-Mesner algebra</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7DF593207D530056">3.6-1 IntersectionAlgebra</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81D2BD717BA813C0">3.6-2 BoseMesnerAlgebra</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X811233BD7EC4ED5F">3.6-3 AdjacencyAlgebra</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X820C1A5A7FF8F6B0">3.6-4 TerwilligerAlgebra</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8164E1657B7ED844">3.6-5 TerwilligerAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7AD11E4E83F31019">3.6-1 MapFromAdjacencyMatricesToMinimalIdempotents</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7951042A7DC233F1">3.6-2 MapFromAdjacencyMatricesToMinimalIdempotentsOverRationals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86E4696378C91275">3.6-3 MinimalIdempotents</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X84BFF34F7F5B4EB9">3.6-4 MinimalIdempotentsOverRationals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7D66223978A4AC1C">3.6-5 MatrixOfEigenvalues</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B5FBF42843130AF">3.6-6 MatrixOfDualEigenvalues</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X844CA82583657047">3.6-7 Multiplicities</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B3AD5F67E3FDC50">3.6-8 CharacterTableOfHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X821425FA7923B4C8">3.6-9 FitMatrixOfEigenvalues</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7BF28D4185AE6B89">3.6-10 CharacterTableOfSchurianHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X823719AA854623FB">3.6-11 MatrixOfEigenvaluesOfCyclotomicScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81D585B285091A4F">3.6-12 MatrixOfEigenvaluesOfGrassmannScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X861E3C8080FE3A0D">3.6-13 MatrixOfEigenvaluesOfHammingScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X850D2B6A799A9263">3.6-14 MatrixOfEigenvaluesOfJohnsonScheme</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7FF621D183D6F49D">3.7 <span class="Heading">Subsets And Codes</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7EEAC69486AF989B">3.7 <span class="Heading">Metric schemes</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X831BFF8B81B679D8">3.7-1 InnerDistribution</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7AA8B45482AC9CAC">3.7-2 MacWilliamsTransform</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X867926D07A427660">3.7-3 DualBoseMesnerBasis</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7ADD9C5E7A3279A2">3.7-4 DualBoseMesnerBasis</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X810D3A5984A83D58">3.7-5 OuterDistribution</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X807E4FBF7B15CB1D">3.7-6 CharacteristicVector</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7FAF72567E7AFEA0">3.7-7 CharacteristicVector</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X789D746E781B671A">3.7-1 IsPPolynomial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81E16D677C3957C9">3.7-2 FirstPPolynomialOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86B225878491F343">3.7-3 AdmitsPPolynomialOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X85DD4C3A86B5AC83">3.7-4 IsMetric</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A5DF9F07CAB66AD">3.7-5 FirstMetricOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8399CD2783FCA56B">3.7-6 AdmitsMetricOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F80E2E3851FEEF8">3.7-7 AllPPolynomialOrderings</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X810B62B37A2CCBE7">3.7-8 AllMetricOrderings</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7816543D7994BC51">3.7-9 IsStronglyRegularGraph</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79B6D31979ADD8CB">3.7-10 IntersectionArray</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B51DF2587BF1A24">3.7-11 ClassicalParameters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79DDD11F7F64FDF3">3.7-12 StronglyRegularGraphParameters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8703BDD579030384">3.7-13 IsPBipartite</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7998D1728439D45B">3.7-14 IsPAntipodal</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X81F482747C1E7A48">3.8 <span class="Heading">Cometric schemes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X821E557E7EF683F8">3.8-1 AdmitsQPolynomialOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X872EC130803BD308">3.8-2 AdmitsCometricOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X80DE65F1780741B9">3.8-3 IsQPolynomial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B1853C97D873F75">3.8-4 IsCometric</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X791422BC7E94288E">3.8-5 AllQPolynomialOrderings</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F70C9E27836C0C0">3.8-6 AllCometricOrderings</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C63079983A353A9">3.8-7 KreinArray</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7EA51F43826622B2">3.8-8 DualIntersectionArray</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7FF63F24791F2527">3.8-9 IsQBipartite</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X816D53838425F2F8">3.8-10 IsQAntipodal</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X87BB51CD81E9D34A">3.9 <span class="Heading">Subsets</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X807E4FBF7B15CB1D">3.9-1 CharacteristicVector</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7FAF72567E7AFEA0">3.9-2 CharacteristicVector</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B8EAB02816156F1">3.9-3 InnerDistribution</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X823DE0DD84783724">3.9-4 MacWilliamsTransform</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X867926D07A427660">3.9-5 DualBoseMesnerBasis</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7ADD9C5E7A3279A2">3.9-6 DualBoseMesnerBasis</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79986ED0847F1271">3.9-7 OuterDistribution</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7ECE798F847B0FF4">3.9-8 DelsarteDesignType</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8633CF8481B95FE7">3.9-9 WeightedDelsarteDesignType</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A277D597C52EAA9">3.9-10 IsDelsarteTDesign</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8270DDAF7F79F0E5">3.9-11 DualDegreeSet</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7FEC532685C555AE">3.9-12 WeightedDualDegreeSet</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E263036846B1111">3.9-13 AreDesignOrthogonal</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X80EB12DF81F8C650">3.10 <span class="Heading">Approximations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A0BD21D7E275ACD">3.10-1 ApproximateRealMinimalIdempotent</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7CC529B279C1AB60">3.10-2 ApproximateRealMinimalIdempotents</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8221482C82DF4E2D">3.10-3 ApproximateRealMatrixOfEigenvalues</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7DDBF6F47A2E021C">3.11 <span class="Heading">Algebras</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81D2BD717BA813C0">3.11-1 BoseMesnerAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X811233BD7EC4ED5F">3.11-2 AdjacencyAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X820C1A5A7FF8F6B0">3.11-3 TerwilligerAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8164E1657B7ED844">3.11-4 TerwilligerAlgebra</a></span>
 </div></div>
 </div>
-<div class="ContChap"><a href="chap4_mj.html#X7A489A5D79DA9E5C">4 <span class="Heading">Examples</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7A0C31A67CF49C08">4.1 <span class="Heading">Example 1 -- Constructing groups</span></a>
+<div class="ContChap"><a href="chap4_mj.html#X785CC0977ACB7807">4 <span class="Heading">Intersection Algebra objects</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X851AE2B98382B550">4.1 <span class="Heading">Core functionality</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X80FF69E585F8E179">4.1-1 IntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X790BECF9797E075D">4.1-2 IntersectionMatrices</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X84FCFC117F92A772">4.1-3 IntersectionNumber</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7C4F5A1485AA676B">4.1-4 NumberOfClasses</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7B14A4317DEE2AC5">4.1-5 Valencies</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7B8F4F6C78A44799">4.1-6 Order</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X791D09F6835ED527">4.1-7 SplittingField</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X87E3C51878414487">4.1-8 HasRationalSplittingField</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7DD2B3A679EA3698">4.1-9 KreinParameter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7F5118AC83CA120C">4.1-10 KreinParameters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7DD1A98E84BEECBF">4.1-11 IsQBipartite</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X87C231C084A2CA1C">4.1-12 IsPBipartite</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7F9A176979843B60">4.1-13 IsQAntipodal</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X85898F2779981DC3">4.1-14 IsPAntipodal</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7E1425D9780A8CA6">4.1-15 ReorderRelations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X86F72366870753E3">4.1-16 ReorderMinimalIdempotents</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7EE0A7017A7A89EE">4.1-17 ViewRelationDistributionDiagram</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7D34641A79D5A111">4.1-18 IsCommutative</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X787265D5870A8B9A">4.1-19 IsSymmetricIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X8034C62985C2232A">4.1-20 NumberOfCharacters</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X820CD05F85142F0A">4.2 <span class="Heading">Constructor methods</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7E05148D80305715">4.2-1 IntersectionAlgebraFromMatrixOfEigenvalues</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X86DFDA3F86B4390D">4.2-2 HammingSchemeIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7D09346C8602DBAA">4.2-3 GrassmanSchemeIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7E2E077F81242C77">4.2-4 CyclotomicSchemeIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7813B9CB85C361CB">4.2-5 IntersectionAlgebraFromIntersectionArray</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7AA6FADB83444453">4.2-6 IntersectionAlgebraFromClassicalParameters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X82E28A4E83434396">4.2-7 IntersectionAlgebraFromStronglyRegularGraphParameters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7887CDF2811D5AAD">4.2-8 IsFusionOfHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7CF0D6B878269365">4.2-9 SchurianSchemeIntersectionAlgebra</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7FC3546D85D4FF29">4.3 <span class="Heading">Automorphisms and maps</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7F58CA6B87D5D9B9">4.3-1 MapFromIntersectionMatricesToCentralIdempotents</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X8524F6998417238B">4.3-2 MapFromIntersectionMatricesToCentralIdempotentsOverRationals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7D7B6E69830C785E">4.3-3 ImageOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X80E1857E7CF06B41">4.3-4 IsomorphismIntersectionAlgebras</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7AEFAE9F7C8FD7FC">4.3-5 AreIsomorphicIntersectionAlgebras</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X78D9D1E2827ADA58">4.3-6 CanonisingMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7FD9045C7A8D2F75">4.3-7 CanonicalFormOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X8521C6DD7DBDE766">4.3-8 AutomorphismGroup</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X791CDD977B9FD97A">4.4 <span class="Heading">Fusions</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7A2AE752848B5FEB">4.4-1 IsFusionOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7F43C9937A538D77">4.4-2 FusionOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X8435162780C90C07">4.4-3 ConverseRelationPairs</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7D8A365087D85C0D">4.4-4 ConverseRelation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X8530E48E83318A72">4.4-5 IsStratifiable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X81CC46958133415A">4.4-6 SymmetrisationOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X8212A528859E9045">4.4-7 FeasibleNonTrivialFusionsOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7A42D1AF80E1C9A8">4.4-8 AllNonTrivialFusionsOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7CE39DC97A0F1393">4.4-9 AllFusionsOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X82A5979583C921AD">4.4-10 FeasibleNonTrivialSymmetricFusionsOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X874E117E7CF92FA3">4.4-11 AllNonTrivialSymmetricFusionsOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X84881BF07A927379">4.4-12 AllSymmetricFusionsOfIntersectionAlgebra</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7EBD17797F391938">4.5 <span class="Heading">Intersection algebra</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X85467C9F78AE489A">4.5-1 CentralIdempotentsOfIntersectionAlgebra</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X81043F1E7EBF019E">4.5-2 CentralIdempotentsOfIntersectionAlgebraOverRationals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X8214E4828479DB33">4.5-3 MatrixOfDualEigenvalues</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X79DF2613822843F2">4.5-4 MatrixOfEigenvalues</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X86A133187ED9D892">4.5-5 FitMatrixOfEigenvalues</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7EEAC69486AF989B">4.6 <span class="Heading">Metric schemes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X80974BA47FC6BF38">4.6-1 IsPPolynomial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7C84FB8B7CF27E91">4.6-2 FirstPPolynomialOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X85C393DD7D3AC351">4.6-3 AdmitsPPolynomialOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X86FE341F8436B2F1">4.6-4 IsMetric</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7EF0929E86278943">4.6-5 FirstMetricOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X8234F6FC878D0573">4.6-6 AdmitsMetricOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X790D7CDB85570564">4.6-7 AllPPolynomialOrderings</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7B0635CC80BED05D">4.6-8 AllMetricOrderings</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7BE960BF807C8725">4.6-9 IntersectionArray</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7AFB848F7D33F5CA">4.6-10 ClassicalParameters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X83418B9878424CF5">4.6-11 StronglyRegularGraphParameters</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X81F482747C1E7A48">4.7 <span class="Heading">Cometric schemes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X79607CE4875DB3EA">4.7-1 AdmitsQPolynomialOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7C1CE6DC85622EE0">4.7-2 AdmitsCometricOrdering</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X84E674CB7FDA999B">4.7-3 IsQPolynomial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7A4AEBE3825C32B9">4.7-4 IsCometric</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7F91B31B7EDCC312">4.7-5 AllQPolynomialOrderings</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7B05438D7C4760D8">4.7-6 AllCometricOrderings</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X83156F2F7C785E65">4.7-7 KreinArray</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X81BB6D5B7BC9A829">4.7-8 DualIntersectionArray</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap5_mj.html#X7A489A5D79DA9E5C">5 <span class="Heading">Examples</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X7A0C31A67CF49C08">5.1 <span class="Heading">Example 1 -- Constructing groups</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X83AE03A179F223FD">4.2 <span class="Heading">Example 2 -- Dual polar spaces and their graphs</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X83AE03A179F223FD">5.2 <span class="Heading">Example 2 -- Dual polar spaces and their graphs</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7F31FB6D7897A23B">4.3 <span class="Heading">Example 3 -- Codes</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X7F31FB6D7897A23B">5.3 <span class="Heading">Example 3 -- Codes</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X869C42647960C7AC">4.4 <span class="Heading">Example 4 -- Using the library</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X869C42647960C7AC">5.4 <span class="Heading">Example 4 -- Using the library</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7F8954C27C3CCAAC">4.5 <span class="Heading">Example 5 -- Constructing HS (advanced example)</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X7F8954C27C3CCAAC">5.5 <span class="Heading">Example 5 -- Constructing HS (advanced example)</span></a>
 </span>
 </div>
 </div>
-<div class="ContChap"><a href="chap5_mj.html#X86E649828230497D">5 <span class="Heading">Appendix</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X8780F3D87DD387DA">5.1 <span class="Heading">AssociationSchemes Links</span></a>
+<div class="ContChap"><a href="chap6_mj.html#X86E649828230497D">6 <span class="Heading">Appendix</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X8780F3D87DD387DA">6.1 <span class="Heading">AssociationSchemes Links</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5_mj.html#X8122776087DEC60B">5.2 <span class="Heading"><strong class="pkg">GAP</strong> Links</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X8122776087DEC60B">6.2 <span class="Heading"><strong class="pkg">GAP</strong> Links</span></a>
 </span>
 </div>
 </div>
@@ -249,7 +436,7 @@
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

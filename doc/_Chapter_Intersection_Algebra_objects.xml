@@ -1,0 +1,825 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is an automatically generated file. -->
+<Chapter Label="Chapter_Intersection_Algebra_objects">
+<Heading>Intersection Algebra objects</Heading>
+
+<Section Label="Chapter_Intersection_Algebra_objects_Section_Core_functionality">
+<Heading>Core functionality</Heading>
+
+<ManSection>
+  <Oper Arg="B" Name="IntersectionAlgebra" Label="for IsList"/>
+ <Returns>homogeneous coherent configuration
+</Returns>
+ <Description>
+	Takes a list of intersection matrices, B, and returns the Intersection Algebra. The intersection matrix <Math>(B_i)_{jk} = p_{ij}^k</Math> must be for valid
+  intersection numbers <Math>p_{ij}^k</Math> for some homogeneous coherent configuration.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="IntersectionMatrices" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>L
+</Returns>
+ <Description>
+	Returns a list L of the intersection matrices of an intersecgion algebra object, <Math>CC</Math>, where the <Math>i</Math>-th entry of <Math>L</Math>
+	is <Math>B_{i-1}</Math> and <Math>(B_{i})_{jk} = p_{ij}^k</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC, i, j, k" Name="IntersectionNumber" Label="for IsIntersectionAlgebraObject, IsInt, IsInt, IsInt"/>
+ <Returns><Math>p_{ij}^k</Math>
+</Returns>
+ <Description>
+	Returns the intersection number <Math>p_{ij}^k</Math> for a intersection algebra.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="NumberOfClasses" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>d
+</Returns>
+ <Description>
+	Returns <Math>d</Math> for a <Math>d</Math>-class intersection algebra.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="Valencies" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>L
+</Returns>
+ <Description>
+	Returns a list L of valencies of a coherent configuration CC. The <Math>i</Math>-th entry of <Math>L</Math> is <Math>k_{i-1}</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="Order" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>n
+</Returns>
+ <Description>
+	Returns the order <Math>n</Math> (number of vertices) of the intersection algebra.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="SplittingField" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>F
+</Returns>
+ <Description>
+	Returns the splitting field of the CC
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Prop Arg="CC" Name="HasRationalSplittingField" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+	Returns true if the splitting field is the rationals, false otherwise.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC, i, j, k" Name="KreinParameter" Label="for IsIntersectionAlgebraObject, IsInt, IsInt, IsInt"/>
+ <Returns><Math>q_{i,j}^k</Math>
+</Returns>
+ <Description>
+	Compute the krein parameter <Math>q_{i,j}^k</Math> of a commutative intersection algebra.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="KreinParameters" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>L
+</Returns>
+ <Description>
+	Return a list <Math>L</Math> of all Krein parameters of a commutative intersection algebra,
+	where <Math>L[i][j,k] = q_{i,j}^k</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Prop Arg="CC" Name="IsQBipartite" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+	Returns if the intersection algebra CC is Q-bipartite.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Prop Arg="CC" Name="IsPBipartite" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+	Returns if the intersection algebra CC is bipartite.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Prop Arg="CC" Name="IsQAntipodal" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+	Returns if the intersection algebra CC is Q-antipodal.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Prop Arg="CC" Name="IsPAntipodal" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+	Returns if the intersection algebra CC is antipodal.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC, L" Name="ReorderRelations" Label="for IsIntersectionAlgebraObject, IsList"/>
+ <Returns>coherent configuration
+</Returns>
+ <Description>
+	Takes a intersection algebra CC and a list L, where L is a reordering of the relations.
+	Returns an intersection algebra where the <Math>i</Math>-th relation of the CC becomes the <Math>j</Math>-th relation in 
+	the intersection algebra, where <Math>j = L_i</Math>. Note that <Math>L_i</Math> must be equal to <Math>\{0, \ldots, d \}</Math>
+	as a set, and additionally requires that <Math>L_1 = 0</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC, L" Name="ReorderMinimalIdempotents" Label="for IsIntersectionAlgebraObject, IsList"/>
+ <Returns>coherent configuration
+</Returns>
+ <Description>
+	Takes an intersection algebra CC and a list L, where L is a reordering of the minimal idempotents.
+	Returns an intersection algebra where the <Math>i</Math>-th idempotent of the CC becomes the <Math>j</Math>-th idempotent in 
+	the new intersection algebra, where <Math>j = L_i</Math>. Note that <Math>L_i</Math> must be equal to <Math>\{0, \ldots, d \}</Math>
+	as a set, and additionally requires that <Math>L_1 = 0</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC" Name="ViewRelationDistributionDiagram" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>true (Displays relation distribution diagram)
+</Returns>
+ <Description>
+	Take a CC and display the relation-distribution diagram with respect to <Math>R_1</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Prop Arg="CC" Name="IsCommutative" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+	Checks if the input is a commutative intersection algebra.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Prop Arg="CC" Name="IsSymmetricIntersectionAlgebra" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+	Checks if the input is a symmetric intersection algebra.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="NumberOfCharacters" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>n
+</Returns>
+ <Description>
+	Returns the number <Math>n</Math> of characters of CC.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+<Section Label="Chapter_Intersection_Algebra_objects_Section_Constructor_methods">
+<Heading>Constructor methods</Heading>
+
+<ManSection>
+  <Oper Arg="P" Name="IntersectionAlgebraFromMatrixOfEigenvalues" Label="for IsMatrix"/>
+ <Returns>intersection algebra object
+</Returns>
+ <Description>
+	Returns the intersection algebra determined by a matrix of eigenvalues.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="n, q" Name="HammingSchemeIntersectionAlgebra" Label="for IsPosInt, IsPosInt"/>
+ <Returns>intersection algebra objectn
+</Returns>
+ <Description>
+	Returns the intersection algebra of the Hamming scheme, <Math>H(n, q)</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="n, k, q" Name="GrassmanSchemeIntersectionAlgebra" Label="for IsPosInt, IsPosInt, IsPosInt"/>
+ <Returns>intersection algebra object
+</Returns>
+ <Description>
+	Returns the intersection algebra of the Grassmann scheme, <Math>J_q(n, k)</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="n, d" Name="CyclotomicSchemeIntersectionAlgebra" Label="for IsPosInt, IsPosInt"/>
+ <Returns>intersection algebra object
+</Returns>
+ <Description>
+	Returns the intersection algebra of the Cyclotomic scheme, <Math>Cyc(n, d)</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="n, k, q" Name="IntersectionAlgebraFromIntersectionArray" Label="for IsList"/>
+ <Returns>intersection algebra object
+</Returns>
+ <Description>
+	Returns the intersection algebra of a DRG given by its intersection array.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="n, k, q" Name="IntersectionAlgebraFromClassicalParameters" Label="for IsList"/>
+ <Returns>intersection algebra object
+</Returns>
+ <Description>
+	Returns the intersection algebra of a DRG given by its classical parameters.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="n, k, q" Name="IntersectionAlgebraFromStronglyRegularGraphParameters" Label="for IsPosInt, IsPosInt, IsInt, IsInt"/>
+ <Returns>intersection algebra object
+</Returns>
+ <Description>
+	Returns the intersection algebra of a SRG given by its parameters <Math>[n, k, \lambda, \mu]</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC, L" Name="IsFusionOfHomogeneousCoherentConfiguration" Label="for IsIntersectionAlgebraObject, IsList"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+	Takes the intersection algebra object of a <Math>d</Math>-class homogeneous coherent configuration CC,
+	and checks if the partion L of <Math>\{0, \ldots, d\}</Math> corresponds to a valid fusion.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="G" Name="SchurianSchemeIntersectionAlgebra" Label="for IsPermGroup"/>
+ <Returns>intersection algebra
+</Returns>
+ <Description>
+	Returns the Schurian scheme defined by <Math>G</Math>, where <Math>G</Math> is a transitive permutation group.
+	A Schurian scheme is a special case of CoherentConfigurationByOrbitals and is symmetric.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+<Section Label="Chapter_Intersection_Algebra_objects_Section_Automorphisms_and_maps">
+<Heading>Automorphisms and maps</Heading>
+
+<ManSection>
+  <Attr Arg="I" Name="MapFromIntersectionMatricesToCentralIdempotents" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>M
+</Returns>
+ <Description>
+    Takes an intersection algebra object, I, and returns a matrix, M, which maps the intersection matrices to
+    the central idempotents of the intersection algebra.
+    The central idempotent <Math>F_i = \sum_{i=1}^{d+1} M_{ij} B_j</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="I" Name="MapFromIntersectionMatricesToCentralIdempotentsOverRationals" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>M
+</Returns>
+ <Description>
+    Takes an intersection algebra object, I, and returns a matrix, M, which maps the intersection matrices to
+    the central idempotents of the intersection algebra over the rationals.
+    The central idempotent <Math>F_i = \sum_{i=1}^{d+1} M_{ij} B_j</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="$A$, $\sigma$" Name="ImageOfIntersectionAlgebra" Label="for IsIntersectionAlgebraObject, IsPerm"/>
+ <Returns>true <Math>A^\sigma</Math>
+</Returns>
+ <Description>
+	Take a <Math>d</Math>-class intersection algebra <Math>A</Math> and return its image under the permutation <Math>\sigma \in Sym([1 .. d])</Math>.
+  If <Math>p_{ij}^k</Math> is an intersection number of <Math>A</Math>, then in the image the intersection number is <Math>p_{i^\sigma j^\sigma}^{k^\sigma}</Math>
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="$A$, $B$" Name="IsomorphismIntersectionAlgebras" Label="for IsIntersectionAlgebraObject, IsIntersectionAlgebraObject"/>
+ <Returns><Math>\sigma</Math>
+</Returns>
+ <Description>
+	Take two <Math>d</Math>-class intersection algebras <Math>A</Math> and <Math>B</Math> and return <Math>\sigma \in Sym([1 .. d])</Math> such that <Math>A^\sigma = B</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="$A$, $B$" Name="AreIsomorphicIntersectionAlgebras" Label="for IsIntersectionAlgebraObject, IsIntersectionAlgebraObject"/>
+ <Returns><Math>\sigma</Math>
+</Returns>
+ <Description>
+	Take two <Math>d</Math>-class intersection algebras <Math>A</Math> and <Math>B</Math> and return true if they are isomorphic. Return false otherwise.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="A" Name="CanonisingMap" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>perm
+</Returns>
+ <Description>
+	Returns two permutations which will produce the canonical form of the intersection algebra A.
+	The canonical form can be obtained by ImageOfIntersectionAlgebra(A, perm)
+  Any intersection algebra which is isomorphic to A will the same canonical form.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="A" Name="CanonicalFormOfIntersectionAlgebra" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>B
+</Returns>
+ <Description>
+	Returns the canonical form, B, of the intersection algebra A.
+	Any intersection algebra which is isomorphic to A will have B as the canonical form.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="A" Name="AutomorphismGroup" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>G
+</Returns>
+ <Description>
+	Returns the automorphism group <Math>G</Math> of the intersection algebra object A.
+	<Math>G</Math> is a permutation group acting on the relations, such that for all <Math>g \in G</Math>, <Math>p_{i^g j^g}^{k^g} = p_{ij}^k</Math>.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+<Section Label="Chapter_Intersection_Algebra_objects_Section_Fusions">
+<Heading>Fusions</Heading>
+
+<ManSection>
+  <Oper Arg="CC, L" Name="IsFusionOfIntersectionAlgebra" Label="for IsIntersectionAlgebraObject, IsList"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+	Takes a <Math>d</Math>-class homogeneous coherent configuration CC, and checks if the partion 
+	L of <Math>\{0, \ldots, d\}</Math> corresponds to a valid fusion.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC, L" Name="FusionOfIntersectionAlgebra" Label="for IsIntersectionAlgebraObject, IsList"/>
+ <Returns>homogeneous coherent configuration
+</Returns>
+ <Description>
+	Takes a <Math>d</Math>-class homogeneous coherent configuration CC and returns a fusion scheme corresponding to L,
+	where L is a partion of <Math>\{0, \ldots, d\}</Math>. Note that the ordering of the cells of L is irrelevant.
+  The method will sort the fused relations according to the smallest value in each cell.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="ConverseRelationPairs" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>L
+</Returns>
+ <Description>
+	Returns a list L of either tuples or singletons, corresponding to relations and their converses or symmetric relations.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC, i" Name="ConverseRelation" Label="for IsIntersectionAlgebraObject, IsInt"/>
+ <Returns>j
+</Returns>
+ <Description>
+	Returns j such that <Math>R_j = R_i^\top</Math>, the converse relation of <Math>i</Math>	.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="IsStratifiable" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+	If the fusion of transposed relations produces a valid association scheme, then CC is stratifiable.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC" Name="SymmetrisationOfIntersectionAlgebra" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>Association scheme
+</Returns>
+ <Description>
+	Given a homogeneous coherent configuration, CC, the symmetrisation is computed if possible, otherwise fail is returned.
+	The symmetrisation of a homogeneous coherent configuration takes any non-symmetric relations and fuses them together.
+	The result may or may not be a valid homogeneous coherent configuration. If it is valid, then it is an association scheme
+  (Symmetric coherent configuration). If CC is commutative, then it can be symmetrised.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC [k [, flag ]]" Name="FeasibleNonTrivialFusionsOfIntersectionAlgebra" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>list of feasibly fusionable relations
+</Returns>
+ <Description>
+	Returns a list where each entry is a collection of relations which may be fused to form a feasible homogeneous coherent configuration
+  Trivial means either no relations are fused, or all non-identity relations are fused.
+  If the additional argument k is given, only fusions with k-classes are returned. If flag is also given
+ 	and is equal to true, then all fusions with at most k-classes are returned.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC" Name="AllNonTrivialFusionsOfIntersectionAlgebra" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>List of all non-trivial fusions of CC
+</Returns>
+ <Description>
+	Returns a list of all homogeneous coherent configurations such that each element of the list is a non-trivial fusion of CC.
+  Trivial means either no relations are fused, or all non-identity relations are fused.
+  If the additional argument k is given, only fusions with k-classes are returned. If flag is also given
+ 	and is equal to true, then all fusions with at most k-classes are returned.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC" Name="AllFusionsOfIntersectionAlgebra" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>List of all fusions of CC
+</Returns>
+ <Description>
+	Returns a list of all homogeneous coherent configurations such that each element of the list is a fusion of CC.
+  Includes trivial fusions, i.e the original homogeneous coherent configuration, and the coherent configuration resulting
+  from the fusion of all non-identity relations
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="FeasibleNonTrivialSymmetricFusionsOfIntersectionAlgebra" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>list of feasibly fusionable relations
+</Returns>
+ <Description>
+	Returns a list where each entry is a collection of relations which may be fused to form a feasible association scheme (i.e. relations are symmetric)
+  Trivial means either no relations are fused, or all non-identity relations are fused.
+  If the additional argument k is given, only fusions with k-classes are returned. If flag is also given
+ 	and is equal to true, then all fusions with at most k-classes are returned.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC" Name="AllNonTrivialSymmetricFusionsOfIntersectionAlgebra" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>List of all non-trivial fusions of CC
+</Returns>
+ <Description>
+	Returns a list of all association schemes (i.e symmetric relations) such that each element of the list is a non-trivial fusion of CC.
+  Trivial means either no relations are fused, or all non-identity relations are fused.
+  If the additional argument k is given, only fusions with k-classes are returned. If flag is also given
+ 	and is equal to true, then all fusions with at most k-classes are returned.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC" Name="AllSymmetricFusionsOfIntersectionAlgebra" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>List of all fusions of CC
+</Returns>
+ <Description>
+	Returns a list of all association schemes (i.e symmetric relations) such that each element of the list is a fusion of CC.
+  Includes trivial fusions, i.e the original homogeneous coherent configuration (if it is an association scheme), and the coherent configuration resulting
+  from the fusion of all non-identity relations
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+<Section Label="Chapter_Intersection_Algebra_objects_Section_Intersection_algebra">
+<Heading>Intersection algebra</Heading>
+
+<ManSection>
+  <Attr Arg="I" Name="CentralIdempotentsOfIntersectionAlgebra" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>central idempotents
+</Returns>
+ <Description>
+    Returns the central idempotents of the intersection algebra.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="I" Name="CentralIdempotentsOfIntersectionAlgebraOverRationals" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>central idempotents
+</Returns>
+ <Description>
+    Returns the central idempotents of the intersection algebra over the rationals.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="MatrixOfDualEigenvalues" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>Q
+</Returns>
+ <Description>
+      Returns a the dual matrix of eigenvalues, <Math>Q</Math>, for a homogeneous coherent configuration CC.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="MatrixOfEigenvalues" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>P
+</Returns>
+ <Description>
+      Returns a the matrix of eigenvalues (or character table), <Math>P</Math>, for the intersection algebra of a homogeneous coherent configuration CC.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="A, P" Name="FitMatrixOfEigenvalues" Label="for IsIntersectionAlgebraObject, IsMatrix"/>
+ <Returns>P2
+</Returns>
+ <Description>
+   Checks if P is the matrix of eigenvalues of intersection algebra A, upto some reordering of the columns.
+   In such a case, P2, the reordered matrix is returned. If not, returns fail.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+<Section Label="Chapter_Intersection_Algebra_objects_Section_Metric_schemes">
+<Heading>Metric schemes</Heading>
+
+<ManSection>
+  <Prop Arg="CC" Name="IsPPolynomial" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+	Returns if the homogeneous coherent configuration CC is P-polynomial.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="FirstPPolynomialOrdering" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>P-polynomial ordering or fail
+</Returns>
+ <Description>
+	Returns the first P-polynomial ordering admitted by the homogeneous coherent configuration CC, and fail otherwise.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Prop Arg="CC" Name="AdmitsPPolynomialOrdering" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+	Returns if the homogeneous coherent configuration CC admits a P-polynomial ordering.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC" Name="IsMetric" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+	Alias for IsPPolynomial.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC" Name="FirstMetricOrdering" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>metric ordering or fail
+</Returns>
+ <Description>
+	Alias for FirstPPolynomialOrdering.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC" Name="AdmitsMetricOrdering" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+	Alias for AdmitsPPolynomialOrdering.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="AllPPolynomialOrderings" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>L
+</Returns>
+ <Description>
+	Calculate the list <Math>L</Math> of all P-polynomial orderings of a homogeneous coherent configuration.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC" Name="AllMetricOrderings" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>L
+</Returns>
+ <Description>
+	Alias for AllPPolynomialOrderings.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="IntersectionArray" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>List
+</Returns>
+ <Description>
+	Returns the intersection array if CC is P-polynomial.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="ClassicalParameters" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>[d, b, <Math>\alpha</Math>, <Math>\beta</Math>]
+</Returns>
+ <Description>
+	Returns the classical parameters if the CC is metric with classical
+  parameters.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="StronglyRegularGraphParameters" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>[d, b, <Math>\alpha</Math>, <Math>\beta</Math>]
+</Returns>
+ <Description>
+	Returns the parameters <Math>\{n, k; \lambda, \mu \}</Math> if the CC is an association scheme with 2 classes.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+<Section Label="Chapter_Intersection_Algebra_objects_Section_Cometric_schemes">
+<Heading>Cometric schemes</Heading>
+
+<P/>
+<ManSection>
+  <Prop Arg="CC" Name="AdmitsQPolynomialOrdering" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+	Returns if the homogeneous coherent configuration CC admits a Q-polynomial ordering.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC" Name="AdmitsCometricOrdering" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+	Alias for AdmitsQPolynomialOrdering.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Prop Arg="CC" Name="IsQPolynomial" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+	Returns if the commutative coherent configuration CC is Q-polynomial.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC" Name="IsCometric" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+	Alias for is Q-polynomial.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="AllQPolynomialOrderings" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>L
+</Returns>
+ <Description>
+	Calculate a list <Math>L</Math> of all Q-polynomial orderings of a homogeneous coherent configuration.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC" Name="AllCometricOrderings" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>L
+</Returns>
+ <Description>
+	Alias for AllQPolynomialOrderings.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Attr Arg="CC" Name="KreinArray" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>List
+</Returns>
+ <Description>
+	Returns the Krein (or dual intersection) array if CC is Q-polynomial.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="CC" Name="DualIntersectionArray" Label="for IsIntersectionAlgebraObject"/>
+ <Returns>List
+</Returns>
+ <Description>
+	Alias for KreinArray.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+</Chapter>
+

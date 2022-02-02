@@ -1,0 +1,46 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{BBDB{\etalchar{+}}18}
+
+\bibitem[BBC{\etalchar{+}}18]{GUAVA}
+R.~Baart, T.~Boothby, J.~Cramwinckel, J.~Fields, D.~Joyner, R.~Miller,
+  E.~Minkes, E.~Roijackers, L.~Ruscio, and C.~Tjhai.
+\newblock {GUAVA}, a gap package for computing with error-correcting codes,
+  {V}ersion 3.14.
+\newblock \href {https://gap-packages.github.io/guava}
+  {\texttt{https://gap-packages.github.io/}\discretionary
+  {}{}{}\texttt{guava}}, Mar 2018.
+\newblock Refereed GAP package.
+
+\bibitem[BBDB{\etalchar{+}}18]{FinInG}
+J.~Bamberg, A.~Betten, J.~De~Beule, P.~Cara, M.~Lavrauw, and M.~Neunhoeffer.
+\newblock {FinInG}, finite incidence geometry, {V}ersion 1.4.1.
+\newblock \href {http://www.fining.org} {\texttt{http://www.fining.org}}, Mar
+  2018.
+\newblock Refereed GAP package.
+
+\bibitem[BI84]{BannaiIto}
+Eiichi Bannai and Tatsuro Ito.
+\newblock {\em Algebraic combinatorics. {I}}.
+\newblock The Benjamin/Cummings Publishing Co., Inc., Menlo Park, CA, 1984.
+\newblock Association schemes.
+
+\bibitem[Cam99]{cameron}
+Peter~J. Cameron.
+\newblock {\em Permutation Groups}.
+\newblock London Mathematical Society Student Texts. Cambridge University
+  Press, 1999.
+
+\bibitem[GAP16]{GAP4}
+The GAP~Group.
+\newblock {\em {GAP -- Groups, Algorithms, and Programming, Version 4.8.6}},
+  2016.
+
+\bibitem[God93]{Godsil}
+C.~D. Godsil.
+\newblock {\em Algebraic combinatorics}.
+\newblock Chapman and Hall Mathematics Series. Chapman \& Hall, New York, 1993.
+
+\bibitem[HM]{Hanaki}
+Akihide Hanaki and Izumi Miyamoto.
+
+\end{thebibliography}

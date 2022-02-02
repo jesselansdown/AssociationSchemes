@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is an automatically generated file. -->
+<Chapter Label="Chapter_Examples">
+<Heading>Examples</Heading>
+
+<P/>
+<Section Label="Chapter_Examples_Section_Example_1_--_Constructing_groups">
+<Heading>Example 1 -- Constructing groups</Heading>
+
+ In this example, we show how we can use coherent configurations to construct
+ an entriely different almost simple permutation group from another one.
+ We first show how <Math>PSU(4,3)</Math> can be made out of its subgroup <Math>PSL(3,4)</Math>.
+<Example><![CDATA[
+gap> psl34 := PSL(3,4);;
+gap> sylow3 := SylowSubgroup(psl34, 3);;
+gap> normaliser := Normaliser(psl34, sylow3);;
+gap> G := Image( FactorCosetAction(psl34, normaliser) );;
+]]></Example>
+
+
+ At this stage, we have constructed the unique permutation representation
+ of degree 280, for <Math>PSL(3,4)</Math>.
+<Example><![CDATA[
+gap> A := HomogeneousCoherentConfigurationByOrbitals(G);
+7-class homogeneous coherent configuration of order 280
+gap> mat := RelationMatrix(A);;
+gap> P := MatrixOfEigenvalues(A);;
+gap> Print(P);
+[ [ 1, 18, 18, 18, 72, 72, 72, 9 ], [ 1, 4, 4, 4, 16, -12, -12, -5 ],
+ [ 1, -2, -2, 10, -8, 0, 0, 1 ], [ 1, -2, 10, -2, -8, 0, 0, 1 ], 
+ [ 1, 10, -2, -2, -8, 0, 0, 1 ],
+ [ 1, -2, -2, -2, 0, -8*E(7)^3-8*E(7)^5-8*E(7)^6, -8*E(7)-8*E(7)^2-8*E(7)^4, -3 ], 
+ [ 1, -2, -2, -2, 0, -8*E(7)-8*E(7)^2-8*E(7)^4, -8*E(7)^3-8*E(7)^5-8*E(7)^6, -3 ],
+ [ 1, -2, -2, -2, 7, -3, -3, 4 ] ]
+]]></Example>
+
+
+ We now take a particular fusion of this coherent configuration to obtain a
+ 2-class association scheme. 
+<Example><![CDATA[
+gap> valency18 := Filtered([1..7], j -> Number(mat[1], i -> i = j) = 18);
+[1,2,3]
+gap> fusions := List(Combinations(valency18,2), t -> 
+> 		FusionOfHomogeneousCoherentConfiguration(A, [[0], t, 
+> 			Difference([1..7],t)]) );;
+]]></Example>
+
+
+ Any of these three fusions will do:
+<Example><![CDATA[
+gap> autgroup := AutomorphismGroup( fusions[1] );;
+gap> DisplayCompositionSeries( autgroup );
+G (11 gens, size 26127360)
+ | Z(2)
+S (4 gens, size 13063680)
+ | Z(2)
+S (3 gens, size 6531840)
+ | Z(2)
+S (2 gens, size 3265920)
+ | 2A(3,3) = U(4,3) ~ 2D(3,3) = O-(6,3)
+1 (0 gens, size 1)
+gap> socle := Socle(autgroup);;
+gap> StructureDescription(socle);
+"PSU(4,3)"
+]]></Example>
+
+
+</Section>
+
+
+<Section Label="Chapter_Examples_Section_Example_2_--_Dual_polar_spaces_and_their_graphs">
+<Heading>Example 2 -- Dual polar spaces and their graphs</Heading>
+
+ For this example, we also use the package FinInG <Cite Key="FinInG"/>.
+ We will construct a metric association scheme
+ coming from a dual polar space.
+<Example><![CDATA[
+gap> LoadPackage("FinInG", false);;
+gap> quadric := EllipticQuadric(7, 2);
+Q-(7, 2)
+gap> points := AsList( Planes(quadric) );;
+gap> mat := NullMat(Length(points), Length(points));;
+gap> for i in [1..Length(points)] do
+> 	for j in [i+1..Length(points)] do
+> 		intersection := Meet( points{[i,j]} );
+gap> 		mat[i][j] := 2 - ProjectiveDimension( intersection );
+gap> 		mat[j][i] := mat[i][j];
+gap> 	od;
+gap> od;
+]]></Example>
+
+
+ So far we have constructed the relation matrix arising from the
+ dual polar space.
+<Example><![CDATA[
+gap> a := HomogeneousCoherentConfiguration( mat );
+3-class association scheme of order 765
+gap> P := MatrixOfEigenvalues(a);;
+gap> Q := MatrixOfDualEigenvalues(a);;
+gap> Display(P);
+[ [    1,   28,  224,  512 ],
+  [    1,   11,   20,  -32 ],
+  [    1,   -7,   14,   -8 ],
+  [    1,    1,  -10,    8 ] ]
+gap> Display(Q);
+[ [       1,      84,     204,     476 ],
+  [       1,      33,     -51,      17 ],
+  [       1,    15/2,    51/4,   -85/4 ],
+  [       1,   -21/4,  -51/16,  119/16 ] ]
+gap> IsPPolynomial(a);
+true
+gap> IsQPolynomial(a);
+true 
+]]></Example>
+
+
+ A simpler way (perhaps) uses the automorphism group of the ambient polar space:
+<Example><![CDATA[
+gap> cgroup := CollineationGroup(quadric);
+PGO(-1,8,2)
+gap> G := Action(cgroup, points);
+<permutation group with 3 generators>
+gap> a := SchurianAssociationScheme(G);
+3-class homogeneous coherent configuration of order 765
+gap> IsPPolynomial(a);
+true
+]]></Example>
+
+
+ The automorphism group of the association scheme should be the same:
+<Example><![CDATA[
+gap> autgroup := AutomorphismGroup(a);;
+gap> autgroup = G;
+true
+]]></Example>
+
+
+ Now (for the purist!) we see if there are interesting subsets.
+ Take a nondegenerate hyperplane section defining a parabolic quadric.
+<Example><![CDATA[
+gap> hyperplane := First(Hyperplanes(PG(7,2)), h -> 
+> 		TypeOfSubspace(quadric, h) = "parabolic");
+<a proj. 6-space in ProjectiveSpace(7, 2)>
+gap> insidehyp := Filtered(points, t -> t * hyperplane);;
+gap> vector := CharacteristicVector(points, insidehyp);;
+gap> dist := InnerDistribution(a, vector);
+[ 1, 56, 64, 14 ]
+gap> macw := MacWilliamsTransform(a, dist);
+[ 135, 630, 0, 0 ]
+]]></Example>
+
+
+ Therefore, a hyperplane section gives rise to a design that is not a code,
+ in this association scheme.
+ Now we produce the dual polar graph.
+<Example><![CDATA[
+gap> P := MatrixOfEigenvalues(a);;
+gap> Display(P);
+[ [    1,  224,  512,   28 ],
+  [    1,   20,  -32,   11 ],
+  [    1,   14,   -8,   -7 ],
+  [    1,  -10,    8,    1 ] ]
+gap> position := Position(P[1], 28);
+4
+gap> M := AdjacencyMatrices(a)[ position ];;
+gap> graph := Graph(G, [1..Order(a)], OnPoints, {x,y} -> M[x][y] = 1);;
+gap> IsDistanceRegular(graph);
+true
+gap> GlobalParameters(graph);
+[ [ 0, 0, 28 ], [ 1, 3, 24 ], [ 3, 9, 16 ], [ 7, 21, 0 ] ]
+]]></Example>
+
+
+</Section>
+
+
+<Section Label="Chapter_Examples_Section_Example_3_--_Codes">
+<Heading>Example 3 -- Codes</Heading>
+
+ For this example, we use the package Guava<Cite Key="GUAVA"/> for its
+ facility with block codes.
+ We will see that the inner distribution vector of a subset coincides with the weight enumerator
+ of a code when the association scheme is a Hamming scheme.
+<Example><![CDATA[
+gap> hammingscheme := HammingScheme(7,2);
+7-class homogeneous coherent configuration of order 128
+gap> LoadPackage("Guava", false);;
+gap> hammingcode := HammingCode(3, GF(2));
+a linear [7,4,3]1 Hamming (3,2) code over GF(2)
+]]></Example>
+
+
+ We now use an operation from Guava:
+<Example><![CDATA[
+gap> InnerDistribution(hammingcode);
+[ 1, 0, 0, 7, 7, 0, 0, 1 ]
+]]></Example>
+
+
+ From the association scheme perspective ...
+<Example><![CDATA[
+gap> codewords := List( hammingcode, VectorCodeword );;
+gap> vector := CharacteristicVector( AsList(GF(2)^7), codewords );;
+gap> Collected(vector);
+[ [ 0, 112 ], [ 1, 16 ] ]
+gap> inndist := InnerDistribution( hammingscheme, vector);
+[ 1, 0, 0, 7, 7, 0, 0, 1 ]
+]]></Example>
+
+
+ The MacWilliams transform coincides with the distribution vector of the dual code:
+<Example><![CDATA[
+gap> 1/16 * MacWilliamsTransform( hammingscheme, inndist);
+[ 1, 0, 0, 0, 7, 0, 0, 0 ]
+gap> dualcode := DualCode( hammingcode );
+a linear [7,3,4]2..3 dual code
+gap> InnerDistribution( dualcode );
+[ 1, 0, 0, 0, 7, 0, 0, 0 ]
+]]></Example>
+
+
+</Section>
+
+
+<Section Label="Chapter_Examples_Section_Example_4_--_Using_the_library">
+<Heading>Example 4 -- Using the library</Heading>
+
+ In this package, we also have a library of all small homogeneous 
+ coherent configurations, of order at most 38 (except 31, ,35, 36, 37), corresponding to <Cite Key="Hanaki"/>.
+<Example><![CDATA[
+gap> for i in [5..20] do
+> 	Print(i,"    ",NumberOfHomogeneousCoherentConfigurations(i),"\n");
+gap> od;
+5    2
+6    6
+7    3
+8    16
+9    10
+10    11
+11    3
+12    54
+13    5
+14    14
+15    24
+16    208
+17    4
+18    90
+19    6
+20    90
+gap> order7 := List([1..3], i -> HomogeneousCoherentConfiguration(7, i));
+ 1-class homogeneous coherent configuration of order 7, 
+ 2-class homogeneous coherent configuration of order 7, 
+ 3-class homogeneous coherent configuration of order 7 ]
+]]></Example>
+
+
+ The first of these is trivial, so we look at the other two. The first
+ arises from the Paley graph of order 7.
+<Example><![CDATA[
+gap> a1 := order7[2];
+2-class homogeneous coherent configuration of order 7
+gap> autgroup := AutomorphismGroup(a1);
+Group([ (2,3,4)(5,7,6), (1,2,3,5,4,6,7) ])
+gap> StructureDescription(autgroup);
+"C7 : C3"
+]]></Example>
+
+
+ The last one is a 3-class association scheme:
+<Example><![CDATA[
+gap> a2 := order7[3];
+3-class homogeneous coherent configuration of order 7
+gap> IsAssociationScheme(a2);
+true
+gap> IsPPolynomial( a2 );
+true
+gap> IsPrimitive(a2);
+rue
+gap> Valencies(a2);
+[ 1, 2, 2, 2 ]
+gap> autgroup := AutomorphismGroup(a2);
+Group([ (2,3)(4,5)(6,7), (1,2)(3,4)(5,6) ])
+gap> StructureDescription(autgroup);
+"D14"
+gap> P := MatrixOfEigenvalues(a2);;
+gap> Display(P);
+[ [              1,              2,              2,              2 ],
+  [              1,  E(7)^3+E(7)^4,    E(7)+E(7)^6,  E(7)^2+E(7)^5 ],
+  [              1,  E(7)^2+E(7)^5,  E(7)^3+E(7)^4,    E(7)+E(7)^6 ],
+  [              1,    E(7)+E(7)^6,  E(7)^2+E(7)^5,  E(7)^3+E(7)^4 ] ]
+gap> AllPPolynomialOrderings(a2);
+[ [ 0, 1, 2, 3 ], [ 0, 2, 3, 1 ], [ 0, 3, 1, 2 ] ]
+gap> AdmitsQPolynomialOrdering(a2);
+true
+gap> AllQPolynomialOrderings(a2);
+[ [ 0, 1, 3, 2 ], [ 0, 2, 1, 3 ], [ 0, 3, 2, 1 ] ]
+]]></Example>
+
+
+</Section>
+
+
+<Section Label="Chapter_Examples_Section_Example_5_--_Constructing_HS_advanced_example">
+<Heading>Example 5 -- Constructing HS (advanced example)</Heading>
+
+ We redo an example that appears in Section 3.6 of Peter Cameron's "Permutation Groups" book <Cite Key="cameron"/>
+ and construct the Higman-Sims group.
+<Br/><Br/>
+ First we construct the Hoffman-Singleton graph from the alternating group of degree 7.
+<Example><![CDATA[
+gap> A7 := AlternatingGroup(7);;
+gap> Pi := [ [ 1, 2, 4 ], [ 1, 3, 7 ], [ 1, 5, 6 ], 
+>  [ 2, 3, 5 ], [ 2, 6, 7 ], [ 3, 4, 6 ], [ 4, 5, 7 ] ];;
+gap> OnSetsRecursive := function(x,g) 
+> 	if not IsSet(x) then
+> 		return x^g; 
+gap> 	else 
+> 		return Set(x,y->OnSetsRecursive(y,g));
+gap> 	fi;
+gap> end;;
+gap> triples := Combinations([1..7], 3);;
+gap> allFanos := Orbit(A7, Pi, OnSetsSets);;
+gap> fifty := Concatenation(triples, allFanos);;
+gap> A7action := Action(A7, fifty, OnSetsRecursive);
+<permutation group with 2 generators>
+gap> orbitals := Orbits(A7action, Combinations([1..50],2), OnSets);;
+gap> List(orbitals, Size);
+[ 210, 315, 70, 420, 105, 105 ]
+]]></Example>
+
+
+ We will now make a homogeneous coherent configuration from scratch, from these orbitals.
+<Example><![CDATA[
+gap> mat := NullMat(50,50);;
+gap> for i in [1..50] do
+> 	for j in [i+1..50] do
+> 		pos := First([1..Length(orbitals)], k -> [i,j] in orbitals[k]);
+gap> 		mat[i][j] := pos;
+gap> 		mat[j][i] := pos;
+gap> 	od;
+gap> od;
+]]></Example>
+
+
+ This is not a CC yet. We will fuse the relations of valency 3 and 4:
+<Example><![CDATA[
+gap> l := Collected(mat[1]);
+[ [ 0, 1 ], [ 1, 12 ], [ 2, 18 ], [ 3, 4 ], [ 4, 12 ], [ 5, 3 ] ]
+gap> to_fuse := Filtered([1..Length(l)], t -> l[t][2] in [3,4])-1;
+[ 3, 5 ]
+gap> to_fuse2 := Difference([1..6],to_fuse);
+[ 1, 2, 4, 6 ]
+gap> poly := InterpolatedPolynomial(Rationals, Concatenation([0], to_fuse, 
+> 	to_fuse2), [0,1,1,2,2,2,2] );;
+gap> newmat := List(mat, row -> List(row, x -> Value(poly,x)));;
+gap> Collected(newmat[1]);
+[ [ 0, 1 ], [ 1, 7 ], [ 2, 42 ] ]
+]]></Example>
+
+
+ This now leads us directly to the Hoffman-Singleton graph:
+<Example><![CDATA[
+gap> cc := HomogeneousCoherentConfiguration( newmat ); 
+2-class association scheme of order 50
+gap> autHoffSing := AutomorphismGroup( cc );
+<permutation group with 7 generators>
+gap> StructureDescription( autHoffSing );
+"PSU(3,5) : C2"
+]]></Example>
+
+
+ We will now construct the Mesner-Higman-Sims graph
+<Example><![CDATA[
+gap> vals := Valencies(cc);
+[ 1, 7, 42 ]
+gap> adjmat := AdjacencyMatrices(cc)[ Position(vals, 42) ];;
+gap> graph := Graph(autHoffSing, [1..50], OnPoints, {x,y} -> adjmat[x][y]=1);;
+gap> one_coclique := CompleteSubgraphsOfGivenSize(graph, 15)[1];;
+gap> all_cocliques := Orbit(autHoffSing, 
+> 	Set(VertexNames(graph){one_coclique}), OnSets);;
+gap> Size(all_cocliques);
+100
+gap> G := Action(autHoffSing, all_cocliques, OnSets);;
+gap> a := SchurianAssociationScheme(G);
+4-class homogeneous coherent configuration of order 100
+]]></Example>
+
+
+ Now fuse the relations with valencies 7 and 15 (and the complement)
+<Example><![CDATA[
+gap> vals := Valencies(a);
+[ 1, 35, 42, 15, 7 ]
+gap> to_fuse := Filtered([1..Length(vals)], t -> vals[t] in [7,15])-1;;
+gap> to_fuse2 := Difference([1..4], to_fuse);;
+gap> fusion := FusionOfHomogeneousCoherentConfiguration(a, [[0], to_fuse,
+> 	to_fuse2]);
+2-class association scheme of order 100
+gap> autgroup2 := AutomorphismGroup(fusion);
+<permutation group with 10 generators>
+gap> StructureDescription(autgroup2);
+"HS : C2"
+]]></Example>
+
+
+</Section>
+
+
+</Chapter>
+

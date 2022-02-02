@@ -1,393 +1,622 @@
   
-  [1X4 [33X[0;0YExamples[133X[101X
+  [1X4 [33X[0;0YIntersection Algebra objects[133X[101X
   
   
-  [1X4.1 [33X[0;0YExample 1 -- Constructing groups[133X[101X
+  [1X4.1 [33X[0;0YCore functionality[133X[101X
   
-  [33X[0;0YIn this example, we show how we can use coherent configurations to construct
-  an  entriely  different almost simple permutation group from another one. We
-  first show how [23XPSU(4,3)[123X can be made out of its subgroup [23XPSL(3,4)[123X.[133X
+  [1X4.1-1 IntersectionAlgebra[101X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xpsl34 := PSL(3,4);;[127X[104X
-    [4X[25Xgap>[125X [27Xsylow3 := SylowSubgroup(psl34, 3);;[127X[104X
-    [4X[25Xgap>[125X [27Xnormaliser := Normaliser(psl34, sylow3);;[127X[104X
-    [4X[25Xgap>[125X [27XG := Image( FactorCosetAction(psl34, normaliser) );;[127X[104X
-  [4X[32X[104X
+  [33X[1;0Y[29X[2XIntersectionAlgebra[102X( [3XB[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
   
-  [33X[0;0YAt  this stage, we have constructed the unique permutation representation of
-  degree 280, for [23XPSL(3,4)[123X.[133X
+  [33X[0;0YTakes  a  list  of  intersection  matrices,  B, and returns the Intersection
+  Algebra.  The  intersection  matrix  [23X(B_i)_{jk} = p_{ij}^k[123X must be for valid
+  intersection numbers [23Xp_{ij}^k[123X for some homogeneous coherent configuration.[133X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XA := HomogeneousCoherentConfigurationByOrbitals(G);[127X[104X
-    [4X[28X7-class homogeneous coherent configuration of order 280[128X[104X
-    [4X[25Xgap>[125X [27Xmat := RelationMatrix(A);;[127X[104X
-    [4X[25Xgap>[125X [27XP := MatrixOfEigenvalues(A);;[127X[104X
-    [4X[25Xgap>[125X [27XPrint(P);[127X[104X
-    [4X[28X[ [ 1, 18, 18, 18, 72, 72, 72, 9 ], [ 1, 4, 4, 4, 16, -12, -12, -5 ],[128X[104X
-    [4X[28X [ 1, -2, -2, 10, -8, 0, 0, 1 ], [ 1, -2, 10, -2, -8, 0, 0, 1 ], [128X[104X
-    [4X[28X [ 1, 10, -2, -2, -8, 0, 0, 1 ],[128X[104X
-    [4X[28X [ 1, -2, -2, -2, 0, -8*E(7)^3-8*E(7)^5-8*E(7)^6, -8*E(7)-8*E(7)^2-8*E(7)^4, -3 ], [128X[104X
-    [4X[28X [ 1, -2, -2, -2, 0, -8*E(7)-8*E(7)^2-8*E(7)^4, -8*E(7)^3-8*E(7)^5-8*E(7)^6, -3 ],[128X[104X
-    [4X[28X [ 1, -2, -2, -2, 7, -3, -3, 4 ] ][128X[104X
-  [4X[32X[104X
+  [1X4.1-2 IntersectionMatrices[101X
   
-  [33X[0;0YWe  now  take a particular fusion of this coherent configuration to obtain a
-  2-class association scheme.[133X
+  [33X[1;0Y[29X[2XIntersectionMatrices[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xvalency18 := Filtered([1..7], j -> Number(mat[1], i -> i = j) = 18);[127X[104X
-    [4X[28X[1,2,3][128X[104X
-    [4X[25Xgap>[125X [27Xfusions := List(Combinations(valency18,2), t -> [127X[104X
-    [4X[25X>[125X [27X		FusionOfHomogeneousCoherentConfigurations(A, [[0], t, [127X[104X
-    [4X[25X>[125X [27X			Difference([1..7],t)]) );;[127X[104X
-  [4X[32X[104X
+  [33X[0;0YReturns  a  list  L  of the intersection matrices of an intersecgion algebra
+  object,  [23XCC[123X,  where  the  [23Xi[123X-th  entry  of  [23XL[123X  is  [23XB_{i-1}[123X and [23X(B_{i})_{jk} =
+  p_{ij}^k[123X.[133X
   
-  [33X[0;0YAny of these three fusions will do:[133X
+  [1X4.1-3 IntersectionNumber[101X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xautgroup := AutomorphismGroup( fusions[1] );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplayCompositionSeries( autgroup );[127X[104X
-    [4X[28XG (11 gens, size 26127360)[128X[104X
-    [4X[28X | Z(2)[128X[104X
-    [4X[28XS (4 gens, size 13063680)[128X[104X
-    [4X[28X | Z(2)[128X[104X
-    [4X[28XS (3 gens, size 6531840)[128X[104X
-    [4X[28X | Z(2)[128X[104X
-    [4X[28XS (2 gens, size 3265920)[128X[104X
-    [4X[28X | 2A(3,3) = U(4,3) ~ 2D(3,3) = O-(6,3)[128X[104X
-    [4X[28X1 (0 gens, size 1)[128X[104X
-    [4X[25Xgap>[125X [27Xsocle := Socle(autgroup);;[127X[104X
-    [4X[25Xgap>[125X [27XStructureDescription(socle);[127X[104X
-    [4X[28X"PSU(4,3)"[128X[104X
-  [4X[32X[104X
+  [33X[1;0Y[29X[2XIntersectionNumber[102X( [3XCC[103X, [3Xi[103X, [3Xj[103X, [3Xk[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Y[23Xp_{ij}^k[123X[133X
   
+  [33X[0;0YReturns the intersection number [23Xp_{ij}^k[123X for a intersection algebra.[133X
   
-  [1X4.2 [33X[0;0YExample 2 -- Dual polar spaces and their graphs[133X[101X
+  [1X4.1-4 NumberOfClasses[101X
   
-  [33X[0;0YFor  this  example,  we  also  use  the  package  FinInG  [BBDB+18]. We will
-  construct a metric association scheme coming from a dual polar space.[133X
+  [33X[1;0Y[29X[2XNumberOfClasses[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yd[133X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage("FinInG", false);;[127X[104X
-    [4X[25Xgap>[125X [27Xquadric := EllipticQuadric(7, 2);[127X[104X
-    [4X[28XQ-(7, 2)[128X[104X
-    [4X[25Xgap>[125X [27Xpoints := AsList( Planes(quadric) );;[127X[104X
-    [4X[25Xgap>[125X [27Xmat := NullMat(Length(points), Length(points));;[127X[104X
-    [4X[25Xgap>[125X [27Xfor i in [1..Length(points)] do[127X[104X
-    [4X[25X>[125X [27X	for j in [i+1..Length(points)] do[127X[104X
-    [4X[25X>[125X [27X		intersection := Meet( points{[i,j]} );[127X[104X
-    [4X[25Xgap>[125X [27X		mat[i][j] := 2 - ProjectiveDimension( intersection );[127X[104X
-    [4X[25Xgap>[125X [27X		mat[j][i] := mat[i][j];[127X[104X
-    [4X[25Xgap>[125X [27X	od;[127X[104X
-    [4X[25Xgap>[125X [27Xod;[127X[104X
-  [4X[32X[104X
+  [33X[0;0YReturns [23Xd[123X for a [23Xd[123X-class intersection algebra.[133X
   
-  [33X[0;0YSo  far  we have constructed the relation matrix arising from the dual polar
-  space.[133X
+  [1X4.1-5 Valencies[101X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xa := HomogeneousCoherentConfiguration( mat );[127X[104X
-    [4X[28X3-class association scheme of order 765[128X[104X
-    [4X[25Xgap>[125X [27XP := MatrixOfEigenvalues(a);;[127X[104X
-    [4X[25Xgap>[125X [27XQ := DualMatrixOfEigenvalues(a);;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay(P);[127X[104X
-    [4X[28X[ [    1,   28,  224,  512 ],[128X[104X
-    [4X[28X  [    1,   11,   20,  -32 ],[128X[104X
-    [4X[28X  [    1,   -7,   14,   -8 ],[128X[104X
-    [4X[28X  [    1,    1,  -10,    8 ] ][128X[104X
-    [4X[25Xgap>[125X [27XDisplay(Q);[127X[104X
-    [4X[28X[ [       1,      84,     204,     476 ],[128X[104X
-    [4X[28X  [       1,      33,     -51,      17 ],[128X[104X
-    [4X[28X  [       1,    15/2,    51/4,   -85/4 ],[128X[104X
-    [4X[28X  [       1,   -21/4,  -51/16,  119/16 ] ][128X[104X
-    [4X[25Xgap>[125X [27XIsPPolynomial(a);[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsQPolynomial(a);[127X[104X
-    [4X[28Xtrue [128X[104X
-  [4X[32X[104X
+  [33X[1;0Y[29X[2XValencies[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
   
-  [33X[0;0YA  simpler  way  (perhaps)  uses the automorphism group of the ambient polar
-  space:[133X
+  [33X[0;0YReturns a list L of valencies of a coherent configuration CC. The [23Xi[123X-th entry
+  of [23XL[123X is [23Xk_{i-1}[123X.[133X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xcgroup := CollineationGroup(quadric);[127X[104X
-    [4X[28XPGO(-1,8,2)[128X[104X
-    [4X[25Xgap>[125X [27XG := Action(cgroup, points);[127X[104X
-    [4X[28X<permutation group with 3 generators>[128X[104X
-    [4X[25Xgap>[125X [27Xa := SchurianScheme(G);[127X[104X
-    [4X[28X3-class homogeneous coherent configuration of order 765[128X[104X
-    [4X[25Xgap>[125X [27XIsPPolynomial(a);[127X[104X
-    [4X[28Xtrue[128X[104X
-  [4X[32X[104X
+  [1X4.1-6 Order[101X
   
-  [33X[0;0YThe automorphism group of the association scheme should be the same:[133X
+  [33X[1;0Y[29X[2XOrder[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yn[133X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xautgroup := AutomorphismGroup(a);;[127X[104X
-    [4X[25Xgap>[125X [27Xautgroup = G;[127X[104X
-    [4X[28Xtrue[128X[104X
-  [4X[32X[104X
+  [33X[0;0YReturns the order [23Xn[123X (number of vertices) of the intersection algebra.[133X
   
-  [33X[0;0YNow  (for  the  purist!)  we  see  if  there are interesting subsets. Take a
-  nondegenerate hyperplane section defining a parabolic quadric.[133X
+  [1X4.1-7 SplittingField[101X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xhyperplane := First(Hyperplanes(PG(7,2)), h -> [127X[104X
-    [4X[25X>[125X [27X		TypeOfSubspace(quadric, h) = "parabolic");[127X[104X
-    [4X[28X<a proj. 6-space in ProjectiveSpace(7, 2)>[128X[104X
-    [4X[25Xgap>[125X [27Xinsidehyp := Filtered(points, t -> t * hyperplane);;[127X[104X
-    [4X[25Xgap>[125X [27Xvector := CharacteristicVector(insidehyp,points);;[127X[104X
-    [4X[25Xgap>[125X [27Xdist := InnerDistribution(vector, a);[127X[104X
-    [4X[28X[ 1, 56, 64, 14 ][128X[104X
-    [4X[25Xgap>[125X [27Xmacw := MacWilliamsTransform(dist, a);[127X[104X
-    [4X[28X[ 135, 630, 0, 0 ][128X[104X
-  [4X[32X[104X
+  [33X[1;0Y[29X[2XSplittingField[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YF[133X
   
-  [33X[0;0YTherefore,  a  hyperplane section gives rise to a design that is not a code,
-  in this association scheme. Now we produce the dual polar graph.[133X
+  [33X[0;0YReturns the splitting field of the CC[133X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XP := MatrixOfEigenvalues(a);;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay(P);[127X[104X
-    [4X[28X[ [    1,  224,  512,   28 ],[128X[104X
-    [4X[28X  [    1,   20,  -32,   11 ],[128X[104X
-    [4X[28X  [    1,   14,   -8,   -7 ],[128X[104X
-    [4X[28X  [    1,  -10,    8,    1 ] ][128X[104X
-    [4X[25Xgap>[125X [27Xposition := Position(P[1], 28);[127X[104X
-    [4X[28X4[128X[104X
-    [4X[25Xgap>[125X [27XM := AdjacencyMatrices(a)[ position ];;[127X[104X
-    [4X[25Xgap>[125X [27Xgraph := Graph(G, [1..Order(a)], OnPoints, {x,y} -> M[x][y] = 1);;[127X[104X
-    [4X[25Xgap>[125X [27XIsDistanceRegular(graph);[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XGlobalParameters(graph);[127X[104X
-    [4X[28X[ [ 0, 0, 28 ], [ 1, 3, 24 ], [ 3, 9, 16 ], [ 7, 21, 0 ] ][128X[104X
-  [4X[32X[104X
+  [1X4.1-8 HasRationalSplittingField[101X
+  
+  [33X[1;0Y[29X[2XHasRationalSplittingField[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YReturns true if the splitting field is the rationals, false otherwise.[133X
+  
+  [1X4.1-9 KreinParameter[101X
+  
+  [33X[1;0Y[29X[2XKreinParameter[102X( [3XCC[103X, [3Xi[103X, [3Xj[103X, [3Xk[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Y[23Xq_{i,j}^k[123X[133X
+  
+  [33X[0;0YCompute the krein parameter [23Xq_{i,j}^k[123X of a commutative intersection algebra.[133X
+  
+  [1X4.1-10 KreinParameters[101X
+  
+  [33X[1;0Y[29X[2XKreinParameters[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
+  
+  [33X[0;0YReturn  a  list  [23XL[123X  of  all  Krein  parameters of a commutative intersection
+  algebra, where [23XL[i][j,k] = q_{i,j}^k[123X.[133X
+  
+  [1X4.1-11 IsQBipartite[101X
+  
+  [33X[1;0Y[29X[2XIsQBipartite[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YReturns if the intersection algebra CC is Q-bipartite.[133X
+  
+  [1X4.1-12 IsPBipartite[101X
+  
+  [33X[1;0Y[29X[2XIsPBipartite[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YReturns if the intersection algebra CC is bipartite.[133X
+  
+  [1X4.1-13 IsQAntipodal[101X
+  
+  [33X[1;0Y[29X[2XIsQAntipodal[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YReturns if the intersection algebra CC is Q-antipodal.[133X
+  
+  [1X4.1-14 IsPAntipodal[101X
+  
+  [33X[1;0Y[29X[2XIsPAntipodal[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YReturns if the intersection algebra CC is antipodal.[133X
+  
+  [1X4.1-15 ReorderRelations[101X
+  
+  [33X[1;0Y[29X[2XReorderRelations[102X( [3XCC[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ycoherent configuration[133X
+  
+  [33X[0;0YTakes a intersection algebra CC and a list L, where L is a reordering of the
+  relations. Returns an intersection algebra where the [23Xi[123X-th relation of the CC
+  becomes  the  [23Xj[123X-th relation in the intersection algebra, where [23Xj = L_i[123X. Note
+  that  [23XL_i[123X  must  be  equal  to  [23X\{0, \ldots, d \}[123X as a set, and additionally
+  requires that [23XL_1 = 0[123X.[133X
+  
+  [1X4.1-16 ReorderMinimalIdempotents[101X
+  
+  [33X[1;0Y[29X[2XReorderMinimalIdempotents[102X( [3XCC[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ycoherent configuration[133X
+  
+  [33X[0;0YTakes  an  intersection  algebra CC and a list L, where L is a reordering of
+  the  minimal  idempotents.  Returns  an  intersection algebra where the [23Xi[123X-th
+  idempotent  of  the  CC  becomes the [23Xj[123X-th idempotent in the new intersection
+  algebra,  where [23Xj = L_i[123X. Note that [23XL_i[123X must be equal to [23X\{0, \ldots, d \}[123X as
+  a set, and additionally requires that [23XL_1 = 0[123X.[133X
+  
+  [1X4.1-17 ViewRelationDistributionDiagram[101X
+  
+  [33X[1;0Y[29X[2XViewRelationDistributionDiagram[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ytrue (Displays relation distribution diagram)[133X
+  
+  [33X[0;0YTake a CC and display the relation-distribution diagram with respect to [23XR_1[123X.[133X
+  
+  [1X4.1-18 IsCommutative[101X
+  
+  [33X[1;0Y[29X[2XIsCommutative[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YChecks if the input is a commutative intersection algebra.[133X
+  
+  [1X4.1-19 IsSymmetricIntersectionAlgebra[101X
+  
+  [33X[1;0Y[29X[2XIsSymmetricIntersectionAlgebra[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YChecks if the input is a symmetric intersection algebra.[133X
+  
+  [1X4.1-20 NumberOfCharacters[101X
+  
+  [33X[1;0Y[29X[2XNumberOfCharacters[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yn[133X
+  
+  [33X[0;0YReturns the number [23Xn[123X of characters of CC.[133X
   
   
-  [1X4.3 [33X[0;0YExample 3 -- Codes[133X[101X
+  [1X4.2 [33X[0;0YConstructor methods[133X[101X
   
-  [33X[0;0YFor  this  example,  we  use the package Guava[BBC+18] for its facility with
-  block  codes.  We  will  see  that the inner distribution vector of a subset
-  coincides  with  the weight enumerator of a code when the association scheme
-  is a Hamming scheme.[133X
+  [1X4.2-1 IntersectionAlgebraFromMatrixOfEigenvalues[101X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xhammingscheme := HammingScheme(7,2);[127X[104X
-    [4X[28X7-class homogeneous coherent configuration of order 128[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage("Guava", false);;[127X[104X
-    [4X[25Xgap>[125X [27Xhammingcode := HammingCode(3, GF(2));[127X[104X
-    [4X[28Xa linear [7,4,3]1 Hamming (3,2) code over GF(2)[128X[104X
-  [4X[32X[104X
+  [33X[1;0Y[29X[2XIntersectionAlgebraFromMatrixOfEigenvalues[102X( [3XP[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yintersection algebra object[133X
   
-  [33X[0;0YWe now use an operation from Guava:[133X
+  [33X[0;0YReturns the intersection algebra determined by a matrix of eigenvalues.[133X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XInnerDistribution(hammingcode);[127X[104X
-    [4X[28X[ 1, 0, 0, 7, 7, 0, 0, 1 ][128X[104X
-  [4X[32X[104X
+  [1X4.2-2 HammingSchemeIntersectionAlgebra[101X
   
-  [33X[0;0YFrom the association scheme perspective ...[133X
+  [33X[1;0Y[29X[2XHammingSchemeIntersectionAlgebra[102X( [3Xn[103X, [3Xq[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yintersection algebra objectn[133X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xcodewords := List( hammingcode, VectorCodeword );;[127X[104X
-    [4X[25Xgap>[125X [27Xvector := CharacteristicVector( codewords,  AsList(GF(2)^7) );;[127X[104X
-    [4X[25Xgap>[125X [27XCollected(vector);[127X[104X
-    [4X[28X[ [ 0, 112 ], [ 1, 16 ] ][128X[104X
-    [4X[25Xgap>[125X [27XInnerDistribution(vector, hammingscheme);[127X[104X
-    [4X[28X[ 1, 0, 0, 7, 7, 0, 0, 1 ][128X[104X
-  [4X[32X[104X
+  [33X[0;0YReturns the intersection algebra of the Hamming scheme, [23XH(n, q)[123X.[133X
   
-  [33X[0;0YThe MacWilliams transform coincides with the distribution vector of the dual
-  code:[133X
+  [1X4.2-3 GrassmanSchemeIntersectionAlgebra[101X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27X1/16 * MacWilliamsTransform(vector, hammingscheme);[127X[104X
-    [4X[28X[ 1, 0, 0, 0, 7, 0, 0, 0 ][128X[104X
-    [4X[25Xgap>[125X [27Xdualcode := DualCode( hammingcode );[127X[104X
-    [4X[28Xa linear [7,3,4]2..3 dual code[128X[104X
-    [4X[25Xgap>[125X [27XInnerDistribution( dualcode );[127X[104X
-    [4X[28X[ 1, 0, 0, 0, 7, 0, 0, 0 ][128X[104X
-  [4X[32X[104X
+  [33X[1;0Y[29X[2XGrassmanSchemeIntersectionAlgebra[102X( [3Xn[103X, [3Xk[103X, [3Xq[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yintersection algebra object[133X
   
+  [33X[0;0YReturns the intersection algebra of the Grassmann scheme, [23XJ_q(n, k)[123X.[133X
   
-  [1X4.4 [33X[0;0YExample 4 -- Using the library[133X[101X
+  [1X4.2-4 CyclotomicSchemeIntersectionAlgebra[101X
   
-  [33X[0;0YIn  this  package,  we also have a library of all small homogeneous coherent
-  configurations,  of order at most 38 (except 31, ,35, 36, 37), corresponding
-  to [HM].[133X
+  [33X[1;0Y[29X[2XCyclotomicSchemeIntersectionAlgebra[102X( [3Xn[103X, [3Xd[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yintersection algebra object[133X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xfor i in [5..20] do[127X[104X
-    [4X[25X>[125X [27X	Print(i,"    ",NumberOfHomogeneousCoherentConfigurations(i),"\n");[127X[104X
-    [4X[25Xgap>[125X [27Xod;[127X[104X
-    [4X[28X5    2[128X[104X
-    [4X[28X6    6[128X[104X
-    [4X[28X7    3[128X[104X
-    [4X[28X8    16[128X[104X
-    [4X[28X9    10[128X[104X
-    [4X[28X10    11[128X[104X
-    [4X[28X11    3[128X[104X
-    [4X[28X12    54[128X[104X
-    [4X[28X13    5[128X[104X
-    [4X[28X14    14[128X[104X
-    [4X[28X15    24[128X[104X
-    [4X[28X16    208[128X[104X
-    [4X[28X17    4[128X[104X
-    [4X[28X18    90[128X[104X
-    [4X[28X19    6[128X[104X
-    [4X[28X20    90[128X[104X
-    [4X[25Xgap>[125X [27Xorder7 := List([1..3], i -> HomogeneousCoherentConfiguration(7, i));[127X[104X
-    [4X[28X 1-class homogeneous coherent configuration of order 7, [128X[104X
-    [4X[28X 2-class homogeneous coherent configuration of order 7, [128X[104X
-    [4X[28X 3-class homogeneous coherent configuration of order 7 ][128X[104X
-  [4X[32X[104X
+  [33X[0;0YReturns the intersection algebra of the Cyclotomic scheme, [23XCyc(n, d)[123X.[133X
   
-  [33X[0;0YThe first of these is trivial, so we look at the other two. The first arises
-  from the Paley graph of order 7.[133X
+  [1X4.2-5 IntersectionAlgebraFromIntersectionArray[101X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xa1 := order7[2];[127X[104X
-    [4X[28X2-class homogeneous coherent configuration of order 7[128X[104X
-    [4X[25Xgap>[125X [27XIsStronglyRegularGraph( a1 );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xautgroup := AutomorphismGroup(a1);[127X[104X
-    [4X[28XGroup([ (2,3,4)(5,7,6), (1,2,3,5,4,6,7) ])[128X[104X
-    [4X[25Xgap>[125X [27XStructureDescription(autgroup);[127X[104X
-    [4X[28X"C7 : C3"[128X[104X
-  [4X[32X[104X
+  [33X[1;0Y[29X[2XIntersectionAlgebraFromIntersectionArray[102X( [3Xn[103X, [3Xk[103X, [3Xq[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yintersection algebra object[133X
   
-  [33X[0;0YThe last one is a 3-class association scheme:[133X
+  [33X[0;0YReturns the intersection algebra of a DRG given by its intersection array.[133X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xa2 := order7[3];[127X[104X
-    [4X[28X3-class homogeneous coherent configuration of order 7[128X[104X
-    [4X[25Xgap>[125X [27XIsAssociationScheme(a2);[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsPPolynomial( a2 );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsPrimitive(a2);[127X[104X
-    [4X[28Xrue[128X[104X
-    [4X[25Xgap>[125X [27XValencies(a2);[127X[104X
-    [4X[28X[ 1, 2, 2, 2 ][128X[104X
-    [4X[25Xgap>[125X [27Xautgroup := AutomorphismGroup(a2);[127X[104X
-    [4X[28XGroup([ (2,3)(4,5)(6,7), (1,2)(3,4)(5,6) ])[128X[104X
-    [4X[25Xgap>[125X [27XStructureDescription(autgroup);[127X[104X
-    [4X[28X"D14"[128X[104X
-    [4X[25Xgap>[125X [27XP := MatrixOfEigenvalues(a2);;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay(P);[127X[104X
-    [4X[28X[ [              1,              2,              2,              2 ],[128X[104X
-    [4X[28X  [              1,  E(7)^3+E(7)^4,    E(7)+E(7)^6,  E(7)^2+E(7)^5 ],[128X[104X
-    [4X[28X  [              1,  E(7)^2+E(7)^5,  E(7)^3+E(7)^4,    E(7)+E(7)^6 ],[128X[104X
-    [4X[28X  [              1,    E(7)+E(7)^6,  E(7)^2+E(7)^5,  E(7)^3+E(7)^4 ] ][128X[104X
-    [4X[25Xgap>[125X [27XAllPPolynomialOrderings(a2);[127X[104X
-    [4X[28X[ [ 0, 1, 2, 3 ], [ 0, 2, 3, 1 ], [ 0, 3, 1, 2 ] ][128X[104X
-    [4X[25Xgap>[125X [27XIsQPolynomial(a2);[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XAllQPolynomialOrderings(a2);[127X[104X
-    [4X[28X[ [ 0, 1, 3, 2 ], [ 0, 2, 1, 3 ], [ 0, 3, 2, 1 ] ][128X[104X
-  [4X[32X[104X
+  [1X4.2-6 IntersectionAlgebraFromClassicalParameters[101X
+  
+  [33X[1;0Y[29X[2XIntersectionAlgebraFromClassicalParameters[102X( [3Xn[103X, [3Xk[103X, [3Xq[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yintersection algebra object[133X
+  
+  [33X[0;0YReturns the intersection algebra of a DRG given by its classical parameters.[133X
+  
+  [1X4.2-7 IntersectionAlgebraFromStronglyRegularGraphParameters[101X
+  
+  [33X[1;0Y[29X[2XIntersectionAlgebraFromStronglyRegularGraphParameters[102X( [3Xn[103X, [3Xk[103X, [3Xq[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yintersection algebra object[133X
+  
+  [33X[0;0YReturns  the  intersection  algebra  of a SRG given by its parameters [23X[n, k,
+  \lambda, \mu][123X.[133X
+  
+  [1X4.2-8 IsFusionOfHomogeneousCoherentConfiguration[101X
+  
+  [33X[1;0Y[29X[2XIsFusionOfHomogeneousCoherentConfiguration[102X( [3XCC[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YTakes  the  intersection  algebra  object  of a [23Xd[123X-class homogeneous coherent
+  configuration  CC,  and  checks  if  the  partion  L  of  [23X\{0,  \ldots,  d\}[123X
+  corresponds to a valid fusion.[133X
+  
+  [1X4.2-9 SchurianSchemeIntersectionAlgebra[101X
+  
+  [33X[1;0Y[29X[2XSchurianSchemeIntersectionAlgebra[102X( [3XG[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yintersection algebra[133X
+  
+  [33X[0;0YReturns  the  Schurian  scheme  defined  by  [23XG[123X,  where  [23XG[123X  is  a  transitive
+  permutation    group.   A   Schurian   scheme   is   a   special   case   of
+  CoherentConfigurationByOrbitals and is symmetric.[133X
   
   
-  [1X4.5 [33X[0;0YExample 5 -- Constructing HS (advanced example)[133X[101X
+  [1X4.3 [33X[0;0YAutomorphisms and maps[133X[101X
   
-  [33X[0;0YWe  redo  an  example  that  appears  in  Section  3.6  of  Peter  Cameron's
-  "Permutation Groups" book [Cam99] and construct the Higman-Sims group.[133X
-  [33X[0;0YFirst we construct the Hoffman-Singleton graph from the alternating group of
-  degree 7.[133X
+  [1X4.3-1 MapFromIntersectionMatricesToCentralIdempotents[101X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XA7 := AlternatingGroup(7);;[127X[104X
-    [4X[25Xgap>[125X [27XPi := [ [ 1, 2, 4 ], [ 1, 3, 7 ], [ 1, 5, 6 ], [127X[104X
-    [4X[25X>[125X [27X [ 2, 3, 5 ], [ 2, 6, 7 ], [ 3, 4, 6 ], [ 4, 5, 7 ] ];;[127X[104X
-    [4X[25Xgap>[125X [27XOnSetsRecursive := function(x,g) [127X[104X
-    [4X[25X>[125X [27X	if not IsSet(x) then[127X[104X
-    [4X[25X>[125X [27X		return x^g; [127X[104X
-    [4X[25Xgap>[125X [27X	else [127X[104X
-    [4X[25X>[125X [27X		return Set(x,y->OnSetsRecursive(y,g));[127X[104X
-    [4X[25Xgap>[125X [27X	fi;[127X[104X
-    [4X[25Xgap>[125X [27Xend;;[127X[104X
-    [4X[25Xgap>[125X [27Xtriples := Combinations([1..7], 3);;[127X[104X
-    [4X[25Xgap>[125X [27XallFanos := Orbit(A7, Pi, OnSetsSets);;[127X[104X
-    [4X[25Xgap>[125X [27Xfifty := Concatenation(triples, allFanos);;[127X[104X
-    [4X[25Xgap>[125X [27XA7action := Action(A7, fifty, OnSetsRecursive);[127X[104X
-    [4X[28X<permutation group with 2 generators>[128X[104X
-    [4X[25Xgap>[125X [27Xorbitals := Orbits(A7action, Combinations([1..50],2), OnSets);;[127X[104X
-    [4X[25Xgap>[125X [27XList(orbitals, Size);[127X[104X
-    [4X[28X[ 210, 315, 70, 420, 105, 105 ][128X[104X
-  [4X[32X[104X
+  [33X[1;0Y[29X[2XMapFromIntersectionMatricesToCentralIdempotents[102X( [3XI[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YM[133X
   
-  [33X[0;0YWe  will  now  make  a homogeneous coherent configuration from scratch, from
-  these orbitals.[133X
+  [33X[0;0YTakes an intersection algebra object, I, and returns a matrix, M, which maps
+  the  intersection  matrices  to  the central idempotents of the intersection
+  algebra. The central idempotent [23XF_i = \sum_{i=1}^{d+1} M_{ij} B_j[123X.[133X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xmat := NullMat(50,50);;[127X[104X
-    [4X[25Xgap>[125X [27Xfor i in [1..50] do[127X[104X
-    [4X[25X>[125X [27X	for j in [i+1..50] do[127X[104X
-    [4X[25X>[125X [27X		pos := First([1..Length(orbitals)], k -> [i,j] in orbitals[k]);[127X[104X
-    [4X[25Xgap>[125X [27X		mat[i][j] := pos;[127X[104X
-    [4X[25Xgap>[125X [27X		mat[j][i] := pos;[127X[104X
-    [4X[25Xgap>[125X [27X	od;[127X[104X
-    [4X[25Xgap>[125X [27Xod;[127X[104X
-  [4X[32X[104X
+  [1X4.3-2 MapFromIntersectionMatricesToCentralIdempotentsOverRationals[101X
   
-  [33X[0;0YThis is not a CC yet. We will fuse the relations of valency 3 and 4:[133X
+  [33X[1;0Y[29X[2XMapFromIntersectionMatricesToCentralIdempotentsOverRationals[102X( [3XI[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YM[133X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xl := Collected(mat[1]);[127X[104X
-    [4X[28X[ [ 0, 1 ], [ 1, 12 ], [ 2, 18 ], [ 3, 4 ], [ 4, 12 ], [ 5, 3 ] ][128X[104X
-    [4X[25Xgap>[125X [27Xto_fuse := Filtered([1..Length(l)], t -> l[t][2] in [3,4])-1;[127X[104X
-    [4X[28X[ 3, 5 ][128X[104X
-    [4X[25Xgap>[125X [27Xto_fuse2 := Difference([1..6],to_fuse);[127X[104X
-    [4X[28X[ 1, 2, 4, 6 ][128X[104X
-    [4X[25Xgap>[125X [27Xpoly := InterpolatedPolynomial(Rationals, Concatenation([0], to_fuse, [127X[104X
-    [4X[25X>[125X [27X	to_fuse2), [0,1,1,2,2,2,2] );;[127X[104X
-    [4X[25Xgap>[125X [27Xnewmat := List(mat, row -> List(row, x -> Value(poly,x)));;[127X[104X
-    [4X[25Xgap>[125X [27XCollected(newmat[1]);[127X[104X
-    [4X[28X[ [ 0, 1 ], [ 1, 7 ], [ 2, 42 ] ][128X[104X
-  [4X[32X[104X
+  [33X[0;0YTakes an intersection algebra object, I, and returns a matrix, M, which maps
+  the  intersection  matrices  to  the central idempotents of the intersection
+  algebra  over  the  rationals. The central idempotent [23XF_i = \sum_{i=1}^{d+1}
+  M_{ij} B_j[123X.[133X
   
-  [33X[0;0YThis now leads us directly to the Hoffman-Singleton graph:[133X
+  [1X4.3-3 ImageOfIntersectionAlgebra[101X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xcc := HomogeneousCoherentConfiguration( newmat ); [127X[104X
-    [4X[28X2-class association scheme of order 50[128X[104X
-    [4X[25Xgap>[125X [27XautHoffSing := AutomorphismGroup( cc );[127X[104X
-    [4X[28X<permutation group with 7 generators>[128X[104X
-    [4X[25Xgap>[125X [27XStructureDescription( autHoffSing );[127X[104X
-    [4X[28X"PSU(3,5) : C2"[128X[104X
-  [4X[32X[104X
+  [33X[1;0Y[29X[2XImageOfIntersectionAlgebra[102X( [3X$A$[103X, [3X$\sigma$[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ytrue [23XA^\sigma[123X[133X
   
-  [33X[0;0YWe will now construct the Mesner-Higman-Sims graph[133X
+  [33X[0;0YTake  a  [23Xd[123X-class  intersection  algebra  [23XA[123X  and  return  its image under the
+  permutation  [23X\sigma \in Sym([1 .. d])[123X. If [23Xp_{ij}^k[123X is an intersection number
+  of   [23XA[123X,   then   in   the  image  the  intersection  number  is  [23Xp_{i^\sigma
+  j^\sigma}^{k^\sigma}[123X[133X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xvals := Valencies(cc);[127X[104X
-    [4X[28X[ 1, 7, 42 ][128X[104X
-    [4X[25Xgap>[125X [27Xadjmat := AdjacencyMatrices(cc)[ Position(vals, 42) ];;[127X[104X
-    [4X[25Xgap>[125X [27Xgraph := Graph(autHoffSing, [1..50], OnPoints, {x,y} -> adjmat[x][y]=1);;[127X[104X
-    [4X[25Xgap>[125X [27Xone_coclique := CompleteSubgraphsOfGivenSize(graph, 15)[1];;[127X[104X
-    [4X[25Xgap>[125X [27Xall_cocliques := Orbit(autHoffSing, [127X[104X
-    [4X[25X>[125X [27X	Set(VertexNames(graph){one_coclique}), OnSets);;[127X[104X
-    [4X[25Xgap>[125X [27XSize(all_cocliques);[127X[104X
-    [4X[28X100[128X[104X
-    [4X[25Xgap>[125X [27XG := Action(autHoffSing, all_cocliques, OnSets);;[127X[104X
-    [4X[25Xgap>[125X [27Xa := SchurianScheme(G);[127X[104X
-    [4X[28X4-class homogeneous coherent configuration of order 100[128X[104X
-  [4X[32X[104X
+  [1X4.3-4 IsomorphismIntersectionAlgebras[101X
   
-  [33X[0;0YNow fuse the relations with valencies 7 and 15 (and the complement)[133X
+  [33X[1;0Y[29X[2XIsomorphismIntersectionAlgebras[102X( [3X$A$[103X, [3X$B$[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Y[23X\sigma[123X[133X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xvals := Valencies(a);[127X[104X
-    [4X[28X[ 1, 35, 42, 15, 7 ][128X[104X
-    [4X[25Xgap>[125X [27Xto_fuse := Filtered([1..Length(vals)], t -> vals[t] in [7,15])-1;;[127X[104X
-    [4X[25Xgap>[125X [27Xto_fuse2 := Difference([1..4], to_fuse);;[127X[104X
-    [4X[25Xgap>[125X [27Xfusion := FusionOfHomogeneousCoherentConfigurations(a, [[0], to_fuse,[127X[104X
-    [4X[25X>[125X [27X	to_fuse2]);[127X[104X
-    [4X[28X2-class association scheme of order 100[128X[104X
-    [4X[25Xgap>[125X [27Xautgroup2 := AutomorphismGroup(fusion);[127X[104X
-    [4X[28X<permutation group with 10 generators>[128X[104X
-    [4X[25Xgap>[125X [27XStructureDescription(autgroup2);[127X[104X
-    [4X[28X"HS : C2"[128X[104X
-  [4X[32X[104X
+  [33X[0;0YTake  two [23Xd[123X-class intersection algebras [23XA[123X and [23XB[123X and return [23X\sigma \in Sym([1
+  .. d])[123X such that [23XA^\sigma = B[123X.[133X
+  
+  [1X4.3-5 AreIsomorphicIntersectionAlgebras[101X
+  
+  [33X[1;0Y[29X[2XAreIsomorphicIntersectionAlgebras[102X( [3X$A$[103X, [3X$B$[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Y[23X\sigma[123X[133X
+  
+  [33X[0;0YTake  two  [23Xd[123X-class intersection algebras [23XA[123X and [23XB[123X and return true if they are
+  isomorphic. Return false otherwise.[133X
+  
+  [1X4.3-6 CanonisingMap[101X
+  
+  [33X[1;0Y[29X[2XCanonisingMap[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yperm[133X
+  
+  [33X[0;0YReturns  two  permutations  which  will  produce  the  canonical form of the
+  intersection   algebra   A.   The   canonical   form   can  be  obtained  by
+  ImageOfIntersectionAlgebra(A,   perm)  Any  intersection  algebra  which  is
+  isomorphic to A will the same canonical form.[133X
+  
+  [1X4.3-7 CanonicalFormOfIntersectionAlgebra[101X
+  
+  [33X[1;0Y[29X[2XCanonicalFormOfIntersectionAlgebra[102X( [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YB[133X
+  
+  [33X[0;0YReturns   the  canonical  form,  B,  of  the  intersection  algebra  A.  Any
+  intersection  algebra  which is isomorphic to A will have B as the canonical
+  form.[133X
+  
+  [1X4.3-8 AutomorphismGroup[101X
+  
+  [33X[1;0Y[29X[2XAutomorphismGroup[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YG[133X
+  
+  [33X[0;0YReturns  the automorphism group [23XG[123X of the intersection algebra object A. [23XG[123X is
+  a  permutation  group  acting  on  the relations, such that for all [23Xg \in G[123X,
+  [23Xp_{i^g j^g}^{k^g} = p_{ij}^k[123X.[133X
+  
+  
+  [1X4.4 [33X[0;0YFusions[133X[101X
+  
+  [1X4.4-1 IsFusionOfIntersectionAlgebra[101X
+  
+  [33X[1;0Y[29X[2XIsFusionOfIntersectionAlgebra[102X( [3XCC[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YTakes  a  [23Xd[123X-class  homogeneous  coherent configuration CC, and checks if the
+  partion L of [23X\{0, \ldots, d\}[123X corresponds to a valid fusion.[133X
+  
+  [1X4.4-2 FusionOfIntersectionAlgebra[101X
+  
+  [33X[1;0Y[29X[2XFusionOfIntersectionAlgebra[102X( [3XCC[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
+  
+  [33X[0;0YTakes  a  [23Xd[123X-class homogeneous coherent configuration CC and returns a fusion
+  scheme  corresponding  to  L, where L is a partion of [23X\{0, \ldots, d\}[123X. Note
+  that  the ordering of the cells of L is irrelevant. The method will sort the
+  fused relations according to the smallest value in each cell.[133X
+  
+  [1X4.4-3 ConverseRelationPairs[101X
+  
+  [33X[1;0Y[29X[2XConverseRelationPairs[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
+  
+  [33X[0;0YReturns  a list L of either tuples or singletons, corresponding to relations
+  and their converses or symmetric relations.[133X
+  
+  [1X4.4-4 ConverseRelation[101X
+  
+  [33X[1;0Y[29X[2XConverseRelation[102X( [3XCC[103X, [3Xi[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yj[133X
+  
+  [33X[0;0YReturns j such that [23XR_j = R_i^\top[123X, the converse relation of [23Xi[123X .[133X
+  
+  [1X4.4-5 IsStratifiable[101X
+  
+  [33X[1;0Y[29X[2XIsStratifiable[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YIf  the  fusion of transposed relations produces a valid association scheme,
+  then CC is stratifiable.[133X
+  
+  [1X4.4-6 SymmetrisationOfIntersectionAlgebra[101X
+  
+  [33X[1;0Y[29X[2XSymmetrisationOfIntersectionAlgebra[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YAssociation scheme[133X
+  
+  [33X[0;0YGiven  a  homogeneous  coherent  configuration,  CC,  the  symmetrisation is
+  computed  if  possible,  otherwise fail is returned. The symmetrisation of a
+  homogeneous  coherent  configuration  takes  any non-symmetric relations and
+  fuses  them  together.  The  result  may  or  may not be a valid homogeneous
+  coherent  configuration.  If  it  is valid, then it is an association scheme
+  (Symmetric  coherent  configuration).  If  CC is commutative, then it can be
+  symmetrised.[133X
+  
+  [1X4.4-7 FeasibleNonTrivialFusionsOfIntersectionAlgebra[101X
+  
+  [33X[1;0Y[29X[2XFeasibleNonTrivialFusionsOfIntersectionAlgebra[102X( [3XCC[103X[, [3Xk[103X[, [3Xflag[103X]] ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ylist of feasibly fusionable relations[133X
+  
+  [33X[0;0YReturns  a  list  where each entry is a collection of relations which may be
+  fused  to  form  a feasible homogeneous coherent configuration Trivial means
+  either  no  relations are fused, or all non-identity relations are fused. If
+  the  additional  argument  k  is  given,  only  fusions  with  k-classes are
+  returned.  If flag is also given and is equal to true, then all fusions with
+  at most k-classes are returned.[133X
+  
+  [1X4.4-8 AllNonTrivialFusionsOfIntersectionAlgebra[101X
+  
+  [33X[1;0Y[29X[2XAllNonTrivialFusionsOfIntersectionAlgebra[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YList of all non-trivial fusions of CC[133X
+  
+  [33X[0;0YReturns  a  list  of  all homogeneous coherent configurations such that each
+  element  of  the list is a non-trivial fusion of CC. Trivial means either no
+  relations  are  fused,  or  all  non-identity  relations  are  fused. If the
+  additional argument k is given, only fusions with k-classes are returned. If
+  flag  is  also  given  and  is  equal to true, then all fusions with at most
+  k-classes are returned.[133X
+  
+  [1X4.4-9 AllFusionsOfIntersectionAlgebra[101X
+  
+  [33X[1;0Y[29X[2XAllFusionsOfIntersectionAlgebra[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YList of all fusions of CC[133X
+  
+  [33X[0;0YReturns  a  list  of  all homogeneous coherent configurations such that each
+  element  of  the  list  is a fusion of CC. Includes trivial fusions, i.e the
+  original  homogeneous coherent configuration, and the coherent configuration
+  resulting from the fusion of all non-identity relations[133X
+  
+  [1X4.4-10 FeasibleNonTrivialSymmetricFusionsOfIntersectionAlgebra[101X
+  
+  [33X[1;0Y[29X[2XFeasibleNonTrivialSymmetricFusionsOfIntersectionAlgebra[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ylist of feasibly fusionable relations[133X
+  
+  [33X[0;0YReturns  a  list  where each entry is a collection of relations which may be
+  fused  to  form a feasible association scheme (i.e. relations are symmetric)
+  Trivial  means  either no relations are fused, or all non-identity relations
+  are  fused.  If  the  additional  argument  k  is  given,  only fusions with
+  k-classes are returned. If flag is also given and is equal to true, then all
+  fusions with at most k-classes are returned.[133X
+  
+  [1X4.4-11 AllNonTrivialSymmetricFusionsOfIntersectionAlgebra[101X
+  
+  [33X[1;0Y[29X[2XAllNonTrivialSymmetricFusionsOfIntersectionAlgebra[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YList of all non-trivial fusions of CC[133X
+  
+  [33X[0;0YReturns  a  list  of  all association schemes (i.e symmetric relations) such
+  that  each  element of the list is a non-trivial fusion of CC. Trivial means
+  either  no  relations are fused, or all non-identity relations are fused. If
+  the  additional  argument  k  is  given,  only  fusions  with  k-classes are
+  returned.  If flag is also given and is equal to true, then all fusions with
+  at most k-classes are returned.[133X
+  
+  [1X4.4-12 AllSymmetricFusionsOfIntersectionAlgebra[101X
+  
+  [33X[1;0Y[29X[2XAllSymmetricFusionsOfIntersectionAlgebra[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YList of all fusions of CC[133X
+  
+  [33X[0;0YReturns  a  list  of  all association schemes (i.e symmetric relations) such
+  that  each  element of the list is a fusion of CC. Includes trivial fusions,
+  i.e the original homogeneous coherent configuration (if it is an association
+  scheme),  and  the  coherent  configuration resulting from the fusion of all
+  non-identity relations[133X
+  
+  
+  [1X4.5 [33X[0;0YIntersection algebra[133X[101X
+  
+  [1X4.5-1 CentralIdempotentsOfIntersectionAlgebra[101X
+  
+  [33X[1;0Y[29X[2XCentralIdempotentsOfIntersectionAlgebra[102X( [3XI[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ycentral idempotents[133X
+  
+  [33X[0;0YReturns the central idempotents of the intersection algebra.[133X
+  
+  [1X4.5-2 CentralIdempotentsOfIntersectionAlgebraOverRationals[101X
+  
+  [33X[1;0Y[29X[2XCentralIdempotentsOfIntersectionAlgebraOverRationals[102X( [3XI[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ycentral idempotents[133X
+  
+  [33X[0;0YReturns  the  central  idempotents  of  the  intersection  algebra  over the
+  rationals.[133X
+  
+  [1X4.5-3 MatrixOfDualEigenvalues[101X
+  
+  [33X[1;0Y[29X[2XMatrixOfDualEigenvalues[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YQ[133X
+  
+  [33X[0;0YReturns  a  the  dual  matrix  of eigenvalues, [23XQ[123X, for a homogeneous coherent
+  configuration CC.[133X
+  
+  [1X4.5-4 MatrixOfEigenvalues[101X
+  
+  [33X[1;0Y[29X[2XMatrixOfEigenvalues[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YP[133X
+  
+  [33X[0;0YReturns  a  the  matrix  of  eigenvalues  (or  character  table), [23XP[123X, for the
+  intersection algebra of a homogeneous coherent configuration CC.[133X
+  
+  [1X4.5-5 FitMatrixOfEigenvalues[101X
+  
+  [33X[1;0Y[29X[2XFitMatrixOfEigenvalues[102X( [3XA[103X, [3XP[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YP2[133X
+  
+  [33X[0;0YChecks  if  P  is  the matrix of eigenvalues of intersection algebra A, upto
+  some  reordering of the columns. In such a case, P2, the reordered matrix is
+  returned. If not, returns fail.[133X
+  
+  
+  [1X4.6 [33X[0;0YMetric schemes[133X[101X
+  
+  [1X4.6-1 IsPPolynomial[101X
+  
+  [33X[1;0Y[29X[2XIsPPolynomial[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YReturns if the homogeneous coherent configuration CC is P-polynomial.[133X
+  
+  [1X4.6-2 FirstPPolynomialOrdering[101X
+  
+  [33X[1;0Y[29X[2XFirstPPolynomialOrdering[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YP-polynomial ordering or fail[133X
+  
+  [33X[0;0YReturns the first P-polynomial ordering admitted by the homogeneous coherent
+  configuration CC, and fail otherwise.[133X
+  
+  [1X4.6-3 AdmitsPPolynomialOrdering[101X
+  
+  [33X[1;0Y[29X[2XAdmitsPPolynomialOrdering[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YReturns  if  the homogeneous coherent configuration CC admits a P-polynomial
+  ordering.[133X
+  
+  [1X4.6-4 IsMetric[101X
+  
+  [33X[1;0Y[29X[2XIsMetric[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YAlias for IsPPolynomial.[133X
+  
+  [1X4.6-5 FirstMetricOrdering[101X
+  
+  [33X[1;0Y[29X[2XFirstMetricOrdering[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ymetric ordering or fail[133X
+  
+  [33X[0;0YAlias for FirstPPolynomialOrdering.[133X
+  
+  [1X4.6-6 AdmitsMetricOrdering[101X
+  
+  [33X[1;0Y[29X[2XAdmitsMetricOrdering[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YAlias for AdmitsPPolynomialOrdering.[133X
+  
+  [1X4.6-7 AllPPolynomialOrderings[101X
+  
+  [33X[1;0Y[29X[2XAllPPolynomialOrderings[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
+  
+  [33X[0;0YCalculate the list [23XL[123X of all P-polynomial orderings of a homogeneous coherent
+  configuration.[133X
+  
+  [1X4.6-8 AllMetricOrderings[101X
+  
+  [33X[1;0Y[29X[2XAllMetricOrderings[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
+  
+  [33X[0;0YAlias for AllPPolynomialOrderings.[133X
+  
+  [1X4.6-9 IntersectionArray[101X
+  
+  [33X[1;0Y[29X[2XIntersectionArray[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YList[133X
+  
+  [33X[0;0YReturns the intersection array if CC is P-polynomial.[133X
+  
+  [1X4.6-10 ClassicalParameters[101X
+  
+  [33X[1;0Y[29X[2XClassicalParameters[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Y[d, b, [23X\alpha[123X, [23X\beta[123X][133X
+  
+  [33X[0;0YReturns  the  classical  parameters  if  the  CC  is  metric  with classical
+  parameters.[133X
+  
+  [1X4.6-11 StronglyRegularGraphParameters[101X
+  
+  [33X[1;0Y[29X[2XStronglyRegularGraphParameters[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Y[d, b, [23X\alpha[123X, [23X\beta[123X][133X
+  
+  [33X[0;0YReturns  the  parameters [23X\{n, k; \lambda, \mu \}[123X if the CC is an association
+  scheme with 2 classes.[133X
+  
+  
+  [1X4.7 [33X[0;0YCometric schemes[133X[101X
+  
+  [1X4.7-1 AdmitsQPolynomialOrdering[101X
+  
+  [33X[1;0Y[29X[2XAdmitsQPolynomialOrdering[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YReturns  if  the homogeneous coherent configuration CC admits a Q-polynomial
+  ordering.[133X
+  
+  [1X4.7-2 AdmitsCometricOrdering[101X
+  
+  [33X[1;0Y[29X[2XAdmitsCometricOrdering[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YAlias for AdmitsQPolynomialOrdering.[133X
+  
+  [1X4.7-3 IsQPolynomial[101X
+  
+  [33X[1;0Y[29X[2XIsQPolynomial[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YReturns if the commutative coherent configuration CC is Q-polynomial.[133X
+  
+  [1X4.7-4 IsCometric[101X
+  
+  [33X[1;0Y[29X[2XIsCometric[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YAlias for is Q-polynomial.[133X
+  
+  [1X4.7-5 AllQPolynomialOrderings[101X
+  
+  [33X[1;0Y[29X[2XAllQPolynomialOrderings[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
+  
+  [33X[0;0YCalculate  a  list [23XL[123X of all Q-polynomial orderings of a homogeneous coherent
+  configuration.[133X
+  
+  [1X4.7-6 AllCometricOrderings[101X
+  
+  [33X[1;0Y[29X[2XAllCometricOrderings[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
+  
+  [33X[0;0YAlias for AllQPolynomialOrderings.[133X
+  
+  [1X4.7-7 KreinArray[101X
+  
+  [33X[1;0Y[29X[2XKreinArray[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YList[133X
+  
+  [33X[0;0YReturns the Krein (or dual intersection) array if CC is Q-polynomial.[133X
+  
+  [1X4.7-8 DualIntersectionArray[101X
+  
+  [33X[1;0Y[29X[2XDualIntersectionArray[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YList[133X
+  
+  [33X[0;0YAlias for KreinArray.[133X
   

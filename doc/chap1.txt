@@ -32,9 +32,9 @@
     [4X[28XDoi = {10.5281/zenodo.2634955},[128X[104X
     [4X[28XKey = {AssociationSchemes},[128X[104X
     [4X[28XTitle = {{AssociationSchemes -- AssociationSchemes: A GAP package for working[128X[104X
-    [4X[28Xwith association schemes and homogeneous coherent configurations, Version 1.0.0}},[128X[104X
+    [4X[28Xwith association schemes and homogeneous coherent configurations, Version 2.0.0}},[128X[104X
     [4X[28XUrl = {http://doi.org/10.5281/zenodo.2634955},[128X[104X
-    [4X[28XYear = 2019	,[128X[104X
+    [4X[28XYear = 2022	,[128X[104X
     [4X[28X}[128X[104X
   [4X[32X[104X
   
@@ -49,13 +49,17 @@
   
   [30X    [33X[0;6YDigraphs 0.13.0 (or later)[133X
   
-  [30X    [33X[0;6YNautyTracesInterface 0.2 (or later)[133X
-  
   [33X[0;0YYou may of course use AssociationSchemes without the above packages, however
   the corresponding functionality will be unavailable.[133X
   
+  [33X[0;0YYou may also want the following packages:[133X
+  
+  [30X    [33X[0;6YNautyTracesInterface 0.2 (or later)[133X
+  
   [33X[0;0YNote  that  NautyTracesInterface  is  not yet a deposited package. It can be
-  obtained from the link in the appendix.[133X
+  obtained  from  the  link in the appendix. It is not necessary, but it might
+  improve  speed of certain things such as finding the automorphism group, and
+  checking isomorphisms.[133X
   
   
   [1X1.4 [33X[0;0YInstallation[133X[101X
