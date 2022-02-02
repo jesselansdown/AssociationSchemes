@@ -1,6 +1,11 @@
 name: AssociationSchemes
+<<<<<<< HEAD
 version: "2.0.0"
 date: 2022-02-02
+=======
+version: 1.0.0
+date: 2019-04-10
+>>>>>>> 0b346b81a86b6b3d281770e129304577f7a3a6c3
 description: |
     A GAP package for working with association schemes and homogeneous coherent configurations
 
@@ -28,6 +33,7 @@ needed-pkgs:
       url: "https://gap-packages.github.io/grape"
     - name: "Digraphs"
       version: ">=0.13.0"
+<<<<<<< HEAD
       url: "https://digraphs.github.io/Digraphs"
     - name: "cvec"
       version: ">=2.6.1"
@@ -44,7 +50,21 @@ packageinfo: http://www.jesselansdown.com/AssociationSchemes/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/jesselansdown/AssociationSchemes/releases/download/v2.0.0/AssociationSchemes-2.0.0.tar.gz
+      url: https://zenodo.org/record/5946803/files/AssociationSchemes-2.0.0.tar.gz?download=1
+=======
+      url: "https://gap-packages.github.io/Digraphs"
+    - name: "NautyTracesInterface"
+      version: ">=0.2"
+      url: "https://github.com/sebasguts/NautyTracesInterface"
+
+www: https://github.com/jesselansdown/AssociationSchemes/
+readme: README.md
+packageinfo: https://github.com/jesselansdown/AssociationSchemes/PackageInfo.g
+
+downloads:
+    - name: .tar.gz
+      url: https://zenodo.org/record/2634955/files/AssociationSchemes-1.0.0.tar.gz?download=1
+>>>>>>> 0b346b81a86b6b3d281770e129304577f7a3a6c3
 
 abstract: |
 
@@ -53,16 +73,26 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
+<<<<<<< HEAD
     [<span class='BibKey'>BHL22</span>]   <b class='BibAuthor'>Bamberg, J., Hanaki, A. and Lansdown, J.</b>,
      <i class='BibTitle'>AssociationSchemes, A GAP package for working with association schemes and homogeneous coherent configurations,
              Version 2.0.0</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="http://www.jesselansdown.com/AssociationSchemes">http://www.jesselansdown.com/AssociationSchemes</a></span>.
+=======
+    [<span class='BibKey'>BHL19</span>]   <b class='BibAuthor'>Bamberg, J., Hanaki, A. and Lansdown, J.</b>,
+     <i class='BibTitle'>AssociationSchemes, A GAP package for working with association schemes and homogeneous coherent configurations,
+             Version 1.0.0</i>
+     (<span class='BibYear'>2019</span>)<br />
+    (<span class='BibNote'>GAP package</span>),
+    <span class='BibHowpublished'><a href="https://github.com/jesselansdown/AssociationSchemes/">https://github.com/jesselansdown/AssociationSchemes/</a></span>.
+>>>>>>> 0b346b81a86b6b3d281770e129304577f7a3a6c3
     </p>
     
 
 bibtex: |
+<<<<<<< HEAD
     @misc{ AssociationSchemes2.0.0,
       author =           {Bamberg, J. and Hanaki, A. and Lansdown, J.},
       title =            {{AssociationSchemes},  A  GAP package for working with association schemes and homogeneous coherent configurations,
@@ -73,5 +103,18 @@ bibtex: |
       howpublished =     {\href    {http://www.jesselansdown.com/AssociationSchemes}    {\texttt{http://www.jesselansdown.com/}\discretionary
                           {}{}{}\texttt{AssociationSchemes}}},
       printedkey =       {BHL22}
+=======
+    @misc{ AssociationSchemes1.0.0,
+      author =           {Bamberg, J. and Hanaki, A. and Lansdown, J.},
+      title =            {{AssociationSchemes},  A  GAP  package for working with association schemes and homogeneous
+                          coherent configurations, {V}ersion 1.0.0},
+      month =            {Apr},
+      year =             {2019},
+      note =             {GAP package},
+      howpublished =     {\href                                {https://github.com/jesselansdown/AssociationSchemes/}
+                          {\texttt{https://github.com/}\discretionary     {}{}{}\texttt{jesselansdown/}\discretionary
+                          {}{}{}\texttt{AssociationSchemes/}}},
+      printedkey =       {BHL19}
+>>>>>>> 0b346b81a86b6b3d281770e129304577f7a3a6c3
     }
 
