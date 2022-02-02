@@ -30,6 +30,7 @@ The following additional GAP packages are not required, but suggested:
 {% if person.url %}<a href="{{ person.url }}">{{ person.name }}</a>{% else %}{{ person.name }}{% endif %}{% unless forloop.last %}, {% endunless %}{% else %}
 {% endfor %}
 
+{% if site.data.package.citeas %}
 ## Citing
 
 Please, cite this package as
