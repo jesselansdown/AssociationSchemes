@@ -3,3 +3,4 @@ TODO.txt
 /doc/*
 !/doc/Intro.autodoc
 !/doc/AssociationSchemes.bib
+gh-pages/
