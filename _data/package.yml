@@ -58,7 +58,7 @@ citeas: |
              Version 2.0.0</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
-    <span class='BibHowpublished'><a href="http://www.jesselansdown.com/AssociationSchemes">http://www.jesselansdown.com/AssociationSchemes</a></span>.
+    <span class='BibHowpublished'><a href="https://doi.org/10.5281/zenodo.2634954">https://doi.org/10.5281/zenodo.2634954</a></span>.
     </p>
     
 
@@ -70,6 +70,6 @@ bibtex: |
       month =            {Feb},
       year =             {2022},
       note =             {GAP package},
-      howpublished =     {\href    {http://www.jesselansdown.com/AssociationSchemes}    {\texttt{http://www.jesselansdown.com/}\discretionary
+      howpublished =     {\href    {https://doi.org/10.5281/zenodo.2634954}    {\texttt{https://doi.org/10.5281/zenodo.2634954}\discretionary
                           {}{}{}\texttt{AssociationSchemes}}},
       printedkey =       {BHL22}
