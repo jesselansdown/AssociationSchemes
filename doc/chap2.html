@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (AssociationSchemes) - Chapter 2: Getting Started</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap2"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap2_mj.html">[MathJax on]</a></p>
+<p><a id="X7B1863E17896BCE1" name="X7B1863E17896BCE1"></a></p>
+<div class="ChapSects"><a href="chap2.html#X7B1863E17896BCE1">2 <span class="Heading">Getting Started</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7E1DAE3779F9F9E0">2.1 <span class="Heading">Tutorial - A first session with AssociationSchemes</span></a>
+</span>
+</div>
+</div>
+
+<h3>2 <span class="Heading">Getting Started</span></h3>
+
+<p><a id="X7E1DAE3779F9F9E0" name="X7E1DAE3779F9F9E0"></a></p>
+
+<h4>2.1 <span class="Heading">Tutorial - A first session with AssociationSchemes</span></h4>
+
+<p>In this section we provide a "first session" introduction to the AssociationSchemes package. It is intended to demonstrate the basic functions of the package through a series of small examples. More detailed descriptions of each of the methods are given in the chapter "Functionality". The fundamental method of describing a scheme in the AssociationSchemes package is via its relation matrix. Take for example the following relation matrix:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M:=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">[ [  0,  1,  2,  2,  3,  3,  3,  3,  3,  3,  3,  3 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  [  1,  0,  2,  2,  3,  3,  3,  3,  3,  3,  3,  3 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  [  2,  2,  0,  1,  3,  3,  3,  3,  3,  3,  3,  3 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  [  2,  2,  1,  0,  3,  3,  3,  3,  3,  3,  3,  3 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  [  3,  3,  3,  3,  0,  1,  2,  2,  3,  3,  3,  3 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  [  3,  3,  3,  3,  1,  0,  2,  2,  3,  3,  3,  3 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  [  3,  3,  3,  3,  2,  2,  0,  1,  3,  3,  3,  3 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  [  3,  3,  3,  3,  2,  2,  1,  0,  3,  3,  3,  3 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  [  3,  3,  3,  3,  3,  3,  3,  3,  0,  1,  2,  2 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  [  3,  3,  3,  3,  3,  3,  3,  3,  1,  0,  2,  2 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  [  3,  3,  3,  3,  3,  3,  3,  3,  2,  2,  0,  1 ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  [  3,  3,  3,  3,  3,  3,  3,  3,  2,  2,  1,  0 ] ];;</span>
+</pre></div>
+
+<p>To construct a scheme from this matrix, we use the CoherentConfiguration command.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CC := HomogeneousCoherentConfiguration(M);;</span>
+</pre></div>
+
+<p>CoherentConfiguration performs a number of checks as it constructs the scheme to make sure that it is in fact a homogeneous coherent configuration. However if you are confident that M does in fact define a scheme, then you can skip the checks by using CoherentConfigurationNC. Do not do this unless you are sure! We can display the scheme and see that <strong class="pkg">GAP</strong> already knows the class and order of CC, as well that CC is symmetric and commutative.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(CC);</span>
+3-class association scheme of order 12.
+  Symmetric: true
+  Commutative: true
+</pre></div>
+
+<p>We can directly ask if CC is commutative or symmetric.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCommutative(CC);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsSymmetricCoherentConfiguration(CC);</span>
+true
+</pre></div>
+
+<p>We can retrieve the relation matrix of a scheme</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">relmat := RelationMatrix(CC);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">relmat = M;</span>
+true
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P := MatrixOfEigenvalues(CC);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(P);</span>
+[ [   1,   1,   2,   8 ],
+  [   1,   1,   2,  -4 ],
+  [   1,   1,  -2,   0 ],
+  [   1,  -1,   0,   0 ] ]
+</pre></div>
+
+<p>If we try displaying again, we will also obtain the matrix of eigenvalues and the dual matrix of eigenvalues.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(CC);</span>
+3-class association scheme of order 12.
+  Symmetric: true
+  Commutative: true
+  MatrixOfEigenvalues:
+[ [   1,   1,   2,   8 ],
+  [   1,   1,   2,  -4 ],
+  [   1,   1,  -2,   0 ],
+  [   1,  -1,   0,   0 ] ]
+  DualMatrixOfEigenvalues:
+[ [   1,   2,   3,   6 ],
+  [   1,   2,   3,  -6 ],
+  [   1,   2,  -3,   0 ],
+  [   1,  -1,   0,   0 ] ]
+</pre></div>
+
+<p>If you want to print CC, it will return the relation matrix. This is useful if you want to print to a file for exmaple.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Print(CC);</span>
+[ [ 0, 1, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3 ], [ 1, 0, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3 ], 
+  [ 2, 2, 0, 1, 3, 3, 3, 3, 3, 3, 3, 3 ], [ 2, 2, 1, 0, 3, 3, 3, 3, 3, 3, 3, 3 ], 
+  [ 3, 3, 3, 3, 0, 1, 2, 2, 3, 3, 3, 3 ], [ 3, 3, 3, 3, 1, 0, 2, 2, 3, 3, 3, 3 ], 
+  [ 3, 3, 3, 3, 2, 2, 0, 1, 3, 3, 3, 3 ], [ 3, 3, 3, 3, 2, 2, 1, 0, 3, 3, 3, 3 ], 
+  [ 3, 3, 3, 3, 3, 3, 3, 3, 0, 1, 2, 2 ], [ 3, 3, 3, 3, 3, 3, 3, 3, 1, 0, 2, 2 ], 
+  [ 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 0, 1 ], [ 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 1, 0 ] ]
+</pre></div>
+
+<p>You can obtain the adjacency matrices by doing:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AdjacencyMatrices(CC);;</span>
+</pre></div>
+
+<p>If you were able to calculate the matrix of eigenvalues, then you can also construct the minimal idempotents <span class="Math">E_i</span></p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalIdempotents(CC);;</span>
+</pre></div>
+
+<p>Note that if CC is Schurian (or has a transitive group associated with it) then MinimalIdempotents will be much faster! You can check if a scheme is schurian by doing</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsSchurian(CC);</span>
+true
+</pre></div>
+
+<p>In doing this, a graph is constructed and the automorphism group for CC is found. We can also find the automorphism group directly.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AutomorphismGroup(CC);</span>
+&lt;permutation group with 11 generators&gt;
+</pre></div>
+
+<p>We can define homogeneous coherent figurations from transitive groups. This is typically fast.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := Group( [ ( 6,10)( 7,11)( 8,12)( 9,13)(15,28)(16,29)(17,30)(18,31)</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">	(20,37)(21,38)(22,39)(23,40)(24,33)(25,34)(26,35)(27,36),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ( 1,15,22,31,18,26,16, 2, 5)( 3,24,21)( 4,20,40,29,11, 6,28,27,25)</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ( 7,10,14)( 8,33,35,39,38,12,32,13,19)( 9,37,34)(23,36,30),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ( 3, 4)( 7,11)( 8, 9)(12,13)(15,28)(17,31)(18,30)(19,32)(20,33)</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    (21,25)(22,36)(23,35)(24,37)(26,40)(27,39)(34,38), () ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomogeneousCoherentConfigurationByOrbitals(G);;</span>
+</pre></div>
+
+<p>If G is generously transitive, then we can constuct a Schurian scheme</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsGenerouslyTransitive(G);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SchurianScheme(G);;</span>
+</pre></div>
+
+<p>If we have a group G and subgroup H such that G acts transitively on G/H, then we can also use the following construction.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G:=SymmetricGroup(5);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H:=Stabiliser(G, 1);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomogeneousCoherentConfigurationByOrbitals(G, H);;</span>
+</pre></div>
+
+<p>There are a number of special constructors, such as for Johnson schemes</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">JohnsonScheme(10,3);</span>
+3-class association scheme of order 120.
+</pre></div>
+
+<p>AssociationSchemes also comes with a library of association schemes on small numbers of vertices, according to <a href="chapBib.html#biBHanaki">[HM]</a>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m:=HomogeneousCoherentConfiguration(12, 7);;</span>
+</pre></div>
+
+<p>We can test if two schemes are equal with "=". This will return true if the schemes have the same relation matrix. The previous example from the library is in fact the same as the example constructed from the matrix M at the start.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CC = m;</span>
+true
+</pre></div>
+
+<p>There is also the option to create a fusion scheme. This takes a partition of the relations, (where [0] must be cell of the partition. If the resulting fusion is not a valid scheme this will return fail;</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FusionOfHomogeneousCoherentConfigurations(m, [[0], [1,2],[3]]);</span>
+2-class association scheme of order 12.
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

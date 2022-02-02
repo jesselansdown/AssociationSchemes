@@ -1,1 +1,194 @@
-Placeholder
+  
+  
+                              [1X AssociationSchemes [101X
+  
+  
+  [1X A [5XGAP[105X package for working with association schemes and homogeneous coherent
+                                configurations [101X
+  
+  
+                                     1.0.0
+  
+  
+                                 10 April 2019
+  
+  
+                                  John Bamberg
+  
+                                 Akihide Hanaki
+  
+                                 Jesse Lansdown
+  
+  
+  
+  John Bamberg
+      Email:    [7Xmailto:john.bamberg@uwa.edu.au[107X
+      Homepage: [7Xhttp://school.maths.uwa.edu.au/~bamberg/[107X
+      Address:  [33X[0;14YJohn Bamberg[133X
+                [33X[0;14YSchool of Mathematics and Statistics[133X
+                [33X[0;14YThe University of Western Australia[133X
+                [33X[0;14Y35 Stirling Highway[133X
+                [33X[0;14YCrawley WA 6009, Perth[133X
+                [33X[0;14YAustralia[133X
+  
+  
+  Akihide Hanaki
+      Email:    [7Xmailto:hanaki@shinshu-u.ac.jp[107X
+      Homepage: [7Xhttp://math.shinshu-u.ac.jp/~hanaki/[107X
+      Address:  [33X[0;14YAkihide Hanaki[133X
+                [33X[0;14YDepartment of Mathematics[133X
+                [33X[0;14YFaculty of Science, Shinshu University[133X
+                [33X[0;14YMatsumoto 390-8621, Japan[133X
+  
+  
+  Jesse Lansdown
+      Email:    [7Xmailto:jesse.lansdown@research.uwa.edu.au[107X
+      Homepage: [7Xhttp://www.jesselansdown.com[107X
+      Address:  [33X[0;14YJesse Lansdown[133X
+                [33X[0;14YSchool of Mathematics and Statistics[133X
+                [33X[0;14YThe University of Western Australia[133X
+                [33X[0;14Y35 Stirling Highway[133X
+                [33X[0;14YCrawley WA 6009, Perth[133X
+                [33X[0;14YAustralia[133X
+  
+  
+  
+  -------------------------------------------------------
+  [1XAbstract[101X
+  [33X[0;0YAssociationSchemes is a GAP package for working with association schemes and
+  homogeneous coherent configurations.[133X
+  
+  
+  -------------------------------------------------------
+  [1XCopyright[101X
+  [33X[0;0Y© 2019 John Bamberg, Akihide Hanaki, Jesse Lansdown[133X
+  
+  [33X[0;0YThis  program  is  free  software;  you can redistribute it and/or modify it
+  under  the  terms of the GNU General Public License as published by the Free
+  Software  Foundation;  either  version 2 of the License, or (at your option)
+  any later version.[133X
+  
+  [33X[0;0YThis  program is distributed in the hope that it will be useful, but WITHOUT
+  ANY  WARRANTY;  without  even  the  implied  warranty  of MERCHANTABILITY or
+  FITNESS  FOR  A  PARTICULAR  PURPOSE. See the GNU General Public License for
+  more details.[133X
+  
+  [33X[0;0YYou should have received a copy of the GNU General Public License along with
+  this  program;  if  not,  write  to  the  Free Software Foundation, Inc., 51
+  Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.[133X
+  
+  
+  -------------------------------------------------------
+  [1XAcknowledgements[101X
+  [33X[0;0YThe  third  author  would  like  to acknowledge the support of an Australian
+  Government  Research  Training  Program (RTP) Scholarship while writing this
+  software.  The  first  and third authors are also grateful for the 2019 CMSC
+  Retreat  for  providing  an  opportunity  and  environment  for  some of the
+  founding work on the package.[133X
+  
+  
+  -------------------------------------------------------
+  
+  
+  [1XContents (AssociationSchemes)[101X
+  
+  1 [33X[0;0YIntroduction[133X
+    1.1 [33X[0;0YWelcome to AssociationSchemes[133X
+    1.2 [33X[0;0YCiting AssociationSchemes[133X
+    1.3 [33X[0;0YDependencies[133X
+    1.4 [33X[0;0YInstallation[133X
+  2 [33X[0;0YGetting Started[133X
+    2.1 [33X[0;0YTutorial - A first session with AssociationSchemes[133X
+  3 [33X[0;0YFunctionality[133X
+    3.1 [33X[0;0YConstructor Methods[133X
+      3.1-1 HomogeneousCoherentConfiguration
+      3.1-2 HomogeneousCoherentConfigurationNC
+      3.1-3 AssociationScheme
+      3.1-4 AssociationSchemeNC
+      3.1-5 ReorderRelations
+      3.1-6 SaveHomogeneousCoherentConfigurationWithCertainAttributes
+      3.1-7 ReadHomogeneousCoherentConfigurationWithCertainAttributes
+      3.1-8 BilinearFormsScheme
+      3.1-9 HomogeneousCoherentConfigurationByOrbitals
+      3.1-10 HomogeneousCoherentConfigurationByOrbitals
+      3.1-11 GrassmannScheme
+      3.1-12 GroupCoherentConfiguration
+      3.1-13 HammingScheme
+      3.1-14 JohnsonScheme
+      3.1-15 HomogeneousCoherentConfiguration
+      3.1-16 NumberOfHomogeneousCoherentConfigurations
+      3.1-17 AvailableHomogeneousCoherentConfigurations
+      3.1-18 AllHomogeneousCoherentConfigurations
+      3.1-19 FusionOfHomogeneousCoherentConfigurations
+      3.1-20 DirectProductOfHomogeneousCoherentConfigurations
+      3.1-21 WreathProductOfHomogeneousCoherentConfigurations
+      3.1-22 CyclotomicScheme
+      3.1-23 SchurianScheme
+    3.2 [33X[0;0YMatrices Describing Homogeneous Coherent Configurations[133X
+      3.2-1 RelationMatrix
+      3.2-2 AdjacencyMatrices
+      3.2-3 IntersectionMatrices
+      3.2-4 MinimalIdempotents
+    3.3 [33X[0;0YProperties Of Homogeneous Coherent Configurations[133X
+      3.3-1 IsCommutative
+      3.3-2 IsSymmetricCoherentConfiguration
+      3.3-3 IsAssociationScheme
+      3.3-4 IsStronglyRegularGraph
+      3.3-5 IsPPolynomial
+      3.3-6 IsMetric
+      3.3-7 IsQPolynomial
+      3.3-8 IsCometric
+      3.3-9 IsThin
+      3.3-10 IsQuasiThin
+      3.3-11 IsPrimitive
+      3.3-12 IsHomogeneousCoherentConfigurationByOrbitals
+      3.3-13 IsGenerouslyTransitive
+      3.3-14 IsGenerouslyTransitive
+      3.3-15 IsSchurian
+    3.4 [33X[0;0YAttributes Of Homogeneous Coherent Configurations[133X
+      3.4-1 NumberOfClasses
+      3.4-2 Order
+      3.4-3 Valencies
+      3.4-4 NumberOfCharacters
+      3.4-5 MatrixOfEigenvalues
+      3.4-6 CharacterTable
+      3.4-7 DualMatrixOfEigenvalues
+      3.4-8 AutomorphismGroup
+      3.4-9 AllPPolynomialOrderings
+      3.4-10 KreinParameters
+      3.4-11 AllQPolynomialOrderings
+      3.4-12 ConstructorGroup
+    3.5 [33X[0;0YMethods[133X
+      3.5-1 Relation
+      3.5-2 Neighbours
+      3.5-3 Neighbours
+      3.5-4 IntersectionNumber
+      3.5-5 KreinParameter
+      3.5-6 MatrixOfEigenvaluesOfHammingScheme
+      3.5-7 MatrixOfEigenvaluesOfJohnsonScheme
+    3.6 [33X[0;0YAlgebras[133X
+      3.6-1 IntersectionAlgebra
+      3.6-2 BoseMesnerAlgebra
+      3.6-3 AdjacencyAlgebra
+      3.6-4 TerwilligerAlgebra
+      3.6-5 TerwilligerAlgebra
+    3.7 [33X[0;0YSubsets And Codes[133X
+      3.7-1 InnerDistribution
+      3.7-2 MacWilliamsTransform
+      3.7-3 DualBoseMesnerBasis
+      3.7-4 DualBoseMesnerBasis
+      3.7-5 OuterDistribution
+      3.7-6 CharacteristicVector
+      3.7-7 CharacteristicVector
+  4 [33X[0;0YExamples[133X
+    4.1 [33X[0;0YExample 1 -- Constructing groups[133X
+    4.2 [33X[0;0YExample 2 -- Dual polar spaces and their graphs[133X
+    4.3 [33X[0;0YExample 3 -- Codes[133X
+    4.4 [33X[0;0YExample 4 -- Using the library[133X
+    4.5 [33X[0;0YExample 5 -- Constructing HS (advanced example)[133X
+  5 [33X[0;0YAppendix[133X
+    5.1 [33X[0;0YAssociationSchemes Links[133X
+    5.2 [33X[0;0Y[5XGAP[105X Links[133X
+  
+  
+  [32X

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (AssociationSchemes) - Chapter 1: Introduction</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap1"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap1.html">[MathJax off]</a></p>
+<p><a id="X7DFB63A97E67C0A1" name="X7DFB63A97E67C0A1"></a></p>
+<div class="ChapSects"><a href="chap1_mj.html#X7DFB63A97E67C0A1">1 <span class="Heading">Introduction</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X84CBAD1987E00213">1.1 <span class="Heading">Welcome to AssociationSchemes</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X8424F0C17AAE4D39">1.2 <span class="Heading">Citing AssociationSchemes</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7C0B91E37C8FC531">1.3 <span class="Heading">Dependencies</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X8360C04082558A12">1.4 <span class="Heading">Installation</span></a>
+</span>
+</div>
+</div>
+
+<h3>1 <span class="Heading">Introduction</span></h3>
+
+<p><a id="X84CBAD1987E00213" name="X84CBAD1987E00213"></a></p>
+
+<h4>1.1 <span class="Heading">Welcome to AssociationSchemes</span></h4>
+
+<p>AssociationSchemes is a <strong class="pkg">GAP</strong><a href="chapBib_mj.html#biBGAP4">[GAP16]</a> package for working with association schemes and homogeneous coherent configurations.</p>
+
+<p>For definitions and more information on the theory of association schemes and homogeneous coherent configurations, we refer you to <a href="chapBib_mj.html#biBBannaiIto">[BI84]</a> and <a href="chapBib_mj.html#biBGodsil">[God93]</a>.</p>
+
+<p>It is important to note that the term "association scheme" is used differently by different authors. We reserve the term "association scheme" to mean a symmetric coherent configuration, and use "homogeneous coherent configuration" to refer to the more general objects.</p>
+
+<p><a id="X8424F0C17AAE4D39" name="X8424F0C17AAE4D39"></a></p>
+
+<h4>1.2 <span class="Heading">Citing AssociationSchemes</span></h4>
+
+<p>If you use AssociationSchemes in research leading to publication please cite it as you would a paper. Example citations and a BibTeX entry are given below. Please check that the version and DOI match the version of AssociationSchemes used in your research.</p>
+
+<p>Please also inform us by email of the paper, as we are very interested to hear how AssociationSchemes is being used!</p>
+
+
+<div class="example"><pre>
+@article{AssociationSchemes,
+Author = {Bamberg,  J.  and  Hanaki,  A.  and  Lansdown, J.},
+Doi = {10.5281/zenodo.2634955},
+Key = {AssociationSchemes},
+Title = {{AssociationSchemes -- AssociationSchemes: A GAP package for working
+with association schemes and homogeneous coherent configurations, Version 1.0.0}},
+Url = {http://doi.org/10.5281/zenodo.2634955},
+Year = 2019	,
+}
+</pre></div>
+
+<p><a id="X7C0B91E37C8FC531" name="X7C0B91E37C8FC531"></a></p>
+
+<h4>1.3 <span class="Heading">Dependencies</span></h4>
+
+<p>AssociationSchemes requires</p>
+
+
+<ul>
+<li><p><strong class="pkg">GAP</strong> 4.8 (or later)</p>
+
+</li>
+</ul>
+<p>as well as the following <strong class="pkg">GAP</strong> packages:</p>
+
+
+<ul>
+<li><p>Digraphs 0.13.0 (or later)</p>
+
+</li>
+<li><p>NautyTracesInterface 0.2 (or later)</p>
+
+</li>
+</ul>
+<p>You may of course use AssociationSchemes without the above packages, however the corresponding functionality will be unavailable.</p>
+
+<p>Note that NautyTracesInterface is not yet a deposited package. It can be obtained from the link in the appendix.</p>
+
+<p><a id="X8360C04082558A12" name="X8360C04082558A12"></a></p>
+
+<h4>1.4 <span class="Heading">Installation</span></h4>
+
+<p>To install AssociationSchemes, simply copy to the "pkg" directory of your GAP installation and unzip.</p>
+
+<p>Alternatively, you may load the package from a location other than the <strong class="pkg">GAP</strong> "pkg" directory by using the -L flag when opening <strong class="pkg">GAP</strong>. Note that this requires the parent directory of AssociationSchemes to be called "pkg". See the <strong class="pkg">GAP</strong> documentation for more details on how to do this. This is useful, for example, when administrative priveledges are required to access the <strong class="pkg">GAP</strong> root directory.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

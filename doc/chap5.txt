@@ -1,0 +1,21 @@
+  
+  [1X5 [33X[0;0YAppendix[133X[101X
+  
+  
+  [1X5.1 [33X[0;0YAssociationSchemes Links[133X[101X
+  
+  [30X    [33X[0;6YHomepage: http://www.jesselansdown.com/AssociationSchemes[133X
+  
+  [30X    [33X[0;6YIssue                                                         tracker:
+        https://github.com/jesselansdown/AssociationSchemes/issues[133X
+  
+  [30X    [33X[0;6YDOI: 10.5281/zenodo.2634955[133X
+  
+  
+  [1X5.2 [33X[0;0Y[5XGAP[105X[101X[1X Links[133X[101X
+  
+  [30X    [33X[0;6YHomepage: http://gap-system.org[133X
+  
+  [30X    [33X[0;6YNautyTracesInterface:
+        https://github.com/sebasguts/NautyTracesInterface[133X
+  

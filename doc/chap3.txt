@@ -1,0 +1,621 @@
+  
+  [1X3 [33X[0;0YFunctionality[133X[101X
+  
+  
+  [1X3.1 [33X[0;0YConstructor Methods[133X[101X
+  
+  [1X3.1-1 HomogeneousCoherentConfiguration[101X
+  
+  [33X[1;0Y[29X[2XHomogeneousCoherentConfiguration[102X( [3XM[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
+  
+  [33X[0;0YTakes   the  relationship  matrix,  [23XM[123X,  describing  a  homogensous  coherent
+  configuration  and  returns  a  HomogeneousCoherentConfiguration object. The
+  matrix  [23XM  =  \sum_{i=0}^d  i  A_i[123X,  where  [23XA_i[123X  are  the adjacency matrices
+  describing  a  coherent  configuration. Checks that the matrix satisfies the
+  axioms  of  a  homogeneous coherent configuration. (Note that this accepts a
+  matrix  of  the  form  [23XM = \sum_{i=0}^d a_i A_i[123X where [23Xa_i[123X is not equal to [23Xi[123X,
+  however, it will first convert to the form [23XM = \sum_{i=0}^d i A_i[123X).[133X
+  
+  [1X3.1-2 HomogeneousCoherentConfigurationNC[101X
+  
+  [33X[1;0Y[29X[2XHomogeneousCoherentConfigurationNC[102X( [3XM[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
+  
+  [33X[0;0YSame  as HomogeneousCoherentConfiguration but without performing any checks.
+  Use  this method only if you know with certainty that [23XM[123X describes a coherent
+  configuration.[133X
+  
+  [1X3.1-3 AssociationScheme[101X
+  
+  [33X[1;0Y[29X[2XAssociationScheme[102X( [3XM[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
+  
+  [33X[0;0YTakes  the  relationship  matrix,  [23XM[123X,  describing an associatioin scheme and
+  returns  a  association  scheme  (symmetric coherent configuration). This is
+  simply   a  HomogeneousCoherentConfiguration  object,  but  with  the  known
+  property  of  being  symmetric. The matrix [23XM = \sum_{i=0}^d i A_i[123X, where [23XA_i[123X
+  are the adjacency matrices describing an association scheme. Checks that the
+  matrix  satisfies  the  association scheme axioms. (Note that this accepts a
+  matrix  of  the  form  [23XM = \sum_{i=0}^d a_i A_i[123X where [23Xa_i[123X is not equal to [23Xi[123X,
+  however, it will first convert to the form [23XM = \sum_{i=0}^d i A_i[123X).[133X
+  
+  [1X3.1-4 AssociationSchemeNC[101X
+  
+  [33X[1;0Y[29X[2XAssociationSchemeNC[102X( [3XM[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
+  
+  [33X[0;0YSame as AssociationScheme but without performing any checks. Use this method
+  only  if  you  know  with  certainty  that [23XM[123X describes an association scheme
+  (symmetric coherent configuration).[133X
+  
+  [1X3.1-5 ReorderRelations[101X
+  
+  [33X[1;0Y[29X[2XReorderRelations[102X( [3XCC[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ycoherent configuration[133X
+  
+  [33X[0;0YTakes  a  homogeneous  coherent  configuration CC and a list L, where L is a
+  reordering  of  the  relations. Returns a homogeneous coherent configuration
+  where  the  [23Xi[123X-th  relation  of  the  CC becomes the [23Xj[123X-th relation in the new
+  homogeneous  coherent  configuration,  where  [23Xj = L_i[123X. Note that [23XL_i[123X must be
+  equal to [23X\{0, \ldots, d \}[123X as a set, and additionally requires that [23XL_1 = 0[123X.[133X
+  
+  [1X3.1-6 SaveHomogeneousCoherentConfigurationWithCertainAttributes[101X
+  
+  [33X[1;0Y[29X[2XSaveHomogeneousCoherentConfigurationWithCertainAttributes[102X( [3Xfile[103X, [3XA[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ytrue[133X
+  
+  [33X[0;0YSaves  homogeneous  coherent  configuration  A to file F with the attributes
+  listed  in  L. Note that L must be a list of strings, where each entry is an
+  attribute  known  for  A.  Note  that  Print or PrintTo will only return the
+  relation  matrix of a homogeneous coherent configuration, which contains all
+  necessary  information about the homogeneous coherent configuration, but may
+  require  a  lot of computation to reobtain its attributes. Hence this method
+  is  intended  to  alow saving of computationally difficult or time consuming
+  attributes  directly.  It  also alows the user to choose which attributes to
+  save,  since  some  attributes  are  very  large, but easily recomputed. For
+  example,  it  is  often  desirable  to  save  the matrix of eigenvalues, and
+  perhaps  the  automorphism  group and intersection matrices, while it is not
+  generally   desirable  to  also  save  the  adjacency  matrices  or  minimal
+  idempotents.[133X
+  
+  [1X3.1-7 ReadHomogeneousCoherentConfigurationWithCertainAttributes[101X
+  
+  [33X[1;0Y[29X[2XReadHomogeneousCoherentConfigurationWithCertainAttributes[102X( [3Xfile[103X, [3XA[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
+  
+  [33X[0;0YReads  in  a homogenous coherent configuration from file and sets it to have
+  the  attributes  stored  in the file. This reads files of the type formed by
+  SaveHomogeneousCoherentConfigurationWithCertainAttributes.[133X
+  
+  [1X3.1-8 BilinearFormsScheme[101X
+  
+  [33X[1;0Y[29X[2XBilinearFormsScheme[102X( [3XF[103X, [3Xn[103X, [3Xk[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
+  
+  [33X[0;0YReturns  the  bilinear  forms  scheme for the finite field [23XF[123X with a bilinear
+  form from [23XF^n \times F^n[123X to [23XF^k[123X.[133X
+  
+  [1X3.1-9 HomogeneousCoherentConfigurationByOrbitals[101X
+  
+  [33X[1;0Y[29X[2XHomogeneousCoherentConfigurationByOrbitals[102X( [3XG[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
+  
+  [33X[0;0YConstructs  a  "group-case"  coherent configuration, where the relations are
+  defined  by the orbitals of [23XG[123X on [23X\{1, \ldots, n\} \times \{1, \ldots, n\}[123X. [23XG[123X
+  must be a permutation group which is transitive on [23X\{1, \ldots, n\}[123X.[133X
+  
+  [1X3.1-10 HomogeneousCoherentConfigurationByOrbitals[101X
+  
+  [33X[1;0Y[29X[2XHomogeneousCoherentConfigurationByOrbitals[102X( [3XG[103X, [3XH[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
+  
+  [33X[0;0YConstructs  a  "group-case"  coherent configuration, where the relations are
+  defined by the orbitals of [23XG[123X on [23XG/H[123X. [23XG[123X is a group, [23XH[123X is a subgroup of [23XG[123X, [23XG/H[123X
+  is the set of right cosets of [23XG[123X on [23XH[123X, and [23XG[123X must be transitive on [23XG/H[123X.[133X
+  
+  [1X3.1-11 GrassmannScheme[101X
+  
+  [33X[1;0Y[29X[2XGrassmannScheme[102X( [3Xn[103X, [3Xk[103X, [3Xq[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
+  
+  [33X[0;0YReturns the Grassman scheme, [23XJ_q(n, k)[123X.[133X
+  
+  [1X3.1-12 GroupCoherentConfiguration[101X
+  
+  [33X[1;0Y[29X[2XGroupCoherentConfiguration[102X( [3XG[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
+  
+  [33X[0;0YReturns the coherent configuration on the conjugacy classes of a group [23XG[123X.[133X
+  
+  [1X3.1-13 HammingScheme[101X
+  
+  [33X[1;0Y[29X[2XHammingScheme[102X( [3Xn[103X, [3Xq[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
+  
+  [33X[0;0YReturns the Hamming scheme, [23XH(n, q)[123X.[133X
+  
+  [1X3.1-14 JohnsonScheme[101X
+  
+  [33X[1;0Y[29X[2XJohnsonScheme[102X( [3Xn[103X, [3Xk[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
+  
+  [33X[0;0YReturns the Johnson scheme, [23XJ(n, k)[123X.[133X
+  
+  [1X3.1-15 HomogeneousCoherentConfiguration[101X
+  
+  [33X[1;0Y[29X[2XHomogeneousCoherentConfiguration[102X( [3Xn[103X, [3Xk[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
+  
+  [33X[0;0YReturns  the  [23Xk[123X-th homogeneous coherent configuration of order [23Xn[123X. Library is
+  complete  for  [23X5  \le  n  \le  38[123X  excluding  [23Xn  \in  \{31,  35,  36,  37\}[123X,
+  corresponding to [HM].[133X
+  
+  [1X3.1-16 NumberOfHomogeneousCoherentConfigurations[101X
+  
+  [33X[1;0Y[29X[2XNumberOfHomogeneousCoherentConfigurations[102X( [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ym[133X
+  
+  [33X[0;0YReturns  the  number  [23Xm[123X  of  homogeneous  coherent  configuration of order [23Xn[123X
+  contained in the library.[133X
+  
+  [1X3.1-17 AvailableHomogeneousCoherentConfigurations[101X
+  
+  [33X[1;0Y[29X[2XAvailableHomogeneousCoherentConfigurations[102X(  ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
+  
+  [33X[0;0YReturns  a  list  [23XL[123X of the orders for which the library contains homogeneous
+  coherent configurations.[133X
+  
+  [1X3.1-18 AllHomogeneousCoherentConfigurations[101X
+  
+  [33X[1;0Y[29X[2XAllHomogeneousCoherentConfigurations[102X( [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
+  
+  [33X[0;0YReturns a list [23XL[123X of all homogeneous coherent configuration of order [23Xn[123X.[133X
+  
+  [1X3.1-19 FusionOfHomogeneousCoherentConfigurations[101X
+  
+  [33X[1;0Y[29X[2XFusionOfHomogeneousCoherentConfigurations[102X( [3XCC[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
+  
+  [33X[0;0YTakes  a  [23Xd[123X-class homogeneous coherent configuration CC and returns a fusion
+  scheme corresponding to L, where L is a partion of [23X\{0, \ldots, d\}[123X. Returns
+  fail if [23XL[123X is not a valid partition.[133X
+  
+  [1X3.1-20 DirectProductOfHomogeneousCoherentConfigurations[101X
+  
+  [33X[1;0Y[29X[2XDirectProductOfHomogeneousCoherentConfigurations[102X( [3XCC1[103X, [3XCC2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
+  
+  [33X[0;0YTakes  two homogeneous coherent configurations CC1 and CC2 and returns their
+  direct product.[133X
+  
+  [1X3.1-21 WreathProductOfHomogeneousCoherentConfigurations[101X
+  
+  [33X[1;0Y[29X[2XWreathProductOfHomogeneousCoherentConfigurations[102X( [3XCC1[103X, [3XCC2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
+  
+  [33X[0;0YTakes  two homogeneous coherent configurations CC1 and CC2 and returns their
+  wreath product.[133X
+  
+  [1X3.1-22 CyclotomicScheme[101X
+  
+  [33X[1;0Y[29X[2XCyclotomicScheme[102X( [3Xq[103X, [3Xd[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
+  
+  [33X[0;0YLet  [23Xq[123X  be  a  prime  power,  and [23Xd[123X a divisor of [23Xq-1[123X. Returns the cyclotomic
+  scheme [23XCyc(q,d)[123X.[133X
+  
+  [1X3.1-23 SchurianScheme[101X
+  
+  [33X[1;0Y[29X[2XSchurianScheme[102X( [3XG[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
+  
+  [33X[0;0YReturns the Schurian scheme defined by [23XG[123X, where [23XG[123X is a generously transitive
+  permutation    group.   A   Schurian   scheme   is   a   special   case   of
+  CoherentConfigurationByOrbitals and is symmetric.[133X
+  
+  
+  [1X3.2 [33X[0;0YMatrices Describing Homogeneous Coherent Configurations[133X[101X
+  
+  [1X3.2-1 RelationMatrix[101X
+  
+  [33X[1;0Y[29X[2XRelationMatrix[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Y[23XM[123X[133X
+  
+  [33X[0;0YTakes  a  homogeneous  coherent  configuration  and  returns  the underlying
+  relation matrix [23XM = \sum_{i=0}^d i A_i[123X, where [23XA_i[123X are the adjacency matrices
+  of the coherent configuration[133X
+  
+  [1X3.2-2 AdjacencyMatrices[101X
+  
+  [33X[1;0Y[29X[2XAdjacencyMatrices[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
+  
+  [33X[0;0YReturns a list [23XL[123X, where the [23Xi[123X-th entry of [23XL[123X is the adjacency matrix [23XA_{i-1}[123X,
+  where [23X(A_i)_{xy} =1[123X if [23X(x,y) \in R_i[123X and [23X(A_i)_{xy} =0[123X otherwise.[133X
+  
+  [1X3.2-3 IntersectionMatrices[101X
+  
+  [33X[1;0Y[29X[2XIntersectionMatrices[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
+  
+  [33X[0;0YReturns  a  list  L  of  the intersection matrices of a homogeneous coherent
+  configuration  [23XCC[123X,  where  the [23Xi[123X-th entry of [23XL[123X is [23XB_{i-1}[123X and [23X(B_{i})_{jk} =
+  p_{ji}^k[123X.[133X
+  
+  [1X3.2-4 MinimalIdempotents[101X
+  
+  [33X[1;0Y[29X[2XMinimalIdempotents[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
+  
+  [33X[0;0YReturns  a  list [23XL[123X which is a basis of minimal idempotents for the adjacency
+  algebra  of  a homogeneous coherent configuration CC. The [23Xi[123X-th entry of [23XL[123X is
+  [23XE_{i-1}[123X.[133X
+  
+  
+  [1X3.3 [33X[0;0YProperties Of Homogeneous Coherent Configurations[133X[101X
+  
+  [1X3.3-1 IsCommutative[101X
+  
+  [33X[1;0Y[29X[2XIsCommutative[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YChecks if the input is a commutative coherent configuration.[133X
+  
+  [1X3.3-2 IsSymmetricCoherentConfiguration[101X
+  
+  [33X[1;0Y[29X[2XIsSymmetricCoherentConfiguration[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YChecks if the input is a symmetric coherent configuration.[133X
+  
+  [1X3.3-3 IsAssociationScheme[101X
+  
+  [33X[1;0Y[29X[2XIsAssociationScheme[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YAlias for IsSymmetricCoherentConfiguration[133X
+  
+  [1X3.3-4 IsStronglyRegularGraph[101X
+  
+  [33X[1;0Y[29X[2XIsStronglyRegularGraph[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YCheck  if  a  coherent  configuration is a strongly regular graph (a [23X2[123X-class
+  homogeneous coherent configuration).[133X
+  
+  [1X3.3-5 IsPPolynomial[101X
+  
+  [33X[1;0Y[29X[2XIsPPolynomial[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YReturns if the homogeneous coherent configuration CC is P-polynomial.[133X
+  
+  [1X3.3-6 IsMetric[101X
+  
+  [33X[1;0Y[29X[2XIsMetric[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YAlias for is P-polynomial.[133X
+  
+  [1X3.3-7 IsQPolynomial[101X
+  
+  [33X[1;0Y[29X[2XIsQPolynomial[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YReturns if the commutative coherent configuration CC is Q-polynomial.[133X
+  
+  [1X3.3-8 IsCometric[101X
+  
+  [33X[1;0Y[29X[2XIsCometric[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YAlias for is Q-polynomial.[133X
+  
+  [1X3.3-9 IsThin[101X
+  
+  [33X[1;0Y[29X[2XIsThin[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YCheck if the homogeneous coherent configuration is thin.[133X
+  
+  [1X3.3-10 IsQuasiThin[101X
+  
+  [33X[1;0Y[29X[2XIsQuasiThin[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YCheck if the homogeneous coherent configuration is quasi thin.[133X
+  
+  [1X3.3-11 IsPrimitive[101X
+  
+  [33X[1;0Y[29X[2XIsPrimitive[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YCheck if the homogeneous coherent configuration is primitve.[133X
+  
+  [1X3.3-12 IsHomogeneousCoherentConfigurationByOrbitals[101X
+  
+  [33X[1;0Y[29X[2XIsHomogeneousCoherentConfigurationByOrbitals[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YChecks  if  the  coherent configuration [23XCC[123X can be constructed from relations
+  defined by the orbitals of a group [23XG[123X acting transitively on a set [23XX[123X.[133X
+  
+  [1X3.3-13 IsGenerouslyTransitive[101X
+  
+  [33X[1;0Y[29X[2XIsGenerouslyTransitive[102X( [3XG[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YChecks if the permutation group [23XG[123X is generously transitive.[133X
+  
+  [1X3.3-14 IsGenerouslyTransitive[101X
+  
+  [33X[1;0Y[29X[2XIsGenerouslyTransitive[102X( [3XG[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YChecks that the permutation group [23XG[123X acts generously transitive on the set [23XL[123X.[133X
+  
+  [1X3.3-15 IsSchurian[101X
+  
+  [33X[1;0Y[29X[2XIsSchurian[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YChecks if the input is a Schurian scheme, that is, if the automorphism group
+  is generously transitive.[133X
+  
+  
+  [1X3.4 [33X[0;0YAttributes Of Homogeneous Coherent Configurations[133X[101X
+  
+  [1X3.4-1 NumberOfClasses[101X
+  
+  [33X[1;0Y[29X[2XNumberOfClasses[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yd[133X
+  
+  [33X[0;0YReturns [23Xd[123X for a [23Xd[123X-class association scheme.[133X
+  
+  [1X3.4-2 Order[101X
+  
+  [33X[1;0Y[29X[2XOrder[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yn[133X
+  
+  [33X[0;0YReturns the order [23Xn[123X (number of vertices) of the coherent configuration.[133X
+  
+  [1X3.4-3 Valencies[101X
+  
+  [33X[1;0Y[29X[2XValencies[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
+  
+  [33X[0;0YReturns a list L of valencies of a coherent configuration CC. The [23Xi[123X-th entry
+  of [23XL[123X is [23Xk_{i-1}[123X.[133X
+  
+  [1X3.4-4 NumberOfCharacters[101X
+  
+  [33X[1;0Y[29X[2XNumberOfCharacters[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yn[133X
+  
+  [33X[0;0YReturns the number [23Xn[123X of characters of CC.[133X
+  
+  [1X3.4-5 MatrixOfEigenvalues[101X
+  
+  [33X[1;0Y[29X[2XMatrixOfEigenvalues[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YP[133X
+  
+  [33X[0;0YReturns  a  the  matrix  of  eigenvalues  (or  character  table),  [23XP[123X,  for a
+  homogeneous coherent configuration CC.[133X
+  
+  [1X3.4-6 CharacterTable[101X
+  
+  [33X[1;0Y[29X[2XCharacterTable[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YP[133X
+  
+  [33X[0;0YAlias for MatrixOfEigenvalues.[133X
+  
+  [1X3.4-7 DualMatrixOfEigenvalues[101X
+  
+  [33X[1;0Y[29X[2XDualMatrixOfEigenvalues[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YQ[133X
+  
+  [33X[0;0YReturns  a  the  dual  matrix  of eigenvalues, [23XQ[123X, for a homogeneous coherent
+  configuration CC.[133X
+  
+  [1X3.4-8 AutomorphismGroup[101X
+  
+  [33X[1;0Y[29X[2XAutomorphismGroup[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YG[133X
+  
+  [33X[0;0YReturns  the  automorphism  group [23XG[123X of the coherent configuration CC. [23XG[123X is a
+  permutation group acting on the index set of the vertices.[133X
+  
+  [1X3.4-9 AllPPolynomialOrderings[101X
+  
+  [33X[1;0Y[29X[2XAllPPolynomialOrderings[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
+  
+  [33X[0;0YCalculate the list [23XL[123X of all P-polynomial orderings of a homogeneous coherent
+  configuration.[133X
+  
+  [1X3.4-10 KreinParameters[101X
+  
+  [33X[1;0Y[29X[2XKreinParameters[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
+  
+  [33X[0;0YReturn  a  list  [23XL[123X  of  all  Krein  parameters  of a commutative homogeneous
+  coherent configuration, where [23XL[i][j,k] = q_{i,j}^k[123X.[133X
+  
+  [1X3.4-11 AllQPolynomialOrderings[101X
+  
+  [33X[1;0Y[29X[2XAllQPolynomialOrderings[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
+  
+  [33X[0;0YCalculate  a  list [23XL[123X of all Q-polynomial orderings of a homogeneous coherent
+  configuration.[133X
+  
+  [1X3.4-12 ConstructorGroup[101X
+  
+  [33X[1;0Y[29X[2XConstructorGroup[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ygroup or false[133X
+  
+  [33X[0;0YChecks  if the coherent configuration was constructed by a group and returns
+  it if it was, or returns false otherwise.[133X
+  
+  
+  [1X3.5 [33X[0;0YMethods[133X[101X
+  
+  [1X3.5-1 Relation[101X
+  
+  [33X[1;0Y[29X[2XRelation[102X( [3XCC[103X, [3Xx[103X, [3Xy[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yi[133X
+  
+  [33X[0;0YTakes a CC and two points, x and y, and returns i such that [23X(x, y) \in R_i[123X.[133X
+  
+  [1X3.5-2 Neighbours[101X
+  
+  [33X[1;0Y[29X[2XNeighbours[102X( [3XCC[103X, [3Xp[103X, [3Xk[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
+  
+  [33X[0;0YReturns a list [23XL[123X of all the points [23Xy[123X of CC such that [23X(p,y) \in R_k[123X.[133X
+  
+  [1X3.5-3 Neighbours[101X
+  
+  [33X[1;0Y[29X[2XNeighbours[102X( [3XCC[103X, [3Xp[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
+  
+  [33X[0;0YReturns  a list [23XL[123X of all the points [23Xy[123X of CC such that [23X(p,y) \in R_k[123X for some
+  [23Xk \in L[123X.[133X
+  
+  [1X3.5-4 IntersectionNumber[101X
+  
+  [33X[1;0Y[29X[2XIntersectionNumber[102X( [3XCC[103X, [3Xi[103X, [3Xj[103X, [3Xk[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Y[23Xp_{ij}^k[123X[133X
+  
+  [33X[0;0YReturns the intersection number [23Xp_{ij}^k[123X for a coherent configuration CC.[133X
+  
+  [1X3.5-5 KreinParameter[101X
+  
+  [33X[1;0Y[29X[2XKreinParameter[102X( [3XCC[103X, [3Xi[103X, [3Xj[103X, [3Xk[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Y[23Xq_{i,j}^k[123X[133X
+  
+  [33X[0;0YCompute  the krein parameter [23Xq_{i,j}^k[123X of a commutative homogeneous coherent
+  configuration.[133X
+  
+  [1X3.5-6 MatrixOfEigenvaluesOfHammingScheme[101X
+  
+  [33X[1;0Y[29X[2XMatrixOfEigenvaluesOfHammingScheme[102X( [3Xn[103X, [3Xq[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YP[133X
+  
+  [33X[0;0YReturns matrix of eigenvalue [23XP[123X for the Hamming scheme, [23XH(n, q)[123X.[133X
+  
+  [1X3.5-7 MatrixOfEigenvaluesOfJohnsonScheme[101X
+  
+  [33X[1;0Y[29X[2XMatrixOfEigenvaluesOfJohnsonScheme[102X( [3Xn[103X, [3Xk[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YP[133X
+  
+  [33X[0;0YReturns the matrix of eigenvalues [23XP[123X of the Johnson scheme [23XJ(n, k)[123X.[133X
+  
+  
+  [1X3.6 [33X[0;0YAlgebras[133X[101X
+  
+  [1X3.6-1 IntersectionAlgebra[101X
+  
+  [33X[1;0Y[29X[2XIntersectionAlgebra[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YA[133X
+  
+  [33X[0;0YReturns the intersection algebra [23XA[123X of a homogeneous coherent configuration.[133X
+  
+  [1X3.6-2 BoseMesnerAlgebra[101X
+  
+  [33X[1;0Y[29X[2XBoseMesnerAlgebra[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YA[133X
+  
+  [33X[0;0YReturns the Bose-Mesner algebra [23XA[123X of a homogeneous coherent configuration.[133X
+  
+  [1X3.6-3 AdjacencyAlgebra[101X
+  
+  [33X[1;0Y[29X[2XAdjacencyAlgebra[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YA[133X
+  
+  [33X[0;0YReturns  the  adjacency  algebra  [23XA[123X of a homogeneous coherent configuration.
+  This is an alias for BoseMesnerAlgebra.[133X
+  
+  [1X3.6-4 TerwilligerAlgebra[101X
+  
+  [33X[1;0Y[29X[2XTerwilligerAlgebra[102X( [3XCC[103X, [3Xp[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YT[133X
+  
+  [33X[0;0YReturns  the  Terwilliger  algebra [23XT[123X of a homogeneous coherent configuration
+  with respect to the point p.[133X
+  
+  [1X3.6-5 TerwilligerAlgebra[101X
+  
+  [33X[1;0Y[29X[2XTerwilligerAlgebra[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YT[133X
+  
+  [33X[0;0YReturns  the  Terwilliger  algebra [23XT[123X of a homogeneous coherent configuration
+  with respect to the first point.[133X
+  
+  
+  [1X3.7 [33X[0;0YSubsets And Codes[133X[101X
+  
+  [1X3.7-1 InnerDistribution[101X
+  
+  [33X[1;0Y[29X[2XInnerDistribution[102X( [3Xv[103X, [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya[133X
+  
+  [33X[0;0YReturns the inner distribution [23Xa[123X of a vector v with respect to the adjacency
+  matrices of the coherent configuration CC. Note that v must be a vector over
+  R^n where n is the order of CC. CC must be commutative.[133X
+  
+  [1X3.7-2 MacWilliamsTransform[101X
+  
+  [33X[1;0Y[29X[2XMacWilliamsTransform[102X( [3Xv[103X, [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YaQ[133X
+  
+  [33X[0;0YReturns  the  MacWilliams  transform  [23XaQ[123X  of  a  vector  [23Xv[123X with respect to a
+  coherent  confiiguration  CC. Takes either a vector [23Xv[123X in [23XR^n[123X and converts it
+  to  its  inner  distribution  vector  first, or takes the inner distribution
+  directly.[133X
+  
+  [1X3.7-3 DualBoseMesnerBasis[101X
+  
+  [33X[1;0Y[29X[2XDualBoseMesnerBasis[102X( [3XCC[103X, [3Xp[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
+  
+  [33X[0;0YReturns  a  list [23XL[123X with the dual Bose-Mesner basis of a homogeneous coherent
+  configuration with respect to the point p, such that [23XL_i = \tilde E_{i-1}[123X.[133X
+  
+  [1X3.7-4 DualBoseMesnerBasis[101X
+  
+  [33X[1;0Y[29X[2XDualBoseMesnerBasis[102X( [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YL[133X
+  
+  [33X[0;0YReturns  a  list [23XL[123X with the dual Bose-Mesner basis of a homogeneous coherent
+  configuration  with  respect  to  the  first  point,  such that [23XL_i = \tilde
+  E_{i-1}[123X.[133X
+  
+  [1X3.7-5 OuterDistribution[101X
+  
+  [33X[1;0Y[29X[2XOuterDistribution[102X( [3Xv[103X, [3XCC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YB[133X
+  
+  [33X[0;0YReturns the outer distribution [23XB[123X of a vector [23Xv[123X with respect to the adjacency
+  matrices of the coherent configuration CC. Note that [23Xv[123X must be a vector over
+  [23XR^n[123X where n is the order of CC. CC must be commutative.[133X
+  
+  [1X3.7-6 CharacteristicVector[101X
+  
+  [33X[1;0Y[29X[2XCharacteristicVector[102X( [3XX[103X, [3XOmega[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Y[23X\chi_X[123X[133X
+  
+  [33X[0;0YTakes  a  subset  X  of  Omega  and  returns  the characteristic vector. The
+  characteristic  vector is a 0,1-vector indexed by the entries of Omega, with
+  a 1 at position x if x is in X, and 0 otherwise.[133X
+  
+  [1X3.7-7 CharacteristicVector[101X
+  
+  [33X[1;0Y[29X[2XCharacteristicVector[102X( [3XX[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Y[23X\chi_X[123X[133X
+  
+  [33X[0;0YTakes a subset X of of [1 .. n] and returns the characteristic vector [23Xchi_X[123X.[133X
+  
