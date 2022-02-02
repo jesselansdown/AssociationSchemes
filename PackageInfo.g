@@ -1,102 +1,151 @@
-#############################################################################
-##  
-##  Demo PackageInfo.g for the GitHubPagesForGAP
-##
-
+#
+# AssociationSchemes: A GAP package for working with association schemes
+#
+# This file contains package meta data. For additional information on
+# the meaning and correct usage of these fields, please consult the
+# manual of the "Example" package as well as the comments in its
+# PackageInfo.g file.
+#
 SetPackageInfo( rec(
 
-PackageName := "GitHubPagesForGAP",
-
-Subtitle := "A GitHub Pages generator for GAP packages",
-Version := "0.3",
-Date := "10/11/2019", # dd/mm/yyyy format
-License := "0BSD",
+PackageName := "AssociationSchemes",
+Subtitle := "A GAP package for working with association schemes and homogeneous coherent configurations",
+Version := "2.0.0",
+Date := "02/02/2022", # dd/mm/yyyy format
 
 Persons := [
+
   rec(
-    LastName      := "Horn",
-    FirstNames    := "Max",
-    IsAuthor      := true,
-    IsMaintainer  := true,
-    Email         := "max.horn@uni-siegen.de",
-    WWWHome       := "https://www.quendi.de/math",
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "John",
+    LastName := "Bamberg",
+    WWWHome := "http://school.maths.uwa.edu.au/~bamberg/",
+    Email := "john.bamberg@uwa.edu.au",
     PostalAddress := Concatenation(
-                       "Department Mathematik\n",
-                       "Universität Siegen\n",
-                       "Walter-Flex-Straße 3\n",
-                       "57072 Siegen\n",
-                       "Germany" ),
-    Place         := "Siegen",
-    Institution   := "Universität Siegen"
+               "John Bamberg\n",
+               "School of Mathematics and Statistics\n",
+               "The University of Western Australia\n",
+               "35 Stirling Highway\n",
+               "Crawley WA 6009, Perth\n",
+               "Australia" ),
+    Place := "Perth",
+    Institution := "The University of Western Australia",
   ),
-
-  rec(
-    LastName      := "Thor",
-    FirstNames    := "A. U.",
-    IsAuthor      := true,
-    IsMaintainer  := false,
-    #Email         := "author@example.com",
+    rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Akihide",
+    LastName := "Hanaki",
+    WWWHome := "http://math.shinshu-u.ac.jp/~hanaki/",
+    Email := "hanaki@shinshu-u.ac.jp",
+    PostalAddress := Concatenation(
+                  "Akihide Hanaki\n",
+                  "Department of Mathematics\n",
+                  "Faculty of Science, Shinshu University\n",
+                  "Matsumoto 390-8621, Japan"),
+    Place := "Matsumoto",
+    Institution := "Shinshu University",
   ),
-
-  rec(
-    LastName      := "Itor",
-    FirstNames    := "Jan",
-    IsAuthor      := false,
-    IsMaintainer  := true,
-    #Email         := "janitor@example.com",
+    rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Jesse",
+    LastName := "Lansdown",
+    WWWHome := "http://www.jesselansdown.com",
+    Email := "jesse.lansdown@research.uwa.edu.au",
+    PostalAddress := Concatenation(
+               "Jesse Lansdown\n",
+               "School of Mathematics and Statistics\n",
+               "The University of Western Australia\n",
+               "35 Stirling Highway\n",
+               "Crawley WA 6009, Perth\n",
+               "Australia" ),
+    Place := "Perth",
+    Institution := "The University of Western Australia/RWTH Aachen University",
   ),
 ],
 
-Status := "other",
 
-# The following are not strictly necessary in your own PackageInfo.g
-# (in the sense that update.g only looks at the usual fields
-# like PackageWWWHome, ArchiveURL etc.). But they are convenient
-# if you use exactly the scheme for your package website that we propose.
-GithubUser := "gap-system",
-GithubRepository := ~.PackageName,
-GithubWWW := Concatenation("https://github.com/", ~.GithubUser, "/", ~.GithubRepository),
+SourceRepository := rec(
+    Type := "git",
+    URL := Concatenation( "https://github.com/jesselansdown/", ~.PackageName ),
+),
 
-PackageWWWHome := Concatenation("https://", ~.GithubUser, ".github.io/", ~.GithubRepository, "/"),
-README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-# The following assumes you are using the Github releases system. If not, adjust
-# it accordingly.
-ArchiveURL     := Concatenation(~.GithubWWW,
-                    "/releases/download/v", ~.Version, "/",
-                    ~.GithubRepository, "-", ~.Version),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := Concatenation( "http://www.jesselansdown.com/", ~.PackageName ),
+README_URL      := Concatenation( ~.PackageWWWHome, "/README.md" ),
+PackageInfoURL  := Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
+ArchiveURL      := Concatenation( ~.SourceRepository.URL,
+                                 "/releases/download/v", ~.Version,
+                                 "/", ~.PackageName, "-", ~.Version ),
 
-ArchiveFormats := ".tar.gz .tar.bz2",
 
-AbstractHTML := 
-  "This is a pseudo package that contains no actual\
-  <span class=\"pkgname\">GAP</span> code. Instead, it is a template for other\
-  GAP packages that allows to quickly setup GitHub Pages.",
+ArchiveFormats := ".tar.gz",
+
+##  Status information. Currently the following cases are recognized:
+##    "accepted"      for successfully refereed packages
+##    "submitted"     for packages submitted for the refereeing
+##    "deposited"     for packages for which the GAP developers agreed
+##                    to distribute them with the core GAP system
+##    "dev"           for development versions of packages
+##    "other"         for all other packages
+##
+Status := "dev",
+
+AbstractHTML   :=  "",
 
 PackageDoc := rec(
-  BookName  := "GitHubPagesForGAP",
+  BookName  := "AssociationSchemes",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
-  LongTitle := "A GitHub Pages generator for GAP packages",
+  LongTitle := "A GAP package for working with association schemes and homogeneous coherent configurations",
 ),
 
-# The following dependencies are fake and for testing / demo purposes
 Dependencies := rec(
-  GAP := ">=4.8.1",
+  GAP := ">= 4.9",
   NeededOtherPackages := [
-    ["GAPDoc", ">= 1.2"],
-    ["IO", ">= 4.1"],
+  ["GRAPE", ">=4.8.1"],
+  ["Digraphs", ">=0.13.0"],
+  ["cvec", ">=2.6.1"]
   ],
-  SuggestedOtherPackages := [["orb", ">= 4.2"]],
-  ExternalConditions := []
+  SuggestedOtherPackages := [
+    ["NautyTracesInterface", ">=0.2"]
+  ],
+  ExternalConditions := [ ],
 ),
 
 AvailabilityTest := ReturnTrue,
 
-Keywords := ["GitHub Pages", "GAP"]
+TestFile := "tst/testall.g",
+
+#Keywords := [ "TODO" ],
+AutoDoc := rec(
+    TitlePage := rec(
+        Copyright := Concatenation("&copyright; 2019 - 2022 John Bamberg, Akihide Hanaki, Jesse Lansdown<P/>\n\n",
+                    "This program is free software; you can redistribute it and/or ",
+                    "modify it under the terms of the GNU General Public License ",
+                    "as published by the Free Software Foundation; either version 2 ",
+                    "of the License, or (at your option) any later version.<P/><P/>",
+                    "This program is distributed in the hope that it will be useful, ",
+                    "but WITHOUT ANY WARRANTY; without even the implied warranty of ",
+                    "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the ",
+                    "GNU General Public License for more details.<P/><P/>",
+                    "You should have received a copy of the GNU General Public License ",
+                    "along with this program; if not, write to the Free Software ",
+                    "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.\n"),
+        Abstract := "AssociationSchemes is a GAP package for working with association schemes and homogeneous coherent configurations.",
+        Acknowledgements := Concatenation("The third author would like to acknowledge the support of an ",
+          "Australian Government Research Training Program (RTP) Scholarship while writing this software. ",
+           "The first and third authors are also grateful for the 2019 CMSC Retreat for providing an opportunity and ",
+           "environment for some of the founding work on the package.")
+    )
+),
+
 
 ));
+
 
 
