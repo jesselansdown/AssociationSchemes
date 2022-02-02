@@ -26,17 +26,17 @@ InnerDistribution(hammingcode);
 
 #! @BeginExample
 codewords := List( hammingcode, VectorCodeword );;
-vector := CharacteristicVector( codewords,  AsList(GF(2)^7) );;
+vector := CharacteristicVector( AsList(GF(2)^7), codewords );;
 Collected(vector);
 #! [ [ 0, 112 ], [ 1, 16 ] ]
-InnerDistribution(vector, hammingscheme);
+inndist := InnerDistribution( hammingscheme, vector);
 #! [ 1, 0, 0, 7, 7, 0, 0, 1 ]
 #! @EndExample
 
 #! The MacWilliams transform coincides with the distribution vector of the dual code:
 
 #! @BeginExample
-1/16 * MacWilliamsTransform(vector, hammingscheme);
+1/16 * MacWilliamsTransform( hammingscheme, inndist);
 #! [ 1, 0, 0, 0, 7, 0, 0, 0 ]
 dualcode := DualCode( hammingcode );
 #! a linear [7,3,4]2..3 dual code

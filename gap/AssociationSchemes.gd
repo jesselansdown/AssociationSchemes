@@ -48,10 +48,9 @@ BindGlobal( "TheTypeHomogeneousCoherentConfiguration",
 #! @Arguments M
 #! @Returns homogeneous coherent configuration
 #! @Description
-#!	Takes the relationship matrix, $M$, describing a homogensous coherent configuration and returns a HomogeneousCoherentConfiguration object.
+#!	Takes the relationship matrix, $M$, describing a homogeneous coherent configuration and returns a HomogeneousCoherentConfiguration object.
 #!	The matrix $M = \sum_{i=0}^d i A_i$, where $A_i$ are the adjacency matrices describing a coherent configuration.
-#!	Checks that the matrix satisfies the axioms of a homogeneous coherent configuration. (Note that this accepts a matrix of the form
-#!	$M = \sum_{i=0}^d a_i A_i$ where $a_i$ is not equal to $i$, however, it will first convert to the form $M = \sum_{i=0}^d i A_i$).
+#!	Checks that the matrix satisfies the axioms of a homogeneous coherent configuration.
 DeclareOperation( "HomogeneousCoherentConfiguration", [ IsMatrix ] );
 
 #! @Chapter Homogeneous Coherent Configuration objects
@@ -71,8 +70,7 @@ DeclareOperation( "HomogeneousCoherentConfigurationNC", [ IsMatrix ] );
 #!	Takes the relationship matrix, $M$, describing an associatioin scheme and returns an association scheme (symmetric coherent configuration).
 #!  This is simply a HomogeneousCoherentConfiguration object, but with the known property of being symmetric.
 #!	The matrix $M = \sum_{i=0}^d i A_i$, where $A_i$ are the adjacency matrices describing an association scheme.
-#!	Checks that the matrix satisfies the association scheme axioms. (Note that this accepts a matrix of the form
-#!	$M = \sum_{i=0}^d a_i A_i$ where $a_i$ is not equal to $i$, however, it will first convert to the form $M = \sum_{i=0}^d i A_i$).
+#!	Checks that the matrix satisfies the association scheme axioms.
 DeclareOperation( "AssociationScheme", [ IsMatrix ] );
 
 #! @Chapter Homogeneous Coherent Configuration objects
@@ -91,7 +89,7 @@ DeclareOperation( "AssociationSchemeNC", [ IsMatrix ] );
 #! @Description
 #!	Takes a homogeneous coherent configuration CC and a list L, where L is a reordering of the relations.
 #!	Returns a homogeneous coherent configuration where the $i$-th relation of the CC becomes the $j$-th relation in 
-#!	the new homogeneous coherent configuration, where $j = L_i$. Note that $L_i$ must be equal to $\{0, \ldots, d \}$
+#!	the new homogeneous coherent configuration, where $j = L_i$. Note that $L$ must be equal to $\{0, \ldots, d \}$
 #!	as a set, and additionally requires that $L_1 = 0$.
 DeclareOperation( "ReorderRelations", [ IsHomogeneousCoherentConfiguration, IsList ] );
 
@@ -351,6 +349,6 @@ DeclareOperation( "MatrixOfEigenvaluesViaBacktrack", [ IsHomogeneousCoherentConf
 #!      Take a CC and returns a list containing various descriptions/names of the CC, if available.
 #!    Note that most homogeneous coherent configurations will not have a description.
 #!    Some famous homogeneous coherent configurations, association schemes, or distance regular graphs in the library,
-#!    as well families that have constructor methods, will have names. Some will have multiple descriptions, hence they are given as a list.
+#!    as well as families that have constructor methods, will have names. Some will have multiple descriptions, hence they are given as a list.
 #!    You can check if a homogeneous coherent configuration has assigned descriptions with HasDescription, or set one with SetDescription.
 DeclareAttribute( "Description", IsHomogeneousCoherentConfiguration );

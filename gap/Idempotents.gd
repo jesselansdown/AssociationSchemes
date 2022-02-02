@@ -71,7 +71,7 @@ DeclareAttribute( "MatrixOfEigenvalues", IsHomogeneousCoherentConfiguration );
 #! @Arguments CC
 #! @Returns Q
 #! @Description
-#!	Returns a the dual matrix of eigenvalues, $Q$, for a homogeneous coherent configuration CC.
+#!	Returns a the matrix of dual eigenvalues, $Q$, for a homogeneous coherent configuration CC.
 DeclareAttribute( "MatrixOfDualEigenvalues", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Homogeneous Coherent Configuration objects
@@ -104,5 +104,7 @@ DeclareOperation( "FitMatrixOfEigenvalues", [ IsHomogeneousCoherentConfiguration
 #! @Arguments CC, P
 #! @Returns P2
 #! @Description
-#!   TODO.
+#!   Computes the character table of a Schurian coherent configuration by using the group. The ordering of the columns does not respect
+#!   the ordering of the coherent configuration, so "FitMatrixOfEigenvalues" must be used. Sometimes the group theoretic method is much faster and
+#!   sometimes it is much slower than the other methods.
 DeclareOperation( "CharacterTableOfSchurianHomogeneousCoherentConfiguration", [ IsHomogeneousCoherentConfiguration ] );

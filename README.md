@@ -13,6 +13,8 @@ and the [issue tracker here](https://github.com/jesselansdown/AssociationSchemes
 AssociationSchemes has the following dependencies:
 * GAP 4.8 (or later)
 * Digraphs 0.13.0 (or later)
+
+and the following suggested packages:
 * NautyTracesInterace 0.2 (or later - available from https://github.com/sebasguts/NautyTracesInterface)
 
 If you want to regenerate the documentation for any reason, then the following will also be required.

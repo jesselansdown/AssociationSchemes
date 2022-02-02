@@ -43,7 +43,7 @@ DeclareOperation( "WreathProductOfHomogeneousCoherentConfigurations", [IsHomogen
 #! @Arguments A
 #! @Returns Association scheme
 #! @Description
-#!	Returns the bipartite double of an associatiojn scheme.
+#!	Returns the bipartite double of an association scheme.
 DeclareOperation( "BipartiteDoubleOfAssociationScheme", [IsHomogeneousCoherentConfiguration]);
 
 #! @Chapter Homogeneous Coherent Configuration objects

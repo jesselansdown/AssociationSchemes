@@ -1072,7 +1072,7 @@ InstallMethod( Display,
  			if MatrixOfEigenvalues(a) <> fail then
 	 			Print("  Matrix of eigenvalues:\n");
 	 			Display(MatrixOfEigenvalues(a));
-	 			Print("  Dual matrix of eigenvalues:\n");
+	 			Print("  Matrix of dual eigenvalues:\n");
 	 			Display(MatrixOfDualEigenvalues(a));
 	 		fi;
  		fi;

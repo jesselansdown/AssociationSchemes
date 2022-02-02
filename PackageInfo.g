@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "AssociationSchemes",
 Subtitle := "A GAP package for working with association schemes and homogeneous coherent configurations",
-Version := "1.0.0",
-Date := "10/04/2019", # dd/mm/yyyy format
+Version := "2.0.0",
+Date := "02/02/2022", # dd/mm/yyyy format
 
 Persons := [
 
@@ -124,7 +124,7 @@ TestFile := "tst/testall.g",
 #Keywords := [ "TODO" ],
 AutoDoc := rec(
     TitlePage := rec(
-        Copyright := Concatenation("&copyright; 2019 John Bamberg, Akihide Hanaki, Jesse Lansdown<P/>\n\n",
+        Copyright := Concatenation("&copyright; 2019 - 2022 John Bamberg, Akihide Hanaki, Jesse Lansdown<P/>\n\n",
                     "This program is free software; you can redistribute it and/or ",
                     "modify it under the terms of the GNU General Public License ",
                     "as published by the Free Software Foundation; either version 2 ",

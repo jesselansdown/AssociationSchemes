@@ -36,8 +36,6 @@ order7 := List([1..3], i -> HomogeneousCoherentConfiguration(7, i));
 #! @BeginExample
 a1 := order7[2];
 #! 2-class homogeneous coherent configuration of order 7
-IsStronglyRegularGraph( a1 );
-#! true
 autgroup := AutomorphismGroup(a1);
 #! Group([ (2,3,4)(5,7,6), (1,2,3,5,4,6,7) ])
 StructureDescription(autgroup);
@@ -69,7 +67,7 @@ Display(P);
 #!   [              1,    E(7)+E(7)^6,  E(7)^2+E(7)^5,  E(7)^3+E(7)^4 ] ]
 AllPPolynomialOrderings(a2);
 #! [ [ 0, 1, 2, 3 ], [ 0, 2, 3, 1 ], [ 0, 3, 1, 2 ] ]
-IsQPolynomial(a2);
+AdmitsQPolynomialOrdering(a2);
 #! true
 AllQPolynomialOrderings(a2);
 #! [ [ 0, 1, 3, 2 ], [ 0, 2, 1, 3 ], [ 0, 3, 2, 1 ] ]

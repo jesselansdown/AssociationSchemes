@@ -83,12 +83,14 @@ Display(CC);
 #! 3-class association scheme of order 12.
 #!   Symmetric: true
 #!   Commutative: true
-#!   MatrixOfEigenvalues:
+#!   Metric: false
+#!     Admits metric ordering: false
+#!   Matrix of eigenvalues:
 #! [ [   1,   1,   2,   8 ],
 #!   [   1,   1,   2,  -4 ],
 #!   [   1,   1,  -2,   0 ],
 #!   [   1,  -1,   0,   0 ] ]
-#!   DualMatrixOfEigenvalues:
+#!   Matrix of dual eigenvalues:
 #! [ [   1,   2,   3,   6 ],
 #!   [   1,   2,   3,  -6 ],
 #!   [   1,   2,  -3,   0 ],
@@ -149,12 +151,15 @@ G := Group( [ ( 6,10)( 7,11)( 8,12)( 9,13)(15,28)(16,29)(17,30)(18,31)
 HomogeneousCoherentConfigurationByOrbitals(G);;
 #! @EndExample
 
-#! If G is generously transitive, then we can constuct a Schurian scheme
+#! If G is transitive, we can construct a Schurian coherent configuration. If G is generously transitive, then we can constuct a Schurian association scheme (it will be symmetric)
 
 #! @BeginExample
+IsTransitive(G);
+#! true
+SchurianCoherentConfiguration(G);;
 IsGenerouslyTransitive(G);
 #! true
-SchurianScheme(G);;
+SchurianAssociationScheme(G);;
 #! @EndExample
 
 #! If we have a group G and subgroup H such that G acts transitively on G/H,
@@ -196,7 +201,7 @@ CC = m;
 #! return fail;
 
 #! @BeginExample
-FusionOfHomogeneousCoherentConfigurations(m, [[0], [1,2],[3]]);
+FusionOfHomogeneousCoherentConfiguration(m, [[0], [1,2],[3]]);
 #! 2-class association scheme of order 12.
 #! @EndExample
 

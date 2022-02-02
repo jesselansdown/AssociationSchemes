@@ -27,7 +27,7 @@ od;
 a := HomogeneousCoherentConfiguration( mat );
 #! 3-class association scheme of order 765
 P := MatrixOfEigenvalues(a);;
-Q := DualMatrixOfEigenvalues(a);;
+Q := MatrixOfDualEigenvalues(a);;
 Display(P);
 #! [ [    1,   28,  224,  512 ],
 #!   [    1,   11,   20,  -32 ],
@@ -50,7 +50,7 @@ cgroup := CollineationGroup(quadric);
 #! PGO(-1,8,2)
 G := Action(cgroup, points);
 #! <permutation group with 3 generators>
-a := SchurianScheme(G);
+a := SchurianAssociationScheme(G);
 #! 3-class homogeneous coherent configuration of order 765
 IsPPolynomial(a);
 #! true
@@ -71,10 +71,10 @@ hyperplane := First(Hyperplanes(PG(7,2)), h ->
 		TypeOfSubspace(quadric, h) = "parabolic");
 #! <a proj. 6-space in ProjectiveSpace(7, 2)>
 insidehyp := Filtered(points, t -> t * hyperplane);;
-vector := CharacteristicVector(insidehyp,points);;
-dist := InnerDistribution(vector, a);
+vector := CharacteristicVector(points, insidehyp);;
+dist := InnerDistribution(a, vector);
 #! [ 1, 56, 64, 14 ]
-macw := MacWilliamsTransform(dist, a);
+macw := MacWilliamsTransform(a, dist);
 #! [ 135, 630, 0, 0 ]
 #! @EndExample
 

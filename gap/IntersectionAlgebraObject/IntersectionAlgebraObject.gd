@@ -42,13 +42,11 @@ BindGlobal( "TheTypeIntersectionAlgebraObject",
 
 #! @Chapter Intersection Algebra objects
 #! @Section Core functionality
-#! @Arguments M
+#! @Arguments B
 #! @Returns homogeneous coherent configuration
 #! @Description
-#!	Takes the relationship matrix, $M$, describing a homogensous coherent configuration and returns a HomogeneousCoherentConfiguration object.
-#!	The matrix $M = \sum_{i=0}^d i A_i$, where $A_i$ are the adjacency matrices describing a coherent configuration.
-#!	Checks that the matrix satisfies the axioms of a homogeneous coherent configuration. (Note that this accepts a matrix of the form
-#!	$M = \sum_{i=0}^d a_i A_i$ where $a_i$ is not equal to $i$, however, it will first convert to the form $M = \sum_{i=0}^d i A_i$).
+#!	Takes a list of intersection matrices, B, and returns the Intersection Algebra. The intersection matrix $(B_i)_{jk} = p_{ij}^k$ must be for valid
+#!  intersection numbers $p_{ij}^k$ for some homogeneous coherent configuration.
 DeclareOperation( "IntersectionAlgebra", [ IsList ] );
 
 #! @Chapter Intersection Algebra objects
@@ -56,7 +54,7 @@ DeclareOperation( "IntersectionAlgebra", [ IsList ] );
 #! @Arguments CC
 #! @Returns L
 #! @Description
-#!	Returns a list L of the intersection matrices of a homogeneous coherent configuration $CC$, where the $i$-th entry of $L$
+#!	Returns a list L of the intersection matrices of an intersecgion algebra object, $CC$, where the $i$-th entry of $L$
 #!	is $B_{i-1}$ and $(B_{i})_{jk} = p_{ij}^k$.
 DeclareAttribute("IntersectionMatrices", IsIntersectionAlgebraObject);
 
@@ -73,7 +71,7 @@ DeclareOperation( "IntersectionNumber", [IsIntersectionAlgebraObject, IsInt, IsI
 #! @Arguments CC
 #! @Returns d
 #! @Description
-#!	Returns $d$ for a $d$-class association scheme.
+#!	Returns $d$ for a $d$-class intersection algebra.
 DeclareAttribute( "NumberOfClasses", IsIntersectionAlgebraObject );
 
 #! @Chapter Intersection Algebra objects
@@ -89,7 +87,7 @@ DeclareAttribute( "Valencies", IsIntersectionAlgebraObject );
 #! @Arguments CC
 #! @Returns n
 #! @Description
-#!	Returns the order $n$ (number of vertices) of the coherent configuration.
+#!	Returns the order $n$ (number of vertices) of the intersection algebra.
 DeclareAttribute( "Order", IsIntersectionAlgebraObject );
 
 #! @Chapter Intersection Algebra objects
@@ -113,7 +111,7 @@ DeclareProperty( "HasRationalSplittingField", IsIntersectionAlgebraObject );
 #! @Arguments CC, i, j, k
 #! @Returns $q_{i,j}^k$
 #! @Description
-#!	Compute the krein parameter $q_{i,j}^k$ of a commutative homogeneous coherent configuration.
+#!	Compute the krein parameter $q_{i,j}^k$ of a commutative intersection algebra.
 DeclareOperation( "KreinParameter", [ IsIntersectionAlgebraObject, IsInt, IsInt, IsInt ] );
 
 #! @Chapter Intersection Algebra objects
@@ -121,7 +119,7 @@ DeclareOperation( "KreinParameter", [ IsIntersectionAlgebraObject, IsInt, IsInt,
 #! @Arguments CC
 #! @Returns L
 #! @Description
-#!	Return a list $L$ of all Krein parameters of a commutative homogeneous coherent configuration,
+#!	Return a list $L$ of all Krein parameters of a commutative intersection algebra,
 #!	where $L[i][j,k] = q_{i,j}^k$.
 DeclareAttribute( "KreinParameters", IsIntersectionAlgebraObject );
 
@@ -130,7 +128,7 @@ DeclareAttribute( "KreinParameters", IsIntersectionAlgebraObject );
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
-#!	Returns if the homogeneous coherent configuration CC is Q-bipartite.
+#!	Returns if the intersection algebra CC is Q-bipartite.
 DeclareProperty( "IsQBipartite", IsIntersectionAlgebraObject );
 
 #! @Chapter Intersection Algebra objects
@@ -138,7 +136,7 @@ DeclareProperty( "IsQBipartite", IsIntersectionAlgebraObject );
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
-#!	Returns if the homogeneous coherent configuration CC is bipartite.
+#!	Returns if the intersection algebra CC is bipartite.
 DeclareProperty( "IsPBipartite", IsIntersectionAlgebraObject );
 
 #! @Chapter Intersection Algebra objects
@@ -146,7 +144,7 @@ DeclareProperty( "IsPBipartite", IsIntersectionAlgebraObject );
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
-#!	Returns if the homogeneous coherent configuration CC is Q-antipodal.
+#!	Returns if the intersection algebra CC is Q-antipodal.
 DeclareProperty( "IsQAntipodal", IsIntersectionAlgebraObject );
 
 #! @Chapter Intersection Algebra objects
@@ -154,7 +152,7 @@ DeclareProperty( "IsQAntipodal", IsIntersectionAlgebraObject );
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
-#!	Returns if the homogeneous coherent configuration CC is antipodal.
+#!	Returns if the intersection algebra CC is antipodal.
 DeclareProperty( "IsPAntipodal", IsIntersectionAlgebraObject );
 
 #! @Chapter Intersection Algebra objects
@@ -162,9 +160,9 @@ DeclareProperty( "IsPAntipodal", IsIntersectionAlgebraObject );
 #! @Arguments CC, L
 #! @Returns coherent configuration
 #! @Description
-#!	Takes a homogeneous coherent configuration CC and a list L, where L is a reordering of the relations.
-#!	Returns a homogeneous coherent configuration where the $i$-th relation of the CC becomes the $j$-th relation in 
-#!	the new homogeneous coherent configuration, where $j = L_i$. Note that $L_i$ must be equal to $\{0, \ldots, d \}$
+#!	Takes a intersection algebra CC and a list L, where L is a reordering of the relations.
+#!	Returns an intersection algebra where the $i$-th relation of the CC becomes the $j$-th relation in 
+#!	the intersection algebra, where $j = L_i$. Note that $L_i$ must be equal to $\{0, \ldots, d \}$
 #!	as a set, and additionally requires that $L_1 = 0$.
 DeclareOperation( "ReorderRelations", [ IsIntersectionAlgebraObject, IsList ] );
 
@@ -173,9 +171,9 @@ DeclareOperation( "ReorderRelations", [ IsIntersectionAlgebraObject, IsList ] );
 #! @Arguments CC, L
 #! @Returns coherent configuration
 #! @Description
-#!	Takes a homogeneous coherent configuration CC and a list L, where L is a reordering of the minimal idempotents.
-#!	Returns a homogeneous coherent configuration where the $i$-th idempotent of the CC becomes the $j$-th idempotent in 
-#!	the new homogeneous coherent configuration, where $j = L_i$. Note that $L_i$ must be equal to $\{0, \ldots, d \}$
+#!	Takes an intersection algebra CC and a list L, where L is a reordering of the minimal idempotents.
+#!	Returns an intersection algebra where the $i$-th idempotent of the CC becomes the $j$-th idempotent in 
+#!	the new intersection algebra, where $j = L_i$. Note that $L_i$ must be equal to $\{0, \ldots, d \}$
 #!	as a set, and additionally requires that $L_1 = 0$.
 DeclareOperation( "ReorderMinimalIdempotents", [ IsIntersectionAlgebraObject, IsList ] );
 
@@ -193,7 +191,7 @@ DeclareOperation( "ViewRelationDistributionDiagram", [ IsIntersectionAlgebraObje
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
-#!	Checks if the input is a commutative coherent configuration.
+#!	Checks if the input is a commutative intersection algebra.
 DeclareProperty( "IsCommutative", IsIntersectionAlgebraObject );
 
 #! @Chapter Intersection Algebra objects
@@ -201,7 +199,7 @@ DeclareProperty( "IsCommutative", IsIntersectionAlgebraObject );
 #! @Arguments CC
 #! @Returns true or false
 #! @Description
-#!	Checks if the input is a symmetric coherent configuration.
+#!	Checks if the input is a symmetric intersection algebra.
 DeclareProperty( "IsSymmetricIntersectionAlgebra", IsIntersectionAlgebraObject );
 
 #! @Chapter Intersection Algebra objects

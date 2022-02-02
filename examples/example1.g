@@ -36,7 +36,7 @@ Print(P);
 valency18 := Filtered([1..7], j -> Number(mat[1], i -> i = j) = 18);
 #! [1,2,3]
 fusions := List(Combinations(valency18,2), t -> 
-		FusionOfHomogeneousCoherentConfigurations(A, [[0], t, 
+		FusionOfHomogeneousCoherentConfiguration(A, [[0], t, 
 			Difference([1..7],t)]) );;
 #! @EndExample
 

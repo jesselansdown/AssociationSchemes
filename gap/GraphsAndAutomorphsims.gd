@@ -56,7 +56,7 @@ DeclareAttribute( "AutomorphismGroup", IsHomogeneousCoherentConfiguration );
 #! @Description
 #!	For a $d$-class homogeneous coherent configuration with relation matrix $M$ and order $n$, takes a permutation $p$ on the set
 #!		$\{1 .. n\}$ and permutation $\sigma$ on the set $\{1 .. d\}$ and returns the $d$-class homogenous coherent configuration with
-#!		relation matrix $P^{-1} M^\sigma P$, where $P$ is the permutation matrix defined by $P$.
+#!		relation matrix $P^{-1} M^\sigma P$, where $P$ is the permutation matrix defined by $\sigma$.
 DeclareOperation("ImageOfHomogeneousCoherentConfiguration", [IsHomogeneousCoherentConfiguration, IsPerm, IsPerm]);
 
 #! @Chapter Homogeneous Coherent Configuration objects
