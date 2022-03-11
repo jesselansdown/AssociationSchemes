@@ -47,7 +47,7 @@ InstallMethod( ImageOfIntersectionAlgebra,
 					else
 						k2:=0;
 					fi;
-					L[j+1][i+1, k+1]:= IntersectionNumber(A, i2, j2, k2);
+					L[i+1][j+1, k+1]:= IntersectionNumber(A, i2, j2, k2);
 				od;
 			od;
 		od;
