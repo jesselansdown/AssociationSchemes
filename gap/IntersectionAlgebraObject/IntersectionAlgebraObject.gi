@@ -288,28 +288,26 @@ InstallMethod(ReorderRelations,
         if not L[1]=0 then
             return fail;
         fi;
+		intersectionMatrices:=List([1..d+1], t-> NullMat(d+1, d+1));
+		for i in [0 .. d] do
+			for j in [0 .. d] do
+				for k in [0 .. d] do
+					intersectionMatrices[i+1][j+1, k+1] :=  IntersectionNumber(a, L[i+1], L[j+1], L[k+1]);;
+				od;
+			od;
+		od;
+		a2 := IntersectionAlgebra(intersectionMatrices);
         if HasMatrixOfEigenvalues(a) then
 	       	P:=TransposedMat(MatrixOfEigenvalues(a));
 	       	P2:=TransposedMat(List([0 .. d], t -> P[L[t+1]+1] ));;
-	       	a2 := IntersectionAlgebraFromMatrixOfEigenvalues(P2);;
 	        SetMatrixOfEigenvalues(a2, P2);;
 	        if HasMatrixOfDualEigenvalues(a) then
 	        	Q:=MatrixOfDualEigenvalues(a);
 		       	Q2:=List([0 .. d], t -> Q[L[t+1]+1] );;
 		        SetMatrixOfDualEigenvalues(a2, Q2);;
 		    fi;
-	        return a2;
-	    else
-			intersectionMatrices:=List([1..d+1], t-> NullMat(d+1, d+1));
-			for i in [0 .. d] do
-				for j in [0 .. d] do
-					for k in [0 .. d] do
-						intersectionMatrices[i+1][j+1, k+1] :=  IntersectionNumber(a, L[i+1], L[j+1], L[k+1]);;
-					od;
-				od;
-			od;
-			return IntersectionAlgebra(intersectionMatrices);
-	    fi;
+		fi;
+        return a2;
     end);
 
 InstallMethod(ReorderMinimalIdempotents,
@@ -320,12 +318,15 @@ InstallMethod(ReorderMinimalIdempotents,
         if not L[1]=0 then
             return fail;
         fi;
-        Q:=TransposedMat(MatrixOfDualEigenvalues(a));
-        Q2:=TransposedMat(List([0 .. d], t -> Q[L[t+1]+1] ));;
+#    	a2:=IntersectionAlgebraFromMatrixOfEigenvalues(P2);;
+       	a2 := IntersectionAlgebra(IntersectionMatrices(a));;
        	P:=MatrixOfEigenvalues(a);
        	P2:=List([0 .. d], t -> P[L[t+1]+1] );;
-    	a2:=IntersectionAlgebraFromMatrixOfEigenvalues(P2);;
-    	SetMatrixOfDualEigenvalues(a2, Q2);
+		if HasMatrixOfDualEigenvalues(a) then
+			Q:=TransposedMat(MatrixOfDualEigenvalues(a));
+        	Q2:=TransposedMat(List([0 .. d], t -> Q[L[t+1]+1] ));;
+    		SetMatrixOfDualEigenvalues(a2, Q2);
+    	fi;
         return a2;
     end);
 

@@ -945,12 +945,14 @@ InstallMethod(ReorderMinimalIdempotents,
             return fail;
         fi;
         m2 := HomogeneousCoherentConfigurationNC(RelationMatrix(a));
-        Q:=TransposedMat(MatrixOfDualEigenvalues(a));
-        Q2:=TransposedMat(List([0 .. d], t -> Q[L[t+1]+1] ));;
        	P:=MatrixOfEigenvalues(a);
        	P2:=List([0 .. d], t -> P[L[t+1]+1] );;
        	SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), P2);;
-       	SetMatrixOfDualEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), Q2);;
+       	if HasMatrixOfDualEigenvalues(a) then
+	        Q:=TransposedMat(MatrixOfDualEigenvalues(a));
+	        Q2:=TransposedMat(List([0 .. d], t -> Q[L[t+1]+1] ));;
+	       	SetMatrixOfDualEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), Q2);;
+	    fi;
 #        P:=Inverse(Q2)*Order(a);;
 #        SetMatrixOfEigenvalues(IntersectionAlgebraOfHomogeneousCoherentConfiguration(m2), P);;
         return m2;
