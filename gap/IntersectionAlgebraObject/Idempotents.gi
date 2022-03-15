@@ -285,7 +285,7 @@ InstallMethod( MatrixOfDualEigenvalues,
 					[1, r, -r -1]
 					];
 					return P;
-				end;
+				fi;
 			fi;
 
 			# Could the scheme be cyclotomic?
