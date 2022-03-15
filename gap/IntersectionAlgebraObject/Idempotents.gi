@@ -253,28 +253,39 @@ InstallMethod( MatrixOfDualEigenvalues,
  	"for IsAssociationScheme",
  	[ IsIntersectionAlgebraObject],
 	function(A)
-		local q, P2, params, n, k, L, M, s, r, P;
+		local q, P2, params, n, k, L, M, s, r, P, min;
 		# If MatrixOfDualEigenvalues or MapFromIntersectionMatricesToCentralIdempotents are known,
 		# these should be used to compute the P-matrix, or there could be conflicts.
 		if (not HasMatrixOfDualEigenvalues(A)) and (not HasMapFromIntersectionMatricesToCentralIdempotents(A)) then
-			# if it is an SRG, compute directly
-			if IsSymmetricIntersectionAlgebra(A) and NumberOfClasses(A)=2 then
-				params:=StronglyRegularGraphParameters(A);
-				n:=params[1];
-				k:=params[2];
-				L:=params[3];
-				M:=params[4];
+			# if it is an SRG or DSRG, compute directly:
+			if NumberOfClasses(A)=2 then
+				if IsSymmetricIntersectionAlgebra(A) then
+					params:=StronglyRegularGraphParameters(A);
+					n:=params[1];
+					k:=params[2];
+					L:=params[3];
+					M:=params[4];
 
-				s := ( (L - M) + Sqrt( (L - M)^2 + 4 * (k - M) ) )/2;
-				r := ( (L - M) - Sqrt( (L - M)^2 + 4 * (k - M) ) )/2;
+					s := ( (L - M) + Sqrt( (L - M)^2 + 4 * (k - M) ) )/2;
+					r := ( (L - M) - Sqrt( (L - M)^2 + 4 * (k - M) ) )/2;
+				else
+					n:=Order(A);
+					k:=IntersectionNumber(A, 1,2,0);
+					L:=IntersectionNumber(A,1,1,1);
+					M:=IntersectionNumber(A,1,1,2);
 
-				P:= [
-				[ 1 , k, n - k - 1],
-				[1 , s, -s -1],
-				[1, r, -r -1]
-				];
-
-				return P;
+					s := ( (L - M) + Sqrt( (L - M)^2 + 4 * (-M) ) )/2;
+					r := ( (L - M) - Sqrt( (L - M)^2 + 4 * (-M) ) )/2;
+				fi;
+				min:=MinimalPolynomial(IntersectionMatrices(A)[2]);;
+				if ForAll([k, s, r], t -> Value(min, t)=0) then
+					P:= [
+					[ 1 , k, n - k - 1],
+					[1 , s, -s -1],
+					[1, r, -r -1]
+					];
+					return P;
+				end;
 			fi;
 
 			# Could the scheme be cyclotomic?
