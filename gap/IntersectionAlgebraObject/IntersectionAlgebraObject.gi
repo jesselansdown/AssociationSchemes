@@ -124,7 +124,7 @@ InstallMethod( Order,
 		if HasMatrixOfEigenvalues(A) and MatrixOfEigenvalues(A)<>fail then
 			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
 		fi;
-		if HasMatrixOfDualEigenvalues(A) then
+		if HasMatrixOfDualEigenvalues(A) and HasMatrixOfDualEigenvalues(A)<>fail then
 			return DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
 		fi;
 
