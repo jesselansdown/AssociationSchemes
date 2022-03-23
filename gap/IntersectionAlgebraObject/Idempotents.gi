@@ -149,12 +149,30 @@
 		        return TransposedMat(List(Idem, t -> SolutionMat(reps, t[1])));
 		    fi;
 		else
-		    Alg := Algebra(SplittingField(A), IntersectionMatrices(A));
-		    RIdem := CentralIdempotentsOfAlgebra(Alg);
-		    RIdem := Filtered(RIdem, t -> t <> e);;
-		    RIdem := Concatenation([e], RIdem);;
-	        reps:=List(inter, t -> t[1]);;
-	        return TransposedMat(List(RIdem, t -> SolutionMat(reps, t[1])));
+		    L := DivisorsInt(Conductor(SplittingField(A)));
+		    L := Filtered(L, t -> not t in [1, 2]);
+		    L := List(L, i->CF(i));
+		    for F in L do
+		        Idem2 := [];;
+		        for i in [1..Length(Idem)] do
+		            if Conductor(F) mod Conductor(DefaultFieldOfMatrix(Idem[i])) = 0 then
+			            IM2 := List(IntersectionMatrices(A), x -> x*Idem[i]);
+			            Add(IM2, IdentityMat(NumberOfClasses(A)+1));
+			            IM2 := Set(IM2);
+			            Alg := Algebra(F, IM2);
+			            Append(Idem2, CentralIdempotentsOfAlgebra(Alg));
+			        else
+			            Add(Idem2, Idem[i]);
+			        fi;
+		        od;
+		        Idem:=Set(Idem2);
+		        Idem:=SimplifyIdem(Idem);;
+		    od;
+		    # still better to split as above, just can't terminate early if the right number of characters are found.
+	        Idem := Filtered(Idem, t -> t <> e);;
+			Idem := Concatenation([e], Idem);;
+		    reps:=List(inter, t -> t[1]);;
+		    return TransposedMat(List(Idem, t -> SolutionMat(reps, t[1])));
 		fi;
 	end);
 
