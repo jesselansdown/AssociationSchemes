@@ -76,7 +76,7 @@
 			if IsCommutative(A) then
 				nchar := d+1;
 			else
-				nchar := HasNumberOfCharacters(A);
+				nchar := NumberOfCharacters(A);
 			fi;
 		    Alg := Algebra(Rationals, IntersectionMatrices(A));
 		    RIdem := CentralIdempotentsOfAlgebra(Alg);
@@ -86,10 +86,44 @@
 		        reps:=List(inter, t -> t[1]);;
 		        return TransposedMat(List(RIdem, t -> SolutionMat(reps, t[1])));
 		    else
+		        Idem := StructuralCopy(RIdem);;
+		        if nchar < d +1 and not HasSplittingField(A) then # First try computing idempotents over a guessed fields, since computing the splitting field may be slow and unnecessary
+		        	L := Set(Valencies(A));
+		        	Add(L, Order(A));
+					L := DivisorsInt( Lcm(L) * 4 );
+    				L := Filtered(L, i -> (i <= 100)); # just to put a limit on the guesses before moving to computing splitting field
+			        L := Filtered(L, t -> not t in [1, 2]);
+			        L := List(L, i->CF(i));
+			        for F in L do
+			        	Idem2 := [];;
+			            for i in [1..Length(Idem)] do
+			            	if Conductor(F) mod Conductor(DefaultFieldOfMatrix(Idem[i])) = 0 then
+				                IM2 := List(IntersectionMatrices(A), x -> x*Idem[i]);
+				                Add(IM2, IdentityMat(NumberOfClasses(A)+1));
+				                IM2 := Set(IM2);
+				                Alg := Algebra(F, IM2);
+				                Append(Idem2, CentralIdempotentsOfAlgebra(Alg));
+				            else
+				            	Add(Idem2, Idem[i]);
+				            fi;
+			            od;
+			            Idem:=Set(Idem2);
+			            Idem:=SimplifyIdem(Idem);;
+			            if Length(Idem) = nchar then
+			            	break;
+			            fi;
+			        od;
+			        if Length(Idem) = nchar then
+			           	Idem := Filtered(Idem, t -> t <> e);;
+						Idem := Concatenation([e], Idem);;
+				        reps:=List(inter, t -> t[1]);;
+				        return TransposedMat(List(Idem, t -> SolutionMat(reps, t[1])));
+				    fi;
+		        fi;
+		        # If this has failed, then find the splitting field and repeat. Any that have been found already will be kept
 		        L := DivisorsInt(Conductor(SplittingField(A)));
 		        L := Filtered(L, t -> not t in [1, 2]);
 		        L := List(L, i->CF(i));
-		        Idem := StructuralCopy(RIdem);;
 		        for F in L do
 		        	Idem2 := [];;
 		            for i in [1..Length(Idem)] do
