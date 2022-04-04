@@ -178,7 +178,6 @@ InstallMethod( Order,
 
 
 InstallMethod( HasCyclotomicSplittingField, 
-	"for IsAssociationScheme",
 	[ IsIntersectionAlgebraObject ],
 	function( A)
 		local f, polys;

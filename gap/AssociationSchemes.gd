@@ -255,7 +255,7 @@ DeclareProperty( "HasRationalSplittingField", IsHomogeneousCoherentConfiguration
 #! @Returns true or false
 #! @Description
 #!	Returns if the CC has a cyclotomic splitting field
-DeclareProperty( "HasCyclotomicSplittingField", IsIntersectionAlgebraObject );
+DeclareProperty( "HasCyclotomicSplittingField", IsHomogeneousCoherentConfiguration );
 
 
 
