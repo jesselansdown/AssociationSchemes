@@ -721,6 +721,14 @@ InstallMethod(IsCommutative,
 		return HasRationalSplittingField(B);;
 	end);
 
+ InstallMethod(HasCyclotomicSplittingField,
+			[IsHomogeneousCoherentConfiguration],
+	function(A)
+		local B;
+		B := IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);;
+		return HasCyclotomicSplittingField(B);;
+	end);
+
 InstallMethod( IsCometric, [IsHomogeneousCoherentConfiguration],
 	function(R)
 	    return IsQPolynomial(R);

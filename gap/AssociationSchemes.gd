@@ -249,6 +249,15 @@ DeclareAttribute( "SplittingField", IsHomogeneousCoherentConfiguration );
 #!	Returns true if the splitting field is the rationals, false otherwise.
 DeclareProperty( "HasRationalSplittingField", IsHomogeneousCoherentConfiguration );
 
+#! @Chapter Intersection Algebra objects
+#! @Section Core functionality
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!	Returns if the CC has a cyclotomic splitting field
+DeclareProperty( "HasCyclotomicSplittingField", IsIntersectionAlgebraObject );
+
+
 
 DeclareOperation("BinaryExpansion", [IsPosInt]);
 

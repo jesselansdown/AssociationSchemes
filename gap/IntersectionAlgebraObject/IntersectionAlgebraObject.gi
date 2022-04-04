@@ -154,7 +154,7 @@ InstallMethod( Order,
   InstallMethod(HasRationalSplittingField,
 			[IsIntersectionAlgebraObject],
 	function(A)
-		local inter, polys;
+		local polys;
 		if HasSplittingField(A) then
 			if SplittingField(A) = Rationals then
 				return true;
@@ -162,8 +162,7 @@ InstallMethod( Order,
 				return false;
 			fi;
 		else
-			inter:=IntersectionMatrices(A);
-			polys:=List(inter, t -> MinimalPolynomial(t));;
+			polys:=Set(List(IntersectionMatrices(A), t -> MinimalPolynomial(t)));;
 			polys:=List(polys, Factors);;
 			polys:=Set(Concatenation(polys));;
 #			if ForAny(List(polys, t ->  RootsOfPolynomial(Rationals, t)), x -> x =[]) then
@@ -178,6 +177,21 @@ InstallMethod( Order,
 
 
 
+InstallMethod( HasCyclotomicSplittingField, 
+	"for IsAssociationScheme",
+	[ IsIntersectionAlgebraObject ],
+	function( A)
+		local f, polys;
+		polys:=Set(List(IntersectionMatrices(A), t -> MinimalPolynomial(t)));;
+		polys:=List(polys, Factors);;
+		polys:=Set(Concatenation(polys));;
+		for f in mins do
+			if not IsAbelian(GaloisGroupOnRoots(f)) then
+				return false;
+			fi;
+		od;
+		return true;
+	end );
 
 
 
