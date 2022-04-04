@@ -289,3 +289,62 @@ InstallMethod( CharacterTableOfSchurianHomogeneousCoherentConfiguration,
 	  	P2 := Concatenation([x], P2); # Make sure that valencies are in the first row
 	    return P2;
 	end);
+
+
+InstallMethod( IsCharacterTableOfHomogeneousCoherentConfiguration, 
+ 	"for IsAssociationScheme",
+ 	[ IsHomogeneousCoherentConfiguration, IsMatrix, IsList],
+	function(A, T, mults)
+	    local e, i, j, k, AM, r, s, d, v, x, m, n, NT;
+
+	    e := [];
+	    m := [];
+	    n := Order(A);
+	    AM := AdjacencyMatrices(A);
+	    AM := IntersectionMatrices(A);
+	    d := Length(AM);
+	    v := Valencies(A);
+	    r := NumberOfCharacters(A);
+
+	    if (r <> Length(T)) or (r <> Length(mults)) then
+	        return false;
+	    fi;
+
+	    for i in [1..r] do
+	        s := 0;
+	        for j in [1..d] do
+	            s := s + T[i][j] * ComplexConjugate(T[i][j]) / v[j];
+	        od;
+	        m[i] := T[i][1] * n / s;
+	        e[i] := NullMat(n, n);
+	        for j in [1..d] do
+	            e[i] := e[i] + m[i] / n / v[j] * ComplexConjugate(T[i][j]) * AM[j];
+	        od;
+	    od;
+
+	    for i in [1..r] do
+	        if ForAll([1..d], j -> (e[i] * AM[j] = AM[j] * e[i])) = false then
+	            return false;
+	        fi;
+	    od;
+
+	    if ForAll([1..r], i -> (e[i] * e[i] = e[i])) = false then
+	        return false;
+	    fi;
+	    
+	    for i in [1..r] do
+	        if ForAll([(i + 1)..r], j -> (IsZero(e[i] * e[j]))) = false then
+	            return false;
+	        fi;
+	    od;
+
+	    if IsOne(Sum(e)) = false then
+	        return false;
+	    fi;
+	    
+	    if Length(T[1]) = d then
+	        return true;
+	    else
+	        return  ForAll([1..r], i -> (m[i] = mults[i]));
+	    fi;
+	end);

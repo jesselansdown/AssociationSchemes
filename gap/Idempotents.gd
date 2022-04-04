@@ -108,3 +108,11 @@ DeclareOperation( "FitMatrixOfEigenvalues", [ IsHomogeneousCoherentConfiguration
 #!   the ordering of the coherent configuration, so "FitMatrixOfEigenvalues" must be used. Sometimes the group theoretic method is much faster and
 #!   sometimes it is much slower than the other methods.
 DeclareOperation( "CharacterTableOfSchurianHomogeneousCoherentConfiguration", [ IsHomogeneousCoherentConfiguration ] );
+
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Bose-Mesner algebra
+#! @Arguments CC, T, mults
+#! @Returns P2
+#! @Description
+#!   Checks if T is the matrix of eigenvalues of homogeneous coherent configuration CC, given multiplicities mults.
+DeclareOperation( "IsCharacterTableOfHomogeneousCoherentConfiguration", [ IsHomogeneousCoherentConfiguration, IsMatrix, IsList] );
