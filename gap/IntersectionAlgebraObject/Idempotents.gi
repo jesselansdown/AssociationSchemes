@@ -431,7 +431,7 @@ InstallMethod( MatrixOfEigenvaluesViaBacktrack,
 				return fail;
 			fi;
 			PopulateMatrixOfEigenvalues := function(A, M, eigs, i, j, n)
-				local i2, j2, eig, out, M2, eigs2, x;
+				local i2, j2, eig, out, M2, eigs2, x, v;
 				if i = n and j = n then
 					if IsMatrixOfEigenvalues(A, M) = true then
 						return M;
