@@ -301,7 +301,6 @@ InstallMethod( IsCharacterTableOfHomogeneousCoherentConfiguration,
 	    m := [];
 	    n := Order(A);
 	    AM := AdjacencyMatrices(A);
-	    AM := IntersectionMatrices(A);
 	    d := Length(AM);
 	    v := Valencies(A);
 	    r := NumberOfCharacters(A);
