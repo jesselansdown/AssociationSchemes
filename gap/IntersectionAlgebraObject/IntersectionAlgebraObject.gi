@@ -184,7 +184,7 @@ InstallMethod( HasCyclotomicSplittingField,
 		polys:=Set(List(IntersectionMatrices(A), t -> MinimalPolynomial(t)));;
 		polys:=List(polys, Factors);;
 		polys:=Set(Concatenation(polys));;
-		for f in mins do
+		for f in polys do
 			if not IsAbelian(GaloisGroupOnRoots(f)) then
 				return false;
 			fi;
