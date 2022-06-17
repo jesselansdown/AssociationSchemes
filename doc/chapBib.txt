@@ -2,23 +2,33 @@
   
   [1XReferences[101X
   
-  [[20XBBC+18[120X]  [16XBaart,  R., Boothby, T., Cramwinckel, J., Fields, J., Joyner, D., Miller, R., Minkes, E., Roijackers, E., Ruscio, L. and Tjhai,
-  C.[116X,   [17XGUAVA,  a  GAP  package  for  computing  with  error-correcting  codes,  Version  3.14[117X  (2018),  ((Refereed  GAP  package)),  \href
-  {https://gap-packages.github.io/guava} {\texttt{https://gap-packages.github.io/}\discretionary {}{}{}\texttt{guava}}.
+  [[20XBBC+18[120X]  [16XBaart,  R.,  Boothby, T., Cramwinckel, J., Fields, J., Joyner, D.,
+  Miller,  R.,  Minkes, E., Roijackers, E., Ruscio, L. and Tjhai, C.[116X, [17XGUAVA, a
+  GAP  package for computing with error-correcting codes, Version 3.14[117X (2018),
+  ((Refereed   GAP   package)),  \href  {https://gap-packages.github.io/guava}
+  {\texttt{https://gap-packages.github.io/}\discretionary
+  {}{}{}\texttt{guava}}.
   
-  [[20XBBDB+18[120X]  [16XBamberg,  J.,  Betten, A., De Beule, J., Cara, P., Lavrauw, M. and Neunhoeffer, M.[116X, [17XFinInG, Finite Incidence Geometry, Version
-  1.4.1[117X (2018), ((Refereed GAP package)), \href {http://www.fining.org} {\texttt{http://www.fining.org}}.
+  [[20XBBDB+18[120X]  [16XBamberg,  J., Betten, A., De Beule, J., Cara, P., Lavrauw, M. and
+  Neunhoeffer,  M.[116X,  [17XFinInG,  Finite Incidence Geometry, Version 1.4.1[117X (2018),
+  ((Refereed       GAP      package)),      \href      {http://www.fining.org}
+  {\texttt{http://www.fining.org}}.
   
-  [[20XBI84[120X]  [16XBannai,  E.  and Ito, T.[116X, [17XAlgebraic combinatorics. I[117X, The Benjamin/Cummings Publishing Co., Inc., Menlo Park, CA (1984), xxiv+425
+  [[20XBI84[120X]   [16XBannai,   E.   and   Ito,   T.[116X,  [17XAlgebraic  combinatorics.  I[117X,  The
+  Benjamin/Cummings  Publishing  Co.,  Inc.,  Menlo  Park, CA (1984), xxiv+425
   pages, ((Association schemes)).
   
-  [[20XCam99[120X] [16XCameron, P. J.[116X, [17XPermutation Groups[117X, Cambridge University Press, London Mathematical Society Student Texts (1999).
+  [[20XCam99[120X]  [16XCameron,  P.  J.[116X,  [17XPermutation  Groups[117X, Cambridge University Press,
+  London Mathematical Society Student Texts (1999).
   
-  [[20XGAP16[120X] [17XGAP -- Groups, Algorithms, and Programming, Version 4.8.6[117X, The GAP~Group (2016).
+  [[20XGAP16[120X]  [17XGAP  --  Groups,  Algorithms,  and  Programming, Version 4.8.6[117X, The
+  GAP~Group (2016).
   
-  [[20XGod93[120X] [16XGodsil, C. D.[116X, [17XAlgebraic combinatorics[117X, Chapman \& Hall, New York, Chapman and Hall Mathematics Series (1993), xvi+362 pages.
+  [[20XGod93[120X]  [16XGodsil,  C. D.[116X, [17XAlgebraic combinatorics[117X, Chapman \& Hall, New York,
+  Chapman and Hall Mathematics Series (1993), xvi+362 pages.
   
-  [[20XHM[120X]   [16XHanaki,   A.   and   Miyamoto,   I.[116X,  [17XClassification  of  association  schemes  with  small  vertices[117X,  ((Accessed:  2010-09-30)),
+  [[20XHM[120X] [16XHanaki, A. and Miyamoto, I.[116X, [17XClassification of association schemes with
+  small             vertices[117X,             ((Accessed:            2010-09-30)),
   \url{http://math.shinshu-u.ac.jp/~hanaki/as/}.
   
   

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!-- This is an automatically generated file. -->
-<#Include SYSTEM "_Chapter_Introduction.xml">
-<#Include SYSTEM "_Chapter_Getting_Started.xml">
-<#Include SYSTEM "_Chapter_Homogeneous_Coherent_Configuration_objects.xml">
-<#Include SYSTEM "_Chapter_Intersection_Algebra_objects.xml">
-<#Include SYSTEM "_Chapter_Examples.xml">
-<#Include SYSTEM "_Chapter_Appendix.xml">

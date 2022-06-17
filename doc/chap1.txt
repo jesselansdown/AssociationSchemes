@@ -29,11 +29,11 @@
   [4X[32X  Example  [32X[104X
     [4X[28X@article{AssociationSchemes,[128X[104X
     [4X[28XAuthor = {Bamberg,  J.  and  Hanaki,  A.  and  Lansdown, J.},[128X[104X
-    [4X[28XDoi = {10.5281/zenodo.2634955},[128X[104X
+    [4X[28XDoi = {10.5281/zenodo.2634954},[128X[104X
     [4X[28XKey = {AssociationSchemes},[128X[104X
     [4X[28XTitle = {{AssociationSchemes -- AssociationSchemes: A GAP package for working[128X[104X
-    [4X[28Xwith association schemes and homogeneous coherent configurations, Version 2.0.0}},[128X[104X
-    [4X[28XUrl = {http://doi.org/10.5281/zenodo.2634955},[128X[104X
+    [4X[28Xwith association schemes and homogeneous coherent configurations, Version 2.1.0}},[128X[104X
+    [4X[28XUrl = {https://doi.org/10.5281/zenodo.2634954},[128X[104X
     [4X[28XYear = 2022	,[128X[104X
     [4X[28X}[128X[104X
   [4X[32X[104X

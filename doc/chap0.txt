@@ -7,10 +7,10 @@
                                 configurations [101X
   
   
-                                     2.0.0
+                                     2.1.0
   
   
-                                2 February 2022
+                                  17 June 2022
   
   
                                   John Bamberg
@@ -188,6 +188,7 @@
       3.5-13 AllSymmetricFusionsOfHomgeneousCoherentConfiguration
       3.5-14 IsomorphismToFusionScheme
       3.5-15 IsIsomorphicToFusionScheme
+      3.5-16 FirstFeasibleNonTrivialSymmetricFusionOfHomogeneousCoherentConfiguration
     3.6 [33X[0;0YBose-Mesner algebra[133X
       3.6-1 MapFromAdjacencyMatricesToMinimalIdempotents
       3.6-2 MapFromAdjacencyMatricesToMinimalIdempotentsOverRationals
@@ -199,10 +200,11 @@
       3.6-8 CharacterTableOfHomogeneousCoherentConfiguration
       3.6-9 FitMatrixOfEigenvalues
       3.6-10 CharacterTableOfSchurianHomogeneousCoherentConfiguration
-      3.6-11 MatrixOfEigenvaluesOfCyclotomicScheme
-      3.6-12 MatrixOfEigenvaluesOfGrassmannScheme
-      3.6-13 MatrixOfEigenvaluesOfHammingScheme
-      3.6-14 MatrixOfEigenvaluesOfJohnsonScheme
+      3.6-11 IsCharacterTableOfHomogeneousCoherentConfiguration
+      3.6-12 MatrixOfEigenvaluesOfCyclotomicScheme
+      3.6-13 MatrixOfEigenvaluesOfGrassmannScheme
+      3.6-14 MatrixOfEigenvaluesOfHammingScheme
+      3.6-15 MatrixOfEigenvaluesOfJohnsonScheme
     3.7 [33X[0;0YMetric schemes[133X
       3.7-1 IsPPolynomial
       3.7-2 FirstPPolynomialOrdering
@@ -254,26 +256,28 @@
       3.11-4 TerwilligerAlgebra
   4 [33X[0;0YIntersection Algebra objects[133X
     4.1 [33X[0;0YCore functionality[133X
-      4.1-1 IntersectionAlgebra
-      4.1-2 IntersectionMatrices
-      4.1-3 IntersectionNumber
-      4.1-4 NumberOfClasses
-      4.1-5 Valencies
-      4.1-6 Order
-      4.1-7 SplittingField
-      4.1-8 HasRationalSplittingField
-      4.1-9 KreinParameter
-      4.1-10 KreinParameters
-      4.1-11 IsQBipartite
-      4.1-12 IsPBipartite
-      4.1-13 IsQAntipodal
-      4.1-14 IsPAntipodal
-      4.1-15 ReorderRelations
-      4.1-16 ReorderMinimalIdempotents
-      4.1-17 ViewRelationDistributionDiagram
-      4.1-18 IsCommutative
-      4.1-19 IsSymmetricIntersectionAlgebra
-      4.1-20 NumberOfCharacters
+      4.1-1 HasCyclotomicSplittingField
+      4.1-2 IntersectionAlgebra
+      4.1-3 IntersectionMatrices
+      4.1-4 IntersectionNumber
+      4.1-5 NumberOfClasses
+      4.1-6 Valencies
+      4.1-7 Order
+      4.1-8 SplittingField
+      4.1-9 HasCyclotomicSplittingField
+      4.1-10 HasRationalSplittingField
+      4.1-11 KreinParameter
+      4.1-12 KreinParameters
+      4.1-13 IsQBipartite
+      4.1-14 IsPBipartite
+      4.1-15 IsQAntipodal
+      4.1-16 IsPAntipodal
+      4.1-17 ReorderRelations
+      4.1-18 ReorderMinimalIdempotents
+      4.1-19 ViewRelationDistributionDiagram
+      4.1-20 IsCommutative
+      4.1-21 IsSymmetricIntersectionAlgebra
+      4.1-22 NumberOfCharacters
     4.2 [33X[0;0YConstructor methods[133X
       4.2-1 IntersectionAlgebraFromMatrixOfEigenvalues
       4.2-2 HammingSchemeIntersectionAlgebra
@@ -306,6 +310,7 @@
       4.4-10 FeasibleNonTrivialSymmetricFusionsOfIntersectionAlgebra
       4.4-11 AllNonTrivialSymmetricFusionsOfIntersectionAlgebra
       4.4-12 AllSymmetricFusionsOfIntersectionAlgebra
+      4.4-13 FirstFeasibleNonTrivialSymmetricFusionOfIntersectionAlgebra
     4.5 [33X[0;0YIntersection algebra[133X
       4.5-1 CentralIdempotentsOfIntersectionAlgebra
       4.5-2 CentralIdempotentsOfIntersectionAlgebraOverRationals

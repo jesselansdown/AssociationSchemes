@@ -4,7 +4,14 @@
   
   [1X4.1 [33X[0;0YCore functionality[133X[101X
   
-  [1X4.1-1 IntersectionAlgebra[101X
+  [1X4.1-1 HasCyclotomicSplittingField[101X
+  
+  [33X[1;0Y[29X[2XHasCyclotomicSplittingField[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YReturns if the CC has a cyclotomic splitting field[133X
+  
+  [1X4.1-2 IntersectionAlgebra[101X
   
   [33X[1;0Y[29X[2XIntersectionAlgebra[102X( [3XB[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
@@ -13,7 +20,7 @@
   Algebra.  The  intersection  matrix  [23X(B_i)_{jk} = p_{ij}^k[123X must be for valid
   intersection numbers [23Xp_{ij}^k[123X for some homogeneous coherent configuration.[133X
   
-  [1X4.1-2 IntersectionMatrices[101X
+  [1X4.1-3 IntersectionMatrices[101X
   
   [33X[1;0Y[29X[2XIntersectionMatrices[102X( [3XCC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YL[133X
@@ -22,21 +29,21 @@
   object,  [23XCC[123X,  where  the  [23Xi[123X-th  entry  of  [23XL[123X  is  [23XB_{i-1}[123X and [23X(B_{i})_{jk} =
   p_{ij}^k[123X.[133X
   
-  [1X4.1-3 IntersectionNumber[101X
+  [1X4.1-4 IntersectionNumber[101X
   
   [33X[1;0Y[29X[2XIntersectionNumber[102X( [3XCC[103X, [3Xi[103X, [3Xj[103X, [3Xk[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Y[23Xp_{ij}^k[123X[133X
   
   [33X[0;0YReturns the intersection number [23Xp_{ij}^k[123X for a intersection algebra.[133X
   
-  [1X4.1-4 NumberOfClasses[101X
+  [1X4.1-5 NumberOfClasses[101X
   
   [33X[1;0Y[29X[2XNumberOfClasses[102X( [3XCC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yd[133X
   
   [33X[0;0YReturns [23Xd[123X for a [23Xd[123X-class intersection algebra.[133X
   
-  [1X4.1-5 Valencies[101X
+  [1X4.1-6 Valencies[101X
   
   [33X[1;0Y[29X[2XValencies[102X( [3XCC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YL[133X
@@ -44,35 +51,42 @@
   [33X[0;0YReturns a list L of valencies of a coherent configuration CC. The [23Xi[123X-th entry
   of [23XL[123X is [23Xk_{i-1}[123X.[133X
   
-  [1X4.1-6 Order[101X
+  [1X4.1-7 Order[101X
   
   [33X[1;0Y[29X[2XOrder[102X( [3XCC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yn[133X
   
   [33X[0;0YReturns the order [23Xn[123X (number of vertices) of the intersection algebra.[133X
   
-  [1X4.1-7 SplittingField[101X
+  [1X4.1-8 SplittingField[101X
   
   [33X[1;0Y[29X[2XSplittingField[102X( [3XCC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YF[133X
   
   [33X[0;0YReturns the splitting field of the CC[133X
   
-  [1X4.1-8 HasRationalSplittingField[101X
+  [1X4.1-9 HasCyclotomicSplittingField[101X
+  
+  [33X[1;0Y[29X[2XHasCyclotomicSplittingField[102X( [3XCC[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YReturns if the CC has a cyclotomic splitting field[133X
+  
+  [1X4.1-10 HasRationalSplittingField[101X
   
   [33X[1;0Y[29X[2XHasRationalSplittingField[102X( [3XCC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ytrue or false[133X
   
   [33X[0;0YReturns true if the splitting field is the rationals, false otherwise.[133X
   
-  [1X4.1-9 KreinParameter[101X
+  [1X4.1-11 KreinParameter[101X
   
   [33X[1;0Y[29X[2XKreinParameter[102X( [3XCC[103X, [3Xi[103X, [3Xj[103X, [3Xk[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Y[23Xq_{i,j}^k[123X[133X
   
   [33X[0;0YCompute the krein parameter [23Xq_{i,j}^k[123X of a commutative intersection algebra.[133X
   
-  [1X4.1-10 KreinParameters[101X
+  [1X4.1-12 KreinParameters[101X
   
   [33X[1;0Y[29X[2XKreinParameters[102X( [3XCC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YL[133X
@@ -80,35 +94,35 @@
   [33X[0;0YReturn  a  list  [23XL[123X  of  all  Krein  parameters of a commutative intersection
   algebra, where [23XL[i][j,k] = q_{i,j}^k[123X.[133X
   
-  [1X4.1-11 IsQBipartite[101X
+  [1X4.1-13 IsQBipartite[101X
   
   [33X[1;0Y[29X[2XIsQBipartite[102X( [3XCC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ytrue or false[133X
   
   [33X[0;0YReturns if the intersection algebra CC is Q-bipartite.[133X
   
-  [1X4.1-12 IsPBipartite[101X
+  [1X4.1-14 IsPBipartite[101X
   
   [33X[1;0Y[29X[2XIsPBipartite[102X( [3XCC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ytrue or false[133X
   
   [33X[0;0YReturns if the intersection algebra CC is bipartite.[133X
   
-  [1X4.1-13 IsQAntipodal[101X
+  [1X4.1-15 IsQAntipodal[101X
   
   [33X[1;0Y[29X[2XIsQAntipodal[102X( [3XCC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ytrue or false[133X
   
   [33X[0;0YReturns if the intersection algebra CC is Q-antipodal.[133X
   
-  [1X4.1-14 IsPAntipodal[101X
+  [1X4.1-16 IsPAntipodal[101X
   
   [33X[1;0Y[29X[2XIsPAntipodal[102X( [3XCC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ytrue or false[133X
   
   [33X[0;0YReturns if the intersection algebra CC is antipodal.[133X
   
-  [1X4.1-15 ReorderRelations[101X
+  [1X4.1-17 ReorderRelations[101X
   
   [33X[1;0Y[29X[2XReorderRelations[102X( [3XCC[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ycoherent configuration[133X
@@ -119,7 +133,7 @@
   that  [23XL_i[123X  must  be  equal  to  [23X\{0, \ldots, d \}[123X as a set, and additionally
   requires that [23XL_1 = 0[123X.[133X
   
-  [1X4.1-16 ReorderMinimalIdempotents[101X
+  [1X4.1-18 ReorderMinimalIdempotents[101X
   
   [33X[1;0Y[29X[2XReorderMinimalIdempotents[102X( [3XCC[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ycoherent configuration[133X
@@ -130,28 +144,28 @@
   algebra,  where [23Xj = L_i[123X. Note that [23XL_i[123X must be equal to [23X\{0, \ldots, d \}[123X as
   a set, and additionally requires that [23XL_1 = 0[123X.[133X
   
-  [1X4.1-17 ViewRelationDistributionDiagram[101X
+  [1X4.1-19 ViewRelationDistributionDiagram[101X
   
   [33X[1;0Y[29X[2XViewRelationDistributionDiagram[102X( [3XCC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ytrue (Displays relation distribution diagram)[133X
   
   [33X[0;0YTake a CC and display the relation-distribution diagram with respect to [23XR_1[123X.[133X
   
-  [1X4.1-18 IsCommutative[101X
+  [1X4.1-20 IsCommutative[101X
   
   [33X[1;0Y[29X[2XIsCommutative[102X( [3XCC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ytrue or false[133X
   
   [33X[0;0YChecks if the input is a commutative intersection algebra.[133X
   
-  [1X4.1-19 IsSymmetricIntersectionAlgebra[101X
+  [1X4.1-21 IsSymmetricIntersectionAlgebra[101X
   
   [33X[1;0Y[29X[2XIsSymmetricIntersectionAlgebra[102X( [3XCC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ytrue or false[133X
   
   [33X[0;0YChecks if the input is a symmetric intersection algebra.[133X
   
-  [1X4.1-20 NumberOfCharacters[101X
+  [1X4.1-22 NumberOfCharacters[101X
   
   [33X[1;0Y[29X[2XNumberOfCharacters[102X( [3XCC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yn[133X
@@ -430,6 +444,16 @@
   i.e the original homogeneous coherent configuration (if it is an association
   scheme),  and  the  coherent  configuration resulting from the fusion of all
   non-identity relations[133X
+  
+  [1X4.4-13 FirstFeasibleNonTrivialSymmetricFusionOfIntersectionAlgebra[101X
+  
+  [33X[1;0Y[29X[2XFirstFeasibleNonTrivialSymmetricFusionOfIntersectionAlgebra[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ylist of feasibly fusionable relations[133X
+  
+  [33X[0;0YReturns  a  list  of  relations  which  may  be  fused  to  form  a feasible
+  association scheme (i.e. relations are symmetric), if possible. Returns fail
+  if no nontrivial fusion exists. Trivial means either no relations are fused,
+  or all non-identity relations are fused.[133X
   
   
   [1X4.5 [33X[0;0YIntersection algebra[133X[101X

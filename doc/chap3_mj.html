@@ -127,6 +127,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A63406C84E706E5">3.5-13 AllSymmetricFusionsOfHomgeneousCoherentConfiguration</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87D08BC5870911CF">3.5-14 IsomorphismToFusionScheme</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X819EE3A478CD95F2">3.5-15 IsIsomorphicToFusionScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8499AD1782DDCE0A">3.5-16 FirstFeasibleNonTrivialSymmetricFusionOfHomogeneousCoherentConfiguration</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7BEA38D2788CD9FC">3.6 <span class="Heading">Bose-Mesner algebra</span></a>
 </span>
@@ -141,10 +142,11 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B3AD5F67E3FDC50">3.6-8 CharacterTableOfHomogeneousCoherentConfiguration</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X821425FA7923B4C8">3.6-9 FitMatrixOfEigenvalues</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7BF28D4185AE6B89">3.6-10 CharacterTableOfSchurianHomogeneousCoherentConfiguration</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X823719AA854623FB">3.6-11 MatrixOfEigenvaluesOfCyclotomicScheme</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81D585B285091A4F">3.6-12 MatrixOfEigenvaluesOfGrassmannScheme</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X861E3C8080FE3A0D">3.6-13 MatrixOfEigenvaluesOfHammingScheme</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X850D2B6A799A9263">3.6-14 MatrixOfEigenvaluesOfJohnsonScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A457E3780B70A30">3.6-11 IsCharacterTableOfHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X823719AA854623FB">3.6-12 MatrixOfEigenvaluesOfCyclotomicScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81D585B285091A4F">3.6-13 MatrixOfEigenvaluesOfGrassmannScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X861E3C8080FE3A0D">3.6-14 MatrixOfEigenvaluesOfHammingScheme</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X850D2B6A799A9263">3.6-15 MatrixOfEigenvaluesOfJohnsonScheme</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7EEAC69486AF989B">3.7 <span class="Heading">Metric schemes</span></a>
 </span>
@@ -981,6 +983,15 @@
 
 <p>Returns true if <span class="SimpleMath">\(A\)</span> is isomorphic to a fusion of <span class="SimpleMath">\(B\)</span>. Returns false otherwise.</p>
 
+<p><a id="X8499AD1782DDCE0A" name="X8499AD1782DDCE0A"></a></p>
+
+<h5>3.5-16 FirstFeasibleNonTrivialSymmetricFusionOfHomogeneousCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FirstFeasibleNonTrivialSymmetricFusionOfHomogeneousCoherentConfiguration</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: list of feasibly fusionable relations</p>
+
+<p>Returns a list of relations which may be fused to form a feasible association scheme (i.e. relations are symmetric), if possible. Returns fail if no nontrivial fusion exists. Trivial means either no relations are fused, or all non-identity relations are fused.</p>
+
 <p><a id="X7BEA38D2788CD9FC" name="X7BEA38D2788CD9FC"></a></p>
 
 <h4>3.6 <span class="Heading">Bose-Mesner algebra</span></h4>
@@ -1075,9 +1086,18 @@
 
 <p>Computes the character table of a Schurian coherent configuration by using the group. The ordering of the columns does not respect the ordering of the coherent configuration, so "FitMatrixOfEigenvalues" must be used. Sometimes the group theoretic method is much faster and sometimes it is much slower than the other methods.</p>
 
+<p><a id="X7A457E3780B70A30" name="X7A457E3780B70A30"></a></p>
+
+<h5>3.6-11 IsCharacterTableOfHomogeneousCoherentConfiguration</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCharacterTableOfHomogeneousCoherentConfiguration</code>( <var class="Arg">CC</var>, <var class="Arg">T</var>, <var class="Arg">mults</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: P2</p>
+
+<p>Checks if T is the matrix of eigenvalues of homogeneous coherent configuration CC, given multiplicities mults.</p>
+
 <p><a id="X823719AA854623FB" name="X823719AA854623FB"></a></p>
 
-<h5>3.6-11 MatrixOfEigenvaluesOfCyclotomicScheme</h5>
+<h5>3.6-12 MatrixOfEigenvaluesOfCyclotomicScheme</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MatrixOfEigenvaluesOfCyclotomicScheme</code>( <var class="Arg">n</var>, <var class="Arg">k</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: P</p>
@@ -1086,7 +1106,7 @@
 
 <p><a id="X81D585B285091A4F" name="X81D585B285091A4F"></a></p>
 
-<h5>3.6-12 MatrixOfEigenvaluesOfGrassmannScheme</h5>
+<h5>3.6-13 MatrixOfEigenvaluesOfGrassmannScheme</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MatrixOfEigenvaluesOfGrassmannScheme</code>( <var class="Arg">n</var>, <var class="Arg">k</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: P</p>
@@ -1095,7 +1115,7 @@
 
 <p><a id="X861E3C8080FE3A0D" name="X861E3C8080FE3A0D"></a></p>
 
-<h5>3.6-13 MatrixOfEigenvaluesOfHammingScheme</h5>
+<h5>3.6-14 MatrixOfEigenvaluesOfHammingScheme</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MatrixOfEigenvaluesOfHammingScheme</code>( <var class="Arg">n</var>, <var class="Arg">q</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: P</p>
@@ -1104,7 +1124,7 @@
 
 <p><a id="X850D2B6A799A9263" name="X850D2B6A799A9263"></a></p>
 
-<h5>3.6-14 MatrixOfEigenvaluesOfJohnsonScheme</h5>
+<h5>3.6-15 MatrixOfEigenvaluesOfJohnsonScheme</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MatrixOfEigenvaluesOfJohnsonScheme</code>( <var class="Arg">n</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: P</p>

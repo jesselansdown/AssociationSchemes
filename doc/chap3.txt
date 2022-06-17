@@ -739,6 +739,16 @@
   
   [33X[0;0YReturns true if [23XA[123X is isomorphic to a fusion of [23XB[123X. Returns false otherwise.[133X
   
+  [1X3.5-16 FirstFeasibleNonTrivialSymmetricFusionOfHomogeneousCoherentConfiguration[101X
+  
+  [33X[1;0Y[29X[2XFirstFeasibleNonTrivialSymmetricFusionOfHomogeneousCoherentConfiguration[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ylist of feasibly fusionable relations[133X
+  
+  [33X[0;0YReturns  a  list  of  relations  which  may  be  fused  to  form  a feasible
+  association scheme (i.e. relations are symmetric), if possible. Returns fail
+  if no nontrivial fusion exists. Trivial means either no relations are fused,
+  or all non-identity relations are fused.[133X
+  
   
   [1X3.6 [33X[0;0YBose-Mesner algebra[133X[101X
   
@@ -826,28 +836,36 @@
   the  group  theoretic  method is much faster and sometimes it is much slower
   than the other methods.[133X
   
-  [1X3.6-11 MatrixOfEigenvaluesOfCyclotomicScheme[101X
+  [1X3.6-11 IsCharacterTableOfHomogeneousCoherentConfiguration[101X
+  
+  [33X[1;0Y[29X[2XIsCharacterTableOfHomogeneousCoherentConfiguration[102X( [3XCC[103X, [3XT[103X, [3Xmults[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YP2[133X
+  
+  [33X[0;0YChecks   if   T  is  the  matrix  of  eigenvalues  of  homogeneous  coherent
+  configuration CC, given multiplicities mults.[133X
+  
+  [1X3.6-12 MatrixOfEigenvaluesOfCyclotomicScheme[101X
   
   [33X[1;0Y[29X[2XMatrixOfEigenvaluesOfCyclotomicScheme[102X( [3Xn[103X, [3Xk[103X, [3Xq[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YP[133X
   
   [33X[0;0YReturns the matrix of eigenvalues [23XP[123X of the scheme [23XCyc(q,d)[123X.[133X
   
-  [1X3.6-12 MatrixOfEigenvaluesOfGrassmannScheme[101X
+  [1X3.6-13 MatrixOfEigenvaluesOfGrassmannScheme[101X
   
   [33X[1;0Y[29X[2XMatrixOfEigenvaluesOfGrassmannScheme[102X( [3Xn[103X, [3Xk[103X, [3Xq[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YP[133X
   
   [33X[0;0YReturns the matrix of eigenvalues [23XP[123X of the Grassmann scheme [23XJ_q(n, k)[123X.[133X
   
-  [1X3.6-13 MatrixOfEigenvaluesOfHammingScheme[101X
+  [1X3.6-14 MatrixOfEigenvaluesOfHammingScheme[101X
   
   [33X[1;0Y[29X[2XMatrixOfEigenvaluesOfHammingScheme[102X( [3Xn[103X, [3Xq[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YP[133X
   
   [33X[0;0YReturns matrix of eigenvalue [23XP[123X for the Hamming scheme, [23XH(n, q)[123X.[133X
   
-  [1X3.6-14 MatrixOfEigenvaluesOfJohnsonScheme[101X
+  [1X3.6-15 MatrixOfEigenvaluesOfJohnsonScheme[101X
   
   [33X[1;0Y[29X[2XMatrixOfEigenvaluesOfJohnsonScheme[102X( [3Xn[103X, [3Xk[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YP[133X

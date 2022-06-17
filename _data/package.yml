@@ -1,6 +1,6 @@
 name: AssociationSchemes
-version: "2.0.0"
-date: 2022-02-02
+version: "2.1.0"
+date: 2022-06-17
 description: |
     A GAP package for working with association schemes and homogeneous coherent configurations
 
@@ -36,7 +36,7 @@ needed-pkgs:
 suggested-pkgs:
     - name: "NautyTracesInterface"
       version: ">=0.2"
-      url: "http://TODO/"
+      url: "https://gap-packages.github.io/NautyTracesInterface/"
 
 www: http://www.jesselansdown.com/AssociationSchemes
 readme: README.md
@@ -44,7 +44,7 @@ packageinfo: http://www.jesselansdown.com/AssociationSchemes/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://zenodo.org/record/5946803/files/AssociationSchemes-2.0.0.tar.gz?download=1
+      url: https://github.com/jesselansdown/AssociationSchemes/releases/download/v2.1.0/AssociationSchemes-2.1.0.tar.gz
 
 abstract: |
 
@@ -55,21 +55,26 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BHL22</span>]   <b class='BibAuthor'>Bamberg, J., Hanaki, A. and Lansdown, J.</b>,
      <i class='BibTitle'>AssociationSchemes, A GAP package for working with association schemes and homogeneous coherent configurations,
-             Version 2.0.0</i>
+             Version 2.1.0</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
-    <span class='BibHowpublished'><a href="https://doi.org/10.5281/zenodo.2634954">https://doi.org/10.5281/zenodo.2634954</a></span>.
+    <span class='BibHowpublished'><a href="http://www.jesselansdown.com/AssociationSchemes">http://www.jesselansdown.com/AssociationSchemes</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ AssociationSchemes2.0.0,
+    @misc{ AssociationSchemes2.1.0,
       author =           {Bamberg, J. and Hanaki, A. and Lansdown, J.},
-      title =            {{AssociationSchemes},  A  GAP package for working with association schemes and homogeneous coherent configurations,
-                          {V}ersion 2.0.0},
-      month =            {Feb},
+      title =            {{AssociationSchemes},  A  GAP package for working with
+                          association    schemes    and   homogeneous   coherent
+                          configurations, {V}ersion 2.1.0},
+      month =            {Jun},
       year =             {2022},
       note =             {GAP package},
-      howpublished =     {\href    {https://doi.org/10.5281/zenodo.2634954}    {\texttt{https://doi.org/10.5281/zenodo.2634954}\discretionary
+      howpublished =     {\href
+                          {http://www.jesselansdown.com/AssociationSchemes}
+                          {\texttt{http://www.jesselansdown.com/}\discretionary
                           {}{}{}\texttt{AssociationSchemes}}},
       printedkey =       {BHL22}
+    }
+
