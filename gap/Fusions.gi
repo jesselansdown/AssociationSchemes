@@ -1152,6 +1152,14 @@ InstallMethod(AllSymmetricFusionsOfHomgeneousCoherentConfiguration,
 	    return all;
 	end);
 
+InstallMethod(FirstFeasibleNonTrivialSymmetricFusionOfHomogeneousCoherentConfiguration,
+			[IsHomogeneousCoherentConfiguration],
+	function(A)
+	    local all, fusions;
+			return FirstFeasibleNonTrivialSymmetricFusionOfIntersectionAlgebra(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A));
+	end);
+
+
 InstallMethod(IsomorphismToFusionScheme,
 			[IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
 	function(A, B)

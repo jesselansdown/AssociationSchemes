@@ -140,3 +140,13 @@ DeclareOperation( "AllNonTrivialSymmetricFusionsOfIntersectionAlgebra", [IsInter
 #!  Includes trivial fusions, i.e the original homogeneous coherent configuration (if it is an association scheme), and the coherent configuration resulting
 #!  from the fusion of all non-identity relations
 DeclareOperation( "AllSymmetricFusionsOfIntersectionAlgebra", [IsIntersectionAlgebraObject]);
+
+#! @Chapter Intersection Algebra objects
+#! @Section Fusions
+#! @Arguments CC
+#! @Returns list of feasibly fusionable relations
+#! @Description
+#!	Returns a list of relations which may be fused to form a feasible association scheme (i.e. relations are symmetric), if possible.
+#!  Returns fail if no nontrivial fusion exists.
+#!  Trivial means either no relations are fused, or all non-identity relations are fused.
+DeclareAttribute( "FirstFeasibleNonTrivialSymmetricFusionOfIntersectionAlgebra", IsIntersectionAlgebraObject );

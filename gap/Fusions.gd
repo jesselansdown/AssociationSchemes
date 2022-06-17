@@ -168,3 +168,13 @@ DeclareOperation("IsomorphismToFusionScheme", [IsHomogeneousCoherentConfiguratio
 #! @Description
 #!  Returns true if $A$ is isomorphic to a fusion of $B$. Returns false otherwise.
 DeclareOperation("IsIsomorphicToFusionScheme", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
+
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Fusions
+#! @Arguments CC
+#! @Returns list of feasibly fusionable relations
+#! @Description
+#!	Returns a list of relations which may be fused to form a feasible association scheme (i.e. relations are symmetric), if possible.
+#!  Returns fail if no nontrivial fusion exists.
+#!  Trivial means either no relations are fused, or all non-identity relations are fused.
+DeclareAttribute( "FirstFeasibleNonTrivialSymmetricFusionOfHomogeneousCoherentConfiguration", IsHomogeneousCoherentConfiguration );

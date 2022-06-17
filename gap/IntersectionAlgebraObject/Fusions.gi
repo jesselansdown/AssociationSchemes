@@ -892,3 +892,117 @@ InstallMethod(AllSymmetricFusionsOfIntersectionAlgebra,
 	    	fi;
 	    return all;
 	end);
+
+
+InstallMethod(FirstFeasibleNonTrivialSymmetricFusionOfIntersectionAlgebra,
+			[IsIntersectionAlgebraObject],
+	function(A)
+		local checkCell, findCell, checkPartialFusion, good, stack, current, S, children, fuse, map;
+		checkCell := function(A, C1, map)
+			local k1, k2, y1, y2, i, j, C;
+			C:=Concatenation(List(C1, t -> map[t]));;
+			for k1 in C do
+				for k2 in C do
+					y1:=0;
+					y2:=0;
+					for i in C do
+						for j in C do
+							y1:=y1+IntersectionNumber(A, i, j, k1);
+							y2:=y2+IntersectionNumber(A, i, j, k2);
+						od;
+					od;
+					if y1 <> y2 then
+						return false;
+					fi;
+				od;
+			od;
+			return true;
+		end;
+		findCell := function(A, S, map)
+			local x, good, stack, current, children;
+			x:=Minimum(S);
+			good :=[];
+			stack :=[[x]];
+			while stack <> [] do
+				current:=Remove(stack, Size(stack));
+				if checkCell(A, current, map) then
+					Add(good, current);
+				fi;
+				children:=Filtered(S, t -> t > current[Size(current)]);
+				children:=List(children, t -> Concatenation(current, [t]));
+				Append(stack, children);
+			od;
+			return good;
+		end;
+		checkPartialFusion := function(A, fuse, map)
+			local l, m, o, k1, k2, y1, y2, i, j, i2, j2, k3, k4;
+			for l in [1 .. Size(fuse)] do
+				for m in [1 .. Size(fuse)] do
+					for o in [1 .. Size(fuse)] do
+						if (Size(fuse) in [l, m, o]) and (not [l, m, o] = [Size(fuse), Size(fuse), Size(fuse)]) then
+							# we want to make sure we are checking the newest cell, but we have already checked it by itself
+							for k1 in fuse[o] do
+								for k2 in fuse[o] do
+									y1:=0;
+									y2:=0;
+									for i in fuse[l] do
+										for j in fuse[m] do
+											for i2 in map[i] do
+												for j2 in map[j] do
+													for k3 in map[k1] do
+														for k4 in map[k2] do
+															y1:=y1+IntersectionNumber(A, i2, j2, k3);
+															y2:=y2+IntersectionNumber(A, i2, j2, k4);
+														od;
+													od;
+												od;
+											od;
+										od;
+									od;
+									if y1 <> y2 then
+										return false;
+									fi;
+								od;
+							od;
+						fi;
+					od;
+				od;
+			od;
+			return true;
+		end;
+
+		if not IsSymmetricIntersectionAlgebra(A) and IsStratifiable(A) and NumberOfClasses(A)>2 then
+			return  ConverseRelationPairs(A);
+		fi;
+
+		map:=MutableCopyMat(ConverseRelationPairs(A));
+ 	    if HasFeasibleNonTrivialFusionsOfIntersectionAlgebra(A) then
+ 	    	good:=[];
+ 	    	for current in FeasibleNonTrivialFusionsOfIntersectionAlgebra(A) do
+ 	    		if ForAll(map, x -> ForAny(current, t -> IsSubset(t, x))) then
+ 	    			return current;
+ 	    		fi;
+ 	    	od;
+ 	    fi;
+		Remove(map, 1);
+		good :=[];
+		stack :=[[]];
+		while stack <> [] do
+			current := Remove(stack, Size(stack));
+			S := Filtered([1 .. Size(map)], t -> not ForAny(current, x -> t in x));
+			if IsEmpty(S) then
+				fuse := List(current, t -> Concatenation(List(t, x -> map[x])));;
+				fuse := Concatenation([[0]], fuse);
+				fuse := Set(fuse, Set);;
+				if IsFusionOfIntersectionAlgebra(A, fuse) and Size(fuse)<>2 and (Size(fuse)<>NumberOfClasses(A)+1) then
+					return fuse;
+				fi;
+			else
+				children:=findCell(A, S, map);
+				children:=List(children, t -> Concatenation(current, [t]));
+				children:=Filtered(children, t -> checkPartialFusion(A, t, map));
+				Append(stack, children);
+			fi;
+		od;
+		return fail;
+	end );
