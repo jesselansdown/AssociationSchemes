@@ -44,7 +44,7 @@ packageinfo: http://www.jesselansdown.com/AssociationSchemes/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/jesselansdown/AssociationSchemes/releases/download/v2.1.0/AssociationSchemes-2.1.0.tar.gz
+      url: https://zenodo.org/record/6655831/files/AssociationSchemes-2.1.0.tar.gz?download=1
 
 abstract: |
 
