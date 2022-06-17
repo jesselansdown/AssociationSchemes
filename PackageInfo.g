@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "AssociationSchemes",
 Subtitle := "A GAP package for working with association schemes and homogeneous coherent configurations",
-Version := "2.0.0",
-Date := "02/02/2022", # dd/mm/yyyy format
+Version := "2.1.0",
+Date := "17/06/2022", # dd/mm/yyyy format
 
 Persons := [
 
