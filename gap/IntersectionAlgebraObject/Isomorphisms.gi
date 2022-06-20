@@ -155,7 +155,7 @@ InstallMethod( AreIsomorphicIntersectionAlgebras,
 
 InstallMethod( CanonisingMap, [IsIntersectionAlgebraObject],
 	function(A)
-		local check_mapped_intersection_numbers_to_depth_less_than_or_equal, check_mapped_intersection_numbers_to_depth_less_than, d, stack, B, best, current, perm, children;
+		local check_mapped_intersection_numbers_to_depth_less_than_or_equal, check_mapped_intersection_numbers_to_depth_less_than, d, stack, B, best, current, perm, children, x, stab, rts, h;
 		check_mapped_intersection_numbers_to_depth_less_than_or_equal := function(A, B, perm, depth)
 			local i, j, k;
 			for i in [1 .. depth] do
@@ -189,6 +189,26 @@ InstallMethod( CanonisingMap, [IsIntersectionAlgebraObject],
 			od;
 			return false;
 		end;
+
+
+		if ForAny(Valencies(A), t -> Number(Valencies(A), s -> s =t)>7) then
+			# We really only want to do this if we are partitioning certain relations into large groups
+			x := Valencies(A){[2 .. NumberOfClasses(A)+1]};
+			stab := Stabiliser(SymmetricGroup(NumberOfClasses(A)), x, Permuted);	
+			# check if the full group is the stabiliser first
+			if ForAll(GeneratorsOfGroup(stab), t -> ImageOfIntersectionAlgebra(A, t)=A) then
+				rts:=RightTransversal(SymmetricGroup(NumberOfClasses(A)), stab); 
+				best := ();
+				B := A;
+				for h in rts do
+					if check_mapped_intersection_numbers_to_depth_less_than_or_equal(A, B, Inverse(h), NumberOfClasses(A)) then
+						B:=ImageOfIntersectionAlgebra(A, Inverse(h));
+						best := Inverse(h);
+					fi;
+				od;
+				return best;
+			fi;
+		fi;
 
 		d:=NumberOfClasses(A);
 		stack := [[]];
@@ -240,7 +260,7 @@ InstallMethod(CanonicalFormOfIntersectionAlgebra, [IsIntersectionAlgebraObject],
 InstallMethod( AutomorphismGroup,
 			 [IsIntersectionAlgebraObject],
 	function(A)
-	local check_mapped_intersection_numbers_to_depth, d, stack, current, perm, children, auts, g, gens;
+	local check_mapped_intersection_numbers_to_depth, d, stack, current, perm, children, auts, g, gens, x, stab;
 		check_mapped_intersection_numbers_to_depth := function(A, perm, depth)
 			local i, j, k;
 			for i in [1 .. depth] do
@@ -255,6 +275,15 @@ InstallMethod( AutomorphismGroup,
 			return true;
 		end;
 
+		if ForAny(Valencies(A), t -> Number(Valencies(A), s -> s =t)>7) then
+			# We really only want to do this if we are partitioning certain relations into large groups
+			x := Valencies(A){[2 .. NumberOfClasses(A)+1]};
+			stab := Stabiliser(SymmetricGroup(NumberOfClasses(A)), x, Permuted);
+			if ForAll(GeneratorsOfGroup(stab), t -> ImageOfIntersectionAlgebra(A, t)=A) then
+				return stab; # check the obvious group first! The automorphism group must keep the valencies the same
+			fi;
+		fi;
+
 		auts:=[];
 		d:=NumberOfClasses(A);
 		stack := [[]];
@@ -263,7 +292,11 @@ InstallMethod( AutomorphismGroup,
 			perm:=MappingPermListList([1 .. Size(current)], current);
 			if check_mapped_intersection_numbers_to_depth(A, perm, Size(current)) then
 				if Size(current)=d then
-					Add(auts, perm);
+					if auts = [] then
+						Add(auts, perm);
+					elif not perm in Group(auts) then
+						Add(auts, perm);
+					fi;
 				else
 					children:=Filtered([1 .. d], t -> not t in current);;
 					children:=List(children, t -> Concatenation(current, [t]));;
@@ -271,10 +304,5 @@ InstallMethod( AutomorphismGroup,
 				fi;
 			fi;
 		od;
-		g := Group(auts);;
-		gens := SmallGeneratingSet(g);
-		if gens = [] then
-			gens:=[()];
-		fi;
-		return Group(gens);
+		return Group(auts);
 	end);
