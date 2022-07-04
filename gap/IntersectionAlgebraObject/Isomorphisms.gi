@@ -155,7 +155,7 @@ InstallMethod( AreIsomorphicIntersectionAlgebras,
 
 InstallMethod( CanonisingMap, [IsIntersectionAlgebraObject],
 	function(A)
-		local check_mapped_intersection_numbers_to_depth_less_than_or_equal, check_mapped_intersection_numbers_to_depth_less_than, d, stack, B, best, current, perm, children, x, stab, rts, h;
+		local check_mapped_intersection_numbers_to_depth_less_than_or_equal, check_mapped_intersection_numbers_to_depth_less_than, d, stack, B, best, current, perm, children, x, stab, rts, h, y, i;
 		check_mapped_intersection_numbers_to_depth_less_than_or_equal := function(A, B, perm, depth)
 			local i, j, k;
 			for i in [1 .. depth] do
@@ -194,7 +194,12 @@ InstallMethod( CanonisingMap, [IsIntersectionAlgebraObject],
 		if ForAny(Valencies(A), t -> Number(Valencies(A), s -> s =t)>7) then
 			# We really only want to do this if we are partitioning certain relations into large groups
 			x := Valencies(A){[2 .. NumberOfClasses(A)+1]};
-			stab := Stabiliser(SymmetricGroup(NumberOfClasses(A)), x, Permuted);	
+			stab := SymmetricGroup(NumberOfClasses(A));;
+			for i in Set(x) do
+				y := Filtered([1 .. Size(x)], t -> x[t]=i);;
+				stab := Stabiliser(stab, y, OnSets);;
+			od;
+#			stab := Stabiliser(SymmetricGroup(NumberOfClasses(A)), x, Permuted);	
 			# check if the full group is the stabiliser first
 			if ForAll(GeneratorsOfGroup(stab), t -> ImageOfIntersectionAlgebra(A, t)=A) then
 				rts:=RightTransversal(SymmetricGroup(NumberOfClasses(A)), stab); 
@@ -260,7 +265,7 @@ InstallMethod(CanonicalFormOfIntersectionAlgebra, [IsIntersectionAlgebraObject],
 InstallMethod( AutomorphismGroup,
 			 [IsIntersectionAlgebraObject],
 	function(A)
-	local check_mapped_intersection_numbers_to_depth, d, stack, current, perm, children, auts, g, gens, x, stab;
+	local check_mapped_intersection_numbers_to_depth, d, stack, current, perm, children, auts, g, gens, x, stab, y, i;
 		check_mapped_intersection_numbers_to_depth := function(A, perm, depth)
 			local i, j, k;
 			for i in [1 .. depth] do
@@ -277,8 +282,14 @@ InstallMethod( AutomorphismGroup,
 
 		if ForAny(Valencies(A), t -> Number(Valencies(A), s -> s =t)>7) then
 			# We really only want to do this if we are partitioning certain relations into large groups
+#			x := Valencies(A){[2 .. NumberOfClasses(A)+1]};
+#			stab := Stabiliser(SymmetricGroup(NumberOfClasses(A)), x, Permuted);
 			x := Valencies(A){[2 .. NumberOfClasses(A)+1]};
-			stab := Stabiliser(SymmetricGroup(NumberOfClasses(A)), x, Permuted);
+			stab := SymmetricGroup(NumberOfClasses(A));;
+			for i in Set(x) do
+				y := Filtered([1 .. Size(x)], t -> x[t]=i);;
+				stab := Stabiliser(stab, y, OnSets);;
+			od;
 			if ForAll(GeneratorsOfGroup(stab), t -> ImageOfIntersectionAlgebra(A, t)=A) then
 				return stab; # check the obvious group first! The automorphism group must keep the valencies the same
 			fi;
