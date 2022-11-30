@@ -106,6 +106,9 @@ InstallMethod( FirstPPolynomialOrdering, [IsIntersectionAlgebraObject],
     if not IsSymmetricIntersectionAlgebra(A) then
       return fail;
     fi;
+    if IsOddInt(Order(A)) and ForAny(Valencies(A){[2 .. NumberOfClasses(A)+1]}, IsOddInt) then
+      return fail; # Proposition 2.3 (iii) - van Dam, Koolen, Hanaka - v*k_i is even for i>=1
+    fi;
     stack := [[0]];
     while stack <> [] do
       current := Remove(stack, Size(stack));
