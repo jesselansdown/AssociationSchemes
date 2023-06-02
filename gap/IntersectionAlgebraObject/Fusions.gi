@@ -37,6 +37,12 @@ InstallMethod(IsFusionOfIntersectionAlgebra,
 			return false;
 		fi;
 		p:=Size(fuse);
+		for x in fuse do
+			y := List(x, t -> ConverseRelation(A, t));
+			if not Set(y) in fuse then
+				return false;
+			fi;
+		od;
 		for l in [1 .. p] do
 			for m in [1 .. p] do
 				for o in [1 .. p] do
