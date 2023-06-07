@@ -180,7 +180,7 @@ end);
 
 InstallMethod( IsomorphismHomogeneousCoherentConfigurations, [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
 function(A, B)
-	local charpolysA, charpolysB, algA, algB, map, autA, gamma, perm, p1, p2, p, C; 
+	local charpolysA, charpolysB, algA, algB, map, autA, gamma, perm, p1, p2, perm1, perm2; 
 
 	if Order(A) <> Order(B) then
 		return fail;
@@ -193,19 +193,11 @@ function(A, B)
 		return fail;
 	fi;
 
-	if Collected(Flat(IntersectionMatrices(A))) <> Collected(Flat(IntersectionMatrices(B))) then
-		return fail;
-	fi;
-
 	if IsAssociationScheme(A) <> IsAssociationScheme(B) then
 		return fail;
 	fi;
 
 	if IsCommutative(A) <> IsCommutative(B) then
-		return fail;
-	fi;
-
-	if AdmitsMetricOrdering(A) <> AdmitsMetricOrdering(B) then
 		return fail;
 	fi;
 
@@ -221,28 +213,16 @@ function(A, B)
 	if map = fail then
 		return fail;
 	fi;
-	autA := AutomorphismGroup(algA);
 
-	gamma:=SchemeToGraph(B);                    
-	if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
-    	p2 := Inverse(NautyCanonicalLabelling( gamma[1], gamma[2] ));
-	else
-    	p2 := Inverse(BlissCanonicalLabelling( gamma[1], gamma[2] ));
+	p1 := CanonisingMap(A);
+	p2 := CanonisingMap(B);
+
+	perm1 := p1[1]*Inverse(p2[1]);
+	perm2 := Inverse(p2[2])*p1[2];
+
+	if B = ImageOfHomogeneousCoherentConfiguration(A, perm1, perm2) then
+		return [perm1, perm2];
 	fi;
-
-	for perm in autA do
-		C := ReorderRelations(A, Concatenation([0], List([1 .. NumberOfClasses(A)], t -> t^(map*perm))));
-		gamma:=SchemeToGraph(C);
-		if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
-	    	p1 := NautyCanonicalLabelling( gamma[1], gamma[2] );
-		else
-			p1 := BlissCanonicalLabelling( gamma[1], gamma[2] );
-		fi;
-		p := p1 * p2;
-		if B = ImageOfHomogeneousCoherentConfiguration(A, p, map*perm) then
-			return [p, map*perm];
-		fi;
-	od;
 	return fail;
 end);
 
