@@ -51,6 +51,15 @@ DeclareAttribute( "AutomorphismGroup", IsHomogeneousCoherentConfiguration );
 
 #! @Chapter Homogeneous Coherent Configuration objects
 #! @Section Graphs, automorphisms, and maps
+#! @Arguments CC
+#! @Returns G
+#! @Description
+#!	Returns the algebraic automorphism group $G$ of the coherent configuration CC.
+#!	$G$ is a permutation group acting on the set of non-trivial relations.
+DeclareAttribute( "AlgebraicAutomorphismGroup", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Graphs, automorphisms, and maps
 #! @Arguments CC, p, $\sigma$
 #! @Returns true or false
 #! @Description
@@ -74,9 +83,25 @@ DeclareOperation("IsomorphismHomogeneousCoherentConfigurations", [IsHomogeneousC
 #! @Arguments A, B
 #! @Returns true or false
 #! @Description
+#! Returns a permutation which maps the set of relations of $A$ to $B$ such that the intersection numbers are preserved. Returns fail if such a bijection between relations does not exist.
+DeclareOperation("AlgebraicIsomorphismHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
+
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Graphs, automorphisms, and maps
+#! @Arguments A, B
+#! @Returns true or false
+#! @Description
 #! If there exists a permutation matrix $P$ and permutation $\sigma$ such that if $M$ is the relation matrix of $A$, then 
 #!	$P^{-1} M^\sigma P$ is the relation matrix of $B$, then the operation will return true. Returns false otherwise.
 DeclareOperation("AreIsomorphicHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
+
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Graphs, automorphisms, and maps
+#! @Arguments A, B
+#! @Returns true or false
+#! @Description
+#! Returns true if there exists a permutation which maps the set of relations of $A$ to $B$ such that the intersection numbers are preserved. Returns false otherwise.
+DeclareOperation("AreAlgebraicallyIsomorphicHomogeneousCoherentConfigurations", [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration]);
 
 #! @Chapter Homogeneous Coherent Configuration objects
 #! @Section Graphs, automorphisms, and maps

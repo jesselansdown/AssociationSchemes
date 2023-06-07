@@ -164,6 +164,11 @@ function( sch )
     return Action(aut,[1..n]);
 end);
 
+InstallMethod( AlgebraicAutomorphismGroup, [IsHomogeneousCoherentConfiguration],
+function( sch )
+    return AutomorphismGroup(IntersectionAlgebraOfHomogeneousCoherentConfiguration(sch));
+end);
+
 InstallMethod( ImageOfHomogeneousCoherentConfiguration, [IsHomogeneousCoherentConfiguration, IsPerm, IsPerm],
 function(A, p, perm)
 	local P, C;
@@ -241,9 +246,23 @@ function(A, B)
 	return fail;
 end);
 
+InstallMethod( AlgebraicIsomorphismHomogeneousCoherentConfigurations, [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
+function(A, B)
+	return IsomorphismIntersectionAlgebras(IntersectionAlgebraOfHomogeneousCoherentConfiguration(A), IntersectionAlgebraOfHomogeneousCoherentConfiguration(B));
+end);
+
 InstallMethod( AreIsomorphicHomogeneousCoherentConfigurations, [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
 function(A, B)
 	if IsomorphismHomogeneousCoherentConfigurations(A, B) <> fail then
+		return true;
+	else
+		return false;
+	fi;
+end);
+
+InstallMethod( AreAlgebraicallyIsomorphicHomogeneousCoherentConfigurations, [IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration],
+function(A, B)
+	if AlgebraicIsomorphismHomogeneousCoherentConfigurations(A, B) <> fail then
 		return true;
 	else
 		return false;
