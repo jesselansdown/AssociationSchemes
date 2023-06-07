@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "AssociationSchemes",
 Subtitle := "A GAP package for working with association schemes and homogeneous coherent configurations",
-Version := "2.1.0",
-Date := "17/06/2022", # dd/mm/yyyy format
+Version := "3.0.0",
+Date := "07/07/2023", # dd/mm/yyyy format
 
 Persons := [
 
@@ -53,16 +53,15 @@ Persons := [
     FirstNames := "Jesse",
     LastName := "Lansdown",
     WWWHome := "http://www.jesselansdown.com",
-    Email := "jesse.lansdown@research.uwa.edu.au",
+    Email := "jesse.lansdown@canterbury.ac.nz",
     PostalAddress := Concatenation(
                "Jesse Lansdown\n",
                "School of Mathematics and Statistics\n",
-               "The University of Western Australia\n",
-               "35 Stirling Highway\n",
-               "Crawley WA 6009, Perth\n",
-               "Australia" ),
-    Place := "Perth",
-    Institution := "The University of Western Australia/RWTH Aachen University",
+               "University of Canterbury\n",
+               "Christchurch 8140\n",
+               "New Zealand" ),
+    Place := "Christchurch",
+    Institution := "University of Canterbury",
   ),
 ],
 
@@ -124,7 +123,7 @@ TestFile := "tst/testall.g",
 #Keywords := [ "TODO" ],
 AutoDoc := rec(
     TitlePage := rec(
-        Copyright := Concatenation("&copyright; 2019 - 2022 John Bamberg, Akihide Hanaki, Jesse Lansdown<P/>\n\n",
+        Copyright := Concatenation("&copyright; 2019 - 2023 John Bamberg, Akihide Hanaki, Jesse Lansdown<P/>\n\n",
                     "This program is free software; you can redistribute it and/or ",
                     "modify it under the terms of the GNU General Public License ",
                     "as published by the Free Software Foundation; either version 2 ",
