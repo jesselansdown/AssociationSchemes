@@ -505,7 +505,15 @@
   [33X[0;0YReturns  the  automorphism  group [23XG[123X of the coherent configuration CC. [23XG[123X is a
   permutation group acting on the index set of the vertices.[133X
   
-  [1X3.4-4 ImageOfHomogeneousCoherentConfiguration[101X
+  [1X3.4-4 AlgebraicAutomorphismGroup[101X
+  
+  [33X[1;0Y[29X[2XAlgebraicAutomorphismGroup[102X( [3XCC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YG[133X
+  
+  [33X[0;0YReturns the algebraic automorphism group [23XG[123X of the coherent configuration CC.
+  [23XG[123X is a permutation group acting on the set of non-trivial relations.[133X
+  
+  [1X3.4-5 ImageOfHomogeneousCoherentConfiguration[101X
   
   [33X[1;0Y[29X[2XImageOfHomogeneousCoherentConfiguration[102X( [3XCC[103X, [3Xp[103X, [3X$\sigma$[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ytrue or false[133X
@@ -516,7 +524,7 @@
   configuration  with  relation  matrix  [23XP^{-1}  M^\sigma  P[123X,  where  [23XP[123X is the
   permutation matrix defined by [23X\sigma[123X.[133X
   
-  [1X3.4-5 IsomorphismHomogeneousCoherentConfigurations[101X
+  [1X3.4-6 IsomorphismHomogeneousCoherentConfigurations[101X
   
   [33X[1;0Y[29X[2XIsomorphismHomogeneousCoherentConfigurations[102X( [3XA[103X, [3XB[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ytrue or false[133X
@@ -527,7 +535,16 @@
   defining  [23XP[123X.  If  no such [23XP[123X and [23X\sigma[123X exist, then the operation will return
   fail.[133X
   
-  [1X3.4-6 AreIsomorphicHomogeneousCoherentConfigurations[101X
+  [1X3.4-7 AlgebraicIsomorphismHomogeneousCoherentConfigurations[101X
+  
+  [33X[1;0Y[29X[2XAlgebraicIsomorphismHomogeneousCoherentConfigurations[102X( [3XA[103X, [3XB[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YReturns  a  permutation  which maps the set of relations of [23XA[123X to [23XB[123X such that
+  the  intersection  numbers  are  preserved. Returns fail if such a bijection
+  between relations does not exist.[133X
+  
+  [1X3.4-8 AreIsomorphicHomogeneousCoherentConfigurations[101X
   
   [33X[1;0Y[29X[2XAreIsomorphicHomogeneousCoherentConfigurations[102X( [3XA[103X, [3XB[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ytrue or false[133X
@@ -536,7 +553,16 @@
   is  the  relation matrix of [23XA[123X, then [23XP^{-1} M^\sigma P[123X is the relation matrix
   of [23XB[123X, then the operation will return true. Returns false otherwise.[133X
   
-  [1X3.4-7 CanonisingMap[101X
+  [1X3.4-9 AreAlgebraicallyIsomorphicHomogeneousCoherentConfigurations[101X
+  
+  [33X[1;0Y[29X[2XAreAlgebraicallyIsomorphicHomogeneousCoherentConfigurations[102X( [3XA[103X, [3XB[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YReturns  true  if there exists a permutation which maps the set of relations
+  of  [23XA[123X  to  [23XB[123X such that the intersection numbers are preserved. Returns false
+  otherwise.[133X
+  
+  [1X3.4-10 CanonisingMap[101X
   
   [33X[1;0Y[29X[2XCanonisingMap[102X( [3XCC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Y[perm1, perm2][133X
@@ -547,7 +573,7 @@
   coherent  configuration  which  is  isomorphic to CC will the same canonical
   form.[133X
   
-  [1X3.4-8 CanonicalFormOfHomogeneousCoherentConfiguration[101X
+  [1X3.4-11 CanonicalFormOfHomogeneousCoherentConfiguration[101X
   
   [33X[1;0Y[29X[2XCanonicalFormOfHomogeneousCoherentConfiguration[102X( [3XCC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YCC2[133X
@@ -556,7 +582,7 @@
   CC.  Any  homogenouse  coherent configuration which is isomorphic to CC will
   have CC2 as the canonical form.[133X
   
-  [1X3.4-9 ConstructorGroup[101X
+  [1X3.4-12 ConstructorGroup[101X
   
   [33X[1;0Y[29X[2XConstructorGroup[102X( [3XCC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ygroup or false[133X
@@ -564,21 +590,21 @@
   [33X[0;0YChecks  if the coherent configuration was constructed by a group and returns
   it if it was, or returns false otherwise.[133X
   
-  [1X3.4-10 IsGenerouslyTransitive[101X
+  [1X3.4-13 IsGenerouslyTransitive[101X
   
   [33X[1;0Y[29X[2XIsGenerouslyTransitive[102X( [3XG[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ytrue or false[133X
   
   [33X[0;0YChecks if the permutation group [23XG[123X is generously transitive.[133X
   
-  [1X3.4-11 IsGenerouslyTransitive[101X
+  [1X3.4-14 IsGenerouslyTransitive[101X
   
   [33X[1;0Y[29X[2XIsGenerouslyTransitive[102X( [3XG[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ytrue or false[133X
   
   [33X[0;0YChecks that the permutation group [23XG[123X acts generously transitive on the set [23XL[123X.[133X
   
-  [1X3.4-12 IsSchurian[101X
+  [1X3.4-15 IsSchurian[101X
   
   [33X[1;0Y[29X[2XIsSchurian[102X( [3XCC[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ytrue or false[133X

@@ -99,15 +99,18 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X860EBD847DBEE0E4">3.4-1 Digraph</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F5760E97D92586F">3.4-2 Digraph</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7DC6AA86846CB888">3.4-3 AutomorphismGroup</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8165808287B61ACD">3.4-4 ImageOfHomogeneousCoherentConfiguration</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7CC1855982DF9DE4">3.4-5 IsomorphismHomogeneousCoherentConfigurations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8156304D817F8C22">3.4-6 AreIsomorphicHomogeneousCoherentConfigurations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A6C4BCF85A7027A">3.4-7 CanonisingMap</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X85BE27AA7ABB96CD">3.4-8 CanonicalFormOfHomogeneousCoherentConfiguration</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X792D264C80BA1A3B">3.4-9 ConstructorGroup</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E9D8FA485C36A2B">3.4-10 IsGenerouslyTransitive</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7DB4FFBC7C0A2173">3.4-11 IsGenerouslyTransitive</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8305508584992579">3.4-12 IsSchurian</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81B29FFB7BE27154">3.4-4 AlgebraicAutomorphismGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8165808287B61ACD">3.4-5 ImageOfHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7CC1855982DF9DE4">3.4-6 IsomorphismHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7FFF20617AC07CA6">3.4-7 AlgebraicIsomorphismHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8156304D817F8C22">3.4-8 AreIsomorphicHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X821D88D27F39224F">3.4-9 AreAlgebraicallyIsomorphicHomogeneousCoherentConfigurations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A6C4BCF85A7027A">3.4-10 CanonisingMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X85BE27AA7ABB96CD">3.4-11 CanonicalFormOfHomogeneousCoherentConfiguration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X792D264C80BA1A3B">3.4-12 ConstructorGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E9D8FA485C36A2B">3.4-13 IsGenerouslyTransitive</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7DB4FFBC7C0A2173">3.4-14 IsGenerouslyTransitive</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8305508584992579">3.4-15 IsSchurian</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X791CDD977B9FD97A">3.5 <span class="Heading">Fusions</span></a>
 </span>
@@ -763,9 +766,18 @@
 
 <p>Returns the automorphism group <span class="SimpleMath">\(G\)</span> of the coherent configuration CC. <span class="SimpleMath">\(G\)</span> is a permutation group acting on the index set of the vertices.</p>
 
+<p><a id="X81B29FFB7BE27154" name="X81B29FFB7BE27154"></a></p>
+
+<h5>3.4-4 AlgebraicAutomorphismGroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AlgebraicAutomorphismGroup</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: G</p>
+
+<p>Returns the algebraic automorphism group <span class="SimpleMath">\(G\)</span> of the coherent configuration CC. <span class="SimpleMath">\(G\)</span> is a permutation group acting on the set of non-trivial relations.</p>
+
 <p><a id="X8165808287B61ACD" name="X8165808287B61ACD"></a></p>
 
-<h5>3.4-4 ImageOfHomogeneousCoherentConfiguration</h5>
+<h5>3.4-5 ImageOfHomogeneousCoherentConfiguration</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ImageOfHomogeneousCoherentConfiguration</code>( <var class="Arg">CC</var>, <var class="Arg">p</var>, <var class="Arg">$\sigma$</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: true or false</p>
@@ -774,25 +786,43 @@
 
 <p><a id="X7CC1855982DF9DE4" name="X7CC1855982DF9DE4"></a></p>
 
-<h5>3.4-5 IsomorphismHomogeneousCoherentConfigurations</h5>
+<h5>3.4-6 IsomorphismHomogeneousCoherentConfigurations</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismHomogeneousCoherentConfigurations</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: true or false</p>
 
 <p>If there exists a permutation matrix <span class="SimpleMath">\(P\)</span> and permutation <span class="SimpleMath">\(\sigma\)</span> such that if <span class="SimpleMath">\(M\)</span> is the relation matrix of <span class="SimpleMath">\(A\)</span>, then <span class="SimpleMath">\(P^{-1} M^\sigma P\)</span> is the relation matrix of <span class="SimpleMath">\(B\)</span>, then the operation will return <span class="SimpleMath">\([p, \sigma]\)</span>, where <span class="SimpleMath">\(p\)</span> is the permutation defining <span class="SimpleMath">\(P\)</span>. If no such <span class="SimpleMath">\(P\)</span> and <span class="SimpleMath">\(\sigma\)</span> exist, then the operation will return fail.</p>
 
+<p><a id="X7FFF20617AC07CA6" name="X7FFF20617AC07CA6"></a></p>
+
+<h5>3.4-7 AlgebraicIsomorphismHomogeneousCoherentConfigurations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AlgebraicIsomorphismHomogeneousCoherentConfigurations</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Returns a permutation which maps the set of relations of <span class="SimpleMath">\(A\)</span> to <span class="SimpleMath">\(B\)</span> such that the intersection numbers are preserved. Returns fail if such a bijection between relations does not exist.</p>
+
 <p><a id="X8156304D817F8C22" name="X8156304D817F8C22"></a></p>
 
-<h5>3.4-6 AreIsomorphicHomogeneousCoherentConfigurations</h5>
+<h5>3.4-8 AreIsomorphicHomogeneousCoherentConfigurations</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AreIsomorphicHomogeneousCoherentConfigurations</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: true or false</p>
 
 <p>If there exists a permutation matrix <span class="SimpleMath">\(P\)</span> and permutation <span class="SimpleMath">\(\sigma\)</span> such that if <span class="SimpleMath">\(M\)</span> is the relation matrix of <span class="SimpleMath">\(A\)</span>, then <span class="SimpleMath">\(P^{-1} M^\sigma P\)</span> is the relation matrix of <span class="SimpleMath">\(B\)</span>, then the operation will return true. Returns false otherwise.</p>
 
+<p><a id="X821D88D27F39224F" name="X821D88D27F39224F"></a></p>
+
+<h5>3.4-9 AreAlgebraicallyIsomorphicHomogeneousCoherentConfigurations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AreAlgebraicallyIsomorphicHomogeneousCoherentConfigurations</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Returns true if there exists a permutation which maps the set of relations of <span class="SimpleMath">\(A\)</span> to <span class="SimpleMath">\(B\)</span> such that the intersection numbers are preserved. Returns false otherwise.</p>
+
 <p><a id="X7A6C4BCF85A7027A" name="X7A6C4BCF85A7027A"></a></p>
 
-<h5>3.4-7 CanonisingMap</h5>
+<h5>3.4-10 CanonisingMap</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CanonisingMap</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: [perm1, perm2]</p>
@@ -801,7 +831,7 @@
 
 <p><a id="X85BE27AA7ABB96CD" name="X85BE27AA7ABB96CD"></a></p>
 
-<h5>3.4-8 CanonicalFormOfHomogeneousCoherentConfiguration</h5>
+<h5>3.4-11 CanonicalFormOfHomogeneousCoherentConfiguration</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CanonicalFormOfHomogeneousCoherentConfiguration</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: CC2</p>
@@ -810,7 +840,7 @@
 
 <p><a id="X792D264C80BA1A3B" name="X792D264C80BA1A3B"></a></p>
 
-<h5>3.4-9 ConstructorGroup</h5>
+<h5>3.4-12 ConstructorGroup</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ConstructorGroup</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: group or false</p>
@@ -819,7 +849,7 @@
 
 <p><a id="X7E9D8FA485C36A2B" name="X7E9D8FA485C36A2B"></a></p>
 
-<h5>3.4-10 IsGenerouslyTransitive</h5>
+<h5>3.4-13 IsGenerouslyTransitive</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsGenerouslyTransitive</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: true or false</p>
@@ -828,7 +858,7 @@
 
 <p><a id="X7DB4FFBC7C0A2173" name="X7DB4FFBC7C0A2173"></a></p>
 
-<h5>3.4-11 IsGenerouslyTransitive</h5>
+<h5>3.4-14 IsGenerouslyTransitive</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsGenerouslyTransitive</code>( <var class="Arg">G</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: true or false</p>
@@ -837,7 +867,7 @@
 
 <p><a id="X8305508584992579" name="X8305508584992579"></a></p>
 
-<h5>3.4-12 IsSchurian</h5>
+<h5>3.4-15 IsSchurian</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSchurian</code>( <var class="Arg">CC</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: true or false</p>

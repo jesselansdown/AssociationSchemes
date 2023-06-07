@@ -12,6 +12,8 @@
       for IsIntersectionAlgebraObject 4.6-3 
   [2XAdmitsQPolynomialOrdering[102X, for IsHomogeneousCoherentConfiguration 3.8-1 
       for IsIntersectionAlgebraObject 4.7-1 
+  [2XAlgebraicAutomorphismGroup[102X, for IsHomogeneousCoherentConfiguration 3.4-4 
+  [2XAlgebraicIsomorphismHomogeneousCoherentConfigurations[102X, for IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration 3.4-7 
   [2XAllCometricOrderings[102X, for IsHomogeneousCoherentConfiguration 3.8-6 
       for IsIntersectionAlgebraObject 4.7-6 
   [2XAllFusionsOfHomgeneousCoherentConfiguration[102X, for IsHomogeneousCoherentConfiguration 3.5-10 
@@ -32,8 +34,9 @@
   [2XApproximateRealMatrixOfEigenvalues[102X, for IsHomogeneousCoherentConfiguration 3.10-3 
   [2XApproximateRealMinimalIdempotent[102X, for IsHomogeneousCoherentConfiguration, IsInt 3.10-1 
   [2XApproximateRealMinimalIdempotents[102X, for IsHomogeneousCoherentConfiguration 3.10-2 
+  [2XAreAlgebraicallyIsomorphicHomogeneousCoherentConfigurations[102X, for IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration 3.4-9 
   [2XAreDesignOrthogonal[102X, for IsHomogeneousCoherentConfiguration, IsList, IsList 3.9-13 
-  [2XAreIsomorphicHomogeneousCoherentConfigurations[102X, for IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration 3.4-6 
+  [2XAreIsomorphicHomogeneousCoherentConfigurations[102X, for IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration 3.4-8 
   [2XAreIsomorphicIntersectionAlgebras[102X, for IsIntersectionAlgebraObject, IsIntersectionAlgebraObject 4.3-5 
   [2XAssociationScheme[102X, for IsMatrix 3.1-3 
   [2XAssociationSchemeNC[102X, for IsMatrix 3.1-4 
@@ -43,9 +46,9 @@
   [2XBilinearFormsScheme[102X, for IsField, IsPosInt, IsPosInt 3.2-5 
   [2XBipartiteDoubleOfAssociationScheme[102X, for IsHomogeneousCoherentConfiguration 3.2-13 
   [2XBoseMesnerAlgebra[102X, for IsHomogeneousCoherentConfiguration 3.11-1 
-  [2XCanonicalFormOfHomogeneousCoherentConfiguration[102X, for IsHomogeneousCoherentConfiguration 3.4-8 
+  [2XCanonicalFormOfHomogeneousCoherentConfiguration[102X, for IsHomogeneousCoherentConfiguration 3.4-11 
   [2XCanonicalFormOfIntersectionAlgebra[102X, for IsIntersectionAlgebraObject 4.3-7 
-  [2XCanonisingMap[102X, for IsHomogeneousCoherentConfiguration 3.4-7 
+  [2XCanonisingMap[102X, for IsHomogeneousCoherentConfiguration 3.4-10 
       for IsIntersectionAlgebraObject 4.3-6 
   [2XCentralIdempotentsOfIntersectionAlgebra[102X, for IsIntersectionAlgebraObject 4.5-1 
   [2XCentralIdempotentsOfIntersectionAlgebraOverRationals[102X, for IsIntersectionAlgebraObject 4.5-2 
@@ -55,7 +58,7 @@
   [2XCharacterTableOfSchurianHomogeneousCoherentConfiguration[102X, for IsHomogeneousCoherentConfiguration 3.6-10 
   [2XClassicalParameters[102X, for IsHomogeneousCoherentConfiguration 3.7-11 
       for IsIntersectionAlgebraObject 4.6-10 
-  [2XConstructorGroup[102X, for IsHomogeneousCoherentConfiguration 3.4-9 
+  [2XConstructorGroup[102X, for IsHomogeneousCoherentConfiguration 3.4-12 
   [2XConverseRelation[102X, for IsHomogeneousCoherentConfiguration, IsInt 3.5-4 
       for IsIntersectionAlgebraObject, IsInt 4.4-4 
   [2XConverseRelationPairs[102X, for IsHomogeneousCoherentConfiguration 3.5-3 
@@ -104,7 +107,7 @@
   [2XHomogeneousCoherentConfigurationByOrbitals[102X, for IsGroup, IsGroup 3.2-16 
       for IsPermGroup 3.2-15 
   [2XHomogeneousCoherentConfigurationNC[102X, for IsMatrix 3.1-2 
-  [2XImageOfHomogeneousCoherentConfiguration[102X, for IsHomogeneousCoherentConfiguration, IsPerm, IsPerm 3.4-4 
+  [2XImageOfHomogeneousCoherentConfiguration[102X, for IsHomogeneousCoherentConfiguration, IsPerm, IsPerm 3.4-5 
   [2XImageOfIntersectionAlgebra[102X, for IsIntersectionAlgebraObject, IsPerm 4.3-3 
   [2XInnerDistribution[102X, for IsHomogeneousCoherentConfiguration, IsList 3.9-3 
   [2XIntersectionAlgebra[102X, for IsList 4.1-2 
@@ -129,12 +132,12 @@
   [2XIsFusionOfHomogeneousCoherentConfiguration[102X, for IsHomogeneousCoherentConfiguration, IsList 3.5-1 
       for IsIntersectionAlgebraObject, IsList 4.2-8 
   [2XIsFusionOfIntersectionAlgebra[102X, for IsIntersectionAlgebraObject, IsList 4.4-1 
-  [2XIsGenerouslyTransitive[102X, for IsPermGroup 3.4-10 
-      for IsPermGroup, IsList 3.4-11 
+  [2XIsGenerouslyTransitive[102X, for IsPermGroup 3.4-13 
+      for IsPermGroup, IsList 3.4-14 
   [2XIsIsomorphicToFusionScheme[102X, for IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration 3.5-15 
   [2XIsMetric[102X, for IsHomogeneousCoherentConfiguration 3.7-4 
       for IsIntersectionAlgebraObject 4.6-4 
-  [2XIsomorphismHomogeneousCoherentConfigurations[102X, for IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration 3.4-5 
+  [2XIsomorphismHomogeneousCoherentConfigurations[102X, for IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration 3.4-6 
   [2XIsomorphismIntersectionAlgebras[102X, for IsIntersectionAlgebraObject, IsIntersectionAlgebraObject 4.3-4 
   [2XIsomorphismToFusionScheme[102X, for IsHomogeneousCoherentConfiguration, IsHomogeneousCoherentConfiguration 3.5-14 
   [2XIsPAntipodal[102X, for IsHomogeneousCoherentConfiguration 3.7-14 
@@ -151,7 +154,7 @@
   [2XIsQPolynomial[102X, for IsHomogeneousCoherentConfiguration 3.8-3 
       for IsIntersectionAlgebraObject 4.7-3 
   [2XIsQuasiThin[102X, for IsHomogeneousCoherentConfiguration 3.1-29 
-  [2XIsSchurian[102X, for IsHomogeneousCoherentConfiguration 3.4-12 
+  [2XIsSchurian[102X, for IsHomogeneousCoherentConfiguration 3.4-15 
   [2XIsStratifiable[102X, for IsHomogeneousCoherentConfiguration 3.5-5 
       for IsIntersectionAlgebraObject 4.4-5 
   [2XIsStronglyRegularGraph[102X, for IsHomogeneousCoherentConfiguration 3.7-9 
