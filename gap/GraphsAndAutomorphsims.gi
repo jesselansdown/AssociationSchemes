@@ -271,48 +271,58 @@ end);
 
 InstallMethod( CanonisingMap, [IsHomogeneousCoherentConfiguration],
 function(A)
-	local algA, algB, map, autA, gamma, perm, p1, p2, C, best, best_map1, best_map2, B, ords, ord; 
+	local n, r, gamma, p2, z, perm, gamma2, alllayers, colours2, p, SchemeToEdgeColourInterchangableDigraph;
 
-	if AdmitsMetricOrdering(A) then
-		map:=();;
-		autA := [];
-		ords := MutableCopyMat(AllMetricOrderings(A));
-		for ord in ords do
-			Remove(ord, 1);
-			perm:=PermList(ord);;
-			Add(autA, perm);
+	SchemeToEdgeColourInterchangableDigraph := function( A )
+		local n, r, M, adjacencies, i, j, k, x, y, gamma, p, canonical_digraph, colourClasses;
+		n:=Order(A);
+		r:=Rank(A);
+		M:=RelationMatrix(A);;
+		adjacencies := List([1 .. n*r+r], t -> []);
+		for i in [1 .. n] do
+			for j in [1 .. n] do
+				if i <> j then
+					k := M[i, j];
+					Add(adjacencies[ n*(k-1) + i], n*(k-1) + j);
+				fi;
+			od;
 		od;
-	else
-		algA :=IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);;
-		map := CanonisingMap(algA);
-		if map = fail then
-			return fail;
-		fi;
-		autA := AutomorphismGroup(algA);
-	fi;
-	best:=false;
-	best_map1:=();
-	best_map2:=();
-	for perm in autA do
-		C := ReorderRelations(A, Concatenation([0], List([1 .. NumberOfClasses(A)], t -> t^(map*perm))));
-		gamma:=SchemeToGraph(C);
-		if "nautytracesinterface" in RecNames(GAPInfo.PackagesLoaded) then
-	    	p1 := NautyCanonicalLabelling( gamma[1], gamma[2] );
-		else
-			p1 := BlissCanonicalLabelling( gamma[1], gamma[2] );
-		fi;
-		B := ImageOfHomogeneousCoherentConfiguration(A, p1, map*perm);
-		if best = false then
-			best:=B;
-			best_map1 := p1;
-			best_map2 := map*perm;
-		elif B < best then
-			best:=B;
-			best_map1 := p1;
-			best_map2 := map*perm;
-		fi;
-	od;
-	return [best_map1, best_map2];
+		for x in [1 .. r] do
+			for i in [1 .. n] do
+				Add(adjacencies[n*(x-1) + i], r*n + x);
+			od;
+		od;
+		for i in [1 .. n] do
+			for x in [1 .. r] do
+				for y in [x+1 .. r] do
+					Add(adjacencies[n*(x-1) + i], n*(y-1) + i);
+					Add(adjacencies[n*(y-1) + i], n*(x-1) + i);
+				od;
+			od;
+		od;
+
+		gamma := Digraph( adjacencies);
+		colourClasses := [[1 .. n*r], [n*r+1 .. n*r+r]];
+
+		return [gamma, colourClasses];
+	end;
+
+	n:=Order(A);
+	r:=Rank(A);
+	gamma:=SchemeToEdgeColourInterchangableDigraph(A);
+	p2 := BlissCanonicalLabelling(gamma[1], gamma[2]);
+	z:=[n*r+1 .. n*r + r];;
+	z:=OnTuples(z, p2);
+	z:=z - r*n;
+	perm := PermList(z);
+
+	gamma2 := OnDigraphs(gamma[1], p2);
+	alllayers := List([n*r+1 .. n*r+r], t -> InNeighboursOfVertex(gamma2, t) );
+	colours2:=Concatenation(alllayers, List(gamma[2][2], t -> [t]));
+	p := BlissCanonicalLabelling(gamma2, colours2);
+	p:=PermList(List([(n*(1^Inverse(perm) -1)) + 1 .. (n*(1^Inverse(perm) -1)) + n], t -> t^(p2*p)));
+
+	return [p, Inverse(perm)];
 end);
 
 InstallMethod(CanonicalFormOfHomogeneousCoherentConfiguration, [IsHomogeneousCoherentConfiguration],
