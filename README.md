@@ -1,6 +1,6 @@
 # AssociationSchemes
 
-* Jesse Lansdown (jesse.lansdown@research.uwa.edu.au)
+* Jesse Lansdown (jesse.lansdown@canterbury.ac.nz)
 * John Bamberg (john.bamberg@uwa.edu.au)
 * Akihide Hanaki (hanaki@shinshu-u.ac.jp)
 
