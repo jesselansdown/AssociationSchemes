@@ -50,5 +50,5 @@ For bug reports, feature requests and suggestions, please use the
 [issue tracker]({{site.github.issues_url}}).
 {% endif %}
 
-## Other
+## Previous versions
 Interested in an older version? Look [here](https://doi.org/10.5281/zenodo.2634954).
