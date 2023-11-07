@@ -254,7 +254,7 @@ InstallMethod( IsPBipartite, [IsHomogeneousCoherentConfiguration],
 InstallMethod( IsPAntipodal, [IsHomogeneousCoherentConfiguration],
   function(A)
     local j, d;
-    if not IsCometric(A) then
+    if not IsMetric(A) then
       Error("Homogeneous coherent configuration must be metric!\n");
     fi;
     d:=NumberOfClasses(A);;
