@@ -117,9 +117,9 @@ InstallMethod(AvailableHomogeneousCoherentConfigurations,
 	if not Order(A) in AvailableHomogeneousCoherentConfigurations() then
 		Error("This only works for small schemes with order in the database:\n", AvailableHomogeneousCoherentConfigurations(), "\n");
 	fi;
-	if IsThin(A) then
-		Error("Only non-thin coherent configurations are contained in the database.\n");
-	fi;
+#	if IsThin(A) then
+#		Error("Only non-thin coherent configurations are contained in the database.\n");
+#	fi;
 	filename := Concatenation(GAPInfo.PackagesInfo.associationschemes[1].InstallationPath,
 		 "/library/AssociationSchemeWithSmallVerticesTable.g");
 	strm :=InputTextFile(filename);;
