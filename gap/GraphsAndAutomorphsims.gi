@@ -189,30 +189,30 @@ function(A, B)
 		return fail;
 	fi;
 
-	if Collected(Valencies(A)) <> Collected(Valencies(B)) then
-		return fail;
-	fi;
+#	if Collected(Valencies(A)) <> Collected(Valencies(B)) then
+#		return fail;
+#	fi;
 
-	if IsAssociationScheme(A) <> IsAssociationScheme(B) then
-		return fail;
-	fi;
+#	if IsAssociationScheme(A) <> IsAssociationScheme(B) then
+#		return fail;
+#	fi;
 
-	if IsCommutative(A) <> IsCommutative(B) then
-		return fail;
-	fi;
+#	if IsCommutative(A) <> IsCommutative(B) then
+#		return fail;
+#	fi;
 
-	charpolysA := List(IntersectionMatrices(A), CharacteristicPolynomial);;
-	charpolysB := List(IntersectionMatrices(A), CharacteristicPolynomial);;
-	if Collected(charpolysA) <> Collected(charpolysB) then
-		return fail;
-	fi;
+#	charpolysA := List(IntersectionMatrices(A), CharacteristicPolynomial);;
+#	charpolysB := List(IntersectionMatrices(A), CharacteristicPolynomial);;
+#	if Collected(charpolysA) <> Collected(charpolysB) then
+#		return fail;
+#	fi;
 
-	algA :=IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);;
-	algB :=IntersectionAlgebraOfHomogeneousCoherentConfiguration(B);;
-	map := IsomorphismIntersectionAlgebras(algA, algB);
-	if map = fail then
-		return fail;
-	fi;
+#	algA :=IntersectionAlgebraOfHomogeneousCoherentConfiguration(A);;
+#	algB :=IntersectionAlgebraOfHomogeneousCoherentConfiguration(B);;
+#	map := IsomorphismIntersectionAlgebras(algA, algB);
+#	if map = fail then
+#		return fail;
+#	fi;
 
 	p1 := CanonisingMap(A);
 	p2 := CanonisingMap(B);
