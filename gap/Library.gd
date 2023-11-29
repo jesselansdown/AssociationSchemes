@@ -28,7 +28,7 @@
 #! @Returns homogeneous coherent configuration
 #! @Description
 #!	Returns the $k$-th homogeneous coherent configuration of order $n$. Library is complete for $5 \le n \le 38$ excluding
-#!	$n \in \{31, 35, 36, 37\}$, corresponding to <Cite Key="Hanaki"/>.
+#!	$n \in \{35, 36, 37\}$, corresponding to <Cite Key="Hanaki"/>. Thin schemes are are assigned numbers after those in <Cite Key="Hanaki"/>.
 DeclareOperation( "HomogeneousCoherentConfiguration", [ IsPosInt, IsPosInt ] );
 
 #! @Chapter Homogeneous Coherent Configuration objects
