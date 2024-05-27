@@ -44,8 +44,8 @@ InstallMethod(TerwilligerAlgebra,
   function(A, p)
     local am, F, i, j, d, nei, m, n;
 #    F := CF(Maximum(List(Union(MatrixOfEigenvalues(A)), Conductor)));
-    F := DefaultFieldOfMatrix(MatrixOfEigenvalues(A));
-    am := MutableCopyMat(AdjacencyMatrices(A));
+    F := DefaultFieldOfMatrix(MatrixOfEigenvalues(A));;
+    am:=List(AdjacencyMatrices(A), t -> MutableCopyMatrix(t));;
     d := NumberOfClasses(A);
     n := Order(A);
     for i in [0.. d] do
@@ -62,7 +62,7 @@ InstallMethod(TerwilligerAlgebra,
         Add(am, m);
     od;
         
-    am := List(am, i -> i * One(F));
+    am := List(am, i -> i * One(F));;
     return Algebra(F, am);
   end);
 

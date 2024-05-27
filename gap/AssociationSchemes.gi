@@ -889,11 +889,11 @@ InstallMethod(IsPrimitive,
 		    e := AdjacencyMatrices(A)[1] + AdjacencyMatrices(A)[i+1];
 		    m := Sum(e[1]);
 		    while (e^2 <> m * e) do
-		        e := _ToOne(MutableCopyMat(e^2));    
+		        e := _ToOne(MutableCopyMatrix(e^2));    
 		        m := Sum(e[1]);
 		    od;
 	    
-		    if _Mat2List(RelationMatrix(A), MutableCopyMat(e)) <> [0..d] then
+		    if _Mat2List(RelationMatrix(A), MutableCopyMatrix(e)) <> [0..d] then
 		    	return false;
 		    fi;
 		od;

@@ -70,7 +70,7 @@ InstallMethod(FusionOfHomogeneousCoherentConfiguration,
 			Error("Must give a valid fusion!\n");
 		fi;
 
-		fuse:=MutableCopyMat(fuse1);;
+		fuse:=MutableCopyMatrix(fuse1);;
 		Sort(fuse);
 		mat :=  NullMat(Order(a), Order(a));
 		m:=RelationMatrix(a);;
@@ -719,7 +719,7 @@ InstallMethod(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguratio
 			return true;
 		end;
 
-		map:=MutableCopyMat(ConverseRelationPairs(A));
+		map:=MutableCopyMatrix(ConverseRelationPairs(A));
  	    if HasFeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) then
  	    	good:=[];
  	    	for current in FeasibleNonTrivialFusionsOfHomgeneousCoherentConfiguration(A) do
@@ -844,7 +844,7 @@ InstallOtherMethod(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfigu
  	    	return Filtered(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)=r+1);
  	    fi;
 
-		map:=MutableCopyMat(ConverseRelationPairs(A));
+		map:=MutableCopyMatrix(ConverseRelationPairs(A));
 		Remove(map, 1);
 		good :=[];
 		stack :=[[]];
@@ -969,7 +969,7 @@ InstallOtherMethod(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfigu
  	    	return Filtered(FeasibleNonTrivialSymmetricFusionsOfHomgeneousCoherentConfiguration(A), t -> Size(t)<=r+1);
  	    fi;
 
-		map:=MutableCopyMat(ConverseRelationPairs(A));
+		map:=MutableCopyMatrix(ConverseRelationPairs(A));
 		Remove(map, 1);
 		good :=[];
 		stack :=[[]];

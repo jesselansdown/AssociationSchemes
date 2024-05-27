@@ -249,7 +249,7 @@ InstallMethod( MatrixOfDualEigenvalues,
 			od;
 		end;
 
-		perm:=MutableCopyMat(FirstMetricOrdering(A));
+		perm:=MutableCopyMatrix([FirstMetricOrdering(A)])[1];
 		Remove(perm, 1);
 		perm:=PermList(perm);
 		B:=ReorderRelations(A, Concatenation([0], Permuted([1 .. NumberOfClasses(A)], Inverse(perm))));
@@ -488,7 +488,7 @@ InstallMethod( MatrixOfEigenvaluesViaBacktrack,
 			end;
 
 			if IsPrimePowerInt(Order(A)) and (Order(A)-1) mod NumberOfClasses(A) = 0 and Size(Set(Valencies(A){[2..NumberOfClasses(A)+1]}))=1 and Size(Set(List(IntersectionMatrices(A), CharacteristicPolynomial)))=2 then
-				eigs:=MutableCopyMat(TransposedMat(MatrixOfEigenvaluesOfCyclotomicScheme(Order(A), NumberOfClasses(A))));
+				eigs:=MutableCopyMatrix(TransposedMat(MatrixOfEigenvaluesOfCyclotomicScheme(Order(A), NumberOfClasses(A))));
 				inter:=IntersectionMatrices(A);
 				polys:=List(inter, CharacteristicPolynomial);
 				if not ForAll([1.. NumberOfClasses(A)+1], t -> ForAll(eigs[t], x -> IsZero(Value(polys[t], x)))) then

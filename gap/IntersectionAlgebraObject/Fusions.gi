@@ -70,7 +70,7 @@ InstallMethod(FusionOfIntersectionAlgebra,
 			Error("Must give a valid fusion!\n");
 		fi;
 
-		fuse:=MutableCopyMat(fuse1);;
+		fuse:=MutableCopyMatrix(fuse1);;
 		Sort(fuse);
 		d2:=Size(fuse)-1;;
 		intersection_mats := List([1 .. Size(fuse1)], t -> NullMat(Size(fuse1), Size(fuse1)));;
@@ -570,7 +570,7 @@ InstallMethod(FeasibleNonTrivialSymmetricFusionsOfIntersectionAlgebra,
 			return true;
 		end;
 
-		map:=MutableCopyMat(ConverseRelationPairs(A));
+		map:=MutableCopyMatrix(ConverseRelationPairs(A));
  	    if HasFeasibleNonTrivialFusionsOfIntersectionAlgebra(A) then
  	    	good:=[];
  	    	for current in FeasibleNonTrivialFusionsOfIntersectionAlgebra(A) do
@@ -695,7 +695,7 @@ InstallOtherMethod(FeasibleNonTrivialSymmetricFusionsOfIntersectionAlgebra,
  	    	return Filtered(FeasibleNonTrivialSymmetricFusionsOfIntersectionAlgebra(A), t -> Size(t)=r+1);
  	    fi;
 
-		map:=MutableCopyMat(ConverseRelationPairs(A));
+		map:=MutableCopyMatrix(ConverseRelationPairs(A));
 		Remove(map, 1);
 		good :=[];
 		stack :=[[]];
@@ -820,7 +820,7 @@ InstallOtherMethod(FeasibleNonTrivialSymmetricFusionsOfIntersectionAlgebra,
  	    	return Filtered(FeasibleNonTrivialSymmetricFusionsOfIntersectionAlgebra(A), t -> Size(t)<=r+1);
  	    fi;
 
-		map:=MutableCopyMat(ConverseRelationPairs(A));
+		map:=MutableCopyMatrix(ConverseRelationPairs(A));
 		Remove(map, 1);
 		good :=[];
 		stack :=[[]];
@@ -981,7 +981,7 @@ InstallMethod(FirstFeasibleNonTrivialSymmetricFusionOfIntersectionAlgebra,
 			return  ConverseRelationPairs(A);
 		fi;
 
-		map:=MutableCopyMat(ConverseRelationPairs(A));
+		map:=MutableCopyMatrix(ConverseRelationPairs(A));
  	    if HasFeasibleNonTrivialFusionsOfIntersectionAlgebra(A) then
  	    	good:=[];
  	    	for current in FeasibleNonTrivialFusionsOfIntersectionAlgebra(A) do

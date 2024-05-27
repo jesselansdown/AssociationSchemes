@@ -119,10 +119,10 @@ InstallMethod(IntersectionAlgebraFromIntersectionArray,
 		end;
 
 		d:=Size(inter[1]);
-		b:= MutableCopyMat(inter[1]);;
+		b:= MutableCopyMatrix([inter[1]])[1];;
 		k0:=b[1];
 		Add(b, 0);;
-		c:= MutableCopyMat(inter[2]);;
+		c:= MutableCopyMatrix([inter[2]])[1];;
 		c:=Concatenation([0], c);;
 		a := List([0 .. d], t -> k0 - b[t+1] - c[t+1]);;
 		Add(a, 0);;
