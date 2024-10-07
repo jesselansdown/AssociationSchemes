@@ -89,7 +89,7 @@ InstallMethod(FusionOfHomogeneousCoherentConfiguration,
 
 		m2 := HomogeneousCoherentConfigurationNC(mat);
 
-		if HasMatrixOfEigenvalues(a) then
+		if HasMatrixOfEigenvalues(a) and MatrixOfEigenvalues(a) <> fail then
 			S:=NullMat(NumberOfClasses(a)+1, Size(fuse));
 			for i in [1 .. Size(fuse)] do
 				for j in [1 .. Size(fuse[i])] do
