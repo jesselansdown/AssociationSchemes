@@ -20,9 +20,9 @@ Please also inform us by email of the paper, as we are very interested to hear h
 #!	Doi = {10.5281/zenodo.2634954},
 #!	Key = {AssociationSchemes},
 #!	Title = {{AssociationSchemes -- AssociationSchemes: A GAP package for working
-#!	with association schemes and homogeneous coherent configurations, Version 3.0.0}},
+#!	with association schemes and homogeneous coherent configurations, Version 3.1.0}},
 #!	Url = {https://doi.org/10.5281/zenodo.2634954},
-#!	Year = 2023	,
+#!	Year = 2024	,
 #!	}
 @EndLog
 
@@ -30,7 +30,7 @@ Please also inform us by email of the paper, as we are very interested to hear h
 
 AssociationSchemes requires
 
-* &GAP; 4.8 (or later)
+* &GAP; 4.13 (or later)
 
 as well as the following &GAP; packages:
 
@@ -85,7 +85,7 @@ Alternatively, you may load the package from a location other than the &GAP; "pk
 
 * Homepage: http://www.jesselansdown.com/AssociationSchemes
 * Issue tracker: https://github.com/jesselansdown/AssociationSchemes/issues
-* DOI: 10.5281/zenodo.2634955
+* DOI: 10.5281/zenodo.2634954
 
 	@Section &GAP; Links
 

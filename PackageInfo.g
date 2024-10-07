@@ -104,7 +104,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.9",
+  GAP := ">= 4.13",
   NeededOtherPackages := [
   ["GRAPE", ">=4.8.1"],
   ["Digraphs", ">=0.13.0"],
@@ -123,7 +123,7 @@ TestFile := "tst/testall.g",
 #Keywords := [ "TODO" ],
 AutoDoc := rec(
     TitlePage := rec(
-        Copyright := Concatenation("&copyright; 2019 - 2023 John Bamberg, Akihide Hanaki, Jesse Lansdown<P/>\n\n",
+        Copyright := Concatenation("&copyright; 2019 - 2024 John Bamberg, Akihide Hanaki, Jesse Lansdown<P/>\n\n",
                     "This program is free software; you can redistribute it and/or ",
                     "modify it under the terms of the GNU General Public License ",
                     "as published by the Free Software Foundation; either version 2 ",
