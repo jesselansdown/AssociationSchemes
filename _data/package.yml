@@ -1,6 +1,6 @@
 name: AssociationSchemes
-version: "3.0.0"
-date: 2023-07-07
+version: "3.1.0"
+date: 2024-10-07
 description: |
     A GAP package for working with association schemes and homogeneous coherent configurations
 
@@ -20,7 +20,7 @@ maintainers:
     - name: Jesse Lansdown
       url: http://www.jesselansdown.com
 
-GAP: ">= 4.9"
+GAP: ">= 4.13"
 
 needed-pkgs:
     - name: "GRAPE"
@@ -36,6 +36,7 @@ needed-pkgs:
 suggested-pkgs:
     - name: "NautyTracesInterface"
       version: ">=0.2"
+      url: "https://gap-packages.github.io/NautyTracesInterface/"
 
 www: http://www.jesselansdown.com/AssociationSchemes
 readme: README.md
@@ -43,7 +44,7 @@ packageinfo: http://www.jesselansdown.com/AssociationSchemes/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/jesselansdown/AssociationSchemes/releases/download/v3.0.0/AssociationSchemes-3.0.0.tar.gz
+      url: https://github.com/jesselansdown/AssociationSchemes/releases/download/v3.1.0/AssociationSchemes-3.1.0.tar.gz
 
 abstract: |
 
@@ -52,28 +53,28 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BHL23</span>]   <b class='BibAuthor'>Bamberg, J., Hanaki, A. and Lansdown, J.</b>,
+    [<span class='BibKey'>BHL24</span>]   <b class='BibAuthor'>Bamberg, J., Hanaki, A. and Lansdown, J.</b>,
      <i class='BibTitle'>AssociationSchemes, A GAP package for working with association schemes and homogeneous coherent configurations,
-             Version 3.0.0</i>
-     (<span class='BibYear'>2023</span>)<br />
+             Version 3.1.0</i>
+     (<span class='BibYear'>2024</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="http://www.jesselansdown.com/AssociationSchemes">http://www.jesselansdown.com/AssociationSchemes</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ AssociationSchemes3.0.0,
+    @misc{ AssociationSchemes3.1.0,
       author =           {Bamberg, J. and Hanaki, A. and Lansdown, J.},
       title =            {{AssociationSchemes},  A  GAP package for working with
                           association    schemes    and   homogeneous   coherent
-                          configurations, {V}ersion 3.0.0},
-      month =            {Jul},
-      year =             {2023},
+                          configurations, {V}ersion 3.1.0},
+      month =            {Oct},
+      year =             {2024},
       note =             {GAP package},
       howpublished =     {\href
                           {http://www.jesselansdown.com/AssociationSchemes}
                           {\texttt{http://www.jesselansdown.com/}\discretionary
                           {}{}{}\texttt{AssociationSchemes}}},
-      printedkey =       {BHL23}
+      printedkey =       {BHL24}
     }
 

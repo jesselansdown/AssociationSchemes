@@ -7,10 +7,10 @@
                                 configurations [101X
   
   
-                                     3.0.0
+                                     3.1.0
   
   
-                                  7 July 2023
+                                 7 October 2024
   
   
                                   John Bamberg
@@ -42,13 +42,13 @@
   
   
   Jesse Lansdown
-      Email:    [7Xmailto:jesse.lansdown@canterbury.ac.nz[107X
+      Email:    [7Xmailto:jesse.lansdown.a1@tohoku.ac.jp[107X
       Homepage: [7Xhttp://www.jesselansdown.com[107X
       Address:  [33X[0;14YJesse Lansdown[133X
-                [33X[0;14YSchool of Mathematics and Statistics[133X
-                [33X[0;14YUniversity of Canterbury[133X
-                [33X[0;14YChristchurch 8140[133X
-                [33X[0;14YNew Zealand[133X
+                [33X[0;14YGraduate School of Information Sciences[133X
+                [33X[0;14YTohoku University[133X
+                [33X[0;14YSendai 980-8579[133X
+                [33X[0;14YJapan[133X
   
   
   
@@ -60,7 +60,7 @@
   
   -------------------------------------------------------
   [1XCopyright[101X
-  [33X[0;0Y© 2019 - 2023 John Bamberg, Akihide Hanaki, Jesse Lansdown[133X
+  [33X[0;0Y© 2019 - 2024 John Bamberg, Akihide Hanaki, Jesse Lansdown[133X
   
   [33X[0;0YThis  program  is  free  software;  you can redistribute it and/or modify it
   under  the  terms of the GNU General Public License as published by the Free

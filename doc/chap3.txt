@@ -440,8 +440,8 @@
   [6XReturns:[106X  [33X[0;10Yhomogeneous coherent configuration[133X
   
   [33X[0;0YReturns  the  [23Xk[123X-th homogeneous coherent configuration of order [23Xn[123X. Library is
-  complete  for  [23X5  \le  n  \le  38[123X  excluding  [23Xn  \in  \{31,  35,  36,  37\}[123X,
-  corresponding to [HM].[133X
+  complete for [23X5 \le n \le 38[123X excluding [23Xn \in \{35, 36, 37\}[123X, corresponding to
+  [HM]. Thin schemes are are assigned numbers after those in [HM].[133X
   
   [1X3.3-2 NumberOfHomogeneousCoherentConfigurations[101X
   
