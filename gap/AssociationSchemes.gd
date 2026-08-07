@@ -361,3 +361,12 @@ DeclareOperation( "MatrixOfEigenvaluesViaBacktrack", [ IsHomogeneousCoherentConf
 #!    as well as families that have constructor methods, will have names. Some will have multiple descriptions, hence they are given as a list.
 #!    You can check if a homogeneous coherent configuration has assigned descriptions with HasDescription, or set one with SetDescription.
 DeclareAttribute( "Description", IsHomogeneousCoherentConfiguration );
+
+#! @Chapter Homogeneous Coherent Configuration objects
+#! @Section Core functionality
+#! @Arguments CC
+#! @Returns true or false
+#! @Description
+#!      Checks if the input is triply regular.
+DeclareProperty( "IsTriplyRegular", IsHomogeneousCoherentConfiguration );
+

@@ -900,6 +900,49 @@ InstallMethod(IsPrimitive,
 		return true;
 	end);
 
+ InstallMethod(IsTriplyRegular,
+			[IsHomogeneousCoherentConfiguration],
+	function(A)
+		local rk, triples, aut, n, orbs, reps1, u, stab, reps2, v, stab2, reps3, w, alpha, beta, gamma, x, i, j, k, inter;
+		rk := NumberOfClasses(A)+1;
+		triples := List([1 .. rk], t -> List([1 .. rk], s -> List([1 .. rk], r -> "?")));
+		aut:=AutomorphismGroup(A);
+		n:=Order(A);
+		orbs := Orbits(aut, [1 .. n]);
+		reps1 := List(orbs, t -> t[1]);;
+		for u in reps1 do
+			stab:=Stabiliser(aut, u);
+			orbs := Orbits(stab, [1 .. n]);
+			reps2 := List(orbs, t -> t[1]);;
+			for v in reps2 do
+				stab2:=Stabiliser(stab, v);
+				orbs := Orbits(stab2, [1 .. n]);
+				reps3 := List(orbs, t -> t[1]);;
+				for w in reps3 do
+					alpha := Relation(A, u, v)+1;
+					beta := Relation(A, u, w)+1;
+					gamma := Relation(A, v, w)+1;
+					inter := List([1 .. rk], t -> List([1 .. rk], s -> List([1 .. rk], r -> 0)));
+					for x in [1 .. n] do
+						i := Relation(A, u, x)+1;
+						j := Relation(A, v, x)+1;
+						k := Relation(A, w, x)+1;
+						inter[i][j][k] := inter[i][j][k] + 1;
+					od;
+					if triples[alpha][beta][gamma] = "?" then
+						triples[alpha][beta][gamma] := StructuralCopy(inter);
+					else
+						if triples[alpha][beta][gamma] <> inter then
+							return false;
+						fi;
+					fi;
+				od;
+			od;
+		od;
+		return true;
+	end);
+
+
 ################################################################################################################
 #
 # Reading and writing CCs
